@@ -13,7 +13,6 @@ DWORD WINAPI WorkerThread(LPVOID arg);
 DWORD WINAPI SaveUserDate(LPVOID arg);
 DWORD WINAPI ServerTestThread(LPVOID arg);
 
-
 int main(int argc, char * argv[])
 {
 #pragma region [Server UI]
@@ -253,7 +252,9 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 			DWORD flags = 0;
 			DWORD recvBytes{};
 			 
-			retVal = WSARecv(clientSocket, &ptr->wsabuf, 1, &recvBytes, &flags, &ptr->overlapped, NULL); // 클라이언트 소켓, 읽을 데이터 버퍼의 포인터, 데이터 입력 버퍼의 개수, recv 결과 읽은 바이트 수, IOCP에서는 비동기 방식으로 사용하지 않으므로 nullPtr를 넘겨도 무방,  recv에 사용될 플래그, // overlapped구조체의 포인터, IOCP에서는 사용하지 않으므로 NULL, nullptr넘겨도 무방
+			retVal = WSARecv(clientSocket, &ptr->wsabuf, 1, &recvBytes, &flags, &ptr->overlapped, NULL); 
+			// 클라이언트 소켓, 읽을 데이터 버퍼의 포인터, 데이터 입력 버퍼의 개수, recv 결과 읽은 바이트 수, IOCP에서는 비동기 방식으로 사용하지 않으므로 nullPtr를 넘겨도 무방,  recv에 사용될 플래그,
+			// overlapped구조체의 포인터, IOCP에서는 사용하지 않으므로 NULL, nullptr넘겨도 무방
 
 			if (retVal == SOCKET_ERROR)
 			{
@@ -326,8 +327,9 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 							ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
 							int buffer = FAIL_LOGIN;
-							memcpy(ptr->buf, (char*)(buffer), sizeof(buffer));
-							memcpy(ptr->buf + 4, (char*)(failReason), sizeof(int));
+							memcpy(ptr->buf, (char*)(&buffer), sizeof(buffer));
+							memcpy(ptr->buf + 4, (char*)(&failReason), sizeof(int));
+
 							ptr->dataSize = 8; // 4+ 4
 
 							// 데이터 바인딩
@@ -386,7 +388,7 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						int failReason = userData.SignUp(demandLogin.ID);
 
 						if (!failReason) {
-							std::cout << "회원가입 및 로그인에 성공했습니다. " << std::endl;
+							std::cout << "회원가입에 성공했습니다. " << std::endl;
 							
 							// 회원 가입 처리
 							userData.EmplaceBackToPlayer(demandLogin.ID, demandLogin.PW);
@@ -546,8 +548,8 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 				}
 				else
 				{
-					std::cout << "Not! Defined recvType Error" << std::endl;
-					std::cout << "OMG!! Thread Down!!" << std::endl;
+					std::cout << "Not! Defined recvType Error  recvType == "<< recvType << std::endl;
+					std::cout << "OMG!! this Thread Down!!" << std::endl;
 				}
 			}
 		}
