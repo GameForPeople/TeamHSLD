@@ -86,7 +86,7 @@ struct PermitLoginStruct : public BaseStruct {
 	__inline ~PermitLoginStruct() = default;
 };
 
-// type 401 -> One Player Changed
+// type 401 -> One Player Changed // 현재 테스트 기능.
 struct OnePlayerChanged : public BaseStruct
 {
 	int index{};

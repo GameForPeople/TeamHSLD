@@ -192,7 +192,6 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 	while (7)
 	{
 		//std::cout << "W";
-
 #pragma region [ Wait For Thread ]
 		//비동기 입출력 기다리기
 		DWORD cbTransferred;
@@ -208,7 +207,6 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 			INFINITE // 대기 시간 -> 깨울떄 까지 무한대
 		);
 #pragma endregion
-
 		//std::cout << "F" << std::endl;
 #pragma region [ Get Socket and error Exception ]
 
@@ -461,7 +459,6 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 							}
 						}
 					}
-
 				}
 				else if (recvType == DEMAND_GAMESTATE) 
 				{
@@ -556,7 +553,6 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 		else if (!(ptr->isRecvTrue))
 		{
 		}
-
 	}
 };
 
