@@ -17,29 +17,41 @@ public enum SCENE_NAME //: string
     INGAME_SCENE = 5	// 얍얍얍 인게임 얍얍얍
 };
 
-public class SceneControlManager : MonoBehaviour {
+public class SceneControlManager : MonoBehaviour
+{
 
     public SCENE_NAME nowScene;
     GameObject gameCore;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
+        // Release!
+        //nowScene = SCENE_NAME.TITLE_SCENE;
         // Test!
         nowScene = SCENE_NAME.LOGIN_SCENE;
-        gameCore = GameObject.Find("GameCores");
+
+        gameCore = GameObject.Find("GameCores").gameObject;
     }
-	
-	public void ChangeScene(SCENE_NAME InSceneName)
+
+    public void ChangeScene(SCENE_NAME InSceneName)
     {
-        SceneManager.LoadScene((int)InSceneName, LoadSceneMode.Additive);
+        StartCoroutine(ChangeSceneCoroutine(InSceneName));
+    }
 
-        Scene newScene = SceneManager.GetSceneByBuildIndex((int)InSceneName);
-        SceneManager.MoveGameObjectToScene(gameCore, newScene);
+    IEnumerator ChangeSceneCoroutine(SCENE_NAME InSceneName)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)InSceneName, LoadSceneMode.Additive);
 
-        Scene oldScene = SceneManager.GetSceneByBuildIndex((int)nowScene);
-        SceneManager.UnloadSceneAsync(oldScene);
+        while(!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        SceneManager.MoveGameObjectToScene(gameCore, SceneManager.GetSceneByBuildIndex((int)InSceneName));
+
+        SceneManager.UnloadSceneAsync((int)nowScene);
+
         nowScene = InSceneName;
     }
-
 }

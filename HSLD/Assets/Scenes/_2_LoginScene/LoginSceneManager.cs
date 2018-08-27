@@ -6,6 +6,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+    해당 씐에서는 굳이, 게임 오브젝트를 멤버 변수로 갖지 않습니다. (빠른 속도를 필요로 하지 않기 때문이며, 자동 로그인 기능이 추후 추가될 예정입니다) 
+ */
+
 public class LoginSceneManager : MonoBehaviour {
     
     public string IDBuffer;
@@ -15,6 +19,7 @@ public class LoginSceneManager : MonoBehaviour {
     public int typeBuffer;
 
     public int failReason;
+
     // Use this for initialization
     //   void Start () {
     //   }
@@ -25,6 +30,8 @@ public class LoginSceneManager : MonoBehaviour {
 
     public void ClickSignInButton()
     {
+        // 로그인 버튼 처리입니다.
+
         typeBuffer = 1;
 
         IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
@@ -39,6 +46,8 @@ public class LoginSceneManager : MonoBehaviour {
 
     public void ClickSignUpButton()
     {
+        // 회원 가입 버튼 처리입니다.
+
         typeBuffer = 2;
 
         IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
@@ -53,6 +62,9 @@ public class LoginSceneManager : MonoBehaviour {
 
     public void PermitLoginProcess()
     {
+        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 경우 있음...ㅠ
+
+
         // 메인 UI로 넘어갑니다~~
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
     }
