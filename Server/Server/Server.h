@@ -4,9 +4,10 @@
 
 #include "CommunicationProtocol.h"
 #include "UserData.h"
+#include "GameRoom.h"
 
 #define SERVER_PORT 9000
-#define BUF_SIZE 512
+#define BUF_SIZE 100
 
 // For ExternalIP
 #define EXTERNALIP_FINDER_URL "http://checkip.dyndns.org/"
@@ -25,7 +26,11 @@ struct SOCKETINFO
 	bool isRecvTrue; // 이게 트루면 받을 타이밍, flase면 주는 타이밍
 	int bufferProtocol; // 이거는 이제 이 번에 뭘해야하는지 저장해놓는거야 오 좋은데...
 
-	BaseStruct* dataBuffer;	// 대망의 친구..
+	int userIndex;	// 회원가입 + 로그인 시, 로드 유저 데이터에서 해당 인덱스 저장하여 사용!
+	int roomIndex;	// 방 만들거나 접속 시, 사용될 roomData의 인덱스
+	bool isHost; // 인게임에서 호스트역활인지 아닌지 체크.
+
+	BaseStruct* dataBuffer;	// 대망의 이 친구..는 사실 바이트단위로 전송하면서..쓰레기가 되어버렸는데..
 };
 
 void err_quit(char *msg) 

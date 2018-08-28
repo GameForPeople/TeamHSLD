@@ -6,6 +6,7 @@
 #define SERVER_DEBUG_LOG_PRINT
 
 static CUserData userData;	//쓰레드에서도 사용해야하는데, 유저 데이터가 겁나많으면 어떻게 하려고!!, 전역으로 선언해서 걍 쓰자!ㅎㅎㅎ
+static CGameRoom roomData;  //이거도 일단... 핑계대면서 전역사용...
 static bool isSaveOn{ false };	// 저장 여부 판단 (클라에 의해, 정보 변경 요청 받을 시 true로 변경 / 굳이 동기화 필요없이 sleep로 처리/ 나중에 바이너리 적용되면 시간 크게 고려 ㄴ)
 static int SelfControl{ 0 };
 
@@ -270,7 +271,90 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 				recvType = (int&)(ptr->buf);
 				//std::cout << "대기중이던 쓰레드가 받은 요구 데이터는 recvType == " << recvType << std::endl;
 
-				if (recvType == DEMAND_LOGIN) 
+				if (recvType == DEMAND_GAMESTATE) 
+				{
+					if (!SelfControl)
+					{
+						int buffer = 400;
+						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+
+						ptr->dataSize = sizeof(int);
+
+						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+						ptr->wsabuf.len = ptr->dataSize;
+
+						ptr->bufferProtocol = END_SEND;
+						ptr->isRecvTrue = true;
+
+						DWORD sendBytes;
+						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+						if (retVal == SOCKET_ERROR)
+						{
+							if (WSAGetLastError() != WSA_IO_PENDING)
+							{
+								err_display((char *)"WSASend()");
+							}
+							continue;
+						}
+
+						SelfControl = 0;
+						continue;
+					}
+					else if (SelfControl == 1)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 1, 0);
+					}
+					else if (SelfControl == 2)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 1, 1);
+					}
+					else if (SelfControl == 3)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 2, 0);
+					}
+					else if (SelfControl == 4)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 2, 1);
+					}
+					else if (SelfControl == 5)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 0, 0);
+					}
+					else if (SelfControl == 6)
+					{
+						ptr->dataBuffer = new OnePlayerChanged(1, 0, 1);
+					}
+
+					int buffer = 401;
+					memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+					memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, sizeof(OnePlayerChanged));
+
+					ptr->dataSize = sizeof(int) + sizeof(OnePlayerChanged);
+
+					//데이터 바인드
+					ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+					ptr->wsabuf.len = ptr->dataSize;
+
+					// 다음 통신 준비
+					ptr->bufferProtocol = END_SEND;
+					ptr->isRecvTrue = true;
+
+					DWORD sendBytes;
+					retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+					if (retVal == SOCKET_ERROR)
+					{
+						if (WSAGetLastError() != WSA_IO_PENDING)
+						{
+							err_display((char *)"WSASend()");
+						}
+						continue;
+					}
+
+					SelfControl = 0;
+				}
+				else if (recvType == DEMAND_LOGIN) 
 				{
 					DemandLoginCharStruct demandLogin = (DemandLoginCharStruct&)(ptr->buf[4]);
 					demandLogin.ID[demandLogin.IDSize] = '\0';
@@ -282,7 +366,7 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						int outLoseCount{};
 						int outMoney{};
 
-						int failReason = userData.SignIn(demandLogin.ID, demandLogin.PW, outWinCount, outLoseCount, outMoney);
+						int failReason = userData.SignIn(demandLogin.ID, demandLogin.PW, outWinCount, outLoseCount, outMoney, ptr->userIndex);
 
 						if (!failReason) {
 							std::cout << "로그인에 성공했습니다. " << std::endl;
@@ -389,7 +473,7 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 							std::cout << "회원가입에 성공했습니다. " << std::endl;
 							
 							// 회원 가입 처리
-							userData.EmplaceBackToPlayer(demandLogin.ID, demandLogin.PW);
+							userData.EmplaceBackToPlayer(demandLogin.ID, demandLogin.PW, ptr->userIndex);
 							
 							// 저장 쓰레드 호출
 							isSaveOn = true;
@@ -460,66 +544,17 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						}
 					}
 				}
-				else if (recvType == DEMAND_GAMESTATE) 
+				else if (recvType == DEMAND_MAKEROOM)
 				{
-					if (!SelfControl)
-					{
-						int buffer = 400;
-						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+					ptr->roomIndex = roomData.CreateRoom();
+					ptr->isHost = true;
 
-						ptr->dataSize = sizeof(int);
-
-						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
-						ptr->wsabuf.len = ptr->dataSize;
-
-						ptr->bufferProtocol = END_SEND;
-						ptr->isRecvTrue = true;
-
-						DWORD sendBytes;
-						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
-
-						if (retVal == SOCKET_ERROR)
-						{
-							if (WSAGetLastError() != WSA_IO_PENDING)
-							{
-								err_display((char *)"WSASend()");
-							}
-							continue;
-						}
-
-						SelfControl = 0;
-						continue;
-					}
-					else if (SelfControl == 1)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 1, 0);
-					}
-					else if (SelfControl == 2)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 1, 1);
-					}
-					else if (SelfControl == 3)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 2, 0);
-					}
-					else if (SelfControl == 4)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 2, 1);
-					}
-					else if (SelfControl == 5)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 0, 0);
-					}
-					else if (SelfControl == 6)
-					{
-						ptr->dataBuffer = new OnePlayerChanged(1, 0, 1);
-					}
-
-					int buffer = 401;
+					ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+					int buffer = PERMIT_MAKEROOM;
 					memcpy(ptr->buf, (char*)&buffer, sizeof(int));
-					memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, sizeof(OnePlayerChanged));
+					memcpy(ptr->buf + 4, (char*)&(ptr->roomIndex), sizeof(int));
 
-					ptr->dataSize = sizeof(int) + sizeof(OnePlayerChanged);
+					ptr->dataSize = sizeof(int) + sizeof(int); // 8
 
 					//데이터 바인드
 					ptr->wsabuf.buf = ptr->buf; // ptr->buf;
@@ -540,8 +575,10 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						}
 						continue;
 					}
+				}
+				else if (recvType == DEMAND_JOINROOM)
+				{
 
-					SelfControl = 0;
 				}
 				else
 				{

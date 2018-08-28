@@ -1,5 +1,14 @@
 #pragma once
 
+/*
+UserData.h 에서 해야될 일!
+  1. UserData가 일정이상 커지면, Vector말고 다른 로직의 적용이 필요할 수 있음. (속도 측면) -> 근데 그 순간 ptr-> 부분에 아이디, 비밀번호 추가하고 로직 엎어야함 와우!
+  2. Vector컨테이너의 Index를 Key로 쓰는 지금 로직에서 Sort 같은 짓 하면, 유저들 정보 난리남..
+  3. (단 userData 컨테이너를 Vector일때만 해당 내용 적용, 아니면 동일함. ) SignIn, SignUp에서 Iter로 돌리지 말고, 함수 인자로 전달된, RetIndex로 For문 [RetIndex] 돌리도록 변경 필요 ( 최적화 )
+
+  // 1, 2, 3의 변경건이 생기면, Index말고, Iter 혹은, 해당 구조체위치의 포인터 획득해서 UserData형변환해서 사용하던가 해야함! --> 이게 더 좋은 듯.
+*/
+
 #include "stdafx.h"
 
 class UserData {
@@ -106,8 +115,9 @@ public:
 		}
 	}
 
-	int SignIn(string InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney)
+	int SignIn(string InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
 	{
+		RetIndex = 0;
 		for (auto &i : player)
 		{
 			if (i.GetID().compare(InID) == 0)
@@ -132,12 +142,14 @@ public:
 					return 3;
 				}
 			}
+			++RetIndex;
 		}
 
 		return 1;
 	}
-	int SignIn(char* InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney)
+	int SignIn(char* InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
 	{
+		RetIndex = 0;
 		for (auto &i : player)
 		{
 			if (i.GetID().compare(InID) == 0)
@@ -162,6 +174,7 @@ public:
 					return 3;
 				}
 			}
+			++RetIndex;
 		}
 		return 1;
 	}
@@ -185,12 +198,12 @@ public:
 				return 4;
 			}
 		}
-
 		return 0;
 	}
 
-	__inline void EmplaceBackToPlayer(string InID, const int InPW) {
+	__inline void EmplaceBackToPlayer(string InID, const int InPW, int& RetIndex) {
 		player.emplace_back(InID, InPW);
+		RetIndex = player.size() - 1;
 	}
 
 	__inline int GetUserDataSize() {
