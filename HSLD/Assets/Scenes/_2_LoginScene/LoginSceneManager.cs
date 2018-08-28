@@ -41,7 +41,23 @@ public class LoginSceneManager : MonoBehaviour {
 
         Debug.Log("로그인을 시도합니다. ID : " + IDBuffer + "PW : " + PWBuffer);
 
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
+        {
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+        }
+        else
+        {
+            // ForOnlyClientTest
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_Account";
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 7777777;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().winCount = 0;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().loseCount = 0;
+
+            PermitLoginProcess();
+        }
     }
 
     public void ClickSignUpButton()
@@ -57,13 +73,30 @@ public class LoginSceneManager : MonoBehaviour {
 
         Debug.Log("회원가입을 시도합니다. ID : " + IDBuffer + "PW : " + PWBuffer);
 
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
+        {
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+        }
+        else
+        {
+            // ForOnlyClientTest
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_Account";
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 7777777;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().winCount = 0;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().loseCount = 0;
+
+            PermitLoginProcess();
+        }
     }
 
     public void PermitLoginProcess()
     {
-        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 경우 있음...ㅠ
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
 
+        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 경우 있음...ㅠ
 
         // 메인 UI로 넘어갑니다~~
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
