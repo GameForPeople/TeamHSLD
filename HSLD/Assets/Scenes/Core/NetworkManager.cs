@@ -20,14 +20,24 @@ using System.IO;
 
 enum PROTOCOL : int
 {
-    DEMAND_LOGIN = 100  ,
-    FAIL_LOGIN = 101    ,
-    PERMIT_LOGIN = 102  ,
-    DEMAND_GAMESTATE = 400
+    DEMAND_LOGIN        =   100   ,
+    FAIL_LOGIN          =   101   ,
+    PERMIT_LOGIN        =   102   ,
+    DEMAND_MAKEROOM     =   301   ,
+    PERMIT_MAKEROOM     =   302   ,
+    DEMAND_JOINROOM     =   303   ,
+    PERMIT_JOINROOM     =   304   ,
+    FAIL_JOINROOM       =   305   ,
+    DEMAND_ROOMHOST     =   400   ,
+    ROOMSTATE_VOID      =   410   ,
+    ROOMSTATE_GUESTIN   =   411   ,
+    DEMAND_GAMESTATE    =   500   
 };
 
 public class NetworkManager : MonoBehaviour
 {
+    public bool isOnNetwork = false;
+
     // State object for receiving data from remote device.  
    // public class StateObject
    // {
@@ -61,9 +71,6 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-
-
-
     private const string iP_ADDRESS = "119.193.229.172";
     private const int SERVER_PORT = 9000;
 
@@ -74,15 +81,28 @@ public class NetworkManager : MonoBehaviour
     public int recvType = 0;
     public int sendType = 0;
 
+    //Client Data
+
+    // Init Login Scene
+    public string ID = "TEST_Account";
+    public int PW = 1234;
     public int winCount = 0;
     public int loseCount = 0;
-    public int money = 0;
+    public int money = 7777777;
+
+    // Init LobbyScene
+    public int roomIndex = 0;
+    public bool isHost = true;
+
+    // Init RoomScene
+    public string enemyId;
 
     public byte[] DataRecvBuffer = new byte[100];
+    public byte[] DataSendBuffer = new byte[8];
 
     public object _obj = new object();
 
-    public GameObject m_scenenManager;
+    //public GameObject m_scenenManager;
 
     //private int dataLength;                     // Send Data Length. (byte)
     //private byte[] sendBuffer;                        // Data encoding to send. ( to Change bytes)
@@ -95,11 +115,11 @@ public class NetworkManager : MonoBehaviour
         socket = null;
     }
 
-
-
     // Use this for initialization
-    void Start()
+    public void StartNetworkFunction()
     {
+        isOnNetwork = true;
+
         // Socket Create
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.SendTimeout, 10000);
@@ -119,8 +139,9 @@ public class NetworkManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("Connect가 정상적으로 완료됐습니다!");
         //SendData(100);
-        m_scenenManager = GameObject.Find("SceneManager");
+        //m_scenenManager = GameObject.Find("SceneManager");
     }
     // Update is called once per frame
     void Update()
@@ -152,9 +173,6 @@ public class NetworkManager : MonoBehaviour
        // }
     }
 
-
-
-
     //[ComVisibleAttribute(true)]
     public void StructToBytes(object obj, ref byte[] packet)
     {
@@ -175,43 +193,65 @@ public class NetworkManager : MonoBehaviour
         Marshal.FreeHGlobal(buffer);
     }
 
-
-
-
     public void SendData(int InMsg)
     {
-        if (InMsg == (int)PROTOCOL.DEMAND_GAMESTATE)
+        if (isOnNetwork)
         {
-            byte[] sendDamandGameState = BitConverter.GetBytes((int)400);
-            socket.Send(sendDamandGameState);
-        }
-        else if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
-        {
-            DemandLoginStruct demandLogin = new DemandLoginStruct
+            if (InMsg == (int)PROTOCOL.DEMAND_GAMESTATE)
             {
-                msg = InMsg,
-                type = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().typeBuffer,
-                pw = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PWBuffer
-            };
+                byte[] sendDamandGameState = BitConverter.GetBytes((int)400);
+                socket.Send(sendDamandGameState);
+            }
+            else if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
+            {
+                DemandLoginStruct demandLogin = new DemandLoginStruct
+                {
+                    msg = InMsg,
+                    type = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().typeBuffer,
+                    pw = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PWBuffer
+                };
 
-            string IDBuffer = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().IDBuffer;
-            int lengthBuffer = IDBuffer.Length;
+                string IDBuffer = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().IDBuffer;
+                int lengthBuffer = IDBuffer.Length;
 
-            demandLogin.data = new char[20]; // data는 ID String Byte 배열
+                demandLogin.data = new char[20]; // data는 ID String Byte 배열
 
-            Debug.Log("lengthBuffer = " + lengthBuffer);
+                Debug.Log("lengthBuffer = " + lengthBuffer);
 
-            for (int i = 0; i < lengthBuffer; i++)
-                demandLogin.data[i] = IDBuffer[i];
+                for (int i = 0; i < lengthBuffer; i++)
+                    demandLogin.data[i] = IDBuffer[i];
 
-            demandLogin.IDSize = lengthBuffer;
+                demandLogin.IDSize = lengthBuffer;
 
-            byte[] packet = new byte[1];
-            StructToBytes(demandLogin, ref packet);
-            socket.Send(packet);
+                byte[] packet = new byte[1];
+                StructToBytes(demandLogin, ref packet);
+                socket.Send(packet);
+            }
+            else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKEROOM), 0, DataSendBuffer, 0, 4);
+
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+            }
+            else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_JOINROOM), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(roomIndex), 0, DataSendBuffer, 4, 4);
+
+                socket.Send(DataSendBuffer, 8, SocketFlags.None);
+            }
+            else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ROOMHOST), 0, DataSendBuffer, 0, 4);
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+            }
+
+            RecvProcess();
         }
-
-        RecvProcess();
+        else
+        {
+            Debug.Log("주의 : OnlyClientTest 환경에서, SendData가 호출되었습니다.");
+        }
     }
 
     public void RecvProcess()
@@ -220,7 +260,7 @@ public class NetworkManager : MonoBehaviour
         ProcessRecvData();
     }
 
-    private void RecvProtocolType()
+    void RecvProtocolType()
     {
         socket.Receive(DataRecvBuffer);
 
@@ -232,10 +272,7 @@ public class NetworkManager : MonoBehaviour
     {
         if (recvType > (int)PROTOCOL.DEMAND_GAMESTATE)
         {
-            //if(recvType == 401)
-            //{
-            m_scenenManager.SendMessage("ProcessRecvData", DataRecvBuffer);
-            //}
+           
         }
         else if (recvType == (int)PROTOCOL.FAIL_LOGIN)
         {
@@ -256,6 +293,32 @@ public class NetworkManager : MonoBehaviour
 
             //
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
+        }
+        else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
+        {
+            roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
+
+            GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().PermitMakeRoom();
+        }
+        else if (recvType == (int)PROTOCOL.PERMIT_JOINROOM)
+        {
+            roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
+
+            GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().PermitJoinRoom();
+        }
+        else if (recvType == (int)PROTOCOL.FAIL_JOINROOM)
+        {
+            int failReason = BitConverter.ToInt32(DataRecvBuffer, 4);
+
+            GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().FailJoinRoom(failReason);
+        }
+        else if (recvType == (int)PROTOCOL.ROOMSTATE_VOID)
+        {
+
+        }
+        else if (recvType == (int)PROTOCOL.ROOMSTATE_GUESTIN)
+        {
+
         }
 
         recvType = 0;
