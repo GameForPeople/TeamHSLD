@@ -27,6 +27,7 @@ struct SOCKETINFO
 	int bufferProtocol; // 이거는 이제 이 번에 뭘해야하는지 저장해놓는거야 오 좋은데...
 
 	int userIndex;	// 회원가입 + 로그인 시, 로드 유저 데이터에서 해당 인덱스 저장하여 사용!
+	
 	int roomIndex;	// 방 만들거나 접속 시, 사용될 roomData의 인덱스
 	bool isHost; // 인게임에서 호스트역활인지 아닌지 체크.
 

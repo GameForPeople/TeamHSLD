@@ -546,7 +546,8 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 				}
 				else if (recvType == DEMAND_MAKEROOM)
 				{
-					ptr->roomIndex = roomData.CreateRoom();
+					ptr->roomIndex = roomData.CreateRoom(ptr->userIndex);
+					
 					ptr->isHost = true;
 
 					ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
@@ -578,7 +579,137 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 				}
 				else if (recvType == DEMAND_JOINROOM)
 				{
+					int roomIndexBuffer = (int&)(ptr->buf[4]);
 
+					int failReasonBuffer = roomData.JoinRoom(ptr->userIndex, roomIndexBuffer);
+
+					if (failReasonBuffer)
+					{
+						ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+						int buffer = FAIL_JOINROOM;
+						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+						memcpy(ptr->buf + 4, (char*)&failReasonBuffer, sizeof(int));
+						ptr->dataSize = sizeof(int) + sizeof(int); // 8
+
+						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+						ptr->wsabuf.len = ptr->dataSize;
+
+						// 다음 통신 준비
+						ptr->bufferProtocol = END_SEND;
+						ptr->isRecvTrue = true;
+
+						DWORD sendBytes;
+						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+						if (retVal == SOCKET_ERROR)
+						{
+							if (WSAGetLastError() != WSA_IO_PENDING)
+							{
+								err_display((char *)"WSASend()");
+							}
+							continue;
+						}
+					}
+					else
+					{
+						ptr->isHost = false;
+						ptr->roomIndex = roomIndexBuffer;
+
+						ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+						int buffer = PERMIT_JOINROOM;
+						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+
+						string enemyIdBuffer = userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost));
+						int sizeBuffer = enemyIdBuffer.size();
+						memcpy(ptr->buf + 4, (char*)&(sizeBuffer), sizeof(int));
+						
+						for (int i = 0; i < sizeBuffer; ++i) {
+							ptr->buf[8 + i] = enemyIdBuffer[i];
+						}
+						
+						ptr->dataSize = sizeof(int) + sizeof(int)+ sizeBuffer; // 8 + a
+																   //데이터 바인드
+						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+						ptr->wsabuf.len = ptr->dataSize;
+
+						// 다음 통신 준비
+						ptr->bufferProtocol = END_SEND;
+						ptr->isRecvTrue = true;
+
+						DWORD sendBytes;
+						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+						if (retVal == SOCKET_ERROR)
+						{
+							if (WSAGetLastError() != WSA_IO_PENDING)
+							{
+								err_display((char *)"WSASend()");
+							}
+							continue;
+						}
+					}
+				}
+				else if (recvType == DEMAND_ROOMHOST) {
+					if (roomData.GetAndSetReadyData(ptr->roomIndex, ptr->isHost))
+					{
+						ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+						int buffer = ROOMSTATE_GUESTIN;
+						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+
+						string enemyIdBuffer = userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost));
+						int sizeBuffer = enemyIdBuffer.size();
+						memcpy(ptr->buf + 4, (char*)&(sizeBuffer), sizeof(int));
+
+						for (int i = 0; i < sizeBuffer; ++i) {
+							ptr->buf[8 + i] = enemyIdBuffer[i];
+						}
+
+						ptr->dataSize = sizeof(int) + sizeof(int) + sizeBuffer; // 8 + a
+																				//데이터 바인드
+						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+						ptr->wsabuf.len = ptr->dataSize;
+
+						// 다음 통신 준비
+						ptr->bufferProtocol = END_SEND;
+						ptr->isRecvTrue = true;
+
+						DWORD sendBytes;
+						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+						if (retVal == SOCKET_ERROR)
+						{
+							if (WSAGetLastError() != WSA_IO_PENDING)
+							{
+								err_display((char *)"WSASend()");
+							}
+							continue;
+						}
+					}
+					else {
+						ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+						int buffer = ROOMSTATE_VOID;
+						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
+						ptr->dataSize = sizeof(int); // 4
+
+						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
+						ptr->wsabuf.len = ptr->dataSize;
+
+						// 다음 통신 준비
+						ptr->bufferProtocol = END_SEND;
+						ptr->isRecvTrue = true;
+
+						DWORD sendBytes;
+						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
+
+						if (retVal == SOCKET_ERROR)
+						{
+							if (WSAGetLastError() != WSA_IO_PENDING)
+							{
+								err_display((char *)"WSASend()");
+							}
+							continue;
+						}
+					}
 				}
 				else
 				{

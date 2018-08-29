@@ -5,19 +5,28 @@
 
 
 enum Protocol {
-	END_SEND = -1
-	, START_RECV = 0
-	, DEMAND_LOGIN = 100
-	, FAIL_LOGIN = 101
-	, PERMIT_LOGIN = 102
-	, DEMAND_GAMESTATE = 400
+	END_SEND			=	-1	,
+	START_RECV			=	0	,
+	DEMAND_LOGIN		=	100	,
+	FAIL_LOGIN			=	101	,
+	PERMIT_LOGIN		=	102	,
+	DEMAND_MAKEROOM		=	301	,
+	PERMIT_MAKEROOM		=	302	,
+	DEMAND_JOINROOM		=	303	,
+	PERMIT_JOINROOM		=	304	,
+	FAIL_JOINROOM		=	305	,
+	DEMAND_ROOMHOST		=	400	,
+	ROOMSTATE_VOID		=	410	,
+	ROOMSTATE_GUESTIN	=	411	,
+	DEMAND_GAMESTATE	=	500
 };
 
 enum class SCENE_NAME {
-	TITLE_SCENE,	// 로고 노출 및 연결
-	LOGIN_SCENE,	// 계정 로그인
-	LOBBY_SCENE,	// 이거 쫌 그래 사실 별로야
-	ROOM_SCENE,		// 방으로 연결
+	TITLE_SCENE	,	// 로고 노출 및 연결
+	LOGIN_SCENE	,	// 계정 로그인
+	MainUI_SCENE,
+	LOBBY_SCENE	,	// 이거 쫌 그래 사실 별로야
+	ROOM_SCENE	,		// 방으로 연결
 	INGAME_SCENE	// 얍얍얍 인게임 얍얍얍
 };
 
@@ -86,7 +95,59 @@ struct PermitLoginStruct : public BaseStruct {
 	__inline ~PermitLoginStruct() = default;
 };
 
-// type 401 -> One Player Changed // 현재 테스트 기능.
+// type 301
+struct DemandMakeRoomStruct : public BaseStruct {
+	//안씁니다.
+};
+
+// type 302
+struct PermitMakeRoomStruct : public BaseStruct {
+	// 사실 이것도안쓰지만.
+	int roomIndex;
+
+	__inline PermitMakeRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	{};
+
+	__inline PermitMakeRoomStruct() = default;
+	__inline ~PermitMakeRoomStruct() = default;
+};
+
+//type 303
+struct DemandJoinRoomStruct : public BaseStruct {
+	int roomIndex;
+
+	__inline DemandJoinRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	{};
+
+	__inline DemandJoinRoomStruct() = default;
+	__inline ~DemandJoinRoomStruct() = default;
+};
+
+//type 304
+struct PermitJoinRoomStruct : public BaseStruct {
+	int roomIndex;
+	int idSize;
+	string enemyId;
+
+	__inline PermitJoinRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	{};
+
+	__inline PermitJoinRoomStruct() = default;
+	__inline ~PermitJoinRoomStruct() = default;
+};
+
+//type 305
+struct FailJoinRoomStruct : public BaseStruct {
+	int failReason;
+
+	__inline FailJoinRoomStruct(int InFailReason) : failReason(InFailReason)
+	{};
+
+	__inline FailJoinRoomStruct() = default;
+	__inline ~FailJoinRoomStruct() = default;
+};
+
+// type 401 -> One Player Changed //
 struct OnePlayerChanged : public BaseStruct
 {
 	int index{};

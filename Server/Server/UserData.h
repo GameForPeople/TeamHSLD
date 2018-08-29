@@ -211,8 +211,11 @@ public:
 	}
 
 	//이거 복사되는지 확실히 알 수 있나..? 이거 복사시킬거면 그냥 차라리 Public이 훨씐낮지..ㅡㅡ
-	__inline std::vector<UserData> GetPlayer() {
-		return player;
+	//__inline std::vector<UserData> GetPlayer() {
+	//	return player;
+	//}
+	__inline string GetUserID(const int InIndex)
+	{
+		return player[InIndex].GetID();
 	}
-
 };
