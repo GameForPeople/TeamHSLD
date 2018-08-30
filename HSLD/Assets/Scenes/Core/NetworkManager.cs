@@ -229,12 +229,16 @@ public class NetworkManager : MonoBehaviour
             }
             else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
             {
+                isHost = true;
+
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKEROOM), 0, DataSendBuffer, 0, 4);
 
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
             else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
             {
+                isHost = false;
+
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_JOINROOM), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(roomIndex), 0, DataSendBuffer, 4, 4);
 
@@ -304,6 +308,12 @@ public class NetworkManager : MonoBehaviour
         {
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
 
+            int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 8);
+            enemyId = BitConverter.ToString(DataRecvBuffer, 12, idSizeBuffer);
+
+            Debug.Log("받은 방장의 아이디는 " + BitConverter.ToString(DataRecvBuffer, 12, idSizeBuffer) + "입니다. ");
+            Debug.Log("복사한 방장의 아이디는 " + enemyId + "입니다. ");
+
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().PermitJoinRoom();
         }
         else if (recvType == (int)PROTOCOL.FAIL_JOINROOM)
@@ -318,7 +328,10 @@ public class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.ROOMSTATE_GUESTIN)
         {
+            int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 4);
+            enemyId = BitConverter.ToString(DataRecvBuffer, 8, idSizeBuffer);
 
+            GameObject.Find("RoomSceneManager").GetComponent<RoomSceneManager>().GuestJoinRoom();
         }
 
         recvType = 0;

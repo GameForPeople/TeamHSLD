@@ -20,7 +20,7 @@ public class LobbySceneManager : MonoBehaviour {
 
         // 서버에서 해당 인덱스에 대해, Join 여부를 확인하고, 가능할 시만 Join 처리.. 조인이 안될경우 UI출력 및, 해당 처리
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().roomIndex = Int32.Parse(roomIndexBuffer);
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.PERMIT_JOINROOM);
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_JOINROOM);
     }
 
     public void ClickJoinRandomRoom()
@@ -28,7 +28,7 @@ public class LobbySceneManager : MonoBehaviour {
         // 서버에서 고냥 입장 가능한 방 찾아줌... --> 매칭 알고리즘은 기획의도에 따라 서버에서 구현 여부 판단
         // 없을 경우, 해당 UI출력 필요
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().roomIndex = -1;
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.PERMIT_JOINROOM);
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_JOINROOM);
     }
 
     public void PermitMakeRoom()
