@@ -354,6 +354,7 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 
 					SelfControl = 0;
 				}
+				
 				else if (recvType == DEMAND_LOGIN) 
 				{
 					DemandLoginCharStruct demandLogin = (DemandLoginCharStruct&)(ptr->buf[4]);
@@ -585,6 +586,8 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 
 					if (failReasonBuffer)
 					{
+						std::cout << " DEBUGM-3" << roomIndexBuffer << " 방으로의 입장을 실패했습니다. 실패 사유 : "<< failReasonBuffer << endl;
+
 						ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 						int buffer = FAIL_JOINROOM;
 						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
@@ -619,15 +622,17 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						int buffer = PERMIT_JOINROOM;
 						memcpy(ptr->buf, (char*)&buffer, sizeof(int));
 
+						memcpy(ptr->buf + 4, (char*)&ptr->roomIndex, sizeof(int));
+
 						string enemyIdBuffer = userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost));
 						int sizeBuffer = enemyIdBuffer.size();
-						memcpy(ptr->buf + 4, (char*)&(sizeBuffer), sizeof(int));
+						memcpy(ptr->buf + 8, (char*)&(sizeBuffer), sizeof(int));
 						
 						for (int i = 0; i < sizeBuffer; ++i) {
-							ptr->buf[8 + i] = enemyIdBuffer[i];
+							ptr->buf[12 + i] = enemyIdBuffer[i];
 						}
 						
-						ptr->dataSize = sizeof(int) + sizeof(int)+ sizeBuffer; // 8 + a
+						ptr->dataSize = sizeof(int) + sizeof(int)+ sizeof(int) + sizeBuffer; // 8 + a
 																   //데이터 바인드
 						ptr->wsabuf.buf = ptr->buf; // ptr->buf;
 						ptr->wsabuf.len = ptr->dataSize;
@@ -635,6 +640,8 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						// 다음 통신 준비
 						ptr->bufferProtocol = END_SEND;
 						ptr->isRecvTrue = true;
+
+						std::cout << " DEBUGM-4   " << roomIndexBuffer << " 번째 방으로의 입장을 성공했습니다. 방장 아이디는 :  " << enemyIdBuffer  << endl;
 
 						DWORD sendBytes;
 						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
@@ -663,6 +670,12 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						for (int i = 0; i < sizeBuffer; ++i) {
 							ptr->buf[8 + i] = enemyIdBuffer[i];
 						}
+
+						std::cout << ptr->buf[8] << endl;
+						std::cout << ptr->buf[9] << endl;
+						std::cout << ptr->buf[10] << endl;
+						std::cout << ptr->buf[11] << endl;
+						std::cout << sizeBuffer << endl;
 
 						ptr->dataSize = sizeof(int) + sizeof(int) + sizeBuffer; // 8 + a
 																				//데이터 바인드
