@@ -78,7 +78,7 @@ public:
 		}
 	}
 
-	int JoinRoom(const int InGuestIndex, int RetRoomIndex)
+	int JoinRoom(const int InGuestIndex, int& RetRoomIndex)
 	{
 		if (RetRoomIndex == -1) 
 		{

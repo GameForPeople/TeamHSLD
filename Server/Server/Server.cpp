@@ -641,7 +641,7 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						ptr->bufferProtocol = END_SEND;
 						ptr->isRecvTrue = true;
 
-						std::cout << " DEBUGM-4   " << roomIndexBuffer << " 번째 방으로의 입장을 성공했습니다. 방장 아이디는 :  " << enemyIdBuffer  << endl;
+						std::cout << " DEBUGM-4   " << roomIndexBuffer << " 번째 방으로의 입장을 성공했습니다. 방장 아이디는 :  " << ptr->buf[12] << ptr->buf[13] << ptr->buf[14] << ptr->buf[15] << endl;
 
 						DWORD sendBytes;
 						retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, &sendBytes, 0, &ptr->overlapped, NULL);
@@ -670,12 +670,6 @@ DWORD WINAPI WorkerThread(LPVOID arg)
 						for (int i = 0; i < sizeBuffer; ++i) {
 							ptr->buf[8 + i] = enemyIdBuffer[i];
 						}
-
-						std::cout << ptr->buf[8] << endl;
-						std::cout << ptr->buf[9] << endl;
-						std::cout << ptr->buf[10] << endl;
-						std::cout << ptr->buf[11] << endl;
-						std::cout << sizeBuffer << endl;
 
 						ptr->dataSize = sizeof(int) + sizeof(int) + sizeBuffer; // 8 + a
 																				//데이터 바인드

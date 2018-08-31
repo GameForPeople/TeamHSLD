@@ -27,9 +27,9 @@ public class SceneControlManager : MonoBehaviour
     void Start()
     {
         // Release!
-        //nowScene = SCENE_NAME.TITLE_SCENE;
+        nowScene = SCENE_NAME.TITLE_SCENE;
         // Test!
-        nowScene = SCENE_NAME.LOGIN_SCENE;
+        //nowScene = SCENE_NAME.LOGIN_SCENE;
 
         gameCore = GameObject.Find("GameCores").gameObject;
     }
