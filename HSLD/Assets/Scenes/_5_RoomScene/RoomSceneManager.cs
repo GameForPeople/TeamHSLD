@@ -15,10 +15,13 @@ public class RoomSceneManager : MonoBehaviour {
     {
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").gameObject;
 
+        // 방 인덱스 등록
+        GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
+
         // 자기 자신의 아이디 노출
         GameObject.Find("PlayerID_TEXT").GetComponent< Text >().text = networkObject.GetComponent<NetworkManager>().ID;
 
-        // 나중에 계급이나 랭크같은것도 추가되면 여기서 해야처리해야할 듯
+        // 나중에 계급이나 랭크, 캐릭터 이미지 같은것도 추가되면 여기서 해야처리해야할 듯
 
         // 방장이면 서버로부터 계속 Guest들어왔는지 여부 확인하도록함
         if (networkObject.GetComponent<NetworkManager>().isHost)

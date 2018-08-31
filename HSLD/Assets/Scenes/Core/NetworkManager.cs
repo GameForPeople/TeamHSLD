@@ -309,10 +309,12 @@ public class NetworkManager : MonoBehaviour
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
 
             int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 8);
-            enemyId = BitConverter.ToString(DataRecvBuffer, 12, idSizeBuffer);
+            
+            //enemyId = System.String.Empty;
+            enemyId = Encoding.Default.GetString(DataRecvBuffer, 12, idSizeBuffer);
 
-            Debug.Log("받은 방장의 아이디는 " + BitConverter.ToString(DataRecvBuffer, 12, idSizeBuffer) + "입니다. ");
-            Debug.Log("복사한 방장의 아이디는 " + enemyId + "입니다. ");
+            Debug.Log("받은 방장의 아이디는 " + enemyId + ", 크기는  " + idSizeBuffer+ " 입니다. ");
+            Debug.Log("복사한 방장의 아이디는 " + (char)DataRecvBuffer[12] + DataRecvBuffer[13] + DataRecvBuffer[14] + DataRecvBuffer[15] + "입니다. ");
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().PermitJoinRoom();
         }
@@ -329,7 +331,7 @@ public class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.ROOMSTATE_GUESTIN)
         {
             int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 4);
-            enemyId = BitConverter.ToString(DataRecvBuffer, 8, idSizeBuffer);
+            enemyId = Encoding.Default.GetString(DataRecvBuffer, 8, idSizeBuffer);
 
             GameObject.Find("RoomSceneManager").GetComponent<RoomSceneManager>().GuestJoinRoom();
         }
