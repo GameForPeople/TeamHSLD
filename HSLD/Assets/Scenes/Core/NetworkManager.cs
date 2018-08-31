@@ -71,7 +71,7 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-    private const string iP_ADDRESS = "119.193.229.172";
+    public string iP_ADDRESS = "119.193.229.172";
     private const int SERVER_PORT = 9000;
 
     public Thread thread;
