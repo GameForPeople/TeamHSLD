@@ -9,7 +9,7 @@ UserData.h 에서 해야될 일!
   // 1, 2, 3의 변경건이 생기면, Index말고, Iter 혹은, 해당 구조체위치의 포인터 획득해서 UserData형변환해서 사용하던가 해야함! --> 이게 더 좋은 듯.
 */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 
 class UserData {
 	//basic Data

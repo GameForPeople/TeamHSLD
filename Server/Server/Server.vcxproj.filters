@@ -16,30 +16,45 @@
     <Filter Include="PCH">
       <UniqueIdentifier>{309d7491-4a8a-4163-ad4c-3d5ce3dbb684}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Server.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CommunicationProtocol.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="UserData.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>PCH</Filter>
-    </ClInclude>
-    <ClInclude Include="GameRoom.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
+    <Filter Include="소스 파일\IOCPServer">
+      <UniqueIdentifier>{a1e5be4e-6f64-4fdb-8ff8-9e857070f41f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Protocol">
+      <UniqueIdentifier>{42603e14-ab4b-494f-b783-cf54ae025045}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Room">
+      <UniqueIdentifier>{9e2d043b-792c-43e0-b1b9-30f12a2c52d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\UserData">
+      <UniqueIdentifier>{40b8e0ba-6a40-4692-889c-1160b53e839d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
-    <ClCompile Include="Server.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="IOCPServer\IOCPServer.cpp">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPServer\IOCPServer.h">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\CommunicationProtocol.h">
+      <Filter>소스 파일\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\GameRoom.h">
+      <Filter>소스 파일\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\UserData.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,8 +1,7 @@
 #pragma once
 
 // 주의해야합니다! 항상 클래스는 4바이트 단위로 제작합니다. SIMD 아니고 이거 뭐더라...
-#include "stdafx.h"
-
+#include "../stdafx.h"
 
 enum Protocol {
 	END_SEND			=	-1	,
@@ -35,21 +34,21 @@ struct BaseStruct {
 
 };
 
-struct BaseSendStruct : public BaseStruct {
-	int sendType{};
-	BaseStruct* dataBuffer;
-
-public:
-	__inline BaseSendStruct(const int InSendType, BaseStruct* InStruct) : sendType(InSendType), dataBuffer(InStruct)
-	{};
-	
-	__inline BaseSendStruct() = default;
-	
-	__inline ~BaseSendStruct()
-	{
-		if (dataBuffer != nullptr) delete dataBuffer;
-	}
-};
+//struct BaseSendStruct : public BaseStruct {
+//	int sendType{};
+//	BaseStruct* dataBuffer;
+//
+//public:
+//	__inline BaseSendStruct(const int InSendType, BaseStruct* InStruct) : sendType(InSendType), dataBuffer(InStruct)
+//	{};
+//	
+//	__inline BaseSendStruct() = default;
+//	
+//	__inline ~BaseSendStruct()
+//	{
+//		if (dataBuffer != nullptr) delete dataBuffer;
+//	}
+//};
 
 // type 100일때, 서버에 바로 다음 날려주는 구조체
 struct DemandLoginStruct : public BaseStruct {
@@ -97,12 +96,13 @@ struct PermitLoginStruct : public BaseStruct {
 
 // type 301
 struct DemandMakeRoomStruct : public BaseStruct {
-	//안씁니다.
+	//안씁니다. -> ? 함수화하면서 쓰는 걸로 바꼇는데? 히히
+	// ? 띠용? 이거 안쓰네 이친구는 리시브구나..헤헿 리시브는 고냥 메모리로 갖고 놀랳
 };
 
 // type 302
 struct PermitMakeRoomStruct : public BaseStruct {
-	// 사실 이것도안쓰지만.
+	// 사실 이것도안쓰지만. -> ? 애는 진짜씀 ㅎ
 	int roomIndex;
 
 	__inline PermitMakeRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
@@ -129,7 +129,8 @@ struct PermitJoinRoomStruct : public BaseStruct {
 	int idSize;
 	string enemyId;
 
-	__inline PermitJoinRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	__inline PermitJoinRoomStruct(int InRoomIndex, string InEnemyID)
+		: roomIndex(InRoomIndex), idSize(InEnemyID.size()), enemyId(InEnemyID)
 	{};
 
 	__inline PermitJoinRoomStruct() = default;
@@ -145,6 +146,20 @@ struct FailJoinRoomStruct : public BaseStruct {
 
 	__inline FailJoinRoomStruct() = default;
 	__inline ~FailJoinRoomStruct() = default;
+};
+
+//type 411
+struct RoomStateGuestInStruct : public BaseStruct
+{
+	int idSize;
+	string enemyId;
+
+	__inline RoomStateGuestInStruct(string InEnemyID)
+		: idSize(InEnemyID.size()), enemyId(InEnemyID)
+	{};
+
+	__inline RoomStateGuestInStruct() = default;
+	__inline ~RoomStateGuestInStruct() = default;
 };
 
 // type 401 -> One Player Changed //
