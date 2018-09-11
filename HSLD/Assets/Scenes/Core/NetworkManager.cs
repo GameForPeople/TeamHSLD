@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+using UnityEngine.Networking;
 
 // 아직 코드 보지 마세요....테스트 코드라.. 리팩토링 안해서 눈 썩어요..
 // 클라이언트 현재 네트워크 동기방식 -> 턴제라 그냥 써도 될듯 한데, 프레임 드랍 등, 문제되면 비동기방식으로 변경 필요
@@ -70,9 +71,9 @@ public class NetworkManager : MonoBehaviour
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20)] public char[] data;
     }
 
-
-    public string iP_ADDRESS = "119.193.229.172";
+    public string iP_ADDRESS;
     private const int SERVER_PORT = 9000;
+    private const string CLIENT_VERSION = "180909";
 
     public Thread thread;
     public Socket socket;
@@ -337,6 +338,55 @@ public class NetworkManager : MonoBehaviour
         }
 
         recvType = 0;
+    }
+
+    public void ParsingServerIP()
+    {
+        StartCoroutine(ParsingServerIPCoroutine());
+    }
+
+    IEnumerator ParsingServerIPCoroutine()
+    {
+        UnityWebRequest www = UnityWebRequest.Get("http://koreagamemaker.wixsite.com/hsld-server"); // 나중에 GitPage로 바꾸기.
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            // Show results as text
+            int index1 = www.downloadHandler.text.IndexOf("Server IP : ") + 12;
+            int index2 = www.downloadHandler.text.IndexOf(".HSLD", index1);
+
+            iP_ADDRESS = www.downloadHandler.text.Substring(index1, index2 - index1);
+            // Or retrieve results as binary data
+            Debug.Log("Server의 IP는 : " + iP_ADDRESS);
+
+            int index3 = www.downloadHandler.text.IndexOf("Ver : ", index2);
+
+            string parsingClientVerStringBuffer = www.downloadHandler.text.Substring(index3 + 6, 6);
+
+            Debug.Log("최신 Client의 Ver는 : " + parsingClientVerStringBuffer + " 입니다. 현재 클라이언트 버전은 : " + CLIENT_VERSION + " 입니다." );
+
+            int index4 = www.downloadHandler.text.IndexOf("NotifyNum : ", index3) + 12;
+
+            string notifyNumString = www.downloadHandler.text.Substring(index4, 1);
+
+            if(notifyNumString.Equals("0"))
+            {
+                Debug.Log("NotifyNum은 0으로 서버는 정상적으로 작동하는 중입니다.");
+            }
+            else if (notifyNumString.Equals("1"))
+            {
+                Debug.Log("NotifyNum은 1로 현재 서버는 작동하지 않습니다.");
+            }
+            else if (notifyNumString.Equals("2"))
+            {
+                Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
+            }
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 #include "../stdafx.h"
 #include "IOCPServer.h"
 
+// in Server global Function
 namespace NETWORK_UTIL {
 	void ERROR_QUIT(char *msg)
 	{
