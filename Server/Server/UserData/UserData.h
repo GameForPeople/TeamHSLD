@@ -38,6 +38,11 @@ public:
 	__inline ~UserData() {};
 
 public:
+	__inline void  SignOut()
+	{
+		m_isLogin = false;
+	}
+
 	__inline void	SetIPAddress(IN_ADDR& inputAddress) { m_userAddr = inputAddress; m_isLogin = true; }
 
 	__inline void	PrintUserData() const 
@@ -86,7 +91,7 @@ public:
 
 		inFile.close();
 
-		std::cout << " [System] Load UserData Complete! " << std::endl << std::endl;
+		std::cout << "     [CUserData] Load UserData Complete! " << std::endl;
 	}
 	void Save(bool InIsSave)
 	{
@@ -108,7 +113,8 @@ public:
 			}
 			outFile.close();
 
-			std::cout << " [System] Save UserData! " << std::endl;
+			std::cout << "     [CUserData] Save UserData! " << std::endl;
+
 			InIsSave = false;
 
 			Sleep(2000);
@@ -199,6 +205,11 @@ public:
 			}
 		}
 		return 0;
+	}
+
+	__inline void SignOut(const int InClientIndex)
+	{
+		player[InClientIndex].SignOut();
 	}
 
 	__inline void EmplaceBackToPlayer(string InID, const int InPW, int& RetIndex) {
