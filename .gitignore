@@ -79,7 +79,9 @@ Thumbs.db
 
 HSLD/.vs
 
-*.obj
+Server/Server/Debug/
+
+Server/Server/x64/Debug/
 
 *.ipch
 
