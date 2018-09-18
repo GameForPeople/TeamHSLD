@@ -11,7 +11,10 @@ public class UIText : MonoBehaviour {
     public Camera mainCamera;
     public GameObject planetObject;
     public Vector3 Vec3;
-    
+
+
+    private GameObject PickedMesh;
+
 
     void Start()
     {
@@ -44,12 +47,17 @@ public class UIText : MonoBehaviour {
 
                         if (Physics.Raycast(ray, out hit))
                         {
-                            Vec3.Set(hit.transform.worldToLocalMatrix.m30, hit.transform.worldToLocalMatrix.m31, hit.transform.worldToLocalMatrix.m32);
 
+                            PickedMesh = GameObject.Find(hit.transform.name);
+                            MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
+                            
+                            Vec3 = PickedRenderer.transform.position;
+                            
                             DebuggingText.text +=
                                 "[Pick Object] : " + hit.transform.name +
                                 " // " + Vec3 + "\nHit Point : " + hit.point + "\n";
-                           // hit.
+
+                            // hit.
                         }
 
                     }

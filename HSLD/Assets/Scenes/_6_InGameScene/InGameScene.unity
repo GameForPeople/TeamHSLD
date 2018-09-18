@@ -1614,7 +1614,7 @@ MonoBehaviour:
   orthoZoomSpeed: 0.04
   minDistance: 140
   maxDistance: 70
-  RotationSensitivity: 0.1
+  RotationSensitivity: 0.01
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0

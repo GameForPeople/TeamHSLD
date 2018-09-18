@@ -57,10 +57,10 @@ public class CameraController : MonoBehaviour {
 
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                        Input.GetTouch(0).position.y - PrevPoint.y * 0.5f * RotationSensitivity);
+                        (Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                        Input.GetTouch(0).position.x - PrevPoint.x * RotationSensitivity);
+                        (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
 
                     PrevPoint = Input.GetTouch(0).position;
                 }
