@@ -10,11 +10,13 @@ public class UIText : MonoBehaviour {
     public GameObject cameraObject;
     public Camera mainCamera;
     public GameObject planetObject;
+    public Vector3 Vec3;
     
 
     void Start()
     {
         DebuggingText = GetComponent<Text>();
+        DebuggingText.color = new Color(1,1,1);
         planetObject = GameObject.Find("Planet");
         cameraObject = GameObject.Find("Main Camera");
     } 
@@ -42,9 +44,12 @@ public class UIText : MonoBehaviour {
 
                         if (Physics.Raycast(ray, out hit))
                         {
+                            Vec3.Set(hit.transform.worldToLocalMatrix.m30, hit.transform.worldToLocalMatrix.m31, hit.transform.worldToLocalMatrix.m32);
+
                             DebuggingText.text +=
                                 "[Pick Object] : " + hit.transform.name +
-                                " // " + hit.transform.position + "\n";
+                                " // " + Vec3 + "\nHit Point : " + hit.point + "\n";
+                           // hit.
                         }
 
                     }

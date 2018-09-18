@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
     private GameObject PickedMesh;
     private Color myColor;
     private Color grayColor;
-    private float elapsed;
+    private float offset;
 
     void Start()
     {
@@ -41,9 +41,9 @@ public class CameraController : MonoBehaviour {
                 myTransform.position = priorPosition;
             } // 확대축소 관련
 
-            if (elapsed > 0)
+            if (offset > 0)
             {
-                elapsed -= 0.1f;
+                offset -= 0.1f;
             } // 피킹 관련 
 
             if (Input.touchCount == 1)
@@ -56,11 +56,11 @@ public class CameraController : MonoBehaviour {
                     //charTarget.transform.Rotate(0, -(Input.GetTouch(0).position.x - PrevPoint.x) * cameraSensitivity, 0);
 
 
-                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.right,
-                        -(Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
+                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
+                        Input.GetTouch(0).position.y - PrevPoint.y * 0.5f * RotationSensitivity);
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                        (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
+                        Input.GetTouch(0).position.x - PrevPoint.x * RotationSensitivity);
 
                     PrevPoint = Input.GetTouch(0).position;
                 }
@@ -76,19 +76,18 @@ public class CameraController : MonoBehaviour {
 
                         MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
 
-
-                        if (elapsed < 0.5)
+                        if (offset < 0.5)
                         {
                             if (PickedRenderer.material.color != grayColor)
                             {
                                 PickedRenderer.material.color = grayColor;
-                                elapsed = 1.0f;
+                                offset = 1.0f;
                             }
                             else
                             {
                                 myColor = new Color(Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f));
                                 PickedRenderer.material.color = myColor;
-                                elapsed = 1.0f;
+                                offset = 1.0f;
                             }
                         }
                     }
