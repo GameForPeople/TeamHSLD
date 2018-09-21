@@ -21,18 +21,50 @@ using UnityEngine.Networking;
 
 enum PROTOCOL : int
 {
-    DEMAND_LOGIN        =   100   ,
-    FAIL_LOGIN          =   101   ,
-    PERMIT_LOGIN        =   102   ,
-    DEMAND_MAKEROOM     =   301   ,
-    PERMIT_MAKEROOM     =   302   ,
-    DEMAND_JOINROOM     =   303   ,
-    PERMIT_JOINROOM     =   304   ,
-    FAIL_JOINROOM       =   305   ,
-    DEMAND_ROOMHOST     =   400   ,
-    ROOMSTATE_VOID      =   410   ,
-    ROOMSTATE_GUESTIN   =   411   ,
-    DEMAND_GAMESTATE    =   500   
+    //for LoginScene
+    DEMAND_LOGIN        =   100     ,
+    FAIL_LOGIN          =   101     ,
+    PERMIT_LOGIN        =   102     ,
+
+    //for LobbyScene
+    DEMAND_MAKEROOM     =   301     ,
+    PERMIT_MAKEROOM     =   302     ,
+    DEMAND_JOINROOM     =   303     ,
+    PERMIT_JOINROOM     =   304     ,
+    FAIL_JOINROOM       =   305     ,
+
+    //for RoomScene
+    DEMAND_ROOMHOST     =   400     ,
+    ROOMSTATE_VOID      =   410     ,
+    ROOMSTATE_GUESTIN   =   411     ,
+
+
+    // for GameScene
+    DEMAND_GAME_STATE   =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
+    VOID_GAME_STATE     =   501     ,  // 야 수비야 공격이 아무것도 안했어!
+
+    VOID_CLIENT_TO_SERVER                       =   511 ,                // 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
+    CHANGE_PLANET_CLIENT_TO_SERVER              =   512 ,       // 공격턴 클라이언트가 땅을 바꿧을 때,
+    ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER   =   513 ,    // 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
+    ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER  =   514 ,   // 공격턴 클라이언트의 이벤트 카드(공격, 주사위 관련) 처리
+    ACTION_EVENTCARD_DEFENSE_CLIENT_TO_SERVER   =   515 ,    // 미구현... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+
+
+    VOID_SERVER_TO_CLIENT                       =   521 ,                // 서버가 수비턴 클라이언트에게 VOID전송 다만, 이거 받으면 턴 변경임!
+    CHANGE_PLANET_SERVER_TO_CLIENT              =   522 ,       // 서버가 수비턴 클라이언트에게 공격 클라이언트가 바꾼 행성 정보를 전송
+    ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT   =   523 ,    // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 지형변경) 정보를 전송
+    ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT  =   524 ,   // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 주사위 관련) 처리
+    ACTION_EVENTCARD_DEFENSE_SERVER_TO_CLIENT   =   525 ,    // 미구현.... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+
+    // Not yet used
+    DEMAND_DICE_CLIENT_TO_SERVER                =   521 ,     // 주사위 숫자를 요구할 때,
+    PERMIT_DICE_SERVER_TO_CLIENT                =   522 ,
+
+    DEMAND_EVENTCARD_CLIENT_TO_SERVER           =   523 ,    // 공통덱에서 이벤트 카드를 요구할 때,
+    PERMIT_EVENTCARD_SERVER_TO_CLIENT           =   524 ,
+
+    DEMAND_EVENTCARD_DICE_CLIENT_TO_SERVER      =   525 , // 이벤트 카드의 숫자를 요구할 때
+    PERMIT_EVENTCARD_DICE_SERVER_TO_CLIENT      =   526
 };
 
 public class NetworkManager : MonoBehaviour
@@ -100,11 +132,13 @@ public class NetworkManager : MonoBehaviour
 
     public byte[] DataRecvBuffer = new byte[100];
     public byte[] DataSendBuffer = new byte[8];
+    public byte[] Data50_SendBuffer = new byte[64]; // max - ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER
 
     public object _obj = new object();
 
-    //public GameObject m_scenenManager;
+    public InGameSceneManager inGameSceneManager; // 이 변수는 인게임씬 생성자에서 보장을 해줘야합니다.
 
+    //public GameObject inGameSceneManager;
     //private int dataLength;                     // Send Data Length. (byte)
     //private byte[] sendBuffer;                        // Data encoding to send. ( to Change bytes)
     //private byte[] Receivebyte = new byte[2000];    // Receive data by this array to save.
@@ -198,12 +232,15 @@ public class NetworkManager : MonoBehaviour
     {
         if (isOnNetwork)
         {
-            if (InMsg == (int)PROTOCOL.DEMAND_GAMESTATE)
-            {
-                byte[] sendDamandGameState = BitConverter.GetBytes((int)400);
-                socket.Send(sendDamandGameState);
-            }
-            else if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
+            //if (InMsg == (int)PROTOCOL.DEMAND_GAMESTATE)
+            //{
+            //    byte[] sendDamandGameState = BitConverter.GetBytes((int)400);
+            //    socket.Send(sendDamandGameState);
+            //}
+            //else 
+
+            //LoginScene
+            if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
             {
                 DemandLoginStruct demandLogin = new DemandLoginStruct
                 {
@@ -228,6 +265,8 @@ public class NetworkManager : MonoBehaviour
                 StructToBytes(demandLogin, ref packet);
                 socket.Send(packet);
             }
+
+            //LobbyScene
             else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
             {
                 isHost = true;
@@ -245,12 +284,48 @@ public class NetworkManager : MonoBehaviour
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);
             }
+
+            // RoomScene
             else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ROOMHOST), 0, DataSendBuffer, 0, 4);
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
+            //InGameScene // Defense Turn
+            else if (InMsg == (int)PROTOCOL.DEMAND_GAME_STATE)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GAME_STATE), 0, DataSendBuffer, 0, 4);
+
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+            }
+
+            // InGameScene Attack Turn
+            else if (InMsg == (int)PROTOCOL.VOID_CLIENT_TO_SERVER)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+            }
+            else if (InMsg == (int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER), 0, Data50_SendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, Data50_SendBuffer, 4, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, Data50_SendBuffer, 8, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, Data50_SendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
+            }
+            else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER), 0, Data50_SendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, Data50_SendBuffer, 4, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, Data50_SendBuffer, 8, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, Data50_SendBuffer, 12, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, Data50_SendBuffer, 16, 4 * inGameSceneManager.network_changeTerrainCount);
+            }
+            else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
+            }
+          
             RecvProcess();
         }
         else
@@ -259,7 +334,7 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
-    public void RecvProcess()
+    void RecvProcess()
     {
         RecvProtocolType();
         ProcessRecvData();
@@ -273,13 +348,16 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("RecvType is : " + recvType);
     }
 
-    public void ProcessRecvData()
+    void ProcessRecvData()
     {
-        if (recvType > (int)PROTOCOL.DEMAND_GAMESTATE)
-        {
-           
-        }
-        else if (recvType == (int)PROTOCOL.FAIL_LOGIN)
+        //if (recvType > (int)PROTOCOL.DEMAND_GAMESTATE)
+        //{
+        //   
+        //}
+        //else 
+        
+        //LoginScene
+        if (recvType == (int)PROTOCOL.FAIL_LOGIN)
         {
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().failReason = BitConverter.ToInt32(DataRecvBuffer, 4);
 
@@ -299,6 +377,8 @@ public class NetworkManager : MonoBehaviour
             //
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
         }
+
+        //LobbyScene
         else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
         {
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
@@ -325,6 +405,8 @@ public class NetworkManager : MonoBehaviour
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().FailJoinRoom(failReason);
         }
+
+        //RoomScene
         else if (recvType == (int)PROTOCOL.ROOMSTATE_VOID)
         {
 
@@ -337,6 +419,41 @@ public class NetworkManager : MonoBehaviour
             GameObject.Find("RoomSceneManager").GetComponent<RoomSceneManager>().GuestJoinRoom();
         }
 
+        //InGameScene
+        if (recvType > 500 && recvType < 600)
+        { 
+            if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
+            {
+                // 뭐야 니 아무것도 없엉 메롱
+            }
+            else if (recvType == (int)PROTOCOL.CHANGE_PLANET_SERVER_TO_CLIENT)
+            {
+                inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
+                inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
+
+                for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+                {
+                    inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
+                }
+            }
+            else if (recvType == (int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT)
+            {
+                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+                inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
+                inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 12);
+
+                for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+                {
+                    inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
+                }
+            }
+            else if (recvType == (int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT)
+            {
+                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            }
+
+            inGameSceneManager.network_recvProtocolFlag = recvType;
+        }
         recvType = 0;
     }
 
