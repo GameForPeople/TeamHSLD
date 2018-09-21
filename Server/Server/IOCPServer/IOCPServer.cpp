@@ -595,6 +595,79 @@ void IOCPServer::WorkerThreadFunction()
 							continue;
 					}
 				}
+				
+				// GameScene - Defense Turn
+				else if (recvType == DEMAND_GAME_STATE)
+				{
+					// Caution!! Get Atomic!!
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+					
+					if (dataProtocol)
+					{
+						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex);
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(RoomStateGuestInStruct), dataProtocol))
+						{
+							// Caution!! dataBuffer Delete
+							roomData.DeleteDataBuffer(ptr->roomIndex);
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex);
+							continue;
+						}
+					}
+					else
+					{
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
+							continue;
+					}
+				}
+
+				//GameScene - Attack Turn
+				else if (recvType > 500 && recvType < 600)
+				{
+					// Caution!! Get Atomic!!
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+
+					if (dataProtocol)
+					{
+						// 지연된 확인 필요.
+						
+						//Error 
+						// 너무나도 높은 확률로, 수비턴의 클라이언트 네트워크 상태가 불안정할 가능성이 큽니다.
+						// 하아...이걸 어떻게 처리 한담...
+					}
+					else 
+					{
+						if (recvType == VOID_CLIENT_TO_SERVER)
+						{
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, VOID_SERVER_TO_CLIENT);
+						}
+						else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
+						{
+							//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
+							roomData.SetDataBuffer(ptr->roomIndex, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, CHANGE_PLANET_SERVER_TO_CLIENT);
+						}
+						else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
+						{
+							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
+						}
+						else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
+						{
+							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
+						}
+
+						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함
+					}
+				}
+
+				// Hey!! It is garbage!!!!! ERROR!!! OhMyGod!!!!!!! !!!! WT!!!
 				else
 				{
 					//std::cout << "Not! Defined recvType Error  recvType == " << recvType << std::endl;

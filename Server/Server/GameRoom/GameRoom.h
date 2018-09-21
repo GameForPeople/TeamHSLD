@@ -13,35 +13,50 @@ enum class ROOM_STATE {
 };
 
 class GameRoom {
+	// 일단 다 퍼블릭!! --> 미친놈 // 야 우리 사이에 뭘 숨곃ㅎㅎㅎ
+	GameRoom(const GameRoom&); 
+	GameRoom& operator=(const GameRoom&);
 public:
 	ROOM_STATE roomState;
 	
 	//std::atomic<bool> isOnRenew[2]{ false };
+	//bool isOnExit{ false };	// 한 명이 나갈 경우! true로 처리해줌.
 	int	userIndex[2]{};
-	bool isOnReady[2]{false}; //0이 Host, 1이 Guest
-	bool isOnExit{ false };	// 한 명이 나갈 경우! true로 처리해줌.
+	std::atomic<int> dataProtocol{};
 
-	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID)
+	bool isOnReady[2]{false}; //0이 Host, 1이 Guest
+
+	BaseStruct* dataBuffer;
+
+	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), dataBuffer(nullptr), dataProtocol(0)
 	{};
-	__inline ~GameRoom() = default;
+
+	//__inline ~GameRoom() = default;
+	__inline ~GameRoom()
+	{
+		if (dataBuffer != nullptr)
+		{
+			delete dataBuffer;
+		}
+	}
 
 	__inline void CreateRoom(const int InHostIndex)
 	{
+
+		userIndex[0] = InHostIndex;
 		roomState = ROOM_STATE::ROOM_STATE_SOLO;
 		//isOnRenew[0] = true; // 방을 만드는 입장에서는 항상 0이 비어있어야함!
 		//이걸 여기다가 쓰지 말고, 데이터를 보내야 할때만 쓰자.
-
-		userIndex[0] = InHostIndex;
 	}
 
 	__inline void JoinRoom(const int InGuestIndex)
 	{
 		// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 		//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
-		roomState = ROOM_STATE::ROOM_STATE_WAIT;
 
 		userIndex[1] = InGuestIndex;
 		isOnReady[0] = true;
+		roomState = ROOM_STATE::ROOM_STATE_WAIT;
 		//}
 	}
 };
@@ -141,4 +156,38 @@ public:
 			return false;
 		}
 	}
+
+//for InGame
+public:
+	// 레퍼런스 쓰지말자 일단은. 마지막 단계에서 데이터 프로토콣 변경해야지
+	// atomic
+	int GetDataProtocol(const int InRoomIndex) const
+	{
+		return rooms[InRoomIndex].dataProtocol;
+	}
+
+	// atomic 
+	void SetDataProtocol(const int InRoomIndex, const int InNewDataProtocol = 0)
+	{
+		rooms[InRoomIndex].dataProtocol = InNewDataProtocol;
+	}
+
+
+	BaseStruct* GetDataBuffer(const int InRoomIndex) // const
+	{
+		return rooms[InRoomIndex].dataBuffer;
+	}
+
+	void SetDataBuffer(const int InRoomIndex, BaseStruct InBaseStruct)
+	{
+		// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
+		rooms[InRoomIndex].dataBuffer = &InBaseStruct;
+	}
+
+	// Caution!! dataBuffer Delete
+	void DeleteDataBuffer(const int InRoomIndex)
+	{
+		delete rooms[InRoomIndex].dataBuffer;
+	}
+
 };
