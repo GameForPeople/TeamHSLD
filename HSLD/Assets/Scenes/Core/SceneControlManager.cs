@@ -73,10 +73,7 @@ public class SceneControlManager : MonoBehaviour
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)InSceneName, LoadSceneMode.Additive);
 
-        // Load UI를 어느정도 확인할 시간을 마련해 줍니다.
-        yield return new WaitForSeconds(2.0f);
-
-        // 로딩이 완료될 때 까지, 대기상태입니다. ( Load UI 작업 후, 2.0f로 인하여, 왠만하면 바로 통과될 듯 함 )
+        // 로딩이 완료될 때 까지, 대기상태입니다.
         while (!asyncLoad.isDone)
         {
             yield return null;
@@ -86,6 +83,8 @@ public class SceneControlManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync((int)nowScene);
 
+        // Load UI를 어느정도 확인할 시간을 마련해 줍니다.
+        yield return new WaitForSeconds(2.0f);
 
         // 씬 변환이 끝나면, LoadUI를 Off처리 해줍니다.
         if (InOnPrintLoadUI == true)
