@@ -5,5 +5,5 @@ using UnityEngine;
 public class CardInfo : MonoBehaviour
 {
     public CARDSET currentCard;
-
+    public ZOOMSTATE currentZoom;
 }

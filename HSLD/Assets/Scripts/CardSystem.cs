@@ -5,10 +5,136 @@ using UnityEngine;
 public enum CARDSET
 {
     EVENTCARD,
-    NORMALCARD
+    TERRAIN
+}
+
+public enum ZOOMSTATE
+{
+    IN,
+    OUT
 }
 
 public class CardSystem : MonoBehaviour
 {
-    
+    private bool isTriggerDone = true;
+    private float time_;
+    public float timeConstValue;
+    private GameObject pickedCard;
+
+    public GameObject[] cardSet = new GameObject[8];
+
+    //나중에 SO로 데이터 저장
+    private Vector2[] zoomInSatusCardVec = new Vector2[8];
+    private Vector2[] zoomOutSatusCardVec = new Vector2[8];
+
+    private void Init()
+    {
+        zoomInSatusCardVec[0] = new Vector2(-538, -402);
+        zoomInSatusCardVec[1] = new Vector2(-499, -402);
+        zoomInSatusCardVec[2] = new Vector2(-449, -402);
+        zoomInSatusCardVec[3] = new Vector2(-407, -402);
+        zoomInSatusCardVec[4] = new Vector2(-350, -402);
+        zoomInSatusCardVec[5] = new Vector2(94, -402);
+        zoomInSatusCardVec[6] = new Vector2(138, -402);
+        zoomInSatusCardVec[7] = new Vector2(170, -402);
+
+        zoomOutSatusCardVec[0] = new Vector2(-458,-402);
+        zoomOutSatusCardVec[1] = new Vector2(-352, -402);
+        zoomOutSatusCardVec[2] = new Vector2(-246, -402);
+        zoomOutSatusCardVec[3] = new Vector2(-140, -402);
+        zoomOutSatusCardVec[4] = new Vector2(-36, -402);
+        zoomOutSatusCardVec[5] = new Vector2(258, -402);
+        zoomOutSatusCardVec[6] = new Vector2(364, -402);
+        zoomOutSatusCardVec[7] = new Vector2(470, -402);
+    }
+
+    private void Start()
+    {
+        Init();
+    }
+
+    //줌 인 / 아웃 판별
+    public void PickingCard(GameObject card)
+    {
+        if (!isTriggerDone)
+            return;
+
+        if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+            return;
+
+        // 카드를 picking 해야할때를 제외하고는 줌인 / 아웃
+        if (cardSet[0].GetComponent<CardInfo>().currentZoom.Equals(ZOOMSTATE.OUT))
+        {
+            //pick
+            if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
+            {
+                pickedCard = card;
+                Debug.Log(pickedCard.name + "카드 뽑힘");
+
+                //flow 변경
+                GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);
+            }
+            //줌아웃
+            else
+                StartCoroutine(ZoomIn());
+        }
+            
+
+        //줌인
+        else
+        {
+            StartCoroutine(ZoomOut());
+        }
+    }
+
+    //카드 축소
+    IEnumerator ZoomOut()
+    {
+
+        isTriggerDone = false;
+        for (int i = 0; i < zoomOutSatusCardVec.Length; i++)
+        {
+            time_ = 0;
+            while (true)
+            {
+                time_ += Time.deltaTime;
+                cardSet[i].GetComponent<RectTransform>().localPosition = Vector2.Lerp(zoomInSatusCardVec[i], zoomOutSatusCardVec[i], (time_ * timeConstValue));
+                yield return new WaitForEndOfFrame();
+                if (time_ * timeConstValue > 1f )
+                    break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        for(int i =0; i<cardSet.Length;i++)
+        {
+            cardSet[i].GetComponent<CardInfo>().currentZoom = ZOOMSTATE.OUT;
+        }
+        isTriggerDone = true;
+    }
+
+    //카드 확대
+    IEnumerator ZoomIn()
+    {
+        isTriggerDone = false;
+        for (int i = 0; i < zoomOutSatusCardVec.Length; i++)
+        {
+            time_ = 0;
+            while (true)
+            {
+                time_ += Time.deltaTime;
+                cardSet[i].GetComponent<RectTransform>().localPosition = Vector2.Lerp(zoomOutSatusCardVec[i], zoomInSatusCardVec[i], (time_ * timeConstValue));
+                yield return new WaitForEndOfFrame();
+                if (time_ * timeConstValue > 1f)
+                    break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+        for (int i = 0; i < cardSet.Length; i++)
+        {
+            cardSet[i].GetComponent<CardInfo>().currentZoom = ZOOMSTATE.IN;
+        }
+        isTriggerDone = true;
+    }
+
 }
