@@ -55,6 +55,7 @@ public class TurnSystem : MonoBehaviour
     //내턴이 아닐때 
     IEnumerator EndTurnAndWaiting()
     {
+        myTurn = false;
         displayTurnTimerTxt.text = "";
         while (true)
         {
@@ -83,6 +84,7 @@ public class TurnSystem : MonoBehaviour
             if (buildTimerSlider.value == 0)
                 break;
         }
+        buildTimerText.text = "";
     }
 
 }
