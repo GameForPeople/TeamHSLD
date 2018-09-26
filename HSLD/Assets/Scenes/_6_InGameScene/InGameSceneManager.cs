@@ -22,6 +22,8 @@ public class InGameSceneManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        if (GameObject.Find("GameCores") == null)
+            return;
         networkManager = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         networkManager.inGameSceneManager = GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>(); // same , return this;
 
