@@ -43,6 +43,11 @@ enum PROTOCOL : int
     DEMAND_GAME_STATE   =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
     VOID_GAME_STATE     =   501     ,  // 야 수비야 공격이 아무것도 안했어!
 
+
+    NOTIFY_END_OF_TURN  =   502     ,   // 야 나 다했다!
+    NOTIFY_CHANGE_TURN  =   503     ,	// 야 재 다했대!
+
+
     VOID_CLIENT_TO_SERVER                       =   511 ,                // 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
     CHANGE_PLANET_CLIENT_TO_SERVER              =   512 ,       // 공격턴 클라이언트가 땅을 바꿧을 때,
     ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER   =   513 ,    // 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
@@ -301,6 +306,11 @@ public class NetworkManager : MonoBehaviour
             }
 
             // InGameScene Attack Turn
+            else if (InMsg == (int)PROTOCOL.NOTIFY_END_OF_TURN)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_END_OF_TURN), 0, DataSendBuffer, 0, 4);
+            }
+
             else if (InMsg == (int)PROTOCOL.VOID_CLIENT_TO_SERVER)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
@@ -425,6 +435,10 @@ public class NetworkManager : MonoBehaviour
             if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
             {
                 // 뭐야 니 아무것도 없엉 메롱
+            }
+            else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
+            {
+                // 여기서 아무것도 안해요. 턴 바꾸는 것은 InGameSceneManager에서 할 일입니다.
             }
             else if (recvType == (int)PROTOCOL.CHANGE_PLANET_SERVER_TO_CLIENT)
             {
