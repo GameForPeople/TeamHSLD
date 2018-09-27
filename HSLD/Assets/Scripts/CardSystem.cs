@@ -29,23 +29,23 @@ public class CardSystem : MonoBehaviour
 
     private void Init()
     {
-        zoomInSatusCardVec[0] = new Vector2(-538, -402);
-        zoomInSatusCardVec[1] = new Vector2(-499, -402);
-        zoomInSatusCardVec[2] = new Vector2(-449, -402);
-        zoomInSatusCardVec[3] = new Vector2(-407, -402);
-        zoomInSatusCardVec[4] = new Vector2(-350, -402);
-        zoomInSatusCardVec[5] = new Vector2(94, -402);
-        zoomInSatusCardVec[6] = new Vector2(138, -402);
-        zoomInSatusCardVec[7] = new Vector2(170, -402);
+        zoomInSatusCardVec[0] = new Vector2(-350, -294);
+        zoomInSatusCardVec[1] = new Vector2(-311, -294);
+        zoomInSatusCardVec[2] = new Vector2(-261, -294);
+        zoomInSatusCardVec[3] = new Vector2(-219, -294);
+        zoomInSatusCardVec[4] = new Vector2(-162, -294);
+        zoomInSatusCardVec[5] = new Vector2(118, -294);
+        zoomInSatusCardVec[6] = new Vector2(152, -294);
+        zoomInSatusCardVec[7] = new Vector2(194, -294);
 
-        zoomOutSatusCardVec[0] = new Vector2(-458,-402);
-        zoomOutSatusCardVec[1] = new Vector2(-352, -402);
-        zoomOutSatusCardVec[2] = new Vector2(-246, -402);
-        zoomOutSatusCardVec[3] = new Vector2(-140, -402);
-        zoomOutSatusCardVec[4] = new Vector2(-36, -402);
-        zoomOutSatusCardVec[5] = new Vector2(258, -402);
-        zoomOutSatusCardVec[6] = new Vector2(364, -402);
-        zoomOutSatusCardVec[7] = new Vector2(470, -402);
+        zoomOutSatusCardVec[0] = new Vector2(-317, -294);
+        zoomOutSatusCardVec[1] = new Vector2(-234, -294);
+        zoomOutSatusCardVec[2] = new Vector2(-151, -294);
+        zoomOutSatusCardVec[3] = new Vector2(-68, -294);
+        zoomOutSatusCardVec[4] = new Vector2(15, -294);
+        zoomOutSatusCardVec[5] = new Vector2(144, -294);
+        zoomOutSatusCardVec[6] = new Vector2(226, -294);
+        zoomOutSatusCardVec[7] = new Vector2(309, -294);
     }
 
     private void Start()
