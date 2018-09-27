@@ -20,8 +20,8 @@ public class UIText : MonoBehaviour {
     {
         DebuggingText = GetComponent<Text>();
         DebuggingText.color = new Color(1,1,1);
-        planetObject = GameObject.Find("Planet");
-        cameraObject = GameObject.Find("Main Camera");
+        //planetObject = GameObject.Find("Planet");
+        //cameraObject = GameObject.Find("Main Camera");
     } 
 
     void Update()
