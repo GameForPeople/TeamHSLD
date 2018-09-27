@@ -15054,7 +15054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 2
+  currentFlow: 1
   cardSetCanvas: {fileID: 1055813589}
   timerCanvas: {fileID: 1776392858}
 --- !u!1 &825965575 stripped
@@ -24215,6 +24215,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c4a6d9db9d94b0d4cb203eae9d1cbe1a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4a6d9db9d94b0d4cb203eae9d1cbe1a, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

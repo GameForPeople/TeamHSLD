@@ -23,16 +23,16 @@ public class FlowSystem : MonoBehaviour
         switch(doneFlow)
         {
             case FLOW.WAITING:
-                currentFlow = FLOW.TO_PICKINGCARD;
-                break;
-            case FLOW.TO_PICKINGCARD:
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
-            case FLOW.TO_ROLLINGDICE:
+            case FLOW.TO_PICKINGCARD:
                 currentFlow = FLOW.TO_PICKINGLOC;
                 cardSetCanvas.SetActive(false);
                 timerCanvas.SetActive(true);
                 StartCoroutine(gameObject.GetComponent<TurnSystem>().BuildTimer());
+                break;
+            case FLOW.TO_ROLLINGDICE:
+                currentFlow = FLOW.TO_PICKINGCARD;
                 break;
             case FLOW.TO_PICKINGLOC:
                 currentFlow = FLOW.DISPLAYINGEVENT;

@@ -59,8 +59,8 @@ public class CardSystem : MonoBehaviour
         if (!isTriggerDone)
             return;
 
-        if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
-            return;
+        //if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        //    return;
 
         // 카드를 picking 해야할때를 제외하고는 줌인 / 아웃
         if (cardSet[0].GetComponent<CardInfo>().currentZoom.Equals(ZOOMSTATE.OUT))
