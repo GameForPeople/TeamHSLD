@@ -8,7 +8,8 @@ public enum FLOW
     TO_ROLLINGDICE,
     TO_PICKINGCARD,
     TO_PICKINGLOC,
-    DISPLAYINGEVENT
+    TO_PICKEVENTCARD,
+    DISPLAY_EVENT         //이벤트연출 - 나중에
 }
 
 public class FlowSystem : MonoBehaviour
@@ -35,9 +36,9 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGCARD;
                 break;
             case FLOW.TO_PICKINGLOC:
-                currentFlow = FLOW.DISPLAYINGEVENT;
+                currentFlow = FLOW.TO_PICKEVENTCARD;
                 break;
-            case FLOW.DISPLAYINGEVENT:
+            case FLOW.TO_PICKEVENTCARD:
                 currentFlow = FLOW.WAITING;
                 break;
         }
