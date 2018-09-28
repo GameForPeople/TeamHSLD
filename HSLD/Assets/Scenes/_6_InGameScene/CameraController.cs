@@ -17,14 +17,29 @@ public class CameraController : MonoBehaviour
     private GameObject PickedMesh;
     private Color myColor;
     private Color grayColor;
+    private Color seaColor;
+    private Color mountainColor;
+    private Color moderationColor;
+    private Color barrenColor;
+    private Color coldColor;
+    private Color32 unknownColor;
     private float offset;
+
+    private Material TestMaterial;
 
     void Start()
     {
         myTransform = GetComponent<Transform>();
 
         myColor = new Color(Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f));
-        grayColor = new Color(0.7f, 0.7f, 0.7f);
+        unknownColor = new Color(255,255,255,255);
+        grayColor = new Color32(150, 150, 150, 255);
+        seaColor = new Color32(156, 227, 221, 255);
+        mountainColor = new Color32(60, 150, 115, 255);
+        moderationColor = new Color32(141, 212, 108, 255);
+        coldColor = new Color32(213, 228, 231, 255);
+        barrenColor = new Color32(206, 154, 143, 255);
+        TestMaterial = Resources.Load<Material>("M_Test");
     }
 
     void Update()
@@ -61,9 +76,17 @@ public class CameraController : MonoBehaviour
 
                     if (Input.GetTouch(0).phase == TouchPhase.Moved)
                     {
-                        myColor = new Color(Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f));
-                        PickedRenderer.material.color = myColor;
-                        offset = 0.0f;
+                        if(PickedRenderer.material.color == seaColor)
+                        {
+                            //PickedRenderer.material.color = grayColor;
+                            PickedRenderer.material = TestMaterial;
+                            offset = 0.0f;
+                        }
+                        else
+                        {
+                            PickedRenderer.material.color = seaColor;
+                        }
+                        //PickedRenderer.materials.GetValue(0) = new Material sbb;
                     }
 
                     //if (offset < 0.5)
