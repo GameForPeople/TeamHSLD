@@ -29,8 +29,11 @@ enum Protocol {
 	// for GameScene
 	
 	DEMAND_GAME_STATE	=	500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
-	VOID_GAME_STATE		=	501 ,	// 야 수비야 공격이 아무것도 안했어!
+	VOID_GAME_STATE		=	501 ,	// 야 수비야 아직은 공격이 아무것도 안했어!
 
+	NOTIFY_END_OF_TURN	=	502	,	// 야 나 다했다!
+	NOTIFY_CHANGE_TURN =	503	,	// 야 재 다했대!
+	
 	VOID_CLIENT_TO_SERVER = 511 ,				// 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
 	CHANGE_PLANET_CLIENT_TO_SERVER = 512 ,		// 공격턴 클라이언트가 땅을 바꿧을 때,
 	ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER = 513,	// 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
@@ -225,16 +228,24 @@ struct OnePlayerChanged : public BaseStruct
 //
 //
 
-// type 501, 511 ???????? 이거 안쓸꺼야
-struct VoidStruct : public BaseStruct
+// type 502, 503 // 이거 안씀
+struct ChangeTurnStruct : public BaseStruct
 {
-	__inline ~VoidStruct() = default;
-
-private:
-	__inline VoidStruct() = default;
+private:	// 생성 막아놈.
+	__inline ChangeTurnStruct() = default;
+	__inline ~ChangeTurnStruct() = default;
 };
 
-// type 502, 512
+// type 511, 521 ???????? 이거 안쓸껄...?
+struct VoidStruct : public BaseStruct
+{
+private:	// 생성 막아놈.
+	__inline VoidStruct() = default;
+	__inline ~VoidStruct() = default;
+};
+
+
+// type 512, 522
 struct ChangePlanetStruct : public BaseStruct
 {
 	int					terrainType;
@@ -242,6 +253,7 @@ struct ChangePlanetStruct : public BaseStruct
 	int					terrainIndex[12];	//Dice 12
 	//std::vector<int>	terrainIndex;
 
+public:
 	__inline ChangePlanetStruct(const int InTerrainType, const int InChangeTerrainCount, const int* InTerrainIndex)
 		: terrainType(InTerrainType), changeTerrainCount(InChangeTerrainCount)
 	{
@@ -252,7 +264,7 @@ struct ChangePlanetStruct : public BaseStruct
 	__inline ~ChangePlanetStruct() = default;
 };
 
-//type 503, 513
+//type 513, 523
 struct ActionEventCardTerrainStruct : public BaseStruct
 {
 	int					eventCardType;
@@ -260,29 +272,30 @@ struct ActionEventCardTerrainStruct : public BaseStruct
 	int					changeTerrainCount;
 	int					terrainIndex[12];	//Dice 12
 
+public:
 	__inline ActionEventCardTerrainStruct(const int InEventCardType, const int InTerrainType, const int InChangeTerrainCount, const int* InTerrainIndex)
 		: eventCardType(InEventCardType), terrainType(InTerrainType), changeTerrainCount(InChangeTerrainCount)
 	{
-		// 이건 무슨 미친짓이더냐
+		// 이거 진짜 되려나?
 		memcpy(terrainIndex, InTerrainIndex, changeTerrainCount * sizeof(int));
 	}
 
 	__inline ~ActionEventCardTerrainStruct() = default;
 };
 
-//type 504, 514
+//type 514, 524
 struct ActionEventCardDiceBuffStruct : public BaseStruct
 {
 	int					eventCardType;
 
+public:
 	__inline ActionEventCardDiceBuffStruct(const int InEventCardType) : eventCardType(InEventCardType)
 	{}
 
-	__inline ~ActionEventCardDiceBuffStruct() 
-	{}
+	__inline ~ActionEventCardDiceBuffStruct() = default;
 };
 
-//type 505, 515
+//type 515, 525
 struct ActionEventCardDefenseStruct : public BaseStruct
 {
 	//?????????????????????????????????????????????????????????????????? 이거 솔직히 아직 어떻게 처리해야할지 모르겠어...

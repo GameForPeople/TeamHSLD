@@ -638,7 +638,11 @@ void IOCPServer::WorkerThreadFunction()
 					}
 					else 
 					{
-						if (recvType == VOID_CLIENT_TO_SERVER)
+						if (recvType == NOTIFY_END_OF_TURN)
+						{
+							roomData.SetDataProtocol(ptr->roomIndex, NOTIFY_CHANGE_TURN);
+						}
+						else if (recvType == VOID_CLIENT_TO_SERVER)
 						{
 							// Caution!! Set Atomic!!
 							roomData.SetDataProtocol(ptr->roomIndex, VOID_SERVER_TO_CLIENT);

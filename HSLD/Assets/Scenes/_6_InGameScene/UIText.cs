@@ -12,7 +12,7 @@ public class UIText : MonoBehaviour {
     public GameObject planetObject;
     public Vector3 Vec3;
 
-
+    private Vector4 ColorVec4;
     private GameObject PickedMesh;
 
 
@@ -50,12 +50,13 @@ public class UIText : MonoBehaviour {
 
                             PickedMesh = GameObject.Find(hit.transform.name);
                             MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
-                            
+                            ColorVec4 = PickedRenderer.material.color;
+
                             Vec3 = PickedRenderer.transform.position;
                             
                             DebuggingText.text +=
                                 "[Pick Object] : " + hit.transform.name +
-                                " // " + Vec3 + "\nHit Point : " + hit.point + "\n";
+                                " // " + Vec3 + "\nHit Point : " + hit.point + "\nColor : " + ColorVec4 + "\n";
 
                             // hit.
                         }
