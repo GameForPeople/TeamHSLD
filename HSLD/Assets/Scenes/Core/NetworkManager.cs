@@ -337,6 +337,7 @@ public class NetworkManager : MonoBehaviour
             }
           
             RecvProcess();
+
         }
         else
         {

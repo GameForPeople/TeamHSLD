@@ -33,24 +33,42 @@ public class InGameSceneManager : MonoBehaviour {
         network_eventCardType = 0;
     }
 
-    void SendData (int InMsg)
+    public void SendData (int InMsg, int InTerrainType, int InChangeTerrainCount, int[] InTerrainIndex, int InEventCardType)
     {
-        // 이부분에서 일정확률로 동기화 안될 수도 있음. // 일부 공격자 메세지 생략될 수 있음.
         network_recvProtocolFlag = 0;
 
+        network_terrainType = InTerrainType;
+        network_changeTerrainCount = InChangeTerrainCount;
+        network_terrainIndex = InTerrainIndex;
+        network_eventCardType = InEventCardType;
+
         networkManager.SendData(InMsg);
+        // 이부분에서 일정확률로 동기화 안될 수도 있음. // 일부 공격자 메세지 생략될 수 있음.
     }
 
-    // 동기화가 된다는 가능성
-    int GetRecvProtocol()
+    // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가.
+    public int GetRecvProtocol()
     {
-        if (network_recvProtocolFlag == 0)
-        {
-            // 네트워크 지연처리 필요함.
-            // 1. 상대방 - 서버
-            // 2. 서버 - 나...
-        }
-
         return network_recvProtocolFlag;
     }
+
+    public void GetRecvData(ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
+    {
+        retTerrainType = network_terrainType;
+        retChangeTerrainCount = network_changeTerrainCount;
+        retTerrainIndex = network_terrainIndex;
+        retEventCardType = network_eventCardType;
+
+        network_recvProtocolFlag = 0;
+    }
+
+    //IEnumerator NetworkRecvSyncCoroutine(ref bool retIsRecv)
+    //{
+    //    while (network_recvProtocolFlag == 0)
+    //    {
+    //        // 네트워크 지연처리 필요함.
+    //        // 1. 상대방 - 서버
+    //        // 2. 서버 - 나...
+    //    }
+    //}
 }
