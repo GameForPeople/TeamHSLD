@@ -7,12 +7,14 @@ public class DiceSystem : MonoBehaviour
 {
     public Slider diceSlider;
     static public int getDiceNum;
+    static public bool isDouble;
     private int rndTmpValue;
     private bool isTriggerEnter = false;
     private float gaze;
     private bool raiseValue = true;
     public float constValue;
     private int characterDiceRateUp = 5;        //tmp
+    
 
     public void OnTrigger()
     {
@@ -61,19 +63,20 @@ public class DiceSystem : MonoBehaviour
         switch(index)
         {
             case 1:
-                //이거아닌데 .. 잠만..
                 if (OutRndNum(0, 100) < 40 + characterDiceRateUp)
                 {
                     //2일확률 1/3
                     if (OutRndNum(0, 3) < 1)
                     {
                         //무조건더블 11
+                        isDouble = true;
                         Debug.Log("더블 !!!!");
                         getDiceNum = 2;
                     }
                     //3일확률 2/3 
                     else
                     {
+                        isDouble = false;
                         getDiceNum = 3;
                     }
                 }
@@ -88,11 +91,13 @@ public class DiceSystem : MonoBehaviour
                         //4일확률 3/12
                         if (rndTmpValue < 3)
                         {
+                            isDouble = false;
                             // 2/3확률로 더블
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 2)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
@@ -101,16 +106,19 @@ public class DiceSystem : MonoBehaviour
                         //5일확률 4/12
                         else if (rndTmpValue > 2 && rndTmpValue < 7)
                         {
+                            isDouble = false;
                             getDiceNum = 5;
                         }
                         //6일확률 5/12
                         else
                         {
+                            isDouble = false;
                             // 1/5확률로 더블
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
@@ -123,16 +131,19 @@ public class DiceSystem : MonoBehaviour
                         //7일확률 6/15
                         if (rndTmpValue < 6)
                         {
+                            isDouble = false;
                             getDiceNum = 7;
                         }
                         //8일확률 5/15
                         else if (rndTmpValue > 5 && rndTmpValue < 11)
                         {
+                            isDouble = false;
                             //1/5확률로 더블
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
@@ -140,6 +151,7 @@ public class DiceSystem : MonoBehaviour
                         //9일확률 4/15
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 9;
                         }
                     }
@@ -150,11 +162,13 @@ public class DiceSystem : MonoBehaviour
                         //10일확률 3/6
                         if (rndTmpValue < 3)
                         {
+                            isDouble = false;
                             //1/3확률로 더블
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
@@ -162,12 +176,14 @@ public class DiceSystem : MonoBehaviour
                         //11일확률 2/6
                         else if (rndTmpValue > 2 && rndTmpValue < 5)
                         {
+                            isDouble = false;
                             getDiceNum = 11;
                         }
                         //12일확률 1/6
                         else
                         {
                             //무조건 더블
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
@@ -185,11 +201,13 @@ public class DiceSystem : MonoBehaviour
                         //4일확률 3/12
                         if (rndTmpValue < 3)
                         {
+                            isDouble = false;
                             // 2/3확률로 더블
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 2)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
@@ -198,16 +216,19 @@ public class DiceSystem : MonoBehaviour
                         //5일확률 4/12
                         else if (rndTmpValue > 2 && rndTmpValue < 7)
                         {
+                            isDouble = false;
                             getDiceNum = 5;
                         }
                         //6일확률 5/12
                         else
                         {
                             // 1/5확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
@@ -224,12 +245,14 @@ public class DiceSystem : MonoBehaviour
                         if (OutRndNum(0, 3) < 1)
                         {
                             //무조건더블 11
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 3;
                         }
                     }
@@ -240,16 +263,19 @@ public class DiceSystem : MonoBehaviour
                         //7일확률 6/15
                         if (rndTmpValue < 6)
                         {
+                            isDouble = false;
                             getDiceNum = 7;
                         }
                         //8일확률 5/15
                         else if (rndTmpValue > 5 && rndTmpValue < 11)
                         {
                             //1/5확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
@@ -257,6 +283,7 @@ public class DiceSystem : MonoBehaviour
                         //9일확률 4/15
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 9;
                         }
                     }
@@ -267,11 +294,13 @@ public class DiceSystem : MonoBehaviour
                         //10일확률 3/6
                         if (rndTmpValue < 3)
                         {
+                            isDouble = false;
                             //1/3확률로 더블
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
@@ -279,12 +308,14 @@ public class DiceSystem : MonoBehaviour
                         //11일확률 2/6
                         else if (rndTmpValue > 2 && rndTmpValue < 5)
                         {
+                            isDouble = false;
                             getDiceNum = 11;
                         }
                         //12일확률 1/6
                         else
                         {
                             //무조건 더블
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
@@ -299,16 +330,19 @@ public class DiceSystem : MonoBehaviour
                     //7일확률 6/15
                     if (rndTmpValue < 6)
                     {
+                        isDouble = false;
                         getDiceNum = 7;
                     }
                     //8일확률 5/15
                     else if (rndTmpValue > 5 && rndTmpValue < 11)
                     {
+                        isDouble = false;
                         //1/5확률로 더블
                         rndTmpValue = OutRndNum(0, 5);
                         if (rndTmpValue < 1)
                         {
                             //이때 더블
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                         }
                         getDiceNum = 8;
@@ -316,6 +350,7 @@ public class DiceSystem : MonoBehaviour
                     //9일확률 4/15
                     else
                     {
+                        isDouble = false;
                         getDiceNum = 9;
                     }
                 }
@@ -331,10 +366,12 @@ public class DiceSystem : MonoBehaviour
                         if (rndTmpValue < 3)
                         {
                             // 2/3확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 2)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
@@ -343,16 +380,19 @@ public class DiceSystem : MonoBehaviour
                         //5일확률 4/12
                         else if (rndTmpValue > 2 && rndTmpValue < 7)
                         {
+                            isDouble = false;
                             getDiceNum = 5;
                         }
                         //6일확률 5/12
                         else
                         {
                             // 1/5확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
@@ -365,12 +405,14 @@ public class DiceSystem : MonoBehaviour
                         if (OutRndNum(0, 3) < 1)
                         {
                             //무조건더블 11
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 3;
                         }
                     }
@@ -382,10 +424,12 @@ public class DiceSystem : MonoBehaviour
                         if (rndTmpValue < 3)
                         {
                             //1/3확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
@@ -393,12 +437,14 @@ public class DiceSystem : MonoBehaviour
                         //11일확률 2/6
                         else if (rndTmpValue > 2 && rndTmpValue < 5)
                         {
+                            isDouble = false;
                             getDiceNum = 11;
                         }
                         //12일확률 1/6
                         else
                         {
                             //무조건 더블
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
@@ -414,10 +460,12 @@ public class DiceSystem : MonoBehaviour
                     if (rndTmpValue < 3)
                     {
                         //1/3확률로 더블
+                        isDouble = false;
                         rndTmpValue = OutRndNum(0, 3);
                         if (rndTmpValue < 1)
                         {
                             //이때 더블
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                         }
                         getDiceNum = 10;
@@ -425,12 +473,14 @@ public class DiceSystem : MonoBehaviour
                     //11일확률 2/6
                     else if (rndTmpValue > 2 && rndTmpValue < 5)
                     {
+                        isDouble = false;
                         getDiceNum = 11;
                     }
                     //12일확률 1/6
                     else
                     {
                         //무조건 더블
+                        isDouble = true;
                         Debug.Log("더블 !!!!");
                         getDiceNum = 12;
                     }
@@ -447,10 +497,12 @@ public class DiceSystem : MonoBehaviour
                         if (rndTmpValue < 3)
                         {
                             // 2/3확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 3);
                             if (rndTmpValue < 2)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
@@ -459,16 +511,19 @@ public class DiceSystem : MonoBehaviour
                         //5일확률 4/12
                         else if (rndTmpValue > 2 && rndTmpValue < 7)
                         {
+                            isDouble = false;
                             getDiceNum = 5;
                         }
                         //6일확률 5/12
                         else
                         {
                             // 1/5확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
@@ -481,16 +536,19 @@ public class DiceSystem : MonoBehaviour
                         //7일확률 6/15
                         if (rndTmpValue < 6)
                         {
+                            isDouble = false;
                             getDiceNum = 7;
                         }
                         //8일확률 5/15
                         else if (rndTmpValue > 5 && rndTmpValue < 11)
                         {
                             //1/5확률로 더블
+                            isDouble = false;
                             rndTmpValue = OutRndNum(0, 5);
                             if (rndTmpValue < 1)
                             {
                                 //이때 더블
+                                isDouble = true;
                                 Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
@@ -498,6 +556,7 @@ public class DiceSystem : MonoBehaviour
                         //9일확률 4/15
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 9;
                         }
                     }
@@ -508,19 +567,21 @@ public class DiceSystem : MonoBehaviour
                         if (OutRndNum(0, 3) < 1)
                         {
                             //무조건더블 11
+                            isDouble = true;
                             Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
                         else
                         {
+                            isDouble = false;
                             getDiceNum = 3;
                         }
                     }
                 }
                 break;
         }
-        Debug.Log(getDiceNum);
+        Debug.Log("다이스눈금 : " + getDiceNum + "더블여부 : " + isDouble);
 
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
