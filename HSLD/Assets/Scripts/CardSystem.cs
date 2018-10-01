@@ -78,7 +78,6 @@ public class CardSystem : MonoBehaviour
             else
                 StartCoroutine(ZoomIn());
         }
-            
 
         //줌인
         else
