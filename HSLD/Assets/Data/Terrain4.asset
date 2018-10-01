@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: Terrain4
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  zoomInSatusCardVec: {x: -219, y: -294}
+  zoomOutSatusCardVec: {x: -68, y: -294}
+  Cnt: 1

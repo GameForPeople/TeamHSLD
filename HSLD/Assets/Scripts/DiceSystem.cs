@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DiceSystem : MonoBehaviour
 {
     public Slider diceSlider;
-    private int getDiceNum;
+    static public int getDiceNum;
     private int rndTmpValue;
     private bool isTriggerEnter = false;
     private float gaze;

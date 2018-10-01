@@ -12,23 +12,23 @@ public class CardSet : MonoBehaviour
 
     public void AddCard(GameObject obj)
     {
-        if (obj.GetComponent<CardInfo>().Cnt > (maximumCnt - 1) || totalCard > 29)
+        if (obj.GetComponent<CardData>().data.Cnt > (maximumCnt - 1) || totalCard > 29)
             return;
 
-        obj.GetComponent<CardInfo>().Cnt += 1;
+        obj.GetComponent<CardData>().data.Cnt += 1;
         totalCard += 1;
-        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardInfo>().Cnt.ToString();
+        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.Cnt.ToString();
         displayTotalCnt.text = totalCard.ToString();
     }
 
     public void DelCard(GameObject obj)
     {
-        if (obj.GetComponent<CardInfo>().Cnt == minimumCnt)
+        if (obj.GetComponent<CardData>().data.Cnt == minimumCnt)
             return;
 
-        obj.GetComponent<CardInfo>().Cnt -= 1;
+        obj.GetComponent<CardData>().data.Cnt -= 1;
         totalCard -= 1;
-        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardInfo>().Cnt.ToString();
+        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.Cnt.ToString();
         displayTotalCnt.text = totalCard.ToString();
     }
 
