@@ -4,6 +4,9 @@ using UnityEngine;
 
 public enum FLOW
 {
+    MATCHINGCOMPLETE,
+    READY_TURNORDER,
+    READY_SETCARD,
     WAITING,
     TO_ROLLINGDICE,
     TO_PICKINGCARD,
@@ -23,6 +26,12 @@ public class FlowSystem : MonoBehaviour
     {
         switch(doneFlow)
         {
+            case FLOW.MATCHINGCOMPLETE:
+                break;
+            case FLOW.READY_TURNORDER:
+                break;
+            case FLOW.READY_SETCARD:
+                break;
             case FLOW.WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;

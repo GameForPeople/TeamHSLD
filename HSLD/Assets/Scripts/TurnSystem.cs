@@ -21,6 +21,8 @@ public class TurnSystem : MonoBehaviour
 
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
+    
+
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     private void OnEnable()
     {
