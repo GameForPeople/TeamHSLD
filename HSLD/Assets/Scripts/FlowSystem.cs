@@ -19,25 +19,36 @@ public class FlowSystem : MonoBehaviour
 {
     public FLOW currentFlow;
 
-    public GameObject cardSetCanvas;
+    public GameObject cardCanvas;
     public GameObject timerCanvas;
+    public GameObject cardSetCanvas;
+    public GameObject turnSetCanvas;
+    public GameObject readyCanvas;
 
     public void FlowChange(FLOW doneFlow)
     {
         switch(doneFlow)
         {
             case FLOW.MATCHINGCOMPLETE:
+
                 break;
             case FLOW.READY_TURNORDER:
+                turnSetCanvas.SetActive(false);
+                cardSetCanvas.SetActive(true);
+                currentFlow = FLOW.READY_SETCARD;
                 break;
             case FLOW.READY_SETCARD:
+                cardSetCanvas.SetActive(false);
+                readyCanvas.SetActive(false);
+                //선공 / 후공
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
             case FLOW.WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
             case FLOW.TO_PICKINGCARD:
                 currentFlow = FLOW.TO_PICKINGLOC;
-                cardSetCanvas.SetActive(false);
+                cardCanvas.SetActive(false);
                 timerCanvas.SetActive(true);
                 StartCoroutine(gameObject.GetComponent<TurnSystem>().BuildTimer());
                 break;

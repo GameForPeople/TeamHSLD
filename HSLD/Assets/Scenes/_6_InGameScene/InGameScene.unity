@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1548,8 +1548,9 @@ GameObject:
   - component: {fileID: 83329542}
   - component: {fileID: 83329544}
   - component: {fileID: 83329543}
+  - component: {fileID: 83329545}
   m_Layer: 5
-  m_Name: backOrder
+  m_Name: notYetSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1608,6 +1609,36 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83329541}
   m_CullTransparentMesh: 0
+--- !u!114 &83329545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 83329541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 823012261}
+          m_MethodName: PickCard
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 83329541}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &85295933 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100232, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1891,7 +1922,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 113498414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: AddCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1267524615}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &113498414
@@ -5604,7 +5646,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377995506
 MonoBehaviour:
@@ -5627,7 +5669,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -5638,7 +5680,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 1
 --- !u!222 &377995507
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5747,7 +5789,7 @@ RectTransform:
   m_GameObject: {fileID: 379171122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1063376710}
   m_RootOrder: 0
@@ -5789,7 +5831,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: pre
+  m_Text: 
 --- !u!222 &379171125
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7149,6 +7191,7 @@ GameObject:
   - component: {fileID: 445073189}
   - component: {fileID: 445073191}
   - component: {fileID: 445073190}
+  - component: {fileID: 445073192}
   m_Layer: 5
   m_Name: 1_Img
   m_TagString: Untagged
@@ -7211,6 +7254,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445073188}
   m_CullTransparentMesh: 0
+--- !u!114 &445073192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445073188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  Cnt: 1
 --- !u!1 &448909662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100504, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7979,6 +8036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 0
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &505266701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8169,6 +8227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 1
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &506604126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8786,7 +8845,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 529892253}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: AddCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 445073188}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &529892253
@@ -9249,6 +9319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 1
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &540423460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11791,6 +11862,7 @@ GameObject:
   - component: {fileID: 719286451}
   - component: {fileID: 719286453}
   - component: {fileID: 719286452}
+  - component: {fileID: 719286454}
   m_Layer: 5
   m_Name: 5_Img
   m_TagString: Untagged
@@ -11853,6 +11925,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 719286450}
   m_CullTransparentMesh: 0
+--- !u!114 &719286454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719286450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  Cnt: 1
 --- !u!1 &734636506
 GameObject:
   m_ObjectHideFlags: 0
@@ -13042,7 +13128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &806044293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13227,6 +13313,8 @@ GameObject:
   - component: {fileID: 823012258}
   - component: {fileID: 823012259}
   - component: {fileID: 823012260}
+  - component: {fileID: 823012261}
+  - component: {fileID: 823012262}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -13277,6 +13365,9 @@ MonoBehaviour:
   displayTurnTimerTxt: {fileID: 1723470225}
   buildTimerSlider: {fileID: 1885139719}
   buildTimerText: {fileID: 990089250}
+  selectOrder: 10
+  selectCard: 50
+  readySlider: {fileID: 1877448661}
   currentTurn: 0
 --- !u!114 &823012259
 MonoBehaviour:
@@ -13310,9 +13401,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 1
-  cardSetCanvas: {fileID: 1055813589}
+  currentFlow: 0
+  cardCanvas: {fileID: 1055813589}
   timerCanvas: {fileID: 1776392858}
+  cardSetCanvas: {fileID: 1161714766}
+  turnSetCanvas: {fileID: 806044292}
+  readyCanvas: {fileID: 744488204}
+--- !u!114 &823012261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3073ef5692a02408be70360c01de97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinTime: 2
+--- !u!114 &823012262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da03954f44f16e5438c7ba9a24c85c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTotalCnt: {fileID: 1282844375}
+  maximumCnt: 10
+  minimumCnt: 1
 --- !u!1 &832642332
 GameObject:
   m_ObjectHideFlags: 0
@@ -16587,7 +16707,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1011064342}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: DelCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 445073188}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1011064342
@@ -17439,7 +17570,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1055192447}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: AddCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 719286450}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1055192447
@@ -17679,8 +17821,9 @@ GameObject:
   - component: {fileID: 1063376710}
   - component: {fileID: 1063376712}
   - component: {fileID: 1063376711}
+  - component: {fileID: 1063376713}
   m_Layer: 5
-  m_Name: preOrder
+  m_Name: notYetSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17739,6 +17882,36 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1063376709}
   m_CullTransparentMesh: 0
+--- !u!114 &1063376713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1063376709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 823012261}
+          m_MethodName: PickCard
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1063376709}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1064040166
 GameObject:
   m_ObjectHideFlags: 0
@@ -19391,7 +19564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1161714767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19408,6 +19581,7 @@ RectTransform:
   - {fileID: 2031406677}
   - {fileID: 719286451}
   - {fileID: 1282844374}
+  - {fileID: 1413846490}
   m_Father: {fileID: 744488205}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23291,7 +23465,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265216246
 MonoBehaviour:
@@ -23314,7 +23488,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -23325,7 +23499,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 1
 --- !u!222 &1265216247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23343,6 +23517,7 @@ GameObject:
   - component: {fileID: 1267524616}
   - component: {fileID: 1267524618}
   - component: {fileID: 1267524617}
+  - component: {fileID: 1267524619}
   m_Layer: 5
   m_Name: 2_Img
   m_TagString: Untagged
@@ -23405,6 +23580,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1267524615}
   m_CullTransparentMesh: 0
+--- !u!114 &1267524619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1267524615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  Cnt: 1
 --- !u!1 &1267622926
 GameObject:
   m_ObjectHideFlags: 0
@@ -23743,7 +23932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 5
 --- !u!222 &1282844376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24659,7 +24848,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1330806691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: DelCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2031406676}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1330806691
@@ -25555,6 +25755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 1
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &1355522193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26680,6 +26881,128 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1319493523}
   m_GameObject: {fileID: 1413630668}
   m_Mesh: {fileID: 4300214, guid: c4a6d9db9d94b0d4cb203eae9d1cbe1a, type: 3}
+--- !u!1 &1413846489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413846490}
+  - component: {fileID: 1413846493}
+  - component: {fileID: 1413846492}
+  - component: {fileID: 1413846491}
+  m_Layer: 5
+  m_Name: Select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1413846490
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1413846489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1161714767}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 462.6, y: -243.1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1413846491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1413846489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1413846492}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1413846492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1413846489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1413846493
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1413846489}
+  m_CullTransparentMesh: 0
 --- !u!1 &1415961201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100384, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -28578,6 +28901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 1
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &1500401972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29816,6 +30140,7 @@ GameObject:
   - component: {fileID: 1572146876}
   - component: {fileID: 1572146878}
   - component: {fileID: 1572146877}
+  - component: {fileID: 1572146879}
   m_Layer: 5
   m_Name: 3_Img
   m_TagString: Untagged
@@ -29878,6 +30203,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1572146875}
   m_CullTransparentMesh: 0
+--- !u!114 &1572146879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572146875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  Cnt: 1
 --- !u!1 &1572879315
 GameObject:
   m_ObjectHideFlags: 0
@@ -29952,7 +30291,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1572879318}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: AddCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1572146875}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1572879318
@@ -30474,7 +30824,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1600033479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: AddCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2031406676}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1600033479
@@ -31806,7 +32167,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684964640
 MonoBehaviour:
@@ -31829,7 +32190,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -31840,7 +32201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 1
 --- !u!222 &1684964641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32982,7 +33343,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759034368
 MonoBehaviour:
@@ -33005,7 +33366,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -33016,7 +33377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 1
 --- !u!222 &1759034369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34178,7 +34539,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1806623673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: DelCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 719286450}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1806623673
@@ -34878,7 +35250,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1866580834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: DelCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1572146875}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1866580834
@@ -36249,7 +36632,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1944993365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012262}
+        m_MethodName: DelCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1267524615}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1944993365
@@ -36670,6 +37064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 0
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &1959160757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36809,7 +37204,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966270852
 MonoBehaviour:
@@ -36832,7 +37227,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -36843,7 +37238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 1
 --- !u!222 &1966270853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37258,6 +37653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 1
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &1991324179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37486,6 +37882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 0
   currentZoom: 0
+  Cnt: 0
 --- !u!114 &2022098498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37640,6 +38037,7 @@ GameObject:
   - component: {fileID: 2031406677}
   - component: {fileID: 2031406679}
   - component: {fileID: 2031406678}
+  - component: {fileID: 2031406680}
   m_Layer: 5
   m_Name: 4_Img
   m_TagString: Untagged
@@ -37702,6 +38100,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2031406676}
   m_CullTransparentMesh: 0
+--- !u!114 &2031406680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031406676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCard: 1
+  currentZoom: 0
+  Cnt: 1
 --- !u!1 &2033697905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100554, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -38420,7 +38832,7 @@ RectTransform:
   m_GameObject: {fileID: 2078951998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 83329542}
   m_RootOrder: 0
@@ -38462,7 +38874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: back
+  m_Text: 
 --- !u!222 &2078952001
 CanvasRenderer:
   m_ObjectHideFlags: 0

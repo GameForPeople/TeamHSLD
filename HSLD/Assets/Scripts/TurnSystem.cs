@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public enum TURN
 {
+    NOTYETSET,
     MYTURN,
     ENEMYTURN
 }
@@ -16,24 +17,67 @@ public class TurnSystem : MonoBehaviour
     public Slider buildTimerSlider;
     public Text buildTimerText;
     private float time_;
+    public float selectOrder = 10;
+    public float selectCard = 50;
 
+    public Slider readySlider;
     private FLOW beforeFlow;
-
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
-    
+    private void Start()
+    {
+        StartCoroutine(ReadySetOrderTimer());
+    }
+
+   IEnumerator ReadySetOrderTimer()
+    {
+        time_ = 0;
+        readySlider.maxValue = selectOrder;
+        readySlider.value = selectOrder;
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            readySlider.value -= Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+            if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.READY_SETCARD) || time_ > selectOrder/*|| 상대방이 선택했을때*/)
+                break;
+        }
+
+        readySlider.value = 0;
+
+        StartCoroutine(ReadySetCardTimer());
+    }
+    IEnumerator ReadySetCardTimer()
+    {
+        time_ = 0;
+        readySlider.maxValue = selectCard;
+        readySlider.value = selectCard;
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            readySlider.value -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            if (time_ > selectCard /*상대방과 내가 모두 선택했을때*/)
+                break;
+        }
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
+    }
+
 
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
-    private void OnEnable()
+    public void TurnSet()
     {
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
+            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
             StartCoroutine(TurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
         else
         {
+            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.WAITING;
             StartCoroutine(EndTurnAndWaiting());
         }
     }
