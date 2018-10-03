@@ -20,7 +20,6 @@ public class FlowSystem : MonoBehaviour
     public FLOW currentFlow;
 
     public GameObject cardCanvas;
-    public GameObject timerCanvas;
     public GameObject cardSetCanvas;
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
@@ -48,9 +47,6 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 currentFlow = FLOW.TO_PICKINGLOC;
-                cardCanvas.SetActive(false);
-                timerCanvas.SetActive(true);
-                StartCoroutine(gameObject.GetComponent<TurnSystem>().BuildTimer());
                 break;
             case FLOW.TO_ROLLINGDICE:
                 currentFlow = FLOW.TO_PICKINGCARD;

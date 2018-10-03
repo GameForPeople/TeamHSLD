@@ -5,30 +5,28 @@ using UnityEngine.UI;
 
 public class CardSet : MonoBehaviour
 {
-    private int totalCard = 5;
+    private int totalCard = 17;
     public Text displayTotalCnt;
-    public int maximumCnt;
-    public int minimumCnt = 1;
 
     public void AddCard(GameObject obj)
     {
-        if (obj.GetComponent<CardData>().data.Cnt > (maximumCnt - 1) || totalCard > 29)
+        if (obj.GetComponent<CardData>().data.currentCnt > (obj.GetComponent<CardData>().data.maximumCnt - 1) || totalCard > 29)
             return;
 
-        obj.GetComponent<CardData>().data.Cnt += 1;
+        obj.GetComponent<CardData>().data.currentCnt += 1;
         totalCard += 1;
-        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.Cnt.ToString();
+        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.currentCnt.ToString();
         displayTotalCnt.text = totalCard.ToString();
     }
 
     public void DelCard(GameObject obj)
     {
-        if (obj.GetComponent<CardData>().data.Cnt == minimumCnt)
+        if (obj.GetComponent<CardData>().data.currentCnt == obj.GetComponent<CardData>().data.minumumCnt)
             return;
 
-        obj.GetComponent<CardData>().data.Cnt -= 1;
+        obj.GetComponent<CardData>().data.currentCnt -= 1;
         totalCard -= 1;
-        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.Cnt.ToString();
+        obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.currentCnt.ToString();
         displayTotalCnt.text = totalCard.ToString();
     }
 

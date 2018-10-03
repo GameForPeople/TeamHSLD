@@ -14,15 +14,24 @@ public class TurnSystem : MonoBehaviour
 {
     private int currentMyTurnTimer = 0;
     public Text displayTurnTimerTxt;
-    public Slider buildTimerSlider;
-    public Text buildTimerText;
     private float time_;
     public float selectOrder = 10;
     public float selectCard = 50;
+    public GameObject turnSet;
 
     public Slider readySlider;
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
+
+    public float rollingDiceTime = 10;
+    public float pickingTerrainCardTime = 5;
+    public float pickingEventCardTime = 15;
+    public float selectPlanetTerrainTime = 20;
+
+    private float warningTime;
+    public GameObject warningPanel;
+    private float warningRadio = 0;
+
 
     private void Start()
     {
@@ -34,18 +43,31 @@ public class TurnSystem : MonoBehaviour
         time_ = 0;
         readySlider.maxValue = selectOrder;
         readySlider.value = selectOrder;
+
         while (true)
         {
             time_ += Time.deltaTime;
             readySlider.value -= Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
-            if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.READY_SETCARD) || time_ > selectOrder/*|| 상대방이 선택했을때*/)
+            if (SetTurn.isPicking)
                 break;
+
+            //랜덤으로 아무거나 픽킹하기
+            if (time_ > selectOrder)
+            {
+                if (gameObject.GetComponent<SetTurn>().RndNum() == 0)
+                    gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(0).gameObject);
+                else
+                    gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(1).gameObject);
+                break;
+            }
+
+            //if (상대방이 먼저 픽했을때)
+            //    break;
         }
 
-        readySlider.value = 0;
-
+        yield return new WaitForSeconds(2);
         StartCoroutine(ReadySetCardTimer());
     }
     IEnumerator ReadySetCardTimer()
@@ -90,71 +112,88 @@ public class TurnSystem : MonoBehaviour
 
         //init
         if (!gameObject.GetComponent<FlowSystem>().currentFlow.Equals(beforeFlow))
+        {
             currentMyTurnTimer = 0;
+            warningRadio = 0;
+            warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+        }
+
 
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
-            if (currentMyTurnTimer > 10)
+            warningTime = rollingDiceTime - 3;
+            if (currentMyTurnTimer >= rollingDiceTime)
             {
-                Debug.Log("error:2");
-                displayTurnTimerTxt.text = "시간만료. 어떻게처리할까.";
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
+                Debug.Log("시간경과 어떻게 처리할것인지.");
             }
             else
             {
                 beforeFlow = FLOW.TO_ROLLINGDICE;
-                displayTurnTimerTxt.text = "(임시)다이스를 굴려주세요.( ";
-                displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
-                displayTurnTimerTxt.text += "/ 10 )";
             }
+
+            displayTurnTimerTxt.text = "(임시)다이스를 굴려주세요.( ";
+            displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
+            displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
         }
         else if(gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
-            if (currentMyTurnTimer > 5)
+            warningTime = pickingTerrainCardTime - 3;
+            if (currentMyTurnTimer >= pickingTerrainCardTime)
             {
-                Debug.Log("error:3");
-                displayTurnTimerTxt.text = "시간만료. 어떻게처리할까.";
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);
+                Debug.Log("시간경과 어떻게 처리할것인지.");
             }
             else
             {
                 beforeFlow = FLOW.TO_PICKINGCARD;
-                displayTurnTimerTxt.text = "(임시)지형 카드를 선택해주세요. ( ";
-                displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
-                displayTurnTimerTxt.text += "/ 5 )";
             }
 
+            displayTurnTimerTxt.text = "(임시)지형 카드를 선택해주세요. ( ";
+            displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
+            displayTurnTimerTxt.text += " / " + pickingTerrainCardTime + " )";
         }
         else if(gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
         {
-            if (currentMyTurnTimer > 20)
+            warningTime = selectPlanetTerrainTime - 3;
+            if (currentMyTurnTimer >= selectPlanetTerrainTime)
             {
-                Debug.Log("error:4");
-                displayTurnTimerTxt.text = "시간만료. 어떻게처리할까.";
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+                Debug.Log("시간경과 어떻게 처리할것인지.");
             }
             else
             {
                 beforeFlow = FLOW.TO_PICKINGLOC;
-                displayTurnTimerTxt.text = "(임시)지형을 설치해주세요. ( ";
-                displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
-                displayTurnTimerTxt.text += "/ 20 )";
             }
 
+            displayTurnTimerTxt.text = "(임시)지형을 설치해주세요. ( ";
+            displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
+            displayTurnTimerTxt.text += " / " + selectPlanetTerrainTime + " )";
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKEVENTCARD))
         {
-            if (currentMyTurnTimer > 15)
+            warningTime = pickingEventCardTime - 3;
+            if (currentMyTurnTimer >= pickingEventCardTime)
             {
-                Debug.Log("error:5");
-                displayTurnTimerTxt.text = "시간만료. 상대턴진행";
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
+                Debug.Log("시간경과 어떻게 처리할것인지.");
 
                 StartCoroutine(EndTurnAndWaiting());
             }
             else
             {
                 beforeFlow = FLOW.TO_PICKEVENTCARD;
-                displayTurnTimerTxt.text = "(임시)이벤트 카드를 선택해주세요. ( ";
-                displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
-                displayTurnTimerTxt.text += "/ 15 )";
             }
+
+            displayTurnTimerTxt.text = "(임시)이벤트 카드를 선택해주세요. ( ";
+            displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
+            displayTurnTimerTxt.text += " / " + pickingEventCardTime + " )";
+        }
+
+        if (warningTime < currentMyTurnTimer + 1)
+        {
+            warningRadio += 0.05f;
+            warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
         }
 
         StartCoroutine(TurnCounting());
@@ -171,24 +210,4 @@ public class TurnSystem : MonoBehaviour
         }
         StartCoroutine(TurnCounting());
     }
-
-    //행성지형설치에대한 타이머 가동
-    public IEnumerator BuildTimer()
-    {
-        time_ = 0;
-        while (true)
-        {
-            time_ += Time.deltaTime;
-            buildTimerText.text = ((int)20 - time_).ToString();
-            buildTimerSlider.maxValue = 20;
-            buildTimerSlider.minValue = 0;
-            buildTimerSlider.value = 20 - time_;
-
-            yield return new WaitForEndOfFrame();
-            if (buildTimerSlider.value == 0)
-                break;
-        }
-        buildTimerText.text = "";
-    }
-
 }

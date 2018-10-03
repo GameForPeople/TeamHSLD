@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class SetTurn : MonoBehaviour
 {
-    public float spinTime;
+    private float spinTime = 2;
     private float time_;
     private bool isTrigger = false;
+    static public bool isPicking = false;
     
     public void PickCard(GameObject obj)
     {
@@ -36,13 +37,14 @@ public class SetTurn : MonoBehaviour
             StartCoroutine(SpinCard(obj, "후공"));
     }
 
-    int RndNum()
+    public int RndNum()
     {
         return Random.Range(0, 2);
     }
 
     IEnumerator SpinCard(GameObject obj, string order)
     {
+        isPicking = true;
         time_ = 0;
         while (true)
         {

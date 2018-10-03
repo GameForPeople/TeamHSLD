@@ -70,7 +70,6 @@ public class DiceSystem : MonoBehaviour
                     {
                         //무조건더블 11
                         isDouble = true;
-                        Debug.Log("더블 !!!!");
                         getDiceNum = 2;
                     }
                     //3일확률 2/3 
@@ -98,7 +97,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
 
@@ -119,7 +117,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
                         }
@@ -144,7 +141,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
                         }
@@ -169,7 +165,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
                         }
@@ -184,7 +179,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건 더블
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
                     }
@@ -208,7 +202,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
 
@@ -229,7 +222,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
                         }
@@ -246,7 +238,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건더블 11
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
@@ -276,7 +267,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
                         }
@@ -301,7 +291,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
                         }
@@ -316,7 +305,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건 더블
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
                     }
@@ -343,7 +331,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //이때 더블
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                         }
                         getDiceNum = 8;
                     }
@@ -372,7 +359,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
 
@@ -393,7 +379,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
                         }
@@ -406,7 +391,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건더블 11
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
@@ -430,7 +414,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 10;
                         }
@@ -445,7 +428,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건 더블
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 12;
                         }
                     }
@@ -466,7 +448,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //이때 더블
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                         }
                         getDiceNum = 10;
                     }
@@ -481,7 +462,6 @@ public class DiceSystem : MonoBehaviour
                     {
                         //무조건 더블
                         isDouble = true;
-                        Debug.Log("더블 !!!!");
                         getDiceNum = 12;
                     }
                 }
@@ -503,7 +483,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 4;
 
@@ -524,7 +503,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 6;
                         }
@@ -549,7 +527,6 @@ public class DiceSystem : MonoBehaviour
                             {
                                 //이때 더블
                                 isDouble = true;
-                                Debug.Log("더블 !!!!");
                             }
                             getDiceNum = 8;
                         }
@@ -568,7 +545,6 @@ public class DiceSystem : MonoBehaviour
                         {
                             //무조건더블 11
                             isDouble = true;
-                            Debug.Log("더블 !!!!");
                             getDiceNum = 2;
                         }
                         //3일확률 2/3 
@@ -581,7 +557,7 @@ public class DiceSystem : MonoBehaviour
                 }
                 break;
         }
-        Debug.Log("다이스눈금 : " + getDiceNum + "더블여부 : " + isDouble);
+        Debug.Log("다이스눈금 : " + getDiceNum + " 더블여부 : " + isDouble);
 
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);

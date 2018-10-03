@@ -12,7 +12,11 @@ public class CardData : MonoBehaviour
     }
     private void InitSO()
     {
-        data.Cnt = 1;
+        if(data.currentCard.Equals(CARDSET.TERRAIN_DEFFENSE))
+            data.currentCnt = 1;
+        if (data.currentCard.Equals(CARDSET.TERRAIN_NORMAL))
+            data.currentCnt = 5;
+
         data.currentZoom = ZOOMSTATE.IN;
     }
 }

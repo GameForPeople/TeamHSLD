@@ -5,7 +5,8 @@ using UnityEngine;
 public enum CARDSET
 {
     EVENTCARD,
-    TERRAIN
+    TERRAIN_DEFFENSE,
+    TERRAIN_NORMAL
 }
 
 public enum ZOOMSTATE

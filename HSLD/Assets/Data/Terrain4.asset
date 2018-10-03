@@ -15,4 +15,6 @@ MonoBehaviour:
   currentZoom: 0
   zoomInSatusCardVec: {x: -219, y: -294}
   zoomOutSatusCardVec: {x: -68, y: -294}
-  Cnt: 1
+  currentCnt: 1
+  maximumCnt: 10
+  minumumCnt: 1
