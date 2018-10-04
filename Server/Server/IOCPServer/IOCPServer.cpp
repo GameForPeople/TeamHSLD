@@ -539,7 +539,7 @@ void IOCPServer::WorkerThreadFunction()
 					}
 				}
 				
-				//LobbyScene
+				//LobbyScene - old
 				else if (recvType == DEMAND_MAKEROOM)
 				{
 					ptr->roomIndex = roomData.CreateRoom(ptr->userIndex);
@@ -578,11 +578,55 @@ void IOCPServer::WorkerThreadFunction()
 							continue;
 					}
 				}
+
+				//LobbyScene - new
+				else if (recvType == DEMAND_RANDOM_MATCH)
+				{
+					if (roomData.RandomMatchingProcess(ptr->userIndex, ptr->roomIndex)) // Create!!
+					{
+						ptr->isHost = true;
+
+						int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+						roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						ptr->dataBuffer = new PermitMakeRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitMakeRandomStruct), PERMIT_MAKE_RANDOM))
+							continue;
+					}
+					else // Join!
+					{
+						ptr->isHost = false;
+
+						int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+						roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						ptr->dataBuffer = new PermitJoinRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitJoinRandomStruct), PERMIT_JOIN_RANDOM))
+							continue;
+					}
+				}
+				else if (recvType == DEMAND_GUEST_JOIN)
+				{
+					if (roomData.GetGameReady(ptr->roomIndex))
+					{
+						ptr->dataBuffer = new PermitGuestJoinStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
+						
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitGuestJoinStruct), PERMIT_GUEST_JOIN))
+							continue;
+					}
+					else
+					{
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), PERMIT_GUEST_NOT_JOIN))
+							continue;
+					}
+				}
 				
-				//RoomScene
+				//RoomScene - old
 				else if (recvType == DEMAND_ROOMHOST) {
 					// 게스트가 들어왔을 때,
-					if (roomData.GetAndSetReadyData(ptr->roomIndex, ptr->isHost))
+					if (roomData.GetGameReady(ptr->roomIndex))
 					{
 						ptr->dataBuffer = new RoomStateGuestInStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
 
@@ -596,6 +640,17 @@ void IOCPServer::WorkerThreadFunction()
 					}
 				}
 				
+				//RoomScene - new
+				else if (recvType == DEMAND_ENEMY_CHARACTER)
+				{
+					roomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
+
+					ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
+
+					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitEnemyCharacterStruct), PERMIT_ENEMY_CHARACTER))
+						continue;
+				}
+
 				// GameScene - Defense Turn
 				else if (recvType == DEMAND_GAME_STATE)
 				{
