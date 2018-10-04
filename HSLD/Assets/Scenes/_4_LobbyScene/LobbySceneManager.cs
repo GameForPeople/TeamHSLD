@@ -8,6 +8,13 @@ using UnityEngine.UI;
 
 public class LobbySceneManager : MonoBehaviour {
 
+    public void ClickRandomMatching()
+    {
+        //서버 네트워크 처리 - 방만들어 주세요 -> 항상 가능! 방 인덱스 서버에서 받아야지 관리하기 좋을 듯.
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_RANDOM_MATCH);
+    }
+
+
 	public void ClickMakeRoom()
     {
         //서버 네트워크 처리 - 방만들어 주세요 -> 항상 가능! 방 인덱스 서버에서 받아야지 관리하기 좋을 듯.
