@@ -91,15 +91,15 @@ public:
 
 		inFile.close();
 
-		std::cout << "     [CUserData] Load UserData Complete! " << std::endl;
+		std::cout << "     [UserDataManager] Load UserData Complete! " << std::endl;
 	}
-	void Save(bool InIsSave)
+	void Save(bool& InIsSave)
 	{
 		if (InIsSave) {
 			InIsSave = false;
 
 			Sleep(2000);
-			std::ofstream outFile("UserData.txt", std::ios::out);
+			std::ofstream outFile("UserData/UserData.txt", std::ios::out);
 
 			outFile << player.size() << std::endl;
 
@@ -113,7 +113,7 @@ public:
 			}
 			outFile.close();
 
-			std::cout << "     [CUserData] Save UserData! " << std::endl;
+			std::cout << "     [UserDataManager] Save UserData! " << std::endl;
 
 			InIsSave = false;
 

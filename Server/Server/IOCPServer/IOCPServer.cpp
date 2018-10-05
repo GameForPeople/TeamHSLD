@@ -201,13 +201,14 @@ void IOCPServer::CreateBindListen()
 	retVal = listen(listenSocket, SOMAXCONN);
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
 
-	printf("     [System] Dedicated server activated!\n\n");
 }
 
 
 //Run
 void IOCPServer::AcceptProcess()
 {
+	printf("     [ServerCore] Dedicated server activated!\n\n");
+
 	SOCKET clientSocket;
 	SOCKADDR_IN clientAddr;
 	int addrLength;
@@ -757,9 +758,12 @@ void IOCPServer::SaveUserDataThreadFunction()
 	isOnSaveUserDataThread = true;
 
 	while (isOnSaveUserDataThread) {
-		Sleep(10000);
+		Sleep(1000);	// 1분 단위 저장
+
 		//지금 자야되니까 나중에 이거보면 
-		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네
+		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
+		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+
 		userData.Save(isSaveOn);
 	}
 }
