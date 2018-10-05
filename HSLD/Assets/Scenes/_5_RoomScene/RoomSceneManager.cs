@@ -6,14 +6,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomSceneManager : MonoBehaviour {
-    GameObject networkObject;
+    NetworkManager networkObject;
 
     bool isGameReady = true;
-    int startCount = 5;
+    int startCount = 15;
+
+    IEnumerator CharacterCoroutine;
+
+    bool isOnChangeCharacter = true;
 
     void Start()
     {
-        networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").gameObject;
+        networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 
         // 방 인덱스 등록
         GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
@@ -24,47 +28,95 @@ public class RoomSceneManager : MonoBehaviour {
         // 나중에 계급이나 랭크, 캐릭터 이미지 같은것도 추가되면 여기서 해야처리해야할 듯
 
         // 방장이면 서버로부터 계속 Guest들어왔는지 여부 확인하도록함
-        if (networkObject.GetComponent<NetworkManager>().isHost)
-        {
-            StartCoroutine("HostRoomCoroutine");
-        }
-        else
-        {
-            GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
-            StartCoroutine("StartCount");
-        }
+        //if (networkObject.GetComponent<NetworkManager>().isHost)
+        //{
+        //    StartCoroutine("HostRoomCoroutine");
+        //}
+        //else
+        //{
+        GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
+
+        CharacterCoroutine = StartCharacter();
+
+        StartCoroutine(CharacterCoroutine);
+        //}
     }
 
-    IEnumerator HostRoomCoroutine()
+    // 게임 카운트 15부터 0까지 세도록
+    IEnumerator StartCharacter()
     {
-        while (isGameReady)
+        SetCharacterIndex(1);   // 1번으로 미리 설정해놓음.
+
+        while (startCount > 0)
         {
-            networkObject.GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_ROOMHOST);
+            GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
 
             yield return new WaitForSeconds(1.0f);
+            networkObject.SendData((int)PROTOCOL.DEMAND_ENEMY_CHARACTER);
+            --startCount;
+        }
+
+       isOnChangeCharacter = false;
+       startCount = 10;
+        yield return new WaitForSeconds(0.5f);
+
+        while (startCount > 0)
+        {
+            GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
+
+            yield return new WaitForSeconds(1.0f);
+            networkObject.SendData((int)PROTOCOL.DEMAND_ENEMY_CHARACTER);
+            --startCount;
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+    }
+
+
+    public void SetCharacterIndex(int InCharacterIndex)
+    {
+        if (isOnChangeCharacter)
+        {
+            if(InCharacterIndex == 1)
+                GameObject.Find("Player_Character").GetComponent<Text>().text = "1번 캐릭터";
+            else if (InCharacterIndex == 2)
+                GameObject.Find("Player_Character").GetComponent<Text>().text = "2번 캐릭터";
+
+            networkObject.playerCharacterIndex = InCharacterIndex;
         }
     }
+
+    public void SetEnemyCharacter_Network()
+    {
+        if (networkObject.enemyCharacterIndex == 1)
+            GameObject.Find("Player_Character").GetComponent<Text>().text = "1번 캐릭터";
+        else if (networkObject.enemyCharacterIndex == 2)
+            GameObject.Find("Player_Character").GetComponent<Text>().text = "2번 캐릭터";
+    }
+
+    // old
+
+
+    //IEnumerator HostRoomCoroutine()
+    //{
+    //    while (isGameReady)
+    //    {
+    //        networkObject.GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_ROOMHOST);
+    //
+    //        yield return new WaitForSeconds(1.0f);
+    //    }
+    //}
+
 
     // host만 받는 함수입니다. 게스트가 조인한 경우!
     public void GuestJoinRoom()
     {
         isGameReady = false;
-
+    
         GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
         StartCoroutine("StartCount");
     }
 
-    // 게임 카운트 5부터 0까지 세도록
-    IEnumerator StartCount()
-    {
-        while(startCount > 0)
-        {
-            GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
-
-            yield return new WaitForSeconds(1.0f);
-            --startCount;
-        }
-
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
-    }
 }
