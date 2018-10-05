@@ -27,20 +27,39 @@ enum PROTOCOL : int
     PERMIT_LOGIN        =   102     ,
 
     //for LobbyScene
-    DEMAND_MAKEROOM     =   301     ,
-    PERMIT_MAKEROOM     =   302     ,
-    DEMAND_JOINROOM     =   303     ,
-    PERMIT_JOINROOM     =   304     ,
-    FAIL_JOINROOM       =   305     ,
+
+    // 구 Lobby Protocol
+    DEMAND_MAKEROOM     =   301     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_MAKEROOM     =   302     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    DEMAND_JOINROOM     =   303     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_JOINROOM     =   304     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    FAIL_JOINROOM       =   305     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+
+    // 신 Lobby Protocol
+    DEMAND_RANDOM_MATCH =   311     ,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
+    PERMIT_MAKE_RANDOM  =   312     ,   // 방을 만들었다고 알립니다.
+    PERMIT_JOIN_RANDOM  =   313     ,   // 방에 접속했다고 알립니다.
+
+    DEMAND_GUEST_JOIN   =   314     ,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
+    PERMIT_GUEST_JOIN   =   315     ,    // 방에 게스트가 접속했음.
+    PERMIT_GUEST_NOT_JOIN = 316     ,	// 방에 게스트가 접속했음.
 
     //for RoomScene
-    DEMAND_ROOMHOST     =   400     ,
+
+    // 구 Room Protocol
+    DEMAND_ROOMHOST =   400     ,
     ROOMSTATE_VOID      =   410     ,
     ROOMSTATE_GUESTIN   =   411     ,
 
 
+    // 신 Room Protocol
+    DEMAND_ENEMY_CHARACTER      =   421     ,   // 상대방 캐릭터의 변경 정보를 확인합니다.
+    PERMIT_ENEMY_CHARACTER      =   422     ,   // 상대방의 캐릭터 정보를 받아옵니다.
+
+
+
     // for GameScene
-    DEMAND_GAME_STATE   =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
+    DEMAND_GAME_STATE =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
     VOID_GAME_STATE     =   501     ,  // 야 수비야 공격이 아무것도 안했어!
 
 
@@ -112,7 +131,7 @@ public class NetworkManager : MonoBehaviour
     private const int SERVER_PORT = 9000;
     private const string CLIENT_VERSION = "180909";
 
-    public Thread thread;
+    //public Thread thread;
     public Socket socket;
 
     public bool isRecvOn = false;
@@ -138,6 +157,12 @@ public class NetworkManager : MonoBehaviour
     public byte[] DataRecvBuffer = new byte[100];
     public byte[] DataSendBuffer = new byte[8];
     public byte[] Data50_SendBuffer = new byte[64]; // max - ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER
+
+    // For InGameScene
+    public bool isAttackFirst;
+    public int playerMissionIndex;
+    public int enemyMissionIndex;
+    public int subMissionIndex;
 
     public object _obj = new object();
 
@@ -271,7 +296,7 @@ public class NetworkManager : MonoBehaviour
                 socket.Send(packet);
             }
 
-            //LobbyScene
+            //LobbyScene - old
             else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
             {
                 isHost = true;
@@ -288,6 +313,13 @@ public class NetworkManager : MonoBehaviour
                 Buffer.BlockCopy(BitConverter.GetBytes(roomIndex), 0, DataSendBuffer, 4, 4);
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);
+            }
+
+            //LobbyScene - new
+            else if (InMsg == (int)PROTOCOL.DEMAND_RANDOM_MATCH)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_RANDOM_MATCH), 0, DataSendBuffer, 0, 4);
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
             // RoomScene
@@ -389,7 +421,7 @@ public class NetworkManager : MonoBehaviour
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
         }
 
-        //LobbyScene
+        //LobbyScene - old
         else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
         {
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
@@ -416,6 +448,56 @@ public class NetworkManager : MonoBehaviour
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().FailJoinRoom(failReason);
         }
+
+        //LobbyScene - new
+        else if (recvType == (int)PROTOCOL.PERMIT_MAKE_RANDOM)
+        {
+            isHost = true;
+
+            roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
+
+            if(BitConverter.ToInt32(DataRecvBuffer, 8) == 1)
+            {
+                if(isHost == true)
+                {
+                    isAttackFirst = true;
+                }
+                else
+                {
+                    isAttackFirst = false;
+                }
+            }
+            else
+            {
+                if (isHost == true)
+                {
+                    isAttackFirst = false;
+                }
+                else
+                {
+                    isAttackFirst = true;
+                }
+            }
+
+            playerMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 12);
+            enemyMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 16); 
+            subMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 20);
+        }
+        else if (recvType == (int)PROTOCOL.PERMIT_JOIN_RANDOM)
+        {
+            isHost = false;
+
+            roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
+            //int isHostFirst;
+            playerMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 12);
+            enemyMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 16);
+            subMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 20);
+
+            int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 24);
+            enemyId = Encoding.Default.GetString(DataRecvBuffer, 28, idSizeBuffer);
+        }
+
+
 
         //RoomScene
         else if (recvType == (int)PROTOCOL.ROOMSTATE_VOID)

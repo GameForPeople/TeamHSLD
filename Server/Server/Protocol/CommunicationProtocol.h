@@ -14,18 +14,35 @@ enum Protocol {
 	FAIL_LOGIN			=	101	,
 	PERMIT_LOGIN		=	102	,
 	
-	// for LobbyScene
+	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)
 	DEMAND_JOINROOM		=	303	,
 	PERMIT_JOINROOM		=	304	, // 여기서, 추가된 정보(먼저 턴, 승리조건 등 추가 전송)
 	FAIL_JOINROOM		=	305	,
 	
-	// for RoomScene
+	// 신 Lobby Protocol
+	DEMAND_RANDOM_MATCH =	311	,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
+	PERMIT_MAKE_RANDOM	=	312	,   // 방을 만들었다고 알립니다.
+	PERMIT_JOIN_RANDOM	=	313	,   // 방에 접속했다고 알립니다.
+
+	DEMAND_GUEST_JOIN	=	314	,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
+	PERMIT_GUEST_JOIN	=	315,	// 방에 게스트가 접속했음.
+	PERMIT_GUEST_NOT_JOIN = 316,	// 방에 게스트가 접속했음.
+
+
+	// for RoomScene 구 룸씬
 	DEMAND_ROOMHOST		=	400	,
 	ROOMSTATE_VOID		=	410	,
 	ROOMSTATE_GUESTIN	=	411	,
 	
+	// 신 Room Protocol
+	DEMAND_ENEMY_CHARACTER = 421,   // 내 캐릭터 변경 정보를 전송하고,
+	PERMIT_ENEMY_CHARACTER = 422,   // 상대방의 캐릭터 정보를 받아옵니다.
+
+
+
+
 	// for GameScene
 	
 	DEMAND_GAME_STATE	=	500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
@@ -78,9 +95,9 @@ public:
 	BaseStruct() = default;
 	~BaseStruct() = default;
 
-private:
-	//BaseStruct(const BaseStruct&); // 메모리에서 강제로 변경하려면 어쩔수없이 주석처리
-	BaseStruct& operator=(const BaseStruct&);
+public:
+	//BaseStruct(const BaseStruct&) = delete; // 메모리에서 강제로 변경하려면 어쩔수없이 주석처리
+	BaseStruct& operator=(const BaseStruct&) = delete;
 };
 
 //struct BaseSendStruct : public BaseStruct {
@@ -98,6 +115,8 @@ private:
 //		if (dataBuffer != nullptr) delete dataBuffer;
 //	}
 //};
+
+#pragma region [LOGIN SCENE STRUCT]
 
 // type 100일때, 서버에 바로 다음 날려주는 구조체
 struct DemandLoginStruct : public BaseStruct {
@@ -142,6 +161,13 @@ struct PermitLoginStruct : public BaseStruct {
 	__inline PermitLoginStruct() = default;
 	__inline ~PermitLoginStruct() = default;
 };
+
+#pragma endregion
+
+
+#pragma region [LOBBY SCENE STRUCT]
+
+#pragma region [OLD LOBBY SCENE]
 
 // type 301
 struct DemandMakeRoomStruct : public BaseStruct {
@@ -197,6 +223,78 @@ struct FailJoinRoomStruct : public BaseStruct {
 	__inline ~FailJoinRoomStruct() = default;
 };
 
+#pragma endregion
+
+
+#pragma region [NEW LOBBY SCENE]
+
+// 신 LobbyScene
+
+// type 311
+struct DemandRandomMatchStruct : public BaseStruct {
+	// 이거 안씁니다.
+	DemandRandomMatchStruct() = delete;
+};
+
+// type 312
+struct PermitMakeRandomStruct : public BaseStruct {
+	int roomIndex;
+	int isHostFirst;
+	int playerMissionIndex;
+	int enemyMissionIndex;
+	int subMissionIndex;
+
+	PermitMakeRandomStruct(const int InRoomIndex, const int InIsHostFirst, const int InPlayerMissionIndex, const int InEnemyMissionIndex, const int InSubMissionIndex)
+		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst) ,playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex)
+	{};
+
+	~PermitMakeRandomStruct() = default;
+};
+
+//type 313
+struct PermitJoinRandomStruct : public BaseStruct {
+	int roomIndex;
+	int isHostFirst;
+	int playerMissionIndex;
+	int enemyMissionIndex;
+	int subMissionIndex;
+	int idSize;
+	string enemyId;
+
+	PermitJoinRandomStruct(const int InRoomIndex, const int InIsHostFirst, const int InPlayerMissionIndex, const int InEnemyMissionIndex, const int InSubMissionIndex, const string& InEnemyID )
+		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst), playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex), idSize(InEnemyID.size()), enemyId(InEnemyID)
+	{};
+
+	~PermitJoinRandomStruct() = default;
+};
+
+//type 314
+struct DemandGuestJoinStruct : public BaseStruct {
+	DemandGuestJoinStruct() = delete;
+};
+
+//type 315
+struct PermitGuestJoinStruct : public BaseStruct {
+	int idSize;
+	string enemyId;
+
+	PermitGuestJoinStruct(const string& InEnemyId) :idSize(InEnemyId.size()), enemyId(InEnemyId)
+	{};
+
+	~PermitGuestJoinStruct() = default;
+};
+
+//type 316
+struct PermitGuestNotJoinStruct : public BaseStruct {
+	PermitGuestNotJoinStruct() = delete;
+};
+
+#pragma endregion
+
+#pragma endregion
+
+
+#pragma region [ROOM SCENE STRUCT]
 //type 411
 struct RoomStateGuestInStruct : public BaseStruct
 {
@@ -225,8 +323,27 @@ struct OnePlayerChanged : public BaseStruct
 };
 
 
-//
-//
+// type 421 
+struct DemandEnemyCharacterStruct : public BaseStruct {
+	int playerCharacterIndex;
+	//안써요~
+	DemandEnemyCharacterStruct() = delete;
+};
+
+struct PermitEnemyCharacterStruct : public BaseStruct {
+	int playerCharacterIndex;
+
+	PermitEnemyCharacterStruct(const int InPlayerCharacterIndex) : playerCharacterIndex(InPlayerCharacterIndex)
+	{};
+
+	~PermitEnemyCharacterStruct() = default;
+};
+
+
+#pragma endregion
+
+
+#pragma region [INGAME SCENE STRUCT]
 
 // type 502, 503 // 이거 안씀
 struct ChangeTurnStruct : public BaseStruct
@@ -303,3 +420,5 @@ struct ActionEventCardDefenseStruct : public BaseStruct
 	__inline ActionEventCardDefenseStruct() {}
 	__inline ~ActionEventCardDefenseStruct() {}
 };
+
+#pragma endregion
