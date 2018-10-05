@@ -5434,10 +5434,7 @@ MonoBehaviour:
   minDistance: 150
   maxDistance: 80
   RotationSensitivity: 0.05
-<<<<<<< HEAD
-=======
   PickedMeshObj: {fileID: 0}
->>>>>>> 9e5dc51069a8bdcd5c7cb2175f54c978949533f8
   ChangeableCount: 0
   DiceCount: 10
 --- !u!45 &374445975
