@@ -17,7 +17,7 @@ public class TitleSceneManager : MonoBehaviour
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
 
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE, true);
     }
 
     // 클라이언트 분들이, 서버 테스트를 병행하고 싶으실 때, 로컬 IP를 적어주시면 됩니다.

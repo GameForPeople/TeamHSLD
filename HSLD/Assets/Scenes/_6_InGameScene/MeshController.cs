@@ -13,10 +13,10 @@ public enum Terrain{
 
 public class MeshController : MonoBehaviour {
     private int dominator;
-    private Terrain terrainstate;
     private Material domMaterial;
     private Material defaultMaterial;
     private Material priorMaterial;
+    public Terrain terrainstate;
     public bool isAwake;
     public bool isFixed;
     // Use this for initialization
