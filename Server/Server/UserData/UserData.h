@@ -10,7 +10,6 @@ UserData.h 에서 해야될 일!
 */
 
 #include "../stdafx.h"
-
 class UserData {
 	//basic Data
 	std::string m_id{};
@@ -74,13 +73,14 @@ public:
 public:
 	void Load() 
 	{
-		std::ifstream inFile("UserData.txt", std::ios::in);
+		std::ifstream inFile("UserData/UserData.txt", std::ios::in);
 
 		std::string ID;
 		int PW, winCount, loseCount, Money;
 		int userDataCount{};
 
 		inFile >> userDataCount;
+		
 		player.reserve(userDataCount);
 
 		for (int i = 0; i < userDataCount; i++) {
