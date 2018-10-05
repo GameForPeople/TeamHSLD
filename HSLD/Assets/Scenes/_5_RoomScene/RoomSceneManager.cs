@@ -91,9 +91,9 @@ public class RoomSceneManager : MonoBehaviour {
     public void SetEnemyCharacter_Network()
     {
         if (networkObject.enemyCharacterIndex == 1)
-            GameObject.Find("Player_Character").GetComponent<Text>().text = "1번 캐릭터";
+            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "1번 캐릭터";
         else if (networkObject.enemyCharacterIndex == 2)
-            GameObject.Find("Player_Character").GetComponent<Text>().text = "2번 캐릭터";
+            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "2번 캐릭터";
     }
 
     // old
