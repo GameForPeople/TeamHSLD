@@ -3,6 +3,8 @@
 // 주의해야합니다! 항상 클래스는 4바이트 단위로 제작합니다. SIMD 아니고 이거 뭐더라...
 #include "../stdafx.h"
 
+#define ID_MAX_LEN 20
+
 enum Protocol {
 
 	// for Server
@@ -259,11 +261,17 @@ struct PermitJoinRandomStruct : public BaseStruct {
 	int enemyMissionIndex;
 	int subMissionIndex;
 	int idSize;
-	string enemyId;
+	//string enemyId;
+	char enemyId[ID_MAX_LEN];
 
-	PermitJoinRandomStruct(const int InRoomIndex, const int InIsHostFirst, const int InPlayerMissionIndex, const int InEnemyMissionIndex, const int InSubMissionIndex, const string& InEnemyID )
-		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst), playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex), idSize(InEnemyID.size()), enemyId(InEnemyID)
-	{};
+	PermitJoinRandomStruct(const int InRoomIndex, const int InIsHostFirst, const int InPlayerMissionIndex, const int InEnemyMissionIndex, const int InSubMissionIndex, const string& InEnemyId )
+		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst), playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex), idSize(InEnemyId.size()) //, enemyId(InEnemyID)
+	{
+		for (int i = 0; i < idSize; ++i)
+		{
+			enemyId[i] = InEnemyId[i];
+		}
+	};
 
 	~PermitJoinRandomStruct() = default;
 };
@@ -276,10 +284,16 @@ struct DemandGuestJoinStruct : public BaseStruct {
 //type 315
 struct PermitGuestJoinStruct : public BaseStruct {
 	int idSize;
-	string enemyId;
+	//string enemyId;
+	char enemyId[ID_MAX_LEN];
 
-	PermitGuestJoinStruct(const string& InEnemyId) :idSize(InEnemyId.size()), enemyId(InEnemyId)
-	{};
+	PermitGuestJoinStruct(const string& InEnemyId) :idSize(InEnemyId.size()) //, enemyId(InEnemyId)
+	{
+		for (int i = 0; i < idSize; ++i)
+		{
+			enemyId[i] = InEnemyId[i];
+		}
+	};
 
 	~PermitGuestJoinStruct() = default;
 };

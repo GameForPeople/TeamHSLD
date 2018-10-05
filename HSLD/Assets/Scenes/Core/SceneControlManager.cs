@@ -56,7 +56,7 @@ public class SceneControlManager : MonoBehaviour
         StartCoroutine(ChangeSceneCoroutine(InSceneName, InOnPrintLoadUI, InLoadUIIndex));
     }
 
-    IEnumerator ChangeSceneCoroutine(SCENE_NAME InSceneName, bool InOnPrintLoadUI, int InLoadUIIndex)
+    public IEnumerator ChangeSceneCoroutine(SCENE_NAME InSceneName, bool InOnPrintLoadUI, int InLoadUIIndex)
     {
         //Load UI의 출력여부를 먼저 확인합니다.
         if(InOnPrintLoadUI == true)
@@ -82,16 +82,17 @@ public class SceneControlManager : MonoBehaviour
         SceneManager.MoveGameObjectToScene(gameCore, SceneManager.GetSceneByBuildIndex((int)InSceneName));
 
         SceneManager.UnloadSceneAsync((int)nowScene);
+        nowScene = InSceneName;
 
-        // Load UI를 어느정도 확인할 시간을 마련해 줍니다.
-        yield return new WaitForSeconds(2.0f);
 
         // 씬 변환이 끝나면, LoadUI를 Off처리 해줍니다.
         if (InOnPrintLoadUI == true)
         {
+             // Load UI를 어느정도 확인할 시간을 마련해 줍니다.
+            yield return new WaitForSeconds(2.0f);
+
             loadUI[InLoadUIIndex].SetActive(false);
         }
 
-        nowScene = InSceneName;
     }
 }

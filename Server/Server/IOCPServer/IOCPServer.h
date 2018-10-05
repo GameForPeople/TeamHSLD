@@ -121,14 +121,10 @@ public:
 
 	void Run()
 	{
+		RunSaveUserDataThread();
 		AcceptProcess();
 	}
 
-	void RunSaveUserDataThread() // 추후에, Run에 넣을 겁니다.
-	{
-		hSaveUserDataThread = CreateThread(NULL, 0, SaveUserDate, (LPVOID)this, 0, NULL);
-		//CloseHandle(hSaveUserDataThread);
-	}
 
 	void Close()
 	{
@@ -150,6 +146,13 @@ private:
 	//Run
 	void AcceptProcess();
 
+	void RunSaveUserDataThread()
+	{
+		hSaveUserDataThread = CreateThread(NULL, 0, SaveUserDate, (LPVOID)this, 0, NULL);
+		//CloseHandle(hSaveUserDataThread);
+		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
+
+	}
 	//Close
 	void DestroyAndClean();
 

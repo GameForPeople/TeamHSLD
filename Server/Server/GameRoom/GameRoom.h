@@ -31,24 +31,32 @@ public:
 
 	// error
 	//std::atomic<int> dataProtocol;
-	int dataProtocol;
 
-	BaseStruct* dataBuffer;
+	int hostDataProtocol;
+	int guestDataProtocol;
+	
+	BaseStruct* hostDataBuffer;
+	BaseStruct* guestDataBuffer;
 
 public:
 	//GameRoom(const GameRoom&) = delete; 
 	GameRoom& operator=(const GameRoom&) = delete;
 
-	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), dataBuffer(nullptr), dataProtocol(0)
+	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(0), guestDataProtocol(0)
 		, hostMissionIndex(), guestMissionIndex(), subMissionIndex(), hostCharacterIndex(), guestCharacterIndex(), isHostFirst()
 	{}
 
 	//__inline ~GameRoom() = default;
 	__inline ~GameRoom()
 	{
-		if (dataBuffer != nullptr)
+		if (hostDataBuffer != nullptr)
 		{
-			delete dataBuffer;
+			delete hostDataBuffer;
+		}
+
+		if (guestDataBuffer != nullptr)
+		{
+			delete guestDataBuffer;
 		}
 	}
 
@@ -67,6 +75,19 @@ public:
 		guestCharacterIndex = 1;
 
 		isHostFirst = rand() % 2;
+
+		hostDataProtocol = 0;
+		guestDataProtocol = 0;
+
+		if (hostDataBuffer != nullptr)
+		{
+			delete hostDataBuffer;
+		}
+
+		if (guestDataBuffer != nullptr)
+		{
+			delete guestDataBuffer;
+		}
 	}
 
 	__inline void JoinRoom(const int InGuestIndex)
@@ -225,32 +246,47 @@ public:
 public:
 	// 레퍼런스 쓰지말자 일단은. 마지막 단계에서 데이터 프로토콣 변경해야지
 	// atomic
-	int GetDataProtocol(const int InRoomIndex) const
+	int GetDataProtocol(const bool& InIsHost, const int& InRoomIndex) const
 	{
-		return rooms[InRoomIndex].dataProtocol;
+		if(InIsHost)
+			return rooms[InRoomIndex].guestDataProtocol;
+		else 
+			return rooms[InRoomIndex].hostDataProtocol;
 	}
 	
-	// atomic 
-	void SetDataProtocol(const int InRoomIndex, const int InNewDataProtocol = 0)
+	// atomic                                                             // 레퍼런스 쓰면 enum 못받는다.
+	void SetDataProtocol(const int& InRoomIndex, const bool& InIsHost, const int InNewDataProtocol ) //= 0)
 	{
-		rooms[InRoomIndex].dataProtocol = InNewDataProtocol;
+		if (InIsHost)
+			rooms[InRoomIndex].hostDataProtocol = InNewDataProtocol;
+		else
+			rooms[InRoomIndex].guestDataProtocol = InNewDataProtocol;
 	}
 
-	BaseStruct* GetDataBuffer(const int InRoomIndex) // const
+	BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
 	{
-		return rooms[InRoomIndex].dataBuffer;
+		if (InIsHost)
+			return rooms[InRoomIndex].guestDataBuffer;
+		else
+			return rooms[InRoomIndex].hostDataBuffer;
 	}
 
-	void SetDataBuffer(const int InRoomIndex, BaseStruct InBaseStruct)
+	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct InBaseStruct)
 	{
 		// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
-		rooms[InRoomIndex].dataBuffer = &InBaseStruct;
+		if (InIsHost)
+			rooms[InRoomIndex].hostDataBuffer = &InBaseStruct;
+		else
+			rooms[InRoomIndex].guestDataBuffer = &InBaseStruct;
 	}
 
-	// Caution!! dataBuffer Delete
-	void DeleteDataBuffer(const int InRoomIndex)
+	// Caution!! Delete dataBuffer!
+	void DeleteDataBuffer(const int& InRoomIndex, const bool& InIsHost)
 	{
-		delete rooms[InRoomIndex].dataBuffer;
+		if (InIsHost)
+			delete rooms[InRoomIndex].guestDataBuffer;
+		else
+			delete rooms[InRoomIndex].hostDataBuffer;
 	}
 
 
