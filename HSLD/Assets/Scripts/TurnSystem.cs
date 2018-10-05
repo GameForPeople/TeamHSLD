@@ -56,10 +56,23 @@ public class TurnSystem : MonoBehaviour
             //랜덤으로 아무거나 픽킹하기
             if (time_ > selectOrder)
             {
-                if (gameObject.GetComponent<SetTurn>().RndNum() == 0)
-                    gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(0).gameObject);
+                //테스트용===================================================================
+                if(GameObject.Find("NetworkManager") == null)
+                {
+                    if(gameObject.GetComponent<SetTurn>().RndNum() == 0)
+                        gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(0).gameObject);
+                    else
+                        gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(1).gameObject);
+                }
+                //==========================================================================
                 else
-                    gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(1).gameObject);
+                {
+                    if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
+                        gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(0).gameObject);
+                    else
+                        gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(1).gameObject);
+                }
+
                 break;
             }
 

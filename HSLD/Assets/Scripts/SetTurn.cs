@@ -16,20 +16,37 @@ public class SetTurn : MonoBehaviour
             return;
 
         isTrigger = true;
-        if (RndNum() == 0)
-        {
-            gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-            obj.name = "preOrder";
-        }
-
+        
+        //테스트용===========================================================================
+        if(GameObject.Find("NetworkManager") == null)
+            if(RndNum() == 0)
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                obj.name = "preOrder";
+            }
+            else
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                obj.name = "backOrder";
+            }
+        //===================================================================================
 
         else
         {
-            gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
-            obj.name = "backOrder";
+            if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                obj.name = "preOrder";
+            }
+
+
+            else
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                obj.name = "backOrder";
+            }
         }
-
-
+        
         if (obj.name.Equals("preOrder"))
             StartCoroutine(SpinCard(obj, "선공"));
 

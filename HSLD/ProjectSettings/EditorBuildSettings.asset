@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/_1_TitleScene/TitleScene.unity
+    guid: fe0271fa47a1ed243afc7c2f57cd0f7d
+  - enabled: 1
+    path: Assets/Scenes/_2_LoginScene/LoginScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/_3_MainUIScene/MainUIScene.unity
+    guid: bfbb2d5ec6026f4408e17c878c34ea4b
+  - enabled: 1
+    path: Assets/Scenes/_4_LobbyScene/LobbyScene.unity
+    guid: 4d45ef6a52648af42ad816d133c04494
+  - enabled: 1
+    path: Assets/Scenes/_5_RoomScene/RoomScene.unity
+    guid: ed8cf7b190b863a44bbc562aaa985107
+  - enabled: 1
+    path: Assets/Scenes/_6_InGameScene/InGameScene.unity
+    guid: 114fbbeb5fed8bc44ae861983dd621d6
   m_configObjects: {}
