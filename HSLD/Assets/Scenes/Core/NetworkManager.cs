@@ -157,9 +157,8 @@ public class NetworkManager : MonoBehaviour
     // Init RoomScene
     public string enemyId;
 
-    public byte[] DataRecvBuffer = new byte[100];
-    public byte[] DataSendBuffer = new byte[8];
-    public byte[] Data50_SendBuffer = new byte[64]; // max - ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER
+    public byte[] DataRecvBuffer = new byte[100];   //얌마 나중에 이거 알아서 해라
+    public byte[] DataSendBuffer = new byte[100];   // 정신나간놈;; 100바이트나 한번에!
 
     // For InGameScene
     public bool isAttackFirst;
@@ -344,7 +343,7 @@ public class NetworkManager : MonoBehaviour
             else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(playerCharacterIndex), 0, DataSendBuffer, 4, 8);
+                Buffer.BlockCopy(BitConverter.GetBytes(playerCharacterIndex), 0, DataSendBuffer, 4, 4);
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);
             }
@@ -361,33 +360,43 @@ public class NetworkManager : MonoBehaviour
             else if (InMsg == (int)PROTOCOL.NOTIFY_END_OF_TURN)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_END_OF_TURN), 0, DataSendBuffer, 0, 4);
+
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
             else if (InMsg == (int)PROTOCOL.VOID_CLIENT_TO_SERVER)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
             else if (InMsg == (int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER), 0, Data50_SendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, Data50_SendBuffer, 4, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, Data50_SendBuffer, 8, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, Data50_SendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 8, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
+
+                socket.Send(DataSendBuffer, 70, SocketFlags.None);  // 70..? 나중에 계산하기..!
             }
             else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER), 0, Data50_SendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, Data50_SendBuffer, 4, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, Data50_SendBuffer, 8, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, Data50_SendBuffer, 12, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, Data50_SendBuffer, 16, 4 * inGameSceneManager.network_changeTerrainCount);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 8, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 12, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 16, 4 * inGameSceneManager.network_changeTerrainCount);
+
+                socket.Send(DataSendBuffer, 70, SocketFlags.None);  // 70..? 나중에 계산하기;;
             }
             else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
             {
                 Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
+
+                socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
             }
-          
+
             RecvProcess();
 
         }
