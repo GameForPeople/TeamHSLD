@@ -14,8 +14,7 @@ public class CameraController : MonoBehaviour
     public float RotationSensitivity;
     private Transform myTransform;
     private Vector3 priorPosition;
-    private GameObject PickedMeshObj;
-    private Color myColor;
+    public GameObject PickedMeshObj;
     private Color grayColor;
     private Color seaColor;
     private Color mountainColor;
@@ -27,13 +26,13 @@ public class CameraController : MonoBehaviour
 
     private Material TestMaterial;
     public int ChangeableCount;
-    public int DiceCount = 10; 
+    public int DiceCount = 10;
 
     void Start()
     {
         myTransform = GetComponent<Transform>();
 
-        myColor = new Color(Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f));
+        //myColor = new Color(Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f), Random.Range(0.3f, 1.0f));
         //unknownColor = new Color(255,255,255,255);
         //grayColor = new Color32(150, 150, 150, 255);
         //seaColor = new Color32(156, 227, 221, 255);
@@ -43,6 +42,16 @@ public class CameraController : MonoBehaviour
         //barrenColor = new Color32(206, 154, 143, 255);
 
         ChangeableCount = DiceCount - 1;
+    }
+
+    public void TurnVertical()
+    {
+        mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
+    }
+
+    public void TurnHorizontal()
+    {
+        mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, 20);
     }
 
     void Update()
@@ -82,6 +91,7 @@ public class CameraController : MonoBehaviour
                             if (!PickedMeshObj.GetComponent<MeshController>().isFixed) // 정해져있지 않음, 턴이 지나면 Fixed로 바꿔주는 게 필요
                             {
                                 PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
+                                
                             }
                         }
                     }

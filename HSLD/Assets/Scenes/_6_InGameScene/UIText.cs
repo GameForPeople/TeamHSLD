@@ -21,7 +21,7 @@ public class UIText : MonoBehaviour {
         DebuggingText = GetComponent<Text>();
         DebuggingText.color = new Color(1,1,1);
         //planetObject = GameObject.Find("Planet");
-        //cameraObject = GameObject.Find("Main Camera");
+        cameraObject = GameObject.Find("Main Camera");
     } 
 
     void Update()
@@ -53,12 +53,14 @@ public class UIText : MonoBehaviour {
                             ColorVec4 = PickedRenderer.material.color;
 
                             Vec3 = PickedRenderer.transform.position;
-                            
-                            DebuggingText.text +=
-                                "[Pick Object] : " + hit.transform.name +
-                                " // " + Vec3 + "\nHit Point : " + hit.point + "\nColor : " + ColorVec4 + "\n";
-
-                            // hit.
+                            if (PickedMesh)
+                            {
+                                DebuggingText.text +=
+                                    "[Pick Object] : " + hit.transform.name +
+                                    " // " + Vec3 + 
+                                    "\nisAwake : " + PickedMesh.GetComponent<MeshController>().isAwake + 
+                                    "\nTerrainState : " + PickedMesh.GetComponent<MeshController>().terrainstate.ToString() + "\n";
+                            }
                         }
 
                     }
