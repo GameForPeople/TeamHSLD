@@ -535,9 +535,12 @@ RectTransform:
   - {fileID: 1530457593}
   - {fileID: 1926216835}
   - {fileID: 2027606084}
+<<<<<<< HEAD
+=======
   - {fileID: 1505627890}
   - {fileID: 952047163}
   - {fileID: 1292442530}
+>>>>>>> origin/master
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,6 +549,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< HEAD
+=======
 --- !u!1 &1292442529
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +744,7 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1505627889}
   m_CullTransparentMesh: 0
+>>>>>>> origin/master
 --- !u!1 &1530457592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1613,8 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027606083}
   m_CullTransparentMesh: 0
+<<<<<<< HEAD
+=======
 --- !u!1 &2095594511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1690,7 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095594511}
   m_CullTransparentMesh: 0
+>>>>>>> origin/master
 --- !u!1 &2129346419
 GameObject:
   m_ObjectHideFlags: 0
