@@ -6,5 +6,6 @@ public class CardInfo : MonoBehaviour
 {
     public CARDSET currentCard;
     public ZOOMSTATE currentZoom;
-    public int Cnt;
+    public int cnt;
+
 }
