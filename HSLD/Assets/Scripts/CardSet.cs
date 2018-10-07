@@ -7,6 +7,7 @@ public class CardSet : MonoBehaviour
 {
     private int totalCard = 17;
     public Text displayTotalCnt;
+    static public bool isSelect = false;
 
     public void AddCard(GameObject obj)
     {
@@ -35,6 +36,7 @@ public class CardSet : MonoBehaviour
         if (totalCard < 20)
             return;
 
+        isSelect = true;
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
     }
 }

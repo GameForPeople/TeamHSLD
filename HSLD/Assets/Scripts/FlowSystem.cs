@@ -13,8 +13,10 @@ public enum FLOW
     TO_PICKINGCARD,
     TO_PICKINGLOC,
     TO_PICKEVENTCARD,
-    DISPLAY_EVENT         //이벤트연출 - 나중에
+    DISPLAY_EVENT,         //이벤트연출 - 나중에
+    TSETVER
 }
+
 
 public class FlowSystem : MonoBehaviour
 {
@@ -25,6 +27,12 @@ public class FlowSystem : MonoBehaviour
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
     public GameObject spinCanvas;
+
+    private void Start()
+    {
+        if (currentFlow.Equals(FLOW.TSETVER))
+            FlowChange(currentFlow);
+    }
 
     public void FlowChange(FLOW doneFlow)
     {
@@ -61,6 +69,13 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 currentFlow = FLOW.WAITING;
+                break;
+            case FLOW.TSETVER:
+                GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
+                cardSetCanvas.SetActive(false);
+                readyCanvas.SetActive(false);
+                spinCanvas.SetActive(true);
+                currentFlow = FLOW.TO_PICKINGLOC;
                 break;
         }
     }

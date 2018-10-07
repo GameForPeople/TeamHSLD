@@ -9,7 +9,7 @@ public class SetTurn : MonoBehaviour
     private float time_;
     private bool isTrigger = false;
     static public bool isPicking = false;
-    
+
     public void PickCard(GameObject obj)
     {
         if (isTrigger)

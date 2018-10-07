@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13427,7 +13427,6 @@ GameObject:
   - component: {fileID: 823012261}
   - component: {fileID: 823012262}
   - component: {fileID: 823012263}
-  - component: {fileID: 823012264}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -13519,7 +13518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 0
+  currentFlow: 10
   cardCanvas: {fileID: 1055813589}
   cardSetCanvas: {fileID: 1161714766}
   turnSetCanvas: {fileID: 806044292}
@@ -13643,17 +13642,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &823012264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 823012255}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93996a51e3e2674a8b1cd7135c0285f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &832642332
 GameObject:
   m_ObjectHideFlags: 0

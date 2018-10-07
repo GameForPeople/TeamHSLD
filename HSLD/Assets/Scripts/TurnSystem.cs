@@ -35,7 +35,7 @@ public class TurnSystem : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ReadySetOrderTimer());
+        StartCoroutine(ReadySetCardTimer());
     }
 
    IEnumerator ReadySetOrderTimer()
@@ -81,7 +81,8 @@ public class TurnSystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2);
-        StartCoroutine(ReadySetCardTimer());
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_TURNORDER);
+
     }
     IEnumerator ReadySetCardTimer()
     {
@@ -93,10 +94,10 @@ public class TurnSystem : MonoBehaviour
             time_ += Time.deltaTime;
             readySlider.value -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
-            if (time_ > selectCard /*상대방과 내가 모두 선택했을때*/)
+            if (time_ > selectCard || CardSet.isSelect)
                 break;
         }
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
+        StartCoroutine(ReadySetOrderTimer());
     }
 
 
