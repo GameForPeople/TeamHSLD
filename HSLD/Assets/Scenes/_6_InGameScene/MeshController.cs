@@ -16,10 +16,13 @@ public class MeshController : MonoBehaviour {
     private Material domMaterial;
     private Material defaultMaterial;
     private Material priorMaterial;
+    public int MeshNumber;
+    static int giveNumber;
     public Terrain terrainstate;
     public bool isAwake;
     public bool isFixed;
     // Use this for initialization
+    public GameObject SceneManager;
 
     void Start () {
         terrainstate = Terrain.DEFAULT;
@@ -27,6 +30,9 @@ public class MeshController : MonoBehaviour {
         defaultMaterial = Resources.Load<Material>("M_Default");
         isAwake = false;
         isFixed = false;
+        giveNumber++;
+        MeshNumber = giveNumber;
+        SceneManager = GameObject.Find("InGameSceneManager");
     }
 	
 	// Update is called once per frame
@@ -37,11 +43,39 @@ public class MeshController : MonoBehaviour {
             {
                 if (GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount > 0)
                 {
-                    //priorMaterial = GetComponent<MeshRenderer>().material; // 이전 머테리얼 저장해둠
-                    GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
-                    terrainstate = Terrain.BARREN;
+                    if (SceneManager.GetComponent<CardSystem>().pickedCard)
+                    {
+                        Debug.Log("picked");
+                        GameObject picked = SceneManager.GetComponent<CardSystem>().pickedCard;
 
-                    GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount--;
+                        if (picked.name.Equals("TerrainCardImg1"))
+                        {
+                            Debug.Log("TerrainCardImg1");
+                            setBarren();
+                        }
+                        else if (picked.name.Equals("TerrainCardImg2"))
+                        {
+                            Debug.Log("TerrainCardImg2");
+                            setModeration();
+                        }
+                        else if (picked.name.Equals("TerrainCardImg3"))
+                        {
+                            Debug.Log("TerrainCardImg3");
+                            setCold();
+                        }
+                        else if (picked.name.Equals("EventCardImg1"))
+                        {
+                            Debug.Log("EventCardImg1");
+                            setSea();
+                        }
+                        else if (picked.name.Equals("EventCardImg2"))
+                        {
+                            Debug.Log("EventCardImg2");
+                            setMountain();
+                        }
+                        GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount--;
+                    }
+                   
                 }
             }
             else // 그 외 지형카드로 색을 칠했었던거라면 다시 돌려줌
@@ -63,6 +97,36 @@ public class MeshController : MonoBehaviour {
 
     public void setBarren()
     {
+        terrainstate = Terrain.BARREN;
         domMaterial = Resources.Load<Material>("M_Barren");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+    }
+
+    public void setModeration()
+    {
+        terrainstate = Terrain.MODERATION;
+        domMaterial = Resources.Load<Material>("M_Moderation");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+    }
+
+    public void setCold()
+    {
+        terrainstate = Terrain.COLD;
+        domMaterial = Resources.Load<Material>("M_Cold");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+    }
+
+    public void setSea()
+    {
+        terrainstate = Terrain.SEA;
+        domMaterial = Resources.Load<Material>("M_Sea");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+    }
+
+    public void setMountain()
+    {
+        terrainstate = Terrain.MOUNTAIN;
+        domMaterial = Resources.Load<Material>("M_Mountain");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
     }
 }

@@ -656,18 +656,18 @@ void IOCPServer::WorkerThreadFunction()
 				else if (recvType == DEMAND_GAME_STATE)
 				{
 					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 					
 					if (dataProtocol)
 					{
-						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex);
+						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
 
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(RoomStateGuestInStruct), dataProtocol))
 						{
 							// Caution!! dataBuffer Delete
-							roomData.DeleteDataBuffer(ptr->roomIndex);
+							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost , 0);
 							continue;
 						}
 					}
@@ -682,7 +682,7 @@ void IOCPServer::WorkerThreadFunction()
 				else if (recvType > 500 && recvType < 600)
 				{
 					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 
 					if (dataProtocol)
 					{
@@ -696,31 +696,31 @@ void IOCPServer::WorkerThreadFunction()
 					{
 						if (recvType == NOTIFY_END_OF_TURN)
 						{
-							roomData.SetDataProtocol(ptr->roomIndex, NOTIFY_CHANGE_TURN);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
 						}
 						else if (recvType == VOID_CLIENT_TO_SERVER)
 						{
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, VOID_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
 						}
 						else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
 						{
 							//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
-							roomData.SetDataBuffer(ptr->roomIndex, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, CHANGE_PLANET_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
 						}
 						else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
 						{
-							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
 						}
 						else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
 						{
-							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
 						}
 
 						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함

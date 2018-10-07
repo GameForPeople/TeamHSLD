@@ -56,7 +56,7 @@ public class SetTurn : MonoBehaviour
 
     public int RndNum()
     {
-        return Random.Range(0, 2);
+        return 0;
     }
 
     IEnumerator SpinCard(GameObject obj, string order)

@@ -15,6 +15,8 @@ public class UIText : MonoBehaviour {
     private Vector4 ColorVec4;
     private GameObject PickedMesh;
 
+    private int TestCount;
+    private int MeshNum;
 
     void Start()
     {
@@ -26,7 +28,9 @@ public class UIText : MonoBehaviour {
 
     void Update()
     {
-        DebuggingText.text = "TouchCount : " + Input.touchCount + "\n";
+        TestCount = mainCamera.GetComponent<CameraController>().ChangeableCount;
+
+        DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + TestCount + "\n";
 
         if (Input.touchCount >= 1)
         {
@@ -34,35 +38,28 @@ public class UIText : MonoBehaviour {
             {
                 if (Input.touchCount == 1)
                 {
-                    if (Input.GetTouch(0).phase == TouchPhase.Moved) {
-                        DebuggingText.text +=
-                            "[ Touch(0) Phase is Moved ] \n";
-                    }
-                    else
+                    DebuggingText.text += "[ Touch(0) Another Phase ] \n";
+                    RaycastHit hit;
+
+                    Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+
+                    if (Physics.Raycast(ray, out hit))
                     {
-                        DebuggingText.text += "[ Touch(0) Another Phase ] \n";
-                        RaycastHit hit;
 
-                        Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+                        PickedMesh = GameObject.Find(hit.transform.name);
+                        MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
+                        ColorVec4 = PickedRenderer.material.color;
 
-                        if (Physics.Raycast(ray, out hit))
+                        Vec3 = PickedRenderer.transform.position;
+                        if (PickedMesh)
                         {
-
-                            PickedMesh = GameObject.Find(hit.transform.name);
-                            MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
-                            ColorVec4 = PickedRenderer.material.color;
-
-                            Vec3 = PickedRenderer.transform.position;
-                            if (PickedMesh)
-                            {
-                                DebuggingText.text +=
-                                    "[Pick Object] : " + hit.transform.name +
-                                    " // " + Vec3 + 
-                                    "\nisAwake : " + PickedMesh.GetComponent<MeshController>().isAwake + 
-                                    "\nTerrainState : " + PickedMesh.GetComponent<MeshController>().terrainstate.ToString() + "\n";
-                            }
+                            MeshNum = PickedMesh.GetComponent<MeshController>().MeshNumber;
+                            DebuggingText.text +=
+                                "[Pick Object] : " + hit.transform.name +
+                                "\nMeshNum : " + MeshNum +
+                                "\nisAwake : " + PickedMesh.GetComponent<MeshController>().isAwake +
+                                "\nTerrainState : " + PickedMesh.GetComponent<MeshController>().terrainstate.ToString() + "\n";
                         }
-
                     }
                 }
 

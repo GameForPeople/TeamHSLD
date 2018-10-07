@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class DiceSystem : MonoBehaviour
 {
     public Slider diceSlider;
-    static public int getDiceNum;
+    static int getDiceNum;
+    public int publicDiceNum;//  YSK : 잠시 추가할게요..!!
     static public bool isDouble;
     private int rndTmpValue;
     private bool isTriggerEnter = false;
@@ -587,6 +588,7 @@ public class DiceSystem : MonoBehaviour
 
     private void Update()
     {
+        publicDiceNum = getDiceNum; //  YSK : 잠시 추가할께요!
         if (isTriggerEnter && GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
             if (Input.GetMouseButton(0))

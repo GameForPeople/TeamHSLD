@@ -550,6 +550,7 @@ public class NetworkManager : MonoBehaviour
 
             int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 24);
             enemyId = Encoding.Default.GetString(DataRecvBuffer, 28, idSizeBuffer);
+            Debug.Log("적 아이디는 " + enemyId);
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
         }
@@ -675,6 +676,8 @@ public class NetworkManager : MonoBehaviour
             {
                 Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
             }
+
+            GameObject.Find("WaitParsingUI").SetActive(false);
         }
     }
 }

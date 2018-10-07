@@ -112,7 +112,7 @@ public class TurnSystem : MonoBehaviour
         //내턴이아닐때의 코루틴 진입
         else
         {
-            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.WAITING;
+            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.READY_DONE;
             StartCoroutine(EndTurnAndWaiting());
         }
     }

@@ -269,7 +269,7 @@ struct PermitJoinRandomStruct : public BaseStruct {
 	{
 		for (int i = 0; i < idSize; ++i)
 		{
-			enemyId[i] = InEnemyId[1];
+			enemyId[i] = InEnemyId[i];
 		}
 	};
 
@@ -291,7 +291,7 @@ struct PermitGuestJoinStruct : public BaseStruct {
 	{
 		for (int i = 0; i < idSize; ++i)
 		{
-			enemyId[i] = InEnemyId[1];
+			enemyId[i] = InEnemyId[i];
 		}
 	};
 

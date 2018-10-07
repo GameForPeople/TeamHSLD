@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     private Color barrenColor;
     private Color coldColor;
     private Color32 unknownColor;
-    private float offset;
+    public static float offset;
 
     private Material TestMaterial;
     public int ChangeableCount;
@@ -60,6 +60,8 @@ public class CameraController : MonoBehaviour
         float fdistance = normalDirection.magnitude;
         normalDirection = Vector3.Normalize(normalDirection);
 
+        //DiceCount = GetComponent<DiceSystem>().publicDiceNum;
+
         Touch[] touches = Input.touches;
 
         if (mainCamera)
@@ -86,12 +88,15 @@ public class CameraController : MonoBehaviour
 
                     if (ChangeableCount > 0 && ChangeableCount < DiceCount)
                     {
-                        if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                        if (Input.GetTouch(0).phase == TouchPhase.Moved && offset < 1)
                         {
                             if (!PickedMeshObj.GetComponent<MeshController>().isFixed) // 정해져있지 않음, 턴이 지나면 Fixed로 바꿔주는 게 필요
                             {
-                                PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
-                                
+                                if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
+                                {
+                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
+                                    offset = 3;
+                                }
                             }
                         }
                     }
@@ -136,5 +141,6 @@ public class CameraController : MonoBehaviour
                 mainCamera.transform.LookAt(MyPlanet);
             }
         }
+
     }
 }
