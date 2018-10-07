@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class TitleSceneManager : MonoBehaviour
 {
+    void Start()
+    {
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ParsingServerIP();
+    }
 
     public void ClickOnlyClientTestButton()
     {

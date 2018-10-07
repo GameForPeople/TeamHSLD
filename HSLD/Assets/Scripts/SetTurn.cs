@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class SetTurn : MonoBehaviour
 {
-    public float spinTime;
+    private float spinTime = 2;
     private float time_;
     private bool isTrigger = false;
+    static public bool isPicking = false;
     
     public void PickCard(GameObject obj)
     {
@@ -15,20 +16,37 @@ public class SetTurn : MonoBehaviour
             return;
 
         isTrigger = true;
-        if (RndNum() == 0)
-        {
-            gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-            obj.name = "preOrder";
-        }
-
+        
+        //테스트용===========================================================================
+        if(GameObject.Find("NetworkManager") == null)
+            if(RndNum() == 0)
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                obj.name = "preOrder";
+            }
+            else
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                obj.name = "backOrder";
+            }
+        //===================================================================================
 
         else
         {
-            gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
-            obj.name = "backOrder";
+            if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                obj.name = "preOrder";
+            }
+
+
+            else
+            {
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                obj.name = "backOrder";
+            }
         }
-
-
+        
         if (obj.name.Equals("preOrder"))
             StartCoroutine(SpinCard(obj, "선공"));
 
@@ -36,13 +54,14 @@ public class SetTurn : MonoBehaviour
             StartCoroutine(SpinCard(obj, "후공"));
     }
 
-    int RndNum()
+    public int RndNum()
     {
-        return Random.Range(0, 2);
+        return 0;
     }
 
     IEnumerator SpinCard(GameObject obj, string order)
     {
+        isPicking = true;
         time_ = 0;
         while (true)
         {

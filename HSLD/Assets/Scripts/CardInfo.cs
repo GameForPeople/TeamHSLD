@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardInfo : MonoBehaviour
+public class CardInfo : ScriptableObject
 {
     public CARDSET currentCard;
     public ZOOMSTATE currentZoom;
-    public int cnt;
 
+    public Vector2 zoomInSatusCardVec;
+    public Vector2 zoomOutSatusCardVec;
+
+    public int currentCnt;
+    public int maximumCnt;
+    public int minumumCnt;
 }

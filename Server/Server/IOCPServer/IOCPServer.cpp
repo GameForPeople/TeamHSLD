@@ -201,13 +201,14 @@ void IOCPServer::CreateBindListen()
 	retVal = listen(listenSocket, SOMAXCONN);
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
 
-	printf("     [System] Dedicated server activated!\n\n");
 }
 
 
 //Run
 void IOCPServer::AcceptProcess()
 {
+	printf("     [ServerCore] Dedicated server activated!\n\n");
+
 	SOCKET clientSocket;
 	SOCKADDR_IN clientAddr;
 	int addrLength;
@@ -539,7 +540,7 @@ void IOCPServer::WorkerThreadFunction()
 					}
 				}
 				
-				//LobbyScene
+				//LobbyScene - old
 				else if (recvType == DEMAND_MAKEROOM)
 				{
 					ptr->roomIndex = roomData.CreateRoom(ptr->userIndex);
@@ -578,11 +579,55 @@ void IOCPServer::WorkerThreadFunction()
 							continue;
 					}
 				}
+
+				//LobbyScene - new
+				else if (recvType == DEMAND_RANDOM_MATCH)
+				{
+					if (roomData.RandomMatchingProcess(ptr->userIndex, ptr->roomIndex)) // Create!!
+					{
+						ptr->isHost = true;
+
+						int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+						roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						ptr->dataBuffer = new PermitMakeRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitMakeRandomStruct), PERMIT_MAKE_RANDOM))
+							continue;
+					}
+					else // Join!
+					{
+						ptr->isHost = false;
+
+						int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+						roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+						ptr->dataBuffer = new PermitJoinRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitJoinRandomStruct), PERMIT_JOIN_RANDOM))
+							continue;
+					}
+				}
+				else if (recvType == DEMAND_GUEST_JOIN)
+				{
+					if (roomData.GetGameReady(ptr->roomIndex))
+					{
+						ptr->dataBuffer = new PermitGuestJoinStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
+						
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitGuestJoinStruct), PERMIT_GUEST_JOIN))
+							continue;
+					}
+					else
+					{
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), PERMIT_GUEST_NOT_JOIN))
+							continue;
+					}
+				}
 				
-				//RoomScene
+				//RoomScene - old
 				else if (recvType == DEMAND_ROOMHOST) {
 					// 게스트가 들어왔을 때,
-					if (roomData.GetAndSetReadyData(ptr->roomIndex, ptr->isHost))
+					if (roomData.GetGameReady(ptr->roomIndex))
 					{
 						ptr->dataBuffer = new RoomStateGuestInStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
 
@@ -596,22 +641,33 @@ void IOCPServer::WorkerThreadFunction()
 					}
 				}
 				
+				//RoomScene - new
+				else if (recvType == DEMAND_ENEMY_CHARACTER)
+				{
+					roomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
+
+					ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
+
+					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitEnemyCharacterStruct), PERMIT_ENEMY_CHARACTER))
+						continue;
+				}
+
 				// GameScene - Defense Turn
 				else if (recvType == DEMAND_GAME_STATE)
 				{
 					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 					
 					if (dataProtocol)
 					{
-						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex);
+						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
 
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(RoomStateGuestInStruct), dataProtocol))
 						{
 							// Caution!! dataBuffer Delete
-							roomData.DeleteDataBuffer(ptr->roomIndex);
+							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost , 0);
 							continue;
 						}
 					}
@@ -626,7 +682,7 @@ void IOCPServer::WorkerThreadFunction()
 				else if (recvType > 500 && recvType < 600)
 				{
 					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex);
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 
 					if (dataProtocol)
 					{
@@ -640,31 +696,31 @@ void IOCPServer::WorkerThreadFunction()
 					{
 						if (recvType == NOTIFY_END_OF_TURN)
 						{
-							roomData.SetDataProtocol(ptr->roomIndex, NOTIFY_CHANGE_TURN);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
 						}
 						else if (recvType == VOID_CLIENT_TO_SERVER)
 						{
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, VOID_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
 						}
 						else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
 						{
 							//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
-							roomData.SetDataBuffer(ptr->roomIndex, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, CHANGE_PLANET_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
 						}
 						else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
 						{
-							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
 						}
 						else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
 						{
-							roomData.SetDataBuffer(ptr->roomIndex, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
 						}
 
 						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함
@@ -702,9 +758,12 @@ void IOCPServer::SaveUserDataThreadFunction()
 	isOnSaveUserDataThread = true;
 
 	while (isOnSaveUserDataThread) {
-		Sleep(10000);
+		Sleep(1000);	// 1분 단위 저장
+
 		//지금 자야되니까 나중에 이거보면 
-		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네
+		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
+		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+
 		userData.Save(isSaveOn);
 	}
 }

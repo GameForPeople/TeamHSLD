@@ -13,40 +13,81 @@ enum class ROOM_STATE {
 };
 
 class GameRoom {
-	// 일단 다 퍼블릭!! --> 미친놈 // 야 우리 사이에 뭘 숨곃ㅎㅎㅎ
-	GameRoom(const GameRoom&); 
-	GameRoom& operator=(const GameRoom&);
 public:
 	ROOM_STATE roomState;
 	
-	//std::atomic<bool> isOnRenew[2]{ false };
-	//bool isOnExit{ false };	// 한 명이 나갈 경우! true로 처리해줌.
 	int	userIndex[2]{};
-	std::atomic<int> dataProtocol{};
 
-	bool isOnReady[2]{false}; //0이 Host, 1이 Guest
+	int hostMissionIndex;
+	int guestMissionIndex;
+	int subMissionIndex;
 
-	BaseStruct* dataBuffer;
+	int hostCharacterIndex;
+	int guestCharacterIndex;
 
-	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), dataBuffer(nullptr), dataProtocol(0)
-	{};
+	// For Packing! --> bool고냥 쓰고(데이터 절약) Data Structure 에서만 int로 변환하여 전송..! 
+	bool isHostFirst;
+	//int isHostFirst;
+
+	// error
+	//std::atomic<int> dataProtocol;
+
+	int hostDataProtocol;
+	int guestDataProtocol;
+	
+	BaseStruct* hostDataBuffer;
+	BaseStruct* guestDataBuffer;
+
+public:
+	//GameRoom(const GameRoom&) = delete; 
+	GameRoom& operator=(const GameRoom&) = delete;
+
+	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(0), guestDataProtocol(0)
+		, hostMissionIndex(), guestMissionIndex(), subMissionIndex(), hostCharacterIndex(), guestCharacterIndex(), isHostFirst()
+	{}
 
 	//__inline ~GameRoom() = default;
 	__inline ~GameRoom()
 	{
-		if (dataBuffer != nullptr)
+		if (hostDataBuffer != nullptr)
 		{
-			delete dataBuffer;
+			delete hostDataBuffer;
+		}
+
+		if (guestDataBuffer != nullptr)
+		{
+			delete guestDataBuffer;
 		}
 	}
 
 	__inline void CreateRoom(const int InHostIndex)
 	{
-
 		userIndex[0] = InHostIndex;
 		roomState = ROOM_STATE::ROOM_STATE_SOLO;
 		//isOnRenew[0] = true; // 방을 만드는 입장에서는 항상 0이 비어있어야함!
 		//이걸 여기다가 쓰지 말고, 데이터를 보내야 할때만 쓰자.
+
+		hostMissionIndex = rand() % 5;
+		guestMissionIndex = rand() % 5;
+		subMissionIndex = rand() % 5;
+
+		hostCharacterIndex = 1;
+		guestCharacterIndex = 1;
+
+		isHostFirst = rand() % 2;
+
+		hostDataProtocol = 0;
+		guestDataProtocol = 0;
+
+		if (hostDataBuffer != nullptr)
+		{
+			delete hostDataBuffer;
+		}
+
+		if (guestDataBuffer != nullptr)
+		{
+			delete guestDataBuffer;
+		}
 	}
 
 	__inline void JoinRoom(const int InGuestIndex)
@@ -55,9 +96,70 @@ public:
 		//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
 
 		userIndex[1] = InGuestIndex;
-		isOnReady[0] = true;
 		roomState = ROOM_STATE::ROOM_STATE_WAIT;
 		//}
+	}
+
+
+//new Function
+public:
+	__inline bool GetGameReady()
+	{
+		if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
+			return true;
+
+		return false;
+	}
+
+	void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, int& retEnemyMissionIndex, int& retSubMissionIndex)
+	{
+		if (InIsHost)
+		{
+			retPlayerMissionIndex = hostMissionIndex;
+			retEnemyMissionIndex = guestMissionIndex;
+		}
+		else
+		{
+			retPlayerMissionIndex = guestMissionIndex;
+			retEnemyMissionIndex = hostMissionIndex;
+		}
+		
+		if (isHostFirst)
+		{
+			retIsHostFirst = 1;
+		}
+		else
+		{
+			retIsHostFirst = 0;
+		}
+
+		retSubMissionIndex = subMissionIndex;
+
+		return;
+	}
+
+	void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
+	{
+		if (InIsHost)
+		{
+			hostCharacterIndex = InCharacterIndex;
+		}
+		else
+		{
+			guestCharacterIndex = InCharacterIndex;
+		}
+	}
+
+	int& GetEnemyCharacterIndex(const bool& InIsHost)
+	{
+		if (InIsHost)
+		{
+			return guestCharacterIndex;
+		}
+		else
+		{
+			return hostCharacterIndex;
+		}
 	}
 };
 
@@ -135,59 +237,101 @@ public:
 			return rooms[InRoomIndex].userIndex[0];
 	}
 
-	__inline bool GetAndSetReadyData(const int InRoomIndex, const bool InIsHost)
+	__inline bool GetGameReady(const int& InRoomIndex)
 	{
-		if (InIsHost) 
-		{
-			if (rooms[InRoomIndex].isOnReady[0]) 
-			{
-				rooms[InRoomIndex].isOnReady[0] = false;
-				return true;
-			}
-			return false;
-		}
-		else
-		{
-			if (rooms[InRoomIndex].isOnReady[1])
-			{
-				rooms[InRoomIndex].isOnReady[1] = false;
-				return true;
-			}
-			return false;
-		}
+		return (rooms[InRoomIndex].GetGameReady());
 	}
 
 //for InGame
 public:
 	// 레퍼런스 쓰지말자 일단은. 마지막 단계에서 데이터 프로토콣 변경해야지
 	// atomic
-	int GetDataProtocol(const int InRoomIndex) const
+	int GetDataProtocol(const bool& InIsHost, const int& InRoomIndex) const
 	{
-		return rooms[InRoomIndex].dataProtocol;
+		if(InIsHost)
+			return rooms[InRoomIndex].guestDataProtocol;
+		else 
+			return rooms[InRoomIndex].hostDataProtocol;
+	}
+	
+	// atomic                                                             // 레퍼런스 쓰면 enum 못받는다.
+	void SetDataProtocol(const int& InRoomIndex, const bool& InIsHost, const int InNewDataProtocol ) //= 0)
+	{
+		if (InIsHost)
+			rooms[InRoomIndex].hostDataProtocol = InNewDataProtocol;
+		else
+			rooms[InRoomIndex].guestDataProtocol = InNewDataProtocol;
 	}
 
-	// atomic 
-	void SetDataProtocol(const int InRoomIndex, const int InNewDataProtocol = 0)
+	BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
 	{
-		rooms[InRoomIndex].dataProtocol = InNewDataProtocol;
+		if (InIsHost)
+			return rooms[InRoomIndex].guestDataBuffer;
+		else
+			return rooms[InRoomIndex].hostDataBuffer;
 	}
 
-
-	BaseStruct* GetDataBuffer(const int InRoomIndex) // const
-	{
-		return rooms[InRoomIndex].dataBuffer;
-	}
-
-	void SetDataBuffer(const int InRoomIndex, BaseStruct InBaseStruct)
+	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct InBaseStruct)
 	{
 		// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
-		rooms[InRoomIndex].dataBuffer = &InBaseStruct;
+		if (InIsHost)
+			rooms[InRoomIndex].hostDataBuffer = &InBaseStruct;
+		else
+			rooms[InRoomIndex].guestDataBuffer = &InBaseStruct;
 	}
 
-	// Caution!! dataBuffer Delete
-	void DeleteDataBuffer(const int InRoomIndex)
+	// Caution!! Delete dataBuffer!
+	void DeleteDataBuffer(const int& InRoomIndex, const bool& InIsHost)
 	{
-		delete rooms[InRoomIndex].dataBuffer;
+		if (InIsHost)
+			delete rooms[InRoomIndex].guestDataBuffer;
+		else
+			delete rooms[InRoomIndex].hostDataBuffer;
 	}
+
+
+public:
+	// new Function
+
+	// True = Create , False = Join
+	bool RandomMatchingProcess(const int InUserIndex, int& RetRoomIndex)
+	{
+		for (RetRoomIndex = 0; RetRoomIndex < ROOM_MAX; ++RetRoomIndex)
+		{
+			if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_SOLO)
+			{
+				rooms[RetRoomIndex].JoinRoom(InUserIndex);
+
+				return false;
+			}
+		}
+
+		for (RetRoomIndex = 0; RetRoomIndex < ROOM_MAX; ++RetRoomIndex)
+		{
+			if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_VOID)
+			{
+				rooms[RetRoomIndex].CreateRoom(InUserIndex);
+
+				return true;
+			}
+		}
+	}
+
+	void GetRoomGameData(const int& InRoomIndex, const bool& InIsHost, int& retIsHostFirst , int& retPlayerMissionIndex, int& retEnemyMissionIndex, int& retSubMissionIndex)
+	{
+		rooms[InRoomIndex].GetRoomGameData(InIsHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+	}
+
+	void SetCharacterIndex(const int& InRoomIndex, const bool& InIsHost, const int& InCharacterIndex)
+	{
+		rooms[InRoomIndex].SetCharacterIndex(InIsHost, InCharacterIndex);
+	}
+
+	int& GetEnemyCharacterIndex(const int& InRoomIndex, const bool& InIsHost)
+	{
+		return rooms[InRoomIndex].GetEnemyCharacterIndex(InIsHost);
+	}
+
+private:
 
 };
