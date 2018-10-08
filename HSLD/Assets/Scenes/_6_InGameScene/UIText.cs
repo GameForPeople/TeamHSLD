@@ -28,7 +28,7 @@ public class UIText : MonoBehaviour {
 
     void Update()
     {
-        TestCount = mainCamera.GetComponent<CameraController>().ChangeableCount;
+        TestCount = CameraController.ChangeableCount;
 
         DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + TestCount + "\n";
 

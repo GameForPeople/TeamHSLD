@@ -37,12 +37,18 @@ public class MeshController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //Debug.Log(SceneManager.GetComponent<CardSystem>().pickedCard);
+
         if (isAwake)
         {
             if (terrainstate == Terrain.DEFAULT) // 기본 터레인인거면 아무도 안건들였음을 의미 함.
             {
-                if (GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount > 0)
+                if (CameraController.ChangeableCount > 0)
                 {
+                    // 임시
+                    setBarren();
+                    CameraController.ChangeableCount--;
+
                     if (SceneManager.GetComponent<CardSystem>().pickedCard)
                     {
                         Debug.Log("picked");
@@ -73,18 +79,18 @@ public class MeshController : MonoBehaviour {
                             Debug.Log("EventCardImg2");
                             setMountain();
                         }
-                        GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount--;
+                        CameraController.ChangeableCount--;
                     }
                    
                 }
             }
             else // 그 외 지형카드로 색을 칠했었던거라면 다시 돌려줌
             {
-                if (GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount < 10) {
+                if (CameraController.ChangeableCount < 10) {
                     GetComponent<MeshRenderer>().material = defaultMaterial;
                     terrainstate = Terrain.DEFAULT;
 
-                    GameObject.FindWithTag("MainCamera").GetComponent<CameraController>().ChangeableCount++;
+                    CameraController.ChangeableCount++;
                 }
             }
 

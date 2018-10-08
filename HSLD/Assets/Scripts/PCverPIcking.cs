@@ -10,7 +10,7 @@ public class PCverPIcking : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitObj;
@@ -18,8 +18,11 @@ public class PCverPIcking : MonoBehaviour
             if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
             {
                 PickedMeshObj = hitObj.transform.gameObject;
+
                 if (PickedMeshObj.GetComponent<MeshController>() == null)
+                {
                     PickedMeshObj.AddComponent<MeshController>();
+                }
 
                 //정해져있지 않음, 턴이 지나면 Fixed로 바꿔주는 게 필요
                 if (!PickedMeshObj.GetComponent<MeshController>().isFixed && CameraController.offset < 1)
