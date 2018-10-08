@@ -35,6 +35,9 @@ public class TurnSystem : MonoBehaviour
 
     private void Start()
     {
+        if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))
+            return;
+
         StartCoroutine(ReadySetCardTimer());
     }
 
