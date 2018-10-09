@@ -32,6 +32,7 @@ public class MeshController : MonoBehaviour {
         isFixed = false;
         giveNumber++;
         MeshNumber = giveNumber;
+        name = giveNumber.ToString();
         SceneManager = GameObject.Find("InGameSceneManager");
     }
 	
@@ -79,7 +80,6 @@ public class MeshController : MonoBehaviour {
                             Debug.Log("EventCardImg2");
                             setMountain();
                         }
-                        CameraController.ChangeableCount--;
                     }
                    
                 }
@@ -89,7 +89,6 @@ public class MeshController : MonoBehaviour {
                 if (CameraController.ChangeableCount < 10) {
                     GetComponent<MeshRenderer>().material = defaultMaterial;
                     terrainstate = Terrain.DEFAULT;
-
                     CameraController.ChangeableCount++;
                 }
             }
