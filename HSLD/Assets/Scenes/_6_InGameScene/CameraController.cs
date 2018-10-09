@@ -51,8 +51,6 @@ public class CameraController : MonoBehaviour
         float fdistance = normalDirection.magnitude;
         normalDirection = Vector3.Normalize(normalDirection);
 
-        //DiceCount = GetComponent<DiceSystem>().publicDiceNum;
-
         Touch[] touches = Input.touches;
 
         if (mainCamera)
@@ -60,11 +58,58 @@ public class CameraController : MonoBehaviour
             if (offset > 0)
             {
                 offset -= 0.1f;
-                //Debug.Log(offset);
             } // 피킹 관련 
+
+            if (Input.touchCount == 2)
+            {
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
+
+                if (fdistance < minDistance && fdistance > maxDistance)
+                {
+                    priorPosition = myTransform.position;
+                    myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
+                }
+
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+
+                    PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
+
+                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
+                        (Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
+
+                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
+                        (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
+
+                    PrevPoint = Input.GetTouch(0).position;
+                }
+                mainCamera.transform.LookAt(MyPlanet);
+            }
 
             if (!myTurn)
             {
+                if (Once == false) // 상대 턴으로 갈 때 한번만
+                {
+                    for(int i = 0; i < PickContainer.Length; i++)
+                    {
+                        if (PickContainer[i] != 0)
+                        {
+                            GameObject.Find(PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
+                            GameObject.Find(PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
+                        } // 내가 픽했던 메시들 fixed로 고정
+                    }
+                    PickContainer.Initialize(); // 컨테이너는 초기화
+                    // 
+                }
                 DiceCount = DiceSystem.getDiceNum;
 
                 if (fdistance >= minDistance || fdistance <= maxDistance)
@@ -84,48 +129,14 @@ public class CameraController : MonoBehaviour
                     }
                 }
 
-                if (Input.touchCount == 2)
-                {
-                    Touch touchZero = Input.GetTouch(0);
-                    Touch touchOne = Input.GetTouch(1);
-
-                    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-                    float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                    float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-                    float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
-
-                    if (fdistance < minDistance && fdistance > maxDistance)
-                    {
-                        priorPosition = myTransform.position;
-                        myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
-                    }
-
-                    if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                    {
-
-                        PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
-
-                        mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                            (Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
-
-                        mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                            (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
-
-                        PrevPoint = Input.GetTouch(0).position;
-                    }
-                    mainCamera.transform.LookAt(MyPlanet);
-                }
-
                 Once = true;
 
                 return;
             }
 
-            if (Once == true) // 턴 바뀌고 한 번만
+            if (Once == true) // 내 턴으로 돌아왔을 떄 한 번만
             {
+                PickContainer.Initialize();
                 DiceCount = 10; // DiceSystem.getDiceNum;
                 ChangeableCount = DiceCount - 1;
 
@@ -139,88 +150,53 @@ public class CameraController : MonoBehaviour
                     myTransform.position = priorPosition;
                 } // 확대축소 관련
 
-                if (Input.touchCount == 1)
+                if (Input.touchCount == 1 && offset < 0.5)
                 {
-                    RaycastHit hit;
+                    RaycastHit hitObj;
 
                     Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit))
+                    if (Physics.Raycast(ray, out hitObj))
                     {
-                        PickedMeshObj = GameObject.Find(hit.transform.name);
+                        PickedMeshObj = hitObj.transform.gameObject;
 
-                        if (ChangeableCount > 0 && ChangeableCount < DiceCount)
+                        if (PickedMeshObj.GetComponent<MeshController>() == null)
                         {
-                            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                            PickedMeshObj.AddComponent<MeshController>();
+                        }
+
+                        if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
+                        {
+                            if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
                             {
-                                if (!PickedMeshObj.GetComponent<MeshController>().isFixed) // 정해져있지 않음, 턴이 지나면 Fixed로 바꿔주는 게 필요
+                                int temp = -1;
+                                for (int i = 0; i < PickContainer.Length; i++)
                                 {
-                                    if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
+                                    if (PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
                                     {
-                                        int temp = -1;
-                                        for (int i = 0; i < PickContainer.Length; i++)
+                                        temp = i;
+                                    }
+                                    if (PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
+                                    {
+                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                        PickContainer[i] = 0;
+                                        offset = 2;
+                                        break;
+                                    } // 이미 들어있다면 무시
+                                    if (i == PickContainer.Length - 1)
+                                    {
+                                        if (temp != -1)
                                         {
-                                            if (PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
-                                            {
-                                                temp = i;
-                                            }
-                                            if (PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
-                                            {
-                                                PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                                PickContainer[i] = 0;
-                                                ChangeableCount++;
-                                                break;
-                                            } // 이미 들어있다면 해당 자리를 0으로 바꿔주고 색 바꿈
-                                            if (i == PickContainer.Length - 1)
-                                            {
-                                                PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
-                                                Debug.Log("awake");
-                                                PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
-                                                ChangeableCount--;
-                                            }
+                                            PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
+                                            PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
+                                            offset = 2;
+
+                                            break;
                                         }
                                     }
                                 }
                             }
                         }
-                    }
-
-                    if (Input.touchCount == 2)
-                    {
-                        Touch touchZero = Input.GetTouch(0);
-                        Touch touchOne = Input.GetTouch(1);
-
-                        Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                        Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-                        float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                        float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-                        float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
-
-                        if (fdistance < minDistance && fdistance > maxDistance)
-                        {
-                            priorPosition = myTransform.position;
-                            myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
-                        }
-
-                        if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                        {
-
-                            PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
-
-                            //charTarget.transform.Rotate(0, -(Input.GetTouch(0).position.x - PrevPoint.x) * cameraSensitivity, 0);
-
-
-                            mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                                (Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
-
-                            mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                                (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
-
-                            PrevPoint = Input.GetTouch(0).position;
-                        }
-                        mainCamera.transform.LookAt(MyPlanet);
                     }
                     Once = false;
                 }

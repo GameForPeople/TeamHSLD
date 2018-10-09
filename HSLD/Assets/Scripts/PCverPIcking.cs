@@ -23,8 +23,7 @@ public class PCverPIcking : MonoBehaviour
                 {
                     PickedMeshObj.AddComponent<MeshController>();
                 }
-
-                //정해져있지 않음, 턴이 지나면 Fixed로 바꿔주는 게 필요
+                
                 if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
                 {
                     if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
@@ -51,12 +50,6 @@ public class PCverPIcking : MonoBehaviour
                                     PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
                                     CameraController.offset = 3;
 
-                                    //Debug.Log(CameraController.PickContainer);
-
-                                    for (int j = 0; j < CameraController.PickContainer.Length; j++)
-                                    {
-                                        Debug.Log(CameraController.PickContainer[j]);
-                                    }
                                     break;
                                 }
                             }

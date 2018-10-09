@@ -21,6 +21,7 @@ public class MeshController : MonoBehaviour {
     public Terrain terrainstate;
     public bool isAwake;
     public bool isFixed;
+    public bool isMine;
     // Use this for initialization
     public GameObject SceneManager;
 
@@ -30,6 +31,7 @@ public class MeshController : MonoBehaviour {
         defaultMaterial = Resources.Load<Material>("M_Default");
         isAwake = false;
         isFixed = false;
+        isMine = false;
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
@@ -68,6 +70,16 @@ public class MeshController : MonoBehaviour {
                         else if (picked.name.Equals("TerrainCardImg3"))
                         {
                             Debug.Log("TerrainCardImg3");
+                            setCold();
+                        }
+                        else if (picked.name.Equals("TerrainCardImg4"))
+                        {
+                            Debug.Log("임시");
+                            setCold();
+                        }
+                        else if (picked.name.Equals("TerrainCardImg5"))
+                        {
+                            Debug.Log("임시");
                             setCold();
                         }
                         else if (picked.name.Equals("EventCardImg1"))
