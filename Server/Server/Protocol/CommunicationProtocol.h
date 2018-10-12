@@ -42,7 +42,7 @@ enum Protocol {
 	DEMAND_ENEMY_CHARACTER = 421,   // 내 캐릭터 변경 정보를 전송하고,
 	PERMIT_ENEMY_CHARACTER = 422,   // 상대방의 캐릭터 정보를 받아옵니다.
 
-
+	DISCONNECTED_ENEMY_CLIENT = 498, // 상대편 클라이언트 네트워크 예외 처리 (roomProtocol 및 클라에서 적용)
 
 
 	// for GameScene

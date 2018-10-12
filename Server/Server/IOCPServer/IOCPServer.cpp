@@ -334,10 +334,25 @@ void IOCPServer::WorkerThreadFunction()
 		// 근데 이거 에코서버일떄만 그래야되는거 아니야???? 몰봐 임마 뭘봐 모를수도 있지
 		if (retVal == 0 || cbTransferred == 0)
 		{
+			// 게임 방에서 나갔을 경우, 서버의 해당 클라의 ptr->RoomIndex = -1로 변경하는 작업 필요.
+			if (ptr->roomIndex >= 0) 
+			{
+				if (int ReturnEnemyIndexBuffer; roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
+				{
+					// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
+					userData.SetGameResult(ReturnEnemyIndexBuffer, true);
+					userData.SetGameResult(ptr->userIndex, false);
+				}
+				else
+				{
+					// 게임 중이 아니였거나, 완전히 다른 거 중. 
+					//...? 할게 없나...?
+				}
+			}
+
 			userData.SignOut(ptr->userIndex);
 
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
-
 			if (retVal == 0)
 			{
 				DWORD temp1, temp2;

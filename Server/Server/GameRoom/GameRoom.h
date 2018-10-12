@@ -161,6 +161,39 @@ public:
 			return hostCharacterIndex;
 		}
 	}
+
+	bool SignOut(const bool& isHost, int& RetEnemyIndex)
+	{
+		if (roomState == ROOM_STATE::ROOM_STATE_SOLO)
+		{
+			roomState = ROOM_STATE::ROOM_STATE_VOID; // 여기서는 이걸 해도 되지만, 아래에서는 이러면 클남.
+			return false;
+		}
+		else if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
+		{
+			hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+
+			return false;
+		}
+		else if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
+		{
+			hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			// 여기서 게임 결과 처리...!
+
+			if (isHost)
+			{
+				RetEnemyIndex = userIndex[1];
+			}
+			else
+			{
+				RetEnemyIndex = userIndex[0];
+			}
+
+			return true;
+		}
+	}
 };
 
 class CGameRoom {
@@ -329,7 +362,13 @@ public:
 
 	int& GetEnemyCharacterIndex(const int& InRoomIndex, const bool& InIsHost)
 	{
+		// 이거 레퍼런스로 반환해도 되나...?
 		return rooms[InRoomIndex].GetEnemyCharacterIndex(InIsHost);
+	}
+
+	bool SignOut(const int& InRoomIndex, const bool& InIsHost, int& RetEnemyIndex)
+	{
+		return rooms[InRoomIndex].SignOut(InIsHost, RetEnemyIndex);
 	}
 
 private:

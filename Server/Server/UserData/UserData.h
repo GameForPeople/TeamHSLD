@@ -62,6 +62,13 @@ public:
 		else if (value == 2) { m_loseCount++; }
 		return;
 	}
+	__inline void	SetGameResult(const bool& InWinOrLose)
+	{
+		if (InWinOrLose)
+			++m_winCount;
+		else
+			++m_loseCount;
+	}
 };
 
 class CUserData {
@@ -228,5 +235,10 @@ public:
 	__inline string GetUserID(const int InIndex)
 	{
 		return player[InIndex].GetID();
+	}
+
+	__inline void SetGameResult(const int& InPlayerIndex, const bool& InWinOrLose)
+	{
+		player[InPlayerIndex].SetGameResult(InWinOrLose);
 	}
 };
