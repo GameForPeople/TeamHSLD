@@ -56,7 +56,7 @@ public class SetTurn : MonoBehaviour
 
     public int RndNum()
     {
-        return 0;
+        return Random.Range(0,2);
     }
 
     IEnumerator SpinCard(GameObject obj, string order)
@@ -75,7 +75,5 @@ public class SetTurn : MonoBehaviour
             if (time_ > spinTime)
                 break;
         }
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_TURNORDER);
-        Destroy(gameObject.GetComponent<SetTurn>());
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -147,6 +147,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &4287146
 GameObject:
@@ -258,6 +259,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &5946328
 GameObject:
@@ -445,6 +447,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &17308422
 GameObject:
@@ -708,6 +711,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &31305738 stripped
 GameObject:
@@ -743,6 +747,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &35264477 stripped
 GameObject:
@@ -778,6 +783,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &35864787
 GameObject:
@@ -1041,6 +1047,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &49582510
 GameObject:
@@ -1152,6 +1159,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &54276500 stripped
 GameObject:
@@ -1187,6 +1195,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &55400396
 GameObject:
@@ -1374,6 +1383,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &69651916 stripped
 GameObject:
@@ -1409,6 +1419,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &73016155
 GameObject:
@@ -1520,6 +1531,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &79606563
 GameObject:
@@ -1631,6 +1643,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &81462916 stripped
 GameObject:
@@ -1666,6 +1679,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &82822055 stripped
 GameObject:
@@ -1701,6 +1715,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &82848385
 GameObject:
@@ -1913,6 +1928,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &89703162
 GameObject:
@@ -2100,6 +2116,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &108271741 stripped
 GameObject:
@@ -2135,6 +2152,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &113498411
 GameObject:
@@ -2292,6 +2310,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &119588798 stripped
 GameObject:
@@ -2327,6 +2346,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &130673201 stripped
 GameObject:
@@ -2362,6 +2382,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &131071464 stripped
 GameObject:
@@ -2397,6 +2418,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &136879311 stripped
 GameObject:
@@ -2432,6 +2454,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &141128050 stripped
 GameObject:
@@ -2467,6 +2490,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &143664514 stripped
 GameObject:
@@ -2502,6 +2526,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &147982413
 GameObject:
@@ -2613,6 +2638,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &153429358 stripped
 GameObject:
@@ -2648,6 +2674,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &153673035
 GameObject:
@@ -2759,6 +2786,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &156797254
 GameObject:
@@ -2870,6 +2898,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &164558559
 GameObject:
@@ -3057,6 +3086,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &170091625 stripped
 GameObject:
@@ -3092,6 +3122,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &171084210 stripped
 GameObject:
@@ -3127,6 +3158,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &177965627 stripped
 GameObject:
@@ -3162,6 +3194,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &180195419 stripped
 GameObject:
@@ -3197,6 +3230,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &180696119
 GameObject:
@@ -3308,6 +3342,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &184317044 stripped
 GameObject:
@@ -3343,6 +3378,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &188344167
 GameObject:
@@ -3454,7 +3490,132 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
+--- !u!1 &197035969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197035970}
+  - component: {fileID: 197035971}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &197035970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197035969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 823012257}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &197035971
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197035969}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &197895681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,6 +3760,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &203382341 stripped
 GameObject:
@@ -3634,6 +3796,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &203438008
 GameObject:
@@ -3821,6 +3984,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &212851319 stripped
 GameObject:
@@ -3856,6 +4020,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &215115340
 GameObject:
@@ -3967,6 +4132,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &225109579 stripped
 GameObject:
@@ -4002,6 +4168,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &229308353 stripped
 GameObject:
@@ -4037,6 +4204,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &229903631
 GameObject:
@@ -4148,6 +4316,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &241331999 stripped
 GameObject:
@@ -4183,6 +4352,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &244480697
 GameObject:
@@ -4370,6 +4540,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &248390576
 GameObject:
@@ -4516,6 +4687,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &264763494
 GameObject:
@@ -4813,6 +4985,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &271887821
 GameObject:
@@ -5000,6 +5173,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &277339579
 GameObject:
@@ -5339,6 +5513,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &307630133
 GameObject:
@@ -5450,6 +5625,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &310438292 stripped
 GameObject:
@@ -5485,6 +5661,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &312016052
 GameObject:
@@ -5672,6 +5849,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &326723863 stripped
 GameObject:
@@ -5707,6 +5885,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &332690597
 GameObject:
@@ -5818,6 +5997,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &336637860 stripped
 GameObject:
@@ -5853,6 +6033,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &339052602 stripped
 GameObject:
@@ -5888,6 +6069,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &341697004
 GameObject:
@@ -6220,6 +6402,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &370548996
 GameObject:
@@ -6331,6 +6514,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &374445970
 GameObject:
@@ -6569,6 +6753,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &377995504
 GameObject:
@@ -6906,6 +7091,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &392990258
 GameObject:
@@ -7017,6 +7203,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &397624358
 GameObject:
@@ -7280,6 +7467,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &401093704 stripped
 GameObject:
@@ -7315,6 +7503,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &401437443
 GameObject:
@@ -7426,6 +7615,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &404702594
 GameObject:
@@ -7537,6 +7727,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &408417171 stripped
 GameObject:
@@ -7572,6 +7763,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &409749054
 GameObject:
@@ -7835,6 +8027,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &418698308 stripped
 GameObject:
@@ -7870,6 +8063,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &424579409
 GameObject:
@@ -8278,6 +8472,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &442304538 stripped
 GameObject:
@@ -8313,6 +8508,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &445073188
 GameObject:
@@ -8433,6 +8629,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &451282576 stripped
 GameObject:
@@ -8468,6 +8665,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &453035472 stripped
 GameObject:
@@ -8503,6 +8701,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &455544383
 GameObject:
@@ -8614,6 +8813,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &464085634
 GameObject:
@@ -8801,6 +9001,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &479246501
 GameObject:
@@ -8912,6 +9113,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &485024293 stripped
 GameObject:
@@ -8947,6 +9149,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &489911122
 GameObject:
@@ -9058,6 +9261,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &493034999
 GameObject:
@@ -9623,6 +9827,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &513719430 stripped
 GameObject:
@@ -9658,6 +9863,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &517522759 stripped
 GameObject:
@@ -9693,6 +9899,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &521397301 stripped
 GameObject:
@@ -9728,6 +9935,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &523002123
 GameObject:
@@ -9839,6 +10047,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &524108108 stripped
 GameObject:
@@ -9874,6 +10083,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &524446939
 GameObject:
@@ -10137,6 +10347,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &529892250
 GameObject:
@@ -10446,6 +10657,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &535992572
 GameObject:
@@ -10633,6 +10845,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &540423455
 GameObject:
@@ -10891,6 +11104,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &552896767 stripped
 GameObject:
@@ -10926,6 +11140,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &554599682 stripped
 GameObject:
@@ -10961,6 +11176,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &559968541
 GameObject:
@@ -11072,6 +11288,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &564520935 stripped
 GameObject:
@@ -11107,6 +11324,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &566916473 stripped
 GameObject:
@@ -11142,6 +11360,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &567034065
 GameObject:
@@ -11329,6 +11548,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &579928386 stripped
 GameObject:
@@ -11364,6 +11584,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &580781577 stripped
 GameObject:
@@ -11399,6 +11620,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &584701206
 GameObject:
@@ -11510,6 +11732,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &598223319
 GameObject:
@@ -11621,6 +11844,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &601488987 stripped
 GameObject:
@@ -11656,6 +11880,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &604852088
 GameObject:
@@ -11919,6 +12144,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &626600804
 GameObject:
@@ -12030,6 +12256,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &634228469
 GameObject:
@@ -12141,6 +12368,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &637065895 stripped
 GameObject:
@@ -12176,6 +12404,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &638877864
 GameObject:
@@ -12287,6 +12516,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &643797691
 GameObject:
@@ -12840,6 +13070,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &678267381
 GameObject:
@@ -13310,6 +13541,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &700057829 stripped
 GameObject:
@@ -13345,6 +13577,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &705225460
 GameObject:
@@ -13456,6 +13689,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &705727471
 GameObject:
@@ -13567,6 +13801,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &714531778 stripped
 GameObject:
@@ -13602,6 +13837,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &715297751
 GameObject:
@@ -14026,6 +14262,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &738747529
 GameObject:
@@ -14278,6 +14515,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &746530198
 GameObject:
@@ -14465,6 +14703,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &759865688 stripped
 GameObject:
@@ -14500,6 +14739,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &765737525 stripped
 GameObject:
@@ -14535,6 +14775,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &765903032 stripped
 GameObject:
@@ -14570,6 +14811,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &770031913
 GameObject:
@@ -14681,6 +14923,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &773325323
 GameObject:
@@ -14792,6 +15035,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &784154797 stripped
 GameObject:
@@ -14827,6 +15071,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &788573272
 GameObject:
@@ -15098,6 +15343,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &805254481
 GameObject:
@@ -15320,6 +15566,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &815214205 stripped
 GameObject:
@@ -15355,6 +15602,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &819413570 stripped
 GameObject:
@@ -15390,6 +15638,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &820614603 stripped
 GameObject:
@@ -15425,6 +15674,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &823012255
 GameObject:
@@ -15473,7 +15723,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -85.98956, y: -1.53893, z: -140.69225}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 879483282}
+  - {fileID: 979717418}
+  - {fileID: 197035970}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15495,7 +15748,7 @@ MonoBehaviour:
   readySlider: {fileID: 1877448661}
   currentTurn: 0
   rollingDiceTime: 10
-  pickingTerrainCardTime: 5
+  pickingTerrainCardTime: 10
   pickingEventCardTime: 15
   selectPlanetTerrainTime: 20
   warningPanel: {fileID: 1362228162}
@@ -15532,7 +15785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 10
+  currentFlow: 0
   cardCanvas: {fileID: 1055813589}
   cardSetCanvas: {fileID: 1161714766}
   turnSetCanvas: {fileID: 806044292}
@@ -15561,101 +15814,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayTotalCnt: {fileID: 1282844375}
---- !u!82 &823012263
-AudioSource:
+--- !u!114 &823012263
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 823012255}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4917ec44cb74b154f98a7f3114e9dac2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82175a985a8233b418df45caf49e4fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMSource:
+  - {fileID: 879483283}
+  - {fileID: 979717419}
+  SFXSource: {fileID: 197035971}
+  clips:
+  - {fileID: 8300000, guid: f6c539dced863644486e27c45b238ed3, type: 3}
+  - {fileID: 8300000, guid: d3f9670a3a75aaf418d8c1f89072c4b8, type: 3}
+  - {fileID: 8300000, guid: 786309b0c9485b44e88015e2010bd393, type: 3}
+  - {fileID: 8300000, guid: fbc571533f9428b42920960bb1c3732e, type: 3}
+  - {fileID: 8300000, guid: c713b7e5700a7404f8ac7c0c6cf5005d, type: 3}
+  - {fileID: 8300000, guid: c3c1b6f87f71e1548b3327bf377986ae, type: 3}
+  - {fileID: 8300000, guid: ed617c8a6db25824981ce1f435e630aa, type: 3}
+  - {fileID: 8300000, guid: 35d46de5754a0f54fb8e3708777fe959, type: 3}
+  BGMMaximumVolume: 0.5
+  BGMMinimumVolume: 0
 --- !u!1 &832642332
 GameObject:
   m_ObjectHideFlags: 0
@@ -16222,6 +16406,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &864161486 stripped
 GameObject:
@@ -16257,6 +16442,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &864600778 stripped
 GameObject:
@@ -16292,6 +16478,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &866923194 stripped
 GameObject:
@@ -16327,6 +16514,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &868341444
 GameObject:
@@ -16514,6 +16702,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &876933951 stripped
 GameObject:
@@ -16549,7 +16738,132 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
+--- !u!1 &879483281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879483282}
+  - component: {fileID: 879483283}
+  m_Layer: 0
+  m_Name: BGM_Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &879483282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879483281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 823012257}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &879483283
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879483281}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &882087829
 GameObject:
   m_ObjectHideFlags: 0
@@ -16660,6 +16974,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &883914049 stripped
 GameObject:
@@ -16695,6 +17010,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &887061813
 GameObject:
@@ -16958,6 +17274,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &901911844
 GameObject:
@@ -17069,6 +17386,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1001 &908605739
 Prefab:
@@ -17150,6 +17468,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &911726643 stripped
 GameObject:
@@ -17185,6 +17504,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &912114743 stripped
 GameObject:
@@ -17220,6 +17540,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &913065674
 GameObject:
@@ -17331,6 +17652,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &914654594 stripped
 GameObject:
@@ -17366,6 +17688,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &920678666
 GameObject:
@@ -17926,6 +18249,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &945472856
 GameObject:
@@ -18121,6 +18445,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &961288523
 GameObject:
@@ -18308,6 +18633,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &966816709
 GameObject:
@@ -18647,7 +18973,132 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
+--- !u!1 &979717417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 979717418}
+  - component: {fileID: 979717419}
+  m_Layer: 0
+  m_Name: BGM_Sub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979717418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979717417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 823012257}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &979717419
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979717417}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &987082715
 GameObject:
   m_ObjectHideFlags: 0
@@ -18758,6 +19209,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &990876920 stripped
 GameObject:
@@ -18793,6 +19245,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &993688310
 GameObject:
@@ -18904,6 +19357,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &996261728 stripped
 GameObject:
@@ -18939,6 +19393,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &999083812 stripped
 GameObject:
@@ -18974,6 +19429,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1003098075 stripped
 GameObject:
@@ -19009,6 +19465,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1007288718
 GameObject:
@@ -19120,6 +19577,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1010797641
 GameObject:
@@ -19353,6 +19811,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1015116477
 GameObject:
@@ -19540,6 +19999,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1018319071
 GameObject:
@@ -19727,6 +20187,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1023298873 stripped
 GameObject:
@@ -19762,6 +20223,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1025060311
 GameObject:
@@ -19873,6 +20335,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1033011305 stripped
 GameObject:
@@ -19908,6 +20371,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1042028599 stripped
 GameObject:
@@ -19943,6 +20407,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1046382994 stripped
 GameObject:
@@ -19978,6 +20443,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1046899817
 GameObject:
@@ -20089,6 +20555,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1048693602 stripped
 GameObject:
@@ -20124,6 +20591,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1051069225
 GameObject:
@@ -20235,6 +20703,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1055192444
 GameObject:
@@ -20838,6 +21307,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1079666221
 GameObject:
@@ -20949,6 +21419,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1085788013
 GameObject:
@@ -21288,6 +21759,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1098860552
 GameObject:
@@ -21392,6 +21864,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1101325005
 GameObject:
@@ -21717,6 +22190,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1123455735
 GameObject:
@@ -22024,6 +22498,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1132190347 stripped
 GameObject:
@@ -22064,6 +22539,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1137437418 stripped
 GameObject:
@@ -22099,6 +22575,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1142711213 stripped
 GameObject:
@@ -22134,6 +22611,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1143189273 stripped
 GameObject:
@@ -22169,6 +22647,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1150732177
 GameObject:
@@ -22356,6 +22835,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1157955293
 GameObject:
@@ -22467,6 +22947,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1158831593 stripped
 GameObject:
@@ -22502,6 +22983,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1161714766
 GameObject:
@@ -22577,6 +23059,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1176474312 stripped
 GameObject:
@@ -22612,6 +23095,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1186044385
 GameObject:
@@ -22716,6 +23200,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1194826732 stripped
 GameObject:
@@ -22751,6 +23236,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1196729667
 GameObject:
@@ -23014,6 +23500,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1206046373
 GameObject:
@@ -23125,6 +23612,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1210297259
 GameObject:
@@ -23236,6 +23724,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1215009495
 GameObject:
@@ -23347,6 +23836,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1216192729 stripped
 GameObject:
@@ -23382,6 +23872,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1218839681 stripped
 GameObject:
@@ -23417,6 +23908,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1227504591
 GameObject:
@@ -23528,6 +24020,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1235822336
 GameObject:
@@ -23639,6 +24132,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1241291164 stripped
 GameObject:
@@ -23674,6 +24168,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1242337981 stripped
 GameObject:
@@ -23709,6 +24204,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1246028411
 GameObject:
@@ -23820,6 +24316,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1254400896
 GameObject:
@@ -26621,6 +27118,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1263336280 stripped
 GameObject:
@@ -26656,6 +27154,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1265216244
 GameObject:
@@ -27008,6 +27507,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1281900096
 GameObject:
@@ -27119,6 +27619,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1282844373
 GameObject:
@@ -27305,6 +27806,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1290884983 stripped
 GameObject:
@@ -27340,6 +27842,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1292857123 stripped
 GameObject:
@@ -27375,6 +27878,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1295444167
 GameObject:
@@ -27486,6 +27990,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1301677086
 GameObject:
@@ -27825,6 +28330,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1001 &1319493523
 Prefab:
@@ -28272,6 +28778,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1338311565
 GameObject:
@@ -28459,6 +28966,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1342925026
 GameObject:
@@ -28570,6 +29078,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1348477053
 GameObject:
@@ -29395,6 +29904,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1372942047 stripped
 GameObject:
@@ -29430,6 +29940,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1373075009
 GameObject:
@@ -29534,6 +30045,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1378642440 stripped
 GameObject:
@@ -29569,6 +30081,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1384673111
 GameObject:
@@ -29680,6 +30193,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1392055864
 GameObject:
@@ -29791,6 +30305,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1393643889 stripped
 GameObject:
@@ -29826,6 +30341,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1394812501
 GameObject:
@@ -30013,6 +30529,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1398908520
 GameObject:
@@ -30276,6 +30793,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1410575699 stripped
 GameObject:
@@ -30311,6 +30829,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1413630668
 GameObject:
@@ -30544,6 +31063,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1417611858 stripped
 GameObject:
@@ -30579,6 +31099,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1417626605 stripped
 GameObject:
@@ -30614,6 +31135,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1423691206
 GameObject:
@@ -30725,6 +31247,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1430233578 stripped
 GameObject:
@@ -30760,6 +31283,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1434057303 stripped
 GameObject:
@@ -30795,6 +31319,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1434323388
 GameObject:
@@ -30906,6 +31431,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1440178733
 GameObject:
@@ -31086,6 +31612,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1445801239 stripped
 GameObject:
@@ -31121,6 +31648,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1447689141
 GameObject:
@@ -31308,6 +31836,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1452564279 stripped
 GameObject:
@@ -31343,6 +31872,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1454669962 stripped
 GameObject:
@@ -31378,6 +31908,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1456099129
 GameObject:
@@ -31489,6 +32020,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1460855400
 GameObject:
@@ -31939,6 +32471,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1480288513 stripped
 GameObject:
@@ -31974,6 +32507,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1483358713 stripped
 GameObject:
@@ -32009,6 +32543,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1485370679
 GameObject:
@@ -32196,6 +32731,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1494495106
 GameObject:
@@ -32611,6 +33147,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1500401967
 GameObject:
@@ -32759,6 +33296,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1518446044 stripped
 GameObject:
@@ -32794,6 +33332,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1522472799
 GameObject:
@@ -32905,6 +33444,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1524988409
 GameObject:
@@ -33541,6 +34081,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1563110174
 GameObject:
@@ -33652,6 +34193,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1566220001
 GameObject:
@@ -34313,6 +34855,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1581329931 stripped
 GameObject:
@@ -34348,6 +34891,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1581448460
 GameObject:
@@ -34459,6 +35003,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1584743552 stripped
 GameObject:
@@ -34494,6 +35039,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1589159573 stripped
 GameObject:
@@ -34529,6 +35075,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1590142570
 GameObject:
@@ -34716,6 +35263,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1600033476
 GameObject:
@@ -34942,6 +35490,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1611593633
 GameObject:
@@ -35053,6 +35602,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1614644885
 GameObject:
@@ -35164,6 +35714,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1618581648 stripped
 GameObject:
@@ -35199,6 +35750,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1625096406
 GameObject:
@@ -35386,6 +35938,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1642138704
 GameObject:
@@ -35664,6 +36217,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1650831792
 GameObject:
@@ -35851,6 +36405,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1656699970 stripped
 GameObject:
@@ -35886,6 +36441,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1666188838 stripped
 GameObject:
@@ -35921,6 +36477,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1669602914 stripped
 GameObject:
@@ -35956,6 +36513,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1671755731 stripped
 GameObject:
@@ -35991,6 +36549,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1671810117
 GameObject:
@@ -36178,6 +36737,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1676843783
 GameObject:
@@ -36289,6 +36849,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1684928952 stripped
 GameObject:
@@ -36324,6 +36885,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1684964638
 GameObject:
@@ -36738,6 +37300,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1691213403
 GameObject:
@@ -36849,6 +37412,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1692228497
 GameObject:
@@ -37098,6 +37662,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1714425422
 GameObject:
@@ -37209,6 +37774,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1717781034
 GameObject:
@@ -37471,6 +38037,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1728010970 stripped
 GameObject:
@@ -37506,6 +38073,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1740230578
 GameObject:
@@ -37844,6 +38412,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1759653697 stripped
 GameObject:
@@ -37879,6 +38448,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1760712591
 GameObject:
@@ -38218,6 +38788,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1776447600
 GameObject:
@@ -38329,6 +38900,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1783506629
 GameObject:
@@ -38820,6 +39392,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1804820475 stripped
 GameObject:
@@ -38855,6 +39428,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1805185701
 GameObject:
@@ -38966,6 +39540,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1806623670
 GameObject:
@@ -39123,6 +39698,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1809212946 stripped
 GameObject:
@@ -39158,6 +39734,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1818289660 stripped
 GameObject:
@@ -39193,6 +39770,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1827715173
 GameObject:
@@ -39380,6 +39958,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1834811909
 GameObject:
@@ -39491,6 +40070,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1842956326 stripped
 GameObject:
@@ -39526,6 +40106,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1845189280
 GameObject:
@@ -39637,6 +40218,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1854507475 stripped
 GameObject:
@@ -39672,6 +40254,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1855914304
 GameObject:
@@ -39783,6 +40366,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1858226403 stripped
 GameObject:
@@ -39818,6 +40402,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1865527400 stripped
 GameObject:
@@ -39853,6 +40438,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1866580831
 GameObject:
@@ -40351,6 +40937,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1882424329
 GameObject:
@@ -40614,6 +41201,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1903221677 stripped
 GameObject:
@@ -40649,6 +41237,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1906018063
 GameObject:
@@ -40760,6 +41349,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1908056436
 GameObject:
@@ -40947,6 +41537,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1916176356 stripped
 GameObject:
@@ -40982,6 +41573,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1917340613 stripped
 GameObject:
@@ -41017,6 +41609,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1918495570 stripped
 GameObject:
@@ -41052,6 +41645,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1920964238 stripped
 GameObject:
@@ -41087,6 +41681,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1922279662 stripped
 GameObject:
@@ -41122,6 +41717,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1927571657 stripped
 GameObject:
@@ -41157,6 +41753,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1931759691 stripped
 GameObject:
@@ -41192,6 +41789,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1932610389 stripped
 GameObject:
@@ -41227,6 +41825,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1934944938 stripped
 GameObject:
@@ -41262,6 +41861,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1940715308 stripped
 GameObject:
@@ -41297,6 +41897,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1941817063
 GameObject:
@@ -41408,6 +42009,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1944993362
 GameObject:
@@ -41641,6 +42243,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1953921687 stripped
 GameObject:
@@ -41676,6 +42279,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1956755758
 GameObject:
@@ -42313,6 +42917,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1976316790 stripped
 GameObject:
@@ -42348,6 +42953,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1977953338 stripped
 GameObject:
@@ -42383,6 +42989,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1978833633
 GameObject:
@@ -42494,6 +43101,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1989463809 stripped
 GameObject:
@@ -42529,6 +43137,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &1991324174
 GameObject:
@@ -42753,6 +43362,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2008778987 stripped
 GameObject:
@@ -42788,6 +43398,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2022098493
 GameObject:
@@ -42936,6 +43547,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2025824843
 GameObject:
@@ -43047,6 +43659,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2031406676
 GameObject:
@@ -43167,6 +43780,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2035930761
 GameObject:
@@ -43420,6 +44034,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2053038330
 GameObject:
@@ -43607,6 +44222,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2059702202
 GameObject:
@@ -43718,6 +44334,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2064442341
 GameObject:
@@ -43905,6 +44522,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2078951998
 GameObject:
@@ -44015,6 +44633,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2089673540
 GameObject:
@@ -44126,6 +44745,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2105058445
 GameObject:
@@ -44397,6 +45017,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2117494818
 GameObject:
@@ -44660,6 +45281,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2122743421 stripped
 GameObject:
@@ -44695,6 +45317,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2122752504
 GameObject:
@@ -44882,6 +45505,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2133652124 stripped
 GameObject:
@@ -44917,6 +45541,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2135420763 stripped
 GameObject:
@@ -44952,6 +45577,7 @@ MonoBehaviour:
   terrainstate: 0
   isAwake: 0
   isFixed: 0
+  isMine: 0
   SceneManager: {fileID: 0}
 --- !u!1 &2141134283
 GameObject:

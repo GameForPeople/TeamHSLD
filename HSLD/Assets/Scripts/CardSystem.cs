@@ -41,7 +41,7 @@ public class CardSystem : MonoBehaviour
             {
                 pickedCard = card;
                 Debug.Log(pickedCard.name + "카드 뽑힘");
-
+                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[7], 1.0f);
                 //flow 변경
                 GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);
             }

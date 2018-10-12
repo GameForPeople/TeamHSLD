@@ -30,8 +30,11 @@ public class FlowSystem : MonoBehaviour
 
     private void Start()
     {
+        //테스트버전
         if (currentFlow.Equals(FLOW.TSETVER))
             FlowChange(currentFlow);
+        else
+            FlowChange(FLOW.MATCHINGCOMPLETE);
     }
 
     public void FlowChange(FLOW doneFlow)
@@ -39,6 +42,8 @@ public class FlowSystem : MonoBehaviour
         switch(doneFlow)
         {
             case FLOW.MATCHINGCOMPLETE:
+                SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
+                currentFlow = FLOW.READY_SETCARD;
                 break;
             case FLOW.READY_TURNORDER:
                 turnSetCanvas.SetActive(false);
@@ -46,6 +51,7 @@ public class FlowSystem : MonoBehaviour
                 //선공 / 후공
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 spinCanvas.SetActive(true);
+                SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
                 break;
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
@@ -62,6 +68,7 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
+                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
                 currentFlow = FLOW.TO_PICKINGCARD;
                 break;
             case FLOW.TO_PICKINGLOC:

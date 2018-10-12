@@ -14,6 +14,8 @@ public class CardSet : MonoBehaviour
         if (obj.GetComponent<CardData>().data.currentCnt > (obj.GetComponent<CardData>().data.maximumCnt - 1) || totalCard > 29)
             return;
 
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[4], 1.0f);
+
         obj.GetComponent<CardData>().data.currentCnt += 1;
         totalCard += 1;
         obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.currentCnt.ToString();
@@ -24,6 +26,8 @@ public class CardSet : MonoBehaviour
     {
         if (obj.GetComponent<CardData>().data.currentCnt == obj.GetComponent<CardData>().data.minumumCnt)
             return;
+
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[4], 1.0f);
 
         obj.GetComponent<CardData>().data.currentCnt -= 1;
         totalCard -= 1;

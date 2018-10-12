@@ -24,7 +24,7 @@ public class TurnSystem : MonoBehaviour
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
     public float rollingDiceTime = 10;
-    public float pickingTerrainCardTime = 5;
+    public float pickingTerrainCardTime = 10;
     public float pickingEventCardTime = 15;
     public float selectPlanetTerrainTime = 20;
 
@@ -85,8 +85,9 @@ public class TurnSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_TURNORDER);
-
+        Destroy(gameObject.GetComponent<SetTurn>());
     }
+
     IEnumerator ReadySetCardTimer()
     {
         time_ = 0;
