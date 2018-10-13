@@ -20,4 +20,6 @@
 #include "wininet.h"
 #include <tchar.h>
 
+#include <string_view>
+
 using namespace std;

@@ -491,17 +491,26 @@ void IOCPServer::WorkerThreadFunction()
 				// LoginScene
 				if (recvType == DEMAND_LOGIN)
 				{
-					DemandLoginCharStruct demandLogin = (DemandLoginCharStruct&)(ptr->buf[4]);
-					demandLogin.ID[demandLogin.IDSize] = '\0';
+					//DemandLoginCharStruct demandLogin = (DemandLoginCharStruct&)(ptr->buf[4]);
 					//std::cout << "아이디 비밀번호, 타입을 입력 받았습니다. ID:  " << demandLogin.ID << "  PW : " << demandLogin.PW << "  type : " << demandLogin.type << std::endl;
+					int typeBuffer = (int&)(ptr->buf[4]);
+					int pwBuffer = (int&)(ptr->buf[8]);
+					int idSizeBuffer = (int&)(ptr->buf[12]);
+					string idBuffer;
 
-					if (demandLogin.type == 1) //로그인 처리입니다.
+					for (int i = 0; i < idSizeBuffer; ++i) 
+					{
+						//idBuffer.append(&(ptr->buf[16+i]));
+						idBuffer+=ptr->buf[16 + i];
+					}
+
+					if (typeBuffer == 1) //로그인 처리입니다.
 					{
 						int outWinCount{};
 						int outLoseCount{};
 						int outMoney{};
 
-						int failReason = userData.SignIn(demandLogin.ID, demandLogin.PW, outWinCount, outLoseCount, outMoney, ptr->userIndex);
+						int failReason = userData.SignIn(idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney, ptr->userIndex);
 
 						if (!failReason) {
 							//std::cout << "로그인에 성공했습니다. " << std::endl;
@@ -523,15 +532,15 @@ void IOCPServer::WorkerThreadFunction()
 								continue;
 						}
 					}
-					else if (demandLogin.type == 2) //회원가입 처리입니다.
+					else if (typeBuffer == 2) //회원가입 처리입니다.
 					{
-						int failReason = userData.SignUp(demandLogin.ID);
+						int failReason = userData.SignUp(idBuffer);
 
 						if (!failReason) {
 							//std::cout << "회원가입에 성공했습니다. " << std::endl;
 
 							// 회원 가입 처리
-							userData.EmplaceBackToPlayer(demandLogin.ID, demandLogin.PW, ptr->userIndex);
+							userData.EmplaceBackToPlayer(idBuffer, pwBuffer, ptr->userIndex);
 
 							// 저장 쓰레드 호출
 							isSaveOn = true;

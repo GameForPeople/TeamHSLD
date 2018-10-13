@@ -1,9 +1,31 @@
 #pragma once
 
+/*
+CommunicationProtocol Header
+
+ 1. 멤버변수는, std::string, std::vector<int> 대신 char[], int[]를 사용함. (이는 NETWORK_UTIL::SendProcess과의 호환성 때문)
+	- 희망사항 : 추후 SendProcess에서 BaseStruct의 가상함수를 호출하도록 함. 해당 함수 인자는 char*(Byte*) // &(ptr->buffer[0]) 를 인자로 받으며, 
+				각 상속된 객체 내에서 오버라이드 된 함수에서 각각 처리. 이 때는, String과 Vector를 사용해도 좋음 ( 동일하게 String_view 사용가능)
+
+ 2. 현재 BaseStruct가 50% NonCopyable Struct임. 
+	- 대입 할당 연산자는 막았으나, 복사생성자 막지 못함. (이동생성자를 쓰던가, 아에 저 상황을 뿌셔야함)
+
+ 3. 현재 객체의 String -> char*로의 변환을, for문에서, strncpy(or memcpy) 로 변경함.
+	- 솔직히 적합하지 않음. 이미 선언된 문자열을 활용하지 못한다는 점은 큰 손해. 이를 어찌 할 수 있을지 고민해야함.
+
+ 4. 마찬가지로 현재 인자가 Called by Const Value 인데, 이거 손해. Called by Const Ref로 변환이 가능한지를 확인할 필요가 있음 
+
+ 5. 3번안이 안될 때, 인자를 줄이기 위해... char 배열의 포인터를 넘기는 건 어떨까? -> 고나마 복사 한번하니 성능적인 이득이 있을 듯 보임.
+
+ */
+
+
 // 주의해야합니다! 항상 클래스는 4바이트 단위로 제작합니다. SIMD 아니고 이거 뭐더라...
 #include "../stdafx.h"
 
-#define ID_MAX_LEN 20
+#define		MAX_ID_LEN			20
+#define		MAX_TERRAIN_LEN		12
+
 
 enum Protocol {
 
@@ -98,7 +120,7 @@ public:
 	~BaseStruct() = default;
 
 public:
-	//BaseStruct(const BaseStruct&) = delete; // 메모리에서 강제로 변경하려면 어쩔수없이 주석처리
+	//BaseStruct(const BaseStruct&) = delete; // 로그인을 없앴더니, SetData 에서 문제네;;
 	BaseStruct& operator=(const BaseStruct&) = delete;
 };
 
@@ -126,6 +148,10 @@ struct DemandLoginStruct : public BaseStruct {
 	int PW{};
 	int IDSize{};
 	std::string ID;
+
+	//안쓰네.
+	DemandLoginStruct() = delete;
+	~DemandLoginStruct() = default;
 };
 
 // type 100일때, 서버에 바로 다음 날려주는 구조체
@@ -133,9 +159,15 @@ struct DemandLoginCharStruct : public BaseStruct {
 	int type{};	// 1일때는 로그인, 2일때는 회원가입
 	int PW{};
 	int IDSize{};
-	char ID[20]{};
+	char ID[MAX_ID_LEN];
 	
-	DemandLoginCharStruct() { ID[0] = { 0, }; };
+	//DemandLoginCharStruct() { ID[0] = { 0, }; };
+	//DemandLoginCharStruct(const int InType, const int InPw, const string& InID) 
+	//	: type(InType), PW(InPw), IDSize(InID.size())
+	//{
+	//	memcpy(ID, InID.c_str(), IDSize);
+	//};
+	DemandLoginCharStruct() = delete;
 	~DemandLoginCharStruct() = default;
 };
 
@@ -144,10 +176,10 @@ struct FailLoginStruct : public BaseStruct {
 	int type{}; // 1일때 로그인 없는 아이디, 2일때 로그인 잘못된 비밀번호, 3일때 이미 로그인한 아이디, 4일때 회원가입 중복된 아이디!
 	// 아이디, 비밀번호 정합성은, 클라단에서 체크하세요!!
 
-	__inline FailLoginStruct(int InType) : type(InType)
+	__inline FailLoginStruct(const int InType) : type(InType)
 	{};
 
-	__inline FailLoginStruct() = default;
+	//__inline FailLoginStruct() = delete;
 	__inline ~FailLoginStruct() = default;
 };
 
@@ -157,10 +189,11 @@ struct PermitLoginStruct : public BaseStruct {
 	int loseCount{}; 
 	int money{};
 
-	__inline PermitLoginStruct(const int InWin,const int InLose,const int InMoney) : winCount(InWin) , loseCount(InLose) , money(InMoney)
+	__inline PermitLoginStruct(const int InWin,const int InLose, const int InMoney) 
+		: winCount(InWin) , loseCount(InLose) , money(InMoney)
 	{};
 
-	__inline PermitLoginStruct() = default;
+	//__inline PermitLoginStruct() = delete;
 	__inline ~PermitLoginStruct() = default;
 };
 
@@ -175,6 +208,7 @@ struct PermitLoginStruct : public BaseStruct {
 struct DemandMakeRoomStruct : public BaseStruct {
 	//안씁니다. -> ? 함수화하면서 쓰는 걸로 바꼇는데? 히히
 	// ? 띠용? 이거 안쓰네 이친구는 리시브구나..헤헿 리시브는 고냥 메모리로 갖고 놀랳
+	DemandMakeRoomStruct() = delete;
 };
 
 // type 302
@@ -182,10 +216,10 @@ struct PermitMakeRoomStruct : public BaseStruct {
 	// 사실 이것도안쓰지만. -> ? 애는 진짜씀 ㅎ
 	int roomIndex;
 
-	__inline PermitMakeRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	__inline PermitMakeRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
 	{};
 
-	__inline PermitMakeRoomStruct() = default;
+	//__inline PermitMakeRoomStruct() = delete;
 	__inline ~PermitMakeRoomStruct() = default;
 };
 
@@ -193,10 +227,10 @@ struct PermitMakeRoomStruct : public BaseStruct {
 struct DemandJoinRoomStruct : public BaseStruct {
 	int roomIndex;
 
-	__inline DemandJoinRoomStruct(int InRoomIndex) : roomIndex(InRoomIndex)
+	__inline DemandJoinRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
 	{};
 
-	__inline DemandJoinRoomStruct() = default;
+	//__inline DemandJoinRoomStruct() = delete;
 	__inline ~DemandJoinRoomStruct() = default;
 };
 
@@ -206,11 +240,11 @@ struct PermitJoinRoomStruct : public BaseStruct {
 	int idSize;
 	string enemyId;
 
-	__inline PermitJoinRoomStruct(int InRoomIndex, string InEnemyID)
+	__inline PermitJoinRoomStruct(int InRoomIndex, const string_view& InEnemyID)
 		: roomIndex(InRoomIndex), idSize(InEnemyID.size()), enemyId(InEnemyID)
 	{};
 
-	__inline PermitJoinRoomStruct() = default;
+	//__inline PermitJoinRoomStruct() = delete;
 	__inline ~PermitJoinRoomStruct() = default;
 };
 
@@ -218,10 +252,11 @@ struct PermitJoinRoomStruct : public BaseStruct {
 struct FailJoinRoomStruct : public BaseStruct {
 	int failReason;
 
-	__inline FailJoinRoomStruct(int InFailReason) : failReason(InFailReason)
+	__inline FailJoinRoomStruct(int InFailReason) 
+		: failReason(InFailReason)
 	{};
 
-	__inline FailJoinRoomStruct() = default;
+	//__inline FailJoinRoomStruct() = delete;
 	__inline ~FailJoinRoomStruct() = default;
 };
 
@@ -262,15 +297,16 @@ struct PermitJoinRandomStruct : public BaseStruct {
 	int subMissionIndex;
 	int idSize;
 	//string enemyId;
-	char enemyId[ID_MAX_LEN];
+	char enemyId[MAX_ID_LEN];
 
 	PermitJoinRandomStruct(const int InRoomIndex, const int InIsHostFirst, const int InPlayerMissionIndex, const int InEnemyMissionIndex, const int InSubMissionIndex, const string& InEnemyId )
 		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst), playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex), idSize(InEnemyId.size()) //, enemyId(InEnemyID)
 	{
-		for (int i = 0; i < idSize; ++i)
-		{
-			enemyId[i] = InEnemyId[i];
-		}
+		//for (int i = 0; i < idSize; ++i)
+		//{
+		//	enemyId[i] = InEnemyId[i];
+		//}
+		memcpy(enemyId, InEnemyId.c_str(), idSize);
 	};
 
 	~PermitJoinRandomStruct() = default;
@@ -285,14 +321,15 @@ struct DemandGuestJoinStruct : public BaseStruct {
 struct PermitGuestJoinStruct : public BaseStruct {
 	int idSize;
 	//string enemyId;
-	char enemyId[ID_MAX_LEN];
+	char enemyId[MAX_ID_LEN];
 
 	PermitGuestJoinStruct(const string& InEnemyId) :idSize(InEnemyId.size()) //, enemyId(InEnemyId)
 	{
-		for (int i = 0; i < idSize; ++i)
-		{
-			enemyId[i] = InEnemyId[i];
-		}
+		//for (int i = 0; i < idSize; ++i)
+		//{
+		//	enemyId[i] = InEnemyId[i];
+		//}
+		memcpy(enemyId, InEnemyId.c_str(), idSize);
 	};
 
 	~PermitGuestJoinStruct() = default;
@@ -315,11 +352,11 @@ struct RoomStateGuestInStruct : public BaseStruct
 	int idSize;
 	string enemyId;
 
-	__inline RoomStateGuestInStruct(string InEnemyID)
+	__inline RoomStateGuestInStruct(const string_view& InEnemyID)
 		: idSize(InEnemyID.size()), enemyId(InEnemyID)
 	{};
 
-	__inline RoomStateGuestInStruct() = default;
+	//__inline RoomStateGuestInStruct() = delete;
 	__inline ~RoomStateGuestInStruct() = default;
 };
 
@@ -329,25 +366,27 @@ struct OnePlayerChanged : public BaseStruct
 	int index{};
 	int mixedData{};
 
-	__inline OnePlayerChanged() = default;
-	__inline OnePlayerChanged(int InIndex, int InLeftOrRight, int isJumping ) :index(InIndex)
+	__inline OnePlayerChanged(const int InIndex, const int InLeftOrRight, const int isJumping ) :index(InIndex)
 	{
 		mixedData = InLeftOrRight * 10 + isJumping;
 	};
+	//__inline OnePlayerChanged() = delete;
+	__inline OnePlayerChanged() = default;
 };
 
 
 // type 421 
 struct DemandEnemyCharacterStruct : public BaseStruct {
 	int playerCharacterIndex;
-	//안써요~
+	//응~ 안써요~
 	DemandEnemyCharacterStruct() = delete;
 };
 
 struct PermitEnemyCharacterStruct : public BaseStruct {
 	int playerCharacterIndex;
 
-	PermitEnemyCharacterStruct(const int InPlayerCharacterIndex) : playerCharacterIndex(InPlayerCharacterIndex)
+	PermitEnemyCharacterStruct(const int InPlayerCharacterIndex) 
+		: playerCharacterIndex(InPlayerCharacterIndex)
 	{};
 
 	~PermitEnemyCharacterStruct() = default;
@@ -362,17 +401,15 @@ struct PermitEnemyCharacterStruct : public BaseStruct {
 // type 502, 503 // 이거 안씀
 struct ChangeTurnStruct : public BaseStruct
 {
-private:	// 생성 막아놈.
-	__inline ChangeTurnStruct() = default;
-	__inline ~ChangeTurnStruct() = default;
+	__inline ChangeTurnStruct() = delete;
+	__inline ~ChangeTurnStruct() = delete;
 };
 
 // type 511, 521 ???????? 이거 안쓸껄...?
 struct VoidStruct : public BaseStruct
 {
-private:	// 생성 막아놈.
-	__inline VoidStruct() = default;
-	__inline ~VoidStruct() = default;
+	__inline VoidStruct() = delete;
+	__inline ~VoidStruct() = delete;
 };
 
 
@@ -381,7 +418,7 @@ struct ChangePlanetStruct : public BaseStruct
 {
 	int					terrainType;
 	int					changeTerrainCount;
-	int					terrainIndex[12];	//Dice 12
+	int					terrainIndex[MAX_TERRAIN_LEN];	//Dice 12
 	//std::vector<int>	terrainIndex;
 
 public:
@@ -401,13 +438,13 @@ struct ActionEventCardTerrainStruct : public BaseStruct
 	int					eventCardType;
 	int					terrainType;
 	int					changeTerrainCount;
-	int					terrainIndex[12];	//Dice 12
+	int					terrainIndex[MAX_TERRAIN_LEN];	//Dice 12
 
 public:
 	__inline ActionEventCardTerrainStruct(const int InEventCardType, const int InTerrainType, const int InChangeTerrainCount, const int* InTerrainIndex)
 		: eventCardType(InEventCardType), terrainType(InTerrainType), changeTerrainCount(InChangeTerrainCount)
 	{
-		// 이거 진짜 되려나?
+		// 되나?
 		memcpy(terrainIndex, InTerrainIndex, changeTerrainCount * sizeof(int));
 	}
 
