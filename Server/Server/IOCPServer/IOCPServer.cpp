@@ -297,7 +297,7 @@ DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 
 void IOCPServer::WorkerThreadFunction()
 {
-	// 한 번만 선언해서 여러번 씁시다.
+	// 한 번만 선언해서 여러번 씁시다. 아껴써야지...
 	int retVal{};
 	int recvType{};
 	DWORD flags = 0;
@@ -749,6 +749,15 @@ void IOCPServer::WorkerThreadFunction()
 
 						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함
 					}
+				}
+
+				// Network Exception - RoomScene 
+				else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
+				{
+					// 이거 써야 좋으려나 안쓰는게 좋으려나. --> 써야것다. 변수 하나 씩 다 추가하는거 오바다.
+					// 이 함수는, 상대편 클라이언트가 나갔을 경우, 이를 확인하고, 관련 클라이언트 처리가 끝났음을 알리는 프로토콜에 대한 처리입니다.
+					roomData.ExitRoom(ptr->roomIndex);
+					ptr->roomIndex = -1;
 				}
 
 				// Hey!! It is garbage!!!!! ERROR!!! OhMyGod!!!!!!! !!!! WT!!!

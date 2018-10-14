@@ -15,6 +15,11 @@ public:
 
 	int JoinRoom(const int& InGuestIndex, int& RetRoomIndex);
 
+	__inline void ExitRoom(const int& InRoomIndex)
+	{
+		rooms[InRoomIndex].ExitRoom();
+	}
+
 	__inline int GetEnemyIndex(const int& InRoomIndex, const bool InIsHost) const
 	{
 		if (InIsHost)

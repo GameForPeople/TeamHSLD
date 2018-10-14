@@ -101,6 +101,11 @@ public:
 		//}
 	}
 
+	__inline void ExitRoom()
+	{
+		//? 엥 이거밖에 없네..?
+		roomState = ROOM_STATE::ROOM_STATE_VOID;
+	}
 
 //new Function
 public:

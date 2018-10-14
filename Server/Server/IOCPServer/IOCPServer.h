@@ -47,6 +47,14 @@ struct SOCKETINFO
 	// 대망의 이 친구..는 사실 바이트단위로 전송하면서..쓰레기가 되어버렸는데..
 	//는 다시 부활!!!! 리팩토링 과정에서 이거 사용하기로 변경!!! 주석 해제!! 축하해 ㅠㅠ
 	BaseStruct* dataBuffer;	
+
+
+	//생성자 필요에 의해 추가.
+	__inline SOCKETINFO() :bufferProtocol(0), userIndex(-1), roomIndex(-1), isHost(false),
+		dataSize(), isRecvTrue()
+	{};
+
+	__inline ~SOCKETINFO() = default;
 };
 
 /*
