@@ -10,6 +10,7 @@ UserData.h 에서 해야될 일!
 */
 
 #include "../stdafx.h"
+
 class UserData {
 	//basic Data
 	std::string m_id{};
@@ -55,9 +56,9 @@ public:
  	__inline int	GetLoseCount()  const { return m_loseCount; }
 	__inline int	GetMoney()  const { return m_money; } 
 	__inline bool	GetIsLogin()  const { return m_isLogin; } 
-	__inline void	SetIsLogin(bool bValue) { m_isLogin = bValue; }
+	__inline void	SetIsLogin(const bool& bValue) { m_isLogin = bValue; }
 
-	__inline void	SetWinOrLose(const int value) {
+	__inline void	SetWinOrLose(const int& value) {
 		if (value == 1) { m_winCount++; }
 		else if (value == 2) { m_loseCount++; }
 		return;
@@ -71,174 +72,4 @@ public:
 	}
 };
 
-class CUserData {
-	std::vector<UserData> player;
 
-public:
-	__inline CUserData() = default;
-	__inline ~CUserData() = default;
-public:
-	void Load() 
-	{
-		std::ifstream inFile("UserData/UserData.txt", std::ios::in);
-
-		std::string ID;
-		int PW, winCount, loseCount, Money;
-		int userDataCount{};
-
-		inFile >> userDataCount;
-		
-		player.reserve(userDataCount);
-
-		for (int i = 0; i < userDataCount; i++) {
-			inFile >> ID >> PW >> winCount >> loseCount >> Money;
-
-			player.emplace_back(ID, PW, winCount, loseCount, Money);
-		}
-
-		inFile.close();
-
-		std::cout << "     [UserDataManager] Load UserData Complete! " << std::endl;
-	}
-	void Save(bool& InIsSave)
-	{
-		if (InIsSave) {
-			InIsSave = false;
-
-			Sleep(2000);
-			std::ofstream outFile("UserData/UserData.txt", std::ios::out);
-
-			outFile << player.size() << std::endl;
-
-			for (auto i : player) {
-				outFile << " " << i.GetID()
-					<< " " << i.GetPW()
-					<< " " << i.GetWinCount()
-					<< " " << i.GetLoseCount()
-					<< " " << i.GetMoney()
-					<< std::endl;
-			}
-			outFile.close();
-
-			std::cout << "     [UserDataManager] Save UserData! " << std::endl;
-
-			InIsSave = false;
-
-			Sleep(2000);
-		}
-	}
-
-	int SignIn(string InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
-	{
-		RetIndex = 0;
-		for (auto &i : player)
-		{
-			if (i.GetID().compare(InID) == 0)
-			{
-				if (!i.GetIsLogin())
-				{
-					if (i.GetPW() == InPW)
-					{
-						i.SetIsLogin(true);
-						RetWinCount = i.GetWinCount();
-						RetLoseCount = i.GetLoseCount();
-						RetMoney = i.GetMoney();
-						return 0;
-					}
-					else
-					{
-						return 2;
-					}
-				}
-				else
-				{
-					return 3;
-				}
-			}
-			++RetIndex;
-		}
-
-		return 1;
-	}
-	int SignIn(char* InID, const int InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
-	{
-		RetIndex = 0;
-		for (auto &i : player)
-		{
-			if (i.GetID().compare(InID) == 0)
-			{
-				if (!i.GetIsLogin())
-				{
-					if (i.GetPW() == InPW)
-					{
-						i.SetIsLogin(true);
-						RetWinCount = i.GetWinCount();
-						RetLoseCount = i.GetLoseCount();
-						RetMoney = i.GetMoney();
-						return 0;
-					}
-					else
-					{
-						return 2;
-					}
-				}
-				else
-				{
-					return 3;
-				}
-			}
-			++RetIndex;
-		}
-		return 1;
-	}
-
-	__inline int SignUp(string InID)
-	{
-		for (auto &i : player)
-		{
-			if (i.GetID().compare(InID) == 0) {
-				return 4;
-			}
-		}
-
-		return 0;
-	}
-	__inline int SignUp(char* InID)
-	{
-		for (auto &i : player)
-		{
-			if (i.GetID().compare(InID) == 0) {
-				return 4;
-			}
-		}
-		return 0;
-	}
-
-	__inline void SignOut(const int InClientIndex)
-	{
-		player[InClientIndex].SignOut();
-	}
-
-	__inline void EmplaceBackToPlayer(string InID, const int InPW, int& RetIndex) {
-		player.emplace_back(InID, InPW);
-		RetIndex = player.size() - 1;
-	}
-
-	__inline int GetUserDataSize() {
-		return player.size();
-	}
-
-	//이거 복사되는지 확실히 알 수 있나..? 이거 복사시킬거면 그냥 차라리 Public이 훨씐낮지..ㅡㅡ
-	//__inline std::vector<UserData> GetPlayer() {
-	//	return player;
-	//}
-	__inline string GetUserID(const int InIndex)
-	{
-		return player[InIndex].GetID();
-	}
-
-	__inline void SetGameResult(const int& InPlayerIndex, const bool& InWinOrLose)
-	{
-		player[InPlayerIndex].SetGameResult(InWinOrLose);
-	}
-};
