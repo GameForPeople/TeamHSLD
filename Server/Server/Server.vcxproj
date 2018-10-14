@@ -19,18 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameRoom\GameRoom.cpp" />
+    <ClCompile Include="GameRoom\GameRoomManager.cpp" />
     <ClCompile Include="IOCPServer\IOCPServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UserData\UserData.cpp" />
+    <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameRoom\GameRoom.h" />
+    <ClInclude Include="GameRoom\GameRoomManager.h" />
     <ClInclude Include="IOCPServer\IOCPServer.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UserData\UserData.h" />
+    <ClInclude Include="UserData\UserDataManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

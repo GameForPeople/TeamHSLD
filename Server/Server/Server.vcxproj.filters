@@ -39,6 +39,18 @@
     <ClCompile Include="IOCPServer\IOCPServer.cpp">
       <Filter>소스 파일\IOCPServer</Filter>
     </ClCompile>
+    <ClCompile Include="UserData\UserDataManager.cpp">
+      <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="UserData\UserData.cpp">
+      <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRoom\GameRoom.cpp">
+      <Filter>소스 파일\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRoom\GameRoomManager.cpp">
+      <Filter>소스 파일\Room</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -55,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="UserData\UserData.h">
       <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\UserDataManager.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\GameRoomManager.h">
+      <Filter>소스 파일\Room</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

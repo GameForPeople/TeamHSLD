@@ -3,8 +3,8 @@
 #include "../stdafx.h"
 
 #include "../Protocol/CommunicationProtocol.h"
-#include "../UserData/UserData.h"
-#include "../GameRoom/GameRoom.h"
+#include "../UserData/UserDataManager.h"
+#include "../GameRoom/GameRoomManager.h"
 
 
 #define		SERVER_PORT		9000
@@ -85,8 +85,8 @@ private:
 	bool isOnSaveUserDataThread;
 
 	//For Game
-	CUserData userData;
-	CGameRoom roomData;
+	UserDataManager userData;
+	GameRoomManager roomData;
 
 	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음.. 동기화 다음 턴에 어짜피 됨.
 	bool isSaveOn;
@@ -151,7 +151,6 @@ private:
 		hSaveUserDataThread = CreateThread(NULL, 0, SaveUserDate, (LPVOID)this, 0, NULL);
 		//CloseHandle(hSaveUserDataThread);
 		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
-
 	}
 	//Close
 	void DestroyAndClean();
