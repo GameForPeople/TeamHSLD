@@ -23,11 +23,10 @@ public class MeshController : MonoBehaviour {
     public bool isFixed;
     public bool isMine;
     // Use this for initialization
-    public GameObject SceneManager;
 
     void Start () {
         terrainstate = Terrain.DEFAULT;
-        domMaterial = Resources.Load<Material>("M_Barren");
+        domMaterial = Resources.Load<Material>("M_Cold");
         defaultMaterial = Resources.Load<Material>("M_Default");
         isAwake = false;
         isFixed = false;
@@ -35,7 +34,6 @@ public class MeshController : MonoBehaviour {
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
-        SceneManager = GameObject.Find("InGameSceneManager");
     }
 	
 	// Update is called once per frame
@@ -52,10 +50,10 @@ public class MeshController : MonoBehaviour {
                     setBarren();
                     CameraController.ChangeableCount--;
 
-                    if (SceneManager.GetComponent<CardSystem>().pickedCard)
+                    if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
                     {
                         Debug.Log("picked");
-                        GameObject picked = SceneManager.GetComponent<CardSystem>().pickedCard;
+                        GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
 
                         if (picked.name.Equals("TerrainCardImg1"))
                         {

@@ -14,24 +14,20 @@ public class CameraController : MonoBehaviour
     public float RotationSensitivity;
     private Transform myTransform;
     private Vector3 priorPosition;
-    public GameObject PickedMeshObj;
+    public static GameObject PickedMeshObj;
     public static float offset;
-
-    private Material TestMaterial;
-    public int DiceCount;
+    
+    public static int DiceCount;
     public static int ChangeableCount;
 
-    private bool myTurn;
-    private bool Once;
-
-    public static int[] PickContainer;
-
+    public bool myTurn;
+    public static bool Once;
+    
     void Start()
     {
         myTransform = GetComponent<Transform>();
         myTurn = true;
         Once = true;
-        PickContainer = new int[12];
     }
 
     public void TurnVertical()
@@ -60,7 +56,12 @@ public class CameraController : MonoBehaviour
                 offset -= 0.1f;
             } // 피킹 관련 
 
-            if (Input.touchCount == 2)
+            if (fdistance >= minDistance || fdistance <= maxDistance)
+            {
+                myTransform.position = priorPosition;
+            } // 확대축소 관련
+
+            if (Input.touchCount == 2) // 확대축소 스와이프
             {
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
@@ -95,111 +96,102 @@ public class CameraController : MonoBehaviour
                 mainCamera.transform.LookAt(MyPlanet);
             }
 
-            if (!myTurn)
+            if (Once == false) // 상대 턴으로 갈 때 한번만
             {
-                if (Once == false) // 상대 턴으로 갈 때 한번만
+                for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
                 {
-                    for(int i = 0; i < PickContainer.Length; i++)
+                    if (AllMeshController.PickContainer[i] != 0)
                     {
-                        if (PickContainer[i] != 0)
-                        {
-                            GameObject.Find(PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
-                            GameObject.Find(PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
-                        } // 내가 픽했던 메시들 fixed로 고정
-                    }
-                    PickContainer.Initialize(); // 컨테이너는 초기화
-                    // 
+                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
+                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
+                    } // 내가 픽했던 메시들 fixed로 고정
                 }
-                DiceCount = DiceSystem.getDiceNum;
+                AllMeshController.PickContainer.Initialize(); // 컨테이너는 초기화
+                                            // 
+            }
+            DiceCount = DiceSystem.getDiceNum;
 
-                if (fdistance >= minDistance || fdistance <= maxDistance)
+            if (Input.touchCount == 1)
+            {
+                RaycastHit hit;
+
+                Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    myTransform.position = priorPosition;
-                } // 확대축소 관련
-                
-                if (Input.touchCount == 1)
-                {
-                    RaycastHit hit;
-
-                    Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
-
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        PickedMeshObj = GameObject.Find(hit.transform.name);
-                    }
+                    //PickedMeshObj = GameObject.Find(hit.transform.name);
+                    // [NEW] 내 턴 아닐 때는 어떤 정보볼 수 있을 지 정해야 함.
                 }
+            }
 
-                Once = true;
+            Once = true;
 
+            // myTurn을 내턴일 때는 받아와야 돼
+
+            if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN) // 내 턴이 아니면 리턴해
+            {   
                 return;
             }
 
             if (Once == true) // 내 턴으로 돌아왔을 떄 한 번만
             {
-                PickContainer.Initialize();
+                AllMeshController.PickContainer.Initialize();
                 DiceCount = 10; // DiceSystem.getDiceNum;
                 ChangeableCount = DiceCount - 1;
 
                 Once = false;
             }
 
-            // 내 턴일 떄
+            // 내 턴일 때
+            if (Input.touchCount == 1 && offset < 0.5)
             {
-                if (fdistance >= minDistance || fdistance <= maxDistance)
+                RaycastHit hitObj;
+
+                Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+
+                if (Physics.Raycast(ray, out hitObj))
                 {
-                    myTransform.position = priorPosition;
-                } // 확대축소 관련
+                    PickedMeshObj = hitObj.transform.gameObject;
 
-                if (Input.touchCount == 1 && offset < 0.5)
-                {
-                    RaycastHit hitObj;
-
-                    Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
-
-                    if (Physics.Raycast(ray, out hitObj))
+                    if (PickedMeshObj.GetComponent<MeshController>() == null)
                     {
-                        PickedMeshObj = hitObj.transform.gameObject;
+                        PickedMeshObj.AddComponent<MeshController>();
+                    }
 
-                        if (PickedMeshObj.GetComponent<MeshController>() == null)
+                    if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
+                    {
+                        if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
                         {
-                            PickedMeshObj.AddComponent<MeshController>();
-                        }
-
-                        if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
-                        {
-                            if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
+                            int temp = -1;
+                            for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
                             {
-                                int temp = -1;
-                                for (int i = 0; i < PickContainer.Length; i++)
+                                if (AllMeshController.PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
                                 {
-                                    if (PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
+                                    temp = i;
+                                }
+                                if (AllMeshController.PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
+                                {
+                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                    AllMeshController.PickContainer[i] = 0;
+                                    offset = 2;
+                                    break;
+                                } // 이미 들어있다면 무시
+                                if (i == AllMeshController.PickContainer.Length - 1)
+                                {
+                                    if (temp != -1)
                                     {
-                                        temp = i;
-                                    }
-                                    if (PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
-                                    {
-                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                        PickContainer[i] = 0;
+                                        AllMeshController.PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
+                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
                                         offset = 2;
-                                        break;
-                                    } // 이미 들어있다면 무시
-                                    if (i == PickContainer.Length - 1)
-                                    {
-                                        if (temp != -1)
-                                        {
-                                            PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
-                                            PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
-                                            offset = 2;
 
-                                            break;
-                                        }
+                                        break;
                                     }
                                 }
                             }
                         }
                     }
-                    Once = false;
                 }
+                Once = false;
             }
         }
     }

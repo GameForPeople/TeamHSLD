@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6640,8 +6640,8 @@ MonoBehaviour:
   minDistance: 150
   maxDistance: 80
   RotationSensitivity: 0.05
-  PickedMeshObj: {fileID: 0}
-  DiceCount: 10
+  myTurn: 0
+  IngameManager: {fileID: 823012255}
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
@@ -15777,7 +15777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 0
+  currentFlow: 10
   cardCanvas: {fileID: 1055813589}
   cardSetCanvas: {fileID: 1161714766}
   turnSetCanvas: {fileID: 806044292}
@@ -22260,6 +22260,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100528, guid: e0e6c540bb21a994890f7a93ac229b27,
     type: 3}
   m_PrefabInternal: {fileID: 1260333004}
+--- !u!114 &1132190348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132190347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada6c70d8242a4c4089412f61a11fdf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1135955283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100446, guid: e0e6c540bb21a994890f7a93ac229b27,
