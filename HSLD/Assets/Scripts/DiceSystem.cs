@@ -558,10 +558,11 @@ public class DiceSystem : MonoBehaviour
                 break;
         }
         Debug.Log("다이스눈금 : " + getDiceNum + " 더블여부 : " + isDouble);
+        CameraController.DiceCount = getDiceNum;
 
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
-        getDiceNum = 0;
+        //getDiceNum = 0; // 잠시 주석처리할게요!
     }
 
     //슬라이드 값 설정

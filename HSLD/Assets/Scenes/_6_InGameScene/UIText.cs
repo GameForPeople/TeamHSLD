@@ -28,9 +28,7 @@ public class UIText : MonoBehaviour {
 
     void Update()
     {
-        TestCount = CameraController.ChangeableCount;
-
-        DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + TestCount + "\n";
+        DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + CameraController.ChangeableCount + "\n";
 
         if (Input.touchCount >= 1)
         {

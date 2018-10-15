@@ -10,123 +10,103 @@ public class PCverPIcking : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetMouseButton(0) && CameraController.offset < 1)
-        //{
-        //    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hitObj;
-
-        //    if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
-        //    {
-        //        PickedMeshObj = hitObj.transform.gameObject;
-
-        //        if (PickedMeshObj.GetComponent<MeshController>() == null)
-        //        {
-        //            PickedMeshObj.AddComponent<MeshController>();
-        //        }
-
-        //        if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
-        //        {
-        //            if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
-        //            {
-        //                int temp = -1;
-        //                for (int i = 0; i < CameraController.PickContainer.Length; i++)
-        //                {
-        //                    if (CameraController.PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
-        //                    {
-        //                        temp = i;
-        //                    }
-        //                    if (CameraController.PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
-        //                    {
-        //                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-        //                        CameraController.PickContainer[i] = 0;
-        //                        CameraController.offset = 3;
-        //                        break;
-        //                    } // 이미 들어있다면 무시
-        //                    if (i == CameraController.PickContainer.Length - 1)
-        //                    {
-        //                        if (temp != -1)
-        //                        {
-        //                            CameraController.PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
-        //                            PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
-        //                            CameraController.offset = 3;
-
-        //                            break;
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN) // 내 턴이 아니면 리턴해
-        {
-            Debug.Log("내 턴 아니니 리턴해");
-            return;
-        }
-        else
-        {
-            Debug.Log("내 턴이야");
-        }
-
-        if (CameraController.Once == true) // 내 턴으로 돌아왔을 떄 한 번만
+        if (CameraController.TurnChange) // 턴체인지가 true로 들어옴
         {
             AllMeshController.PickContainer.Initialize();
-            CameraController.DiceCount = 10; // DiceSystem.getDiceNum;
-            CameraController.ChangeableCount = CameraController.DiceCount - 1;
+            CameraController.ChangeableCount = DiceSystem.getDiceNum;
+            Debug.Log("내 턴으로 돌아왔을 때 한 번 : " + CameraController.ChangeableCount);
 
-            CameraController.Once = false;
-        }
+            CameraController.Once = true;
 
-        if (Input.GetMouseButton(0) && CameraController.offset < 0.5)
+            //////////////////////////////////////////
+            CameraController.TurnChange = false;
+        } 
+
+        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN == true) // 내 턴 아님
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitObj;
-
-            if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
+            if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
-                PickedMeshObj = hitObj.transform.gameObject;
-
-                if (PickedMeshObj.GetComponent<MeshController>() == null)
+                Debug.Log("내 턴에서 넘어갈 때 한번만");
+                for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
                 {
-                    PickedMeshObj.AddComponent<MeshController>();
-                }
-
-                if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
-                {
-                    if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
+                    if (AllMeshController.PickContainer[i] != 0)
                     {
-                        int temp = -1;
-                        for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
-                        {
-                            if (AllMeshController.PickContainer[i] == 0 && temp == -1) // 들어가야할 위치
-                            {
-                                temp = i;
-                            }
-                            if (AllMeshController.PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
-                            {
-                                PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                AllMeshController.PickContainer[i] = 0;
-                                CameraController.offset = 2;
-                                break;
-                            } // 이미 들어있다면 무시
-                            if (i == AllMeshController.PickContainer.Length - 1)
-                            {
-                                if (temp != -1)
-                                {
-                                    AllMeshController.PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
-                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
-                                    CameraController.offset = 2;
+                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
+                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
+                    } // 내가 픽했던 메시들 fixed로 고정
+                }
+                AllMeshController.PickContainer.Initialize(); // 컨테이너는 초기화
+                CameraController.TurnChange = true;
+                CameraController.Once = false;
+            }
+        }
+        else // 내 턴임
+        {
+            if (CameraController.Once == false) // 내 턴으로 돌아왔을 떄 한 번만
+            {
+                Debug.Log("내 턴으로 돌아왔을 때 한 번만");
+                CameraController.Once = true;
+                CameraController.TurnChange = true;
+            }
 
-                                    Debug.Log(i);
-                                    break;
+            if (Input.GetMouseButton(0) && CameraController.offset < 0.5)
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitObj;
+
+                if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
+                {
+                    PickedMeshObj = hitObj.transform.gameObject;
+
+                    if (PickedMeshObj.GetComponent<MeshController>() == null)
+                    {
+                        PickedMeshObj.AddComponent<MeshController>();
+                    }
+
+                    if (!PickedMeshObj.GetComponent<MeshController>().isFixed)
+                    {
+                        if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
+                        {
+                            int temp = -1;
+
+                            for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
+                            {
+                                //Debug.Log("[Container] : " + AllMeshController.PickContainer[i]);
+                                //Debug.Log("[ MeshNum ] : " + PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+
+                                if (AllMeshController.PickContainer[i] == 0 && temp == -1) // 들어가야할 위치에 temp를 수정해줘
+                                {
+                                    temp = i;
+                                }
+                                if (AllMeshController.PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
+                                {
+                                    //Debug.Log("같은 곳 두번 피킹했어");
+                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                    AllMeshController.PickContainer[i] = 0;
+                                    CameraController.offset = 2;
+                                    //break;
+                                } // 이미 들어있는 곳 피킹 했다면 해당 자리 초기화
+                                if (i == AllMeshController.PickContainer.Length - 1)
+                                {
+                                    if (temp != -1)
+                                    {
+                                        //Debug.Log("처음보는 곳이야!!" + temp);
+                                        AllMeshController.PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
+                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
+                                        CameraController.offset = 2;
+                                        break;
+                                    }
                                 }
                             }
+                            //for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
+                            //{
+                            //    Debug.Log("Picked : " + AllMeshController.PickContainer[i]);
+                            //}
                         }
                     }
                 }
+                CameraController.Once = true;
             }
-            CameraController.Once = false;
         }
     }
 

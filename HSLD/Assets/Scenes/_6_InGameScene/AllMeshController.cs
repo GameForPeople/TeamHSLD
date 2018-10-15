@@ -51,9 +51,8 @@ public class AllMeshController : MonoBehaviour {
                 Debug.Log("Fixed : " + i);
                 //고정 값 된 애들 검사
             }
-            if (AllContainer[i].GetComponent<MeshController>().isMine == true)
+            if (AllContainer[i].GetComponent<MeshController>().isMine == true) // 내 메시
             {
-
                 Debug.Log("Mine : " + i);
                 //고정 값 된 애들 검사
             }

@@ -96,7 +96,7 @@ public class MeshController : MonoBehaviour {
             }
             else // 그 외 지형카드로 색을 칠했었던거라면 다시 돌려줌
             {
-                if (CameraController.ChangeableCount < 10) {
+                if (CameraController.ChangeableCount < CameraController.DiceCount) {
                     GetComponent<MeshRenderer>().material = defaultMaterial;
                     terrainstate = Terrain.DEFAULT;
                     CameraController.ChangeableCount++;

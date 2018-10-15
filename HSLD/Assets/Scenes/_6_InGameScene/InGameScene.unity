@@ -148,7 +148,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &4287146
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +259,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &5946328
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +446,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &17308422
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +709,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &31305738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100308, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -748,7 +744,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &35264477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100374, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -784,7 +779,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &35864787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1042,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &49582510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1228,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &54276500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1271,7 +1263,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &55400396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1450,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &69651916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100060, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1495,7 +1485,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &73016155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1596,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &79606563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1707,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &81462916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100080, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1755,7 +1742,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &82822055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100224, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1791,7 +1777,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &82848385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,7 +1989,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &89703162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,7 +2176,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &107147627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2286,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &113498411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,7 +2443,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &119588798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100392, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2497,7 +2478,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &130673201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100368, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2533,7 +2513,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &131071464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100438, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2569,7 +2548,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &136879311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100546, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2605,7 +2583,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &141128050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100120, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2641,7 +2618,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &143664514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100338, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2677,7 +2653,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &147982413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +2764,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &153429358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100424, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2825,7 +2799,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &153673035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,7 +2910,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &156797254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,7 +3021,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &164558559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,7 +3208,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &170091625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100114, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3273,7 +3243,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &171084210 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100062, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3309,7 +3278,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &177965627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100100, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3345,7 +3313,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &180195419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100258, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3381,7 +3348,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &180696119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,7 +3459,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &184317044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100070, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3529,7 +3494,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &188344167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,7 +3605,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &197895681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,7 +3750,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &203382341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100544, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3823,7 +3785,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &203438008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,7 +3972,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &212851319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100518, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4047,7 +4007,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &215115340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,7 +4118,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &225109579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100524, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4195,7 +4153,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &229308353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100280, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4231,7 +4188,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &229903631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,7 +4299,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &241331999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100520, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4379,7 +4334,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &244480697
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,7 +4521,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &248390576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4714,7 +4667,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &264763494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,7 +4964,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &271887821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,7 +5151,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &277339579
 GameObject:
   m_ObjectHideFlags: 0
@@ -5540,7 +5490,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &307630133
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,7 +5601,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &310438292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5688,7 +5636,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &312016052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5876,7 +5823,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &326723863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100358, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5912,7 +5858,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &332690597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6024,7 +5969,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &336637860 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100248, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6060,7 +6004,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &339052602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100288, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6096,7 +6039,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &341697004
 GameObject:
   m_ObjectHideFlags: 0
@@ -6429,7 +6371,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &370548996
 GameObject:
   m_ObjectHideFlags: 0
@@ -6541,7 +6482,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &374445970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6641,7 +6581,6 @@ MonoBehaviour:
   maxDistance: 80
   RotationSensitivity: 0.05
   myTurn: 0
-  IngameManager: {fileID: 823012255}
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
@@ -6780,7 +6719,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &377995504
 GameObject:
   m_ObjectHideFlags: 0
@@ -7118,7 +7056,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &392990258
 GameObject:
   m_ObjectHideFlags: 0
@@ -7230,7 +7167,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &397624358
 GameObject:
   m_ObjectHideFlags: 0
@@ -7494,7 +7430,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &401093704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7530,7 +7465,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &401437443
 GameObject:
   m_ObjectHideFlags: 0
@@ -7642,7 +7576,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &404702594
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,7 +7687,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &408417171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100382, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7790,7 +7722,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &409749054
 GameObject:
   m_ObjectHideFlags: 0
@@ -8054,7 +7985,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &418698308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8090,7 +8020,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &424579409
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,7 +8428,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &442304538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100640, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8535,7 +8463,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &445073188
 GameObject:
   m_ObjectHideFlags: 0
@@ -8656,7 +8583,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &451282576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100372, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8692,7 +8618,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &453035472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100302, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8728,7 +8653,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &455544383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8840,7 +8764,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &464085634
 GameObject:
   m_ObjectHideFlags: 0
@@ -9028,7 +8951,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &479246501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9140,7 +9062,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &485024293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100220, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9176,7 +9097,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &489911122
 GameObject:
   m_ObjectHideFlags: 0
@@ -9288,7 +9208,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &493034999
 GameObject:
   m_ObjectHideFlags: 0
@@ -9854,7 +9773,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &513719430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100412, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9890,7 +9808,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &517522759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100216, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9926,7 +9843,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &521397301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100156, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9962,7 +9878,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &523002123
 GameObject:
   m_ObjectHideFlags: 0
@@ -10074,7 +9989,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &524108108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100040, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10110,7 +10024,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &524446939
 GameObject:
   m_ObjectHideFlags: 0
@@ -10374,7 +10287,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &529892250
 GameObject:
   m_ObjectHideFlags: 0
@@ -10684,7 +10596,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &535992572
 GameObject:
   m_ObjectHideFlags: 0
@@ -10872,7 +10783,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &540423455
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,7 +11007,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &552896767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100552, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11133,7 +11042,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &554599682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100066, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11169,7 +11077,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &559968541
 GameObject:
   m_ObjectHideFlags: 0
@@ -11281,7 +11188,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &564520935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100068, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11317,7 +11223,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &566916473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100334, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11353,7 +11258,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &567034065
 GameObject:
   m_ObjectHideFlags: 0
@@ -11541,7 +11445,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &579928386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100242, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11577,7 +11480,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &580781577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100174, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11613,7 +11515,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &584701206
 GameObject:
   m_ObjectHideFlags: 0
@@ -11725,7 +11626,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &598223319
 GameObject:
   m_ObjectHideFlags: 0
@@ -11837,7 +11737,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &601488987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100162, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11873,7 +11772,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &604852088
 GameObject:
   m_ObjectHideFlags: 0
@@ -12137,7 +12035,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &626600804
 GameObject:
   m_ObjectHideFlags: 0
@@ -12249,7 +12146,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &634228469
 GameObject:
   m_ObjectHideFlags: 0
@@ -12361,7 +12257,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &637065895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100290, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -12397,7 +12292,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &638877864
 GameObject:
   m_ObjectHideFlags: 0
@@ -12509,7 +12403,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &643797691
 GameObject:
   m_ObjectHideFlags: 0
@@ -13063,7 +12956,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &678267381
 GameObject:
   m_ObjectHideFlags: 0
@@ -13534,7 +13426,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &700057829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100346, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -13570,7 +13461,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &705225460
 GameObject:
   m_ObjectHideFlags: 0
@@ -13682,7 +13572,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &705727471
 GameObject:
   m_ObjectHideFlags: 0
@@ -13794,7 +13683,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &714531778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100354, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -13830,7 +13718,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &715297751
 GameObject:
   m_ObjectHideFlags: 0
@@ -14255,7 +14142,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &738747529
 GameObject:
   m_ObjectHideFlags: 0
@@ -14510,7 +14396,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &746530198
 GameObject:
   m_ObjectHideFlags: 0
@@ -14698,7 +14583,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &759865688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100226, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14734,7 +14618,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &765737525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100460, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14770,7 +14653,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &765903032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100254, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14806,7 +14688,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &770031913
 GameObject:
   m_ObjectHideFlags: 0
@@ -14918,7 +14799,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &773325323
 GameObject:
   m_ObjectHideFlags: 0
@@ -15030,7 +14910,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &784154797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100574, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15066,7 +14945,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &788573272
 GameObject:
   m_ObjectHideFlags: 0
@@ -15338,7 +15216,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &805254481
 GameObject:
   m_ObjectHideFlags: 0
@@ -15561,7 +15438,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &815214205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100164, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15597,7 +15473,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &819413570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100132, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15633,7 +15508,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &820614603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100530, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15669,7 +15543,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &823012255
 GameObject:
   m_ObjectHideFlags: 0
@@ -15777,7 +15650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffd69e5fe0755e4288a21f32377db66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFlow: 10
+  currentFlow: 0
   cardCanvas: {fileID: 1055813589}
   cardSetCanvas: {fileID: 1161714766}
   turnSetCanvas: {fileID: 806044292}
@@ -16374,7 +16247,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &864161486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100550, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16410,7 +16282,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &864600778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100292, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16446,7 +16317,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &866923194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100630, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16482,7 +16352,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &868341444
 GameObject:
   m_ObjectHideFlags: 0
@@ -16670,7 +16539,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &876933951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100170, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16706,7 +16574,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &882087829
 GameObject:
   m_ObjectHideFlags: 0
@@ -16818,7 +16685,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &883914049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100348, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16854,7 +16720,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &887061813
 GameObject:
   m_ObjectHideFlags: 0
@@ -17118,7 +16983,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &901911844
 GameObject:
   m_ObjectHideFlags: 0
@@ -17230,7 +17094,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1001 &908605739
 Prefab:
   m_ObjectHideFlags: 0
@@ -17312,7 +17175,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &911726643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100278, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17348,7 +17210,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &912114743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100176, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17384,7 +17245,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &913065674
 GameObject:
   m_ObjectHideFlags: 0
@@ -17496,7 +17356,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &914654594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100148, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17532,7 +17391,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &922622423
 GameObject:
   m_ObjectHideFlags: 0
@@ -18024,7 +17882,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &945472856
 GameObject:
   m_ObjectHideFlags: 0
@@ -18256,7 +18113,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &961288523
 GameObject:
   m_ObjectHideFlags: 0
@@ -18444,7 +18300,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &966816709
 GameObject:
   m_ObjectHideFlags: 0
@@ -18784,7 +18639,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &987082715
 GameObject:
   m_ObjectHideFlags: 0
@@ -18896,7 +18750,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &990876920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100018, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18932,7 +18785,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &993688310
 GameObject:
   m_ObjectHideFlags: 0
@@ -19044,7 +18896,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &996261728 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100360, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19080,7 +18931,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &999083812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19116,7 +18966,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1003098075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100488, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19152,7 +19001,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1007288718
 GameObject:
   m_ObjectHideFlags: 0
@@ -19333,7 +19181,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1010797641
 GameObject:
   m_ObjectHideFlags: 0
@@ -19567,7 +19414,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1015116477
 GameObject:
   m_ObjectHideFlags: 0
@@ -19755,7 +19601,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1018319071
 GameObject:
   m_ObjectHideFlags: 0
@@ -19943,7 +19788,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1023298873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100474, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19979,7 +19823,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1025060311
 GameObject:
   m_ObjectHideFlags: 0
@@ -20091,7 +19934,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1033011305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100096, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20127,7 +19969,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1042028599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100166, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20163,7 +20004,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1046382994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100342, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20199,7 +20039,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1046899817
 GameObject:
   m_ObjectHideFlags: 0
@@ -20311,7 +20150,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1048693602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100098, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20347,7 +20185,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1051069225
 GameObject:
   m_ObjectHideFlags: 0
@@ -20459,7 +20296,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1055192444
 GameObject:
   m_ObjectHideFlags: 0
@@ -21063,7 +20899,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1079666221
 GameObject:
   m_ObjectHideFlags: 0
@@ -21175,7 +21010,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1085788013
 GameObject:
   m_ObjectHideFlags: 0
@@ -21515,7 +21349,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1098860552
 GameObject:
   m_ObjectHideFlags: 0
@@ -21620,7 +21453,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1101325005
 GameObject:
   m_ObjectHideFlags: 0
@@ -21946,7 +21778,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1123455735
 GameObject:
   m_ObjectHideFlags: 0
@@ -22254,7 +22085,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1132190347 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100528, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22306,7 +22136,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1137437418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100464, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22342,7 +22171,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1142711213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100092, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22378,7 +22206,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1143189273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100050, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22414,7 +22241,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1150732177
 GameObject:
   m_ObjectHideFlags: 0
@@ -22602,7 +22428,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1157955293
 GameObject:
   m_ObjectHideFlags: 0
@@ -22714,7 +22539,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1158831593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100616, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22750,7 +22574,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1161714766
 GameObject:
   m_ObjectHideFlags: 0
@@ -22826,7 +22649,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1176474312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100130, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22862,7 +22684,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1186044385
 GameObject:
   m_ObjectHideFlags: 0
@@ -22967,7 +22788,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1194826732 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100478, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23003,7 +22823,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1196729667
 GameObject:
   m_ObjectHideFlags: 0
@@ -23267,7 +23086,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1206046373
 GameObject:
   m_ObjectHideFlags: 0
@@ -23379,7 +23197,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1210297259
 GameObject:
   m_ObjectHideFlags: 0
@@ -23491,7 +23308,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1215009495
 GameObject:
   m_ObjectHideFlags: 0
@@ -23603,7 +23419,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1216192729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100160, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23639,7 +23454,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1218839681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100450, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23675,7 +23489,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1227504591
 GameObject:
   m_ObjectHideFlags: 0
@@ -23787,7 +23600,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1235822336
 GameObject:
   m_ObjectHideFlags: 0
@@ -23899,7 +23711,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1241291164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100394, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23935,7 +23746,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1242337981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100396, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23971,7 +23781,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1246028411
 GameObject:
   m_ObjectHideFlags: 0
@@ -24083,7 +23892,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1254400896
 GameObject:
   m_ObjectHideFlags: 0
@@ -26885,7 +26693,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1263336280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100108, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -26921,7 +26728,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1265216244
 GameObject:
   m_ObjectHideFlags: 0
@@ -27274,7 +27080,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1281900096
 GameObject:
   m_ObjectHideFlags: 0
@@ -27386,7 +27191,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1282844373
 GameObject:
   m_ObjectHideFlags: 0
@@ -27573,7 +27377,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1290884983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -27609,7 +27412,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1292857123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100618, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -27645,7 +27447,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1295444167
 GameObject:
   m_ObjectHideFlags: 0
@@ -27757,7 +27558,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1301677086
 GameObject:
   m_ObjectHideFlags: 0
@@ -28097,7 +27897,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1001 &1319493523
 Prefab:
   m_ObjectHideFlags: 0
@@ -28545,7 +28344,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1338311565
 GameObject:
   m_ObjectHideFlags: 0
@@ -28733,7 +28531,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1342925026
 GameObject:
   m_ObjectHideFlags: 0
@@ -28845,7 +28642,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1348477053
 GameObject:
   m_ObjectHideFlags: 0
@@ -29671,7 +29467,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1372942047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100058, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -29707,7 +29502,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1374729968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -29743,7 +29537,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1378642440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100296, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -29779,7 +29572,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1384673111
 GameObject:
   m_ObjectHideFlags: 0
@@ -29891,7 +29683,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1392055864
 GameObject:
   m_ObjectHideFlags: 0
@@ -30003,7 +29794,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1393643889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100560, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30039,7 +29829,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1394812501
 GameObject:
   m_ObjectHideFlags: 0
@@ -30227,7 +30016,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1398908520
 GameObject:
   m_ObjectHideFlags: 0
@@ -30491,7 +30279,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1410575699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100452, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30527,7 +30314,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1413630668
 GameObject:
   m_ObjectHideFlags: 0
@@ -30761,7 +30547,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1417611858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100638, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30797,7 +30582,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1417626605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100492, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30833,7 +30617,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1423691206
 GameObject:
   m_ObjectHideFlags: 0
@@ -30945,7 +30728,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1430233578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100366, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30981,7 +30763,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1434057303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100386, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -31017,7 +30798,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1434323388
 GameObject:
   m_ObjectHideFlags: 0
@@ -31129,7 +30909,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1440178733
 GameObject:
   m_ObjectHideFlags: 0
@@ -31310,7 +31089,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1445801239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100516, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -31346,7 +31124,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1447689141
 GameObject:
   m_ObjectHideFlags: 0
@@ -31534,7 +31311,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1452564279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100498, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -31570,7 +31346,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1454669962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100206, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -31606,7 +31381,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1456099129
 GameObject:
   m_ObjectHideFlags: 0
@@ -31718,7 +31492,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1460855400
 GameObject:
   m_ObjectHideFlags: 0
@@ -32169,7 +31942,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1480288513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100402, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -32205,7 +31977,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1483358713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100454, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -32241,7 +32012,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1485370679
 GameObject:
   m_ObjectHideFlags: 0
@@ -32429,7 +32199,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1494495106
 GameObject:
   m_ObjectHideFlags: 0
@@ -32845,7 +32614,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1500401967
 GameObject:
   m_ObjectHideFlags: 0
@@ -32994,7 +32762,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1518446044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100592, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -33030,7 +32797,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1522472799
 GameObject:
   m_ObjectHideFlags: 0
@@ -33142,7 +32908,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1524988409
 GameObject:
   m_ObjectHideFlags: 0
@@ -33779,7 +33544,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1563110174
 GameObject:
   m_ObjectHideFlags: 0
@@ -33891,7 +33655,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1566220001
 GameObject:
   m_ObjectHideFlags: 0
@@ -34553,7 +34316,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1581329931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100584, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -34589,7 +34351,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1581448460
 GameObject:
   m_ObjectHideFlags: 0
@@ -34701,7 +34462,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1584743552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100122, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -34737,7 +34497,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1589159573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100314, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -34773,7 +34532,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1590142570
 GameObject:
   m_ObjectHideFlags: 0
@@ -34961,7 +34719,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1600033476
 GameObject:
   m_ObjectHideFlags: 0
@@ -35188,7 +34945,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1611593633
 GameObject:
   m_ObjectHideFlags: 0
@@ -35369,7 +35125,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1614644885
 GameObject:
   m_ObjectHideFlags: 0
@@ -35481,7 +35236,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1618581648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100200, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -35517,7 +35271,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1625096406
 GameObject:
   m_ObjectHideFlags: 0
@@ -35705,7 +35458,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1642138704
 GameObject:
   m_ObjectHideFlags: 0
@@ -35984,7 +35736,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1650831792
 GameObject:
   m_ObjectHideFlags: 0
@@ -36172,7 +35923,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1656699970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100142, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -36208,7 +35958,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1666188838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100344, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -36244,7 +35993,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1669602914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100064, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -36280,7 +36028,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1671755731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100620, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -36316,7 +36063,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1671810117
 GameObject:
   m_ObjectHideFlags: 0
@@ -36504,7 +36250,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1676843783
 GameObject:
   m_ObjectHideFlags: 0
@@ -36616,7 +36361,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1684928952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100636, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -36652,7 +36396,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1684964638
 GameObject:
   m_ObjectHideFlags: 0
@@ -37067,7 +36810,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1691213403
 GameObject:
   m_ObjectHideFlags: 0
@@ -37179,7 +36921,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1692228497
 GameObject:
   m_ObjectHideFlags: 0
@@ -37429,7 +37170,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1705047646
 GameObject:
   m_ObjectHideFlags: 0
@@ -37616,7 +37356,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1717781034
 GameObject:
   m_ObjectHideFlags: 0
@@ -37879,7 +37618,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1728010970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100458, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -37915,7 +37653,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1740230578
 GameObject:
   m_ObjectHideFlags: 0
@@ -38254,7 +37991,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1759653697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100134, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -38290,7 +38026,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1760712591
 GameObject:
   m_ObjectHideFlags: 0
@@ -38630,7 +38365,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1776447600
 GameObject:
   m_ObjectHideFlags: 0
@@ -38742,7 +38476,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1783506629
 GameObject:
   m_ObjectHideFlags: 0
@@ -39234,7 +38967,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1804820475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100514, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -39270,7 +39002,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1805185701
 GameObject:
   m_ObjectHideFlags: 0
@@ -39382,7 +39113,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1806623670
 GameObject:
   m_ObjectHideFlags: 0
@@ -39540,7 +39270,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1809212946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -39576,7 +39305,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1818289660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100168, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -39612,7 +39340,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1827715173
 GameObject:
   m_ObjectHideFlags: 0
@@ -39800,7 +39527,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1834811909
 GameObject:
   m_ObjectHideFlags: 0
@@ -39912,7 +39638,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1842956326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100534, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -39948,7 +39673,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1845189280
 GameObject:
   m_ObjectHideFlags: 0
@@ -40060,7 +39784,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1854507475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100126, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -40096,7 +39819,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1855914304
 GameObject:
   m_ObjectHideFlags: 0
@@ -40208,7 +39930,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1858226403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100556, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -40244,7 +39965,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1865527400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100084, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -40280,7 +40000,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1866580831
 GameObject:
   m_ObjectHideFlags: 0
@@ -40695,7 +40414,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1882424329
 GameObject:
   m_ObjectHideFlags: 0
@@ -40959,7 +40677,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1903221677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100270, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -40995,7 +40712,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1906018063
 GameObject:
   m_ObjectHideFlags: 0
@@ -41107,7 +40823,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1908056436
 GameObject:
   m_ObjectHideFlags: 0
@@ -41295,7 +41010,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1916176356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100410, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41331,7 +41045,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1917340613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100538, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41367,7 +41080,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1918495570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100522, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41403,7 +41115,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1920964238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100442, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41439,7 +41150,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1922279662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100570, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41475,7 +41185,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1927571657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100398, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41511,7 +41220,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1931759691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100136, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41547,7 +41255,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1932610389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100362, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41583,7 +41290,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1934944938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100154, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41619,7 +41325,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1940715308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100236, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -41655,7 +41360,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1941817063
 GameObject:
   m_ObjectHideFlags: 0
@@ -41767,7 +41471,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1944993362
 GameObject:
   m_ObjectHideFlags: 0
@@ -42001,7 +41704,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1953921687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100090, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -42037,7 +41739,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1956755758
 GameObject:
   m_ObjectHideFlags: 0
@@ -42675,7 +42376,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1976316790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100182, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -42711,7 +42411,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1977953338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100406, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -42747,7 +42446,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1978833633
 GameObject:
   m_ObjectHideFlags: 0
@@ -42859,7 +42557,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1989463809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100512, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -42895,7 +42592,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &1991324174
 GameObject:
   m_ObjectHideFlags: 0
@@ -43120,7 +42816,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2008778987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100332, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -43156,7 +42851,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2022098493
 GameObject:
   m_ObjectHideFlags: 0
@@ -43305,7 +42999,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2025824843
 GameObject:
   m_ObjectHideFlags: 0
@@ -43417,7 +43110,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2031406676
 GameObject:
   m_ObjectHideFlags: 0
@@ -43538,7 +43230,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2035930761
 GameObject:
   m_ObjectHideFlags: 0
@@ -43792,7 +43483,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2053038330
 GameObject:
   m_ObjectHideFlags: 0
@@ -43980,7 +43670,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2059702202
 GameObject:
   m_ObjectHideFlags: 0
@@ -44092,7 +43781,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2064442341
 GameObject:
   m_ObjectHideFlags: 0
@@ -44280,7 +43968,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2078951998
 GameObject:
   m_ObjectHideFlags: 0
@@ -44391,7 +44078,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2089673540
 GameObject:
   m_ObjectHideFlags: 0
@@ -44503,7 +44189,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2105058445
 GameObject:
   m_ObjectHideFlags: 0
@@ -44775,7 +44460,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2117494818
 GameObject:
   m_ObjectHideFlags: 0
@@ -45039,7 +44723,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2122743421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -45075,7 +44758,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2122752504
 GameObject:
   m_ObjectHideFlags: 0
@@ -45263,7 +44945,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2133652124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100178, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -45299,7 +44980,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2135420763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100364, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -45335,7 +45015,6 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  SceneManager: {fileID: 0}
 --- !u!1 &2141134283
 GameObject:
   m_ObjectHideFlags: 0
