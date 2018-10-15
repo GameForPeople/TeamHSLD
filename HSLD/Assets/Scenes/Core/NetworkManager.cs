@@ -19,94 +19,199 @@ using UnityEngine.Networking;
 // 아직 코드 보지 마세요....테스트 코드라.. 리팩토링 안해서 눈 썩어요..
 // 클라이언트 현재 네트워크 동기방식 -> 턴제라 그냥 써도 될듯 한데, 프레임 드랍 등, 문제되면 비동기방식으로 변경 필요
 
-enum PROTOCOL : int
+// State object for receiving data from remote device.
+ public class StateObject
 {
-    //for LoginScene
-    DEMAND_LOGIN        =   100     ,
-    FAIL_LOGIN          =   101     ,
-    PERMIT_LOGIN        =   102     ,
+    // Client socket.  
+    public Socket clietnSocket = null;
+    // Size of receive buffer.  
+    public const int BufferSize = 256;
+    // Receive buffer.  
+    public byte[] buffer = new byte[BufferSize];
+    // Received data string.  
+    public StringBuilder sb = new StringBuilder();
+}
 
-    //for LobbyScene
+public class AsynchronousClient
+{
+    // The port number for the remote device.  
+    private const int port = 11000;
 
-    // 구 Lobby Protocol
-    DEMAND_MAKEROOM     =   301     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    PERMIT_MAKEROOM     =   302     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    DEMAND_JOINROOM     =   303     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    PERMIT_JOINROOM     =   304     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    FAIL_JOINROOM       =   305     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    // ManualResetEvent instances signal completion.  
+    private static ManualResetEvent connectDone =
+        new ManualResetEvent(false);
+    private static ManualResetEvent sendDone =
+        new ManualResetEvent(false);
+    private static ManualResetEvent receiveDone =
+        new ManualResetEvent(false);
 
-    // 신 Lobby Protocol
-    DEMAND_RANDOM_MATCH =   311     ,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
-    PERMIT_MAKE_RANDOM  =   312     ,   // 방을 만들었다고 알립니다.
-    PERMIT_JOIN_RANDOM  =   313     ,   // 방에 접속했다고 알립니다.
+    // The response from the remote device.  
+    private static String response = String.Empty;
 
-    DEMAND_GUEST_JOIN   =   314     ,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
-    PERMIT_GUEST_JOIN   =   315     ,    // 방에 게스트가 접속했음.
-    PERMIT_GUEST_NOT_JOIN = 316     ,	// 방에 게스트가 접속했음.
+    private static void StartClient()
+    {
+        // Connect to a remote device.  
+        try
+        {
+            // Establish the remote endpoint for the socket.  
+            // The name of the   
+            // remote device is "host.contoso.com".  
+            IPHostEntry ipHostInfo = Dns.GetHostEntry("host.contoso.com");
+            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
-    //for RoomScene
+            // Create a TCP/IP socket.  
+            Socket client = new Socket(ipAddress.AddressFamily,
+                SocketType.Stream, ProtocolType.Tcp);
 
-    // 구 Room Protocol
-    DEMAND_ROOMHOST =   400     ,
-    ROOMSTATE_VOID      =   410     ,
-    ROOMSTATE_GUESTIN   =   411     ,
+            // Connect to the remote endpoint.  
+            client.BeginConnect(remoteEP,
+                new AsyncCallback(ConnectCallback), client);
+            connectDone.WaitOne();
 
+            // Send test data to the remote device.  
+            Send(client, "This is a test<EOF>");
+            sendDone.WaitOne();
 
-    // 신 Room Protocol
-    DEMAND_ENEMY_CHARACTER      =   421     ,   // 상대방 캐릭터의 변경 정보를 확인합니다.
-    PERMIT_ENEMY_CHARACTER      =   422     ,   // 상대방의 캐릭터 정보를 받아옵니다.
+            // Receive the response from the remote device.  
+            Receive(client);
+            receiveDone.WaitOne();
 
+            // Write the response to the console.  
+            Console.WriteLine("Response received : {0}", response);
 
+            // Release the socket.  
+            client.Shutdown(SocketShutdown.Both);
+            client.Close();
 
-    // for GameScene
-    DEMAND_GAME_STATE =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
-    VOID_GAME_STATE     =   501     ,  // 야 수비야 공격이 아무것도 안했어!
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
 
+    private static void ConnectCallback(IAsyncResult ar)
+    {
+        try
+        {
+            // Retrieve the socket from the state object.  
+            Socket client = (Socket)ar.AsyncState;
 
-    NOTIFY_END_OF_TURN  =   502     ,   // 야 나 다했다!
-    NOTIFY_CHANGE_TURN  =   503     ,	// 야 재 다했대!
+            // Complete the connection.  
+            client.EndConnect(ar);
 
+            Console.WriteLine("Socket connected to {0}",
+                client.RemoteEndPoint.ToString());
 
-    VOID_CLIENT_TO_SERVER                       =   511 ,                // 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
-    CHANGE_PLANET_CLIENT_TO_SERVER              =   512 ,       // 공격턴 클라이언트가 땅을 바꿧을 때,
-    ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER   =   513 ,    // 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
-    ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER  =   514 ,   // 공격턴 클라이언트의 이벤트 카드(공격, 주사위 관련) 처리
-    ACTION_EVENTCARD_DEFENSE_CLIENT_TO_SERVER   =   515 ,    // 미구현... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+            // Signal that the connection has been made.  
+            connectDone.Set();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
 
+    private static void Receive(Socket client)
+    {
+        try
+        {
+            // Create the state object.  
+            StateObject state = new StateObject();
+            state.clietnSocket = client;
 
-    VOID_SERVER_TO_CLIENT                       =   521 ,                // 서버가 수비턴 클라이언트에게 VOID전송 다만, 이거 받으면 턴 변경임!
-    CHANGE_PLANET_SERVER_TO_CLIENT              =   522 ,       // 서버가 수비턴 클라이언트에게 공격 클라이언트가 바꾼 행성 정보를 전송
-    ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT   =   523 ,    // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 지형변경) 정보를 전송
-    ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT  =   524 ,   // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 주사위 관련) 처리
-    ACTION_EVENTCARD_DEFENSE_SERVER_TO_CLIENT   =   525 ,    // 미구현.... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+            // Begin receiving the data from the remote device.  
+            client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
+                new AsyncCallback(ReceiveCallback), state);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
 
-    // Not yet used
-    DEMAND_DICE_CLIENT_TO_SERVER                =   521 ,     // 주사위 숫자를 요구할 때,
-    PERMIT_DICE_SERVER_TO_CLIENT                =   522 ,
+    private static void ReceiveCallback(IAsyncResult ar)
+    {
+        try
+        {
+            // Retrieve the state object and the client socket   
+            // from the asynchronous state object.  
+            StateObject state = (StateObject)ar.AsyncState;
+            Socket client = state.clietnSocket;
 
-    DEMAND_EVENTCARD_CLIENT_TO_SERVER           =   523 ,    // 공통덱에서 이벤트 카드를 요구할 때,
-    PERMIT_EVENTCARD_SERVER_TO_CLIENT           =   524 ,
+            // Read data from the remote device.  
+            int bytesRead = client.EndReceive(ar);
 
-    DEMAND_EVENTCARD_DICE_CLIENT_TO_SERVER      =   525 , // 이벤트 카드의 숫자를 요구할 때
-    PERMIT_EVENTCARD_DICE_SERVER_TO_CLIENT      =   526
-};
+            if (bytesRead > 0)
+            {
+                // There might be more data, so store the data received so far.  
+                state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
+
+                // Get the rest of the data.  
+                client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
+                    new AsyncCallback(ReceiveCallback), state);
+            }
+            else
+            {
+                // All the data has arrived; put it in response.  
+                if (state.sb.Length > 1)
+                {
+                    response = state.sb.ToString();
+                }
+                // Signal that all bytes have been received.  
+                receiveDone.Set();
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
+
+    private static void Send(Socket client, String data)
+    {
+        // Convert the string data to byte data using ASCII encoding.  
+        byte[] byteData = Encoding.ASCII.GetBytes(data);
+
+        // Begin sending the data to the remote device.  
+        client.BeginSend(byteData, 0, byteData.Length, 0,
+            new AsyncCallback(SendCallback), client);
+    }
+
+    private static void SendCallback(IAsyncResult ar)
+    {
+        try
+        {
+            // Retrieve the socket from the state object.  
+            Socket client = (Socket)ar.AsyncState;
+
+            // Complete sending the data to the remote device.  
+            int bytesSent = client.EndSend(ar);
+            Console.WriteLine("Sent {0} bytes to server.", bytesSent);
+
+            // Signal that all bytes have been sent.  
+            sendDone.Set();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
+
+    public static int Main(String[] args)
+    {
+        StartClient();
+        return 0;
+    }
+}
+
 
 public class NetworkManager : MonoBehaviour
 {
+    //////////////////////////////// FOR ONLY CLIENT TEST
     public bool isOnNetwork = false;
-
-    // State object for receiving data from remote device.  
-   // public class StateObject
-   // {
-   //     // Client socket.  
-   //     public Socket workSocket = null;
-   //     // Size of receive buffer.  
-   //     public const int BufferSize = 256;
-   //     // Receive buffer.  
-   //     public byte[] buffer = new byte[BufferSize];
-   //     // Received data string.  
-   //     public StringBuilder sb = new StringBuilder();
-   // }
+    ////////////////////////////////
 
     //[StructLayout(LayoutKind.Sequential)]
     //public class socket_data
@@ -397,8 +502,14 @@ public class NetworkManager : MonoBehaviour
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
             }
 
-            RecvProcess();
+            // Network Exception
+            else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_END_OF_TURN), 0, DataSendBuffer, 0, 4);
+                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+            }
 
+            RecvProcess();
         }
         else
         {
@@ -422,12 +533,6 @@ public class NetworkManager : MonoBehaviour
 
     void ProcessRecvData()
     {
-        //if (recvType > (int)PROTOCOL.DEMAND_GAMESTATE)
-        //{
-        //   
-        //}
-        //else 
-        
         //LoginScene
         if (recvType == (int)PROTOCOL.FAIL_LOGIN)
         {
@@ -589,7 +694,7 @@ public class NetworkManager : MonoBehaviour
         }
 
         //InGameScene
-        if (recvType > 500 && recvType < 600)
+        else if (recvType > 500 && recvType < 600)
         { 
             if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
             {
@@ -627,6 +732,16 @@ public class NetworkManager : MonoBehaviour
 
             inGameSceneManager.network_recvProtocolFlag = recvType;
         }
+
+        // Network Exception
+        else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)
+        {
+            //
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
+            //
+            SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);
+        }
+
         recvType = 0;
     }
 
@@ -681,5 +796,79 @@ public class NetworkManager : MonoBehaviour
         }
     }
 }
+
+enum PROTOCOL : int
+{
+    //for LoginScene
+    DEMAND_LOGIN        =   100     ,
+    FAIL_LOGIN          =   101     ,
+    PERMIT_LOGIN        =   102     ,
+
+    //for LobbyScene
+
+    // 구 Lobby Protocol
+    DEMAND_MAKEROOM     =   301     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_MAKEROOM     =   302     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    DEMAND_JOINROOM     =   303     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_JOINROOM     =   304     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    FAIL_JOINROOM       =   305     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+
+    // 신 Lobby Protocol
+    DEMAND_RANDOM_MATCH =   311     ,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
+    PERMIT_MAKE_RANDOM  =   312     ,   // 방을 만들었다고 알립니다.
+    PERMIT_JOIN_RANDOM  =   313     ,   // 방에 접속했다고 알립니다.
+
+    DEMAND_GUEST_JOIN   =   314     ,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
+    PERMIT_GUEST_JOIN   =   315     ,    // 방에 게스트가 접속했음.
+    PERMIT_GUEST_NOT_JOIN = 316     ,	// 방에 게스트가 접속했음.
+
+    //for RoomScene
+
+    // 구 Room Protocol
+    DEMAND_ROOMHOST     =   400     ,
+    ROOMSTATE_VOID      =   410     ,
+    ROOMSTATE_GUESTIN   =   411     ,
+
+
+    // 신 Room Protocol
+    DEMAND_ENEMY_CHARACTER      =   421     ,   // 상대방 캐릭터의 변경 정보를 확인합니다.
+    PERMIT_ENEMY_CHARACTER      =   422     ,   // 상대방의 캐릭터 정보를 받아옵니다.
+
+    DISCONNECTED_ENEMY_CLIENT   =   498     , // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
+    DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT   =       499 , // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
+
+
+    // for GameScene
+    DEMAND_GAME_STATE   =   500     ,    // 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
+    VOID_GAME_STATE     =   501     ,  // 야 수비야 공격이 아무것도 안했어!
+
+
+    NOTIFY_END_OF_TURN  =   502     ,   // 야 나 다했다!
+    NOTIFY_CHANGE_TURN  =   503     ,	// 야 재 다했대!
+
+
+    VOID_CLIENT_TO_SERVER                       =   511 ,                // 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
+    CHANGE_PLANET_CLIENT_TO_SERVER              =   512 ,       // 공격턴 클라이언트가 땅을 바꿧을 때,
+    ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER   =   513 ,    // 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
+    ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER  =   514 ,   // 공격턴 클라이언트의 이벤트 카드(공격, 주사위 관련) 처리
+    ACTION_EVENTCARD_DEFENSE_CLIENT_TO_SERVER   =   515 ,    // 미구현... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+
+
+    VOID_SERVER_TO_CLIENT                       =   521 ,                // 서버가 수비턴 클라이언트에게 VOID전송 다만, 이거 받으면 턴 변경임!
+    CHANGE_PLANET_SERVER_TO_CLIENT              =   522 ,       // 서버가 수비턴 클라이언트에게 공격 클라이언트가 바꾼 행성 정보를 전송
+    ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT   =   523 ,    // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 지형변경) 정보를 전송
+    ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT  =   524 ,   // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 주사위 관련) 처리
+    ACTION_EVENTCARD_DEFENSE_SERVER_TO_CLIENT   =   525 ,    // 미구현.... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+
+    // Not yet used
+    DEMAND_DICE_CLIENT_TO_SERVER                =   521 ,     // 주사위 숫자를 요구할 때,
+    PERMIT_DICE_SERVER_TO_CLIENT                =   522 ,
+
+    DEMAND_EVENTCARD_CLIENT_TO_SERVER           =   523 ,    // 공통덱에서 이벤트 카드를 요구할 때,
+    PERMIT_EVENTCARD_SERVER_TO_CLIENT           =   524 ,
+
+    DEMAND_EVENTCARD_DICE_CLIENT_TO_SERVER      =   525 , // 이벤트 카드의 숫자를 요구할 때
+    PERMIT_EVENTCARD_DICE_SERVER_TO_CLIENT      =   526
+};
 
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum FLOW
 {
-    MATCHINGCOMPLETE,
+    READY_MATCHINGCOMPLETE,
+    READY_DISPLAYMISSION,
     READY_TURNORDER,
     READY_SETCARD,
     READY_DONE,
@@ -28,9 +29,14 @@ public class FlowSystem : MonoBehaviour
     public GameObject readyCanvas;
     public GameObject matchingCompleteCanvas;
     public GameObject spinCanvas;
+    public GameObject displayMissionCanvas;
     
     private void Start()
     {
+        //사운드 임시
+        if (SoundManager.instance_ != null)
+            SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
+
         //테스트버전
         if (currentFlow.Equals(FLOW.TSETVER))
             FlowChange(currentFlow);
@@ -40,16 +46,16 @@ public class FlowSystem : MonoBehaviour
     {
         switch(doneFlow)
         {
-            case FLOW.MATCHINGCOMPLETE:
-                //사운드 임시
-                if(SoundManager.instance_ != null)
-                    SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
-
-                cardSetCanvas.SetActive(true);
+            case FLOW.READY_MATCHINGCOMPLETE:
+                displayMissionCanvas.SetActive(true);
                 matchingCompleteCanvas.SetActive(false);
+                currentFlow = FLOW.READY_DISPLAYMISSION;
+                break;
+            case FLOW.READY_DISPLAYMISSION:
+                displayMissionCanvas.SetActive(false);
+                cardSetCanvas.SetActive(true);
                 currentFlow = FLOW.READY_SETCARD;
                 break;
-
             case FLOW.READY_TURNORDER:
                 turnSetCanvas.SetActive(false);
                 readyCanvas.SetActive(false);

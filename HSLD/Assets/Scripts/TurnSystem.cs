@@ -17,15 +17,17 @@ public class TurnSystem : MonoBehaviour
     private float time_;
     
     public Text mainTxt;
-    public Text timerTxt;
+    public Text timerTxt; 
     public GameObject turnSet;
 
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
     public float matchingCompleteTime = 10;
+    public float displayMissionTime = 15;
     public float selectCardTime = 50;
     public float selectOrderTime = 10;
+
 
     public float rollingDiceTime = 10;
     public float pickingTerrainCardTime = 10;
@@ -117,7 +119,23 @@ public class TurnSystem : MonoBehaviour
             if (time_ > matchingCompleteTime)
                 break;
         }
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.MATCHINGCOMPLETE);
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_MATCHINGCOMPLETE);
+        StartCoroutine(ReadyDisplayMission());
+    }
+
+    IEnumerator ReadyDisplayMission()
+    {
+        time_ = 0;
+        mainTxt.text = "미션을 확인하세요.";
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            timerTxt.text = (displayMissionTime - (int)time_).ToString() + "초 후 시작";
+            yield return new WaitForEndOfFrame();
+            if (time_ > displayMissionTime)
+                break;
+        }
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DISPLAYMISSION);
         StartCoroutine(ReadySetCardTimer());
     }
 
