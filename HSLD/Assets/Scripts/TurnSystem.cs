@@ -17,7 +17,7 @@ public class TurnSystem : MonoBehaviour
     private float time_;
     
     public Text mainTxt;
-    public Text timerTxt;
+    public Text timerTxt; 
     public GameObject turnSet;
 
     private FLOW beforeFlow;

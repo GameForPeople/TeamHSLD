@@ -10,6 +10,8 @@ public class SetTurn : MonoBehaviour
     private bool isTrigger = false;
     static public bool isPicking = false;
 
+    public Sprite[] orderSpr;
+
     public void PickCard(GameObject obj)
     {
         if (isTrigger)
@@ -48,10 +50,10 @@ public class SetTurn : MonoBehaviour
         }
         
         if (obj.name.Equals("preOrder"))
-            StartCoroutine(SpinCard(obj, "선공"));
+            StartCoroutine(SpinCard(obj, orderSpr[0]));
 
         else if(obj.name.Equals("backOrder"))
-            StartCoroutine(SpinCard(obj, "후공"));
+            StartCoroutine(SpinCard(obj, orderSpr[1]));
     }
 
     public int RndNum()
@@ -59,7 +61,7 @@ public class SetTurn : MonoBehaviour
         return Random.Range(0,2);
     }
 
-    IEnumerator SpinCard(GameObject obj, string order)
+    IEnumerator SpinCard(GameObject obj, Sprite order)
     {
         isPicking = true;
         time_ = 0;
@@ -69,7 +71,7 @@ public class SetTurn : MonoBehaviour
             obj.transform.eulerAngles = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0, 180, 0), time_ / spinTime);
 
             if(time_ > spinTime * 0.5f)
-                obj.GetComponentInChildren<Text>().text = order;
+                obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
 
             yield return new WaitForEndOfFrame();
             if (time_ > spinTime)
