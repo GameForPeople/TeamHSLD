@@ -26,15 +26,14 @@ public class FlowSystem : MonoBehaviour
     public GameObject cardSetCanvas;
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
+    public GameObject matchingCompleteCanvas;
     public GameObject spinCanvas;
-
+    
     private void Start()
     {
         //테스트버전
         if (currentFlow.Equals(FLOW.TSETVER))
             FlowChange(currentFlow);
-        else
-            FlowChange(FLOW.MATCHINGCOMPLETE);
     }
 
     public void FlowChange(FLOW doneFlow)
@@ -42,16 +41,24 @@ public class FlowSystem : MonoBehaviour
         switch(doneFlow)
         {
             case FLOW.MATCHINGCOMPLETE:
-                SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
+                //사운드 임시
+                if(SoundManager.instance_ != null)
+                    SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
+
+                cardSetCanvas.SetActive(true);
+                matchingCompleteCanvas.SetActive(false);
                 currentFlow = FLOW.READY_SETCARD;
                 break;
+
             case FLOW.READY_TURNORDER:
                 turnSetCanvas.SetActive(false);
                 readyCanvas.SetActive(false);
                 //선공 / 후공
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 spinCanvas.SetActive(true);
-                SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
+
+                if (SoundManager.instance_ != null)
+                    SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
                 break;
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
@@ -68,7 +75,9 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
-                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
+
+                if (SoundManager.instance_ != null)
+                    SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
                 currentFlow = FLOW.TO_PICKINGCARD;
                 break;
             case FLOW.TO_PICKINGLOC:

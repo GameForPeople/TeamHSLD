@@ -15,13 +15,17 @@ public class TurnSystem : MonoBehaviour
     private int currentMyTurnTimer = 0;
     public Text displayTurnTimerTxt;
     private float time_;
-    public float selectOrder = 10;
-    public float selectCard = 50;
+    
+    public Text mainTxt;
+    public Text timerTxt;
     public GameObject turnSet;
 
-    public Slider readySlider;
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
+
+    public float matchingCompleteTime = 10;
+    public float selectCardTime = 50;
+    public float selectOrderTime = 10;
 
     public float rollingDiceTime = 10;
     public float pickingTerrainCardTime = 10;
@@ -38,26 +42,24 @@ public class TurnSystem : MonoBehaviour
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))
             return;
 
-        StartCoroutine(ReadySetCardTimer());
+        StartCoroutine(ReadyMatchingComplete());
     }
 
    IEnumerator ReadySetOrderTimer()
     {
         time_ = 0;
-        readySlider.maxValue = selectOrder;
-        readySlider.value = selectOrder;
-
+        mainTxt.text = "카드를 선택해 주세요.";
         while (true)
         {
             time_ += Time.deltaTime;
-            readySlider.value -= Time.deltaTime;
+            timerTxt.text = (selectOrderTime - (int)time_).ToString() + " 초";
 
             yield return new WaitForEndOfFrame();
             if (SetTurn.isPicking)
                 break;
 
             //랜덤으로 아무거나 픽킹하기
-            if (time_ > selectOrder)
+            if (time_ > selectOrderTime)
             {
                 //테스트용===================================================================
                 if(GameObject.Find("NetworkManager") == null)
@@ -91,19 +93,33 @@ public class TurnSystem : MonoBehaviour
     IEnumerator ReadySetCardTimer()
     {
         time_ = 0;
-        readySlider.maxValue = selectCard;
-        readySlider.value = selectCard;
+        mainTxt.text = "덱을 선택해 주세요.";
         while (true)
         {
             time_ += Time.deltaTime;
-            readySlider.value -= Time.deltaTime;
+            timerTxt.text = (selectCardTime - (int)time_).ToString() + " 초";
             yield return new WaitForEndOfFrame();
-            if (time_ > selectCard || CardSet.isSelect)
+            if (time_ > selectCardTime || CardSet.isSelect)
                 break;
         }
         StartCoroutine(ReadySetOrderTimer());
     }
 
+    IEnumerator ReadyMatchingComplete()
+    {
+        time_ = 0;
+        mainTxt.text = "일반게임";
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            timerTxt.text = (matchingCompleteTime - (int)time_).ToString() + "초 후 시작";
+            yield return new WaitForEndOfFrame();
+            if (time_ > matchingCompleteTime)
+                break;
+        }
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.MATCHINGCOMPLETE);
+        StartCoroutine(ReadySetCardTimer());
+    }
 
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     public void TurnSet()
