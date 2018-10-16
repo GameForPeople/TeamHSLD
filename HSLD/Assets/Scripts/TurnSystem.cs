@@ -38,9 +38,11 @@ public class TurnSystem : MonoBehaviour
     public GameObject warningPanel;
     private float warningRadio = 0;
 
+    Coroutine coroutine;
 
     private void Start()
     {
+
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))
             return;
 
@@ -142,16 +144,19 @@ public class TurnSystem : MonoBehaviour
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     public void TurnSet()
     {
+        if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.READY_DONE))
+            return;
+
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
-            StartCoroutine(TurnCounting());
+            coroutine = StartCoroutine(TurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
         else
         {
-            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.READY_DONE;
+            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.WAITING;
             StartCoroutine(EndTurnAndWaiting());
         }
     }
@@ -161,13 +166,14 @@ public class TurnSystem : MonoBehaviour
     {
         currentMyTurnTimer += 1;
         yield return new WaitForSeconds(1);
-
         //init
         if (!gameObject.GetComponent<FlowSystem>().currentFlow.Equals(beforeFlow))
         {
+            displayTurnTimerTxt.text = "";
             currentMyTurnTimer = 0;
             warningRadio = 0;
             warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+            
         }
 
 
@@ -228,9 +234,7 @@ public class TurnSystem : MonoBehaviour
             if (currentMyTurnTimer >= pickingEventCardTime)
             {
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
-                Debug.Log("시간경과 어떻게 처리할것인지.");
-
-                StartCoroutine(EndTurnAndWaiting());
+                Debug.Log("턴종료");
             }
             else
             {
@@ -242,13 +246,26 @@ public class TurnSystem : MonoBehaviour
             displayTurnTimerTxt.text += " / " + pickingEventCardTime + " )";
         }
 
+        if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.WAITING))
+        {
+            //init
+            displayTurnTimerTxt.text = "";
+            currentMyTurnTimer = 0;
+            warningRadio = 0;
+            warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+
+            currentTurn = TURN.ENEMYTURN;
+            StopCoroutine(coroutine);
+            TurnSet();
+        }
+        else
+            coroutine = StartCoroutine(TurnCounting());
+
         if (warningTime < currentMyTurnTimer + 1)
         {
             warningRadio += 0.05f;
             warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
         }
-
-        StartCoroutine(TurnCounting());
     }
 
     //내턴이 아닐때 
@@ -257,9 +274,11 @@ public class TurnSystem : MonoBehaviour
         while (true)
         {
             yield return new WaitForEndOfFrame();
-            if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+            if (currentTurn.Equals(TURN.MYTURN))
                 break;
         }
-        StartCoroutine(TurnCounting());
+
+        gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
+        coroutine = StartCoroutine(TurnCounting());
     }
 }

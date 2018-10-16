@@ -57,14 +57,18 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.READY_SETCARD;
                 break;
             case FLOW.READY_TURNORDER:
+                
                 turnSetCanvas.SetActive(false);
                 readyCanvas.SetActive(false);
-                //선공 / 후공
+
+                //선공 / 후공 - 임시, 서버붙이면 변경
                 gameObject.GetComponent<TurnSystem>().TurnSet();
+                //currentFlow = FLOW.READY_DONE;
                 spinCanvas.SetActive(true);
 
                 if (SoundManager.instance_ != null)
                     SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
+                
                 break;
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
@@ -88,8 +92,10 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGLOC:
                 currentFlow = FLOW.TO_PICKEVENTCARD;
+
                 break;
             case FLOW.TO_PICKEVENTCARD:
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 currentFlow = FLOW.WAITING;
                 break;
             case FLOW.TSETVER:
