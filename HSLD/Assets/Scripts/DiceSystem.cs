@@ -152,7 +152,7 @@ public class DiceSystem : MonoBehaviour
                         }
                     }
                     //10-12
-                    else if (rndTmpValue == 2)
+                    else
                     {
                         rndTmpValue = OutRndNum(0, 6);
                         //10일확률 3/6
@@ -187,45 +187,42 @@ public class DiceSystem : MonoBehaviour
             case 2:
                 if (OutRndNum(0, 100) < 40 + characterDiceRateUp)
                 {
-                    rndTmpValue = OutRndNum(0, 3);
                     //4-6
-                    if (rndTmpValue == 0)
+                    rndTmpValue = OutRndNum(0, 12);
+                    //4일확률 3/12
+                    if (rndTmpValue < 3)
                     {
-                        rndTmpValue = OutRndNum(0, 12);
-                        //4일확률 3/12
-                        if (rndTmpValue < 3)
+                        isDouble = false;
+                        // 2/3확률로 더블
+                        rndTmpValue = OutRndNum(0, 3);
+                        if (rndTmpValue < 2)
                         {
-                            isDouble = false;
-                            // 2/3확률로 더블
-                            rndTmpValue = OutRndNum(0, 3);
-                            if (rndTmpValue < 2)
-                            {
-                                //이때 더블
-                                isDouble = true;
-                            }
-                            getDiceNum = 4;
+                            //이때 더블
+                            isDouble = true;
+                        }
+                        getDiceNum = 4;
 
-                        }
-                        //5일확률 4/12
-                        else if (rndTmpValue > 2 && rndTmpValue < 7)
-                        {
-                            isDouble = false;
-                            getDiceNum = 5;
-                        }
-                        //6일확률 5/12
-                        else
-                        {
-                            // 1/5확률로 더블
-                            isDouble = false;
-                            rndTmpValue = OutRndNum(0, 5);
-                            if (rndTmpValue < 1)
-                            {
-                                //이때 더블
-                                isDouble = true;
-                            }
-                            getDiceNum = 6;
-                        }
                     }
+                    //5일확률 4/12
+                    else if (rndTmpValue > 2 && rndTmpValue < 7)
+                    {
+                        isDouble = false;
+                        getDiceNum = 5;
+                    }
+                    //6일확률 5/12
+                    else
+                    {
+                        // 1/5확률로 더블
+                        isDouble = false;
+                        rndTmpValue = OutRndNum(0, 5);
+                        if (rndTmpValue < 1)
+                        {
+                            //이때 더블
+                            isDouble = true;
+                        }
+                        getDiceNum = 6;
+                    }
+                    //=================여기
                 }
 
                 else
@@ -278,7 +275,7 @@ public class DiceSystem : MonoBehaviour
                         }
                     }
                     //10-12
-                    else if (rndTmpValue == 2)
+                    else
                     {
                         rndTmpValue = OutRndNum(0, 6);
                         //10일확률 3/6
@@ -401,7 +398,7 @@ public class DiceSystem : MonoBehaviour
                         }
                     }
                     //10-12
-                    else if (rndTmpValue == 2)
+                    else
                     {
                         rndTmpValue = OutRndNum(0, 6);
                         //10일확률 3/6
@@ -538,7 +535,7 @@ public class DiceSystem : MonoBehaviour
                         }
                     }
                     //2-3
-                    else if (rndTmpValue == 2)
+                    else
                     {
                         //2일확률 1/3
                         if (OutRndNum(0, 3) < 1)
