@@ -42,9 +42,9 @@ namespace NETWORK_UTIL {
 		memcpy(ptr->buf, (char*)&InNowProtocol, sizeof(int));
 
 		// 프로토콜만 보낼때를 제외하고!
-		if (InDataSize > sizeof(int))
+		if (InDataSize > sizeof(int) && ptr->dataBuffer != nullptr)
 		{
-			std::cout << "[DEBUG_MESSAGE] DataSize : " << InDataSize << ",  Protocol : " << InNowProtocol << "\n";
+			//std::cout << "[DEBUG_MESSAGE] DataSize : " << InDataSize << ",  Protocol : " << InNowProtocol << "\n";
 
 			memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, InDataSize - sizeof(int));
 			ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
@@ -284,7 +284,7 @@ void IOCPServer::DestroyAndClean()
 		printf(" [System] User Data Last Save Success! \n\n");
 		CloseHandle(hSaveUserDataThread);
 	}
-	
+
 }
 
 
@@ -337,7 +337,7 @@ void IOCPServer::WorkerThreadFunction()
 		if (retVal == 0 || cbTransferred == 0)
 		{
 			// 게임 방에서 나갔을 경우, 서버의 해당 클라의 ptr->RoomIndex = -1로 변경하는 작업 필요.
-			if (ptr->roomIndex >= 0) 
+			if (ptr->roomIndex >= 0)
 			{
 				if (int ReturnEnemyIndexBuffer; roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
 				{
@@ -402,8 +402,8 @@ void IOCPServer::WorkerThreadFunction()
 			if (ptr->bufferProtocol == START_RECV)
 			{
 				recvType = (int&)(ptr->buf);
-				
-				std::cout << "대기중이던 쓰레드가 받은 요구 데이터는 recvType == " << recvType << std::endl;
+
+				std::cout << "UserIndex : " << ptr->userIndex << " ,  recvType == " << recvType << std::endl;
 
 				/*
 				if (recvType == DEMAND_GAMESTATE)
@@ -501,10 +501,10 @@ void IOCPServer::WorkerThreadFunction()
 					int idSizeBuffer = (int&)(ptr->buf[12]);
 					string idBuffer;
 
-					for (int i = 0; i < idSizeBuffer; ++i) 
+					for (int i = 0; i < idSizeBuffer; ++i)
 					{
 						//idBuffer.append(&(ptr->buf[16+i]));
-						idBuffer+=ptr->buf[16 + i];
+						idBuffer += ptr->buf[16 + i];
 					}
 
 					if (typeBuffer == 1) //로그인 처리입니다.
@@ -566,7 +566,7 @@ void IOCPServer::WorkerThreadFunction()
 						}
 					}
 				}
-				
+
 				//LobbyScene - old
 				else if (recvType == DEMAND_MAKEROOM)
 				{
@@ -596,7 +596,7 @@ void IOCPServer::WorkerThreadFunction()
 					else
 					{
 						//std::cout << roomIndexBuffer << " 번째 방으로의 입장을 성공했습니다. 방장 아이디는 : (error) 비밀입니다. " << endl;
-						
+
 						ptr->isHost = false;
 						ptr->roomIndex = roomIndexBuffer;
 
@@ -640,7 +640,7 @@ void IOCPServer::WorkerThreadFunction()
 					if (roomData.GetGameReady(ptr->roomIndex))
 					{
 						ptr->dataBuffer = new PermitGuestJoinStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
-						
+
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitGuestJoinStruct), PERMIT_GUEST_JOIN))
 							continue;
 					}
@@ -650,7 +650,7 @@ void IOCPServer::WorkerThreadFunction()
 							continue;
 					}
 				}
-				
+
 				//RoomScene - old
 				else if (recvType == DEMAND_ROOMHOST) {
 					// 게스트가 들어왔을 때,
@@ -667,7 +667,7 @@ void IOCPServer::WorkerThreadFunction()
 							continue;
 					}
 				}
-				
+
 				//RoomScene - new
 				else if (recvType == DEMAND_ENEMY_CHARACTER)
 				{
@@ -684,11 +684,24 @@ void IOCPServer::WorkerThreadFunction()
 				{
 					// Caution!! Get Atomic!!
 					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
-					
-					if (dataProtocol != VOID_GAME_STATE && dataProtocol != 0)	// 리팩토링
-					{
-						std::cout << ptr->userIndex << "가 ERROR!!!! 501이 아닌 다른 값을 보내려고 함 그럼 그 값은?? " << dataProtocol << "\n";
 
+					cout << "   debug 1 : dataProtocol - " << dataProtocol <<  "\n";
+
+					if (dataProtocol == NOTIFY_CHANGE_TURN)
+					{
+						std::cout << "턴 변경 : 받는 쪽에서 확인 완료 \n";
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), NOTIFY_CHANGE_TURN))
+						{
+							// Caution!! dataBuffer Delete
+							//roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+							continue;
+						}
+					}
+					else if (dataProtocol != VOID_GAME_STATE && dataProtocol != 0)	// 리팩토링
+					{
 						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
 
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(ptr->dataBuffer), dataProtocol))
@@ -696,14 +709,12 @@ void IOCPServer::WorkerThreadFunction()
 							// Caution!! dataBuffer Delete
 							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost , VOID_GAME_STATE);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
 							continue;
 						}
 					}
 					else
 					{
-						std::cout << ptr->userIndex << "가 : GOOD \n";
-
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
 							continue;
 					}
@@ -712,52 +723,78 @@ void IOCPServer::WorkerThreadFunction()
 				//GameScene - Attack Turn
 				else if (recvType > 500 && recvType < 600)
 				{
-					std::cout << "ERROR 22222222222 500이 아닌 다른 값을 받으려고 함.";
-
 					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
-
+					//int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 					//if (dataProtocol)
 					//{
 						// 지연된 확인 필요.
-						
 						//Error 
 						// 너무나도 높은 확률로, 수비턴의 클라이언트 네트워크 상태가 불안정할 가능성이 큽니다.
 						// 하아...이걸 어떻게 처리 한담...
 					//}
 					//else 
 					//{
-						if (recvType == NOTIFY_END_OF_TURN)
-						{
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
-						}
-						else if (recvType == VOID_CLIENT_TO_SERVER)
-						{
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
-						}
-						else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
-						{
-							//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
-							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
-						}
-						else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
-						{
-							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
-						}
-						else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
-						{
-							roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
-						}
+					if (recvType == NOTIFY_END_OF_TURN)
+					{
+						std::cout << "1 턴 변경 : 보내는 쪽에서 저장 완료 \n";
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
+						
+						std::cout << "1 너네 방 몇번이냐 ㅡㅡ" << ptr->roomIndex << "\n";
 
-						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함
-						ptr->bufferProtocol == END_SEND;
+						roomData.GetDataProtocol(ptr->roomIndex, true);
+						roomData.GetDataProtocol(ptr->roomIndex, false);
+
+						std::cout << "2 너네 방 몇번이냐 ㅡㅡ" << ptr->roomIndex << "\n";
+					}
+					else if (recvType == VOID_CLIENT_TO_SERVER)
+					{
+						// Caution!! Set Atomic!!
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
+					}
+					else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
+					{
+						//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+						// Caution!! Set Atomic!!
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
+					}
+					else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
+					{
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+						// Caution!! Set Atomic!!
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
+					}
+					else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
+					{
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+						// Caution!! Set Atomic!!
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
+					}
+
+					// Send Process!!
+
+					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
+
+					if (dataProtocol != VOID_GAME_STATE && dataProtocol != 0)	// 리팩토링
+					{
+						std::cout << "\n" << ptr->userIndex << "가 ERROR!!!! 501이 아닌 다른 값을 보내려고 함 그럼 그 값은?? " << dataProtocol << "\n";
+
+						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
+
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(ptr->dataBuffer), dataProtocol))
+						{
+							// Caution!! dataBuffer Delete
+							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+							// Caution!! Set Atomic!!
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
+							continue;
+						}
+					}
+					else
+					{
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
+							continue;
+					}
 				}
 
 				// Network Exception - RoomScene 
@@ -787,7 +824,7 @@ void IOCPServer::WorkerThreadFunction()
 	}
 }
 
-DWORD WINAPI IOCPServer::SaveUserDate(LPVOID arg) 
+DWORD WINAPI IOCPServer::SaveUserDate(LPVOID arg)
 {
 	IOCPServer* server = (IOCPServer*)arg;
 	server->SaveUserDataThreadFunction();

@@ -507,7 +507,7 @@ public class NetworkManager : MonoBehaviour
         { 
             if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
             {
-                // 뭐야 니 아무것도 없엉 메롱
+                // 뭐야 니 아무것도 없엉
             }
             else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
             {

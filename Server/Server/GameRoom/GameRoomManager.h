@@ -36,22 +36,31 @@ public:
 public: //for InGameScene
 
 	// 레퍼런스 쓰지말자 일단은. 마지막 단계에서 데이터 프로토콣 변경해야지 --> 이걸 무슨뜻으로 달아놓은 거지????
-	// atomic
-	__inline int GetDataProtocol(const bool& InIsHost, const int& InRoomIndex) const
+	// atomic --> 이였다가 아님!
+	int GetDataProtocol(const int& InRoomIndex, const bool InIsHost) const
 	{
-		if (InIsHost)
+		if (InIsHost) {
+			cout << "guest :: "<< rooms[InRoomIndex].guestDataProtocol << endl;
 			return rooms[InRoomIndex].guestDataProtocol;
-		else
+		}
+		else {
+			cout << "host :: " << rooms[InRoomIndex].hostDataProtocol << endl;
 			return rooms[InRoomIndex].hostDataProtocol;
+		}
 	}
 
-	// atomic                                                             // 레퍼런스 쓰면 enum 못받는다.
-	__inline void SetDataProtocol(const int& InRoomIndex, const bool& InIsHost, const int InNewDataProtocol) //= 0)
+	// atomic  -> 이였다가 아님                                                  // 레퍼런스 쓰면 enum 못받는다.
+	void SetDataProtocol(const int& InRoomIndex, const bool InIsHost, const int InNewDataProtocol) //= 0)
 	{
+		std::cout << " 쓰레드야 꺼져 :: " << "니네 집 주소 어디야 " << InRoomIndex << InNewDataProtocol << "\n\n";
+
 		if (InIsHost)
 			rooms[InRoomIndex].hostDataProtocol = InNewDataProtocol;
 		else
 			rooms[InRoomIndex].guestDataProtocol = InNewDataProtocol;
+
+		cout << "host :: " << rooms[InRoomIndex].hostDataProtocol;
+		cout << "guest :: " << rooms[InRoomIndex].guestDataProtocol<< "\n";
 	}
 
 	BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
