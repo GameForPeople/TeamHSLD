@@ -25,8 +25,8 @@ public class TurnSystem : MonoBehaviour
 
     public float matchingCompleteTime = 10;
     public float displayMissionTime = 15;
-    public float selectCardTime = 50;
-    public float selectOrderTime = 10;
+    public float selectCardTime = 5;
+    public float selectOrderTime = 5;
 
 
     public float rollingDiceTime = 10;
@@ -59,8 +59,8 @@ public class TurnSystem : MonoBehaviour
             timerTxt.text = (selectOrderTime - (int)time_).ToString() + " 초";
 
             yield return new WaitForEndOfFrame();
-            if (SetTurn.isPicking)
-                break;
+            //if (SetTurn.isPicking)
+            //    break;
 
             //랜덤으로 아무거나 픽킹하기
             if (time_ > selectOrderTime)
@@ -103,7 +103,7 @@ public class TurnSystem : MonoBehaviour
             time_ += Time.deltaTime;
             timerTxt.text = (selectCardTime - (int)time_).ToString() + " 초";
             yield return new WaitForEndOfFrame();
-            if (time_ > selectCardTime || CardSet.isSelect)
+            if (time_ > selectCardTime /*|| CardSet.isSelect*/)
                 break;
         }
         StartCoroutine(ReadySetOrderTimer());
