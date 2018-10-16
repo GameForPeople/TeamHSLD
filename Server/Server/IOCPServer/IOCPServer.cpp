@@ -44,6 +44,8 @@ namespace NETWORK_UTIL {
 		// 프로토콜만 보낼때를 제외하고!
 		if (InDataSize > sizeof(int))
 		{
+			std::cout << "[DEBUG_MESSAGE] DataSize : " << InDataSize << ",  Protocol : " << InNowProtocol << "\n";
+
 			memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, InDataSize - sizeof(int));
 			ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
@@ -400,7 +402,8 @@ void IOCPServer::WorkerThreadFunction()
 			if (ptr->bufferProtocol == START_RECV)
 			{
 				recvType = (int&)(ptr->buf);
-				//std::cout << "대기중이던 쓰레드가 받은 요구 데이터는 recvType == " << recvType << std::endl;
+				
+				std::cout << "대기중이던 쓰레드가 받은 요구 데이터는 recvType == " << recvType << std::endl;
 
 				/*
 				if (recvType == DEMAND_GAMESTATE)
@@ -682,21 +685,25 @@ void IOCPServer::WorkerThreadFunction()
 					// Caution!! Get Atomic!!
 					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 					
-					if (dataProtocol)
+					if (dataProtocol != VOID_GAME_STATE && dataProtocol != 0)	// 리팩토링
 					{
+						std::cout << ptr->userIndex << "가 ERROR!!!! 501이 아닌 다른 값을 보내려고 함 그럼 그 값은?? " << dataProtocol << "\n";
+
 						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
 
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(RoomStateGuestInStruct), dataProtocol))
+						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(ptr->dataBuffer), dataProtocol))
 						{
 							// Caution!! dataBuffer Delete
 							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
 							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost , 0);
+							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost , VOID_GAME_STATE);
 							continue;
 						}
 					}
 					else
 					{
+						std::cout << ptr->userIndex << "가 : GOOD \n";
+
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
 							continue;
 					}
@@ -705,19 +712,21 @@ void IOCPServer::WorkerThreadFunction()
 				//GameScene - Attack Turn
 				else if (recvType > 500 && recvType < 600)
 				{
+					std::cout << "ERROR 22222222222 500이 아닌 다른 값을 받으려고 함.";
+
 					// Caution!! Get Atomic!!
 					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 
-					if (dataProtocol)
-					{
+					//if (dataProtocol)
+					//{
 						// 지연된 확인 필요.
 						
 						//Error 
 						// 너무나도 높은 확률로, 수비턴의 클라이언트 네트워크 상태가 불안정할 가능성이 큽니다.
 						// 하아...이걸 어떻게 처리 한담...
-					}
-					else 
-					{
+					//}
+					//else 
+					//{
 						if (recvType == NOTIFY_END_OF_TURN)
 						{
 							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
@@ -748,7 +757,7 @@ void IOCPServer::WorkerThreadFunction()
 						}
 
 						// 여기서 다시 IOCP 쓰레드 준비상태로 처리해줘야함
-					}
+						ptr->bufferProtocol == END_SEND;
 				}
 
 				// Network Exception - RoomScene 

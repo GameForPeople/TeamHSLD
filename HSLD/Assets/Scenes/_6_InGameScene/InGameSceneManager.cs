@@ -90,7 +90,10 @@ public class InGameSceneManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
 
             networkManager.SendData(network_sendProtocol); // REcv까지 자동.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 285773dbda3865788549a982f5f50ddd02e72f37
         }
     }
 }

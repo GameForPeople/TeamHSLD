@@ -5,18 +5,31 @@ using UnityEngine;
 public class PCverPIcking : MonoBehaviour
 {
     public Camera mainCamera;
+    public GameObject myPlanet;
     private GameObject PickedMeshObj;
     RaycastHit hit;
 
+    private void Start()
+    {
+        myPlanet = GameObject.Find("Sphere_320Objects_40X");
+    }
+
     private void Update()
     {
+        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC) return;
+
         if (CameraController.TurnChange) // 턴체인지가 true로 들어옴
         {
-            AllMeshController.PickContainer.Initialize();
-            CameraController.ChangeableCount = DiceSystem.getDiceNum;
+            //for (int i = 0;i < myPlanet.GetComponent<AllMeshController>().PickContainer.Length; i++)
+            //{
+            //    myPlanet.GetComponent<AllMeshController>().PickContainer[i] = 0;
+            //}
+            myPlanet.GetComponent<AllMeshController>().PickContainer.Initialize();
+            CameraController.ChangeableCount = 10;// DiceSystem.getDiceNum;
+            
             Debug.Log("내 턴으로 돌아왔을 때 한 번 : " + CameraController.ChangeableCount);
 
-            CameraController.Once = true;
+            //CameraController.Once = true;
 
             //////////////////////////////////////////
             CameraController.TurnChange = false;
@@ -27,15 +40,15 @@ public class PCverPIcking : MonoBehaviour
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
                 Debug.Log("내 턴에서 넘어갈 때 한번만");
-                for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
+                for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().PickContainer.Length; i++)
                 {
-                    if (AllMeshController.PickContainer[i] != 0)
+                    if (myPlanet.GetComponent<AllMeshController>().PickContainer[i] != 0)
                     {
-                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
-                        GameObject.Find(AllMeshController.PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
+                        GameObject.Find(myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString()).GetComponent<MeshController>().isFixed = true;
+                        GameObject.Find(myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString()).GetComponent<MeshController>().isMine = true;
                     } // 내가 픽했던 메시들 fixed로 고정
                 }
-                AllMeshController.PickContainer.Initialize(); // 컨테이너는 초기화
+                myPlanet.GetComponent<AllMeshController>().PickContainer.Initialize(); // 컨테이너는 초기화
                 CameraController.TurnChange = true;
                 CameraController.Once = false;
             }
@@ -69,39 +82,43 @@ public class PCverPIcking : MonoBehaviour
                         {
                             int temp = -1;
 
-                            for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
+                            int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Length;
+                            for (int i = 0; i < Length; i++)
                             {
                                 //Debug.Log("[Container] : " + AllMeshController.PickContainer[i]);
                                 //Debug.Log("[ MeshNum ] : " + PickedMeshObj.GetComponent<MeshController>().MeshNumber);
 
-                                if (AllMeshController.PickContainer[i] == 0 && temp == -1) // 들어가야할 위치에 temp를 수정해줘
+                                if (myPlanet.GetComponent<AllMeshController>().PickContainer[i] == 0 && temp == -1) // 들어가야할 위치에 temp를 수정해줘
                                 {
-                                    temp = i;
+                                    if (CameraController.ChangeableCount > 0)
+                                    {
+                                        temp = i;
+                                    }
                                 }
-                                if (AllMeshController.PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
+                                if (myPlanet.GetComponent<AllMeshController>().PickContainer[i] == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
                                 {
-                                    //Debug.Log("같은 곳 두번 피킹했어");
-                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                    AllMeshController.PickContainer[i] = 0;
-                                    CameraController.offset = 2;
-                                    //break;
+                                    if (CameraController.ChangeableCount < CameraController.DiceCount + 1)
+                                    {
+                                        //Debug.Log("같은 곳 두번 피킹했어");
+                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                        myPlanet.GetComponent<AllMeshController>().PickContainer[i] = 0;
+
+                                        CameraController.offset = 2;
+                                        break;
+                                    }
                                 } // 이미 들어있는 곳 피킹 했다면 해당 자리 초기화
-                                if (i == AllMeshController.PickContainer.Length - 1)
+                                if (i == Length - 1)
                                 {
                                     if (temp != -1)
                                     {
-                                        //Debug.Log("처음보는 곳이야!!" + temp);
-                                        AllMeshController.PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
+                                        Debug.Log("처음보는 곳이야!!" + temp);
+                                        myPlanet.GetComponent<AllMeshController>().PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
                                         PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
                                         CameraController.offset = 2;
                                         break;
                                     }
                                 }
                             }
-                            //for (int i = 0; i < AllMeshController.PickContainer.Length; i++)
-                            //{
-                            //    Debug.Log("Picked : " + AllMeshController.PickContainer[i]);
-                            //}
                         }
                     }
                 }

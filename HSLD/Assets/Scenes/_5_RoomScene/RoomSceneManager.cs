@@ -9,7 +9,7 @@ public class RoomSceneManager : MonoBehaviour {
     NetworkManager networkObject;
 
     bool isGameReady = true;
-    int startCount = 15;
+    int startCount = 5;
 
     IEnumerator CharacterCoroutine;
 
@@ -57,7 +57,7 @@ public class RoomSceneManager : MonoBehaviour {
         }
 
        isOnChangeCharacter = false;
-       startCount = 10;
+       startCount = 3;
         yield return new WaitForSeconds(0.5f);
 
         while (startCount > 0)

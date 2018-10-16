@@ -4,50 +4,46 @@ using UnityEngine;
 
 public class AllMeshController : MonoBehaviour {
 
-    const int MaxMesh = 320;
-    bool once;
+    const int MaxMesh = 321;
+    private static bool once;
 
     public static GameObject IngameManager;
-
-    public static int[] PickContainer;
-    public static GameObject[] AllContainer;
+    public static GameObject myPlanet;
+    public int[] PickContainer;
+    public GameObject[] AllContainer;
     // Use this for initialization
     void Start () {
-        IngameManager = GameObject.Find("InGameSceneManager");
-        PickContainer = new int[12];
-        AllContainer = new GameObject[320];
         once = true;
+        IngameManager = GameObject.Find("InGameSceneManager");
+        myPlanet = GameObject.Find("Sphere_320Objects_40X");
+        PickContainer = new int[12];
+        AllContainer = new GameObject[MaxMesh];
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if (once == true)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (once == true)
         {
             MakeAllContainer();
             once = false;
         }
     }
 
-
     public void MakeAllContainer()
     {
-        for (int i = 1; i <= MaxMesh; i++)
+        for (int i = 1; i <= MaxMesh - 1; i++)
         {
-            GameObject Check = GameObject.Find(i.ToString());
-            if (Check.GetComponent<MeshController>().isFixed == true)
-            {
-                AllContainer[i] = Check;
-            }
+            AllContainer[i] = GameObject.Find(i.ToString());
         }
     }
 
-    public static void Search()
+    public void Search()
     {
-        for (int i = 0; i < MaxMesh; i++)
+        for (int i = 1; i <= MaxMesh - 1; i++)
         {
             if (AllContainer[i].GetComponent<MeshController>().isFixed == true)
             {
-
                 Debug.Log("Fixed : " + i);
                 //고정 값 된 애들 검사
             }
