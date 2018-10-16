@@ -11,8 +11,7 @@ public class UIText : MonoBehaviour {
     public Camera mainCamera;
     public GameObject planetObject;
     public Vector3 Vec3;
-
-    private Vector4 ColorVec4;
+    
     private GameObject PickedMesh;
 
     private int TestCount;
@@ -46,7 +45,6 @@ public class UIText : MonoBehaviour {
 
                         PickedMesh = GameObject.Find(hit.transform.name);
                         MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
-                        ColorVec4 = PickedRenderer.material.color;
 
                         Vec3 = PickedRenderer.transform.position;
                         if (PickedMesh)

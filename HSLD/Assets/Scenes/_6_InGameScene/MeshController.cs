@@ -24,9 +24,6 @@ public class MeshController : MonoBehaviour {
     public bool isFixed;
     public bool isMine;
     public GameObject[] Link;
-
-    private int[] iLink;
-    private float[] fLink;
     
     private bool once;
 
@@ -46,8 +43,6 @@ public class MeshController : MonoBehaviour {
         name = giveNumber.ToString();
 
         Link = new GameObject[3];
-        iLink = new int[3];
-        fLink = new float[3];
     }
 	
 	// Update is called once per frame
@@ -56,7 +51,6 @@ public class MeshController : MonoBehaviour {
         {
             if (once == true)
             {
-                float min = 999;
                 for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length; i++)
                 {
                     if (i == MeshNumber) continue;
@@ -78,8 +72,7 @@ public class MeshController : MonoBehaviour {
                         }
                     }
                 }
-
-
+                Debug.Log("     what");
                 once = false;
             }
 

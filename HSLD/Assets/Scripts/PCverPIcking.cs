@@ -25,11 +25,11 @@ public class PCverPIcking : MonoBehaviour
             //    myPlanet.GetComponent<AllMeshController>().PickContainer[i] = 0;
             //}
             myPlanet.GetComponent<AllMeshController>().PickContainer.Initialize();
-            CameraController.ChangeableCount = DiceSystem.getDiceNum;
+            CameraController.ChangeableCount = 10;// DiceSystem.getDiceNum;
             
             Debug.Log("내 턴으로 돌아왔을 때 한 번 : " + CameraController.ChangeableCount);
 
-            CameraController.Once = true;
+            //CameraController.Once = true;
 
             //////////////////////////////////////////
             CameraController.TurnChange = false;
@@ -111,7 +111,7 @@ public class PCverPIcking : MonoBehaviour
                                 {
                                     if (temp != -1)
                                     {
-                                        //Debug.Log("처음보는 곳이야!!" + temp);
+                                        Debug.Log("처음보는 곳이야!!" + temp);
                                         myPlanet.GetComponent<AllMeshController>().PickContainer[temp] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
                                         PickedMeshObj.GetComponent<MeshController>().isAwake = true; // 깨어나면 계산 후 다시 잠듦
                                         CameraController.offset = 2;
