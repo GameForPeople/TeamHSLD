@@ -146,6 +146,7 @@ public class TurnSystem : MonoBehaviour
     {
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.READY_DONE))
             return;
+        //FLOW.READY_DONE 일때 코루틴 무한대기.
 
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
@@ -248,6 +249,9 @@ public class TurnSystem : MonoBehaviour
 
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.WAITING))
         {
+
+            yield return new WaitForSeconds(1.5f);
+            gameObject.GetComponent<InGameSceneManager>().network_sendProtocol = (int)PROTOCOL.NOTIFY_END_OF_TURN;
             //init
             displayTurnTimerTxt.text = "";
             currentMyTurnTimer = 0;

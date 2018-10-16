@@ -67,7 +67,7 @@ public class InGameSceneManager : MonoBehaviour {
 
             retRecvProtocol = network_recvProtocolFlag;
             network_recvProtocolFlag = 0;
-
+            
             return true;
         }
     }
