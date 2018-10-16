@@ -31,7 +31,7 @@ public class TurnSystem : MonoBehaviour
 
     public float rollingDiceTime = 10;
     public float pickingTerrainCardTime = 10;
-    public float pickingEventCardTime = 15;
+    public float pickingEventCardTime = 5;
     public float selectPlanetTerrainTime = 20;
 
     private float warningTime;

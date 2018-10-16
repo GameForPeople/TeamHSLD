@@ -16074,7 +16074,7 @@ MonoBehaviour:
   selectOrderTime: 5
   rollingDiceTime: 10
   pickingTerrainCardTime: 10
-  pickingEventCardTime: 15
+  pickingEventCardTime: 5
   selectPlanetTerrainTime: 20
   warningPanel: {fileID: 1362228162}
 --- !u!114 &823012259
