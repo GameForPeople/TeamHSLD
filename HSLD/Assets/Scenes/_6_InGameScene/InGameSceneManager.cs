@@ -86,10 +86,10 @@ public class InGameSceneManager : MonoBehaviour
     {
         while (true)
         {
+            network_sendProtocol = (int)PROTOCOL.DEMAND_GAME_STATE;
             yield return new WaitForSeconds(1.0f);
 
             networkManager.SendData(network_sendProtocol); // REcv까지 자동.
-            network_sendProtocol = (int)PROTOCOL.DEMAND_GAME_STATE;
         }
     }
 }

@@ -42,7 +42,7 @@ public:
 	//GameRoom(const GameRoom&) = delete; 
 	GameRoom& operator=(const GameRoom&) = delete;
 
-	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(0), guestDataProtocol(0)
+	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(501), guestDataProtocol(501)
 		, hostMissionIndex(), guestMissionIndex(), subMissionIndex(), hostCharacterIndex(), guestCharacterIndex(), isHostFirst()
 	{}
 
@@ -77,8 +77,8 @@ public:
 
 		isHostFirst = rand() % 2;
 
-		hostDataProtocol = 0;
-		guestDataProtocol = 0;
+		hostDataProtocol = 501;
+		guestDataProtocol = 501;
 
 		if (hostDataBuffer != nullptr)
 		{
@@ -95,6 +95,9 @@ public:
 	{
 		// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 		//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
+
+		hostDataProtocol = VOID_GAME_STATE;
+		guestDataProtocol = VOID_GAME_STATE;
 
 		userIndex[1] = InGuestIndex;
 		roomState = ROOM_STATE::ROOM_STATE_WAIT;
