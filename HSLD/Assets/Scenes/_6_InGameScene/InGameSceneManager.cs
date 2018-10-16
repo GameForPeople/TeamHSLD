@@ -5,6 +5,7 @@ using UnityEngine;
 public class InGameSceneManager : MonoBehaviour {
 
     public int          network_recvProtocolFlag;
+    public int          network_sendProtocol;
 
     // 지형 타입입니다.
     public int          network_terrainType;
@@ -18,12 +19,15 @@ public class InGameSceneManager : MonoBehaviour {
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
     public int          network_eventCardType;
 
+
+
     private NetworkManager networkManager;
     // Use this for initialization
     void Start ()
     {
         if (GameObject.Find("GameCores") == null)
             return;
+
         networkManager = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         networkManager.inGameSceneManager = GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>(); // same , return this;
 
