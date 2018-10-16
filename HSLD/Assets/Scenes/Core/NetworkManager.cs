@@ -270,7 +270,6 @@ public class NetworkManager : MonoBehaviour
 
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
-
             // InGameScene Attack Turn
             else if (InMsg == (int)PROTOCOL.NOTIFY_END_OF_TURN)
             {
@@ -512,7 +511,7 @@ public class NetworkManager : MonoBehaviour
             }
             else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
             {
-                // 여기서 아무것도 안해요. 턴 바꾸는 것은 InGameSceneManager에서 할 일입니다.
+                inGameSceneManager.ChangeTurn();
             }
             else if (recvType == (int)PROTOCOL.CHANGE_PLANET_SERVER_TO_CLIENT)
             {
@@ -606,7 +605,6 @@ public class NetworkManager : MonoBehaviour
         }
     }
 }
-
 
 
 

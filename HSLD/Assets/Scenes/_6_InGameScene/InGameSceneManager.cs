@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameSceneManager : MonoBehaviour {
+public class InGameSceneManager : MonoBehaviour
+{
 
-    public int          network_recvProtocolFlag;
-    public int          network_sendProtocol;
+    public int network_recvProtocolFlag;
+    public int network_sendProtocol;
 
     // 지형 타입입니다.
-    public int          network_terrainType;
+    public int network_terrainType;
 
     // 바뀌어지는 테라리안의 개수입니다.
-    public int          network_changeTerrainCount;
+    public int network_changeTerrainCount;
 
     // 바뀌어진 테라리언들의 인덱스가 들어있는 컨테이너 입니다.
-    public int[]        network_terrainIndex = new int[12];
+    public int[] network_terrainIndex = new int[12];
 
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
-    public int          network_eventCardType;
+    public int network_eventCardType;
 
 
 
     private NetworkManager networkManager;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         if (GameObject.Find("GameCores") == null)
             return;
@@ -35,9 +36,11 @@ public class InGameSceneManager : MonoBehaviour {
         network_terrainType = 0;
         network_changeTerrainCount = 0;
         network_eventCardType = 0;
+
+        StartCoroutine("InGameNetworkCoroutine");
     }
 
-    public void SendData (int InMsg, int InTerrainType, int InChangeTerrainCount, int[] InTerrainIndex, int InEventCardType)
+    public void SendData(int InMsg, int InTerrainType = -1, int InChangeTerrainCount = -1, int[] InTerrainIndex = null, int InEventCardType = -1)
     {
         network_recvProtocolFlag = 0;
         // 이부분에서 일정확률로 동기화 안될 수도 있음. // 일부 공격자 메세지 생략될 수 있음.
@@ -48,7 +51,9 @@ public class InGameSceneManager : MonoBehaviour {
         network_terrainIndex = InTerrainIndex;
         network_eventCardType = InEventCardType;
 
-        networkManager.SendData(InMsg);
+
+        network_sendProtocol = InMsg;
+        //networkManager.SendData(InMsg);
     }
 
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
@@ -67,18 +72,24 @@ public class InGameSceneManager : MonoBehaviour {
 
             retRecvProtocol = network_recvProtocolFlag;
             network_recvProtocolFlag = 0;
-            
+
             return true;
         }
     }
 
-    //IEnumerator NetworkRecvSyncCoroutine(ref bool retIsRecv)
-    //{
-    //    while (network_recvProtocolFlag == 0)
-    //    {
-    //        // 네트워크 지연처리 필요함.
-    //        // 1. 상대방 - 서버
-    //        // 2. 서버 - 나...
-    //    }
-    //}
+    public void ChangeTurn()
+    {
+        gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+    }
+
+    IEnumerator InGameNetworkCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            networkManager.SendData(network_sendProtocol); // REcv까지 자동.
+            network_sendProtocol = (int)PROTOCOL.DEMAND_GAME_STATE;
+        }
+    }
 }
