@@ -144,9 +144,8 @@ public class TurnSystem : MonoBehaviour
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     public void TurnSet()
     {
-        if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.READY_DONE))
-            return;
-        //FLOW.READY_DONE 일때 코루틴 무한대기.
+        if (SoundManager.instance_ != null)
+            SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
 
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))

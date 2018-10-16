@@ -2908,7 +2908,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c3c1b6f87f71e1548b3327bf377986ae, type: 3}
   - {fileID: 8300000, guid: ed617c8a6db25824981ce1f435e630aa, type: 3}
   - {fileID: 8300000, guid: 35d46de5754a0f54fb8e3708777fe959, type: 3}
-  BGMMaximumVolume: 0.5
+  BGMMaximumVolume: 0.2
   BGMMinimumVolume: 0
 --- !u!1 &2126076370
 GameObject:

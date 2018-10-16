@@ -64,11 +64,7 @@ public class FlowSystem : MonoBehaviour
                 //선공 / 후공 - 임시, 서버붙이면 변경
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 //currentFlow = FLOW.READY_DONE;
-                spinCanvas.SetActive(true);
-
-                if (SoundManager.instance_ != null)
-                    SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
-                
+                spinCanvas.SetActive(true);                
                 break;
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
