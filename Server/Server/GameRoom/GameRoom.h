@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../stdafx.h"
-#include "../Protocol/CommunicationProtocol.h"
+#include "../Protocol/CommunicationDataStruct.h"
 
 #define ROOM_MAX 500
 

@@ -1,6 +1,13 @@
 #include "../stdafx.h"
 #include "IOCPServer.h"
 
+/*
+
+ 1. InGameScene 나중에 맨 앞으로 옮기고 ( if 500 <=  hi  < 600 ) 함수포인터로 해싱해버리기. 
+
+*/
+
+
 // in Server global Function
 namespace NETWORK_UTIL {
 	void ERROR_QUIT(char *msg)
@@ -44,8 +51,6 @@ namespace NETWORK_UTIL {
 		// 프로토콜만 보낼때를 제외하고!
 		if (InDataSize > sizeof(int) && ptr->dataBuffer != nullptr)
 		{
-			//std::cout << "[DEBUG_MESSAGE] DataSize : " << InDataSize << ",  Protocol : " << InNowProtocol << "\n";
-
 			memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, InDataSize - sizeof(int));
 			ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
@@ -403,7 +408,7 @@ void IOCPServer::WorkerThreadFunction()
 			{
 				recvType = (int&)(ptr->buf);
 
-				std::cout << "UserIndex : " << ptr->userIndex << " ,  recvType == " << recvType << std::endl;
+				//std::cout << "UserIndex : " << ptr->userIndex << " ,  recvType == " << recvType << std::endl;
 
 				/*
 				if (recvType == DEMAND_GAMESTATE)
@@ -685,12 +690,8 @@ void IOCPServer::WorkerThreadFunction()
 					// Caution!! Get Atomic!!
 					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
 
-					cout << "   debug 1 : dataProtocol - " << dataProtocol <<  "\n";
-
 					if (dataProtocol == NOTIFY_CHANGE_TURN)
 					{
-						std::cout << "턴 변경 : 받는 쪽에서 확인 완료 \n";
-
 						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), NOTIFY_CHANGE_TURN))
 						{
 							// Caution!! dataBuffer Delete
@@ -720,7 +721,7 @@ void IOCPServer::WorkerThreadFunction()
 					}
 				}
 
-				//GameScene - Attack Turn
+				//GameScene - Attack Turn 
 				else if (recvType > 500 && recvType < 600)
 				{
 					// Caution!! Get Atomic!!
@@ -734,39 +735,31 @@ void IOCPServer::WorkerThreadFunction()
 					//}
 					//else 
 					//{
-					if (recvType == NOTIFY_END_OF_TURN)
+					if (recvType == CHANGE_TURN_TO_SERVER)
 					{
-						std::cout << "1 턴 변경 : 보내는 쪽에서 저장 완료 \n";
 						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
-						
-						std::cout << "1 너네 방 몇번이냐 ㅡㅡ" << ptr->roomIndex << "\n";
-
-						roomData.GetDataProtocol(ptr->roomIndex, true);
-						roomData.GetDataProtocol(ptr->roomIndex, false);
-
-						std::cout << "2 너네 방 몇번이냐 ㅡㅡ" << ptr->roomIndex << "\n";
 					}
-					else if (recvType == VOID_CLIENT_TO_SERVER)
+					else if (recvType == DICE_VALUE_TO_SERVER)
 					{
 						// Caution!! Set Atomic!!
 						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
 					}
-					else if (recvType == CHANGE_PLANET_CLIENT_TO_SERVER)
+					else if (recvType == TERRAIN_TYPE_TO_SERVER)
 					{
 						//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
 						// Caution!! Set Atomic!!
 						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
 					}
-					else if (recvType == ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
+					else if (recvType == TERRAIN_INDEX_TO_SERVER)
 					{
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
 						// Caution!! Set Atomic!!
 						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
 					}
-					else if (recvType == ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
+					else if (recvType == EVENTCARD_INDEX_TO_SERVER)
 					{
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
 						// Caution!! Set Atomic!!
 						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
 					}
