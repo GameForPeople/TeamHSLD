@@ -74,5 +74,8 @@
     <ClInclude Include="GameRoom\GameRoomManager.h">
       <Filter>소스 파일\Room</Filter>
     </ClInclude>
+    <ClInclude Include="Protocol\CommunicationDataStruct.h">
+      <Filter>소스 파일\Protocol</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

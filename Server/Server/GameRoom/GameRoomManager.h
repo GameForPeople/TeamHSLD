@@ -40,11 +40,9 @@ public: //for InGameScene
 	int GetDataProtocol(const int& InRoomIndex, const bool InIsHost) const
 	{
 		if (InIsHost) {
-			cout << "guest :: "<< rooms[InRoomIndex].guestDataProtocol << endl;
 			return rooms[InRoomIndex].guestDataProtocol;
 		}
 		else {
-			cout << "host :: " << rooms[InRoomIndex].hostDataProtocol << endl;
 			return rooms[InRoomIndex].hostDataProtocol;
 		}
 	}
@@ -52,15 +50,10 @@ public: //for InGameScene
 	// atomic  -> 이였다가 아님                                                  // 레퍼런스 쓰면 enum 못받는다.
 	void SetDataProtocol(const int& InRoomIndex, const bool InIsHost, const int InNewDataProtocol) //= 0)
 	{
-		std::cout << " 쓰레드야 꺼져 :: " << "니네 집 주소 어디야 " << InRoomIndex << InNewDataProtocol << "\n\n";
-
 		if (InIsHost)
 			rooms[InRoomIndex].hostDataProtocol = InNewDataProtocol;
 		else
 			rooms[InRoomIndex].guestDataProtocol = InNewDataProtocol;
-
-		cout << "host :: " << rooms[InRoomIndex].hostDataProtocol;
-		cout << "guest :: " << rooms[InRoomIndex].guestDataProtocol<< "\n";
 	}
 
 	BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
@@ -71,13 +64,13 @@ public: //for InGameScene
 			return rooms[InRoomIndex].hostDataBuffer;
 	}
 
-	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct InBaseStruct)
+	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct* InBaseStruct)
 	{
 		// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
 		if (InIsHost)
-			rooms[InRoomIndex].hostDataBuffer = &InBaseStruct;
+			rooms[InRoomIndex].hostDataBuffer = InBaseStruct;
 		else
-			rooms[InRoomIndex].guestDataBuffer = &InBaseStruct;
+			rooms[InRoomIndex].guestDataBuffer = InBaseStruct;
 	}
 
 	// Caution!! Delete dataBuffer!
