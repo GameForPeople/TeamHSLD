@@ -25,7 +25,7 @@ public class PCverPIcking : MonoBehaviour
             //    myPlanet.GetComponent<AllMeshController>().PickContainer[i] = 0;
             //}
             myPlanet.GetComponent<AllMeshController>().PickContainer.Initialize();
-            CameraController.ChangeableCount = 10;// DiceSystem.getDiceNum;
+            CameraController.ChangeableCount = DiceSystem.getDiceNum;
             
             Debug.Log("내 턴으로 돌아왔을 때 한 번 : " + CameraController.ChangeableCount);
 
@@ -85,9 +85,14 @@ public class PCverPIcking : MonoBehaviour
                             int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Length;
                             for (int i = 0; i < Length; i++)
                             {
-                                //Debug.Log("[Container] : " + AllMeshController.PickContainer[i]);
-                                //Debug.Log("[ MeshNum ] : " + PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-
+                                for (int j = 0; j< 3; j++)
+                                {
+                                    GameObject a = PickedMeshObj.GetComponent<MeshController>().JointMesh[j];
+                                    if (a.GetComponent<MeshRenderer>().material == Resources.Load<Material>("M_Default"))
+                                    {
+                                        a.GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Mountain");
+                                    }
+                                }
                                 if (myPlanet.GetComponent<AllMeshController>().PickContainer[i] == 0 && temp == -1) // 들어가야할 위치에 temp를 수정해줘
                                 {
                                     if (CameraController.ChangeableCount > 0)
