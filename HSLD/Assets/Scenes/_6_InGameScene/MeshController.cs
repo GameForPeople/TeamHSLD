@@ -23,11 +23,11 @@ public class MeshController : MonoBehaviour {
     public bool isAwake;
     public bool isFixed;
     public bool isMine;
-    public GameObject[] Link;
+    public GameObject[] JointMesh;
+    public GameObject[] Point_1;
+    public GameObject[] Point_2;
+    public GameObject[] Point_3;
     
-    private bool once;
-
-
     // Use this for initialization
 
     void Start () {
@@ -37,45 +37,20 @@ public class MeshController : MonoBehaviour {
         isAwake = false;
         isFixed = false;
         isMine = false;
-        once = true;
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
 
-        Link = new GameObject[3];
+        //JointMesh = new GameObject[3];
+        Point_1 = new GameObject[6];
+        Point_2 = new GameObject[6];
+        Point_3 = new GameObject[6];
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (isAwake)
         {
-            if (once == true)
-            {
-                for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length; i++)
-                {
-                    if (i == MeshNumber) continue;
-
-                    Vector3 otherMeshPosition = AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position;
-                    Vector3 pointTopoint = transform.position - otherMeshPosition; // 내 포지션과 다른 포지션을 빼
-                    float distance = pointTopoint.magnitude;
-
-                    if (distance < 12.6)
-                    {
-                        for (int j = 0; j < 3; j++)
-                        {
-                            if (Link[j] == null)
-                            {
-                                Link[j] = GameObject.Find(i.ToString());
-                                Debug.Log(distance);
-                                break;
-                            }
-                        }
-                    }
-                }
-                Debug.Log("     what");
-                once = false;
-            }
-
             if (terrainstate == Terrain.DEFAULT) // 기본 터레인인거면 아무도 안건들였음을 의미 함.
             {
                 // 임시
