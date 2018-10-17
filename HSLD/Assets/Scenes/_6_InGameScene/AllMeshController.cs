@@ -54,4 +54,23 @@ public class AllMeshController : MonoBehaviour {
             }
         }
     }
+
+    public bool isEmpty()
+    {
+        //int temp = 0;
+        for(int i = 0; i< PickContainer.Length; i++)
+        {
+            if(PickContainer[i] != 0)
+            {
+                //temp++;
+                return false;
+            }
+        }
+        //if(temp == 1)
+        //{
+        //    Debug.Log("저장소는 비어있습니다!");
+        //    return true;
+        //}
+        return true;
+    }
 }

@@ -9,7 +9,8 @@ public enum Terrain{
     MODERATION,
     COLD,
     SEA,
-    MOUNTAIN
+    MOUNTAIN,
+    ABLE
 }
 
 public class MeshController : MonoBehaviour {
@@ -51,59 +52,42 @@ public class MeshController : MonoBehaviour {
 	void Update () {
         if (isAwake)
         {
-            if (terrainstate == Terrain.DEFAULT) // 기본 터레인인거면 아무도 안건들였음을 의미 함.
+            if (terrainstate == Terrain.ABLE)
             {
-                // 임시
-
-                if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
-                {
-                    Debug.Log("picked");
-                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
-
-                    CameraController.ChangeableCount--;
-
-                    if (picked.name.Equals("TerrainCardImg1"))
-                    {
-                        Debug.Log("TerrainCardImg1");
-                        setBarren();
-                    }
-                    else if (picked.name.Equals("TerrainCardImg2"))
-                    {
-                        Debug.Log("TerrainCardImg2");
-                        setModeration();
-                    }
-                    else if (picked.name.Equals("TerrainCardImg3"))
-                    {
-                        Debug.Log("TerrainCardImg3");
-                        setCold();
-                    }
-                    else if (picked.name.Equals("TerrainCardImg4"))
-                    {
-                        Debug.Log("임시");
-                        setCold();
-                    }
-                    else if (picked.name.Equals("TerrainCardImg5"))
-                    {
-                        Debug.Log("임시");
-                        setCold();
-                    }
-                    else if (picked.name.Equals("EventCardImg1"))
-                    {
-                        Debug.Log("EventCardImg1");
-                        setSea();
-                    }
-                    else if (picked.name.Equals("EventCardImg2"))
-                    {
-                        Debug.Log("EventCardImg2");
-                        setMountain();
-                    }
-                }
+                Picked();
             }
-            else // 그 외 지형카드로 색을 칠했었던거라면 다시 돌려줌
+            else if (terrainstate == Terrain.DEFAULT) {
+                Picked();
+            }
+            else
             {
                 GetComponent<MeshRenderer>().material = defaultMaterial;
                 terrainstate = Terrain.DEFAULT;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
+                    {
+                        JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                        JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                    }
+                }
                 CameraController.ChangeableCount++;
+            }
+
+            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Length; i++) // Able 다시 세팅
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i] != 0) // 비어있지 않으면 주변애들을 M_Able로 바꿔줘
+                    {
+                        GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+                        if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // able일 때 default로 바꿔줘
+                        {
+                            FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
+                            FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
+                        }
+                    }
+                }
             }
 
             isAwake = false;
@@ -111,6 +95,53 @@ public class MeshController : MonoBehaviour {
 
         // 턴이 종료됐어 이번에 점령이 확정 됐다면 isFixed 를 true로 바꿔줘
 
+    }
+
+    public void Picked()
+    {
+        if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
+        {
+            Debug.Log("picked");
+            GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
+
+            CameraController.ChangeableCount--;
+
+            if (picked.name.Equals("TerrainCardImg1"))
+            {
+                Debug.Log("TerrainCardImg1");
+                setBarren();
+            }
+            else if (picked.name.Equals("TerrainCardImg2"))
+            {
+                Debug.Log("TerrainCardImg2");
+                setModeration();
+            }
+            else if (picked.name.Equals("TerrainCardImg3"))
+            {
+                Debug.Log("TerrainCardImg3");
+                setCold();
+            }
+            else if (picked.name.Equals("TerrainCardImg4"))
+            {
+                Debug.Log("임시");
+                setCold();
+            }
+            else if (picked.name.Equals("TerrainCardImg5"))
+            {
+                Debug.Log("임시");
+                setCold();
+            }
+            else if (picked.name.Equals("EventCardImg1"))
+            {
+                Debug.Log("EventCardImg1");
+                setSea();
+            }
+            else if (picked.name.Equals("EventCardImg2"))
+            {
+                Debug.Log("EventCardImg2");
+                setMountain();
+            }
+        }
     }
 
     public void setBarren()
