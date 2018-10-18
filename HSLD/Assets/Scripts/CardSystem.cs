@@ -20,7 +20,7 @@ public class CardSystem : MonoBehaviour
     private bool isTriggerDone = true;
     private float time_;
     public float timeConstValue;
-    public GameObject pickedCard; // YSK : private -> public
+    [HideInInspector] public GameObject pickedCard; // YSK : private -> public
 
     public GameObject[] cardSet = new GameObject[8];
 

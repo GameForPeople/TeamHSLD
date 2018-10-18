@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: d3198496f9daa164da86c8ed84c98e15
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: coldBig_icebergA
+    100004: coldSmall_iglooA
+    100006: coldTree_deadtreeA
+    100008: coldTree_deadtreeB
+    100010: dryBig_rockA
+    100012: dryBig_rockB
+    100014: drySmall_craterA
+    100016: drySmall_craterB
+    100018: dryTree_cactusA
+    100020: dryTree_cactusB
+    100022: goodBig_lakeA
+    100024: goodSmall_flowerA
+    100026: goodSmall_flowerB
+    100028: goodTree_treeA
+    100030: goodTree_treeB
+    100032: mtBig_connectA
+    100034: mtBig_mountainA
+    100036: seaBig_islandA
+    100038: seaBig_islandB
+    400000: //RootNode
+    400002: coldBig_icebergA
+    400004: coldSmall_iglooA
+    400006: coldTree_deadtreeA
+    400008: coldTree_deadtreeB
+    400010: dryBig_rockA
+    400012: dryBig_rockB
+    400014: drySmall_craterA
+    400016: drySmall_craterB
+    400018: dryTree_cactusA
+    400020: dryTree_cactusB
+    400022: goodBig_lakeA
+    400024: goodSmall_flowerA
+    400026: goodSmall_flowerB
+    400028: goodTree_treeA
+    400030: goodTree_treeB
+    400032: mtBig_connectA
+    400034: mtBig_mountainA
+    400036: seaBig_islandA
+    400038: seaBig_islandB
+    2100000: mountain
+    2100002: dry
+    2100004: cold
+    2100006: treeA
+    2100008: greenA
+    2100010: island
+    2100012: deadtree
+    2100014: greenB
+    2100016: flower
+    2100018: good
+    2100020: stone
+    2100022: water
+    2100024: treeB
+    2100026: flower2
+    2300000: coldBig_icebergA
+    2300002: coldSmall_iglooA
+    2300004: coldTree_deadtreeA
+    2300006: coldTree_deadtreeB
+    2300008: dryBig_rockA
+    2300010: dryBig_rockB
+    2300012: drySmall_craterA
+    2300014: drySmall_craterB
+    2300016: dryTree_cactusA
+    2300018: dryTree_cactusB
+    2300020: goodBig_lakeA
+    2300022: goodSmall_flowerA
+    2300024: goodSmall_flowerB
+    2300026: goodTree_treeA
+    2300028: goodTree_treeB
+    2300030: mtBig_connectA
+    2300032: mtBig_mountainA
+    2300034: seaBig_islandA
+    2300036: seaBig_islandB
+    3300000: coldBig_icebergA
+    3300002: coldSmall_iglooA
+    3300004: coldTree_deadtreeA
+    3300006: coldTree_deadtreeB
+    3300008: dryBig_rockA
+    3300010: dryBig_rockB
+    3300012: drySmall_craterA
+    3300014: drySmall_craterB
+    3300016: dryTree_cactusA
+    3300018: dryTree_cactusB
+    3300020: goodBig_lakeA
+    3300022: goodSmall_flowerA
+    3300024: goodSmall_flowerB
+    3300026: goodTree_treeA
+    3300028: goodTree_treeB
+    3300030: mtBig_connectA
+    3300032: mtBig_mountainA
+    3300034: seaBig_islandA
+    3300036: seaBig_islandB
+    4300000: mtBig_mountainA
+    4300002: dryBig_rockA
+    4300004: mtBig_connectA
+    4300006: coldBig_icebergA
+    4300008: goodTree_treeA
+    4300010: seaBig_islandA
+    4300012: coldSmall_iglooA
+    4300014: drySmall_craterA
+    4300016: coldTree_deadtreeA
+    4300018: dryTree_cactusA
+    4300020: goodSmall_flowerA
+    4300022: goodBig_lakeA
+    4300024: dryBig_rockB
+    4300026: goodSmall_flowerB
+    4300028: seaBig_islandB
+    4300030: goodTree_treeB
+    4300032: dryTree_cactusB
+    4300034: coldTree_deadtreeB
+    4300036: drySmall_craterB
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

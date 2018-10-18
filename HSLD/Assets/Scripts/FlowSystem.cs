@@ -14,7 +14,6 @@ public enum FLOW
     TO_PICKINGCARD,
     TO_PICKINGLOC,
     TO_PICKEVENTCARD,
-    DISPLAY_EVENT,         //이벤트연출 - 나중에
     TSETVER
 }
 
@@ -30,7 +29,32 @@ public class FlowSystem : MonoBehaviour
     public GameObject matchingCompleteCanvas;
     public GameObject spinCanvas;
     public GameObject displayMissionCanvas;
-    
+
+    private float time_;
+    static public bool isWaitingTime;
+
+    //이벤트 연출시간이 끝난다음에 다음 상태 진행.
+    IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
+    {
+        isWaitingTime = true;
+        time_ = 0;
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            if (time_ > time)
+                break;
+        }
+
+        switch (beforeFlow)
+        {
+            case FLOW.TO_ROLLINGDICE:
+                currentFlow = FLOW.TO_PICKINGCARD;
+                break;
+        }
+        isWaitingTime = false;
+    }
+
     private void Start()
     {
         //사운드 임시
@@ -84,10 +108,18 @@ public class FlowSystem : MonoBehaviour
 
                 if (SoundManager.instance_ != null)
                     SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
-                currentFlow = FLOW.TO_PICKINGCARD;
+
+                //여기
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
+
                 break;
+
+            //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
-                currentFlow = FLOW.TO_PICKEVENTCARD;
+                if(gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
+                    currentFlow = FLOW.TO_PICKEVENTCARD;
+                else
+                    currentFlow = FLOW.WAITING;
 
                 break;
             case FLOW.TO_PICKEVENTCARD:
