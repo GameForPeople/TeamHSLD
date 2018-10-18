@@ -3,7 +3,7 @@
 
 /*
 
- 1. InGameScene 나중에 맨 앞으로 옮기고 ( if 500 <=  hi  < 600 ) 함수포인터로 해싱해버리기. 
+ 1. InGameScene 나중에 맨 앞으로 옮기고 ( if 500 <=  hi  < 600 ) 함수포인터로 해싱해버리기.
 
 */
 
@@ -685,85 +685,111 @@ void IOCPServer::WorkerThreadFunction()
 				}
 
 				// GameScene - Defense Turn
-				else if (recvType == DEMAND_GAME_STATE)
-				{
-					// Caution!! Get Atomic!!
-					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
-
-					if (dataProtocol == NOTIFY_CHANGE_TURN)
-					{
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), NOTIFY_CHANGE_TURN))
-						{
-							// Caution!! dataBuffer Delete
-							//roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
-							continue;
-						}
-					}
-					else if (dataProtocol != VOID_GAME_STATE && dataProtocol != 0)	// 리팩토링
-					{
-						ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
-
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(ptr->dataBuffer), dataProtocol))
-						{
-							// Caution!! dataBuffer Delete
-							roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
-							// Caution!! Set Atomic!!
-							roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
-							continue;
-						}
-					}
-					else
-					{
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
-							continue;
-					}
-				}
-
-				//GameScene - Attack Turn 
+				// GameScene - Attack Turn 
 				else if (recvType > 500 && recvType < 600)
 				{
-					// Caution!! Get Atomic!!
-					//int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
-					//if (dataProtocol)
-					//{
-						// 지연된 확인 필요.
-						//Error 
-						// 너무나도 높은 확률로, 수비턴의 클라이언트 네트워크 상태가 불안정할 가능성이 큽니다.
-						// 하아...이걸 어떻게 처리 한담...
-					//}
-					//else 
-					//{
-					if (recvType == CHANGE_TURN_TO_SERVER)
+					if (recvType == DEMAND_GAME_STATE)
 					{
-						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
+						// Caution!! Get Atomic!!
+						int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);
+
+						if (dataProtocol == VOID_GAME_STATE)
+						{
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), VOID_GAME_STATE))
+								continue;
+						}
+						else if (dataProtocol == CHANGE_TURN_TO_CLIENT)
+						{
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), CHANGE_TURN_TO_CLIENT))
+							{
+								// Caution!! dataBuffer Delete
+								//roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+								// Caution!! Set Atomic!!
+								roomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+								continue;
+							}
+						}
+						else if (dataProtocol == DICE_VALUE_TO_CLIENT )	
+						{
+							ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
+
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(DiceValueStruct), DICE_VALUE_TO_CLIENT))
+							{
+								// Caution!! dataBuffer Delete
+								roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+								// Caution!! Set Atomic!!
+								roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
+								continue;
+							}
+						}
+						else if (dataProtocol == TERRAIN_TYPE_TO_CLIENT)
+						{
+							ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
+
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(TerrainTypeStruct), TERRAIN_TYPE_TO_CLIENT))
+							{
+								// Caution!! dataBuffer Delete
+								roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+								// Caution!! Set Atomic!!
+								roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
+								continue;
+							}
+						}
+						else if (dataProtocol == TERRAIN_INDEX_TO_CLIENT)
+						{
+							ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
+
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(TerrainIndexStruct), TERRAIN_INDEX_TO_CLIENT))
+							{
+								// Caution!! dataBuffer Delete
+								roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+								// Caution!! Set Atomic!!
+								roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
+								continue;
+							}
+						}
+						else if (dataProtocol == EVENTCARD_INDEX_TO_CLIENT)
+						{
+							ptr->dataBuffer = roomData.GetDataBuffer(ptr->roomIndex, ptr->isHost);
+
+							if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(EventCardIndexStruct), EVENTCARD_INDEX_TO_CLIENT))
+							{
+								// Caution!! dataBuffer Delete
+								roomData.DeleteDataBuffer(ptr->roomIndex, ptr->isHost);
+								// Caution!! Set Atomic!!
+								roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_GAME_STATE);
+								continue;
+							}
+						}
+					}
+					else if (recvType == CHANGE_TURN_TO_SERVER)
+					{
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_TURN_TO_CLIENT);
 					}
 					else if (recvType == DICE_VALUE_TO_SERVER)
 					{
 						// Caution!! Set Atomic!!
-						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, VOID_SERVER_TO_CLIENT);
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, DICE_VALUE_TO_CLIENT);
 					}
 					else if (recvType == TERRAIN_TYPE_TO_SERVER)
 					{
 						//roomData.GetDataBuffer(ptr->roomIndex) = new ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]);
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ChangePlanetStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int*)ptr->buf[12]));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &TerrainTypeStruct((int&)(ptr->buf[4])));
 						// Caution!! Set Atomic!!
-						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, CHANGE_PLANET_SERVER_TO_CLIENT);
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, TERRAIN_TYPE_TO_CLIENT);
 					}
 					else if (recvType == TERRAIN_INDEX_TO_SERVER)
 					{
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ActionEventCardTerrainStruct((int&)(ptr->buf[4]), (int&)(ptr->buf[8]), (int&)(ptr->buf[12]), (int*)ptr->buf[16]));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &TerrainIndexStruct((int&)(ptr->buf[4]), (int*)(ptr->buf[8])));
 						// Caution!! Set Atomic!!
-						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT);
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, TERRAIN_INDEX_TO_CLIENT);
 					}
 					else if (recvType == EVENTCARD_INDEX_TO_SERVER)
 					{
-						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &ActionEventCardDiceBuffStruct((int&)(ptr->buf[4])));
+						roomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, &EventCardIndexStruct((int&)(ptr->buf[4])));
 						// Caution!! Set Atomic!!
-						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT);
+						roomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, EVENTCARD_INDEX_TO_CLIENT);
 					}
-
 					// Send Process!!
 
 					int dataProtocol = roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost);

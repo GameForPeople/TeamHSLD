@@ -44,7 +44,7 @@ struct DemandLoginStruct : public BaseStruct {
 
 	//안쓰네.
 	DemandLoginStruct() = delete;
-	~DemandLoginStruct() = default;
+	virtual ~DemandLoginStruct() override = default;
 };
 
 // type 100일때, 서버에 바로 다음 날려주는 구조체
@@ -61,7 +61,7 @@ struct DemandLoginCharStruct : public BaseStruct {
 	//	memcpy(ID, InID.c_str(), IDSize);
 	//};
 	DemandLoginCharStruct() = delete;
-	~DemandLoginCharStruct() = default;
+	virtual ~DemandLoginCharStruct() override  = default;
 };
 
 // type 101 Server -> Client 로그인 실패, 회원가입 실패
@@ -69,11 +69,11 @@ struct FailLoginStruct : public BaseStruct {
 	int type{}; // 1일때 로그인 없는 아이디, 2일때 로그인 잘못된 비밀번호, 3일때 이미 로그인한 아이디, 4일때 회원가입 중복된 아이디!
 				// 아이디, 비밀번호 정합성은, 클라단에서 체크하세요!!
 
-	__inline FailLoginStruct(const int InType) : type(InType)
+	FailLoginStruct(const int InType) : type(InType)
 	{};
 
 	//__inline FailLoginStruct() = delete;
-	__inline ~FailLoginStruct() = default;
+	virtual ~FailLoginStruct() override = default;
 };
 
 // type 102 Server -> Client 로그인 성공, Lobby정보, 계정정보 전달
@@ -82,12 +82,12 @@ struct PermitLoginStruct : public BaseStruct {
 	int loseCount{};
 	int money{};
 
-	__inline PermitLoginStruct(const int InWin, const int InLose, const int InMoney)
+	PermitLoginStruct(const int InWin, const int InLose, const int InMoney)
 		: winCount(InWin), loseCount(InLose), money(InMoney)
 	{};
 
 	//__inline PermitLoginStruct() = delete;
-	__inline ~PermitLoginStruct() = default;
+	virtual ~PermitLoginStruct() override = default;
 };
 
 #pragma endregion
@@ -109,22 +109,22 @@ struct PermitMakeRoomStruct : public BaseStruct {
 	// 사실 이것도안쓰지만. -> ? 애는 진짜씀 ㅎ
 	int roomIndex;
 
-	__inline PermitMakeRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
+	PermitMakeRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
 	{};
 
 	//__inline PermitMakeRoomStruct() = delete;
-	__inline ~PermitMakeRoomStruct() = default;
+	virtual ~PermitMakeRoomStruct() = default;
 };
 
 //type 303
 struct DemandJoinRoomStruct : public BaseStruct {
 	int roomIndex;
 
-	__inline DemandJoinRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
+	DemandJoinRoomStruct(const int InRoomIndex) : roomIndex(InRoomIndex)
 	{};
 
 	//__inline DemandJoinRoomStruct() = delete;
-	__inline ~DemandJoinRoomStruct() = default;
+	virtual ~DemandJoinRoomStruct() override = default;
 };
 
 //type 304
@@ -133,24 +133,24 @@ struct PermitJoinRoomStruct : public BaseStruct {
 	int idSize;
 	string enemyId;
 
-	__inline PermitJoinRoomStruct(int InRoomIndex, const string_view& InEnemyID)
+	PermitJoinRoomStruct(int InRoomIndex, const string_view& InEnemyID)
 		: roomIndex(InRoomIndex), idSize(InEnemyID.size()), enemyId(InEnemyID)
 	{};
 
 	//__inline PermitJoinRoomStruct() = delete;
-	__inline ~PermitJoinRoomStruct() = default;
+	virtual ~PermitJoinRoomStruct() override = default;
 };
 
 //type 305
 struct FailJoinRoomStruct : public BaseStruct {
 	int failReason;
 
-	__inline FailJoinRoomStruct(int InFailReason)
+	FailJoinRoomStruct(int InFailReason)
 		: failReason(InFailReason)
 	{};
 
 	//__inline FailJoinRoomStruct() = delete;
-	__inline ~FailJoinRoomStruct() = default;
+	virtual ~FailJoinRoomStruct() override = default;
 };
 
 #pragma endregion
@@ -178,7 +178,7 @@ struct PermitMakeRandomStruct : public BaseStruct {
 		: roomIndex(InRoomIndex), isHostFirst(InIsHostFirst), playerMissionIndex(InPlayerMissionIndex), enemyMissionIndex(InEnemyMissionIndex), subMissionIndex(InSubMissionIndex)
 	{};
 
-	~PermitMakeRandomStruct() = default;
+	virtual ~PermitMakeRandomStruct() override = default;
 };
 
 //type 313
@@ -202,7 +202,7 @@ struct PermitJoinRandomStruct : public BaseStruct {
 		memcpy(enemyId, InEnemyId.c_str(), idSize);
 	};
 
-	~PermitJoinRandomStruct() = default;
+	virtual ~PermitJoinRandomStruct() override = default;
 };
 
 //type 314
@@ -225,7 +225,7 @@ struct PermitGuestJoinStruct : public BaseStruct {
 		memcpy(enemyId, InEnemyId.c_str(), idSize);
 	};
 
-	~PermitGuestJoinStruct() = default;
+	virtual ~PermitGuestJoinStruct() override = default;
 };
 
 //type 316
@@ -245,12 +245,12 @@ struct RoomStateGuestInStruct : public BaseStruct
 	int idSize;
 	string enemyId;
 
-	__inline RoomStateGuestInStruct(const string_view& InEnemyID)
+	RoomStateGuestInStruct(const string_view& InEnemyID)
 		: idSize(InEnemyID.size()), enemyId(InEnemyID)
 	{};
 
 	//__inline RoomStateGuestInStruct() = delete;
-	__inline ~RoomStateGuestInStruct() = default;
+	virtual ~RoomStateGuestInStruct() override = default;
 };
 
 // type 401 -> One Player Changed //
@@ -259,12 +259,13 @@ struct OnePlayerChanged : public BaseStruct
 	int index{};
 	int mixedData{};
 
-	__inline OnePlayerChanged(const int InIndex, const int InLeftOrRight, const int isJumping) :index(InIndex)
+	OnePlayerChanged(const int InIndex, const int InLeftOrRight, const int isJumping) :index(InIndex)
 	{
 		mixedData = InLeftOrRight * 10 + isJumping;
 	};
 	//__inline OnePlayerChanged() = delete;
-	__inline OnePlayerChanged() = default;
+	OnePlayerChanged() = default;
+	virtual ~OnePlayerChanged() override = default;
 };
 
 
@@ -282,7 +283,7 @@ struct PermitEnemyCharacterStruct : public BaseStruct {
 		: playerCharacterIndex(InPlayerCharacterIndex)
 	{};
 
-	~PermitEnemyCharacterStruct() = default;
+	virtual ~PermitEnemyCharacterStruct() override = default;
 };
 
 
@@ -326,8 +327,8 @@ struct TerrainIndexStruct : public BaseStruct
 	int	terrainIndex[MAX_TERRAIN_LEN];	//Dice 12
 	//std::vector<int>	terrainIndex;
 public:
-	TerrainIndexStruct(const int& InChangedTerrainCount, int InTerrainIndex[]) 
-		: changedTerrainCount(InChangedTerrainCount)
+	TerrainIndexStruct(const int& InChangedTerrainCount, int* InTerrainIndex) 
+		: changedTerrainCount(InChangedTerrainCount), terrainIndex()
 	{
 		// 정확히 작동하는지의 여부 확인 필요.
 		memcpy(terrainIndex, InTerrainIndex, changedTerrainCount * sizeof(int));
