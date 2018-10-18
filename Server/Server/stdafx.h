@@ -15,6 +15,7 @@
 //thread
 #include <thread>
 #include <atomic>
+#include <mutex>
 
 // For ExternalIP
 #include "wininet.h"
