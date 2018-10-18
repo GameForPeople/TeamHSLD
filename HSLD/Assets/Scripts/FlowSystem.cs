@@ -31,7 +31,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject displayMissionCanvas;
 
     private float time_;
-    static public bool isWaitingTime;
+    static public bool isWaitingTime = false;
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
