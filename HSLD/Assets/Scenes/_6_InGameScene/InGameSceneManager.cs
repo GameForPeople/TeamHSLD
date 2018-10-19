@@ -20,8 +20,6 @@ public class InGameSceneManager : MonoBehaviour
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
     public int network_eventCardType;
 
-
-
     private NetworkManager networkManager;
     // Use this for initialization
     void Start()
@@ -86,11 +84,17 @@ public class InGameSceneManager : MonoBehaviour
     {
         while (true)
         {
-            network_sendProtocol = (int)PROTOCOL.DEMAND_GAME_STATE;
-
             yield return new WaitForSeconds(1.0f);
 
-            networkManager.SendData(network_sendProtocol); // REcv까지 자동.
+            if (network_sendProtocol == (int)PROTOCOL.DEMAND_GAME_STATE)
+            {
+                networkManager.SendData((int)PROTOCOL.DEMAND_GAME_STATE);
+            }
+            else
+            {
+                networkManager.SendData(network_sendProtocol); // RECV까지 자동.
+                network_sendProtocol = (int)PROTOCOL.DEMAND_GAME_STATE; // 여기서, 쓰레드 개입일어나면, 데이터 날라간다... -> 수정
+            }
         }
     }
 }
