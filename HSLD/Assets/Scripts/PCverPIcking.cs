@@ -98,8 +98,6 @@ public class PCverPIcking : MonoBehaviour
                                 Debug.Log("비어있어!");
                                 PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                                 myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-                                //myPlanet.GetComponent<AllMeshController>().PickContainer[0] = PickedMeshObj.GetComponent<MeshController>().MeshNumber;
-                                //CameraController.offset = 2;
                             }
                             else // 하나라도 들어있으면
                             {
@@ -114,22 +112,37 @@ public class PCverPIcking : MonoBehaviour
                                         == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
                                     {
                                         // 첫 값이 혹은 마지막 값이야
-
                                         if (CameraController.ChangeableCount < CameraController.DiceCount + 1)
                                         {
                                             myPlanet.GetComponent<AllMeshController>().PickContainer.Remove(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-                                            Debug.Log(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                             PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    // 처음 누른거
                                     if (CameraController.ChangeableCount > 0)
                                     {
-                                        myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber); // 값을 추가
-                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                        // 처음 누른거
+                                        bool temp = false;
+                                        // 0번의 Joint에 있는 애면 0번으로 들어가!
+                                        for (int i = 0; i < 3; i++)
+                                        {
+                                            if (GameObject.Find(myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString()).GetComponent<MeshController>().JointMesh[i].name
+                                                == PickedMeshObj.GetComponent<MeshController>().MeshNumber.ToString())
+                                            {
+                                                Debug.Log("앞 쪽 꼬리에 들어갑니다.");
+                                                myPlanet.GetComponent<AllMeshController>().PickContainer.Insert(0, PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                                PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                                temp = true;
+                                                break;
+                                            }
+                                        }
+                                        if (temp == false) // 0번에 있는 애가 아니면 그냥 뒤에 붙어
+                                        {
+                                            myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber); // 값을 추가
+                                            PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                        }
                                     }
                                 }
                             }

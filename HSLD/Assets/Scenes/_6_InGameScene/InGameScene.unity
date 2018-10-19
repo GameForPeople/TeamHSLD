@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040543196, g: 0.00022157266, b: 0.000000055451046,
+  m_IndirectSpecularColor: {r: 0.0040543145, g: 0.00022157223, b: 0.000000055451046,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -18847,7 +18847,7 @@ MonoBehaviour:
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 1314629576}
-  - {fileID: 1396172116}
+  - {fileID: 393552564}
 --- !u!1 &1728010970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100458, guid: e0e6c540bb21a994890f7a93ac229b27,

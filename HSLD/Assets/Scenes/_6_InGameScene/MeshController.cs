@@ -72,17 +72,36 @@ public class MeshController : MonoBehaviour {
                 CameraController.ChangeableCount++;
             }
 
-            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; i++) // Able 다시 세팅
+            // Able 다시 세팅
+            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; i++)
             {
+                GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+
+                // 우선 able 다 지워
                 for (int j = 0; j < 3; j++)
                 {
-                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i] != 0) // 비어있지 않으면 주변애들을 M_Able로 바꿔줘
+                    if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
                     {
-                        GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                    }
+                }
+
+                // 마지막 회전할 때
+                if (i == AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1)
+                {
+                    GameObject FirstObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString());
+                    for (int j = 0; j < 3; j++)
+                    {
                         if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // able일 때 default로 바꿔줘
                         {
                             FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                             FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
+                        }
+                        if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
+                        {
+                            FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
+                            FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
                         }
                     }
                 }
