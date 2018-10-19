@@ -278,34 +278,36 @@ public class NetworkManager : MonoBehaviour
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
-            else if (InMsg == (int)PROTOCOL.VOID_CLIENT_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.DICE_VALUE_TO_SERVER)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DICE_VALUE_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
 
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                socket.Send(DataSendBuffer, 8, SocketFlags.None);
             }
-            else if (InMsg == (int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.TERRAIN_TYPE_TO_SERVER)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_PLANET_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.TERRAIN_TYPE_TO_SERVER), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 8, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
 
-                socket.Send(DataSendBuffer, 70, SocketFlags.None);  // 70..? 나중에 계산하기..!
-            }
-            else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 8, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 12, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 16, 4 * inGameSceneManager.network_changeTerrainCount);
+                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
+                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 8, 4);
+                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
 
-                socket.Send(DataSendBuffer, 70, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기..!
             }
-            else if (InMsg == (int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.TERRAIN_INDEX_TO_SERVER)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.TERRAIN_INDEX_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
+
+                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 8, 4 * inGameSceneManager.network_changeTerrainCount);
+
+                socket.Send(DataSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
+            }
+            else if (InMsg == (int)PROTOCOL.EVENTCARD_INDEX_TO_SERVER)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.EVENTCARD_INDEX_TO_SERVER), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
@@ -502,28 +504,29 @@ public class NetworkManager : MonoBehaviour
             GameObject.Find("RoomSceneManager").GetComponent<RoomSceneManager>().SetEnemyCharacter_Network();
         }
 
-        //InGameScene
+        //InGameScene //-> 이부분 다 InGameScene으로 들어내도 괜찮을듯!
         else if (recvType > 500 && recvType < 600)
         { 
             if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
             {
                 // 뭐야 니 아무것도 없엉
+                return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
             }
             else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
             {
                 inGameSceneManager.ChangeTurn();
             }
-            else if (recvType == (int)PROTOCOL.CHANGE_PLANET_SERVER_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.DICE_VALUE_TO_CLIENT)
             {
                 inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
                 inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
 
-                for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
-                {
-                    inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
-                }
+               // for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+               // {
+               //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
+               // }
             }
-            else if (recvType == (int)PROTOCOL.ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.TERRAIN_TYPE_TO_CLIENT)
             {
                 inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
                 inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
@@ -534,7 +537,11 @@ public class NetworkManager : MonoBehaviour
                     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
                 }
             }
-            else if (recvType == (int)PROTOCOL.ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.TERRAIN_INDEX_TO_CLIENT)
+            {
+                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            }
+            else if (recvType == (int)PROTOCOL.TERRAIN_INDEX_TO_CLIENT)
             {
                 inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             }
@@ -655,31 +662,21 @@ enum PROTOCOL : int
 
 
     NOTIFY_END_OF_TURN  =   502     ,   // 야 나 다했다!
-    NOTIFY_CHANGE_TURN  =   503     ,	// 야 재 다했대!
+    NOTIFY_CHANGE_TURN  =   503     ,   // 야 재 다했대!
 
+    DICE_VALUE_TO_SERVER = 504, // 서버야 주사위 값 받아라
+    DICE_VALUE_TO_CLIENT = 505, // 클라야 재 주사위 값 이거야
 
-    VOID_CLIENT_TO_SERVER                       =   511 ,                // 공격턴 클라이언트가 시간초과로 아무것도 보내지 않을 때,
-    CHANGE_PLANET_CLIENT_TO_SERVER              =   512 ,       // 공격턴 클라이언트가 땅을 바꿧을 때,
-    ACTION_EVENTCARD_TERRAIN_CLIENT_TO_SERVER   =   513 ,    // 공격턴 클라이언트의 이벤트 카드(공격, 지형변경) 처리
-    ACTION_EVENTCARD_DICEBUFF_CLIENT_TO_SERVER  =   514 ,   // 공격턴 클라이언트의 이벤트 카드(공격, 주사위 관련) 처리
-    ACTION_EVENTCARD_DEFENSE_CLIENT_TO_SERVER   =   515 ,    // 미구현... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
+    TERRAIN_TYPE_TO_SERVER = 506,   // A클라이언트가 선택한 지형 카드 서버에 알림
+    TERRAIN_TYPE_TO_CLIENT = 507,  // 상대편 클라이언트에게 지형 카드 (인덱스) 전달.
 
+    TERRAIN_INDEX_TO_SERVER = 508,  // A클라이언트가 변경한 지형 카드 인덱스를 서버에 전달
+    TERRAIN_INDEX_TO_CLIENT = 509,  // 상대편 클라이언트에게 지형 카드 (인덱스) 전달.
 
-    VOID_SERVER_TO_CLIENT                       =   521 ,                // 서버가 수비턴 클라이언트에게 VOID전송 다만, 이거 받으면 턴 변경임!
-    CHANGE_PLANET_SERVER_TO_CLIENT              =   522 ,       // 서버가 수비턴 클라이언트에게 공격 클라이언트가 바꾼 행성 정보를 전송
-    ACTION_EVENTCARD_TERRAIN_SERVER_TO_CLIENT   =   523 ,    // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 지형변경) 정보를 전송
-    ACTION_EVENTCARD_DICEBUFF_SERVER_TO_CLIENT  =   524 ,   // 서버가 수비턴 클라이언트에게 공격턴 클라이언트 이벤트 카드(공격, 주사위 관련) 처리
-    ACTION_EVENTCARD_DEFENSE_SERVER_TO_CLIENT   =   525 ,    // 미구현.... ??턴 클라이언트의 이벤트 카드 쉴드 처리??
-
-    // Not yet used
-    DEMAND_DICE_CLIENT_TO_SERVER                =   521 ,     // 주사위 숫자를 요구할 때,
-    PERMIT_DICE_SERVER_TO_CLIENT                =   522 ,
-
-    DEMAND_EVENTCARD_CLIENT_TO_SERVER           =   523 ,    // 공통덱에서 이벤트 카드를 요구할 때,
-    PERMIT_EVENTCARD_SERVER_TO_CLIENT           =   524 ,
-
-    DEMAND_EVENTCARD_DICE_CLIENT_TO_SERVER      =   525 , // 이벤트 카드의 숫자를 요구할 때
-    PERMIT_EVENTCARD_DICE_SERVER_TO_CLIENT      =   526
+    //? 이거 더 고려해봐야 함.? 인덱스만 넘기고 다른거는 또 따로 적용이 날 듯? --> 좋은걸? 당연한걸 
+    // 필요없는건 추가로 안보내고, (적 봉인, 더블 여부 등,)
+    EVENTCARD_INDEX_TO_SERVER = 510, // A클라이언트가 사용한 이벤트 카드 인덱스 
+    EVENTCARD_INDEX_TO_CLIENT = 511, // 상대편 클라에게 해당 이벤트 카드 인덱스 전달
 };
 
 
