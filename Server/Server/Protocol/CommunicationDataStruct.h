@@ -293,14 +293,14 @@ struct PermitEnemyCharacterStruct : public BaseStruct {
 #pragma region [INGAME SCENE STRUCT]
 
 
-// type 502, 503 // ¿Ã∞≈ æ»æ∏
+// type 501 // ¿Ã∞≈ æ»æ∏
 struct ChangeTurnStruct : public BaseStruct
 {
 	ChangeTurnStruct() = delete;
 	//__inline ~ChangeTurnStruct() = delete;
 };
 
-// 504, 505
+// 502
 struct DiceValueStruct : public BaseStruct
 {
 	int diceValue;
@@ -310,7 +310,7 @@ public:
 	virtual ~DiceValueStruct() override = default;
 };
 
-// 506, 507
+// 503
 struct TerrainTypeStruct : public BaseStruct
 {
 	int terrainType;
@@ -320,7 +320,7 @@ public:
 	virtual ~TerrainTypeStruct() override = default;
 };
 
-// 508, 509
+// 504
 struct TerrainIndexStruct : public BaseStruct
 {
 	int changedTerrainCount;
@@ -336,7 +336,7 @@ public:
 	virtual ~TerrainIndexStruct() override = default;
 };
 
-// 510, 511
+// 505
 struct EventCardIndexStruct : public BaseStruct
 {
 	int eventCardIndex;
