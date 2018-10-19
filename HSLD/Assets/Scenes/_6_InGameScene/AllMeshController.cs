@@ -9,14 +9,16 @@ public class AllMeshController : MonoBehaviour {
 
     public static GameObject IngameManager;
     public static GameObject myPlanet;
-    public int[] PickContainer;
+    //public int[] PickContainer;
+    public List<int> PickContainer;
     public GameObject[] AllContainer;
     // Use this for initialization
     void Start () {
         once = true;
         IngameManager = GameObject.Find("InGameSceneManager");
         myPlanet = GameObject.Find("Sphere_320Objects_40X");
-        PickContainer = new int[12];
+        //PickContainer = new int[12];
+        PickContainer = new List<int>();
         AllContainer = new GameObject[MaxMesh];
     }
 
@@ -57,20 +59,37 @@ public class AllMeshController : MonoBehaviour {
 
     public bool isEmpty()
     {
-        //int temp = 0;
-        for(int i = 0; i< PickContainer.Length; i++)
+        for(int i = 0; i< PickContainer.Count; i++)
         {
             if(PickContainer[i] != 0)
             {
-                //temp++;
                 return false;
             }
         }
-        //if(temp == 1)
-        //{
-        //    Debug.Log("저장소는 비어있습니다!");
-        //    return true;
-        //}
         return true;
+    }
+
+    public int DeleteCheckStart()
+    {
+        for(int i = 0; i < PickContainer.Count; i++)
+        {
+            if (PickContainer[i] != 0)
+            {
+                return PickContainer[i];
+            } // 가장 먼저 0이 안들어가는 부분
+        }
+        return -1;
+    }
+
+    public int DeleteCheckLast()
+    {
+        for (int i = 0; i < PickContainer.Count; i++)
+        {
+            if (PickContainer[i] != 0)
+            {
+                return PickContainer[i];
+            } // 가장 먼저 0이 안들어가는 부분
+        }
+        return -1;
     }
 }

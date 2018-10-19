@@ -72,7 +72,7 @@ public class MeshController : MonoBehaviour {
                 CameraController.ChangeableCount++;
             }
 
-            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Length; i++) // Able 다시 세팅
+            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; i++) // Able 다시 세팅
             {
                 for (int j = 0; j < 3; j++)
                 {
