@@ -6,6 +6,7 @@
 #include "../UserData/UserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
+#include "../SceneServer/InGameScene.h"
 
 #define		SERVER_PORT		9000
 #define		BUF_SIZE		100
@@ -95,6 +96,9 @@ private:
 	//For Game
 	UserDataManager userData;
 	GameRoomManager roomData;
+
+	//Scene
+	INGAME_SCENE::InGameScene inGameScene;
 
 	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음.. 동기화 다음 턴에 어짜피 됨.
 	bool isSaveOn;

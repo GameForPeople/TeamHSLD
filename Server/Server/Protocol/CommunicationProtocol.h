@@ -63,27 +63,18 @@ enum Protocol {
 	DISCONNECTED_ENEMY_CLIENT = 498, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
 	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 499, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 
-	// for GameScene
-	DEMAND_GAME_STATE	=	500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
-	
-	VOID_GAME_STATE		=	501 ,	// 야 수비야 아직은 공격이 아무것도 안했어!
+	// for GameScene // 단방향으로 수정 적용 완료(2018/10/19ver)
+	VOID_GAME_STATE =500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
 
-	CHANGE_TURN_TO_SERVER =	502	,	// 야 나 다했다!
-	CHANGE_TURN_TO_CLIENT =	503	,	// 야 재 다했대!
+	NOTIFY_CHANGE_TURN = 501,	// 야 나 다했다!
 
-	DICE_VALUE_TO_SERVER = 504,	// 서버야 주사위 값 받아라
-	DICE_VALUE_TO_CLIENT = 505,	// 클라야 재 주사위 값 이거야
+	NOTIFY_DICE_VALUE = 502,	// 서버야 주사위 값 받아라
 
-	TERRAIN_TYPE_TO_SERVER = 506,	// A클라이언트가 선택한 지형 카드 서버에 알림
-	TERRAIN_TYPE_TO_CLIENT = 507,  // 상대편 클라이언트에게 지형 카드 (인덱스) 전달.
+	NOTIFY_TERRAIN_TYPE = 503,	// A클라이언트가 선택한 지형 카드 서버에 알림
 
-	TERRAIN_INDEX_TO_SERVER = 508,	// A클라이언트가 변경한 지형 카드 인덱스를 서버에 전달
-	TERRAIN_INDEX_TO_CLIENT = 509,  // 상대편 클라이언트에게 지형 카드 (인덱스) 전달.
+	NOTIFY_TERRAIN_INDEXS = 504,	// A클라이언트가 변경한 지형 카드 인덱스를 서버에 전달
 
-	//? 이거 더 고려해봐야 함.? 인덱스만 넘기고 다른거는 또 따로 적용이 날 듯? --> 좋은걸? 당연한걸 
-	// 필요없는건 추가로 안보내고, (적 봉인, 더블 여부 등,)
-	EVENTCARD_INDEX_TO_SERVER = 510, // A클라이언트가 사용한 이벤트 카드 인덱스 
-	EVENTCARD_INDEX_TO_CLIENT = 511, // 상대편 클라에게 해당 이벤트 카드 인덱스 전달
+	NOTIFY_EVENTCARD_INDEX = 505, // A클라이언트가 사용한 이벤트 카드 인덱스 
 };
 
 enum class SCENE_NAME {
