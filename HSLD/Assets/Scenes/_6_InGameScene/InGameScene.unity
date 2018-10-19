@@ -149,13 +149,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1618581648}
   - {fileID: 308354441}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &5238884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100532, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -191,13 +189,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1341906189}
   - {fileID: 1804820475}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &17053615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100564, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -233,13 +229,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1584743552}
   - {fileID: 54068526}
   - {fileID: 1341906189}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &29789798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100596, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -275,13 +269,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 98057181}
   - {fileID: 940027214}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &31305738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100308, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -317,13 +309,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1584589151}
   - {fileID: 976986711}
   - {fileID: 2008778987}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &35264477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100374, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -359,13 +349,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1684928952}
   - {fileID: 1417611858}
   - {fileID: 1154691102}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &38060710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100316, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -401,13 +389,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1618581648}
   - {fileID: 78281895}
   - {fileID: 864600778}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &50010879
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,13 +504,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1218839681}
   - {fileID: 237075393}
   - {fileID: 17053615}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &54276500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -560,13 +544,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1417611858}
   - {fileID: 676650459}
   - {fileID: 1261314925}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &68865990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100510, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -602,13 +584,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2045645539}
   - {fileID: 1717299218}
   - {fileID: 710214495}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &69651916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100060, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -644,13 +624,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1263336280}
   - {fileID: 521397301}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &78281895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100202, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -686,13 +664,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 321731969}
   - {fileID: 38060710}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &80989887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100536, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -728,13 +704,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 552896767}
   - {fileID: 212851319}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &81462916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100080, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -770,13 +744,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 401093704}
   - {fileID: 912114743}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &82822055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100224, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -812,13 +784,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 401093704}
   - {fileID: 2045645539}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &83329541
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,13 +925,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 1931759691}
   - {fileID: 229308353}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &92151563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,13 +1041,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 1341906189}
   - {fileID: 29789798}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &107147627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,13 +1156,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1454669962}
   - {fileID: 171084210}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &113498411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1268,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300028, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1354,13 +1318,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 759865688}
   - {fileID: 82822055}
   - {fileID: 2121401002}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &119588798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100392, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1396,13 +1358,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 1288132296}
   - {fileID: 400803864}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &130673201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100368, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1438,13 +1398,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1666188838}
   - {fileID: 442304538}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &131071464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100438, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1480,13 +1438,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1483358713}
   - {fileID: 80989887}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &136879311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100546, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1522,13 +1478,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 820614603}
   - {fileID: 857221682}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &141128050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100120, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1564,13 +1518,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 517522759}
   - {fileID: 1097889542}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &143664514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100338, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1606,13 +1558,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 262676126}
   - {fileID: 1479212787}
   - {fileID: 1932610389}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &151276141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100026, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1648,13 +1598,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 490978572}
   - {fileID: 1290884983}
   - {fileID: 237075393}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &153429358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100424, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1690,13 +1638,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 1288132296}
   - {fileID: 1263336280}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &154895502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100590, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1732,13 +1678,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1176474312}
   - {fileID: 225109579}
   - {fileID: 393552564}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &163169701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100586, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1774,13 +1718,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 819413570}
   - {fileID: 241331999}
   - {fileID: 562826426}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &168106307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100444, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1816,13 +1758,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1186906118}
   - {fileID: 765737525}
   - {fileID: 801686902}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &170091625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100114, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1858,13 +1798,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 2059590419}
   - {fileID: 554599682}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &171084210 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100062, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1900,13 +1838,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 108271741}
   - {fileID: 377410625}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &177965627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100100, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1942,13 +1878,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 1048219039}
   - {fileID: 1186906118}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &180195419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100258, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -1984,13 +1918,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 883398229}
   - {fileID: 2059590419}
   - {fileID: 1666188838}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &183157152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100432, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2026,13 +1958,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1548505194}
   - {fileID: 1239070744}
   - {fileID: 820614603}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &184317044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100070, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2068,13 +1998,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1213065812}
   - {fileID: 705472189}
   - {fileID: 1042028599}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &193711801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100582, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2110,13 +2038,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 469612648}
   - {fileID: 1445801239}
   - {fileID: 1840761793}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &197895681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,13 +2112,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 1759653697}
   - {fileID: 911726643}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &203382341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100544, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2228,13 +2152,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1393643889}
   - {fileID: 710214495}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &209742190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100054, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2270,13 +2192,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 909569341}
   - {fileID: 639710108}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &212851319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100518, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2312,13 +2232,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 80989887}
   - {fileID: 1215777087}
   - {fileID: 1581329931}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &224623750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2354,13 +2272,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1143189273}
   - {fileID: 1022145317}
   - {fileID: 1927571657}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &225109579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100524, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2396,13 +2312,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 801686902}
   - {fileID: 996155335}
   - {fileID: 154895502}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &229308353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100280, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2438,13 +2352,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1392800020}
   - {fileID: 85295933}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &237075393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100482, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2480,13 +2392,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1932610389}
   - {fileID: 54068526}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &237976455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,13 +2501,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1917340613}
   - {fileID: 448909662}
   - {fileID: 163169701}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &247549460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100024, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2633,13 +2541,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1097889542}
   - {fileID: 1809212946}
   - {fileID: 407687209}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &247661245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,13 +2682,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 305919173}
   - {fileID: 1218839681}
   - {fileID: 143664514}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &269082097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,13 +2756,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 577297393}
   - {fileID: 2059590419}
   - {fileID: 1378642440}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &276030393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100020, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2894,13 +2796,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 564520935}
   - {fileID: 1069206627}
   - {fileID: 914525503}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &305919173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100198, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2936,13 +2836,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 639710108}
   - {fileID: 1589159573}
   - {fileID: 262676126}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &308354441 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100056, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -2978,13 +2876,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 960246270}
   - {fileID: 3175447}
   - {fileID: 1451947889}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &310438292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3020,13 +2916,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 1656699970}
   - {fileID: 770755763}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &321731969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100250, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3062,13 +2956,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 78281895}
   - {fileID: 1897195109}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &326723863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100358, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3104,13 +2996,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1445464223}
   - {fileID: 408417171}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &334954668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100076, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3146,13 +3036,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1809212946}
   - {fileID: 1682309906}
   - {fileID: 744774717}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &336637860 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100248, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3188,13 +3076,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 1618581648}
   - {fileID: 1897195109}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &339052602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100288, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3230,13 +3116,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 1675717126}
   - {fileID: 1649489986}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &350484266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,13 +3225,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1865527400}
   - {fileID: 1987983262}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &370807055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100264, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3383,13 +3265,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1099322961}
   - {fileID: 517522759}
   - {fileID: 883914049}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &374445970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,13 +3432,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1934944938}
   - {fileID: 1335827416}
   - {fileID: 171084210}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &377995504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,13 +3616,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 523081367}
   - {fileID: 1204631829}
   - {fileID: 700057829}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &389602587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,13 +3734,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 1724664729}
   - {fileID: 1417611858}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &400803864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100012, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3900,13 +3774,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 119588798}
   - {fileID: 960246270}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &401093704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3942,13 +3814,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 82822055}
   - {fileID: 81462916}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &402824842 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -3984,13 +3854,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 171084210}
   - {fileID: 1456686515}
   - {fileID: 1342977608}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &407687209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100484, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4026,13 +3894,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 2135420763}
   - {fileID: 1298144830}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &408417171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100382, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4068,13 +3934,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1415961201}
   - {fileID: 1434057303}
   - {fileID: 326723863}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &417514189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100180, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4110,13 +3974,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 441066154}
   - {fileID: 1865527400}
   - {fileID: 912114743}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &418698308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4152,13 +4014,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 2122743421}
   - {fileID: 1175704379}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &424579409
 GameObject:
   m_ObjectHideFlags: 0
@@ -4263,13 +4123,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 417514189}
   - {fileID: 1976316790}
   - {fileID: 2114854827}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &442304538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100640, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4305,13 +4163,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 130673201}
   - {fileID: 1689437357}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &445073188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4370,7 +4226,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b56b5dd735d359748b8b18d6873acb3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4432,13 +4288,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 539841174}
   - {fileID: 1288132296}
   - {fileID: 241331999}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &451282576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100372, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4474,13 +4328,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 940027214}
   - {fileID: 866923194}
   - {fileID: 883914049}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &453035472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100302, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4516,13 +4368,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 744774717}
   - {fileID: 1953178002}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &455685414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100196, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4558,13 +4408,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1589159573}
   - {fileID: 177965627}
   - {fileID: 1479212787}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &469612648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100138, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4600,13 +4448,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1503486730}
   - {fileID: 1953921687}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &482001743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100352, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4642,13 +4488,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 2045645539}
   - {fileID: 636920731}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &485024293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100220, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4684,13 +4528,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1682309906}
   - {fileID: 990093047}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &490978572 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100074, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -4726,13 +4568,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1584743552}
   - {fileID: 876933951}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &505266696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,7 +4742,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 78d4865b3ed9fd34cb25c613b7987d74, type: 3}
+  m_Sprite: {fileID: 21300008, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4994,13 +4834,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 2028252334}
   - {fileID: 1494492458}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &513719430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100412, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5036,13 +4874,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 1242337981}
   - {fileID: 1186906118}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &517522759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100216, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5078,13 +4914,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 141128050}
   - {fileID: 370807055}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &521397301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100156, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5120,13 +4954,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 1451947889}
   - {fileID: 1335827416}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &523081367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100632, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5162,13 +4994,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 389245239}
   - {fileID: 524108108}
   - {fileID: 1407792010}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &524108108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100040, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5204,13 +5034,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 523081367}
   - {fileID: 1565404600}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &528286862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100228, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5246,13 +5074,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 819413570}
   - {fileID: 539841174}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &529892250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,7 +5186,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300028, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5410,13 +5236,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 98057181}
   - {fileID: 1691402369}
   - {fileID: 883914049}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &539841174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100276, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5452,13 +5276,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 714531778}
   - {fileID: 448909662}
   - {fileID: 528286862}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &540423455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,7 +5337,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6e7e6ab6b56eb484c8f1724a631e73ca, type: 3}
+  m_Sprite: {fileID: 21300002, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5607,13 +5429,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2135420763}
   - {fileID: 1298144830}
   - {fileID: 1809212946}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &552896767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100552, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5649,13 +5469,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 1158831593}
   - {fileID: 80989887}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &554599682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100066, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5691,13 +5509,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 990876920}
   - {fileID: 170091625}
   - {fileID: 601488987}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &562826426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100602, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5733,13 +5549,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 1292857123}
   - {fileID: 1833062141}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &564520935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100068, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5775,13 +5589,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 2122743421}
   - {fileID: 815214205}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &566916473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100334, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5817,13 +5629,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2088653622}
   - {fileID: 1940715308}
   - {fileID: 631769067}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &577297393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100208, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5859,13 +5669,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 1233286846}
   - {fileID: 1281981034}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &579928386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100242, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5901,13 +5709,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 1278295456}
   - {fileID: 1804755840}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &580781577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100174, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5943,13 +5749,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 876933951}
   - {fileID: 453035472}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &589364665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100274, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -5985,13 +5789,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 482001743}
   - {fileID: 759865688}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &599982271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100286, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6027,13 +5829,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 326723863}
   - {fileID: 1452564279}
   - {fileID: 2088653622}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &601488987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100162, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6069,13 +5869,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1378642440}
   - {fileID: 1042028599}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &622994259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100436, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6111,13 +5909,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 1410575699}
   - {fileID: 1842956326}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &631769067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100310, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6153,13 +5949,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 770755763}
   - {fileID: 566916473}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &636920731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100376, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6195,13 +5989,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1927571657}
   - {fileID: 482001743}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &637065895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100290, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6237,13 +6029,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 909569341}
   - {fileID: 1589159573}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &639710108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100102, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6279,13 +6069,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 1
   JointMesh:
   - {fileID: 209742190}
   - {fileID: 305919173}
   - {fileID: 2095191245}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &668090650
 GameObject:
   m_ObjectHideFlags: 0
@@ -6495,13 +6283,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1176474312}
   - {fileID: 2133652124}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &678267381
 GameObject:
   m_ObjectHideFlags: 0
@@ -6668,13 +6454,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1003098075}
   - {fileID: 1922279662}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &700057829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100346, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6710,13 +6494,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 1175704379}
   - {fileID: 389245239}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &705472189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100118, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6752,13 +6534,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 1129775041}
   - {fileID: 184317044}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &710214495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100526, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6794,13 +6574,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 203382341}
   - {fileID: 68865990}
   - {fileID: 1518446044}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &714531778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100354, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -6836,13 +6614,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 539841174}
   - {fileID: 1597660255}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &719286450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6901,7 +6677,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6326e7b52d4a0064eb7c012e933fd6f8, type: 3}
+  m_Sprite: {fileID: 21300010, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6963,13 +6739,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2095191245}
   - {fileID: 1218839681}
   - {fileID: 5238884}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &738747529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7225,13 +6999,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 453035472}
   - {fileID: 334954668}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &753988995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100578, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7267,13 +7039,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1879379202}
   - {fileID: 1989463809}
   - {fileID: 1080994616}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &759865688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100226, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7309,13 +7079,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 1176474312}
   - {fileID: 589364665}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &765737525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100460, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7351,13 +7119,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 965007035}
   - {fileID: 1479212787}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &765903032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100254, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7393,13 +7159,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 1454669962}
   - {fileID: 1046382994}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &770755763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100190, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7435,13 +7199,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 631769067}
   - {fileID: 310438292}
   - {fileID: 976986711}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &784074200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100400, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7477,13 +7239,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 1415961201}
   - {fileID: 1548505194}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &784154797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100574, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7519,13 +7279,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1854507475}
   - {fileID: 965007035}
   - {fileID: 1314629576}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &794895738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,13 +7403,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 1314629576}
   - {fileID: 225109579}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &806044292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7715,6 +7471,7 @@ Transform:
   - {fileID: 2039780190}
   - {fileID: 1984604340}
   - {fileID: 247661247}
+  - {fileID: 1299518537}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7753,13 +7510,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1194826732}
   - {fileID: 996261728}
   - {fileID: 990876920}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &815214205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100164, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7795,13 +7550,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1017469028}
   - {fileID: 1216192729}
   - {fileID: 564520935}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &819413570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100132, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7837,13 +7590,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 528286862}
   - {fileID: 1865527400}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &820614603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100530, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -7879,13 +7630,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 183157152}
   - {fileID: 136879311}
   - {fileID: 1989463809}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &823012255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7900,6 +7649,7 @@ GameObject:
   - component: {fileID: 823012260}
   - component: {fileID: 823012261}
   - component: {fileID: 823012262}
+  - component: {fileID: 823012263}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -8012,8 +7762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderSpr:
-  - {fileID: 21300002, guid: ff6211e49923e9d419a89882649e888d, type: 3}
-  - {fileID: 21300010, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  - {fileID: 21300024, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  - {fileID: 21300048, guid: ff6211e49923e9d419a89882649e888d, type: 3}
 --- !u!114 &823012262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8026,6 +7776,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayTotalCnt: {fileID: 1282844375}
+--- !u!114 &823012263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d0c8d6532bdd143be0b7622f034ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameravertical: {fileID: 1694394056}
+  camerahorizontal: {fileID: 668513552}
 --- !u!1 &857221682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100610, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8061,13 +7824,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 136879311}
   - {fileID: 1080994616}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &864161486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100550, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8103,13 +7864,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 1099322961}
   - {fileID: 1842956326}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &864600778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100292, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8145,13 +7904,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 1451947889}
   - {fileID: 1934944938}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &866923194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100630, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8187,13 +7944,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 451282576}
   - {fileID: 1653531691}
   - {fileID: 1840761793}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &871229243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100240, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8229,13 +7984,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1804755840}
   - {fileID: 1612747182}
   - {fileID: 1239070744}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &876933951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100170, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8271,13 +8024,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 1999727450}
   - {fileID: 490978572}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &883398229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100624, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8313,13 +8064,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1393643889}
   - {fileID: 1689437357}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &883914049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100348, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8355,13 +8104,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 370807055}
   - {fileID: 451282576}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &893787805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8397,13 +8144,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1434057303}
   - {fileID: 1434980117}
   - {fileID: 209742190}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &904318239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100282, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8439,13 +8184,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 1392800020}
   - {fileID: 1503486730}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &909569341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100150, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8481,13 +8224,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1675717126}
   - {fileID: 209742190}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &911726643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100278, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8523,13 +8264,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 714531778}
   - {fileID: 201099082}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &912114743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100176, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8565,13 +8304,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2121401002}
   - {fileID: 81462916}
   - {fileID: 417514189}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &914525503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100486, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8607,13 +8344,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 1430233578}
   - {fileID: 1389247442}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &914654594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100148, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8649,13 +8384,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1649489986}
   - {fileID: 1048219039}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &940027214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100628, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8691,13 +8424,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 451282576}
   - {fileID: 29789798}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &945472856
 GameObject:
   m_ObjectHideFlags: 0
@@ -8853,13 +8584,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1241291164}
   - {fileID: 308354441}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &965007035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100476, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8895,13 +8624,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 1417626605}
   - {fileID: 784154797}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &976986711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100186, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8937,13 +8664,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 770755763}
   - {fileID: 31305738}
   - {fileID: 1953921687}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &985856290
 GameObject:
   m_ObjectHideFlags: 0
@@ -9055,13 +8780,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1671755731}
   - {fileID: 485024293}
   - {fileID: 1154691102}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &990876920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100018, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9097,13 +8820,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1213065812}
   - {fileID: 814200909}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &996155335 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100508, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9139,13 +8860,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 513719430}
   - {fileID: 225109579}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &996261728 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100360, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9181,13 +8900,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 814200909}
   - {fileID: 1804755840}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &999083812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9223,13 +8940,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1204631829}
   - {fileID: 1142711213}
   - {fileID: 524108108}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1003098075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100488, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9265,13 +8980,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 1
   JointMesh:
   - {fileID: 1430233578}
   - {fileID: 693976558}
   - {fileID: 1069206627}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1007513771
 GameObject:
   m_ObjectHideFlags: 0
@@ -9376,13 +9089,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1759653697}
   - {fileID: 1918495570}
   - {fileID: 1396172116}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1011064339
 GameObject:
   m_ObjectHideFlags: 0
@@ -9490,7 +9201,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300030, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9540,13 +9251,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2122743421}
   - {fileID: 1389247442}
   - {fileID: 552896767}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1017469028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100298, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9582,13 +9291,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 815214205}
   - {fileID: 1042028599}
   - {fileID: 1371651135}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1022145317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9624,13 +9331,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1048219039}
   - {fileID: 224623750}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1023298873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100474, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9666,13 +9371,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 551994290}
   - {fileID: 1499730604}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1029591818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100318, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9708,13 +9411,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1759258860}
   - {fileID: 1454669962}
   - {fileID: 1335827416}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1033011305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100096, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9750,13 +9451,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1580498753}
   - {fileID: 1612747182}
   - {fileID: 1548505194}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1042028599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100166, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9792,13 +9491,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 601488987}
   - {fileID: 184317044}
   - {fileID: 1017469028}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1046382994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100342, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9834,13 +9531,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 765903032}
   - {fileID: 1970553916}
   - {fileID: 1430233578}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1048219039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100052, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9876,13 +9571,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 177965627}
   - {fileID: 1022145317}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1048693602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100098, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9918,13 +9611,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1143189273}
   - {fileID: 1278295456}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1053455927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100540, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9960,13 +9651,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1858226403}
   - {fileID: 1918495570}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1055192444
 GameObject:
   m_ObjectHideFlags: 0
@@ -10074,7 +9763,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300028, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10266,13 +9955,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 1003098075}
   - {fileID: 276030393}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1080994616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100594, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10308,13 +9995,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 857221682}
   - {fileID: 1204631829}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1097889542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100072, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10350,13 +10035,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 141128050}
   - {fileID: 1818289660}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1098860552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10461,13 +10144,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 370807055}
   - {fileID: 864161486}
   - {fileID: 1840761793}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1108906098
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,13 +10246,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1989463809}
   - {fileID: 1445464223}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1123455735
 GameObject:
   m_ObjectHideFlags: 0
@@ -10651,13 +10330,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 705472189}
   - {fileID: 1639980498}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1132190347 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100528, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10711,13 +10388,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1618495978}
   - {fileID: 203382341}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1137437418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100464, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10753,13 +10428,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 1858026425}
   - {fileID: 1239070744}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1142711213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100092, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10795,13 +10468,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 1879379202}
   - {fileID: 2132958254}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1143189273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100050, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10837,13 +10508,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 1048693602}
   - {fileID: 1649489986}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1154691102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100350, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10879,13 +10548,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 990093047}
   - {fileID: 35264477}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1158397419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100380, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10921,13 +10588,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2028252334}
   - {fileID: 1456686515}
   - {fileID: 1392800020}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1158831593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100616, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10963,13 +10628,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1175704379}
   - {fileID: 552896767}
   - {fileID: 1407792010}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1161714766
 GameObject:
   m_ObjectHideFlags: 0
@@ -11045,13 +10708,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1158831593}
   - {fileID: 418698308}
   - {fileID: 700057829}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1176474312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100130, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11087,13 +10748,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 759865688}
   - {fileID: 676650459}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1186044385
 GameObject:
   m_ObjectHideFlags: 0
@@ -11198,13 +10857,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 177965627}
   - {fileID: 168106307}
   - {fileID: 513719430}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1194826732 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100478, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11240,13 +10897,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 814200909}
   - {fileID: 2073474912}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1204631829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100626, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11282,13 +10937,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 389245239}
   - {fileID: 1080994616}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1209512908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100086, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11324,13 +10977,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1261314925}
   - {fileID: 1759653697}
   - {fileID: 1976316790}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1213065812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100022, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11366,13 +11017,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 184317044}
   - {fileID: 990876920}
   - {fileID: 1702758665}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1215777087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100502, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11408,13 +11057,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 229308353}
   - {fileID: 1977953338}
   - {fileID: 212851319}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1216192729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100160, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11450,13 +11097,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1378642440}
   - {fileID: 1669602914}
   - {fileID: 815214205}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1218839681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100450, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11492,13 +11137,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 54068526}
   - {fileID: 262676126}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1233286846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100112, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11534,13 +11177,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 577297393}
   - {fileID: 1922279662}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1239070744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100448, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11576,13 +11217,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 871229243}
   - {fileID: 183157152}
   - {fileID: 1137437418}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1241291164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100394, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11618,13 +11257,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 960246270}
   - {fileID: 1916176356}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1242337981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100396, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11660,13 +11297,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1022145317}
   - {fileID: 636920731}
   - {fileID: 513719430}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1249768407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100506, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11702,13 +11337,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 1916176356}
   - {fileID: 1918495570}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1001 &1260333004
 Prefab:
   m_ObjectHideFlags: 0
@@ -14442,13 +14075,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1684928952}
   - {fileID: 1209512908}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1263336280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100108, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14484,13 +14115,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 1759258860}
   - {fileID: 69651916}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1265216244
 GameObject:
   m_ObjectHideFlags: 0
@@ -14624,7 +14253,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6e7e6ab6b56eb484c8f1724a631e73ca, type: 3}
+  m_Sprite: {fileID: 21300002, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14691,13 +14320,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 579928386}
   - {fileID: 1780604838}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1281981034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100256, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14733,13 +14360,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1292857123}
   - {fileID: 1666188838}
   - {fileID: 577297393}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1282844373
 GameObject:
   m_ObjectHideFlags: 0
@@ -14850,13 +14475,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 448909662}
   - {fileID: 119588798}
   - {fileID: 153429358}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1290884983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14892,13 +14515,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 151276141}
   - {fileID: 1417626605}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1292857123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100618, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14934,13 +14555,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1281981034}
   - {fileID: 2033697905}
   - {fileID: 562826426}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1298144830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100468, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14976,13 +14595,77 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 407687209}
   - {fileID: 2022488928}
-  Point_1: []
-  Point_2: []
-  Point_3: []
+--- !u!1 &1299518536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299518537}
+  - component: {fileID: 1299518538}
+  m_Layer: 0
+  m_Name: Directional Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299518537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299518536}
+  m_LocalRotation: {x: -0.13218728, y: -0.89279896, z: -0.23643409, w: 0.35991058}
+  m_LocalPosition: {x: 199, y: -345, z: 1244}
+  m_LocalScale: {x: 1, y: 1.000001, z: 1.0000007}
+  m_Children: []
+  m_Father: {fileID: 808506296}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -31.153002, y: 222.681, z: -355.587}
+--- !u!108 &1299518538
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299518536}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1314629576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100558, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15018,13 +14701,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1724664729}
   - {fileID: 801686902}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1330806688
 GameObject:
   m_ObjectHideFlags: 0
@@ -15132,7 +14813,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300030, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15182,13 +14863,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 521397301}
   - {fileID: 377410625}
   - {fileID: 1029591818}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1341906189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100548, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15224,13 +14903,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 5238884}
   - {fileID: 98057181}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1342977608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100010, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15266,13 +14943,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 1372942047}
   - {fileID: 2028252334}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1355522188
 GameObject:
   m_ObjectHideFlags: 0
@@ -15329,7 +15004,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 196c7342c3e8c9744a39aedec635c663, type: 3}
+  m_Sprite: {fileID: 21300006, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15490,13 +15165,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1129775041}
   - {fileID: 418698308}
   - {fileID: 1017469028}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1372942047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100058, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15532,13 +15205,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 1524489844}
   - {fileID: 1934944938}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1374729968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15574,13 +15245,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 310438292}
   - {fileID: 940027214}
   - {fileID: 1653531691}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1378642440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100296, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15616,13 +15285,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1216192729}
   - {fileID: 601488987}
   - {fileID: 269784875}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1389247442 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100470, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15658,13 +15325,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 914525503}
   - {fileID: 1013984363}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1392800020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100356, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15700,13 +15365,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 229308353}
   - {fileID: 1158397419}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1393643889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100560, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15742,13 +15405,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 883398229}
   - {fileID: 203382341}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1396172116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100604, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15784,13 +15445,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 1671755731}
   - {fileID: 1684928952}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1407792010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100600, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15826,13 +15485,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 1158831593}
   - {fileID: 523081367}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1410575699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100452, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -15868,13 +15525,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 1298144830}
   - {fileID: 321731969}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1413846489
 GameObject:
   m_ObjectHideFlags: 0
@@ -16032,13 +15687,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1434980117}
   - {fileID: 408417171}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1417611858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100638, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16074,13 +15727,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 35264477}
   - {fileID: 393552564}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1417626605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100492, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16116,13 +15767,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1932610389}
   - {fileID: 965007035}
   - {fileID: 1290884983}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1428031916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100426, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16158,13 +15807,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 3175447}
   - {fileID: 1920964238}
   - {fileID: 1916176356}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1430233578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100366, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16200,13 +15847,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 914525503}
   - {fileID: 1003098075}
   - {fileID: 1046382994}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1434057303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100386, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16242,13 +15887,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1480288513}
   - {fileID: 893787805}
   - {fileID: 408417171}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1434980117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16284,13 +15927,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 1580498753}
   - {fileID: 1415961201}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1441992475
 GameObject:
   m_ObjectHideFlags: 0
@@ -16395,13 +16036,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 326723863}
   - {fileID: 1940715308}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1445801239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100516, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16437,13 +16076,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 1
   JointMesh:
   - {fileID: 1842956326}
   - {fileID: 1943202257}
   - {fileID: 193711801}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1451947889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100152, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16479,13 +16116,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 308354441}
   - {fileID: 521397301}
   - {fileID: 864600778}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1452564279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100498, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16521,13 +16156,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1480288513}
   - {fileID: 1804820475}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1454669962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100206, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16563,13 +16196,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 108271741}
   - {fileID: 765903032}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1456686515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100390, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16605,13 +16236,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1977953338}
   - {fileID: 402824842}
   - {fileID: 2135420763}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1478671596
 GameObject:
   m_ObjectHideFlags: 0
@@ -16682,13 +16311,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 455685414}
   - {fileID: 143664514}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1480288513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100402, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16724,13 +16351,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1452564279}
   - {fileID: 1434057303}
   - {fileID: 2095191245}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1483358713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100454, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16766,13 +16391,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 1389247442}
   - {fileID: 765903032}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1494492458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100420, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16808,13 +16431,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 622994259}
   - {fileID: 510968972}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1499730604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100572, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -16850,13 +16471,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1682309906}
   - {fileID: 1023298873}
   - {fileID: 1858226403}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1500401967
 GameObject:
   m_ObjectHideFlags: 0
@@ -16913,7 +16532,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6326e7b52d4a0064eb7c012e933fd6f8, type: 3}
+  m_Sprite: {fileID: 21300010, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17005,13 +16624,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 469612648}
   - {fileID: 904318239}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1518446044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100592, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17047,13 +16664,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 401093704}
   - {fileID: 710214495}
   - {fileID: 1689437357}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1524489844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100106, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17089,13 +16704,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 78281895}
   - {fileID: 1372942047}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1538648392
 GameObject:
   m_ObjectHideFlags: 0
@@ -17200,13 +16813,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1033011305}
   - {fileID: 183157152}
   - {fileID: 784074200}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1565404600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100088, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17242,13 +16853,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 524108108}
   - {fileID: 1931759691}
   - {fileID: 1584589151}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1572146875
 GameObject:
   m_ObjectHideFlags: 0
@@ -17307,7 +16916,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 196c7342c3e8c9744a39aedec635c663, type: 3}
+  m_Sprite: {fileID: 21300006, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17441,7 +17050,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300028, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17560,13 +17169,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1434980117}
   - {fileID: 1675717126}
   - {fileID: 1033011305}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1581329931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100584, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17602,13 +17209,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1931759691}
   - {fileID: 212851319}
   - {fileID: 1407792010}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1584589151 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100184, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17644,13 +17249,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 1565404600}
   - {fileID: 31305738}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1584743552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100122, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17686,13 +17289,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 1691402369}
   - {fileID: 490978572}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1589159573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100314, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17728,13 +17329,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 305919173}
   - {fileID: 637065895}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1597660255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100378, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -17770,13 +17369,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 119588798}
   - {fileID: 1241291164}
   - {fileID: 714531778}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1600033476
 GameObject:
   m_ObjectHideFlags: 0
@@ -17884,7 +17481,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300028, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18003,13 +17600,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1691402369}
   - {fileID: 517522759}
   - {fileID: 1999727450}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1612312985
 GameObject:
   m_ObjectHideFlags: 0
@@ -18114,13 +17709,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 871229243}
   - {fileID: 1033011305}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1618495978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100462, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18156,13 +17749,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1194826732}
   - {fileID: 579928386}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1618581648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100200, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18198,13 +17789,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 336637860}
   - {fileID: 3175447}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1639980498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100262, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18240,13 +17829,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 857221682}
   - {fileID: 1129775041}
   - {fileID: 700057829}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1642138704
 GameObject:
   m_ObjectHideFlags: 0
@@ -18373,13 +17960,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 339052602}
   - {fileID: 1143189273}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1653531691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100042, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18415,13 +18000,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 866923194}
   - {fileID: 1953921687}
   - {fileID: 1374729968}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1656699970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100142, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18457,13 +18040,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 2088653622}
   - {fileID: 310438292}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1666188838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100344, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18499,13 +18080,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1281981034}
   - {fileID: 130673201}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1669602914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100064, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18541,13 +18120,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1069206627}
   - {fileID: 1233286846}
   - {fileID: 1216192729}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1671755731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100620, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18583,13 +18160,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 990093047}
   - {fileID: 1858226403}
   - {fileID: 1396172116}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1675717126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100144, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18625,13 +18200,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 909569341}
   - {fileID: 339052602}
   - {fileID: 1580498753}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1682309906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100124, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18667,13 +18240,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 485024293}
   - {fileID: 334954668}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1684928952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100636, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18709,13 +18280,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 1
   JointMesh:
   - {fileID: 35264477}
   - {fileID: 1261314925}
   - {fileID: 1396172116}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1684964638
 GameObject:
   m_ObjectHideFlags: 0
@@ -18826,13 +18395,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 883398229}
   - {fileID: 442304538}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1691402369 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100218, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -18868,13 +18435,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 1584743552}
   - {fileID: 535453979}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1694394054
 GameObject:
   m_ObjectHideFlags: 0
@@ -19048,13 +18613,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 996261728}
   - {fileID: 1137437418}
   - {fileID: 1213065812}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1705047646
 GameObject:
   m_ObjectHideFlags: 0
@@ -19165,13 +18728,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 1927571657}
   - {fileID: 1915899304}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1723470223
 GameObject:
   m_ObjectHideFlags: 0
@@ -19247,52 +18808,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1723470223}
   m_CullTransparentMesh: 0
---- !u!1001 &1724061047
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -28.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 73f981f376d63a4448db1979aea1fb82, type: 3}
-  m_IsPrefabAsset: 0
 --- !u!1 &1724664729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100622, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19328,13 +18843,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 1314629576}
   - {fileID: 1396172116}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1728010970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100458, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19370,13 +18883,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1023298873}
   - {fileID: 336637860}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1759034366
 GameObject:
   m_ObjectHideFlags: 0
@@ -19487,13 +18998,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 1263336280}
   - {fileID: 1970553916}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1759653697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100134, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19529,13 +19038,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 201099082}
   - {fileID: 1209512908}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1771726575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100422, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19571,13 +19078,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 108271741}
   - {fileID: 131071464}
   - {fileID: 1977953338}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1780604838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100312, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19613,13 +19118,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1612747182}
   - {fileID: 1278295456}
   - {fileID: 339052602}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1804755840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100336, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19655,13 +19158,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 579928386}
   - {fileID: 871229243}
   - {fileID: 996261728}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1804820475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100514, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19697,13 +19198,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 5238884}
   - {fileID: 1452564279}
   - {fileID: 1805881791}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1805881791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100580, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19739,13 +19238,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1656699970}
   - {fileID: 1804820475}
   - {fileID: 29789798}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1806623670
 GameObject:
   m_ObjectHideFlags: 0
@@ -19853,7 +19350,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300030, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19903,13 +19400,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1854507475}
   - {fileID: 1903221677}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1809212946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19945,13 +19440,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 334954668}
   - {fileID: 1290884983}
   - {fileID: 247549460}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1818289660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100168, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -19987,13 +19480,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1999727450}
   - {fileID: 1097889542}
   - {fileID: 744774717}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1833062141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100634, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20029,13 +19520,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 130673201}
   - {fileID: 562826426}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1840761793 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100598, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20071,13 +19560,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1099322961}
   - {fileID: 866923194}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1842956326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100534, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20113,13 +19600,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 864161486}
   - {fileID: 1445801239}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1853483681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100440, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20155,13 +19640,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 2063560789}
   - {fileID: 1917340613}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1854507475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100126, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20197,13 +19680,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1808188071}
   - {fileID: 1906793472}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1858026425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100562, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20239,13 +19720,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 705472189}
   - {fileID: 1137437418}
   - {fileID: 136879311}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1858226403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100556, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20281,13 +19760,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 1671755731}
   - {fileID: 1053455927}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1865527400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100084, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20323,13 +19800,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 819413570}
   - {fileID: 417514189}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1866580831
 GameObject:
   m_ObjectHideFlags: 0
@@ -20437,7 +19912,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300030, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20592,13 +20067,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 1940715308}
   - {fileID: 1142711213}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1897195109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100340, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20634,13 +20107,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 321731969}
   - {fileID: 336637860}
   - {fileID: 2135420763}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1903221677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100270, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20676,13 +20147,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1724664729}
   - {fileID: 1808188071}
   - {fileID: 1154691102}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1906793472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100078, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20718,13 +20187,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1290884983}
   - {fileID: 1854507475}
   - {fileID: 580781577}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1915899304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100430, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20760,13 +20227,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 1135955283}
   - {fileID: 1717299218}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1916176356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100410, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20802,13 +20267,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 1241291164}
   - {fileID: 1428031916}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1917340613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100538, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20844,13 +20307,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 2033697905}
   - {fileID: 241331999}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1918495570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100522, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20886,13 +20347,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1053455927}
   - {fileID: 1249768407}
   - {fileID: 1010536049}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1920964238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100442, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20928,13 +20387,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1728010970}
   - {fileID: 1053455927}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1922279662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100570, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20970,13 +20427,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1233286846}
   - {fileID: 693976558}
   - {fileID: 2033697905}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1927571657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100398, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21012,13 +20467,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 636920731}
   - {fileID: 1717299218}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1931759691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100136, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21054,13 +20507,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 85295933}
   - {fileID: 1565404600}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1932610389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100362, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21096,13 +20547,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 237075393}
   - {fileID: 143664514}
   - {fileID: 1417626605}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1934944938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100154, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21138,13 +20587,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 377410625}
   - {fileID: 864600778}
   - {fileID: 1372942047}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1940715308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100236, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21180,13 +20627,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 1879379202}
   - {fileID: 1445464223}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1943202257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100500, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21222,13 +20667,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 510968972}
   - {fileID: 1445801239}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1944993362
 GameObject:
   m_ObjectHideFlags: 0
@@ -21336,7 +20779,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300030, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21386,13 +20829,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1808188071}
   - {fileID: 485024293}
   - {fileID: 453035472}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1953921687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100090, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21428,13 +20869,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1653531691}
   - {fileID: 469612648}
   - {fileID: 976986711}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1957673941
 GameObject:
   m_ObjectHideFlags: 0
@@ -21692,13 +21131,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1759258860}
   - {fileID: 1046382994}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1976316790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100182, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21734,13 +21171,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 2133652124}
   - {fileID: 1209512908}
   - {fileID: 441066154}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1977953338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100406, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21776,13 +21211,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1456686515}
   - {fileID: 1771726575}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1984604338
 GameObject:
   m_ObjectHideFlags: 0
@@ -21884,13 +21317,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 81462916}
   - {fileID: 369500355}
   - {fileID: 1417626605}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1989463809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100512, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -21926,13 +21357,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 820614603}
   - {fileID: 1120616346}
   - {fileID: 753988995}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &1991324174
 GameObject:
   m_ObjectHideFlags: 0
@@ -21989,7 +21418,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b56b5dd735d359748b8b18d6873acb3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22081,13 +21510,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 876933951}
   - {fileID: 1606157092}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2008778987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100332, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22123,13 +21550,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1503486730}
   - {fileID: 85295933}
   - {fileID: 31305738}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2022098493
 GameObject:
   m_ObjectHideFlags: 0
@@ -22278,13 +21703,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 141128050}
   - {fileID: 1298144830}
   - {fileID: 864161486}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2028252334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100388, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22320,13 +21743,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 510968972}
   - {fileID: 1158397419}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2031406676
 GameObject:
   m_ObjectHideFlags: 0
@@ -22385,7 +21806,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 78d4865b3ed9fd34cb25c613b7987d74, type: 3}
+  m_Sprite: {fileID: 21300008, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22447,13 +21868,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1922279662}
   - {fileID: 1292857123}
   - {fileID: 1917340613}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2039780188
 GameObject:
   m_ObjectHideFlags: 0
@@ -22555,13 +21974,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 82822055}
   - {fileID: 482001743}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2059590419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100210, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22597,13 +22014,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 170091625}
   - {fileID: 180195419}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2063560789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100456, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22639,13 +22054,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 693976558}
   - {fileID: 1970553916}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2073474912 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100576, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22681,13 +22094,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 170091625}
   - {fileID: 1194826732}
   - {fileID: 1393643889}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2078951998
 GameObject:
   m_ObjectHideFlags: 0
@@ -22792,13 +22203,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 599982271}
   - {fileID: 1656699970}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2095191245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100418, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -22834,13 +22243,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1480288513}
   - {fileID: 639710108}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2108685439
 GameObject:
   m_ObjectHideFlags: 0
@@ -22960,13 +22367,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 201099082}
   - {fileID: 528286862}
   - {fileID: 441066154}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2121401002 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100304, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23002,13 +22407,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 912114743}
   - {fileID: 2133652124}
   - {fileID: 116977033}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2122743421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23044,13 +22447,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 418698308}
   - {fileID: 564520935}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2132958254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100188, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23086,13 +22487,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 1142711213}
   - {fileID: 631769067}
   - {fileID: 1584589151}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2133652124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100178, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23128,13 +22527,11 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 676650459}
   - {fileID: 2121401002}
   - {fileID: 1976316790}
-  Point_1: []
-  Point_2: []
-  Point_3: []
 --- !u!1 &2135420763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100364, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -23170,10 +22567,8 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
+  isFlagable: 0
   JointMesh:
   - {fileID: 407687209}
   - {fileID: 551994290}
   - {fileID: 1897195109}
-  Point_1: []
-  Point_2: []
-  Point_3: []

@@ -38,7 +38,7 @@ public class PCverPIcking : MonoBehaviour
             CameraController.TurnChange = false;
         } 
 
-        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN == true) // 내 턴 아님
+        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN_NOTYETFLAG == true) // 내 턴 아님
         {
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {

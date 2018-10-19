@@ -23,7 +23,7 @@ public class SetTurn : MonoBehaviour
         if(GameObject.Find("NetworkManager") == null)
             if(RndNum() == 0)
             {
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
                 obj.name = "preOrder";
             }
             else
@@ -37,7 +37,7 @@ public class SetTurn : MonoBehaviour
         {
             if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
             {
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
                 obj.name = "preOrder";
             }
 

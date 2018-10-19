@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public enum TURN
 {
     NOTYETSET,
-    MYTURN,
+    MYTURN_NOTYETFLAG,
+    MYTURN_GETFLAG,
     ENEMYTURN
 }
 
@@ -148,7 +149,7 @@ public class TurnSystem : MonoBehaviour
             SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
 
         //내턴일때의 코루틴 진입
-        if (currentTurn.Equals(TURN.MYTURN))
+        if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
             coroutine = StartCoroutine(TurnCounting());
@@ -288,7 +289,7 @@ public class TurnSystem : MonoBehaviour
         while (true)
         {
             yield return new WaitForEndOfFrame();
-            if (currentTurn.Equals(TURN.MYTURN))
+            if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))
                 break;
         }
 

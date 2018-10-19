@@ -79,7 +79,7 @@ public class InGameSceneManager : MonoBehaviour
 
     public void ChangeTurn()
     {
-        gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+        gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
     }
 
     IEnumerator InGameNetworkCoroutine()

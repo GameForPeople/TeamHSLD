@@ -24,10 +24,8 @@ public class MeshController : MonoBehaviour {
     public bool isAwake;
     public bool isFixed;
     public bool isMine;
+    public bool isFlagable;     //거점?
     public GameObject[] JointMesh;
-    public GameObject[] Point_1;
-    public GameObject[] Point_2;
-    public GameObject[] Point_3;
     
     // Use this for initialization
 
@@ -42,10 +40,10 @@ public class MeshController : MonoBehaviour {
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
 
+        //거점임시로 메테리얼..
+        if(isFlagable)
+            gameObject.GetComponent<MeshController>().GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
         //JointMesh = new GameObject[3];
-        Point_1 = new GameObject[6];
-        Point_2 = new GameObject[6];
-        Point_3 = new GameObject[6];
     }
 	
 	// Update is called once per frame
