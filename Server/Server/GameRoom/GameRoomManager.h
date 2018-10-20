@@ -20,12 +20,13 @@ public:
 		rooms[InRoomIndex].ExitRoom();
 	}
 
-	__inline int GetEnemyIndex(const int& InRoomIndex, const bool InIsHost) const
+	__inline int GetEnemyIndex(const int& InRoomIndex, const bool& InIsHost) const
 	{
-		if (InIsHost)
-			return rooms[InRoomIndex].userIndex[1];
-		else
-			return rooms[InRoomIndex].userIndex[0];
+		return rooms[InRoomIndex].GetEnemyUserIndex(InIsHost);
+		//if (InIsHost)
+		//	return rooms[InRoomIndex].userIndex[1];
+		//else
+		//	return rooms[InRoomIndex].userIndex[0];
 	}
 
 	__inline bool GetGameReady(const int& InRoomIndex) const
@@ -37,50 +38,44 @@ public: //for InGameScene
 
 	// 레퍼런스 쓰지말자 일단은. 마지막 단계에서 데이터 프로토콣 변경해야지 --> 이걸 무슨뜻으로 달아놓은 거지????
 	// atomic --> 이였다가 아님!
-	int GetDataProtocol(const int& InRoomIndex, const bool InIsHost) const
+	__inline int GetDataProtocol(const int& InRoomIndex, const bool& InIsHost) const
 	{
-		if (InIsHost) {
-			return rooms[InRoomIndex].guestDataProtocol;
-		}
-		else {
-			return rooms[InRoomIndex].hostDataProtocol;
-		}
+		return rooms[InRoomIndex].GetDataProtocol(InIsHost);
 	}
 
 	// atomic  -> 이였다가 아님                                                  // 레퍼런스 쓰면 enum 못받는다.
-	void SetDataProtocol(const int& InRoomIndex, const bool InIsHost, const int InNewDataProtocol) //= 0)
+	__inline void SetDataProtocol(const int& InRoomIndex, const bool& InIsHost, const int InNewDataProtocol) //= 0)
 	{
-		if (InIsHost)
-			rooms[InRoomIndex].hostDataProtocol = InNewDataProtocol;
-		else
-			rooms[InRoomIndex].guestDataProtocol = InNewDataProtocol;
+		rooms[InRoomIndex].SetDataProtocol(InIsHost, InNewDataProtocol);
 	}
 
-	BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
-	{
-		if (InIsHost)
-			return rooms[InRoomIndex].guestDataBuffer;
-		else
-			return rooms[InRoomIndex].hostDataBuffer;
-	}
+	//BaseStruct* GetDataBuffer(const int& InRoomIndex, const bool& InIsHost) // const
+	//{
+	//	if (InIsHost)
+	//		return rooms[InRoomIndex].guestDataBuffer;
+	//	else
+	//		return rooms[InRoomIndex].hostDataBuffer;
+	//}
 
-	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct* InBaseStruct)
-	{
-		// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
-		if (InIsHost)
-			rooms[InRoomIndex].hostDataBuffer = InBaseStruct;
-		else
-			rooms[InRoomIndex].guestDataBuffer = InBaseStruct;
-	}
+	//void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, BaseStruct* InBaseStruct)
+	//{
+	//	// 야 이게 도대체 무슨 문법이냐... 살면서 이런거 처음본다 미친놈아
+	//	if (InIsHost)
+	//		rooms[InRoomIndex].hostDataBuffer = InBaseStruct;
+	//	else
+	//		rooms[InRoomIndex].guestDataBuffer = InBaseStruct;
+	//}
+
+
 
 	// Caution!! Delete dataBuffer!
-	void DeleteDataBuffer(const int& InRoomIndex, const bool& InIsHost)
-	{
-		if (InIsHost)
-			delete rooms[InRoomIndex].guestDataBuffer;
-		else
-			delete rooms[InRoomIndex].hostDataBuffer;
-	}
+	//void DeleteDataBuffer(const int& InRoomIndex, const bool& InIsHost)
+	//{
+	//	if (InIsHost)
+	//		delete rooms[InRoomIndex].guestDataBuffer;
+	//	else
+	//		delete rooms[InRoomIndex].hostDataBuffer;
+	//}
 
 
 public:// new Function
@@ -118,7 +113,7 @@ public:// new Function
 		rooms[InRoomIndex].SetCharacterIndex(InIsHost, InCharacterIndex);
 	}
 
-	int& GetEnemyCharacterIndex(const int& InRoomIndex, const bool& InIsHost)
+	int GetEnemyCharacterIndex(const int& InRoomIndex, const bool& InIsHost)
 	{
 		// 이거 레퍼런스로 반환해도 되나...?
 		return rooms[InRoomIndex].GetEnemyCharacterIndex(InIsHost);
@@ -129,4 +124,19 @@ public:// new Function
 		return rooms[InRoomIndex].SignOut(InIsHost, RetEnemyIndex);
 	}
 
+	//newFunction
+	void SetDataBuffer(const int& InRoomIndex, const bool& InIsHost, const char* InBuffer, const int& InCopySize)
+	{
+		rooms[InRoomIndex].SetDataBuffer(InIsHost, InBuffer, InCopySize);
+	}
+
+	void GetDataBuffer(const int& InRoomIndex, const bool& InIsHost, char* RetBuffer, const int& InCopySize)
+	{
+		rooms[InRoomIndex].GetDataBuffer(InIsHost, RetBuffer, InCopySize);
+	}
+
+	void GetDataBuffer(const int& InRoomIndex, const bool& InIsHost, char* RetBuffer)
+	{
+		rooms[InRoomIndex].GetDataBuffer(InIsHost, RetBuffer);
+	}
 };

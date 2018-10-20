@@ -15,7 +15,7 @@ enum class ROOM_STATE {
 class GameRoom {
 public:
 	ROOM_STATE roomState;
-	
+private:
 	int	userIndex[2]{};
 
 	int hostMissionIndex;
@@ -27,39 +27,43 @@ public:
 
 	// For Packing! --> bool고냥 쓰고(데이터 절약) Data Structure 에서만 int로 변환하여 전송..! 
 	bool isHostFirst;
-	//int isHostFirst;
+
+	int dataProtocol[2];
+	
+	// 데이터 담아두는 곳.
+	char DataBuffer[2][100];
+
+private:
 
 	// error
 	//std::atomic<int> dataProtocol;
 
-	int hostDataProtocol;
-	int guestDataProtocol;
-	
-	BaseStruct* hostDataBuffer;
-	BaseStruct* guestDataBuffer;
+	// 안쓰기로 결정..
+	//BaseStruct* oldhostDataBuffer;
+	//BaseStruct* oldguestDataBuffer;
 
 public:
 	//GameRoom(const GameRoom&) = delete; 
 	GameRoom& operator=(const GameRoom&) = delete;
 
-	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(501), guestDataProtocol(501)
-		, hostMissionIndex(), guestMissionIndex(), subMissionIndex(), hostCharacterIndex(), guestCharacterIndex(), isHostFirst()
+	__inline GameRoom() : roomState(ROOM_STATE::ROOM_STATE_VOID), //hostDataBuffer(nullptr), guestDataBuffer(nullptr), hostDataProtocol(501), guestDataProtocol(501),
+		hostMissionIndex(), guestMissionIndex(), subMissionIndex(), hostCharacterIndex(), guestCharacterIndex(), isHostFirst(),
+		dataProtocol() 
 	{}
 
 	//__inline ~GameRoom() = default;
 	__inline ~GameRoom()
 	{
-		if (hostDataBuffer != nullptr)
-		{
-			delete hostDataBuffer;
-		}
-
-		if (guestDataBuffer != nullptr)
-		{
-			delete guestDataBuffer;
-		}
+		//if (hostDataBuffer != nullptr)
+		//{
+		//	delete hostDataBuffer;
+		//}
+		//
+		//if (guestDataBuffer != nullptr)
+		//{
+		//	delete guestDataBuffer;
+		//}
 	}
-
 
 	__inline void CreateRoom(const int& InHostIndex)
 	{
@@ -77,18 +81,18 @@ public:
 
 		isHostFirst = rand() % 2;
 
-		hostDataProtocol = 501;
-		guestDataProtocol = 501;
-
-		if (hostDataBuffer != nullptr)
-		{
-			delete hostDataBuffer;
-		}
-
-		if (guestDataBuffer != nullptr)
-		{
-			delete guestDataBuffer;
-		}
+		//hostDataProtocol = 501;
+		//guestDataProtocol = 501;
+		//
+		//if (hostDataBuffer != nullptr)
+		//{
+		//	delete hostDataBuffer;
+		//}
+		//
+		//if (guestDataBuffer != nullptr)
+		//{
+		//	delete guestDataBuffer;
+		//}
 	}
 
 	__inline void JoinRoom(const int& InGuestIndex)
@@ -96,8 +100,11 @@ public:
 		// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 		//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
 
-		hostDataProtocol = VOID_GAME_STATE;
-		guestDataProtocol = VOID_GAME_STATE;
+		//hostDataProtocol = VOID_GAME_STATE;
+		//guestDataProtocol = VOID_GAME_STATE;
+
+		dataProtocol[0] = VOID_GAME_STATE;
+		dataProtocol[1] = VOID_GAME_STATE;
 
 		userIndex[1] = InGuestIndex;
 		roomState = ROOM_STATE::ROOM_STATE_WAIT;
@@ -159,7 +166,7 @@ public:
 		}
 	}
 
-	__inline int& GetEnemyCharacterIndex(const bool& InIsHost)
+	__inline int GetEnemyCharacterIndex(const bool& InIsHost)
 	{
 		if (InIsHost)
 		{
@@ -180,16 +187,20 @@ public:
 		}
 		else if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
 		{
-			hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-			guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
+			dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
 
 			return false;
 		}
 		else if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
 		{
-			hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-			guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+			//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
 			// 여기서 게임 결과 처리...!
+			dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
+			dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
 
 			if (isHost)
 			{
@@ -202,6 +213,37 @@ public:
 
 			return true;
 		}
+	}
+
+	__inline int GetEnemyUserIndex(const bool& InIsHost) const
+	{
+		return userIndex[InIsHost];
+	}
+
+public:
+	__inline void SetDataBuffer(const bool& InIsHost, const char* InBuffer, const int& InCopySize)
+	{
+		memcpy(DataBuffer[!InIsHost], InBuffer, InCopySize);
+	}
+
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize)
+	{
+		memcpy(RetBuffer, DataBuffer[InIsHost], InCopySize);
+	}
+
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer)
+	{
+		memcpy(RetBuffer, DataBuffer[InIsHost], (int)DataBuffer[InIsHost] + sizeof(int));
+	}
+
+	__inline int GetDataProtocol(const bool& InIsHost) const
+	{
+		return dataProtocol[InIsHost];
+	}
+														//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
+	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol)
+	{
+		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 };
 
