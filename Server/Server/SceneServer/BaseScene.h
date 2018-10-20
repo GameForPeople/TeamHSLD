@@ -9,25 +9,34 @@
 //	void* functionPointer;
 //};
 
-enum SCENE_PROTOCOL_START_INDEX
+namespace SCENE_NETWORK_MANAGER
 {
-	INGAMESCENE = 500
-};
+	enum SCENE_PROTOCOL_START_INDEX
+	{
+		TITLE_SCENE = 0,
+		LOGIN_SCENE = 100,
+		MAINUI_SCENE = 200,
+		LOBBY_SCENE = 300,
+		ROOM_SCENE = 400,
+		INGAME_SCENE = 500
+	};
 
-class BaseScene
-{
-public:
-	BaseScene(const BaseScene&) = delete;
-	BaseScene & operator=(const BaseScene&) = delete;
+	class BaseScene
+	{
+	public:
+		BaseScene(const BaseScene&) = delete;
+		BaseScene & operator=(const BaseScene&) = delete;
 
-public:
-	BaseScene() = delete;
-	BaseScene(int InSceneIndex) : sceneProtocolStartIndex (InSceneIndex){};
-	virtual ~BaseScene() = default;
+	public:
+		BaseScene() = delete;
+		BaseScene(int InSceneIndex) : sceneProtocolStartIndex(InSceneIndex) {};
+		virtual ~BaseScene() = default;
 
-protected:
-	const int sceneProtocolStartIndex;
+	protected:
+		const int sceneProtocolStartIndex;
 
-public:
-	virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
-};
+	public:
+		virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+		virtual void ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+	};
+}

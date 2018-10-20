@@ -1,6 +1,6 @@
 #include "../SceneServer/InGameScene.h"
 
-INGAME_SCENE::InGameScene::InGameScene() : BaseScene(SCENE_PROTOCOL_START_INDEX::INGAMESCENE)
+SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene(SCENE_PROTOCOL_START_INDEX::INGAME_SCENE)
 {
 	//functionPointers.emplace_back(FunctionPointer(DemandGameState));
 	RecvFunctions[0] = RecvGameState;
@@ -18,42 +18,85 @@ INGAME_SCENE::InGameScene::InGameScene() : BaseScene(SCENE_PROTOCOL_START_INDEX:
 	SendFunctions[5] = SendEventcardIndex;
 }
 
-void INGAME_SCENE::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	RecvFunctions[InRecvType - sceneProtocolStartIndex](ptr, InRoomData, InUserData);
 }
 
-void INGAME_SCENE::RecvGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+
+void SCENE_NETWORK_MANAGER::RecvGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 
 }
 
-void INGAME_SCENE::RecvChangeTurn(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RecvChangeTurn(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
 }
 
-void INGAME_SCENE::RecvDiceValue(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RecvDiceValue(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_DICE_VALUE);
-	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 }
 
-void INGAME_SCENE::RecvTerrainType(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RecvTerrainType(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_TERRAIN_TYPE);
-	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 }
 
-void INGAME_SCENE::RecvTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RecvTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, static_cast<int>(ptr->buf[4]) + 4);
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_TERRAIN_INDEXS);
-	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, (int&)(ptr->buf[4]) + 4);
 }
 
-void INGAME_SCENE::RecvEventcardIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RecvEventcardIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_EVENTCARD_INDEX);
 	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
+	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_EVENTCARD_INDEX);
+}
+
+// send Functions
+
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
+	
+	SendFunctions[InSendType - sceneProtocolStartIndex](ptr, InRoomData, InUserData);
+}
+
+void SCENE_NETWORK_MANAGER::SendGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+}
+
+void SCENE_NETWORK_MANAGER::SendChangeTurn(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+}
+
+void SCENE_NETWORK_MANAGER::SendDiceValue(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
+	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+}
+
+void SCENE_NETWORK_MANAGER::SendTerrainType(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
+	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+}
+
+void SCENE_NETWORK_MANAGER::SendTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4);
+	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+}
+
+void SCENE_NETWORK_MANAGER::SendEventcardIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
+	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
 }
 
