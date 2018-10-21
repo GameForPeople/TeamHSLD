@@ -23,6 +23,12 @@
     <ClCompile Include="GameRoom\GameRoomManager.cpp" />
     <ClCompile Include="IOCPServer\IOCPServer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneServer\InGameScene.cpp" />
+    <ClCompile Include="SceneServer\LobbyScene.cpp" />
+    <ClCompile Include="SceneServer\LoginScene.cpp" />
+    <ClCompile Include="SceneServer\MainUIScene.cpp" />
+    <ClCompile Include="SceneServer\RoomScene.cpp" />
+    <ClCompile Include="SceneServer\TitleScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -35,6 +41,13 @@
     <ClInclude Include="IOCPServer\IOCPServer.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />
+    <ClInclude Include="SceneServer\BaseScene.h" />
+    <ClInclude Include="SceneServer\InGameScene.h" />
+    <ClInclude Include="SceneServer\LobbyScene.h" />
+    <ClInclude Include="SceneServer\LoginScene.h" />
+    <ClInclude Include="SceneServer\MainUIScene.h" />
+    <ClInclude Include="SceneServer\RoomScene.h" />
+    <ClInclude Include="SceneServer\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />

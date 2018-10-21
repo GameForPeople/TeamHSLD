@@ -15,17 +15,17 @@ public:
 
 	void Save(bool& InIsSave);
 
-	int SignIn(const string_view& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
+	int SignIn(const string& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
 
 	int SignIn(const char const* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
 
-	int SignUp(const string_view& InID) const;
+	int SignUp(const string& InID, const int& InPW, int& RetIndex);
 
-	int SignUp(const char const*  InID) const;
+	int SignUp(const char const * InID, const int& InPW, int& RetIndex);
 
 	void SignOut(const int& InClientIndex);
 
-	void EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex);
+	//void EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex);
 
 public:
 	__inline int GetUserDataSize() const

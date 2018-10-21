@@ -1,6 +1,6 @@
 #include "../SceneServer/InGameScene.h"
 
-SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene(SCENE_PROTOCOL_START_INDEX::INGAME_SCENE)
+SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 {
 	//functionPointers.emplace_back(FunctionPointer(DemandGameState));
 	RecvFunctions[0] = RecvGameState;
@@ -22,7 +22,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SOCK
 {
 	ProcessRecv(InRecvType, ptr, InRoomData, InUserData);
 
-	ProcessSend(InRecvType, ptr, InRoomData, InUserData);
+	ProcessSend(InRoomData.GetDataProtocol(ptr->roomIndex, ptr->isHost), ptr, InRoomData, InUserData);
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)

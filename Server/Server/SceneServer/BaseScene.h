@@ -2,7 +2,8 @@
 
 #include "../stdafx.h"
 
-#include "../IOCPServer/IOCPServer.h"
+#include "../GameRoom/GameRoomManager.h"
+#include "../UserData/UserDataManager.h"
 
 //struct FunctionPointer
 //{
@@ -36,6 +37,7 @@ namespace SCENE_NETWORK_MANAGER
 		//const int sceneProtocolStartIndex;
 
 	public:
+		virtual void ProcessData(const int& InType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
 		//virtual void ProcessData(const int& InType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
 		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
 		//virtual void ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;

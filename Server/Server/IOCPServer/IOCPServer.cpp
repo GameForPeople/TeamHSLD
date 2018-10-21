@@ -7,7 +7,6 @@
 
 */
 
-
 // in Server global Function
 namespace NETWORK_UTIL {
 	void ERROR_QUIT(char *msg)
@@ -82,11 +81,11 @@ namespace NETWORK_UTIL {
 	//	}
 	//}
 
-	bool SendProcess(SOCKETINFO* ptr, const int InDataSize, const int InNowProtocol, const Protocol InNextProtocol = END_SEND, const bool InIsRecvTrue = true)
+	bool SendProcess(SOCKETINFO* ptr)
 	{
 		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
-		ptr->dataSize = InDataSize;
+		ptr->isRecvTurn = false;
 
 		// 데이터 바인드
 		ptr->wsabuf.buf = ptr->buf;
@@ -235,12 +234,35 @@ void IOCPServer::CreateBindListen()
 
 void IOCPServer::BindSceneDataProcess()
 {
-	SceneDataProcess[0] = titleScene.ProcessData;
-	SceneDataProcess[1] = loginScene.ProcessData;
-	SceneDataProcess[2] = mainUiScene.ProcessData;
-	SceneDataProcess[3] = lobbyScene.ProcessData;
-	SceneDataProcess[4] = roomScene.ProcessData;
-	SceneDataProcess[5] = inGameScene.ProcessData;
+	//sceneArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
+	//sceneArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
+	//sceneArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
+	//sceneArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
+	//sceneArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
+	//sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
+
+	sceneArr.reserve(6);
+	
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::TitleScene);
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LoginScene);
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::MainUiScene);
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LobbyScene);
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::RoomScene);
+	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::InGameScene);
+
+	//SceneDataProcess[0] = &(sceneArr[0].ProcessData);
+	//SceneDataProcess[1] = &(sceneArr[1].ProcessData);
+	//SceneDataProcess[2] = &(sceneArr[2].ProcessData);
+	//SceneDataProcess[3] = &(sceneArr[3].ProcessData);
+	//SceneDataProcess[4] = &(sceneArr[4].ProcessData);
+	//SceneDataProcess[5] = &(sceneArr[5].ProcessData);
+
+	//SceneDataProcess[0] = titleScene.ProcessData;
+	//SceneDataProcess[1] = loginScene.ProcessData;
+	//SceneDataProcess[2] = mainUiScene.ProcessData;
+	//SceneDataProcess[3] = lobbyScene.ProcessData;
+	//SceneDataProcess[4] = roomScene.ProcessData;
+	//SceneDataProcess[5] = inGameScene.ProcessData;
 }
 
 //Run
@@ -432,8 +454,10 @@ void IOCPServer::WorkerThreadFunction()
 		{
 			recvType = (int&)(ptr->buf);
 
-			SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
+			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
+			sceneArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 
+			NETWORK_UTIL::SendProcess(ptr);
 			//// Network Exception - RoomScene 
 			//else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
 			//{
@@ -449,9 +473,6 @@ void IOCPServer::WorkerThreadFunction()
 				//std::cout << "Not! Defined recvType Error  recvType == " << recvType << std::endl;
 				//std::cout << "OMG!! this Thread Down!!" << std::endl;
 
-#ifdef _DEBUG
-				//std::cout << "     [Error] Not! Defined recvType Error // Client Down! //  recvType == " << recvType << std::endl;
-#endif
 			//}
 		}
 	}

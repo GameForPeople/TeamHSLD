@@ -60,7 +60,7 @@ void UserDataManager::Save(bool& InIsSave)
 	}
 }
 
-int UserDataManager::SignIn(const string_view& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
+int UserDataManager::SignIn(const string& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
 {
 	RetIndex = 0;
 	for (auto &i : userDataCont)
@@ -125,7 +125,7 @@ int UserDataManager::SignIn(const char const * InID, const int& InPW, int& RetWi
 	return 1;
 }
 
-int UserDataManager::SignUp(const string_view& InID) const
+int UserDataManager::SignUp(const string& InID, const int& InPW, int& RetIndex)
 {
 	for (auto &i : userDataCont)
 	{
@@ -133,11 +133,14 @@ int UserDataManager::SignUp(const string_view& InID) const
 			return 4;
 		}
 	}
+
+	userDataCont.emplace_back(InID, InPW);
+	RetIndex = userDataCont.size() - 1;
 
 	return 0;
 }
 
-int UserDataManager::SignUp(const char const * InID) const
+int UserDataManager::SignUp(const char const * InID, const int& InPW, int& RetIndex) 
 {
 	for (auto &i : userDataCont)
 	{
@@ -145,6 +148,9 @@ int UserDataManager::SignUp(const char const * InID) const
 			return 4;
 		}
 	}
+
+	userDataCont.emplace_back(InID, InPW);
+	RetIndex = userDataCont.size() - 1;
 	return 0;
 }
 
@@ -153,7 +159,7 @@ void UserDataManager::SignOut(const int& InClientIndex)
 	userDataCont[InClientIndex].SignOut();
 }
 
-void UserDataManager::EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex) {
-	userDataCont.emplace_back(InID, InPW);
-	RetIndex = userDataCont.size() - 1;
-}
+//void UserDataManager::EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex) {
+//	userDataCont.emplace_back(InID, InPW);
+//	RetIndex = userDataCont.size() - 1;
+//}

@@ -68,7 +68,7 @@ public:
 		roomIndex(-1), 
 		isHost(false),
 		//dataSize(), 
-		isRecvTrue()
+		isRecvTurn(true)
 	{};
 
 	__inline ~SOCKETINFO() = default;

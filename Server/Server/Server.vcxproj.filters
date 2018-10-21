@@ -28,6 +28,9 @@
     <Filter Include="소스 파일\UserData">
       <UniqueIdentifier>{40b8e0ba-6a40-4692-889c-1160b53e839d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\SceneServer">
+      <UniqueIdentifier>{4a588f25-7657-45b3-a7e8-1d23479a1ef0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -50,6 +53,24 @@
     </ClCompile>
     <ClCompile Include="GameRoom\GameRoomManager.cpp">
       <Filter>소스 파일\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\InGameScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\TitleScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\LoginScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\MainUIScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\LobbyScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer\RoomScene.cpp">
+      <Filter>소스 파일\SceneServer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +97,27 @@
     </ClInclude>
     <ClInclude Include="Protocol\CommunicationDataStruct.h">
       <Filter>소스 파일\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\InGameScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\BaseScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\TitleScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\LoginScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\MainUIScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\LobbyScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer\RoomScene.h">
+      <Filter>소스 파일\SceneServer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
