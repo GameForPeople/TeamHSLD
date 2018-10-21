@@ -233,6 +233,15 @@ void IOCPServer::CreateBindListen()
 
 }
 
+void IOCPServer::BindSceneDataProcess()
+{
+	SceneDataProcess[0] = titleScene.ProcessData;
+	SceneDataProcess[1] = loginScene.ProcessData;
+	SceneDataProcess[2] = mainUiScene.ProcessData;
+	SceneDataProcess[3] = lobbyScene.ProcessData;
+	SceneDataProcess[4] = roomScene.ProcessData;
+	SceneDataProcess[5] = inGameScene.ProcessData;
+}
 
 //Run
 void IOCPServer::AcceptProcess()
@@ -423,224 +432,29 @@ void IOCPServer::WorkerThreadFunction()
 		{
 			recvType = (int&)(ptr->buf);
 
-			if (recvType == DEMAND_LOGIN)
-			{
-				int typeBuffer = (int&)(ptr->buf[4]);
-				int pwBuffer = (int&)(ptr->buf[8]);
-				int idSizeBuffer = (int&)(ptr->buf[12]);
-				string idBuffer;
+			SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 
-				for (int i = 0; i < idSizeBuffer; ++i)
-				{
-					//idBuffer.append(&(ptr->buf[16+i]));
-					idBuffer += ptr->buf[16 + i];
-				}
-
-				if (typeBuffer == 1) //로그인 처리입니다.
-				{
-					int outWinCount{};
-					int outLoseCount{};
-					int outMoney{};
-
-					int failReason = userData.SignIn(idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney, ptr->userIndex);
-
-					if (!failReason) {
-						//std::cout << "로그인에 성공했습니다. " << std::endl;
-
-						// 데이터 준비
-						ptr->dataBuffer = new PermitLoginStruct(outWinCount, outLoseCount, outMoney);
-						//permitLoginStruct* a = static_cast<PermitLoginStruct *>(ptr->dataBuffer);
-
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitLoginStruct), PERMIT_LOGIN))
-							continue;
-					}
-					else if (failReason) {
-						//std::cout << "로그인에 실패했습니다.  해당 사유는 : " << failReason << std::endl;
-
-						// 데이터 준비
-						ptr->dataBuffer = new FailLoginStruct(failReason);
-
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(FailLoginStruct), FAIL_LOGIN))
-							continue;
-					}
-				}
-				else if (typeBuffer == 2) //회원가입 처리입니다.
-				{
-					int failReason = userData.SignUp(idBuffer);
-
-					if (!failReason) {
-						//std::cout << "회원가입에 성공했습니다. " << std::endl;
-
-						// 회원 가입 처리
-						userData.EmplaceBackToPlayer(idBuffer, pwBuffer, ptr->userIndex);
-
-						// 저장 쓰레드 호출
-						isSaveOn = true;
-
-						// 데이터 준비
-						ptr->dataBuffer = new PermitLoginStruct(0, 0, 0);
-
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitLoginStruct), PERMIT_LOGIN))
-							continue;
-					}
-					else if (failReason) {
-
-						//std::cout << "회원가입에 실패했습니다.  해당 사유는 : " << failReason << std::endl;
-
-						// 데이터 준비
-						ptr->dataBuffer = new FailLoginStruct(failReason);
-
-						if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(FailLoginStruct), FAIL_LOGIN))
-							continue;
-					}
-				}
-			}
-
-			//LobbyScene - old
-			else if (recvType == DEMAND_MAKEROOM)
-			{
-				ptr->roomIndex = roomData.CreateRoom(ptr->userIndex);
-				ptr->isHost = true;
-
-				ptr->dataBuffer = new PermitMakeRoomStruct(ptr->roomIndex);
-
-				if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitMakeRoomStruct), PERMIT_MAKEROOM))
-					continue;
-			}
-			else if (recvType == DEMAND_JOINROOM)
-			{
-				int roomIndexBuffer = (int&)(ptr->buf[4]);
-
-				int failReasonBuffer = roomData.JoinRoom(ptr->userIndex, roomIndexBuffer);
-
-				if (failReasonBuffer)
-				{
-					//std::cout << roomIndexBuffer << " 방으로의 입장을 실패했습니다. 실패 사유 : " << failReasonBuffer << endl;
-
-					ptr->dataBuffer = new FailJoinRoomStruct(failReasonBuffer);
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(FailJoinRoomStruct), FAIL_JOINROOM))
-						continue;
-				}
-				else
-				{
-					//std::cout << roomIndexBuffer << " 번째 방으로의 입장을 성공했습니다. 방장 아이디는 : (error) 비밀입니다. " << endl;
-
-					ptr->isHost = false;
-					ptr->roomIndex = roomIndexBuffer;
-
-					ptr->dataBuffer = new PermitJoinRoomStruct(roomIndexBuffer, userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitJoinRoomStruct), PERMIT_JOINROOM))
-						continue;
-				}
-			}
-
-			//LobbyScene - new
-			else if (recvType == DEMAND_RANDOM_MATCH)
-			{
-				if (roomData.RandomMatchingProcess(ptr->userIndex, ptr->roomIndex)) // Create!!
-				{
-					ptr->isHost = true;
-
-					int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-					roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
-
-					ptr->dataBuffer = new PermitMakeRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitMakeRandomStruct), PERMIT_MAKE_RANDOM))
-						continue;
-				}
-				else // Join!
-				{
-					ptr->isHost = false;
-
-					int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-					roomData.GetRoomGameData(ptr->roomIndex, ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
-
-					ptr->dataBuffer = new PermitJoinRandomStruct(ptr->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitJoinRandomStruct), PERMIT_JOIN_RANDOM))
-						continue;
-				}
-			}
-			else if (recvType == DEMAND_GUEST_JOIN)
-			{
-				if (roomData.GetGameReady(ptr->roomIndex))
-				{
-					ptr->dataBuffer = new PermitGuestJoinStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitGuestJoinStruct), PERMIT_GUEST_JOIN))
-						continue;
-				}
-				else
-				{
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), PERMIT_GUEST_NOT_JOIN))
-						continue;
-				}
-			}
-
-			//RoomScene - old
-			else if (recvType == DEMAND_ROOMHOST) {
-				// 게스트가 들어왔을 때,
-				if (roomData.GetGameReady(ptr->roomIndex))
-				{
-					ptr->dataBuffer = new RoomStateGuestInStruct(userData.GetUserID(roomData.GetEnemyIndex(ptr->roomIndex, ptr->isHost)));
-
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(RoomStateGuestInStruct), ROOMSTATE_GUESTIN))
-						continue;
-				}
-				// 아무도 안들어 왔을 때,
-				else {
-					if (NETWORK_UTIL::SendProcess(ptr, sizeof(int), ROOMSTATE_VOID))
-						continue;
-				}
-			}
-
-			//RoomScene - new
-			else if (recvType == DEMAND_ENEMY_CHARACTER)
-			{
-				roomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
-
-				ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
-
-				if (NETWORK_UTIL::SendProcess(ptr, sizeof(int) + sizeof(PermitEnemyCharacterStruct), PERMIT_ENEMY_CHARACTER))
-					continue;
-			}
-
-			// GameScene - Defense Turn
-			// GameScene - Attack Turn 
-			else if (recvType > 500 && recvType < 600)
-			{
-				inGameScene.ProcessRecv(recvType, ptr, roomData, userData);
-				// Send Process!!
-				inGameScene.ProcessSend(roomData.GetDataProtocol(ptr->roomIndex, ptr->isHost), ptr, roomData, userData);
-
-
-			}
-
-			// Network Exception - RoomScene 
-			else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
-			{
-				// 이거 써야 좋으려나 안쓰는게 좋으려나. --> 써야것다. 변수 하나 씩 다 추가하는거 오바다.
-				// 이 함수는, 상대편 클라이언트가 나갔을 경우, 이를 확인하고, 관련 클라이언트 처리가 끝났음을 알리는 프로토콜에 대한 처리입니다.
-				roomData.ExitRoom(ptr->roomIndex);
-				ptr->roomIndex = -1;
-			}
+			//// Network Exception - RoomScene 
+			//else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
+			//{
+			//	// 이거 써야 좋으려나 안쓰는게 좋으려나. --> 써야것다. 변수 하나 씩 다 추가하는거 오바다.
+			//	// 이 함수는, 상대편 클라이언트가 나갔을 경우, 이를 확인하고, 관련 클라이언트 처리가 끝났음을 알리는 프로토콜에 대한 처리입니다.
+			//	roomData.ExitRoom(ptr->roomIndex);
+			//	ptr->roomIndex = -1;
+			//}
 
 			// Hey!! It is garbage!!!!! ERROR!!! OhMyGod!!!!!!! !!!! WT!!!
-			else
-			{
+			//else
+			//{
 				//std::cout << "Not! Defined recvType Error  recvType == " << recvType << std::endl;
 				//std::cout << "OMG!! this Thread Down!!" << std::endl;
 
 #ifdef _DEBUG
-				std::cout << "     [Error] Not! Defined recvType Error // Client Down! //  recvType == " << recvType << std::endl;
+				//std::cout << "     [Error] Not! Defined recvType Error // Client Down! //  recvType == " << recvType << std::endl;
 #endif
-			}
+			//}
 		}
 	}
-}
 }
 
 DWORD WINAPI IOCPServer::SaveUserDate(LPVOID arg)

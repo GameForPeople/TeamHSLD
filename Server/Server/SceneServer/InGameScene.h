@@ -13,11 +13,12 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~InGameScene() override = default;
 
 	public:
-		virtual void ProcessRecv(const int& InRecvType,
-			SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		void ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-		virtual void ProcessSend(const int& InSendType,
-			SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+
+		void ProcessSend(const int& InSendType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 	private:
 		//std::vector<FunctionPointer> functionPointers;

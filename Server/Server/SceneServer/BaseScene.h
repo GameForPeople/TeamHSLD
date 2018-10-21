@@ -28,15 +28,16 @@ namespace SCENE_NETWORK_MANAGER
 		BaseScene & operator=(const BaseScene&) = delete;
 
 	public:
-		BaseScene() = delete;
-		BaseScene(int InSceneIndex) : sceneProtocolStartIndex(InSceneIndex) {};
-		virtual ~BaseScene() = default;
+		BaseScene() = default;
+		//BaseScene(int InSceneIndex) : sceneProtocolStartIndex(InSceneIndex) {};
+		virtual ~BaseScene() = 0 {};
 
 	protected:
-		const int sceneProtocolStartIndex;
+		//const int sceneProtocolStartIndex;
 
 	public:
-		virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
-		virtual void ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+		//virtual void ProcessData(const int& InType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+		//virtual void ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
 	};
 }

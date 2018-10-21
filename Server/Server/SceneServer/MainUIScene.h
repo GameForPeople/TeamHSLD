@@ -6,20 +6,18 @@
 
 namespace SCENE_NETWORK_MANAGER
 {
-	class TitleScene : public BaseScene
+	class MainUiScene : public BaseScene
 	{
 	public:
-		TitleScene();
-		virtual ~TitleScene() override = default;
+		MainUiScene();
+		virtual ~MainUiScene() override = default;
 
 	public:
 		void ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-		//virtual void ProcessRecv(const int& InRecvType,
-		//	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
-		//
-		//virtual void ProcessSend(const int& InSendType,
-		//	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+	public:
+		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		//void ProcessSend(const int& InSendType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 	private:
 		//void(*RecvFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);

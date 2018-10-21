@@ -18,9 +18,16 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene(SCENE_PROTOCOL_STA
 	SendFunctions[5] = SendEventcardIndex;
 }
 
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	ProcessRecv(InRecvType, ptr, InRoomData, InUserData);
+
+	ProcessSend(InRecvType, ptr, InRoomData, InUserData);
+}
+
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	RecvFunctions[InRecvType - sceneProtocolStartIndex](ptr, InRoomData, InUserData);
+	RecvFunctions[InRecvType - 500](ptr, InRoomData, InUserData);
 }
 
 
@@ -64,7 +71,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int& InSendType, SOCK
 {
 	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 	
-	SendFunctions[InSendType - sceneProtocolStartIndex](ptr, InRoomData, InUserData);
+	SendFunctions[InSendType - 500](ptr, InRoomData, InUserData);
 }
 
 void SCENE_NETWORK_MANAGER::SendGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
