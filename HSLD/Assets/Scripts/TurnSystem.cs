@@ -37,6 +37,7 @@ public class TurnSystem : MonoBehaviour
 
     private float warningTime;
     public GameObject warningPanel;
+
     private float warningRadio = 0;
 
     Coroutine coroutine;
@@ -49,7 +50,21 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(ReadyMatchingComplete());
     }
 
-   IEnumerator ReadySetOrderTimer()
+    public void DisplayTextMessage(string value, float time)
+    {
+        StartCoroutine(DisplayTextMessageCor(value, time));
+    }
+
+    IEnumerator DisplayTextMessageCor(string value, float time)
+    {
+        mainTxt.text = value;
+        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().tmpAnimationImage.SetActive(true);
+        yield return new WaitForSeconds(time);
+        mainTxt.text = "";
+        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().tmpAnimationImage.SetActive(false);
+    }
+
+    IEnumerator ReadySetOrderTimer()
     {
         time_ = 0;
         mainTxt.text = "카드를 선택해 주세요.";

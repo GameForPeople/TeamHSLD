@@ -14,7 +14,7 @@ public class DiceSystem : MonoBehaviour
     private bool raiseValue = true;
     public float constValue;
     private int characterDiceRateUp = 5;        //tmp
-    
+   
 
     public void OnTrigger()
     {
@@ -556,6 +556,9 @@ public class DiceSystem : MonoBehaviour
         }
         Debug.Log("다이스눈금 : " + getDiceNum + " 더블여부 : " + isDouble);
         CameraController.DiceCount = getDiceNum;
+
+        if(GameObject.Find("GameCores") != null)
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendDiceValue(getDiceNum);
 
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);

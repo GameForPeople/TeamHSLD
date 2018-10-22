@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameSceneManager : MonoBehaviour
 {
@@ -16,12 +17,18 @@ public class InGameSceneManager : MonoBehaviour
 
     // 바뀌어진 테라리언들의 인덱스가 들어있는 컨테이너 입니다.
     public int[] network_terrainIndex = new int[12];
+    public int[] recvTerrainIndex = new int[12]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
+
 
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
     public int network_eventCardType;
 
     private NetworkManager networkManager;
-    // Use this for initialization
+    
+    // 변수 2개 추가했어요. - 181022 YSH
+    [HideInInspector] public int recvDiceValue = 0;          //상대방 굴린 주사위 눈금
+    [HideInInspector] public int recvTerrainType = 0;        //상대방이 뽑은 카드타입
+
     void Start()
     {
         if (GameObject.Find("GameCores") == null)
@@ -70,9 +77,10 @@ public class InGameSceneManager : MonoBehaviour
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_TYPE;
     }
 
-    public void SendTerrainType(int InDiceValue, int[] InTerrainIndex)
+    //index만 ref으로 보냄. - 임시주석처리 181022.YSH 
+    public void SendTerrainIndex(/*int InDiceValue, */int[] InTerrainIndex)
     {
-        network_changeTerrainCount = InDiceValue;
+        //network_changeTerrainCount = InDiceValue;
         network_terrainIndex = InTerrainIndex;
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS;
     }
@@ -116,26 +124,76 @@ public class InGameSceneManager : MonoBehaviour
     public void RecvDiceValue(int InDiceValue)
     {
         // 다이스 주사위 굴리는연출 / 결과 dsipaly
+        recvDiceValue = InDiceValue;
+        GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ InDiceValue.ToString() + " !!!", 2f);   //ref - 2f 수정.
     }
 
     // 상대방이 뽑은 카드를 연출
     public void RecvTerrainType(int InTerrainType)
     {
         // 카드 뽑는 연출 dsipaly
+        recvTerrainType = InTerrainType;
+        for (int i =0; i< GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet.Length; i++)
+        {
+            if(GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardIndex == InTerrainType)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 2f);
+                break;
+            }
+        }
     }
 
-    // 상대방이 변경하는 지형의 인덱스(0 - 320)와 눈금을 출력합니다. 
-    // 이게 이해가 안가는데 .. InDiceValue를 ref으로 잡은것은 RecvDiceValue() 이함수하고 중복되는 일을 하는것같고. 지형의 인덱스와 terrainType을 받아야하는거 아냐 ?
-    // 함수 역할이 뭔지 모르겠어 .. 상대방이 지형을 수정하면 그것을 적용하는것이 아닌지 ..?
-    public void RecvTerrainIndex(int InDiceValue, int[] InTerrainIndex)
+    //ref으로 index만 받자 !
+    public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
+        if (recvDiceValue == 0)
+        {
+            Debug.Log("에러 : 1");
+            return;
+        }
 
+        if(recvTerrainType == 0)
+        {
+            Debug.Log("에러 : 2");
+            return;
+        }
+
+        //적용
+        for(int i =0; i< recvDiceValue; i++)
+        {
+            if(recvTerrainType == 1)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+            }
+            else if(recvTerrainType == 2)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+            }
+            else if (recvTerrainType == 3)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold();
+            }
+            else if (recvTerrainType == 4)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain();
+            }
+            else if (recvTerrainType == 5)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea();
+            }
+            else
+            {
+                Debug.Log("에러 : 3");
+            }
+        }
+        recvTerrainType = 0;
+        recvDiceValue = 0;
     }
 
     //사용한 이벤트카드의 인덱스를 연출.
     public void RecvEventcardIndex(int InEventcardIndex)
     {
-
+        Debug.Log("아직까진 이벤트카드 없음.");
     }
 
     IEnumerator InGameNetworkCoroutine()

@@ -62,6 +62,9 @@ public class PCverPIcking : MonoBehaviour
                     FindObject.GetComponent<MeshController>().isFixed = true;
                     FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
                 }
+                if (GameObject.Find("GameCores") != null)
+                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendTerrainIndex(myPlanet.GetComponent<AllMeshController>().PickContainer.ToArray());
+
                 myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
                 CameraController.TurnChange = true;
                 CameraController.Once = false;

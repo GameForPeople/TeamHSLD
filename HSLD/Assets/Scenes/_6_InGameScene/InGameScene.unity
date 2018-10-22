@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040543145, g: 0.00022157223, b: 0.000000055451046,
+  m_IndirectSpecularColor: {r: 0.0040543154, g: 0.00022157241, b: 0.000000055451046,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -7750,6 +7750,7 @@ MonoBehaviour:
   matchingCompleteCanvas: {fileID: 951168820}
   spinCanvas: {fileID: 248390576}
   displayMissionCanvas: {fileID: 668090650}
+  tmpAnimationImage: {fileID: 1247643233}
 --- !u!114 &823012261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7789,6 +7790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameravertical: {fileID: 1694394056}
   camerahorizontal: {fileID: 668513552}
+  myPlanet: {fileID: 1132190347}
 --- !u!1 &857221682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100610, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -11302,6 +11304,75 @@ MonoBehaviour:
   - {fileID: 1022145317}
   - {fileID: 636920731}
   - {fileID: 513719430}
+--- !u!1 &1247643233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247643234}
+  - component: {fileID: 1247643236}
+  - component: {fileID: 1247643235}
+  m_Layer: 5
+  m_Name: AnimationDummyImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1247643234
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247643233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.2595868, y: 3.2595868, z: 3.2595868}
+  m_Children: []
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1247643235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247643233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 90c9fb1648d68d8459314876be3da244, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1247643236
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247643233}
+  m_CullTransparentMesh: 0
 --- !u!1 &1249768407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100506, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -20024,6 +20095,7 @@ RectTransform:
   - {fileID: 744488205}
   - {fileID: 1362228163}
   - {fileID: 248390577}
+  - {fileID: 1247643234}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

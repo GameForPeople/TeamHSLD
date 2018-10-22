@@ -6,6 +6,7 @@ public class FlagSystem : MonoBehaviour
 {
     public CameraVertical cameravertical;
     public CameraHorizontal camerahorizontal;
+    public GameObject myPlanet;
 
     private void Start()
     {
