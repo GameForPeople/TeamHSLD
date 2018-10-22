@@ -264,30 +264,30 @@ public class NetworkManager : MonoBehaviour
             }
 
             //InGameScene // Defense Turn
-            else if (InMsg == (int)PROTOCOL.DEMAND_GAME_STATE)
+            else if (InMsg == (int)PROTOCOL.VOID_GAME_STATE)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GAME_STATE), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_GAME_STATE), 0, DataSendBuffer, 0, 4);
 
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
             // InGameScene Attack Turn
-            else if (InMsg == (int)PROTOCOL.NOTIFY_END_OF_TURN)
+            else if (InMsg == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_END_OF_TURN), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
 
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
-            else if (InMsg == (int)PROTOCOL.DICE_VALUE_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.NOTIFY_DICE_VALUE )
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DICE_VALUE_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_DICE_VALUE), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);
             }
-            else if (InMsg == (int)PROTOCOL.TERRAIN_TYPE_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE )
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.TERRAIN_TYPE_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_TYPE), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
 
                 //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
@@ -296,18 +296,18 @@ public class NetworkManager : MonoBehaviour
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기..!
             }
-            else if (InMsg == (int)PROTOCOL.TERRAIN_INDEX_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS )
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.TERRAIN_INDEX_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
 
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 8, 4 * inGameSceneManager.network_changeTerrainCount);
 
                 socket.Send(DataSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
             }
-            else if (InMsg == (int)PROTOCOL.EVENTCARD_INDEX_TO_SERVER)
+            else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX )
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.EVENTCARD_INDEX_TO_SERVER), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX ), 0, DataSendBuffer, 0, 4);
                 Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
 
                 socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
@@ -512,41 +512,41 @@ public class NetworkManager : MonoBehaviour
                 // 뭐야 니 아무것도 없엉
                 return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
             }
-            else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
+            else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN  )
             {
                 inGameSceneManager.ChangeTurn();
             }
-            else if (recvType == (int)PROTOCOL.DICE_VALUE_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.NOTIFY_DICE_VALUE )
             {
-                inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
-                inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
+                //inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
+               // inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
 
                // for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
                // {
                //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
                // }
             }
-            else if (recvType == (int)PROTOCOL.TERRAIN_TYPE_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE )
             {
-                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
-                inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
-                inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 12);
+                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+               // inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
+                //inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 12);
 
-                for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
-                {
-                    inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
-                }
+                //for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+               // {
+               //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
+               // }
             }
-            else if (recvType == (int)PROTOCOL.TERRAIN_INDEX_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS  )
             {
-                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             }
-            else if (recvType == (int)PROTOCOL.TERRAIN_INDEX_TO_CLIENT)
+            else if (recvType == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX )
             {
-                inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             }
 
-            inGameSceneManager.network_recvProtocolFlag = recvType;
+           // inGameSceneManager.network_recvProtocolFlag = recvType;
         }
 
         // Network Exception
