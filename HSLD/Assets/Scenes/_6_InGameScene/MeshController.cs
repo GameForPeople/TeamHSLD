@@ -60,7 +60,7 @@ public class MeshController : MonoBehaviour {
                     {
                         DomMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
 
-                        Debug.Log(name);
+                        //Debug.Log(name);
                         //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
                     }
                 }
