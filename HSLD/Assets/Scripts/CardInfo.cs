@@ -10,7 +10,11 @@ public class CardInfo : ScriptableObject
     public Vector2 zoomInSatusCardVec;
     public Vector2 zoomOutSatusCardVec;
 
+    public int cardIndex;
+    public string cardName;
+
     public int currentCnt;
     public int maximumCnt;
     public int minumumCnt;
 }
+    

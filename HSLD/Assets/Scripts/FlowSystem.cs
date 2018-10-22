@@ -30,12 +30,15 @@ public class FlowSystem : MonoBehaviour
     public GameObject spinCanvas;
     public GameObject displayMissionCanvas;
 
+    public GameObject tmpAnimationImage;
+
     private float time_;
     static public bool isWaitingTime = false;
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
+        tmpAnimationImage.SetActive(true);
         isWaitingTime = true;
         time_ = 0;
         while (true)
@@ -51,7 +54,28 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_ROLLINGDICE:
                 currentFlow = FLOW.TO_PICKINGCARD;
                 break;
+            case FLOW.TO_PICKINGLOC:
+                if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
+                    currentFlow = FLOW.TO_PICKEVENTCARD;
+                else
+                {
+                    if (GameObject.Find("GameCores") != null)
+                        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendChangeTurn();
+                    currentFlow = FLOW.WAITING;
+                }
+                break;
+            case FLOW.TO_PICKEVENTCARD:
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                if (GameObject.Find("GameCores") != null)
+                {
+                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
+                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendChangeTurn();
+                }   
+                currentFlow = FLOW.WAITING;
+                break;
         }
+        tmpAnimationImage.SetActive(false);
         isWaitingTime = false;
     }
 
@@ -87,7 +111,6 @@ public class FlowSystem : MonoBehaviour
 
                 //선공 / 후공 - 임시, 서버붙이면 변경
                 gameObject.GetComponent<TurnSystem>().TurnSet();
-                //currentFlow = FLOW.READY_DONE;
                 spinCanvas.SetActive(true);                
                 break;
             case FLOW.READY_SETCARD:
@@ -102,29 +125,34 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
+
+                if (GameObject.Find("GameCores") != null)
+                {
+                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
+                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+
+                }
+
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
-
                 if (SoundManager.instance_ != null)
                     SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
 
-                //여기
+                //애니메이션 여기
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
-
                 break;
 
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
-                if(gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
-                    currentFlow = FLOW.TO_PICKEVENTCARD;
-                else
-                    currentFlow = FLOW.WAITING;
 
+                //애니메이션 여기
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 3));    // <<< 여기  3라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
-                gameObject.GetComponent<TurnSystem>().TurnSet();
-                currentFlow = FLOW.WAITING;
+                //애니메이션 여기
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 10));    // <<< 여기  10라는 숫자를 바꾸면댐
+
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;

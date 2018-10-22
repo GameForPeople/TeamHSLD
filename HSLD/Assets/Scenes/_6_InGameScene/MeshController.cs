@@ -5,8 +5,8 @@ using System.Linq;
 
 public enum Terrain{
     DEFAULT,
-    BARREN,
     MODERATION,
+    BARREN,
     COLD,
     SEA,
     MOUNTAIN,

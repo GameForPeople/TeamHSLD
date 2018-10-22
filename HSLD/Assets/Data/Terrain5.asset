@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Name: Terrain5
   m_EditorClassIdentifier: 
   currentCard: 1
-  currentZoom: 1
+  currentZoom: 0
   zoomInSatusCardVec: {x: -162, y: -294}
   zoomOutSatusCardVec: {x: 15, y: -294}
-  terrainIndex: 5
+  cardIndex: 5
+  cardName: "\uC0B0"
   currentCnt: 1
   maximumCnt: 10
   minumumCnt: 1
