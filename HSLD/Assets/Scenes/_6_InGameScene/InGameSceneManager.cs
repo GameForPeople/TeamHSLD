@@ -17,6 +17,8 @@ public class InGameSceneManager : MonoBehaviour
 
     // 바뀌어진 테라리언들의 인덱스가 들어있는 컨테이너 입니다.
     public int[] network_terrainIndex = new int[12];
+    public int[] recvTerrainIndex = new int[12]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
+
 
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
     public int network_eventCardType;
@@ -142,7 +144,7 @@ public class InGameSceneManager : MonoBehaviour
     }
 
     //ref으로 index만 받자 !
-    public void RecvTerrainIndex(/*int InDiceValue, */int[] InTerrainIndex)
+    public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
         if (recvDiceValue == 0)
         {
@@ -161,23 +163,23 @@ public class InGameSceneManager : MonoBehaviour
         {
             if(recvTerrainType == 1)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[InTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
             }
             else if(recvTerrainType == 2)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[InTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
             }
             else if (recvTerrainType == 3)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[InTerrainIndex[i]].GetComponent<MeshController>().setCold();
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold();
             }
             else if (recvTerrainType == 4)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[InTerrainIndex[i]].GetComponent<MeshController>().setMountain();
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain();
             }
             else if (recvTerrainType == 5)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[InTerrainIndex[i]].GetComponent<MeshController>().setSea();
+                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea();
             }
             else
             {
