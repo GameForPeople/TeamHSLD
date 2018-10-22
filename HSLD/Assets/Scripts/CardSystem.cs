@@ -8,7 +8,6 @@ public enum CARDSET
     TERRAIN_DEFFENSE,
     TERRAIN_NORMAL
 }
-
 public enum ZOOMSTATE
 {
     IN,

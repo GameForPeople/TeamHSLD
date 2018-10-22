@@ -43,7 +43,6 @@ public class TurnSystem : MonoBehaviour
 
     private void Start()
     {
-
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))
             return;
 
@@ -261,7 +260,7 @@ public class TurnSystem : MonoBehaviour
             if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.WAITING))
             {
                 yield return new WaitForSeconds(1.5f);
-                gameObject.GetComponent<InGameSceneManager>().network_sendProtocol = (int)PROTOCOL.NOTIFY_END_OF_TURN;
+                gameObject.GetComponent<InGameSceneManager>().network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
                 //init
                 displayTurnTimerTxt.text = "";
                 currentMyTurnTimer = 0;

@@ -103,26 +103,36 @@ public class InGameSceneManager : MonoBehaviour
     //    }
     //}
 
+    // 사용자가 턴을 종료하면 나의턴이 됩니다.
     public void RecvChangeTurn()
     {
+        //거점을 정복했는지 여부에따라서 분기
+
         gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+        //gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_GETFLAG;
     }
 
+    // 상대방이 굴린 주사위 눈금을 연출
     public void RecvDiceValue(int InDiceValue)
     {
-
+        // 다이스 주사위 굴리는연출 / 결과 dsipaly
     }
 
+    // 상대방이 뽑은 카드를 연출
     public void RecvTerrainType(int InTerrainType)
     {
-
+        // 카드 뽑는 연출 dsipaly
     }
 
-    public void RecvTerrainType(int InDiceValue, int[] InTerrainIndex)
+    // 상대방이 변경하는 지형의 인덱스(0 - 320)와 눈금을 출력합니다. 
+    // 이게 이해가 안가는데 .. InDiceValue를 ref으로 잡은것은 RecvDiceValue() 이함수하고 중복되는 일을 하는것같고. 지형의 인덱스와 terrainType을 받아야하는거 아냐 ?
+    // 함수 역할이 뭔지 모르겠어 .. 상대방이 지형을 수정하면 그것을 적용하는것이 아닌지 ..?
+    public void RecvTerrainIndex(int InDiceValue, int[] InTerrainIndex)
     {
 
     }
 
+    //사용한 이벤트카드의 인덱스를 연출.
     public void RecvEventcardIndex(int InEventcardIndex)
     {
 

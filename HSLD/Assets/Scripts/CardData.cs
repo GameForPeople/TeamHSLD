@@ -10,6 +10,7 @@ public class CardData : MonoBehaviour
     {
         InitSO();
     }
+
     private void InitSO()
     {
         if(data.currentCard.Equals(CARDSET.TERRAIN_DEFFENSE))

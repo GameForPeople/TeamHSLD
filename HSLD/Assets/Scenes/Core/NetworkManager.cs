@@ -316,7 +316,7 @@ public class NetworkManager : MonoBehaviour
             // Network Exception
             else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
             {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_END_OF_TURN), 0, DataSendBuffer, 0, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
                 socket.Send(DataSendBuffer, 4, SocketFlags.None);
             }
 
@@ -514,7 +514,7 @@ public class NetworkManager : MonoBehaviour
             }
             else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN  )
             {
-                inGameSceneManager.ChangeTurn();
+                inGameSceneManager.RecvChangeTurn();
             }
             else if (recvType == (int)PROTOCOL.NOTIFY_DICE_VALUE )
             {
