@@ -5,16 +5,17 @@ using UnityEngine;
 public class AllMeshController : MonoBehaviour {
 
     const int MaxMesh = 321;
-    private static bool once;
+    public static bool once;
 
     public static GameObject IngameManager;
     public static GameObject myPlanet;
     //public int[] PickContainer;
     public List<int> PickContainer;
+    public List<GameObject> FlagContainer;
     public GameObject[] AllContainer;
     // Use this for initialization
     void Start () {
-        once = true;
+        once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
         myPlanet = GameObject.Find("Sphere_320Objects_40X");
         //PickContainer = new int[12];
@@ -25,18 +26,24 @@ public class AllMeshController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (once == true)
+        if (once == false)
         {
             MakeAllContainer();
-            once = false;
+            
+            once = true;
         }
     }
 
     public void MakeAllContainer()
     {
-        for (int i = 1; i <= MaxMesh - 1; i++)
+        for (int i = 1; i < MaxMesh; i++)
         {
             AllContainer[i] = GameObject.Find(i.ToString());
+            if (AllContainer[i].GetComponent<MeshController>().isFlagable) // 해당 메시가 Flagable이라면?
+            {
+                FlagContainer.Add(AllContainer[i]);
+                AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+            }
         }
     }
 

@@ -7,11 +7,13 @@ public class PCverPIcking : MonoBehaviour
     public Camera mainCamera;
     public GameObject myPlanet;
     private GameObject PickedMeshObj;
+    public static bool isGetFlag;
     RaycastHit hit;
 
     private void Start()
     {
         myPlanet = GameObject.Find("Sphere_320Objects_40X");
+        isGetFlag = false;
     }
 
     private void Update()
@@ -93,15 +95,36 @@ public class PCverPIcking : MonoBehaviour
                         if (!PickedMeshObj.GetComponent<MeshController>().isAwake)
                         {
 
-                            if (myPlanet.GetComponent<AllMeshController>().isEmpty()) // 비어있을 때 로직
+                            if (myPlanet.GetComponent<AllMeshController>().isEmpty()) // 턴 시작후 첫번째 로직
                             {
-                                Debug.Log("비어있어!");
-                                PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                //깃발 획득 후에는 어디서든 피킹 시작 가능
+                                if (isGetFlag == true)
+                                {
+                                    PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                    myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                }
+                                else // 깃발 획득 전
+                                {
+                                    if (PickedMeshObj.GetComponent<MeshController>().isFlagable == true) // 가장 처음
+                                    {
+                                        PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                        myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+
+                                        // 깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
+                                        for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
+                                        {
+                                            myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFlagable = false;
+                                            myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                                        } 
+                                        myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(0, 4);
+                                        myPlanet.GetComponent<AllMeshController>().FlagContainer.Add(PickedMeshObj);
+                                    }
+                                }
                             }
                             else // 하나라도 들어있으면
                             {
-                                if (PickedMeshObj.GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // DEFALT는 더이상 들어가면 안됨.
+                                if (PickedMeshObj.GetComponent<MeshController>().terrainstate == Terrain.DEFAULT || // DEFALT는 더이상 들어가면 안됨.
+                                    PickedMeshObj.GetComponent<MeshController>().terrainstate == Terrain.FLAG) // FLAG는 이제 못지움
                                     return;
 
                                 if (myPlanet.GetComponent<AllMeshController>().PickContainer.Contains(PickedMeshObj.GetComponent<MeshController>().MeshNumber))
