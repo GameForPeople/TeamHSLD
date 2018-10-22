@@ -151,7 +151,7 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 //애니메이션 여기
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 10));    // <<< 여기  10라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 1));    // <<< 여기  1라는 숫자를 바꾸면댐
 
                 break;
             case FLOW.TSETVER:
