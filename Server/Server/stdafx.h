@@ -64,6 +64,7 @@ public:
 	//생성자 필요에 의해 추가.
 	__inline SOCKETINFO() :
 		//bufferProtocol(0), 
+		buf(),
 		userIndex(-1), 
 		roomIndex(-1), 
 		isHost(false),

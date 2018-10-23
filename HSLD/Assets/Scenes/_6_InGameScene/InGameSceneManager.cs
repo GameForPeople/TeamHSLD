@@ -31,6 +31,12 @@ public class InGameSceneManager : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < 12; ++i)
+        {
+            recvTerrainIndex[i] = 0;
+            network_terrainIndex[i] = 0;
+        }
+
         if (GameObject.Find("GameCores") == null)
             return;
 

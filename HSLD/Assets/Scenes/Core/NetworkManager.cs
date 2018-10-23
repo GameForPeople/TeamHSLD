@@ -268,26 +268,29 @@ public class NetworkManager : MonoBehaviour
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, IndexSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, IndexSendBuffer, 4, 4);
 
-                    Debug.Log(" " + inGameSceneManager.network_changeTerrainCount + " 이 주사위 값, 적재해야하는 인덱스의 값입니다.");
+                    Debug.Log(" " + inGameSceneManager.network_changeTerrainCount + " 이 주사위 값, 적재해야하는 인덱스의 크기입니다.");
 
                     int iBuffer;
-                    for ( int i = 0; i < inGameSceneManager.network_changeTerrainCount; i++ )
+                    for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; i++)
                     {
                         iBuffer = inGameSceneManager.network_terrainIndex[i];
-                        Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, IndexSendBuffer, 8 + 4 * i, 4);
-                        Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(IndexSendBuffer, 8 + 4 * i));
+                        Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, IndexSendBuffer, (8 + 4 * i), 4);
+                        Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(IndexSendBuffer, (8 + 4 * i)));
                     }
 
-                    socket.Send(IndexSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                    Debug.Log(" 전송하는 메모리의 크기는 ==> " + (8 + 4 * inGameSceneManager.network_changeTerrainCount));
+
+
+                    socket.Send(IndexSendBuffer, (8 + 4 * inGameSceneManager.network_changeTerrainCount), SocketFlags.None);  // 70..? 나중에 계산하기;;
+
                 }
                 else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX), 0, DataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
 
-                    socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);
                 }
-
                 // Network Exception
                 else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
                 {
@@ -329,7 +332,9 @@ public class NetworkManager : MonoBehaviour
         }
 
         recvType = BitConverter.ToInt32(DataRecvBuffer, 0);
-        Debug.Log("RecvType is : " + recvType);
+
+        if(recvType != (int)PROTOCOL.VOID_GAME_STATE)
+            Debug.Log("RecvType is : " + recvType);
     }
 
     void ProcessRecvData()
