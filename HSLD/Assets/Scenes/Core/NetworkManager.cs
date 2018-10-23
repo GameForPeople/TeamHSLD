@@ -76,6 +76,8 @@ public class NetworkManager : MonoBehaviour
 
     public byte[] DataRecvBuffer = new byte[100];   //얌마 나중에 이거 알아서 해라
     public byte[] DataSendBuffer = new byte[100];   // 정신나간놈;; 100바이트나 한번에!
+    public byte[] IndexSendBuffer = new byte[100]; 
+
 
     // For InGameScene
     public bool isAttackFirst;
@@ -263,12 +265,20 @@ public class NetworkManager : MonoBehaviour
                 }
                 else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
                 {
-                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, DataSendBuffer, 0, 4);
-                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, IndexSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, IndexSendBuffer, 4, 4);
 
-                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 8, 4 * inGameSceneManager.network_changeTerrainCount);
+                    Debug.Log(" " + inGameSceneManager.network_changeTerrainCount + " 이 주사위 값, 적재해야하는 인덱스의 값입니다.");
 
-                    socket.Send(DataSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                    int iBuffer;
+                    for ( int i = 0; i < inGameSceneManager.network_changeTerrainCount; i++ )
+                    {
+                        iBuffer = inGameSceneManager.network_terrainIndex[i];
+                        Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, IndexSendBuffer, 8 + 4 * i, 4);
+                        Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(IndexSendBuffer, 8 + 4 * i));
+                    }
+
+                    socket.Send(IndexSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
                 }
                 else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
                 {
