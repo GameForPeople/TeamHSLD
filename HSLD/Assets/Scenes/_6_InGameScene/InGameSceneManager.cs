@@ -76,7 +76,7 @@ public class InGameSceneManager : MonoBehaviour
     {
         network_changeTerrainCount = InDiceValue;
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
-        Debug.Log("주사위 보내는 값 : " + network_changeTerrainCount);
+        //Debug.Log("주사위 보내는 값 : " + network_changeTerrainCount);
     }
 
     public void SendTerrainType(int InTerrainType)
@@ -142,7 +142,7 @@ public class InGameSceneManager : MonoBehaviour
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
         recvDiceValue = InDiceValue;
 
-        Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
+        //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
         gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ recvDiceValue.ToString() + " !!!", 5f);   //ref - 2f 수정.
     }
 
