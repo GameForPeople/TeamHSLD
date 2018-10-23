@@ -25,13 +25,13 @@ public class PCverPIcking : MonoBehaviour
             myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
             CameraController.ChangeableCount = DiceSystem.getDiceNum;
 
-            Debug.Log("ChangeableCount : " + CameraController.ChangeableCount);
+            //Debug.Log("ChangeableCount : " + CameraController.ChangeableCount);
 
         } // 카드 피킹할 때 주사위 값 받아오기
 
         if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn == TURN.ENEMYTURN) // 내 턴 아님
         {
-            Debug.Log("Enemy Turn");
+            //Debug.Log("Enemy Turn");
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
                 Debug.Log("내 턴에서 넘어갈 때 한번만");
