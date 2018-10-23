@@ -20,27 +20,21 @@ public class PCverPIcking : MonoBehaviour
     {
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
+        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow == FLOW.TO_PICKINGCARD)
+        {
+            myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
+            CameraController.ChangeableCount = DiceSystem.getDiceNum;
+
+            //Debug.Log("ChangeableCount : " + CameraController.ChangeableCount);
+
+        } // 카드 피킹할 때 주사위 값 받아오기
+
+
         if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC)
             return;
 
-        if (CameraController.TurnChange) // 턴체인지가 true로 들어옴
-        {
-            //for (int i = 0;i < myPlanet.GetComponent<AllMeshController>().PickContainer.Length; i++)
-            //{
-            //    myPlanet.GetComponent<AllMeshController>().PickContainer[i] = 0;
-            //}
-            myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
-            CameraController.ChangeableCount = DiceSystem.getDiceNum;
-            
-            Debug.Log("내 턴으로 돌아왔을 때 한 번 : " + CameraController.ChangeableCount);
 
-            //CameraController.Once = true;
-
-            //////////////////////////////////////////
-            CameraController.TurnChange = false;
-        } 
-
-        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn != TURN.MYTURN_NOTYETFLAG == true) // 내 턴 아님
+        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn == TURN.ENEMYTURN) // 내 턴 아님
         {
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
@@ -72,13 +66,6 @@ public class PCverPIcking : MonoBehaviour
         }
         else // 내 턴임
         {
-            if (CameraController.Once == false) // 내 턴으로 돌아왔을 떄 한 번만
-            {
-                Debug.Log("내 턴으로 돌아왔을 때 한 번만");
-                CameraController.Once = true;
-                CameraController.TurnChange = true;
-            }
-
             if (Input.GetMouseButton(0) && CameraController.offset < 0.5)
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
