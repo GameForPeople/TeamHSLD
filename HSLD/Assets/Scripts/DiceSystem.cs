@@ -562,7 +562,6 @@ public class DiceSystem : MonoBehaviour
 
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
-        //getDiceNum = 0; // 잠시 주석처리할게요!
     }
 
     //슬라이드 값 설정

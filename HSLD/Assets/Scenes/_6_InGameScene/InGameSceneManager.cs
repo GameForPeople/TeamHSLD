@@ -68,7 +68,6 @@ public class InGameSceneManager : MonoBehaviour
 
     public void SendDiceValue(int InDiceValue)
     {
-        Debug.Log("send다이스보냄");
         network_changeTerrainCount = InDiceValue;
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
     }
@@ -126,9 +125,8 @@ public class InGameSceneManager : MonoBehaviour
     public void RecvDiceValue(int InDiceValue)
     {
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
-        Debug.Log("Recv다이스받음");
         recvDiceValue = InDiceValue;
-        GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ InDiceValue.ToString() + " !!!", 2f);   //ref - 2f 수정.
+        gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ recvDiceValue.ToString() + " !!!", 5f);   //ref - 2f 수정.
     }
 
     // 상대방이 뽑은 카드를 연출
@@ -136,11 +134,11 @@ public class InGameSceneManager : MonoBehaviour
     {
         // 카드 뽑는 연출 dsipaly
         recvTerrainType = InTerrainType;
-        for (int i =0; i< GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet.Length; i++)
+        for (int i =0; i< gameObject.GetComponent<CardSystem>().cardSet.Length; i++)
         {
-            if(GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardIndex == InTerrainType)
+            if(gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardIndex == InTerrainType)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 2f);
+                gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 2f);
                 break;
             }
         }
@@ -166,28 +164,28 @@ public class InGameSceneManager : MonoBehaviour
         {
             if(recvTerrainType == 1)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
             }
             else if(recvTerrainType == 2)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(); // setModeration() -> setBarren()
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(); // setModeration() -> setBarren()
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
             }
             else if (recvTerrainType == 3)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold();
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
             }
             else if (recvTerrainType == 4)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain();
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
             }
             else if (recvTerrainType == 5)
             {
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea();
-                GameObject.FindWithTag("GameManager").GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
             }
             else
             {

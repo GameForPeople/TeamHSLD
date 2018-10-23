@@ -61,6 +61,7 @@ public class FlowSystem : MonoBehaviour
                 {
                     if (GameObject.Find("GameCores") != null)
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+
                     currentFlow = FLOW.WAITING;
                 }
                 break;
