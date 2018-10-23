@@ -126,7 +126,6 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-
                 if (GameObject.Find("GameCores") != null)
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
