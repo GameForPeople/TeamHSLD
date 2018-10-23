@@ -60,7 +60,11 @@ public class FlowSystem : MonoBehaviour
                 else
                 {
                     if (GameObject.Find("GameCores") != null)
+                    {
+                        Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                    }
+
 
                     currentFlow = FLOW.WAITING;
                 }
@@ -71,6 +75,8 @@ public class FlowSystem : MonoBehaviour
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
                     gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+
+                    //1.5초 여유 ..!!
                     gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }   
                 currentFlow = FLOW.WAITING;
@@ -145,13 +151,12 @@ public class FlowSystem : MonoBehaviour
 
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
-
                 //애니메이션 여기
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 3));    // <<< 여기  3라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 //애니메이션 여기
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 1));    // <<< 여기  1라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
 
                 break;
             case FLOW.TSETVER:

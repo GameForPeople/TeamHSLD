@@ -138,7 +138,7 @@ public class InGameSceneManager : MonoBehaviour
         {
             if(gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardIndex == InTerrainType)
             {
-                gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 2f);
+                gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 5f);
                 break;
             }
         }

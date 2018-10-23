@@ -64,7 +64,10 @@ public class PCverPIcking : MonoBehaviour
                     }
 
                     if (GameObject.Find("GameCores") != null)
+                    {
                         GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainIndex(myPlanet.GetComponent<AllMeshController>().PickContainer.ToArray());
+                        Debug.Log("SEND : 행성 픽킹로케이션");
+                    }
 
                     FindObject.GetComponent<MeshController>().isFixed = true;
                     FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
