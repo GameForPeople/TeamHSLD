@@ -6174,7 +6174,7 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 1
+  isFlagable: 0
   JointMesh:
   - {fileID: 209742190}
   - {fileID: 305919173}
@@ -22636,7 +22636,7 @@ MonoBehaviour:
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlagable: 1
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1480288513}

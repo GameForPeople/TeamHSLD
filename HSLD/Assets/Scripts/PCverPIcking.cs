@@ -157,7 +157,7 @@ public class PCverPIcking : MonoBehaviour
                                             if (GameObject.Find(myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString()).GetComponent<MeshController>().JointMesh[i].name
                                                 == PickedMeshObj.GetComponent<MeshController>().MeshNumber.ToString())
                                             {
-                                                Debug.Log("앞 쪽 꼬리에 들어갑니다.");
+                                                //Debug.Log("앞 쪽 꼬리에 들어갑니다.");
                                                 myPlanet.GetComponent<AllMeshController>().PickContainer.Insert(0, PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                                 PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                                                 temp = true;

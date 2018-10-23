@@ -42,7 +42,7 @@ public class AllMeshController : MonoBehaviour {
             if (AllContainer[i].GetComponent<MeshController>().isFlagable) // 해당 메시가 Flagable이라면?
             {
                 FlagContainer.Add(AllContainer[i]);
-                //AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
             }
         }
     }
