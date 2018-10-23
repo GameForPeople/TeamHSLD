@@ -182,7 +182,7 @@ public:
 	{
 		if (roomState == ROOM_STATE::ROOM_STATE_SOLO)
 		{
-			roomState = ROOM_STATE::ROOM_STATE_VOID; // 여기서는 이걸 해도 되지만, 아래에서는 이러면 클남.
+			roomState = ROOM_STATE::ROOM_STATE_VOID; // 여기서는 이걸 해도 되지만, 아래에서는 이러면 클남! 방나가는거 처리.
 			return false;
 		}
 		else if (roomState == ROOM_STATE::ROOM_STATE_WAIT)

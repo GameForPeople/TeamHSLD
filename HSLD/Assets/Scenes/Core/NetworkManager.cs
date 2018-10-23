@@ -358,11 +358,11 @@ public class NetworkManager : MonoBehaviour
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
 
             int idSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 8);
-            
+
             //enemyId = System.String.Empty;
             enemyId = Encoding.Default.GetString(DataRecvBuffer, 12, idSizeBuffer);
 
-            Debug.Log("받은 방장의 아이디는 " + enemyId + ", 크기는  " + idSizeBuffer+ " 입니다. ");
+            Debug.Log("받은 방장의 아이디는 " + enemyId + ", 크기는  " + idSizeBuffer + " 입니다. ");
             Debug.Log("복사한 방장의 아이디는 " + (char)DataRecvBuffer[12] + DataRecvBuffer[13] + DataRecvBuffer[14] + DataRecvBuffer[15] + "입니다. ");
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().PermitJoinRoom();
@@ -382,9 +382,9 @@ public class NetworkManager : MonoBehaviour
 
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
 
-            if(BitConverter.ToInt32(DataRecvBuffer, 8) == 1)
+            if (BitConverter.ToInt32(DataRecvBuffer, 8) == 1)
             {
-                if(isHost == true)
+                if (isHost == true)
                 {
                     isAttackFirst = true;
                 }
@@ -406,7 +406,7 @@ public class NetworkManager : MonoBehaviour
             }
 
             playerMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 12);
-            enemyMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 16); 
+            enemyMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 16);
             subMissionIndex = BitConverter.ToInt32(DataRecvBuffer, 20);
         }
         else if (recvType == (int)PROTOCOL.PERMIT_JOIN_RANDOM)
@@ -415,7 +415,7 @@ public class NetworkManager : MonoBehaviour
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().isRecvTrue = true;
 
             roomIndex = BitConverter.ToInt32(DataRecvBuffer, 4);
-           
+
             //int isHostFirst;
             if (BitConverter.ToInt32(DataRecvBuffer, 8) == 1)
             {
@@ -485,58 +485,54 @@ public class NetworkManager : MonoBehaviour
         }
 
         //InGameScene //-> 이부분 다 InGameScene으로 들어내도 괜찮을듯!
-        else if (recvType > 500 && recvType < 600)
-        { 
-            if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
-            {
-                // 뭐야 니 아무것도 없엉
-                return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
-            }
-            else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN  )
-            {
-                inGameSceneManager.RecvChangeTurn();
-            }
-            else if (recvType == (int)PROTOCOL.NOTIFY_DICE_VALUE )
-            {
-                //inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
-                // inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
 
-                // for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
-                // {
-                //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
-                // }
-                inGameSceneManager.RecvDiceValue(BitConverter.ToInt32(DataRecvBuffer, 4));
-            }
-            else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE )
-            {
-                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
-                // inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
-                //inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 12);
+        else if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
+        {
+            // 뭐야 니 아무것도 없엉
+            return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
+        {
+            inGameSceneManager.RecvChangeTurn();
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_DICE_VALUE)
+        {
+            //inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            // inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 8);
 
-                //for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
-                // {
-                //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
-                // }
-                inGameSceneManager.RecvTerrainType(BitConverter.ToInt32(DataRecvBuffer, 4));
-            }
-            else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS  )
-            {
-                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
-                int arrSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 4);
+            // for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+            // {
+            //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
+            // }
+            inGameSceneManager.RecvDiceValue(BitConverter.ToInt32(DataRecvBuffer, 4));
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE)
+        {
+            //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            // inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);
+            //inGameSceneManager.network_changeTerrainCount = BitConverter.ToInt32(DataRecvBuffer, 12);
 
-                for(int i = 0; i < arrSizeBuffer; ++i)
-                {
-                    inGameSceneManager.recvTerrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 8 + 4 * i);
-                }
+            //for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; ++i)
+            // {
+            //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 16 + 4 * i);
+            // }
+            inGameSceneManager.RecvTerrainType(BitConverter.ToInt32(DataRecvBuffer, 4));
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
+        {
+            //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            int arrSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 4);
 
-                inGameSceneManager.RecvTerrainIndex();
-            }
-            else if (recvType == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX )
+            for (int i = 0; i < arrSizeBuffer; ++i)
             {
-                //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+                inGameSceneManager.recvTerrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 8 + 4 * i);
             }
 
-           // inGameSceneManager.network_recvProtocolFlag = recvType;
+            inGameSceneManager.RecvTerrainIndex();
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
+        {
+            //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
         }
 
         // Network Exception
@@ -545,7 +541,7 @@ public class NetworkManager : MonoBehaviour
             //
             GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
             //
-            SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);
+            //SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);
         }
 
         recvType = 0;
@@ -579,13 +575,13 @@ public class NetworkManager : MonoBehaviour
 
             string parsingClientVerStringBuffer = www.downloadHandler.text.Substring(index3 + 6, 6);
 
-            Debug.Log("최신 Client의 Ver는 : " + parsingClientVerStringBuffer + " 입니다. 현재 클라이언트 버전은 : " + CLIENT_VERSION + " 입니다." );
+            Debug.Log("최신 Client의 Ver는 : " + parsingClientVerStringBuffer + " 입니다. 현재 클라이언트 버전은 : " + CLIENT_VERSION + " 입니다.");
 
             int index4 = www.downloadHandler.text.IndexOf("NotifyNum : ", index3) + 12;
 
             string notifyNumString = www.downloadHandler.text.Substring(index4, 1);
 
-            if(notifyNumString.Equals("0"))
+            if (notifyNumString.Equals("0"))
             {
                 Debug.Log("NotifyNum은 0으로 서버는 정상적으로 작동하는 중입니다.");
             }
@@ -608,42 +604,42 @@ public class NetworkManager : MonoBehaviour
 enum PROTOCOL : int
 {
     //for LoginScene
-    DEMAND_LOGIN        =   100     ,
-    FAIL_LOGIN          =   101     ,
-    PERMIT_LOGIN        =   102     ,
+    DEMAND_LOGIN = 100,
+    FAIL_LOGIN = 101,
+    PERMIT_LOGIN = 102,
 
     //for LobbyScene
 
     // 구 Lobby Protocol
-    DEMAND_MAKEROOM     =   301     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    PERMIT_MAKEROOM     =   302     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    DEMAND_JOINROOM     =   303     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    PERMIT_JOINROOM     =   304     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
-    FAIL_JOINROOM       =   305     ,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_MAKEROOM = 302,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    DEMAND_JOINROOM = 303,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    PERMIT_JOINROOM = 304,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
+    FAIL_JOINROOM = 305,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
 
     // 신 Lobby Protocol
-    DEMAND_RANDOM_MATCH =   311     ,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
-    PERMIT_MAKE_RANDOM  =   312     ,   // 방을 만들었다고 알립니다.
-    PERMIT_JOIN_RANDOM  =   313     ,   // 방에 접속했다고 알립니다.
+    DEMAND_RANDOM_MATCH = 311,   // 해당 프로토콜을 받을 경우, 먼저 방 접속 가능 여부를 확인하고, 불가능 시 방을 생성합니다.
+    PERMIT_MAKE_RANDOM = 312,   // 방을 만들었다고 알립니다.
+    PERMIT_JOIN_RANDOM = 313,   // 방에 접속했다고 알립니다.
 
-    DEMAND_GUEST_JOIN   =   314     ,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
-    PERMIT_GUEST_JOIN   =   315     ,    // 방에 게스트가 접속했음.
-    PERMIT_GUEST_NOT_JOIN = 316     ,	// 방에 게스트가 접속했음.
+    DEMAND_GUEST_JOIN = 314,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
+    PERMIT_GUEST_JOIN = 315,    // 방에 게스트가 접속했음.
+    PERMIT_GUEST_NOT_JOIN = 316,	// 방에 게스트가 접속했음.
 
     //for RoomScene
 
     // 구 Room Protocol
-    DEMAND_ROOMHOST     =   400     ,
-    ROOMSTATE_VOID      =   410     ,
-    ROOMSTATE_GUESTIN   =   411     ,
+    DEMAND_ROOMHOST = 400,
+    ROOMSTATE_VOID = 410,
+    ROOMSTATE_GUESTIN = 411,
 
 
     // 신 Room Protocol
-    DEMAND_ENEMY_CHARACTER      =   421     ,   // 상대방 캐릭터의 변경 정보를 확인합니다.
-    PERMIT_ENEMY_CHARACTER      =   422     ,   // 상대방의 캐릭터 정보를 받아옵니다.
+    DEMAND_ENEMY_CHARACTER = 421,   // 상대방 캐릭터의 변경 정보를 확인합니다.
+    PERMIT_ENEMY_CHARACTER = 422,   // 상대방의 캐릭터 정보를 받아옵니다.
 
-    DISCONNECTED_ENEMY_CLIENT   =   506     , // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
-    DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT   =      506 , // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
+    DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
+    DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 
 
     // for GameScene // 단방향으로 수정 적용 완료(2018/10/19ver)
