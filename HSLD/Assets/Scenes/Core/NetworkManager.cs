@@ -15,6 +15,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 using UnityEngine.Networking;
+using System.Net.NetworkInformation;
 
 // 아직 코드 보지 마세요....테스트 코드라.. 리팩토링 안해서 눈 썩어요..
 // 클라이언트 현재 네트워크 동기방식 -> 턴제라 그냥 써도 될듯 한데, 프레임 드랍 등, 문제되면 비동기방식으로 변경 필요
@@ -48,7 +49,7 @@ public class NetworkManager : MonoBehaviour
 
     public string iP_ADDRESS;
     private const int SERVER_PORT = 9000;
-    private const string CLIENT_VERSION = "181005";
+    private const string CLIENT_VERSION = "181023";
 
     //public Thread thread;
     public Socket socket;
@@ -153,147 +154,148 @@ public class NetworkManager : MonoBehaviour
 
     public void SendData(int InMsg)
     {
-        if (isOnNetwork)
+        if (NetworkInterface.GetIsNetworkAvailable())
         {
-            //if (InMsg == (int)PROTOCOL.DEMAND_GAMESTATE)
-            //{
-            //    byte[] sendDamandGameState = BitConverter.GetBytes((int)400);
-            //    socket.Send(sendDamandGameState);
-            //}
-            //else 
-
-            //LoginScene
-            if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
+            if (isOnNetwork)
             {
-                DemandLoginStruct demandLogin = new DemandLoginStruct
+                //LoginScene
+                if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
                 {
-                    msg = InMsg,
-                    type = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().typeBuffer,
-                    pw = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PWBuffer
-                };
+                    DemandLoginStruct demandLogin = new DemandLoginStruct
+                    {
+                        msg = InMsg,
+                        type = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().typeBuffer,
+                        pw = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PWBuffer
+                    };
 
-                string IDBuffer = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().IDBuffer;
-                int lengthBuffer = IDBuffer.Length;
+                    string IDBuffer = GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().IDBuffer;
+                    int lengthBuffer = IDBuffer.Length;
 
-                demandLogin.data = new char[20]; // data는 ID String Byte 배열
+                    demandLogin.data = new char[20]; // data는 ID String Byte 배열
 
-                Debug.Log("lengthBuffer = " + lengthBuffer);
+                    Debug.Log("lengthBuffer = " + lengthBuffer);
 
-                for (int i = 0; i < lengthBuffer; i++)
-                    demandLogin.data[i] = IDBuffer[i];
+                    for (int i = 0; i < lengthBuffer; i++)
+                        demandLogin.data[i] = IDBuffer[i];
 
-                demandLogin.IDSize = lengthBuffer;
+                    demandLogin.IDSize = lengthBuffer;
 
-                byte[] packet = new byte[1];
-                StructToBytes(demandLogin, ref packet);
-                socket.Send(packet);
+                    byte[] packet = new byte[1];
+                    StructToBytes(demandLogin, ref packet);
+                    socket.Send(packet);
+                }
+
+                //LobbyScene - old
+                else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
+                {
+                    isHost = true;
+
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKEROOM), 0, DataSendBuffer, 0, 4);
+
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
+                {
+                    isHost = false;
+
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_JOINROOM), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(roomIndex), 0, DataSendBuffer, 4, 4);
+
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);
+                }
+
+                //LobbyScene - new
+                else if (InMsg == (int)PROTOCOL.DEMAND_RANDOM_MATCH)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_RANDOM_MATCH), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.DEMAND_GUEST_JOIN)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GUEST_JOIN), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+
+                // RoomScene - old
+                else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ROOMHOST), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+
+                // RoomScene - new
+                else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(playerCharacterIndex), 0, DataSendBuffer, 4, 4);
+
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);
+                }
+
+                //InGameScene // Defense Turn
+                else if (InMsg == (int)PROTOCOL.VOID_GAME_STATE)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_GAME_STATE), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.NOTIFY_DICE_VALUE)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_DICE_VALUE), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
+
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_TYPE), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
+
+                    //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
+                    //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 8, 4);
+                    //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
+
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기..!
+                }
+                else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
+
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 8, 4 * inGameSceneManager.network_changeTerrainCount);
+
+                    socket.Send(DataSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                }
+                else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX), 0, DataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
+
+                    socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
+                }
+
+                // Network Exception
+                else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+
+                RecvProcess();
             }
-
-            //LobbyScene - old
-            else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
+            else
             {
-                isHost = true;
-
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKEROOM), 0, DataSendBuffer, 0, 4);
-
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                Debug.Log("주의 : OnlyClientTest 환경에서, SendData가 호출되었습니다.");
             }
-            else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
-            {
-                isHost = false;
-
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_JOINROOM), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(roomIndex), 0, DataSendBuffer, 4, 4);
-
-                socket.Send(DataSendBuffer, 8, SocketFlags.None);
-            }
-
-            //LobbyScene - new
-            else if (InMsg == (int)PROTOCOL.DEMAND_RANDOM_MATCH)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_RANDOM_MATCH), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-            else if (InMsg == (int)PROTOCOL.DEMAND_GUEST_JOIN)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GUEST_JOIN), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-
-            // RoomScene - old
-            else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ROOMHOST), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-
-            // RoomScene - new
-            else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(playerCharacterIndex), 0, DataSendBuffer, 4, 4);
-
-                socket.Send(DataSendBuffer, 8, SocketFlags.None);
-            }
-
-            //InGameScene // Defense Turn
-            else if (InMsg == (int)PROTOCOL.VOID_GAME_STATE)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_GAME_STATE), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-            else if (InMsg == (int)PROTOCOL.NOTIFY_CHANGE_TURN )
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-            else if (InMsg == (int)PROTOCOL.NOTIFY_DICE_VALUE )
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_DICE_VALUE), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
-
-                socket.Send(DataSendBuffer, 8, SocketFlags.None);
-            }
-            else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE )
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_TYPE), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
-
-                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, DataSendBuffer, 4, 4);
-                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 8, 4);
-                //Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 12, 4 * inGameSceneManager.network_changeTerrainCount);
-
-                socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기..!
-            }
-            else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS )
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, DataSendBuffer, 4, 4);
-
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainIndex[0]), 0, DataSendBuffer, 8, 4 * inGameSceneManager.network_changeTerrainCount);
-
-                socket.Send(DataSendBuffer, 8 + 4 * inGameSceneManager.network_changeTerrainCount, SocketFlags.None);  // 70..? 나중에 계산하기;;
-            }
-            else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX )
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX ), 0, DataSendBuffer, 0, 4);
-                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, DataSendBuffer, 4, 4);
-
-                socket.Send(DataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기;;
-            }
-
-            // Network Exception
-            else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
-            {
-                Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
-                socket.Send(DataSendBuffer, 4, SocketFlags.None);
-            }
-
-            RecvProcess();
         }
         else
         {
-            Debug.Log("주의 : OnlyClientTest 환경에서, SendData가 호출되었습니다.");
+            GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(true, 1);
+            return;
         }
     }
 
@@ -305,7 +307,16 @@ public class NetworkManager : MonoBehaviour
 
     void RecvProtocolType()
     {
-        socket.Receive(DataRecvBuffer);
+        try
+        {
+            socket.Receive(DataRecvBuffer);
+        }
+        catch (SocketException SCE)
+        {
+            Debug.Log("Socket connect error! : " + SCE.ToString());
+            GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(true, 1);
+            return;
+        }
 
         recvType = BitConverter.ToInt32(DataRecvBuffer, 0);
         Debug.Log("RecvType is : " + recvType);
@@ -631,8 +642,8 @@ enum PROTOCOL : int
     DEMAND_ENEMY_CHARACTER      =   421     ,   // 상대방 캐릭터의 변경 정보를 확인합니다.
     PERMIT_ENEMY_CHARACTER      =   422     ,   // 상대방의 캐릭터 정보를 받아옵니다.
 
-    DISCONNECTED_ENEMY_CLIENT   =   498     , // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
-    DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT   =       499 , // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
+    DISCONNECTED_ENEMY_CLIENT   =   506     , // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
+    DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT   =      506 , // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 
 
     // for GameScene // 단방향으로 수정 적용 완료(2018/10/19ver)

@@ -17,7 +17,7 @@ void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SOCKE
 //
 //void SCENE_NETWORK_MANAGER::TitleScene::ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 //{
-//	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
+//	memcpy(ptr.buf, (char*)&InSendType, sizeof(int));
 //
 //	SendFunctions[InSendType - sceneProtocolStartIndex](ptr, InRoomData, InUserData);
 //}

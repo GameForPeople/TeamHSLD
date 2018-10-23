@@ -60,8 +60,8 @@ enum Protocol {
 	DEMAND_ENEMY_CHARACTER = 421,   // 내 캐릭터 변경 정보를 전송하고,
 	PERMIT_ENEMY_CHARACTER = 422,   // 상대방의 캐릭터 정보를 받아옵니다.
 
-	DISCONNECTED_ENEMY_CLIENT = 498, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
-	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 499, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
+	DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
+	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 
 	// for GameScene // 단방향으로 수정 적용 완료(2018/10/19ver)
 	VOID_GAME_STATE =500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
@@ -86,7 +86,4 @@ enum class SCENE_NAME {
 	INGAME_SCENE	// 얍얍얍 인게임 얍얍얍
 };
 
-enum TERRAIN_TYPE {
-
-};
 

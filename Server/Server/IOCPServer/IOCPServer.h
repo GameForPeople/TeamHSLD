@@ -71,8 +71,8 @@ private:
 	//SCENE_NETWORK_MANAGER::RoomScene roomScene;
 	//SCENE_NETWORK_MANAGER::InGameScene inGameScene;
 
-	std::vector<SCENE_NETWORK_MANAGER::BaseScene*> sceneArr;
-	//SCENE_NETWORK_MANAGER::BaseScene* sceneArr[6];
+	//std::vector<SCENE_NETWORK_MANAGER::BaseScene*> sceneArr;
+	SCENE_NETWORK_MANAGER::BaseScene* sceneArr[6];
 
 	//void(*SceneDataProcess[6])(const int& InRecvType,SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
@@ -105,6 +105,7 @@ public:
 		LoadUserData();
 		InitWinSocket();
 		CreateBindListen();
+		BindSceneDataProcess();
 	}
 
 	void Run()

@@ -41,6 +41,7 @@ public class InGameSceneManager : MonoBehaviour
         network_terrainType = 0;
         network_changeTerrainCount = 0;
         network_eventCardType = 0;
+        network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE;
 
         StartCoroutine("InGameNetworkCoroutine");
     }

@@ -93,7 +93,7 @@ int UserDataManager::SignIn(const string& InID, const int& InPW, int& RetWinCoun
 	return 1;
 }
 
-int UserDataManager::SignIn(const char const * InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
+int UserDataManager::SignIn(const char* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex)
 {
 	RetIndex = 0;
 	for (auto &i : userDataCont)
@@ -140,7 +140,7 @@ int UserDataManager::SignUp(const string& InID, const int& InPW, int& RetIndex)
 	return 0;
 }
 
-int UserDataManager::SignUp(const char const * InID, const int& InPW, int& RetIndex) 
+int UserDataManager::SignUp(const char* InID, const int& InPW, int& RetIndex) 
 {
 	for (auto &i : userDataCont)
 	{

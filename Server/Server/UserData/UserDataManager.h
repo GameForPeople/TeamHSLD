@@ -17,11 +17,11 @@ public:
 
 	int SignIn(const string& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
 
-	int SignIn(const char const* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
+	int SignIn(const char* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
 
 	int SignUp(const string& InID, const int& InPW, int& RetIndex);
 
-	int SignUp(const char const * InID, const int& InPW, int& RetIndex);
+	int SignUp(const char* InID, const int& InPW, int& RetIndex);
 
 	void SignOut(const int& InClientIndex);
 

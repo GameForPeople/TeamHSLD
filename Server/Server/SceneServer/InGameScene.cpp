@@ -71,6 +71,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int& InSendType, SOCK
 {
 	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 	
+	std::cout << "InSendType : " << InSendType << "\n";
+
 	SendFunctions[InSendType - 500](ptr, InRoomData, InUserData);
 }
 

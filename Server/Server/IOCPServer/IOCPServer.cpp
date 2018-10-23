@@ -149,7 +149,7 @@ void IOCPServer::PrintServerInfoUI()
 
 	printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á\n");
 	printf("¡á IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("¡á                                ver 1.3 180914\n");
+	printf("¡á                                ver 1.7 181023\n");
 	printf("¡á\n");
 	printf("¡á    IP Address : %s \n", retIPChar);
 	printf("¡á    Server Port : %d \n", SERVER_PORT);
@@ -234,21 +234,21 @@ void IOCPServer::CreateBindListen()
 
 void IOCPServer::BindSceneDataProcess()
 {
-	//sceneArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
-	//sceneArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
-	//sceneArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
-	//sceneArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
-	//sceneArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
-	//sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
+	sceneArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
+	sceneArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
+	sceneArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
+	sceneArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
+	sceneArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
+	sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
 
-	sceneArr.reserve(6);
-	
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::TitleScene);
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LoginScene);
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::MainUiScene);
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LobbyScene);
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::RoomScene);
-	sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::InGameScene);
+	//sceneArr.reserve(6);
+	//
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::TitleScene);
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LoginScene);
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::MainUiScene);
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LobbyScene);
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::RoomScene);
+	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::InGameScene);
 
 	//SceneDataProcess[0] = &(sceneArr[0].ProcessData);
 	//SceneDataProcess[1] = &(sceneArr[1].ProcessData);
@@ -456,8 +456,10 @@ void IOCPServer::WorkerThreadFunction()
 
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			sceneArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
+			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
 			NETWORK_UTIL::SendProcess(ptr);
+
 			//// Network Exception - RoomScene 
 			//else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
 			//{

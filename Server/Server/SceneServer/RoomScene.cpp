@@ -15,9 +15,10 @@ void SCENE_NETWORK_MANAGER::RoomScene::DemandEnemyCharacterIndex(SOCKETINFO* ptr
 	InRoomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
 
 	//ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
-	
+	int enemyIndexBuffer = (InRoomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
+
 	memcpy(ptr->buf, (char*)&PERMIT_ENEMY_CHARACTER, sizeof(int));
-	memcpy(ptr->buf + 4, (char*)(InRoomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost)), sizeof(int));
+	memcpy(ptr->buf + 4, (char*)&enemyIndexBuffer, sizeof(int));
 	
 	ptr->dataSize = 8;
 }

@@ -1914,8 +1914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 88, y: 15.4}
-  m_SizeDelta: {x: 771.4, y: 424.8}
+  m_AnchoredPosition: {x: 29, y: -40}
+  m_SizeDelta: {x: 606, y: 424.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533811392
 MonoBehaviour:
@@ -1949,8 +1949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC548\uB155!\n\nErrorCall - LoginScene\nQuitType - 1\n\n\uB124\uD2B8\uC6CC\uD06C
-    \uD658\uACBD\uC774 \uBD88\uC548\uC815\uD574, \n\uC11C\uBC84\uC640\uC758 \uC5F0\uACB0\uC5D0
+  m_Text: "Network Error!\n\nQuitType - 1\n\n\uC11C\uBC84\uC640\uC758 \uC5F0\uACB0\uC5D0
     \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.\n\n\uAC8C\uC784\uC744 \uC790\uB3D9\uC73C\uB85C
     \uC885\uB8CC\uD569\uB2C8\uB2E4."
 --- !u!222 &1533811393
