@@ -539,6 +539,8 @@ public class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)
         {
             //
+            // BGM 제가 꺼드리겠습니다.
+            GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().BGMMaximumVolume = 0;
             GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
             //
             //SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);

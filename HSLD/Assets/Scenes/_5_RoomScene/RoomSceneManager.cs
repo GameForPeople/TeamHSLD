@@ -57,6 +57,10 @@ public class RoomSceneManager : MonoBehaviour {
             --startCount;
         }
 
+
+        GameObject.Find("Character_1_Button").SetActive(false);
+        GameObject.Find("Character_2_Button").SetActive(false);
+
         GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
         isOnChangeCharacter = false;
         startCount = 3;
