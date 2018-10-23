@@ -29,7 +29,7 @@ public class PCverPIcking : MonoBehaviour
 
         } // 카드 피킹할 때 주사위 값 받아오기
 
-        if (AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn == TURN.ENEMYTURN) // 내 턴 아님
+        if (TurnSystem.isSetTerrainDone)
         {
             //Debug.Log("Enemy Turn");
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만

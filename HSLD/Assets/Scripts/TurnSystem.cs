@@ -39,6 +39,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject warningPanel;
 
     private float warningRadio = 0;
+    static public bool isSetTerrainDone = false;
 
     Coroutine coroutine;
 
@@ -242,6 +243,7 @@ public class TurnSystem : MonoBehaviour
                 warningTime = selectPlanetTerrainTime - 3;
                 if (currentMyTurnTimer >= selectPlanetTerrainTime)
                 {
+                    isSetTerrainDone = true;
                     gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
                     Debug.Log("시간경과 어떻게 처리할것인지.");
                 }

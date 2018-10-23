@@ -55,6 +55,7 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGCARD;
                 break;
             case FLOW.TO_PICKINGLOC:
+                TurnSystem.isSetTerrainDone = false;
                 if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
                     currentFlow = FLOW.TO_PICKEVENTCARD;
                 else
