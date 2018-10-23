@@ -82,7 +82,15 @@ public class InGameSceneManager : MonoBehaviour
     public void SendTerrainIndex(/*int InDiceValue, */int[] InTerrainIndex)
     {
         //network_changeTerrainCount = InDiceValue;
-        network_terrainIndex = InTerrainIndex;
+        Debug.Log("network_changeTerrainCount 의 값은 : " + network_changeTerrainCount + "입니다. ");
+
+        for ( int i = 0; i < network_changeTerrainCount; ++i)
+        {
+            network_terrainIndex[i] = InTerrainIndex[i];
+            Debug.Log("InTerrainIndex 의 인덱스 " + i + " 값은 : " + InTerrainIndex[i] + "입니다. ");
+        }
+        // network_terrainIndex = InTerrainIndex;
+
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS;
     }
 
