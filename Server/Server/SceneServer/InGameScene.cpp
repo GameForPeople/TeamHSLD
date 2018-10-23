@@ -9,6 +9,8 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 	RecvFunctions[3] = RecvTerrainType;
 	RecvFunctions[4] = RecvTerrainIndexs;
 	RecvFunctions[5] = RecvEventcardIndex;
+	RecvFunctions[6] = RecvNetworkExecption;
+
 
 	SendFunctions[0] = SendGameState;
 	SendFunctions[1] = SendChangeTurn;
@@ -16,6 +18,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 	SendFunctions[3] = SendTerrainType;
 	SendFunctions[4] = SendTerrainIndexs;
 	SendFunctions[5] = SendEventcardIndex;
+	SendFunctions[6] = SendNetworkExecption;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -27,6 +30,9 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SOCK
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	if (InRecvType != 500)
+		std::cout << "InRecvType : " << InRecvType << "\n";
+
 	RecvFunctions[InRecvType - 500](ptr, InRoomData, InUserData);
 }
 
@@ -65,13 +71,21 @@ void SCENE_NETWORK_MANAGER::RecvEventcardIndex(SOCKETINFO* ptr, GameRoomManager&
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_EVENTCARD_INDEX);
 }
 
+void SCENE_NETWORK_MANAGER::RecvNetworkExecption(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+
+}
+
+
+
 // send Functions
 
-void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 	
-	std::cout << "InSendType : " << InSendType << "\n";
+	if(InSendType != 500)
+		std::cout << "InSendType : " << InSendType << "\n";
 
 	SendFunctions[InSendType - 500](ptr, InRoomData, InUserData);
 }
@@ -109,3 +123,16 @@ void SCENE_NETWORK_MANAGER::SendEventcardIndex(SOCKETINFO* ptr, GameRoomManager&
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
 }
 
+void SCENE_NETWORK_MANAGER::SendNetworkExecption(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	// 아마 네트워크 익셉션을 상대 클라이언트에게 직접 보낼 일은 딤져도 없음. -> 닥쳐 있을거야
+//#ifdef _DEBUG
+//	std::cout << "!! 그럴일이 없는데, 인 게임씬의 SendNetworkExecption가 호출되었습니다. 확인해주세요. " << "\n" ;
+//#endif
+	
+	// 상대방이 게임 중 나갔을 때, 이미 네트워크 소켓 예외에서, 해당 게임에 대한 결과를 처리해줌. (나간사람 1패, 잇던 사람 1승)
+	// 여기서는 방만 없애주고, 해당 클라이언트에게, MainUIScene으로의 이등을 명령.
+
+	InRoomData.ExitRoom(ptr->roomIndex);
+	ptr->roomIndex = -1;
+}
