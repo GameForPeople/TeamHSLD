@@ -5,6 +5,7 @@ using System;
 
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
 
 /*
     해당 씐에서는 굳이, 게임 오브젝트를 멤버 변수로 갖지 않습니다. (빠른 속도를 필요로 하지 않기 때문이며, 자동 로그인 기능이 추후 추가될 예정입니다) 
@@ -122,6 +123,16 @@ public class LoginSceneManager : MonoBehaviour {
         {
             Debug.Log("이미 존재하는 아이디로 회원가입이 불가능합니다.");
         }
+    }
+
+
+    void ParsingLoginData()
+    {
+    }
+
+    void SaveLoginData()
+    {
+
     }
 
 }

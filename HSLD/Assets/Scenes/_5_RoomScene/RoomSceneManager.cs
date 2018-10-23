@@ -36,8 +36,9 @@ public class RoomSceneManager : MonoBehaviour {
         //{
         GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
 
-        CharacterCoroutine = StartCharacter();
+        GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "캐릭터를 선택하세요.";
 
+        CharacterCoroutine = StartCharacter();
         StartCoroutine(CharacterCoroutine);
         //}
     }
@@ -56,8 +57,9 @@ public class RoomSceneManager : MonoBehaviour {
             --startCount;
         }
 
-       isOnChangeCharacter = false;
-       startCount = 3;
+        GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
+        isOnChangeCharacter = false;
+        startCount = 3;
         yield return new WaitForSeconds(0.5f);
 
         while (startCount > 0)

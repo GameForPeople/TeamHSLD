@@ -121,6 +121,7 @@ public class NetworkManager : MonoBehaviour
         catch (SocketException SCE)
         {
             Debug.Log("Socket connect error! : " + SCE.ToString());
+            GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(true, 1);
             return;
         }
 
@@ -129,34 +130,6 @@ public class NetworkManager : MonoBehaviour
         //m_scenenManager = GameObject.Find("SceneManager");
     }
     // Update is called once per frame
-    void Update()
-    {
-       // if (sendType > 0)
-       // {
-       //     SendData(sendType);
-       // }
-       // else
-       // {
-       //     // 나중에 여기에 else말고 else if로 바꾸고, 현제 씬이 인게임씬인지를 확인하는 코드가 추가되어야함
-       //     SendData((int)PROTOCOL.DEMAND_GAMESTATE);
-       // }
-       // 
-       // if (isRecvOn)
-       // {
-       //     RecvType(socket);
-       //     ProcessRecvData();
-       //     //if (recvType > 0)
-       //     //{
-       //     //    RecvData(socket);
-       //     //}
-       //     //else
-       //     //{
-       //     //    RecvType(socket);
-       //     //}
-       // 
-       //     isRecvOn = false;
-       // }
-    }
 
     //[ComVisibleAttribute(true)]
     public void StructToBytes(object obj, ref byte[] packet)
