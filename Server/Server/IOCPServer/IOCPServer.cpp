@@ -460,15 +460,7 @@ void IOCPServer::WorkerThreadFunction()
 
 			NETWORK_UTIL::SendProcess(ptr);
 
-			//// Network Exception - RoomScene 
-			//else if (recvType == DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
-			//{
-			//	// 이거 써야 좋으려나 안쓰는게 좋으려나. --> 써야것다. 변수 하나 씩 다 추가하는거 오바다.
-			//	// 이 함수는, 상대편 클라이언트가 나갔을 경우, 이를 확인하고, 관련 클라이언트 처리가 끝났음을 알리는 프로토콜에 대한 처리입니다.
-			//	roomData.ExitRoom(ptr->roomIndex);
-			//	ptr->roomIndex = -1;
-			//}
-
+			
 			// Hey!! It is garbage!!!!! ERROR!!! OhMyGod!!!!!!! !!!! WT!!!
 			//else
 			//{

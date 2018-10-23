@@ -76,7 +76,8 @@ public class NetworkManager : MonoBehaviour
 
     public byte[] DataRecvBuffer = new byte[100];   //얌마 나중에 이거 알아서 해라
     public byte[] DataSendBuffer = new byte[100];   // 정신나간놈;; 100바이트나 한번에!
-    public byte[] IndexSendBuffer = new byte[100]; 
+    public byte[] NewDataSendBuffer = new byte[100];
+    public byte[] NewDataRecvBuffer = new byte[100];
 
 
     // For InGameScene
@@ -265,8 +266,8 @@ public class NetworkManager : MonoBehaviour
                 }
                 else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
                 {
-                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, IndexSendBuffer, 0, 4);
-                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, IndexSendBuffer, 4, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
                     Debug.Log(" " + inGameSceneManager.network_changeTerrainCount + " 이 주사위 값, 적재해야하는 인덱스의 크기입니다.");
 
@@ -274,14 +275,13 @@ public class NetworkManager : MonoBehaviour
                     for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; i++)
                     {
                         iBuffer = inGameSceneManager.network_terrainIndex[i];
-                        Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, IndexSendBuffer, (8 + 4 * i), 4);
-                        Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(IndexSendBuffer, (8 + 4 * i)));
+                        Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, NewDataSendBuffer, (8 + 4 * i), 4);
+                        Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(NewDataSendBuffer, (8 + 4 * i)));
                     }
 
-                    Debug.Log(" 전송하는 메모리의 크기는 ==> " + (8 + 4 * inGameSceneManager.network_changeTerrainCount));
+                    //Debug.Log(" 전송하는 메모리의 크기는 ==> " + (8 + 4 * inGameSceneManager.network_changeTerrainCount) + " == " + BitConverter.ToInt32(NewDataSendBuffer, 4));
 
-
-                    socket.Send(IndexSendBuffer, (8 + 4 * inGameSceneManager.network_changeTerrainCount), SocketFlags.None);  // 70..? 나중에 계산하기;;
+                    socket.Send(NewDataSendBuffer, 80, SocketFlags.None);  // 70..? 나중에 계산하기;;
 
                 }
                 else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
@@ -537,10 +537,12 @@ public class NetworkManager : MonoBehaviour
         {
             //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             int arrSizeBuffer = BitConverter.ToInt32(DataRecvBuffer, 4);
+            Debug.Log(" 총 받아야하는 배열의 크기는 " + arrSizeBuffer + "입니다");
 
-            for (int i = 0; i < arrSizeBuffer; ++i)
+            for (int i = 0; i < arrSizeBuffer; i++)
             {
-                inGameSceneManager.recvTerrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 8 + 4 * i);
+                Debug.Log(" " + i + " 번 까지는 정상적으로 넣었습니다. "+ (8 + (4 * i)) + "의 부터 형변환 한 값 ::" + BitConverter.ToInt32(DataRecvBuffer, (8 + (4 * i))));
+                inGameSceneManager.recvTerrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, (8 + (4 * i)));
             }
 
             inGameSceneManager.RecvTerrainIndex();

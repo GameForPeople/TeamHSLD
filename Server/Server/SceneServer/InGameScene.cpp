@@ -61,7 +61,7 @@ void SCENE_NETWORK_MANAGER::RecvTerrainType(SOCKETINFO* ptr, GameRoomManager& In
 
 void SCENE_NETWORK_MANAGER::RecvTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, 70);
+	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, 76);
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_TERRAIN_INDEXS);
 }
 
@@ -69,6 +69,7 @@ void SCENE_NETWORK_MANAGER::RecvEventcardIndex(SOCKETINFO* ptr, GameRoomManager&
 {
 	InRoomData.SetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_EVENTCARD_INDEX);
+
 }
 
 void SCENE_NETWORK_MANAGER::RecvNetworkExecption(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -92,35 +93,53 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SOCKE
 
 void SCENE_NETWORK_MANAGER::SendGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	ptr->dataSize = 4;
 }
 
 void SCENE_NETWORK_MANAGER::SendChangeTurn(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+	ptr->dataSize = 4;
+
 }
 
 void SCENE_NETWORK_MANAGER::SendDiceValue(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+
+	ptr->dataSize = 8;
 }
 
 void SCENE_NETWORK_MANAGER::SendTerrainType(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+
+	ptr->dataSize = 8;
+
 }
 
 void SCENE_NETWORK_MANAGER::SendTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, 70);
+	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, 76);
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+	ptr->dataSize = 76;
+
+	std::cout << " SendTerrainIndexs \n";
+	std::cout << (int&)ptr->buf[0] << std::endl;
+	std::cout << (int&)ptr->buf[4] << std::endl;
+	std::cout << (int&)ptr->buf[8] << std::endl;
+	std::cout << (int&)ptr->buf[12] << std::endl;
+	std::cout << (int&)ptr->buf[16] << std::endl;
 }
 
 void SCENE_NETWORK_MANAGER::SendEventcardIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, sizeof(int));
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
+
+	ptr->dataSize = 8;
 }
 
 void SCENE_NETWORK_MANAGER::SendNetworkExecption(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -135,4 +154,6 @@ void SCENE_NETWORK_MANAGER::SendNetworkExecption(SOCKETINFO* ptr, GameRoomManage
 
 	InRoomData.ExitRoom(ptr->roomIndex);
 	ptr->roomIndex = -1;
+
+	ptr->dataSize = 4;
 }
