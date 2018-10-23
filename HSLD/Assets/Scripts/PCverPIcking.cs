@@ -42,10 +42,24 @@ public class PCverPIcking : MonoBehaviour
                     //able 모두 삭제
                     for (int j = 0; j < 3; j++)
                     {
+                        bool temp = false;
+
                         if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
                         {
-                            FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
-                            FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                            for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
+                            {
+                                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[i] == FindObject)
+                                {
+                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                                    temp = true;
+                                    break;
+                                }
+                            }
+                            if (temp == false)
+                            {
+                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                            }
                         }
                     }
 
