@@ -32,14 +32,20 @@ public class CameraController : MonoBehaviour
         TurnChange = true;
     }
 
-    public void TurnVertical()
+    public void TurnVertical(bool isUp)
     {
-        mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
+        if(isUp)
+            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, 20);
+        else
+            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.down, 20);
     }
 
-    public void TurnHorizontal()
+    public void TurnHorizontal(bool isRight)
     {
-        mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, 20);
+        if(isRight)
+            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.right, 20);
+        else
+            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
     }
 
     void Update()
