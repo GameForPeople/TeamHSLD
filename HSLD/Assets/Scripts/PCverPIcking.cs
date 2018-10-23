@@ -99,7 +99,7 @@ public class PCverPIcking : MonoBehaviour
                                     PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                                     myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                 }
-                                else // 깃발 획득 전
+                                else // 점령전
                                 {
                                     if (PickedMeshObj.GetComponent<MeshController>().isFlagable == true) // 가장 처음
                                     {
@@ -114,6 +114,17 @@ public class PCverPIcking : MonoBehaviour
                                         } 
                                         myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(0, 4);
                                         myPlanet.GetComponent<AllMeshController>().FlagContainer.Add(PickedMeshObj);
+                                    }
+                                    else // 깃발 획득했지만, 아직 점령 전일 때
+                                    {
+                                        for(int i = 0;i< myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count;i++)
+                                        {
+                                            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[i] == PickedMeshObj)
+                                            {
+                                                PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                                                myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                            }
+                                        }
                                     }
                                 }
                             }
