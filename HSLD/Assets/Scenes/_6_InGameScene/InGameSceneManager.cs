@@ -68,6 +68,7 @@ public class InGameSceneManager : MonoBehaviour
 
     public void SendDiceValue(int InDiceValue)
     {
+        Debug.Log("send다이스보냄");
         network_changeTerrainCount = InDiceValue;
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
     }
@@ -124,7 +125,8 @@ public class InGameSceneManager : MonoBehaviour
     // 상대방이 굴린 주사위 눈금을 연출
     public void RecvDiceValue(int InDiceValue)
     {
-        // 다이스 주사위 굴리는연출 / 결과 dsipaly
+        // 다이스 주사위 굴리는연출 / 결과 dsipaly        
+        Debug.Log("Recv다이스받음");
         recvDiceValue = InDiceValue;
         GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ InDiceValue.ToString() + " !!!", 2f);   //ref - 2f 수정.
     }

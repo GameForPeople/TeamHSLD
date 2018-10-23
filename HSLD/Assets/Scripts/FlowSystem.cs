@@ -60,7 +60,7 @@ public class FlowSystem : MonoBehaviour
                 else
                 {
                     if (GameObject.Find("GameCores") != null)
-                        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendChangeTurn();
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     currentFlow = FLOW.WAITING;
                 }
                 break;
@@ -69,8 +69,8 @@ public class FlowSystem : MonoBehaviour
                 if (GameObject.Find("GameCores") != null)
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
-                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
-                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendChangeTurn();
+                    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+                    gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }   
                 currentFlow = FLOW.WAITING;
                 break;
@@ -129,7 +129,7 @@ public class FlowSystem : MonoBehaviour
                 if (GameObject.Find("GameCores") != null)
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
-                    GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+                    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
 
                 }
 
