@@ -52,15 +52,17 @@ public class PCverPIcking : MonoBehaviour
 
                         if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
                         {
-                            for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
+                            if (isCheck == false)
                             {
-                                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0] ||
-                                    myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] == FindObject
-                                    )
+                                for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
                                 {
-                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                                    temp = true;
-                                    break;
+                                    if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0] ||
+                                        myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] == FindObject)
+                                    {
+                                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                                        temp = true;
+                                        break;
+                                    }
                                 }
                             }
                             if (temp == false)

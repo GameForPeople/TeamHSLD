@@ -134,7 +134,7 @@ public class MeshController : MonoBehaviour {
                                 DomCount++;
                             }
                         }
-                        if (DomCount == 11) // 거점 획득
+                        if (DomCount == 12) // 거점 획득
                         {
                             PCverPIcking.isGetFlag = true;
                             GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;

@@ -7974,14 +7974,14 @@ MonoBehaviour:
   timerTxt: {fileID: 50010881}
   turnSet: {fileID: 806044292}
   currentTurn: 0
-  matchingCompleteTime: 1
-  displayMissionTime: 1
-  selectCardTime: 3
-  selectOrderTime: 3
-  rollingDiceTime: 3
-  pickingTerrainCardTime: 3
+  matchingCompleteTime: 5
+  displayMissionTime: 5
+  selectCardTime: 10
+  selectOrderTime: 10
+  rollingDiceTime: 10
+  pickingTerrainCardTime: 10
   pickingEventCardTime: 5
-  selectPlanetTerrainTime: 100
+  selectPlanetTerrainTime: 20
   warningPanel: {fileID: 1362228162}
 --- !u!114 &823012259
 MonoBehaviour:
