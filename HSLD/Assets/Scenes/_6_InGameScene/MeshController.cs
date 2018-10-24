@@ -113,30 +113,37 @@ public class MeshController : MonoBehaviour {
                 if (i == AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1)
                 {
                     GameObject FirstObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString());
-                    
+
                     // 1.거점 주변 세팅
-                    if (PCverPIcking.isGetFlag == false)
+                    if (PCverPIcking.isCheck == false)
                     {
                         int DomCount = 0;
                         for (int k = 0; k < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
                         {
-                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.ABLE ||
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
+                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
+                            {
+                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                            }
+
+                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
                             {
                                 AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
                             }
                             else
                             {
                                 DomCount++;
-                                if (DomCount == 11) // 거점 획득
-                                {
-                                    PCverPIcking.isGetFlag = true;
-                                    GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                                    Debug.Log("거점 획득");
-                                }
                             }
                         }
-
+                        if (DomCount == 11) // 거점 획득
+                        {
+                            PCverPIcking.isGetFlag = true;
+                            GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                            Debug.Log("거점 획득");
+                        }
+                        else
+                        {
+                            PCverPIcking.isGetFlag = false;
+                        }
                     }
 
                     // 2.Able에 대한 세팅해줘

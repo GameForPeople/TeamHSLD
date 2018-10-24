@@ -8,12 +8,14 @@ public class PCverPIcking : MonoBehaviour
     public GameObject myPlanet;
     private GameObject PickedMeshObj;
     public static bool isGetFlag;
+    public static bool isCheck;
     RaycastHit hit;
 
     private void Start()
     {
         myPlanet = GameObject.Find("Sphere_320Objects_40X");
         isGetFlag = false;
+        isCheck = false;
     }
 
     private void Update()
@@ -39,6 +41,10 @@ public class PCverPIcking : MonoBehaviour
                 {
                     GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
 
+                    if(isGetFlag == true)
+                    {
+                        isCheck = true;
+                    }
                     //able 모두 삭제
                     for (int j = 0; j < 3; j++)
                     {
@@ -48,7 +54,9 @@ public class PCverPIcking : MonoBehaviour
                         {
                             for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
                             {
-                                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[i] == FindObject)
+                                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0] ||
+                                    myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] == FindObject
+                                    )
                                 {
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
                                     temp = true;
@@ -74,7 +82,6 @@ public class PCverPIcking : MonoBehaviour
                 }
                 
                 myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
-                CameraController.TurnChange = true;
                 CameraController.Once = false;
             }
         }
@@ -146,17 +153,18 @@ public class PCverPIcking : MonoBehaviour
                                     }
                                 }
                             }
-                            else // 하나라도 들어있으면
+                            else // 턴 시작 후 두번째 이후 로직
                             {
                                 if (PickedMeshObj.GetComponent<MeshController>().terrainstate == Terrain.DEFAULT || // DEFALT는 더이상 들어가면 안됨.
                                     PickedMeshObj.GetComponent<MeshController>().terrainstate == Terrain.FLAG) // FLAG는 이제 못지움
                                     return;
 
+                                // 제거 부분
                                 if (myPlanet.GetComponent<AllMeshController>().PickContainer.Contains(PickedMeshObj.GetComponent<MeshController>().MeshNumber))
                                 {
                                     // 다시 누른 거
                                     if (myPlanet.GetComponent<AllMeshController>().PickContainer[0] == PickedMeshObj.GetComponent<MeshController>().MeshNumber ||
-                                        myPlanet.GetComponent<AllMeshController>().PickContainer[myPlanet.GetComponent<AllMeshController>().PickContainer.Count-1]
+                                        myPlanet.GetComponent<AllMeshController>().PickContainer[myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1]
                                         == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
                                     {
                                         // 첫 값이 혹은 마지막 값이야
@@ -167,7 +175,7 @@ public class PCverPIcking : MonoBehaviour
                                         }
                                     }
                                 }
-                                else
+                                else // 추가 부분
                                 {
                                     if (CameraController.ChangeableCount > 0)
                                     {

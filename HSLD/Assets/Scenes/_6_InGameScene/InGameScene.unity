@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040543196, g: 0.00022157266, b: 0.000000055451046,
+  m_IndirectSpecularColor: {r: 0.0040543145, g: 0.00022157223, b: 0.000000055451046,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -7974,14 +7974,14 @@ MonoBehaviour:
   timerTxt: {fileID: 50010881}
   turnSet: {fileID: 806044292}
   currentTurn: 0
-  matchingCompleteTime: 5
-  displayMissionTime: 5
-  selectCardTime: 10
-  selectOrderTime: 10
-  rollingDiceTime: 10
-  pickingTerrainCardTime: 10
+  matchingCompleteTime: 1
+  displayMissionTime: 1
+  selectCardTime: 3
+  selectOrderTime: 3
+  rollingDiceTime: 3
+  pickingTerrainCardTime: 3
   pickingEventCardTime: 5
-  selectPlanetTerrainTime: 20
+  selectPlanetTerrainTime: 100
   warningPanel: {fileID: 1362228162}
 --- !u!114 &823012259
 MonoBehaviour:
@@ -17052,7 +17052,7 @@ MonoBehaviour:
   JointMesh:
   - {fileID: 1977953338}
   - {fileID: 402824842}
-  - {fileID: 2135420763}
+  - {fileID: 1158397419}
   DomMesh: []
 --- !u!1 &1478671596
 GameObject:
@@ -20300,7 +20300,7 @@ MonoBehaviour:
   isFlagable: 0
   JointMesh:
   - {fileID: 334954668}
-  - {fileID: 1290884983}
+  - {fileID: 551994290}
   - {fileID: 247549460}
   DomMesh: []
 --- !u!1 &1818289660 stripped
