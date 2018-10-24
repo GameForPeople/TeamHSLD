@@ -211,15 +211,16 @@ public class MeshController : MonoBehaviour {
 
             CameraController.ChangeableCount--;
 
+           
             if (picked.name.Equals("TerrainCardImg1"))
-            {
-                Debug.Log("setBarren");
-                setBarren();
-            }
-            else if (picked.name.Equals("TerrainCardImg2"))
             {
                 Debug.Log("setModeration");
                 setModeration();
+            }
+            else  if (picked.name.Equals("TerrainCardImg2"))
+            {
+                Debug.Log("setBarren");
+                setBarren();
             }
             else if (picked.name.Equals("TerrainCardImg3"))
             {
@@ -228,46 +229,66 @@ public class MeshController : MonoBehaviour {
             }
             else if (picked.name.Equals("TerrainCardImg4"))
             {
-                Debug.Log("임시");
-                setCold();
-            }
-            else if (picked.name.Equals("TerrainCardImg5"))
-            {
-                Debug.Log("임시");
-                setCold();
-            }
-            else if (picked.name.Equals("EventCardImg1"))
-            {
                 Debug.Log("setSea");
                 setSea();
             }
-            else if (picked.name.Equals("EventCardImg2"))
+            else if (picked.name.Equals("TerrainCardImg5"))
             {
                 Debug.Log("setMountain");
                 setMountain();
             }
+            else if (picked.name.Equals("EventCardImg1"))
+            {
+                Debug.Log("임시");
+                setCold();
+            }
+            else if (picked.name.Equals("EventCardImg2"))
+            {
+                Debug.Log("임시");
+                setCold();
+            }
         }
     }
 
-    public void setBarren()
+    private int randomValue(int min, int max)
     {
-        terrainstate = Terrain.BARREN;
-        domMaterial = Resources.Load<Material>("M_Barren");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+        return Random.Range(min, max + 1);
     }
-
+    //적당
     public void setModeration()
     {
         terrainstate = Terrain.MODERATION;
         domMaterial = Resources.Load<Material>("M_Moderation");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
-    }
 
+        //20퍼센트 확률로 생기지 않음.
+        if (randomValue(0, 100) < 20 || isFlagable)
+            return;
+        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(14, 18)], 0.5f);
+    }
+    //건조
+    public void setBarren()
+    {
+        terrainstate = Terrain.BARREN;
+        domMaterial = Resources.Load<Material>("M_Barren");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+
+        //70퍼센트 확률로 생기지 않음.
+        if (randomValue(0, 100) < 70 || isFlagable)
+            return;
+        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(5, 13)], 0.5f);
+    }
+    //한랭
     public void setCold()
     {
         terrainstate = Terrain.COLD;
         domMaterial = Resources.Load<Material>("M_Cold");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+
+        //40퍼센트 확률로 생기지 않음.
+        if (randomValue(0, 100) < 40 || isFlagable)
+            return;
+        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(1,4)], 0.5f);
     }
 
     public void setSea()
@@ -275,6 +296,11 @@ public class MeshController : MonoBehaviour {
         terrainstate = Terrain.SEA;
         domMaterial = Resources.Load<Material>("M_Sea");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+
+        //90퍼센트 확률로 생기지 않음.
+        if (randomValue(0, 100) < 90 || isFlagable)
+            return;
+        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(21, 22)], 0.5f);
     }
 
     public void setMountain()
@@ -282,5 +308,10 @@ public class MeshController : MonoBehaviour {
         terrainstate = Terrain.MOUNTAIN;
         domMaterial = Resources.Load<Material>("M_Mountain");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+
+        //10퍼센트 확률로 생기지 않음.
+        if (randomValue(0, 100) < 10 || isFlagable)
+            return;
+        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(19, 20)], 0.5f);
     }
 }

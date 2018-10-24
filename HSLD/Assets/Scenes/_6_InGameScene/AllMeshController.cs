@@ -13,6 +13,9 @@ public class AllMeshController : MonoBehaviour {
     public List<int> PickContainer;
     public List<GameObject> FlagContainer;
     public GameObject[] AllContainer;
+    public GameObject[] buildingObj;
+    static public AllMeshController instance_;
+
     // Use this for initialization
     void Start () {
         once = false;
@@ -21,6 +24,8 @@ public class AllMeshController : MonoBehaviour {
         //PickContainer = new int[12];
         PickContainer = new List<int>();
         AllContainer = new GameObject[MaxMesh];
+        if(instance_ == null)
+            instance_ = this;
     }
 
     // Update is called once per frame
@@ -43,6 +48,7 @@ public class AllMeshController : MonoBehaviour {
             {
                 FlagContainer.Add(AllContainer[i]);
                 AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(AllContainer[i], buildingObj[0], 0.5f);
             }
         }
     }
