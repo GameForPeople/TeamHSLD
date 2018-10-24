@@ -30,8 +30,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SOCK
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	if (InRecvType != 500)
-		std::cout << "InRecvType : " << InRecvType << "\n";
+	//if (InRecvType != 500)
+	//	std::cout << "InRecvType : " << InRecvType << "\n";
 
 	RecvFunctions[InRecvType - 500](ptr, InRoomData, InUserData);
 }
@@ -85,8 +85,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SOCKE
 {
 	memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 	
-	if(InSendType != 500)
-		std::cout << "InSendType : " << InSendType << "\n";
+	//if(InSendType != 500)
+	//	std::cout << "InSendType : " << InSendType << "\n";
 
 	SendFunctions[InSendType - 500](ptr, InRoomData, InUserData);
 }
@@ -125,13 +125,6 @@ void SCENE_NETWORK_MANAGER::SendTerrainIndexs(SOCKETINFO* ptr, GameRoomManager& 
 	InRoomData.GetDataBuffer(ptr->roomIndex, ptr->isHost, ptr->buf + 4, 76);
 	InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
 	ptr->dataSize = 76;
-
-	std::cout << " SendTerrainIndexs \n";
-	std::cout << (int&)ptr->buf[0] << std::endl;
-	std::cout << (int&)ptr->buf[4] << std::endl;
-	std::cout << (int&)ptr->buf[8] << std::endl;
-	std::cout << (int&)ptr->buf[12] << std::endl;
-	std::cout << (int&)ptr->buf[16] << std::endl;
 }
 
 void SCENE_NETWORK_MANAGER::SendEventcardIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)

@@ -287,7 +287,7 @@ void IOCPServer::AcceptProcess()
 		}
 
 		// 클라이언트 서버에 접속(Accept) 함을 알림
-		printf("[TCP 서버] 클라이언트 접속 : IP 주소 =%s, Port 번호 = %d \n", inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
+		//printf("[TCP 서버] 클라이언트 접속 : IP 주소 =%s, Port 번호 = %d \n", inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 
 		// 소켓과 입출력 완료 포트 연결
 		CreateIoCompletionPort((HANDLE)clientSocket, hIOCP, clientSocket, 0);
@@ -422,7 +422,7 @@ void IOCPServer::WorkerThreadFunction()
 			closesocket(ptr->sock);
 
 #ifdef _DEBUG
-			std::cout << "     [Notify] 클라이언트 종료 혹은 연결 끊김 Id = " << userData.GetUserID(ptr->userIndex) << std::endl;
+			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << userData.GetUserID(ptr->userIndex) << std::endl;
 			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
 			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 #endif
@@ -460,14 +460,6 @@ void IOCPServer::WorkerThreadFunction()
 
 			NETWORK_UTIL::SendProcess(ptr);
 
-			
-			// Hey!! It is garbage!!!!! ERROR!!! OhMyGod!!!!!!! !!!! WT!!!
-			//else
-			//{
-				//std::cout << "Not! Defined recvType Error  recvType == " << recvType << std::endl;
-				//std::cout << "OMG!! this Thread Down!!" << std::endl;
-
-			//}
 		}
 	}
 }

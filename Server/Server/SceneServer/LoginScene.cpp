@@ -46,8 +46,11 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SOCKETINFO* ptr, UserDat
 
 	if (failReason)
 		SendFailLogin(ptr, failReason);
-	else
+	else 
+	{
 		SendPermitLogin(ptr, outWinCount, outLoseCount, outMoney);
+		std::cout << "     [UserDataManager] "<< idBuffer <<" ´ÔÀÌ ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù. " << "\n";
+	}
 }
 
 int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SOCKETINFO* ptr, UserDataManager& InUserData, 
