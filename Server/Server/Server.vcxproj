@@ -23,15 +23,13 @@
     <ClCompile Include="GameRoom\GameRoomManager.cpp" />
     <ClCompile Include="IOCPServer\IOCPServer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SceneServer\InGameScene.cpp" />
-    <ClCompile Include="SceneServer\LobbyScene.cpp" />
-    <ClCompile Include="SceneServer\LoginScene.cpp" />
-    <ClCompile Include="SceneServer\MainUIScene.cpp" />
-    <ClCompile Include="SceneServer\RoomScene.cpp" />
-    <ClCompile Include="SceneServer\TitleScene.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="PCH\stdafx.cpp" />
+    <ClCompile Include="SceneNetworkManager\_0_TitleScene\TitleScene.cpp" />
+    <ClCompile Include="SceneNetworkManager\_1_LoginScene\LoginScene.cpp" />
+    <ClCompile Include="SceneNetworkManager\_2_MainUIScene\MainUIScene.cpp" />
+    <ClCompile Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.cpp" />
+    <ClCompile Include="SceneNetworkManager\_4_RoomScene\RoomScene.cpp" />
+    <ClCompile Include="SceneNetworkManager\_5_InGameScene\InGameScene.cpp" />
     <ClCompile Include="UserData\UserData.cpp" />
     <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
@@ -39,16 +37,16 @@
     <ClInclude Include="GameRoom\GameRoom.h" />
     <ClInclude Include="GameRoom\GameRoomManager.h" />
     <ClInclude Include="IOCPServer\IOCPServer.h" />
+    <ClInclude Include="PCH\stdafx.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />
-    <ClInclude Include="SceneServer\BaseScene.h" />
-    <ClInclude Include="SceneServer\InGameScene.h" />
-    <ClInclude Include="SceneServer\LobbyScene.h" />
-    <ClInclude Include="SceneServer\LoginScene.h" />
-    <ClInclude Include="SceneServer\MainUIScene.h" />
-    <ClInclude Include="SceneServer\RoomScene.h" />
-    <ClInclude Include="SceneServer\TitleScene.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SceneNetworkManager\BaseScene.h" />
+    <ClInclude Include="SceneNetworkManager\_0_TitleScene\TitleScene.h" />
+    <ClInclude Include="SceneNetworkManager\_1_LoginScene\LoginScene.h" />
+    <ClInclude Include="SceneNetworkManager\_2_MainUIScene\MainUIScene.h" />
+    <ClInclude Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.h" />
+    <ClInclude Include="SceneNetworkManager\_4_RoomScene\RoomScene.h" />
+    <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />
   </ItemGroup>

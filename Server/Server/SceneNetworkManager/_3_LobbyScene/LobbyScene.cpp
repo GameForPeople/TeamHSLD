@@ -1,4 +1,4 @@
-#include "../SceneServer/LobbyScene.h"
+#include "../_3_LobbyScene/LobbyScene.h"
 
 SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene() 
 	: BaseScene(), PERMIT_MAKE_RANDOM(Protocol::PERMIT_MAKE_RANDOM), PERMIT_JOIN_RANDOM(Protocol::PERMIT_JOIN_RANDOM),

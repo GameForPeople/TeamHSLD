@@ -1,6 +1,5 @@
-#include "stdafx.h"
-
-#include "IOCPServer/IOCPServer.h"
+#include "../Server/PCH/stdafx.h"
+#include "../Server/IOCPServer/IOCPServer.h"
 
 int main(int argc, char * argv[])
 {

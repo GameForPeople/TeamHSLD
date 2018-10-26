@@ -28,14 +28,29 @@
     <Filter Include="소스 파일\UserData">
       <UniqueIdentifier>{40b8e0ba-6a40-4692-889c-1160b53e839d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\SceneServer">
+    <Filter Include="소스 파일\SceneNetworkManager">
       <UniqueIdentifier>{4a588f25-7657-45b3-a7e8-1d23479a1ef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_0_TitleScene">
+      <UniqueIdentifier>{45201c4d-5a9f-4cd2-a55f-398c6b43f418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_1_LoginScene">
+      <UniqueIdentifier>{d0a66b3a-b446-4cff-bc03-bb576cfe0635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_2_MainUIScene">
+      <UniqueIdentifier>{cfd98d5f-d5ff-4209-98c1-4690f0436800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_3_LobbyScene">
+      <UniqueIdentifier>{5dc64aed-c188-4672-a145-770b4a1e7bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_4_RoomScene">
+      <UniqueIdentifier>{31376ee1-179e-42ed-b66e-1b38caa76073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SceneNetworkManager\_5_InGameScene">
+      <UniqueIdentifier>{ea0848a3-d699-44c7-a8d3-a312a2c6e40c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>PCH</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -54,29 +69,29 @@
     <ClCompile Include="GameRoom\GameRoomManager.cpp">
       <Filter>소스 파일\Room</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\InGameScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_0_TitleScene\TitleScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_0_TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\TitleScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_1_LoginScene\LoginScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_1_LoginScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\LoginScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_2_MainUIScene\MainUIScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_2_MainUIScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\MainUIScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_3_LobbyScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\LobbyScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_4_RoomScene\RoomScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_4_RoomScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneServer\RoomScene.cpp">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClCompile Include="SceneNetworkManager\_5_InGameScene\InGameScene.cpp">
+      <Filter>소스 파일\SceneNetworkManager\_5_InGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PCH\stdafx.cpp">
+      <Filter>PCH</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>PCH</Filter>
-    </ClInclude>
     <ClInclude Include="IOCPServer\IOCPServer.h">
       <Filter>소스 파일\IOCPServer</Filter>
     </ClInclude>
@@ -98,26 +113,29 @@
     <ClInclude Include="Protocol\CommunicationDataStruct.h">
       <Filter>소스 파일\Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\InGameScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\BaseScene.h">
+      <Filter>소스 파일\SceneNetworkManager</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\BaseScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_0_TitleScene\TitleScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_0_TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\TitleScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_1_LoginScene\LoginScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_1_LoginScene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\LoginScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_2_MainUIScene\MainUIScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_2_MainUIScene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\MainUIScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_3_LobbyScene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\LobbyScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_4_RoomScene\RoomScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_4_RoomScene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneServer\RoomScene.h">
-      <Filter>소스 파일\SceneServer</Filter>
+    <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h">
+      <Filter>소스 파일\SceneNetworkManager\_5_InGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PCH\stdafx.h">
+      <Filter>PCH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

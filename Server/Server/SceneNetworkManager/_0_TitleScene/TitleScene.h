@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../stdafx.h"
+#include "../../PCH/stdafx.h"
 
-#include "../SceneServer/BaseScene.h"
+#include "../BaseScene.h"
 
-#include "../GameRoom/GameRoomManager.h"
-#include "../UserData/UserDataManager.h"
+#include "../../GameRoom/GameRoomManager.h"
+#include "../../UserData/UserDataManager.h"
 
 namespace SCENE_NETWORK_MANAGER
 {

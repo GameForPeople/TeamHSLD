@@ -1,4 +1,4 @@
-#include "../SceneServer/LoginScene.h"
+#include "../_1_LoginScene/LoginScene.h"
 
 SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): BaseScene(), PERMIT_LOGIN(Protocol::PERMIT_LOGIN), FAIL_LOGIN(Protocol::FAIL_LOGIN)
 {

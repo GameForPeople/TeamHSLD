@@ -1,19 +1,19 @@
 #pragma once
 
-#include "../stdafx.h"
+#include "../PCH/stdafx.h"
 
 #include "../Protocol/CommunicationProtocol.h"
 #include "../UserData/UserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
-#include "../SceneServer/BaseScene.h"
+#include "../SceneNetworkManager/BaseScene.h"
 
-#include "../SceneServer/TitleScene.h"
-#include "../SceneServer/LoginScene.h"
-#include "../SceneServer/MainUIScene.h"
-#include "../SceneServer/LobbyScene.h"
-#include "../SceneServer/RoomScene.h"
-#include "../SceneServer/InGameScene.h"
+#include "../SceneNetworkManager/_0_TitleScene/TitleScene.h"
+#include "../SceneNetworkManager/_1_LoginScene/LoginScene.h"
+#include "../SceneNetworkManager/_2_MainUIScene/MainUIScene.h"
+#include "../SceneNetworkManager/_3_LobbyScene/LobbyScene.h"
+#include "../SceneNetworkManager/_4_RoomScene/RoomScene.h"
+#include "../SceneNetworkManager/_5_InGameScene/InGameScene.h"
 
 #define		SERVER_PORT		9000
 

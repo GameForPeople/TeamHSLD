@@ -1,4 +1,4 @@
-#include "../SceneServer/RoomScene.h"
+#include "../_4_RoomScene/RoomScene.h"
 
 SCENE_NETWORK_MANAGER::RoomScene::RoomScene() : BaseScene(), PERMIT_ENEMY_CHARACTER(Protocol::PERMIT_ENEMY_CHARACTER)
 {

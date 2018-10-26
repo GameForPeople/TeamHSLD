@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../stdafx.h"
+#include "../PCH/stdafx.h"
 
 #include "../Protocol/CommunicationProtocol.h"
 

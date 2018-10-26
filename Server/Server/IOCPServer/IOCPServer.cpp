@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "../PCH/stdafx.h"
 #include "IOCPServer.h"
 
 /*
@@ -239,7 +239,7 @@ void IOCPServer::BindSceneDataProcess()
 	sceneArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
 	sceneArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
 	sceneArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
-	sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
+	sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene(&isSaveOn);
 
 	//sceneArr.reserve(6);
 	//
@@ -453,7 +453,7 @@ void IOCPServer::WorkerThreadFunction()
 		else
 		{
 			recvType = (int&)(ptr->buf);
-
+		
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			sceneArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
