@@ -229,17 +229,16 @@ void IOCPServer::CreateBindListen()
 	// Listen()!
 	retVal = listen(listenSocket, SOMAXCONN);
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
-
 }
 
 void IOCPServer::BindSceneDataProcess()
 {
-	sceneArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
-	sceneArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
-	sceneArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
-	sceneArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
-	sceneArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
-	sceneArr[5] = new SCENE_NETWORK_MANAGER::InGameScene(&isSaveOn);
+	sceneNetworkManagerArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
+	sceneNetworkManagerArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
+	sceneNetworkManagerArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
+	sceneNetworkManagerArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
+	sceneNetworkManagerArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
+	sceneNetworkManagerArr[5] = new SCENE_NETWORK_MANAGER::InGameScene(&isSaveOn);
 
 	//sceneArr.reserve(6);
 	//
@@ -263,6 +262,21 @@ void IOCPServer::BindSceneDataProcess()
 	//SceneDataProcess[3] = lobbyScene.ProcessData;
 	//SceneDataProcess[4] = roomScene.ProcessData;
 	//SceneDataProcess[5] = inGameScene.ProcessData;
+}
+
+void IOCPServer::CreateUDPSocket()
+{
+	udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
+	if (udpSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT((char *)"Socket()");
+
+	ZeroMemory(&serverUDPAddr, sizeof(serverUDPAddr));
+	serverUDPAddr.sin_family = AF_INET;
+	serverUDPAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	serverUDPAddr.sin_port = htons(SERVER_UDP_PORT);
+
+	if (int retval = ::bind(udpSocket, (SOCKADDR *)&serverUDPAddr, sizeof(serverUDPAddr)); 
+	retval == SOCKET_ERROR)
+		NETWORK_UTIL::ERROR_QUIT((char *)"bind()");
 }
 
 //Run
@@ -337,10 +351,14 @@ void IOCPServer::DestroyAndClean()
 	//....? 우리 열심히 일한 불쌍한 쓰레드들은 어떻게 하나,, 전능하신 운영체제께서 알아서..ㅎ 
 	// 임마 쇼하지 말고 나중에...초반에 핸들값들 다 벡터에 차곡차곡 모아서 여기서 멈추게해드려..
 	isSaveOn = true;
-	if (!isSaveOn) {
-		isOnSaveUserDataThread = false;
-		printf(" [System] User Data Last Save Success! \n\n");
-		CloseHandle(hSaveUserDataThread);
+
+	while (7) 
+	{
+		if (!isSaveOn) 
+		{
+			printf(" [System] User Data Last Save Success! \n\n");
+			CloseHandle(hManagerThread);
+		}
 	}
 
 }
@@ -455,7 +473,7 @@ void IOCPServer::WorkerThreadFunction()
 			recvType = (int&)(ptr->buf);
 		
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
-			sceneArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
+			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
 			NETWORK_UTIL::SendProcess(ptr);
@@ -464,38 +482,51 @@ void IOCPServer::WorkerThreadFunction()
 	}
 }
 
-DWORD WINAPI IOCPServer::SaveUserDate(LPVOID arg)
+DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 {
 	IOCPServer* server = (IOCPServer*)arg;
-	server->SaveUserDataThreadFunction();
+	
+	server->ManagerLoop();
 
 	return 0;
 }
 
-void IOCPServer::SaveUserDataThreadFunction()
+void IOCPServer::ManagerLoop()
 {
-	isOnSaveUserDataThread = true;
+	isSaveOn = false;
+	isSendUDPMessage = false;
 
-	while (isOnSaveUserDataThread) {
-		Sleep(1000);	// 1분 단위 저장
+	while (777)
+	{
+		Sleep(1000);
 
-		//지금 자야되니까 나중에 이거보면 
-		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
-		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+		if (isSaveOn) SaveUserData();
 
-		userData.Save(isSaveOn);
+		Sleep(1000);
+
+		if (isSendUDPMessage)SendDynamicMessage();
+
+		Sleep(1000);
 	}
 }
 
-//DWORD WINAPI IOCPServer::ServerTestThread(LPVOID arg)
-//{
-//	//while (7) {
-//	//	Sleep(1000);
-//	//	if (!selfControl) {
-//	//		//selfControl = rand() % 6 + 1;
-//	//		std::cout << "보낼 패킷 선택 // 1 왼쪽, 2 왼 점프, 3 오른, 4 오 점, 5 정지, 6 정 점프  : ";
-//	//		std::cin >> selfControl;
-//	//		//std::cout << "클라이언트에게 새로운 입력 패킷  : " << selfControl << "를 전달했습니다. " << std::endl;
-//	//	}
-//	//}
-//}
+// UDP Function
+void IOCPServer::SendDynamicMessage()
+{
+	SOCKADDR_IN clientAddr;
+
+	udpMessageBuffer[0] = 1;
+
+	// !! for (UserData) for GetPeerName
+	sendto(udpSocket, udpMessageBuffer.data(), 50, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+
+	isSendUDPMessage = false;
+}
+
+void IOCPServer::SaveUserData()
+{
+		//지금 자야되니까 나중에 이거보면 
+		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
+		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+		userData.Save(isSaveOn);
+}

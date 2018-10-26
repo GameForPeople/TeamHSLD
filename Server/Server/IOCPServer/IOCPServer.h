@@ -16,11 +16,11 @@
 #include "../SceneNetworkManager/_5_InGameScene/InGameScene.h"
 
 #define		SERVER_PORT		9000
+#define		SERVER_UDP_PORT 9001
 
 // For ExternalIP
 #define		EXTERNALIP_FINDER_URL	"http://checkip.dyndns.org/"
 #define		TITLE_PARSER			"<body>Current IP Address: "
-
 
 
 //#define SERVER_DEBUG_LOG_PRINT
@@ -54,31 +54,25 @@ private:
 	WSADATA wsa;
 	HANDLE hIOCP;
 	SOCKET listenSocket;
-	SOCKADDR_IN serverAddr;
+	SOCKET udpSocket;
 
-	HANDLE hSaveUserDataThread;
-	bool isOnSaveUserDataThread;
+	SOCKADDR_IN serverAddr;
+	SOCKADDR_IN serverUDPAddr;
+
+	HANDLE hManagerThread;
 
 	//For Game
 	UserDataManager userData;
 	GameRoomManager roomData;
 
-	//Scene //굳이 BaseScene 포인터로 저짓, 이짓할 필요 없음.-> 이 안되는 것을 확인...
-	//SCENE_NETWORK_MANAGER::TitleScene titleScene;
-	//SCENE_NETWORK_MANAGER::LoginScene loginScene;
-	//SCENE_NETWORK_MANAGER::MainUiScene mainUiScene;
-	//SCENE_NETWORK_MANAGER::LobbyScene lobbyScene;
-	//SCENE_NETWORK_MANAGER::RoomScene roomScene;
-	//SCENE_NETWORK_MANAGER::InGameScene inGameScene;
-
-	//std::vector<SCENE_NETWORK_MANAGER::BaseScene*> sceneArr;
-	SCENE_NETWORK_MANAGER::BaseScene* sceneArr[6];
-
+	SCENE_NETWORK_MANAGER::BaseScene* sceneNetworkManagerArr[6];
 	//void(*SceneDataProcess[6])(const int& InRecvType,SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음.. 동기화 다음 턴에 어짜피 됨.
+	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음..다음 턴에 어짜피 동기화 됨.
 	bool isSaveOn;
-	int selfControl;
+
+	bool isSendUDPMessage;
+	string udpMessageBuffer;
 
 public:
 	__inline IOCPServer() : bIsPrintDebugMessage(false)
@@ -106,6 +100,8 @@ public:
 		InitWinSocket();
 		CreateBindListen();
 		BindSceneDataProcess();
+
+		CreateUDPSocket();
 	}
 
 	void Run()
@@ -113,7 +109,6 @@ public:
 		RunSaveUserDataThread();
 		AcceptProcess();
 	}
-
 
 	void Close()
 	{
@@ -134,24 +129,29 @@ private:
 
 	void BindSceneDataProcess();
 
+	//Init - For UDP [DEV_53]
+	void CreateUDPSocket();
+
 	//Run
 	void AcceptProcess();
 
 	void RunSaveUserDataThread()
 	{
-		hSaveUserDataThread = CreateThread(NULL, 0, SaveUserDate, (LPVOID)this, 0, NULL);
+		hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 		//CloseHandle(hSaveUserDataThread);
 		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
 	}
 	//Close
 	void DestroyAndClean();
 
+private:
 	//ThreadFunction
 	static DWORD WINAPI WorkerThread(LPVOID arg);
 	void WorkerThreadFunction();
-	static DWORD WINAPI SaveUserDate(LPVOID arg);
-	void SaveUserDataThreadFunction();
+	static DWORD WINAPI ManagerThread(LPVOID arg);
+	void ManagerLoop();
+	void SaveUserData();
 
-private:
-
+	// UDPSocket
+	void SendDynamicMessage();
 };
