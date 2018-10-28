@@ -30,6 +30,7 @@
     <ClCompile Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.cpp" />
     <ClCompile Include="SceneNetworkManager\_4_RoomScene\RoomScene.cpp" />
     <ClCompile Include="SceneNetworkManager\_5_InGameScene\InGameScene.cpp" />
+    <ClCompile Include="UserData\NewUserDataManager.cpp" />
     <ClCompile Include="UserData\UserData.cpp" />
     <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
@@ -47,6 +48,8 @@
     <ClInclude Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.h" />
     <ClInclude Include="SceneNetworkManager\_4_RoomScene\RoomScene.h" />
     <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h" />
+    <ClInclude Include="UserData\NewUserData.h" />
+    <ClInclude Include="UserData\NewUserDataManager.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />
   </ItemGroup>

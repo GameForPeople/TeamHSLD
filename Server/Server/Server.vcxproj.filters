@@ -90,6 +90,9 @@
     <ClCompile Include="PCH\stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
+    <ClCompile Include="UserData\NewUserDataManager.cpp">
+      <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IOCPServer\IOCPServer.h">
@@ -136,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="PCH\stdafx.h">
       <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\NewUserData.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\NewUserDataManager.h">
+      <Filter>소스 파일\UserData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -21,7 +21,6 @@ class UserData {
 
 	//Game use Data
 	bool m_isLogin{ false };
-	IN_ADDR m_userAddr{};
 
 public:
 	__inline UserData() {};
@@ -42,8 +41,6 @@ public:
 	{
 		m_isLogin = false;
 	}
-
-	__inline void	SetIPAddress(IN_ADDR& inputAddress) { m_userAddr = inputAddress; m_isLogin = true; }
 
 	__inline void	PrintUserData() const 
 	{
