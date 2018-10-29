@@ -38,6 +38,7 @@
     <ClInclude Include="GameRoom\GameRoom.h" />
     <ClInclude Include="GameRoom\GameRoomManager.h" />
     <ClInclude Include="IOCPServer\IOCPServer.h" />
+    <ClInclude Include="IOCPServer\SocketInfo.h" />
     <ClInclude Include="PCH\stdafx.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />

@@ -11,23 +11,18 @@ public:
 	//~NewUserDataManager() = delete;
 
 public:
-	//void Load();
+	// 로그인 및 회원가입 모두 여기서 처리합니다.
+	int LoginProcess(SocketInfo* InPSocketInfo, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont);
 
-	//void Save(bool& InIsSave);
-
-	int SignIn(const string& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
-
-	int SignIn(const char* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
-
-	int SignUp(const string& InID, const int& InPW, int& RetIndex);
-
-	int SignUp(const char* InID, const int& InPW, int& RetIndex);
-
-	void SignOut(const int& InClientIndex);
+	void LogoutProcess(SocketInfo* InPSocketInfo);
 
 	//void EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex);
 
 public:
+	// for userDataCont Hash, 첫글자처리필요.
+	int GetStringFirstChar(const char& InStringFirstChar);
+
 	//NewUserData* a = const_cast<NewUserData*>(&userDataCont[InIndex].find("abc")->second);
 	__inline int GetUserDataSize() const
 	{

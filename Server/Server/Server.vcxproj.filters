@@ -146,5 +146,8 @@
     <ClInclude Include="UserData\NewUserDataManager.h">
       <Filter>소스 파일\UserData</Filter>
     </ClInclude>
+    <ClInclude Include="IOCPServer\SocketInfo.h">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
