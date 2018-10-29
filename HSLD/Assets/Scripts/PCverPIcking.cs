@@ -36,7 +36,14 @@ public class PCverPIcking : MonoBehaviour
             //Debug.Log("Enemy Turn");
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
+                AllMeshController.giveLinkNum++;
                 Debug.Log("내 턴에서 넘어갈 때 한번만");
+                for (int i = 0; i < Length; i++) // 링크드넘버 세팅
+                {
+                    GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+                    FindObject.GetComponent<MeshController>().Linkednum = AllMeshController.giveLinkNum;
+                }
+
                 for (int i = 0; i < Length; i++)
                 {
                     GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
@@ -44,6 +51,7 @@ public class PCverPIcking : MonoBehaviour
                     if(isGetFlag == true)
                     {
                         isCheck = true;
+                        Debug.Log("거점 등록");
                     }
                     //able 모두 삭제
                     for (int j = 0; j < 3; j++)
@@ -81,6 +89,11 @@ public class PCverPIcking : MonoBehaviour
 
                     FindObject.GetComponent<MeshController>().isFixed = true;
                     FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
+
+                    /////// Event 카드를 위한 매시 묶기
+                    myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
+                        FindObject.GetComponent<MeshController>().name,
+                        FindObject.GetComponent<MeshController>().terrainstate);
                 }
                 
                 myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화

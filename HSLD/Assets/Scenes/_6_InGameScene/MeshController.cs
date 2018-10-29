@@ -26,6 +26,7 @@ public class MeshController : MonoBehaviour {
     public bool isFixed;
     public bool isMine;
     public bool isFlagable;     //거점
+    public int Linkednum;
     public GameObject[] JointMesh;
     public List<GameObject> DomMesh;
     // Use this for initialization
@@ -44,6 +45,7 @@ public class MeshController : MonoBehaviour {
         name = giveNumber.ToString();
         //JointMesh = new GameObject[3];
         once = false;
+        Linkednum = 0;
     }
 	
 	// Update is called once per frame
@@ -120,12 +122,8 @@ public class MeshController : MonoBehaviour {
                         int DomCount = 0;
                         for (int k = 0; k < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
                         {
-                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
-                            {
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                            }
-
-                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
+                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT ||
+                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
                             {
                                 AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
                             }
@@ -134,11 +132,10 @@ public class MeshController : MonoBehaviour {
                                 DomCount++;
                             }
                         }
-                        if (DomCount == 12) // 거점 획득
+                        if (DomCount == AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count) // 거점 획득
                         {
                             PCverPIcking.isGetFlag = true;
                             GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                            Debug.Log("거점 획득");
                         }
                         else
                         {

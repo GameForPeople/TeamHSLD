@@ -15,6 +15,9 @@ public class AllMeshController : MonoBehaviour {
     public GameObject[] AllContainer;
     public GameObject[] buildingObj;
     static public AllMeshController instance_;
+    static public int giveLinkNum = 0;
+
+    public List<List<GameObject>> ListLinkedMesh;
 
     // Use this for initialization
     void Start () {
@@ -53,7 +56,7 @@ public class AllMeshController : MonoBehaviour {
         }
     }
 
-    public void Search()
+    public void SearchALL()
     {
         for (int i = 1; i <= MaxMesh - 1; i++)
         {
@@ -82,27 +85,31 @@ public class AllMeshController : MonoBehaviour {
         return true;
     }
 
-    public int DeleteCheckStart()
+    public void ArrangeLinkedMesh(string meshnum, Terrain type)
     {
-        for(int i = 0; i < PickContainer.Count; i++)
-        {
-            if (PickContainer[i] != 0)
-            {
-                return PickContainer[i];
-            } // 가장 먼저 0이 안들어가는 부분
-        }
-        return -1;
-    }
+        GameObject CheckMesh = GameObject.Find(meshnum.ToString());
+        int keepLinknum = 0;
 
-    public int DeleteCheckLast()
-    {
-        for (int i = 0; i < PickContainer.Count; i++)
+        for(int i = 0; i < 3; i++)
         {
-            if (PickContainer[i] != 0)
+            // 타입이 같은 JointMesh를 만났어!
+            if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate == type)
             {
-                return PickContainer[i];
-            } // 가장 먼저 0이 안들어가는 부분
+                if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().Linkednum !=
+                    CheckMesh.GetComponent<MeshController>().Linkednum) // 컨테이너에 들어있는 애가 아닐 때만 
+                {
+                    keepLinknum = CheckMesh.GetComponent<MeshController>().Linkednum;
+                    int ChangingLinkedNum = CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().Linkednum;
+                    for (int j = 1; j < AllContainer.Length; j++)
+                    {
+                        if (AllContainer[j].GetComponent<MeshController>().Linkednum == ChangingLinkedNum)
+                        {
+                            //Debug.Log(AllContainer[j].GetComponent<MeshController>().Linkednum + "[만나쓰]-->" + keepLinknum);
+                            AllContainer[j].GetComponent<MeshController>().Linkednum = keepLinknum;
+                        }
+                    }
+                }
+            }
         }
-        return -1;
     }
 }
