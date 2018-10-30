@@ -8,61 +8,9 @@ NewUserDataManager::NewUserDataManager()
 		userDataCont.emplace_back();
 }
 
-
 NewUserDataManager::~NewUserDataManager()
 {
 
-}
-
-void NewUserDataManager::Load()
-{
-	std::ifstream inFile("UserData/UserData.txt", std::ios::in);
-
-	std::string ID;
-	int PW, winCount, loseCount, Money;
-	int userDataCount{};
-
-	inFile >> userDataCount;
-
-	userDataCont.reserve(userDataCount);
-
-	for (int i = 0; i < userDataCount; i++) {
-		inFile >> ID >> PW >> winCount >> loseCount >> Money;
-
-		userDataCont.emplace_back(ID, PW, winCount, loseCount, Money);
-	}
-
-	inFile.close();
-
-	std::cout << "     [UserDataManager] Load UserData Complete! " << std::endl;
-}
-
-void NewUserDataManager::Save(bool& InIsSave)
-{
-	if (InIsSave) {
-		InIsSave = false;
-
-		Sleep(2000);
-		std::ofstream outFile("UserData/UserData.txt", std::ios::out);
-
-		outFile << userDataCont.size() << std::endl;
-
-		for (auto i : userDataCont) {
-			outFile << " " << i.GetID()
-				<< " " << i.GetPW()
-				<< " " << i.GetWinCount()
-				<< " " << i.GetLoseCount()
-				<< " " << i.GetMoney()
-				<< std::endl;
-		}
-		outFile.close();
-
-		std::cout << "     [UserDataManager] Save UserData! " << std::endl;
-
-		InIsSave = false;
-
-		Sleep(2000);
-	}
 }
 
 int NewUserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
@@ -70,10 +18,10 @@ int NewUserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& In
 {
 	//RetFailReson = 0;
 	// 유저 데이터 
-	int userDataContHashValueBuffer = GetStringFirstChar(InID[0]);
+	InPSocketInfo->userDataContIndex = GetStringFirstChar(InID[0]);
 
 	// 이미 로그인 여부 체크.
-	if (userDataCont[userDataContHashValueBuffer].find(InID) == userDataCont[userDataContHashValueBuffer].end())
+	if (userDataCont[InPSocketInfo->userDataContIndex].find(InID) == userDataCont[InPSocketInfo->userDataContIndex].end())
 	{
 		return 3; 
 	}
@@ -106,14 +54,14 @@ int NewUserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& In
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
-		InPSocketInfo->userIter = userDataCont[userDataContHashValueBuffer].emplace(InID, NewUserData(InPSocketInfo, InID)).first;
+		InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, NewUserData(InPSocketInfo, InID)).first;
 		return 0;
 	}
 
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
-		InPSocketInfo->userIter = userDataCont[userDataContHashValueBuffer].emplace(InID, NewUserData(InPSocketInfo, InID, RetNickName,
+		InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, NewUserData(InPSocketInfo, InID, RetNickName,
 			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit)).first;
 		return 0;
 	}
@@ -132,7 +80,7 @@ int NewUserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& In
 	}
 
 	// 정상적인 로그인.
-	InPSocketInfo->userIter = userDataCont[userDataContHashValueBuffer].emplace(InID, NewUserData(InPSocketInfo, InID, RetNickName,
+	InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, NewUserData(InPSocketInfo, InID, RetNickName,
 		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont)).first;
 
 	return 0;
@@ -168,7 +116,7 @@ void NewUserDataManager::LogoutProcess(SocketInfo* InPSocketInfo)
 	}
 
 	// UserCont(MAP)에서 해당 정보 삭제.
-	userDataCont[GetStringFirstChar(InPSocketInfo->userIter->second.GetID[0])].erase(InPSocketInfo->userIter);
+	userDataCont[InPSocketInfo->userDataContIndex].erase(InPSocketInfo->userIter);
 }
 
 int NewUserDataManager::GetStringFirstChar(const char& InStringFirstChar)
@@ -196,10 +144,3 @@ int NewUserDataManager::GetStringFirstChar(const char& InStringFirstChar)
 	}
 }
 
-
-
-
-//void UserDataManager::EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex) {
-//	userDataCont.emplace_back(InID, InPW);
-//	RetIndex = userDataCont.size() - 1;
-//}

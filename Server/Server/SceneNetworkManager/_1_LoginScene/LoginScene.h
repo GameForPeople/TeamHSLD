@@ -5,7 +5,7 @@
 #include "../BaseScene.h"
 
 #include "../../GameRoom/GameRoomManager.h"
-#include "../../UserData/UserDataManager.h"
+#include "../../UserData/NewUserDataManager.h"
 
 namespace SCENE_NETWORK_MANAGER
 {
@@ -19,20 +19,20 @@ namespace SCENE_NETWORK_MANAGER
 		LoginScene();
 		virtual ~LoginScene() override = default;
 	public:
-		virtual void ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData) override;
 
 	public:
 		//void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, UserDataManager& InUserData);
 		//void ProcessSend(const int& InSendType, SOCKETINFO* ptr, UserDataManager& InUserData);
 
 	private:
-		void RecvDemandLogin(SOCKETINFO* ptr, UserDataManager& InUserData);
+		void RecvDemandLogin(SocketInfo* ptr, NewUserDataManager& InUserData);
 
-		void SendPermitLogin(SOCKETINFO* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney);
-		void SendFailLogin(SOCKETINFO* ptr, const int& RetFailReason);
+		void SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney);
+		void SendFailLogin(SocketInfo* ptr, const int& RetFailReason);
 
 	private:
-		int LoginTest(SOCKETINFO* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
-		int SignUpTest(SOCKETINFO* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);
+		int LoginTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
+		int SignUpTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);
 	};
 }

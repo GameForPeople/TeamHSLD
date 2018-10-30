@@ -5,7 +5,7 @@ SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): BaseScene(), PERMIT_LOGIN(Proto
 
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	//ProcessRecv(InRecvType, ptr, InUserData);
 	//ProcessSend(InRecvType, ptr, InUserData);
@@ -22,7 +22,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SOCKE
 //	//memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 //}
 
-void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SOCKETINFO* ptr, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, NewUserDataManager& InUserData)
 {
 	int typeBuffer = (int&)(ptr->buf[4]);
 	int pwBuffer = (int&)(ptr->buf[8]);
@@ -53,18 +53,18 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SOCKETINFO* ptr, UserDat
 	}
 }
 
-int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SOCKETINFO* ptr, UserDataManager& InUserData, 
+int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SocketInfo* ptr, NewUserDataManager& InUserData,
 	const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney)
 {
 	return InUserData.SignIn(InIdBuffer, InPwBuffer, outWinCount, outLoseCount, outMoney, ptr->userIndex);
 }
 
-int SCENE_NETWORK_MANAGER::LoginScene::SignUpTest(SOCKETINFO* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer)
+int SCENE_NETWORK_MANAGER::LoginScene::SignUpTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer)
 {
 	return InUserData.SignUp(InIdBuffer, InPwBuffer, ptr->userIndex);
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SOCKETINFO* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney)
+void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney)
 {
 	memcpy(ptr->buf, (char*)&PERMIT_LOGIN, sizeof(int));
 	memcpy(ptr->buf + 4, (char*)&InWinCount, sizeof(int));
@@ -74,7 +74,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SOCKETINFO* ptr, const i
 	ptr->dataSize = 16;
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::SendFailLogin(SOCKETINFO* ptr, const int& RetFailReason)
+void SCENE_NETWORK_MANAGER::LoginScene::SendFailLogin(SocketInfo* ptr, const int& RetFailReason)
 {
 	memcpy(ptr->buf, (char*)&FAIL_LOGIN, sizeof(int));
 	memcpy(ptr->buf + 4, (char*)&RetFailReason, sizeof(int));

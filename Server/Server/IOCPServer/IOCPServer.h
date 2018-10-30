@@ -3,7 +3,9 @@
 #include "../PCH/stdafx.h"
 
 #include "../Protocol/CommunicationProtocol.h"
-#include "../UserData/UserDataManager.h"
+#include "../IOCPServer/SocketInfo.h"
+
+#include "../UserData/NewUserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
 #include "../SceneNetworkManager/BaseScene.h"
@@ -62,7 +64,7 @@ private:
 	HANDLE hManagerThread;
 
 	//For Game
-	UserDataManager userData;
+	NewUserDataManager userData;
 	GameRoomManager roomData;
 
 	SCENE_NETWORK_MANAGER::BaseScene* sceneNetworkManagerArr[6];
@@ -96,7 +98,7 @@ public:
 	void Init()
 	{
 		PrintServerInfoUI();
-		LoadUserData();
+		//LoadUserData();
 		InitWinSocket();
 		CreateBindListen();
 		BindSceneDataProcess();
@@ -121,7 +123,7 @@ private:
 
 	void PrintServerInfoUI();
 	
-	void LoadUserData();
+	//void LoadUserData();
 	
 	void InitWinSocket();
 

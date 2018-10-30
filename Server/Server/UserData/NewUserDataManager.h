@@ -3,6 +3,8 @@
 #include "../PCH/stdafx.h"
 #include "../UserData/NewUserData.h"
 
+using user_iter = map<const std::string, NewUserData>::iterator;
+
 class NewUserDataManager {
 	std::vector<map<string, NewUserData>> userDataCont;
 
@@ -17,26 +19,14 @@ public:
 
 	void LogoutProcess(SocketInfo* InPSocketInfo);
 
-	//void EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex);
-
-public:
+private:
 	// for userDataCont Hash, 첫글자처리필요.
 	int GetStringFirstChar(const char& InStringFirstChar);
 
-	//NewUserData* a = const_cast<NewUserData*>(&userDataCont[InIndex].find("abc")->second);
-	__inline int GetUserDataSize() const
+public:
+	__inline void SetGameResult(map<const std::string, NewUserData>::iterator& InUserIter, const bool& InWinOrLose)
 	{
-		return userDataCont.size();
-	}
-
-	//이거 복사되는지 확실히 알 수 있나..? 이거 복사시킬거면 그냥 차라리 Public이 훨씐낮지..ㅡㅡ
-	//__inline std::vector<UserData> GetPlayer() {
-	//	return player;
-	//}
-
-	__inline void SetGameResult(const int& InPlayerIndex, const bool& InWinOrLose)
-	{
-		userDataCont[InPlayerIndex].SetGameResult(InWinOrLose);
+		InUserIter->second.SetGameResult(InWinOrLose);
 	}
 };
 

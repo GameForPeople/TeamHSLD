@@ -5,12 +5,12 @@ SCENE_NETWORK_MANAGER::RoomScene::RoomScene() : BaseScene(), PERMIT_ENEMY_CHARAC
 
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	DemandEnemyCharacterIndex(ptr, InRoomData, InUserData);
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::DemandEnemyCharacterIndex(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RoomScene::DemandEnemyCharacterIndex(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	InRoomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
 

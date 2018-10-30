@@ -5,7 +5,7 @@
 #include "../BaseScene.h"
 
 #include "../../GameRoom/GameRoomManager.h"
-#include "../../UserData/UserDataManager.h"
+#include "../../UserData/NewUserDataManager.h"
 
 namespace SCENE_NETWORK_MANAGER
 {
@@ -16,7 +16,7 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~MainUiScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData) override;
 
 	public:
 		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);

@@ -1,19 +1,20 @@
 #pragma once
 
-#include "../GameRoom/GameRoom.h"
+#include "../GameRoom/NewGameRoom.h"
+#include "../GameRoom/Room_List.h"
 
 class GameRoomManager {
-	std::vector<GameRoom> rooms;
+	room_list waitRoomCont;
+	room_list playRoomCont;
 
 public:
-	GameRoomManager();
-
-	__inline ~GameRoomManager() = default;
+	GameRoomManager() = default;
+	~GameRoomManager() = default;
 
 public:
-	int CreateRoom(const int& InHostIndex);
+	void CreateRoom(user_iter* InUserIter, NewGameRoom* RetRoomPointer);
 
-	int JoinRoom(const int& InGuestIndex, int& RetRoomIndex);
+	void JoinRoom(user_iter* InUserIter, NewGameRoom* RetRoomPointer);
 
 	__inline void ExitRoom(const int& InRoomIndex)
 	{

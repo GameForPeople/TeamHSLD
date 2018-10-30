@@ -63,9 +63,6 @@
     <ClCompile Include="UserData\UserData.cpp">
       <Filter>소스 파일\UserData</Filter>
     </ClCompile>
-    <ClCompile Include="GameRoom\GameRoom.cpp">
-      <Filter>소스 파일\Room</Filter>
-    </ClCompile>
     <ClCompile Include="GameRoom\GameRoomManager.cpp">
       <Filter>소스 파일\Room</Filter>
     </ClCompile>
@@ -92,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="UserData\NewUserDataManager.cpp">
       <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRoom\NewGameRoom.cpp">
+      <Filter>소스 파일\Room</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="IOCPServer\SocketInfo.h">
       <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\NewGameRoom.h">
+      <Filter>소스 파일\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\Room_List.h">
+      <Filter>소스 파일\Room</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

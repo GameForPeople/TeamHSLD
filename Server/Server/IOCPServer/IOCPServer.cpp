@@ -81,7 +81,7 @@ namespace NETWORK_UTIL {
 	//	}
 	//}
 
-	bool SendProcess(SOCKETINFO* ptr)
+	bool SendProcess(SocketInfo* ptr)
 	{
 		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
@@ -158,10 +158,10 @@ void IOCPServer::PrintServerInfoUI()
 	delete[]retIPChar;
 }
 
-void IOCPServer::LoadUserData()
-{
-	userData.Load();
-}
+//void IOCPServer::LoadUserData()
+//{
+//	userData.Load();
+//}
 
 void IOCPServer::InitWinSocket()
 {
@@ -307,7 +307,7 @@ void IOCPServer::AcceptProcess()
 		CreateIoCompletionPort((HANDLE)clientSocket, hIOCP, clientSocket, 0);
 
 		// 소켓 정보 구조체 할당
-		SOCKETINFO *ptr = new SOCKETINFO;
+		SocketInfo *ptr = new SocketInfo;
 		if (ptr == NULL) break;
 
 		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
@@ -389,7 +389,7 @@ void IOCPServer::WorkerThreadFunction()
 		//비동기 입출력 기다리기
 		DWORD cbTransferred;
 		SOCKET clientSocket;
-		SOCKETINFO *ptr;
+		SocketInfo *ptr;
 
 		// 입출력 완료 포트에 저장된 결과를 처리하기 위한 함수 // 대기 상태가 됨
 		retVal = GetQueuedCompletionStatus(
@@ -412,10 +412,16 @@ void IOCPServer::WorkerThreadFunction()
 		// 근데 이거 에코서버일떄만 그래야되는거 아니야???? 몰봐 임마 뭘봐 모를수도 있지
 		if (retVal == 0 || cbTransferred == 0)
 		{
-			// 게임 방에서 나갔을 경우, 서버의 해당 클라의 ptr->RoomIndex = -1로 변경하는 작업 필요.
-			if (ptr->roomIndex >= 0)
+#ifdef _DEBUG
+			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << ptr->userIter->second.GetID() << std::endl;
+			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
+			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
+#endif
+			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
+			if (ptr->isInRoom)
 			{
-				if (int ReturnEnemyIndexBuffer; roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
+				if (map<const std::string, NewUserData>::iterator enemyIter; 
+				roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
 				{
 					// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
 					userData.SetGameResult(ReturnEnemyIndexBuffer, true);
@@ -428,7 +434,7 @@ void IOCPServer::WorkerThreadFunction()
 				}
 			}
 
-			userData.SignOut(ptr->userIndex);
+			userData.LogoutProcess(ptr);
 
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
@@ -439,11 +445,6 @@ void IOCPServer::WorkerThreadFunction()
 			}
 			closesocket(ptr->sock);
 
-#ifdef _DEBUG
-			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << userData.GetUserID(ptr->userIndex) << std::endl;
-			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
-			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
-#endif
 			delete ptr;
 			continue;
 		}

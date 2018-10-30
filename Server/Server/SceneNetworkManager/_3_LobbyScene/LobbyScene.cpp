@@ -7,7 +7,7 @@ SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene()
 
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	if (InRecvType == DEMAND_RANDOM_MATCH)
 	{
@@ -19,7 +19,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SOCKE
 	}
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	if (InRoomData.RandomMatchingProcess(ptr->userIndex, ptr->roomIndex)) // Create!!
 	{
@@ -61,7 +61,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SOCKETINFO* ptr, GameR
 	}
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
 {
 	if (InRoomData.GetGameReady(ptr->roomIndex))
 	{

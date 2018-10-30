@@ -25,6 +25,7 @@ struct SocketInfo
 
 	// 룸씐 인덱스, 방 제작 시나 접속 시 사용됨 ( 초기화 미필요 )
 	int roomIndex;
+	bool isInRoom;
 
 	// 룸씐, 인게임씬에서 호스트 여부 체크 (초기화 미필요)
 	bool isHost;
@@ -32,9 +33,10 @@ struct SocketInfo
 	// 캐릭터의 정보를 담아넣는 구조체입니다.
 	//NewUserData* pUserData;
 
-	// STL답게 아름다운 우리 이터레이터를 사용합니다.
-	map<string, NewUserData>::iterator userIter;
-	//std::conditional_t<
+	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
+	user_iter userIter;
+	// 한번만 계산해서 여러번 사용합시다.
+	int userDataContIndex;
 
 public:
 	//생성자 필요에 의해 추가.
@@ -42,10 +44,13 @@ public:
 		//bufferProtocol(0), 
 		buf(),
 		roomIndex(-1),
+		isInRoom(false),
 		isHost(false),
 		//dataSize(), 
 		isRecvTurn(true),
-		userIter()
+		userIter(),
+		userDataContIndex()//,
+		//enemyIter()
 	{};
 
 	__inline ~SocketInfo() = default;
