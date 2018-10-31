@@ -102,6 +102,7 @@ namespace NETWORK_UTIL {
 			}
 			return true;
 		}
+		return true;
 	}
 };
 
@@ -149,7 +150,7 @@ void IOCPServer::PrintServerInfoUI()
 
 	printf("■■■■■■■■■■■■■■■■■■■■■■■■■\n");
 	printf("■ IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("■                                ver 1.7 181023\n");
+	printf("■                                ver 2.0 181101\n");
 	printf("■\n");
 	printf("■    IP Address : %s \n", retIPChar);
 	printf("■    Server Port : %d \n", SERVER_PORT);
@@ -420,18 +421,18 @@ void IOCPServer::WorkerThreadFunction()
 			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
 			if (ptr->isInRoom)
 			{
-				if (map<const std::string, NewUserData>::iterator enemyIter; 
-				roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
-				{
-					// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
-					userData.SetGameResult(ReturnEnemyIndexBuffer, true);
-					userData.SetGameResult(ptr->userIndex, false);
-				}
-				else
-				{
-					// 게임 중이 아니였거나, 완전히 다른 거 중. 
-					//...? 할게 없나...?
-				}
+				//if (map<const std::string, UserData>::iterator enemyIter; 
+				//roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
+				//{
+				//	// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
+				//	userData.SetGameResult(ReturnEnemyIndexBuffer, true);
+				//	userData.SetGameResult(ptr->userIndex, false);
+				//}
+				//else
+				//{
+				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
+				//	//...? 할게 없나...?
+				//}
 			}
 
 			userData.LogoutProcess(ptr);
@@ -474,11 +475,12 @@ void IOCPServer::WorkerThreadFunction()
 			recvType = (int&)(ptr->buf);
 		
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
-			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			NETWORK_UTIL::SendProcess(ptr);
+			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 
+			if (NETWORK_UTIL::SendProcess(ptr))
+				continue;
 		}
 	}
 }
@@ -501,9 +503,9 @@ void IOCPServer::ManagerLoop()
 	{
 		Sleep(1000);
 
-		if (isSaveOn) SaveUserData();
-
-		Sleep(1000);
+		//if (isSaveOn) SaveUserData();
+		//
+		//Sleep(1000);
 
 		if (isSendUDPMessage)SendDynamicMessage();
 
@@ -524,10 +526,10 @@ void IOCPServer::SendDynamicMessage()
 	isSendUDPMessage = false;
 }
 
-void IOCPServer::SaveUserData()
-{
-		//지금 자야되니까 나중에 이거보면 
-		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
-		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
-		userData.Save(isSaveOn);
-}
+//void IOCPServer::SaveUserData()
+//{
+//		//지금 자야되니까 나중에 이거보면 
+//		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
+//		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+//		//userData.Save(isSaveOn);
+//}

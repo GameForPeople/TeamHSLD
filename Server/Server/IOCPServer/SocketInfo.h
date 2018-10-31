@@ -1,9 +1,9 @@
 #pragma once
 
 #include "../PCH/stdafx.h"
+#include "../UserData/UserDataManager.h"
 
-#include "../GameRoom/GameRoomManager.h"
-#include "../UserData/NewUserDataManager.h"
+class GameRoom;
 
 struct SocketInfo
 {
@@ -23,27 +23,27 @@ struct SocketInfo
 	// 추후에 해당 인덱스는 이터레이터 포인터로 변경 적용할 예정입니다.
 	// 현재 컨테이너 Std::Vector
 
+	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
+	user_iter userIter;
+	// 한번만 계산해서 여러번 사용합시다.
+	int userDataContIndex;
+
 	// 룸씐 인덱스, 방 제작 시나 접속 시 사용됨 ( 초기화 미필요 )
-	int roomIndex;
+	GameRoom* pRoomIter;
 	bool isInRoom;
 
 	// 룸씐, 인게임씬에서 호스트 여부 체크 (초기화 미필요)
 	bool isHost;
 
 	// 캐릭터의 정보를 담아넣는 구조체입니다.
-	//NewUserData* pUserData;
-
-	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
-	user_iter userIter;
-	// 한번만 계산해서 여러번 사용합시다.
-	int userDataContIndex;
+	//UserData* pUserData;
 
 public:
 	//생성자 필요에 의해 추가.
 	__inline SocketInfo() :
 		//bufferProtocol(0), 
 		buf(),
-		roomIndex(-1),
+		pRoomIter(nullptr),
 		isInRoom(false),
 		isHost(false),
 		//dataSize(), 

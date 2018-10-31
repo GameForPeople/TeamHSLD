@@ -4,8 +4,9 @@
 
 #include "../BaseScene.h"
 
-#include "../../GameRoom/GameRoomManager.h"
-#include "../../UserData/NewUserDataManager.h"
+struct SocketInfo;
+class GameRoomManager;
+class UserDataManager;
 
 namespace SCENE_NETWORK_MANAGER
 {
@@ -20,35 +21,35 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~InGameScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
 
 	private:
 		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
-		void ProcessRecv(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void ProcessRecv(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 		//InSendType Called By Value로 전달 요구됨.
-		void ProcessSend(const int InSendType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void ProcessSend(const int InSendType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 	private:
 		//std::vector<FunctionPointer> functionPointers;
-		void(InGameScene::*RecvFunctions[10])(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void(InGameScene::*SendFunctions[10])(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void(InGameScene::*RecvFunctions[10])(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void(InGameScene::*SendFunctions[10])(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-		void RecvGameState(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvChangeTurn(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvDiceValue(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvTerrainType(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void RecvNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void RecvGameState(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvChangeTurn(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvDiceValue(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvTerrainType(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-		void SendGameState(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendChangeTurn(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendDiceValue(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendTerrainType(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void SendNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void SendGameState(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendChangeTurn(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendDiceValue(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendTerrainType(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 
 	//void RecvGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);

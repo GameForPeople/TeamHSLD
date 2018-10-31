@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../PCH/stdafx.h"
-#include "../GameRoom/NewGameRoom.h"
+#include "../GameRoom/GameRoom.h"
 
 class room_list
 {
-	NewGameRoom* pDoor;
+	GameRoom* pDoor;
 
 public:
 	room_list()
@@ -13,18 +13,18 @@ public:
 		int ibuffer{ 0 };
 
 		//for Cap - Dummy
-		pDoor = new NewGameRoom(ibuffer);
+		pDoor = new GameRoom(ibuffer);
 		//WaitNodeCont = nullptr;
 	}
 
-	void Create(NewGameRoom* pRetNode)
+	void Create(GameRoom* pRetNode)
 	{
 		pDoor->left = pRetNode;
 		pRetNode->right = pDoor;
 		pDoor = pRetNode;
 	}
 
-	void Push(NewGameRoom* pRetNode)
+	void Push(GameRoom* pRetNode)
 	{
 		// 포인터만 스무스하게 슥.
 		pDoor->left = pRetNode;
@@ -33,31 +33,41 @@ public:
 		pDoor = pRetNode;
 	}
 
-	void Pop(NewGameRoom* pRetNode)
+	void Pop(GameRoom* pRetNode)
 	{
 		// 헤더 노드를 빼야할때.
 		if (pRetNode->left == nullptr)
 		{
 			pDoor = pDoor->right;
 			pDoor->left = nullptr;
+			return;
 		}
+
 		pRetNode->left->right = pRetNode->right;
 		pRetNode->right->left = pRetNode->left;
 	}
 
-	void GetOneRoom(NewGameRoom* pRetNode)
+	void GetOneRoom(GameRoom* pRetNode)
 	{
 		pRetNode = pDoor;
 
 		pDoor = pDoor->right;
-		pRetNode->right = nullptr;
+		//pRetNode->right = nullptr; // 굳이 필요 없을 것으로 보임.
 
 		pDoor->left = nullptr;
 	}
 
+	__inline bool IsEmpty()
+	{
+		if (pDoor->right == nullptr)
+			return true;
+		
+		return false;
+	}
+
 	void Print()
 	{
-		//NewGameRoom* newNode = WaitNodeCont;
+		//GameRoom* newNode = WaitNodeCont;
 		//
 		//while (newNode->right != nullptr)
 		//{

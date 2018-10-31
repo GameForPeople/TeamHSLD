@@ -5,7 +5,7 @@ SCENE_NETWORK_MANAGER::TitleScene::TitleScene() : BaseScene()
 
 }
 
-void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 
 }

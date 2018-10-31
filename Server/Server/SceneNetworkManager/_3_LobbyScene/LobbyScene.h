@@ -4,8 +4,9 @@
 
 #include "../BaseScene.h"
 
-#include "../../GameRoom/GameRoomManager.h"
-#include "../../UserData/NewUserDataManager.h"
+struct SocketInfo;
+class GameRoomManager;
+class UserDataManager;
 
 namespace SCENE_NETWORK_MANAGER
 {
@@ -23,7 +24,7 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~LobbyScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
 
 	public:
 		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
@@ -34,7 +35,7 @@ namespace SCENE_NETWORK_MANAGER
 		//void(*SendFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 	private:
-		void DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
-		void DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData);
+		void DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 }

@@ -5,7 +5,9 @@
 #include "../BaseScene.h"
 
 #include "../../GameRoom/GameRoomManager.h"
-#include "../../UserData/NewUserDataManager.h"
+#include "../../UserData/UserDataManager.h"
+
+struct SocketInfo;
 
 namespace SCENE_NETWORK_MANAGER
 {
@@ -19,20 +21,26 @@ namespace SCENE_NETWORK_MANAGER
 		LoginScene();
 		virtual ~LoginScene() override = default;
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
 
 	public:
 		//void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, UserDataManager& InUserData);
 		//void ProcessSend(const int& InSendType, SOCKETINFO* ptr, UserDataManager& InUserData);
 
 	private:
-		void RecvDemandLogin(SocketInfo* ptr, NewUserDataManager& InUserData);
+		void RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData);
 
 		void SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney);
+		
+		void SendPermitLogin(SocketInfo* ptr, const string& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
+			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<string>& RetFriendStringCont);
+		
 		void SendFailLogin(SocketInfo* ptr, const int& RetFailReason);
 
 	private:
-		int LoginTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
-		int SignUpTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);
+		//int LoginTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
+		//int SignUpTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);
+		int LoginProcess(SocketInfo* InPSocketInfo, UserDataManager& InUserData, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+			int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont);
 	};
 }

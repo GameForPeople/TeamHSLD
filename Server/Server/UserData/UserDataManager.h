@@ -3,49 +3,30 @@
 #include "../PCH/stdafx.h"
 #include "../UserData/UserData.h"
 
+struct SocketInfo;
+
+//using user_iter = map<const std::string, UserData>::iterator;
+typedef map<const std::string, UserData>::iterator user_iter;
+
 class UserDataManager {
-	std::vector<UserData> userDataCont;
+	std::vector<map<string, UserData>> userDataCont;
 
 public:
-	__inline UserDataManager() = default;
-	__inline ~UserDataManager() = default;
+	UserDataManager(); // = delete;
+	~UserDataManager(); // = delete;
 
 public:
-	void Load();
+	// 로그인 및 회원가입 모두 여기서 처리합니다.
+	int LoginProcess(SocketInfo* InPSocketInfo, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont);
 
-	void Save(bool& InIsSave);
+	void LogoutProcess(SocketInfo* InPSocketInfo);
 
-	int SignIn(const string& InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
-
-	int SignIn(const char* InID, const int& InPW, int& RetWinCount, int& RetLoseCount, int& RetMoney, int& RetIndex);
-
-	int SignUp(const string& InID, const int& InPW, int& RetIndex);
-
-	int SignUp(const char* InID, const int& InPW, int& RetIndex);
-
-	void SignOut(const int& InClientIndex);
-
-	//void EmplaceBackToPlayer(const string& InID, const int& InPW, int& RetIndex);
+private:
+	// for userDataCont Hash, 첫글자처리필요.
+	int GetStringFirstChar(const char& InStringFirstChar);
 
 public:
-	__inline int GetUserDataSize() const
-	{
-		return userDataCont.size();
-	}
-
-	//이거 복사되는지 확실히 알 수 있나..? 이거 복사시킬거면 그냥 차라리 Public이 훨씐낮지..ㅡㅡ
-	//__inline std::vector<UserData> GetPlayer() {
-	//	return player;
-	//}
-
-	__inline string GetUserID(const int& InIndex) const
-	{
-		return userDataCont[InIndex].GetID();
-	}
-
-	__inline void SetGameResult(const int& InPlayerIndex, const bool& InWinOrLose) 
-	{
-		userDataCont[InPlayerIndex].SetGameResult(InWinOrLose);
-	}
+	void SetGameResult(user_iter* InUserIter, const bool& InWinOrLose);
 };
 

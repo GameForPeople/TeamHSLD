@@ -29,6 +29,6 @@
 using namespace std;
 
 // For Login
-#define		MAX_ID_LEN		12
+#define		MAX_ID_LEN		30
 #define		BUF_SIZE		100
 

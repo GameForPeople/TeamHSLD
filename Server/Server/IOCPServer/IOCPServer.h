@@ -5,7 +5,7 @@
 #include "../Protocol/CommunicationProtocol.h"
 #include "../IOCPServer/SocketInfo.h"
 
-#include "../UserData/NewUserDataManager.h"
+#include "../UserData/UserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
 #include "../SceneNetworkManager/BaseScene.h"
@@ -64,7 +64,7 @@ private:
 	HANDLE hManagerThread;
 
 	//For Game
-	NewUserDataManager userData;
+	UserDataManager userData;
 	GameRoomManager roomData;
 
 	SCENE_NETWORK_MANAGER::BaseScene* sceneNetworkManagerArr[6];
@@ -152,7 +152,7 @@ private:
 	void WorkerThreadFunction();
 	static DWORD WINAPI ManagerThread(LPVOID arg);
 	void ManagerLoop();
-	void SaveUserData();
+	// void SaveUserData();
 
 	// UDPSocket
 	void SendDynamicMessage();

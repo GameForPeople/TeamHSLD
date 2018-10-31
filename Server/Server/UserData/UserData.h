@@ -1,72 +1,111 @@
 #pragma once
 
-/*
-UserData.h 에서 해야될 일!
-  1. UserData가 일정이상 커지면, Vector말고 다른 로직의 적용이 필요할 수 있음. (속도 측면) -> 근데 그 순간 ptr-> 부분에 아이디, 비밀번호 추가하고 로직 엎어야함 와우!
-  2. Vector컨테이너의 Index를 Key로 쓰는 지금 로직에서 Sort 같은 짓 하면, 유저들 정보 난리남..
-  3. (단 userData 컨테이너를 Vector일때만 해당 내용 적용, 아니면 동일함. ) SignIn, SignUp에서 Iter로 돌리지 말고, 함수 인자로 전달된, RetIndex로 For문 [RetIndex] 돌리도록 변경 필요 ( 최적화 )
-
-  // 1, 2, 3의 변경건이 생기면, Index말고, Iter 혹은, 해당 구조체위치의 포인터 획득해서 UserData형변환해서 사용하던가 해야함! --> 이게 더 좋은 듯.
-*/
-
 #include "../PCH/stdafx.h"
 
+struct SocketInfo;
+
 class UserData {
-	//basic Data
-	std::string m_id{};
-	int m_pw{};
-	int m_winCount{};
-	int m_loseCount{};
-	int m_money{};
+	SocketInfo*				pSocketInfo;			// 소켓 정보 구조체
 
-	//Game use Data
-	bool m_isLogin{ false };
+	std::string				id{};					// 아이디
+	std::string				nickName{};				//닉네임
 
-public:
-	__inline UserData() {};
+	int						winCount;				//승리 횟수
+	int						loseCount;				//패배 횟수
+	int						money;					//인게임 재화
 
-	// 회원가입용! 바로 로그인됨!
-	__inline UserData(std::string InID, const int InPW) : m_id(InID), m_pw(InPW), m_winCount(0), m_loseCount(0), m_money(0), m_isLogin(true)
-	{ };
+	int						achievementBit;			//업적 비트
+	int						titleBit;				//칭호 비트
+	int						characterBit;			//보유 캐릭터 비트
 
-	// Data Load 용! 로그인되지 않음!! 회원가입에 쓰면 안됌!!
-	__inline UserData(std::string InID, const int InPW, const int InWinCount, const int InloseCount, const int InMoney)
-		: m_id(InID), m_pw(InPW), m_winCount(InWinCount), m_loseCount(InloseCount), m_money(InMoney), m_isLogin(false)
-	{ };
-
-	__inline ~UserData() {};
+	vector<std::string>		friendStringCont;		// 친구 이름 컨테이너
+	vector<SocketInfo*>		friendSocketInfoCont;	// 친구 소켓 정보 컨테이너
 
 public:
-	__inline void  SignOut()
+	//UserData() = delete;
+
+	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
+	UserData(SocketInfo* InPSocketInfo, const std::string& InID, const std::string& InNickName,
+		const int& InWinCount, const int& InLoseCount, const int& InMoney, 
+		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, 
+		const vector<string>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
+
+		: pSocketInfo(InPSocketInfo), id(InID), nickName(InNickName), 
+		winCount(InWinCount), loseCount(InLoseCount), money(InMoney), 
+		achievementBit(InAchievementBit), titleBit(InTitleBit), characterBit(InCharacterBit),
+		friendStringCont(InFriendStringCont), friendSocketInfoCont()
+	{};
+
+	//친구가 없을 경우. default로 init함.
+	UserData(SocketInfo* InPSocketInfo, const std::string& InID, const std::string& InNickName,
+		const int& InWinCount, const int& InLoseCount, const int& InMoney,
+		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit)
+		
+		: pSocketInfo(InPSocketInfo), id(InID), nickName(InNickName),
+		winCount(InWinCount), loseCount(InLoseCount), money(InMoney),
+		achievementBit(InAchievementBit), titleBit(InTitleBit), characterBit(InCharacterBit),
+		friendStringCont(), friendSocketInfoCont()
+	{};
+
+	//회원가입처리
+	UserData(SocketInfo* InPSocketInfo, const std::string& InID)
+
+		: pSocketInfo(InPSocketInfo), id(InID), nickName(),
+		winCount(0), loseCount(0), money(0),
+		achievementBit(0), titleBit(0), characterBit(0),
+		friendStringCont(), friendSocketInfoCont()
+	{};
+
+	//디져랏!
+	~UserData() 
 	{
-		m_isLogin = false;
-	}
+		pSocketInfo = nullptr;
 
-	__inline void	PrintUserData() const 
+		for (auto iter = friendSocketInfoCont.begin(); iter != friendSocketInfoCont.end(); ++iter)
+		{
+			*iter = nullptr;
+		}
+	};
+
+public:
+	//주의 : 해당 함수는 디버그 용도로만 사용하세요.
+	__inline void	PrintUserData() const
 	{
-		std::cout << m_id << "  " << m_pw << "  " << m_winCount << "  " << m_loseCount << std::endl;
+		std::cout 
+			<< "id : " << id
+			<< ", nickName : " << nickName
+			<< ", winCount : " << winCount
+			<< ", loseCount : " << loseCount
+			<< ", money : " << money
+			<< ", achievementBit : " << achievementBit
+			<< ", titleBit : " << titleBit
+			<< ", characterBit : " << characterBit
+			// friend는 출력하기 어렵습 -> 귀찮습니다.
+			<< "\n";
 	}
 
-	__inline string	GetID()  const { return m_id; }
-	__inline int	GetPW()   const { return m_pw; }
-	__inline int	GetWinCount()  const { return m_winCount; }
- 	__inline int	GetLoseCount()  const { return m_loseCount; }
-	__inline int	GetMoney()  const { return m_money; } 
-	__inline bool	GetIsLogin()  const { return m_isLogin; } 
-	__inline void	SetIsLogin(const bool& bValue) { m_isLogin = bValue; }
+	__inline string	GetID()  const { return id; }
+	__inline string	GetNickName()   const { return nickName; }
+	__inline int	GetWinCount()  const { return winCount; }
+	__inline int	GetLoseCount()  const { return loseCount; }
+	__inline int	GetMoney()  const { return money; }
+	__inline int	GetAchievementBit()  const { return achievementBit; }
+	__inline int	GetTitleBit()  const { return titleBit; }
+	__inline int	GetCharacterBit()  const { return characterBit; }
+	__inline vector<string> GetFriendStringCont() const { return friendStringCont; }
+	// 애는 왜 중복...?
+	//__inline void	SetWinOrLose(const int& value) {
+	//	if (value == 1) { winCount++; }
+	//	else if (value == 2) { loseCount++; }
+	//}
 
-	__inline void	SetWinOrLose(const int& value) {
-		if (value == 1) { m_winCount++; }
-		else if (value == 2) { m_loseCount++; }
-		return;
-	}
+	// True일 경우 승리, False일 경우 패배.
 	__inline void	SetGameResult(const bool& InWinOrLose)
 	{
-		if (InWinOrLose)
-			++m_winCount;
-		else
-			++m_loseCount;
+		if (InWinOrLose) ++winCount;
+		else ++loseCount;
 	}
 };
+
 
 

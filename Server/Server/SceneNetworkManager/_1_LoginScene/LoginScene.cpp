@@ -1,11 +1,12 @@
 #include "../_1_LoginScene/LoginScene.h"
+#include "../../IOCPServer/SocketInfo.h"
 
 SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): BaseScene(), PERMIT_LOGIN(Protocol::PERMIT_LOGIN), FAIL_LOGIN(Protocol::FAIL_LOGIN)
 {
 
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, NewUserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	//ProcessRecv(InRecvType, ptr, InUserData);
 	//ProcessSend(InRecvType, ptr, InUserData);
@@ -22,7 +23,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 //	//memcpy(ptr->buf, (char*)&InSendType, sizeof(int));
 //}
 
-void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, NewUserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData)
 {
 	int typeBuffer = (int&)(ptr->buf[4]);
 	int pwBuffer = (int&)(ptr->buf[8]);
@@ -38,30 +39,45 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, NewUser
 	int outWinCount{0};
 	int outLoseCount{0};
 	int outMoney{0};
+	string outNickName;
+	int outAchievementBit{ 0 };
+	int outTitleBit{ 0 };
+	int outCharacterBit{ 0 };
+	vector<string> outFriendStringCont;
 
-	int failReason = 
-		typeBuffer == 1 
-		? LoginTest(ptr, InUserData, idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney) 
-		: SignUpTest(ptr, InUserData, idBuffer, pwBuffer);
+	int failReason = LoginProcess(ptr, InUserData, idBuffer, outNickName, outWinCount, outLoseCount, outMoney,
+		outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont);
+
+	//typeBuffer == 1 
+	//? LoginTest(ptr, InUserData, idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney) 
+	//: SignUpTest(ptr, InUserData, idBuffer, pwBuffer);
 
 	if (failReason)
 		SendFailLogin(ptr, failReason);
 	else 
 	{
-		SendPermitLogin(ptr, outWinCount, outLoseCount, outMoney);
-		std::cout << "     [UserDataManager] "<< idBuffer <<" 님이 로그인 하셨습니다. " << "\n";
+		SendPermitLogin(ptr, outNickName, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont );
+		std::cout << "     [UserDataManager] "<< outNickName << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
 	}
 }
 
-int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SocketInfo* ptr, NewUserDataManager& InUserData,
-	const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney)
-{
-	return InUserData.SignIn(InIdBuffer, InPwBuffer, outWinCount, outLoseCount, outMoney, ptr->userIndex);
-}
+//int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SocketInfo* ptr, UserDataManager& InUserData,
+//	const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney)
+//{
+//	return InUserData.SignIn(InIdBuffer, InPwBuffer, outWinCount, outLoseCount, outMoney, ptr->userIndex);
+//}
+//
+//int SCENE_NETWORK_MANAGER::LoginScene::SignUpTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer)
+//{
+//	return InUserData.SignUp(InIdBuffer, InPwBuffer, ptr->userIndex);
+//}
 
-int SCENE_NETWORK_MANAGER::LoginScene::SignUpTest(SocketInfo* ptr, NewUserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer)
+int SCENE_NETWORK_MANAGER::LoginScene::LoginProcess
+(SocketInfo* InPSocketInfo, UserDataManager& InUserData, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont)
 {
-	return InUserData.SignUp(InIdBuffer, InPwBuffer, ptr->userIndex);
+	return InUserData.LoginProcess(InPSocketInfo, InID, RetNickName, RetWinCount, RetLoseCount, RetMoney,
+		RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney)
@@ -73,6 +89,51 @@ void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const i
 
 	ptr->dataSize = 16;
 }
+
+void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const string& InNickName, 
+	const int& InWinCount, const int& InLoseCount, const int& InMoney,
+	const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, const vector<string>& InFriendStringCont)
+{
+	memcpy(ptr->buf, (char*)&PERMIT_LOGIN, sizeof(int));
+	memcpy(ptr->buf + 4, (char*)&InWinCount, sizeof(int));
+	memcpy(ptr->buf + 8, (char*)&InLoseCount, sizeof(int));
+	memcpy(ptr->buf + 12, (char*)&InMoney, sizeof(int));
+	memcpy(ptr->buf + 16, (char*)&InAchievementBit, sizeof(int));
+	memcpy(ptr->buf + 20, (char*)&InTitleBit, sizeof(int));
+	memcpy(ptr->buf + 24, (char*)&InCharacterBit, sizeof(int));
+
+	ptr->dataSize = 28;
+
+
+	// 친구 기능 일단 주석처리함.
+	/*
+	int stringSizeBuffer = InFriendStringCont.size();
+	int totalSizeBuffer{ 0 };
+
+	memcpy(ptr->buf + 28, (char*)&stringSizeBuffer, sizeof(int));
+
+	if (stringSizeBuffer > 0)
+	{
+		//for (auto iter = InFriendStringCont.begin(); iter != InFriendStringCont.end(); iter++)
+		for (auto iter = 0; iter < InFriendStringCont.size(); ++iter)
+		{
+			stringSizeBuffer = InFriendStringCont[iter].size();
+
+			memcpy(ptr->buf + 32 + totalSizeBuffer, (char*)&stringSizeBuffer, sizeof(int));
+			memcpy(ptr->buf + 36 + totalSizeBuffer, InFriendStringCont[iter].data(), stringSizeBuffer);
+			//for (int j = 0; j < stringSizeBuffer; ++j)
+			//{
+			//	ptr->buf[36 + totalSizeBuffer + j] = InFriendStringCont[iter][j];
+			//}
+
+			totalSizeBuffer += (4 + stringSizeBuffer);
+		}
+	}
+	
+	ptr->dataSize = 32 + totalSizeBuffer;
+	*/
+}
+
 
 void SCENE_NETWORK_MANAGER::LoginScene::SendFailLogin(SocketInfo* ptr, const int& RetFailReason)
 {
