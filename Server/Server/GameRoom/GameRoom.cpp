@@ -29,10 +29,11 @@ void GameRoom::JoinRoom(user_iter* InGuestUserIter)
 	//hostDataProtocol = VOID_GAME_STATE;
 	//guestDataProtocol = VOID_GAME_STATE;
 
-	roomState = ROOM_STATE::ROOM_STATE_PLAY;
-
 	dataProtocol[0] = VOID_GAME_STATE;
 	dataProtocol[1] = VOID_GAME_STATE;
 
 	pUserIter[1] = InGuestUserIter;
+
+	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
+	roomState = ROOM_STATE::ROOM_STATE_PLAY;
 }

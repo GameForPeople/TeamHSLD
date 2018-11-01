@@ -201,7 +201,8 @@ void IOCPServer::InitWinSocket()
 	// 일반적으로 스레드 풀의 크기는 프로세서 개수의 2배 정도를 할당한다.
 	// 하지만 과연 이 2배라는 수가 내가 만든 서버에서 가장 최적의 성능을 낼 수 있다고 보장할 수 있는 것일까..
 	HANDLE hThread;
-	for (int i = 0; i < (int)si.dwNumberOfProcessors * 2; ++i)
+	//for (int i = 0; i < (int)si.dwNumberOfProcessors * 2; ++i)
+	for (int i = 0; i < (int)2; ++i)
 	{
 		hThread = CreateThread(NULL, 0, WorkerThread, (LPVOID)this, 0, NULL);
 		if (hThread == NULL)
@@ -474,6 +475,7 @@ void IOCPServer::WorkerThreadFunction()
 		{
 			recvType = (int&)(ptr->buf);
 		
+			std::cout << "받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 

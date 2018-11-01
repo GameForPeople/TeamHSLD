@@ -30,8 +30,6 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		void RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData);
 
-		void SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney);
-		
 		void SendPermitLogin(SocketInfo* ptr, const string& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
 			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<string>& RetFriendStringCont);
 		

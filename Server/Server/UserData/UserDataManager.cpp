@@ -50,14 +50,16 @@ int UserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID,
 
 	// 파일 데이터 로드
 	inFile >> idStringBuffer >> RetNickName >> RetWinCount >> RetLoseCount >> RetMoney >> RetAchievementBit >> RetTitleBit >> RetCharacterBit >> friendNum;
-	
 
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
 		InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, UserData(InPSocketInfo, InID)).first;
+		std::cout << "유저 데이터 로드에 실패했습니다. \n";
 		return 0;
 	}
+
+	std::cout << "로드한 유저의 닉네임은 : " << RetNickName << "입니다. \n";
 
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)

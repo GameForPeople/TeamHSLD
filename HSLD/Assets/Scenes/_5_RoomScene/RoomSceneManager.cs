@@ -20,7 +20,7 @@ public class RoomSceneManager : MonoBehaviour {
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 
         // 방 인덱스 등록
-        GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
+        //GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
 
         // 자기 자신의 아이디 노출
         GameObject.Find("PlayerID_TEXT").GetComponent< Text >().text = networkObject.GetComponent<NetworkManager>().ID;
@@ -80,15 +80,14 @@ public class RoomSceneManager : MonoBehaviour {
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
     }
 
-
     public void SetCharacterIndex(int InCharacterIndex)
     {
         if (isOnChangeCharacter)
         {
             if(InCharacterIndex == 1)
-                GameObject.Find("Player_Character").GetComponent<Text>().text = "1번 캐릭터";
+                GameObject.Find("Player_Character").GetComponent<Text>().text = "캐릭터 1";
             else if (InCharacterIndex == 2)
-                GameObject.Find("Player_Character").GetComponent<Text>().text = "2번 캐릭터";
+                GameObject.Find("Player_Character").GetComponent<Text>().text = "캐릭터 2";
 
             networkObject.playerCharacterIndex = InCharacterIndex;
         }
@@ -97,9 +96,9 @@ public class RoomSceneManager : MonoBehaviour {
     public void SetEnemyCharacter_Network()
     {
         if (networkObject.enemyCharacterIndex == 1)
-            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "1번 캐릭터";
+            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "캐릭터 1";
         else if (networkObject.enemyCharacterIndex == 2)
-            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "2번 캐릭터";
+            GameObject.Find("Enemy_Character").GetComponent<Text>().text = "캐릭터 2";
     }
 
     // old

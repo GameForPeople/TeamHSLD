@@ -25,16 +25,16 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 
 void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData)
 {
-	int typeBuffer = (int&)(ptr->buf[4]);
-	int pwBuffer = (int&)(ptr->buf[8]);
-	int idSizeBuffer = (int&)(ptr->buf[12]);
+	int idSizeBuffer = (int&)(ptr->buf[4]);
 	string idBuffer;
 
 	for (int i = 0; i < idSizeBuffer; ++i)
 	{
 		//idBuffer.append(&(ptr->buf[16+i]));
-		idBuffer += ptr->buf[16 + i];
+		idBuffer += ptr->buf[8 + i];
 	}
+
+	std::cout << " 로그인을 요청받은 아이디는 : " << idBuffer << "  , idSize는 " << idSizeBuffer << "\n";
 
 	int outWinCount{0};
 	int outLoseCount{0};
@@ -80,16 +80,6 @@ int SCENE_NETWORK_MANAGER::LoginScene::LoginProcess
 		RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const int& InWinCount, const int& InLoseCount, const int& InMoney)
-{
-	memcpy(ptr->buf, (char*)&PERMIT_LOGIN, sizeof(int));
-	memcpy(ptr->buf + 4, (char*)&InWinCount, sizeof(int));
-	memcpy(ptr->buf + 8, (char*)&InLoseCount, sizeof(int));
-	memcpy(ptr->buf + 12, (char*)&InMoney, sizeof(int));
-
-	ptr->dataSize = 16;
-}
-
 void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const string& InNickName, 
 	const int& InWinCount, const int& InLoseCount, const int& InMoney,
 	const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, const vector<string>& InFriendStringCont)
@@ -102,8 +92,12 @@ void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const s
 	memcpy(ptr->buf + 20, (char*)&InTitleBit, sizeof(int));
 	memcpy(ptr->buf + 24, (char*)&InCharacterBit, sizeof(int));
 
-	ptr->dataSize = 28;
+	int stringSizeBuffer = InNickName.size();
 
+	memcpy(ptr->buf + 28, (char*)&stringSizeBuffer, sizeof(int));
+	memcpy(ptr->buf + 32, InNickName.data(), stringSizeBuffer);
+
+	ptr->dataSize = 32 + stringSizeBuffer;
 
 	// 친구 기능 일단 주석처리함.
 	/*

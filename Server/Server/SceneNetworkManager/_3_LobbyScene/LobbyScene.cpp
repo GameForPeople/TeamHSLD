@@ -25,7 +25,9 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, Socke
 
 void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	if (InRoomData.RandomMatchingProcess( &(ptr->userIter), ptr->pRoomIter)) // Create!!
+	// 랜덤매칭에서, userIter까지 다 넣음.
+	if (InRoomData.RandomMatchingProcess( &(ptr->userIter), ptr->pRoomIter)) 
+		// Create!!
 	{
 		ptr->isHost = true;
 
@@ -41,7 +43,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameR
 
 		ptr->dataSize = 20;
 	}
-	else // Join!
+	else
+		// Join!
 	{
 		ptr->isHost = false;
 
@@ -51,7 +54,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameR
 		user_iter* EnemyIter;
 		ptr->pRoomIter->RetEnemyUserIter(ptr->isHost, EnemyIter);
 		
-		string stringBuffer((*EnemyIter)->first);
+		//string stringBuffer((*EnemyIter)->first);
+		string stringBuffer((*EnemyIter)->second.GetNickName());
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy(ptr->buf, (char*)&PERMIT_JOIN_RANDOM, sizeof(int));

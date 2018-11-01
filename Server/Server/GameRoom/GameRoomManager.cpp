@@ -10,9 +10,11 @@ void GameRoomManager::CreateRoom(user_iter* InUserIter, GameRoom* RetRoomPointer
 
 void GameRoomManager::JoinRoom(user_iter* InUserIter, GameRoom* RetRoomPointer)
 {
+	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
 	waitRoomCont.GetOneRoom(RetRoomPointer);
-	RetRoomPointer->JoinRoom(InUserIter);
 	playRoomCont.Push(RetRoomPointer);
+
+	RetRoomPointer->JoinRoom(InUserIter);
 }
 
 void GameRoomManager::DestroyRoom(SocketInfo* ptr)
