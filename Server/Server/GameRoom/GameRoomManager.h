@@ -3,6 +3,7 @@
 #include "../PCH/stdafx.h"
 #include "../GameRoom/GameRoom.h"
 #include "../GameRoom/Room_List.h"
+#include "../UserData/User_RBTree.h"
 
 struct SocketInfo;
 
@@ -17,13 +18,13 @@ public:
 public: //for InGameScene
 
 	// True = Create , False = Join
-	bool RandomMatchingProcess(user_iter* InIter, GameRoom* RetRoomIter);
+	bool RandomMatchingProcess(rbTreeNode<string, UserData>* InIter, GameRoom* RetRoomIter);
 
 
 private:
-	void CreateRoom(user_iter* InUserIter, GameRoom* RetRoomPointer);
+	void CreateRoom(rbTreeNode<string, UserData>* InUserIter, GameRoom* RetRoomPointer);
 
-	void JoinRoom(user_iter* InUserIter, GameRoom* RetRoomPointer);
+	void JoinRoom(rbTreeNode<string, UserData>* InUserIter, GameRoom* RetRoomPointer);
 	
 public:
 	void DestroyRoom(SocketInfo* ptr);

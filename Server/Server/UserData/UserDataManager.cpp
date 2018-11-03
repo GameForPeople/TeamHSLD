@@ -21,8 +21,13 @@ int UserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID,
 	// 유저 데이터 
 	InPSocketInfo->userDataContIndex = GetStringFirstChar(InID[0]);
 
+	bool RetBoolBuffer;
+	
+	//InPSocketInfo->pUserNode = 
+		userDataCont[InPSocketInfo->userDataContIndex].Search(InID, RetBoolBuffer);
+
 	// 이미 로그인 여부 체크.
-	if (userDataCont[InPSocketInfo->userDataContIndex].find(InID) == userDataCont[InPSocketInfo->userDataContIndex].end())
+	if (RetBoolBuffer)
 	{
 		return 3; 
 	}
@@ -54,8 +59,9 @@ int UserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID,
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
-		InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, UserData(InPSocketInfo, InID)).first;
-		std::cout << "유저 데이터 로드에 실패했습니다. \n";
+		InPSocketInfo->pUserNode = userDataCont[InPSocketInfo->userDataContIndex].Insert(InID, UserData(InPSocketInfo, InID));
+
+		std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
 		return 0;
 	}
 
@@ -64,8 +70,8 @@ int UserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID,
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
-		InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, UserData(InPSocketInfo, InID, RetNickName,
-			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit)).first;
+		InPSocketInfo->pUserNode = userDataCont[InPSocketInfo->userDataContIndex].Insert(InID, UserData(InPSocketInfo, InID, RetNickName,
+			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit));
 		return 0;
 	}
 
@@ -83,8 +89,8 @@ int UserDataManager::LoginProcess(SocketInfo* InPSocketInfo, const string& InID,
 	}
 
 	// 정상적인 로그인.
-	InPSocketInfo->userIter = userDataCont[InPSocketInfo->userDataContIndex].emplace(InID, UserData(InPSocketInfo, InID, RetNickName,
-		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont)).first;
+	InPSocketInfo->pUserNode = userDataCont[InPSocketInfo->userDataContIndex].Insert(InID, UserData(InPSocketInfo, InID, RetNickName,
+		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont));
 
 	return 0;
 }
@@ -93,33 +99,33 @@ void UserDataManager::LogoutProcess(SocketInfo* InPSocketInfo)
 {
 	// 파일명 제작
 	string fileNameBuffer = "UserData/Saved/.txt";
-	fileNameBuffer.insert(fileNameBuffer.begin() + 15, InPSocketInfo->userIter->second.GetID().begin(), InPSocketInfo->userIter->second.GetID().end());
+	fileNameBuffer.insert(fileNameBuffer.begin() + 15, InPSocketInfo->pUserNode->GetKey().begin(), InPSocketInfo->pUserNode->GetKey().end());
 
 	// 파일 쓰기 모드로 오픈
 	std::ofstream outFile(fileNameBuffer, std::ios::out);
 	
 	// 파일 쓰기 (저장)
 	outFile
-		<< " " << InPSocketInfo->userIter->second.GetID()
-		<< " " << InPSocketInfo->userIter->second.GetNickName()
-		<< " " << InPSocketInfo->userIter->second.GetWinCount()
-		<< " " << InPSocketInfo->userIter->second.GetLoseCount()
-		<< " " << InPSocketInfo->userIter->second.GetMoney()
-		<< " " << InPSocketInfo->userIter->second.GetAchievementBit()
-		<< " " << InPSocketInfo->userIter->second.GetTitleBit()
-		<< " " << InPSocketInfo->userIter->second.GetCharacterBit()
-		<< " " << InPSocketInfo->userIter->second.GetFriendStringCont().size() << std::endl;
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetID()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetNickName()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetWinCount()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetLoseCount()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetMoney()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetAchievementBit()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetTitleBit()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetCharacterBit()
+		<< " " << InPSocketInfo->pUserNode->GetValue().GetFriendStringCont().size() << std::endl;
 
 	// 친구 있으면 해당 이름 (저장)
-	for (auto iter = InPSocketInfo->userIter->second.GetFriendStringCont().begin();
-		iter != InPSocketInfo->userIter->second.GetFriendStringCont().end();
+	for (auto iter = InPSocketInfo->pUserNode->GetValue().GetFriendStringCont().begin();
+		iter != InPSocketInfo->pUserNode->GetValue().GetFriendStringCont().end();
 		++iter)
 	{
 		outFile << " " << *iter << std::endl;
 	}
 
 	// UserCont(MAP)에서 해당 정보 삭제.
-	userDataCont[InPSocketInfo->userDataContIndex].erase(InPSocketInfo->userIter);
+	userDataCont[InPSocketInfo->userDataContIndex].Delete(InPSocketInfo->pUserNode);
 }
 
 int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
@@ -147,7 +153,8 @@ int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
 	}
 }
 
-void UserDataManager::SetGameResult(user_iter* InUserIter, const bool& InWinOrLose)
+void UserDataManager::SetGameResult(rbTreeNode<string, UserData>* InUserIter, const bool& InWinOrLose)
 {
 	//InUserIter->second.SetGameResult(InWinOrLose);
+	InUserIter->GetValue().SetGameResult(InWinOrLose);
 }

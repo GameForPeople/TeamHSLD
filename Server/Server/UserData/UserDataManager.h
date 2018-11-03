@@ -2,14 +2,14 @@
 
 #include "../PCH/stdafx.h"
 #include "../UserData/UserData.h"
+#include "../UserData/User_RBTree.h"
 
 struct SocketInfo;
 
-//using user_iter = map<const std::string, UserData>::iterator;
-typedef map<const std::string, UserData>::iterator user_iter;
+//using user_iter = map<const std::string, UserData>::iterator; // iter에서 node Pointer로 변경.
 
 class UserDataManager {
-	std::vector<map<string, UserData>> userDataCont;
+	std::vector<rbTree<string, UserData>> userDataCont;
 
 public:
 	UserDataManager(); // = delete;
@@ -27,6 +27,6 @@ private:
 	int GetStringFirstChar(const char& InStringFirstChar);
 
 public:
-	void SetGameResult(user_iter* InUserIter, const bool& InWinOrLose);
+	void SetGameResult(rbTreeNode<string, UserData>* InUserIter, const bool& InWinOrLose);
 };
 

@@ -17,7 +17,7 @@ public:
 	GameRoom* right;
 
 private:
-	user_iter* pUserIter[2]{};
+	rbTreeNode<string, UserData>* pUserNode[2]{};
 
 	int hostMissionIndex;
 	int guestMissionIndex;
@@ -39,7 +39,7 @@ private:
 	//BaseStruct* oldguestDataBuffer;
 
 public:
-	GameRoom(user_iter* InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
+	GameRoom(rbTreeNode<string, UserData>* InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
 	//for pDoor
 	GameRoom(const int& InBuffer);
 	~GameRoom();
@@ -49,7 +49,7 @@ public:
 
 public:
 
-	void JoinRoom(user_iter* InGuestUserIter);
+	void JoinRoom(rbTreeNode<string, UserData>* InGuestUserIter);
 	
 	//new Function
 public:
@@ -128,7 +128,7 @@ public:
 		//
 		//	if (isHost)
 		//	{
-		//		(*pUserIter[0]).
+		//		(*pUserNode[0]).
 		//	}
 		//	else
 		//	{
@@ -139,9 +139,9 @@ public:
 		//}
 	}
 
-	__inline void RetEnemyUserIter(const bool& InIsHost, user_iter* RetUserIter)
+	__inline void RetEnemyUserIter(const bool& InIsHost, rbTreeNode<string, UserData>* RetUserIter)
 	{
-		RetUserIter = pUserIter[InIsHost];
+		RetUserIter = pUserNode[InIsHost];
 	}
 
 	__inline bool GetGameReady() const

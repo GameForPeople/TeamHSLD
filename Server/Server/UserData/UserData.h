@@ -22,7 +22,9 @@ class UserData {
 	vector<SocketInfo*>		friendSocketInfoCont;	// 친구 소켓 정보 컨테이너
 
 public:
-	//UserData() = delete;
+	// For rbTreeNode's nullNode
+	UserData() : pSocketInfo(nullptr), id(), nickName(), winCount(), loseCount(), money(), achievementBit(), titleBit(), characterBit(), friendStringCont(), friendSocketInfoCont()
+	{};
 
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
 	UserData(SocketInfo* InPSocketInfo, const std::string& InID, const std::string& InNickName,

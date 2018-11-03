@@ -415,7 +415,7 @@ void IOCPServer::WorkerThreadFunction()
 		if (retVal == 0 || cbTransferred == 0)
 		{
 #ifdef _DEBUG
-			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << ptr->userIter->second.GetID() << std::endl;
+			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << ptr->pUserNode->GetKey() << std::endl;
 			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
 			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 #endif

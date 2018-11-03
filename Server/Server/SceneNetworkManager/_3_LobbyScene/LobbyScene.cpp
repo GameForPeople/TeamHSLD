@@ -26,7 +26,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, Socke
 void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	// 랜덤매칭에서, userIter까지 다 넣음.
-	if (InRoomData.RandomMatchingProcess( &(ptr->userIter), ptr->pRoomIter)) 
+	if (InRoomData.RandomMatchingProcess( ptr->pUserNode, ptr->pRoomIter)) 
 		// Create!!
 	{
 		ptr->isHost = true;
@@ -51,11 +51,11 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameR
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
 		ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
-		user_iter* EnemyIter;
-		ptr->pRoomIter->RetEnemyUserIter(ptr->isHost, EnemyIter);
+		rbTreeNode<string,UserData>* EnemyPtrBuffer;
+		ptr->pRoomIter->RetEnemyUserIter(ptr->isHost, EnemyPtrBuffer);
 		
 		//string stringBuffer((*EnemyIter)->first);
-		string stringBuffer((*EnemyIter)->second.GetNickName());
+		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy(ptr->buf, (char*)&PERMIT_JOIN_RANDOM, sizeof(int));
@@ -74,10 +74,10 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SocketInfo* ptr, GameRoo
 {
 	if (ptr->pRoomIter->GetGameReady())
 	{
-		user_iter* EnemyIter;
-		ptr->pRoomIter->RetEnemyUserIter(ptr->isHost, EnemyIter);
+		rbTreeNode<string,UserData>* EnemyPtrBuffer;
+		ptr->pRoomIter->RetEnemyUserIter(ptr->isHost, EnemyPtrBuffer);
 
-		string stringBuffer((*EnemyIter)->first);
+		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy(ptr->buf, (char*)&PERMIT_GUEST_JOIN, sizeof(int));

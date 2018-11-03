@@ -2,6 +2,7 @@
 
 #include "../PCH/stdafx.h"
 #include "../UserData/UserDataManager.h"
+#include "../UserData/User_RBTree.h"
 
 class GameRoom;
 
@@ -24,7 +25,7 @@ struct SocketInfo
 	// 현재 컨테이너 Std::Vector
 
 	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
-	user_iter userIter;
+	rbTreeNode<string,UserData>* pUserNode;
 	// 한번만 계산해서 여러번 사용합시다.
 	int userDataContIndex;
 
@@ -48,7 +49,7 @@ public:
 		isHost(false),
 		//dataSize(), 
 		isRecvTurn(true),
-		userIter(),
+		pUserNode(nullptr),
 		userDataContIndex()//,
 		//enemyIter()
 	{};
