@@ -27,32 +27,32 @@ public:
 	{};
 
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
-	UserData(SocketInfo* InPSocketInfo, const std::string& InID, const std::string& InNickName,
+	UserData(SocketInfo* pInSocketInfo, const std::string& InID, const std::string& InNickName,
 		const int& InWinCount, const int& InLoseCount, const int& InMoney, 
 		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, 
 		const vector<string>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
 
-		: pSocketInfo(InPSocketInfo), id(InID), nickName(InNickName), 
+		: pSocketInfo(pInSocketInfo), id(InID), nickName(InNickName), 
 		winCount(InWinCount), loseCount(InLoseCount), money(InMoney), 
 		achievementBit(InAchievementBit), titleBit(InTitleBit), characterBit(InCharacterBit),
 		friendStringCont(InFriendStringCont), friendSocketInfoCont()
 	{};
 
 	//친구가 없을 경우. default로 init함.
-	UserData(SocketInfo* InPSocketInfo, const std::string& InID, const std::string& InNickName,
+	UserData(SocketInfo* pInSocketInfo, const std::string& InID, const std::string& InNickName,
 		const int& InWinCount, const int& InLoseCount, const int& InMoney,
 		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit)
 		
-		: pSocketInfo(InPSocketInfo), id(InID), nickName(InNickName),
+		: pSocketInfo(pInSocketInfo), id(InID), nickName(InNickName),
 		winCount(InWinCount), loseCount(InLoseCount), money(InMoney),
 		achievementBit(InAchievementBit), titleBit(InTitleBit), characterBit(InCharacterBit),
 		friendStringCont(), friendSocketInfoCont()
 	{};
 
 	//회원가입처리
-	UserData(SocketInfo* InPSocketInfo, const std::string& InID)
+	UserData(SocketInfo* pInSocketInfo, const std::string& InID)
 
-		: pSocketInfo(InPSocketInfo), id(InID), nickName(),
+		: pSocketInfo(pInSocketInfo), id(InID), nickName(),
 		winCount(0), loseCount(0), money(0),
 		achievementBit(0), titleBit(0), characterBit(0),
 		friendStringCont(), friendSocketInfoCont()

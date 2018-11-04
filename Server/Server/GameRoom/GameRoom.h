@@ -139,9 +139,9 @@ public:
 		//}
 	}
 
-	__inline void RetEnemyUserIter(const bool& InIsHost, rbTreeNode<string, UserData>* RetUserIter)
+	__inline rbTreeNode<string, UserData>*  RetEnemyUserIter(const bool& InIsHost)
 	{
-		RetUserIter = pUserNode[InIsHost];
+		return pUserNode[InIsHost];
 	}
 
 	__inline bool GetGameReady() const

@@ -154,11 +154,13 @@ rbTreeNode<KEY, VALUE>* rbTree<KEY, VALUE>::Search(const KEY& InKey, bool& RetRe
 		if (RetNodeBuffer == nullNode)
 		{
 			RetResult = false;
+			break;
 		}
 
 		if (InKey == RetNodeBuffer->GetKey())
 		{
 			RetResult = true;
+			break;
 		}
 
 		if (InKey < RetNodeBuffer->GetKey())
@@ -166,6 +168,7 @@ rbTreeNode<KEY, VALUE>* rbTree<KEY, VALUE>::Search(const KEY& InKey, bool& RetRe
 		else
 			RetNodeBuffer = RetNodeBuffer->right;
 	}
+	return RetNodeBuffer;
 };
 
 
@@ -488,7 +491,6 @@ rbTreeNode<KEY, VALUE>*	rbTree<KEY, VALUE>::GetNextNode(rbTreeNode<KEY, VALUE>* 
 template <typename KEY, typename VALUE>
 void rbTree<KEY, VALUE>::PrintTree()
 {
-
 	if (root != nullNode)
 	{
 		std::cout << "rootNode's Key : " << root->GetKey() << "\n";

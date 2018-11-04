@@ -2,48 +2,54 @@
 #include "../IOCPServer/SocketInfo.h"
 
 
-void GameRoomManager::CreateRoom(rbTreeNode<string, UserData>* InUserPtr, GameRoom* RetRoomPtr)
+GameRoom* GameRoomManager::_CreateRoom(rbTreeNode<string, UserData>* pInUserNode)
 {
-	RetRoomPtr = new GameRoom(InUserPtr, nullptr, nullptr);
-	waitRoomCont.Create(RetRoomPtr);
+	return waitRoomCont.Create(pInUserNode);
 }
 
-void GameRoomManager::JoinRoom(rbTreeNode<string, UserData>* InUserPtr, GameRoom* RetRoomPtr)
+GameRoom* GameRoomManager::_JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom)
 {
 	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
-	waitRoomCont.GetOneRoom(RetRoomPtr);
-	playRoomCont.Push(RetRoomPtr);
 
-	RetRoomPtr->JoinRoom(InUserPtr);
+	pRetRoom = waitRoomCont.GetOneRoom(pRetRoom);
+
+	playRoomCont.Push(pRetRoom);
+
+	pRetRoom->JoinRoom(pInUserNode);
+
+	return pRetRoom;
 }
 
-void GameRoomManager::DestroyRoom(SocketInfo* ptr)
+void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 {
-	if (ptr->pRoomIter->GetGameReady())
+	if (pClient->pRoomIter->GetGameReady())
 	{
-		playRoomCont.Pop(ptr->pRoomIter);
+		playRoomCont.Pop(pClient->pRoomIter);
 	}
 	else
 	{
-		waitRoomCont.Pop(ptr->pRoomIter);
+		waitRoomCont.Pop(pClient->pRoomIter);
 	}
 
-	delete (ptr->pRoomIter);
+	delete (pClient->pRoomIter);
 
-	ptr->pRoomIter = nullptr;
+	pClient->pRoomIter = nullptr;
 }
 
-bool GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* InUserPtr, GameRoom* RetRoomPtr)
+GameRoom* GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
 {
 	if (waitRoomCont.IsEmpty()) // Create!
 	{
-		CreateRoom(InUserPtr, RetRoomPtr);
-		return true;
+		RetBoolBuffer = true;
+		pRetRoom = _CreateRoom(pInUser);
+
 	}
 	else // Join
 	{
-		JoinRoom(InUserPtr, RetRoomPtr);
-		return false;
+		RetBoolBuffer = false;
+		pRetRoom = _JoinRoom(pInUser, pRetRoom);
 	}
+	
+	return pRetRoom;
 }
 

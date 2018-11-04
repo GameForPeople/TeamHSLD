@@ -18,17 +18,17 @@ public:
 public: //for InGameScene
 
 	// True = Create , False = Join
-	bool RandomMatchingProcess(rbTreeNode<string, UserData>* InIter, GameRoom* RetRoomIter);
-
+	GameRoom* RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuuffer);
 
 private:
-	void CreateRoom(rbTreeNode<string, UserData>* InUserIter, GameRoom* RetRoomPointer);
+	GameRoom* _CreateRoom(rbTreeNode<string, UserData>* pInUserNode);
 
-	void JoinRoom(rbTreeNode<string, UserData>* InUserIter, GameRoom* RetRoomPointer);
+	GameRoom* _JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom);
 	
 public:
-	void DestroyRoom(SocketInfo* ptr);
+	void DestroyRoom(SocketInfo* pClient);
 
+#pragma region [old functions]
 public:
 	//__inline int GetDataProtocol(const int& InRoomIndex, const bool& InIsHost) const
 	//{
@@ -77,4 +77,5 @@ public:
 	//{
 	//	rooms[InRoomIndex].GetDataBuffer(InIsHost, RetBuffer);
 	//}
+#pragma endregion
 };

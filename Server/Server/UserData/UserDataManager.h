@@ -17,10 +17,10 @@ public:
 
 public:
 	// 로그인 및 회원가입 모두 여기서 처리합니다.
-	int LoginProcess(SocketInfo* InPSocketInfo, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+	int LoginProcess(SocketInfo* pInSocketInfo, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
 		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont);
 
-	void LogoutProcess(SocketInfo* InPSocketInfo);
+	void LogoutProcess(SocketInfo* pInSocketInfo);
 
 private:
 	// for userDataCont Hash, 첫글자처리필요.

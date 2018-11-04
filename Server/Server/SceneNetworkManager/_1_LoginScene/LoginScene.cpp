@@ -35,7 +35,6 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDat
 	}
 
 	std::cout << " 로그인을 요청받은 아이디는 : " << idBuffer << "  , idSize는 " << idSizeBuffer << "\n";
-
 	int outWinCount{0};
 	int outLoseCount{0};
 	int outMoney{0};
@@ -59,6 +58,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDat
 		SendPermitLogin(ptr, outNickName, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont );
 		std::cout << "     [UserDataManager] "<< outNickName << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
 	}
+
 }
 
 //int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SocketInfo* ptr, UserDataManager& InUserData,
@@ -73,10 +73,10 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDat
 //}
 
 int SCENE_NETWORK_MANAGER::LoginScene::LoginProcess
-(SocketInfo* InPSocketInfo, UserDataManager& InUserData, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+(SocketInfo* pInSocketInfo, UserDataManager& InUserData, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
 	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont)
 {
-	return InUserData.LoginProcess(InPSocketInfo, InID, RetNickName, RetWinCount, RetLoseCount, RetMoney,
+	return InUserData.LoginProcess(pInSocketInfo, InID, RetNickName, RetWinCount, RetLoseCount, RetMoney,
 		RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
 }
 

@@ -17,11 +17,14 @@ public:
 		//WaitNodeCont = nullptr;
 	}
 
-	void Create(GameRoom* pRetNode)
+	GameRoom* Create(rbTreeNode<string, UserData>* pInUserNode)
 	{
+		GameRoom* pRetNode = new GameRoom(pInUserNode,nullptr, nullptr);
 		pDoor->left = pRetNode;
 		pRetNode->right = pDoor;
 		pDoor = pRetNode;
+
+		return pRetNode;
 	}
 
 	void Push(GameRoom* pRetNode)
@@ -47,7 +50,7 @@ public:
 		pRetNode->right->left = pRetNode->left;
 	}
 
-	void GetOneRoom(GameRoom* pRetNode)
+	GameRoom* GetOneRoom(GameRoom* pRetNode)
 	{
 		pRetNode = pDoor;
 
@@ -55,6 +58,8 @@ public:
 		//pRetNode->right = nullptr; // 굳이 필요 없을 것으로 보임.
 
 		pDoor->left = nullptr;
+
+		return pRetNode;
 	}
 
 	__inline bool IsEmpty()
