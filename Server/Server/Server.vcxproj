@@ -22,6 +22,7 @@
     <ClCompile Include="GameRoom\GameRoom.cpp" />
     <ClCompile Include="GameRoom\GameRoomManager.cpp" />
     <ClCompile Include="IOCPServer\IOCPServer.cpp" />
+    <ClCompile Include="IOCPServer\SocketInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PCH\stdafx.cpp" />
     <ClCompile Include="SceneNetworkManager\_0_TitleScene\TitleScene.cpp" />
@@ -34,9 +35,11 @@
     <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameRoom\GameRoom.h" />
     <ClInclude Include="GameRoom\GameRoomManager.h" />
+    <ClInclude Include="GameRoom\GameRoom.h" />
+    <ClInclude Include="GameRoom\Room_List.h" />
     <ClInclude Include="IOCPServer\IOCPServer.h" />
+    <ClInclude Include="IOCPServer\SocketInfo.h" />
     <ClInclude Include="PCH\stdafx.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />
@@ -49,6 +52,7 @@
     <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />
+    <ClInclude Include="UserData\User_RBTree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

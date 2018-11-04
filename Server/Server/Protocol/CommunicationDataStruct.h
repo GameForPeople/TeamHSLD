@@ -4,7 +4,6 @@
 
 #include "../Protocol/CommunicationProtocol.h"
 
-#define		MAX_ID_LEN			20
 #define		MAX_TERRAIN_LEN		12
 
 // 기반 스트럭처

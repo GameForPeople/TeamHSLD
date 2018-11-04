@@ -16,7 +16,7 @@ public class MainUISceneManager : MonoBehaviour {
 
         GameObject.Find("ID_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().ID;
 
-        GameObject.Find("PW_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().PW.ToString();
+       // GameObject.Find("PW_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().PW.ToString();
         GameObject.Find("Win_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().winCount.ToString();
         GameObject.Find("Lose_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().loseCount.ToString();
         GameObject.Find("Money_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().money.ToString();

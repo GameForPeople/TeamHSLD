@@ -7,7 +7,7 @@
 
 */
 
-// in Server global Function
+// Server's global Function
 namespace NETWORK_UTIL {
 	void ERROR_QUIT(char *msg)
 	{
@@ -81,7 +81,7 @@ namespace NETWORK_UTIL {
 	//	}
 	//}
 
-	bool SendProcess(SOCKETINFO* ptr)
+	bool SendProcess(SocketInfo* ptr)
 	{
 		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
 
@@ -102,11 +102,12 @@ namespace NETWORK_UTIL {
 			}
 			return true;
 		}
+		return true;
 	}
 };
 
 //Init
-int IOCPServer::GetExternalIP(char *ip)
+int IOCPServer::_GetExternalIP(char *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
@@ -141,15 +142,15 @@ int IOCPServer::GetExternalIP(char *ip)
 	return 0;
 }
 
-void IOCPServer::PrintServerInfoUI()
+void IOCPServer::_PrintServerInfoUI()
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
-	GetExternalIP(retIPChar);
+	_GetExternalIP(retIPChar);
 
 	printf("■■■■■■■■■■■■■■■■■■■■■■■■■\n");
 	printf("■ IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("■                                ver 1.7 181023\n");
+	printf("■                                ver 2.0 181101\n");
 	printf("■\n");
 	printf("■    IP Address : %s \n", retIPChar);
 	printf("■    Server Port : %d \n", SERVER_PORT);
@@ -158,12 +159,12 @@ void IOCPServer::PrintServerInfoUI()
 	delete[]retIPChar;
 }
 
-void IOCPServer::LoadUserData()
-{
-	userData.Load();
-}
+//void IOCPServer::LoadUserData()
+//{
+//	userData.Load();
+//}
 
-void IOCPServer::InitWinSocket()
+void IOCPServer::_InitWinSocket()
 {
 	//윈속 초기화
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
@@ -200,7 +201,8 @@ void IOCPServer::InitWinSocket()
 	// 일반적으로 스레드 풀의 크기는 프로세서 개수의 2배 정도를 할당한다.
 	// 하지만 과연 이 2배라는 수가 내가 만든 서버에서 가장 최적의 성능을 낼 수 있다고 보장할 수 있는 것일까..
 	HANDLE hThread;
-	for (int i = 0; i < (int)si.dwNumberOfProcessors * 2; ++i)
+	//for (int i = 0; i < (int)si.dwNumberOfProcessors * 2; ++i)
+	for (int i = 0; i < (int)2; ++i)
 	{
 		hThread = CreateThread(NULL, 0, WorkerThread, (LPVOID)this, 0, NULL);
 		if (hThread == NULL)
@@ -212,7 +214,7 @@ void IOCPServer::InitWinSocket()
 	}
 }
 
-void IOCPServer::CreateBindListen()
+void IOCPServer::_CreateBindListen()
 {
 	//Socket()
 	listenSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -231,7 +233,7 @@ void IOCPServer::CreateBindListen()
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
 }
 
-void IOCPServer::BindSceneDataProcess()
+void IOCPServer::_BindSceneDataProcess()
 {
 	sceneNetworkManagerArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
 	sceneNetworkManagerArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
@@ -264,7 +266,7 @@ void IOCPServer::BindSceneDataProcess()
 	//SceneDataProcess[5] = inGameScene.ProcessData;
 }
 
-void IOCPServer::CreateUDPSocket()
+void IOCPServer::_CreateUDPSocket()
 {
 	udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
 	if (udpSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT((char *)"Socket()");
@@ -280,7 +282,7 @@ void IOCPServer::CreateUDPSocket()
 }
 
 //Run
-void IOCPServer::AcceptProcess()
+void IOCPServer::_AcceptProcess()
 {
 	printf("     [ServerCore] Dedicated server activated!\n\n");
 
@@ -307,7 +309,7 @@ void IOCPServer::AcceptProcess()
 		CreateIoCompletionPort((HANDLE)clientSocket, hIOCP, clientSocket, 0);
 
 		// 소켓 정보 구조체 할당
-		SOCKETINFO *ptr = new SOCKETINFO;
+		SocketInfo *ptr = new SocketInfo;
 		if (ptr == NULL) break;
 
 		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
@@ -344,7 +346,7 @@ void IOCPServer::AcceptProcess()
 
 
 //Close
-void IOCPServer::DestroyAndClean()
+void IOCPServer::_DestroyAndClean()
 {
 	closesocket(listenSocket);
 	WSACleanup();
@@ -368,12 +370,12 @@ void IOCPServer::DestroyAndClean()
 DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 {
 	IOCPServer* server = (IOCPServer*)arg;
-	server->WorkerThreadFunction();
+	server->_WorkerThreadFunction();
 
 	return 0;
 };
 
-void IOCPServer::WorkerThreadFunction()
+void IOCPServer::_WorkerThreadFunction()
 {
 	// 한 번만 선언해서 여러번 씁시다. 아껴써야지...
 	int retVal{};
@@ -389,14 +391,14 @@ void IOCPServer::WorkerThreadFunction()
 		//비동기 입출력 기다리기
 		DWORD cbTransferred;
 		SOCKET clientSocket;
-		SOCKETINFO *ptr;
+		SocketInfo *pClient;
 
 		// 입출력 완료 포트에 저장된 결과를 처리하기 위한 함수 // 대기 상태가 됨
 		retVal = GetQueuedCompletionStatus(
 			hIOCP, //입출력 완료 포트 핸들
 			&cbTransferred, //비동기 입출력 작업으로, 전송된 바이트 수가 여기에 저장된다.
 			&clientSocket, //함수 호출 시 전달한 세번째 인자(32비트) 가 여기에 저장된다.
-			(LPOVERLAPPED *)&ptr, //Overlapped 구조체의 주소값
+			(LPOVERLAPPED *)&pClient, //Overlapped 구조체의 주소값
 			INFINITE // 대기 시간 -> 깨울떄 까지 무한대
 		);
 #pragma endregion
@@ -406,58 +408,59 @@ void IOCPServer::WorkerThreadFunction()
 		// 할당받은 소켓 즉! 클라이언트 정보 얻기
 		SOCKADDR_IN clientAddr;
 		int addrLength = sizeof(clientAddr);
-		getpeername(ptr->sock, (SOCKADDR *)&clientAddr, &addrLength);
+		getpeername(pClient->sock, (SOCKADDR *)&clientAddr, &addrLength);
 
 		//비동기 입출력 결과 확인 // 아무것도 안보낼 때는, 해당 클라이언트 접속에 문제가 생긴것으로 판단, 닫아버리겠다!
 		// 근데 이거 에코서버일떄만 그래야되는거 아니야???? 몰봐 임마 뭘봐 모를수도 있지
 		if (retVal == 0 || cbTransferred == 0)
 		{
-			// 게임 방에서 나갔을 경우, 서버의 해당 클라의 ptr->RoomIndex = -1로 변경하는 작업 필요.
-			if (ptr->roomIndex >= 0)
+#ifdef _DEBUG
+			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << pClient->pUserNode->GetKey() << std::endl;
+			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
+			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
+#endif
+			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
+			if (pClient->isInRoom)
 			{
-				if (int ReturnEnemyIndexBuffer; roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
-				{
-					// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
-					userData.SetGameResult(ReturnEnemyIndexBuffer, true);
-					userData.SetGameResult(ptr->userIndex, false);
-				}
-				else
-				{
-					// 게임 중이 아니였거나, 완전히 다른 거 중. 
-					//...? 할게 없나...?
-				}
+				//if (map<const std::string, UserData>::iterator enemyIter; 
+				//roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
+				//{
+				//	// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
+				//	userData.SetGameResult(ReturnEnemyIndexBuffer, true);
+				//	userData.SetGameResult(ptr->userIndex, false);
+				//}
+				//else
+				//{
+				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
+				//	//...? 할게 없나...?
+				//}
 			}
 
-			userData.SignOut(ptr->userIndex);
+			userData.LogoutProcess(pClient);
 
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
 			{
 				DWORD temp1, temp2;
-				WSAGetOverlappedResult(ptr->sock, &ptr->overlapped, &temp1, FALSE, &temp2);
+				WSAGetOverlappedResult(pClient->sock, &pClient->overlapped, &temp1, FALSE, &temp2);
 				NETWORK_UTIL::ERROR_DISPLAY((char *)"WSAGetOverlappedResult()");
 			}
-			closesocket(ptr->sock);
+			closesocket(pClient->sock);
 
-#ifdef _DEBUG
-			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << userData.GetUserID(ptr->userIndex) << std::endl;
-			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
-			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
-#endif
-			delete ptr;
+			delete pClient;
 			continue;
 		}
 
 #pragma endregion
 
-		if (!ptr->isRecvTurn)
+		if (!pClient->isRecvTurn)
 		{
-			ptr->isRecvTurn = true;
+			pClient->isRecvTurn = true;
 
-			ptr->wsabuf.buf = ptr->buf;
-			ptr->wsabuf.len = BUF_SIZE;
+			pClient->wsabuf.buf = pClient->buf;
+			pClient->wsabuf.len = BUF_SIZE;
 
-			retVal = WSARecv(clientSocket, &ptr->wsabuf, 1, &recvBytes, &flags, &ptr->overlapped, NULL);
+			retVal = WSARecv(clientSocket, &pClient->wsabuf, 1, &recvBytes, &flags, &pClient->overlapped, NULL);
 
 			if (retVal == SOCKET_ERROR)
 			{
@@ -470,14 +473,16 @@ void IOCPServer::WorkerThreadFunction()
 		}
 		else
 		{
-			recvType = (int&)(ptr->buf);
+			recvType = (int&)(pClient->buf);
 		
+			//std::cout << "[] 받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
-			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			NETWORK_UTIL::SendProcess(ptr);
+			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData);
 
+			if (NETWORK_UTIL::SendProcess(pClient))
+				continue;
 		}
 	}
 }
@@ -486,12 +491,12 @@ DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 {
 	IOCPServer* server = (IOCPServer*)arg;
 	
-	server->ManagerLoop();
+	server->_ManagerLoop();
 
 	return 0;
 }
 
-void IOCPServer::ManagerLoop()
+void IOCPServer::_ManagerLoop()
 {
 	isSaveOn = false;
 	isSendUDPMessage = false;
@@ -500,18 +505,18 @@ void IOCPServer::ManagerLoop()
 	{
 		Sleep(1000);
 
-		if (isSaveOn) SaveUserData();
+		//if (isSaveOn) SaveUserData();
+		//
+		//Sleep(1000);
 
-		Sleep(1000);
-
-		if (isSendUDPMessage)SendDynamicMessage();
+		if (isSendUDPMessage)_SendDynamicMessage();
 
 		Sleep(1000);
 	}
 }
 
 // UDP Function
-void IOCPServer::SendDynamicMessage()
+void IOCPServer::_SendDynamicMessage()
 {
 	SOCKADDR_IN clientAddr;
 
@@ -523,10 +528,10 @@ void IOCPServer::SendDynamicMessage()
 	isSendUDPMessage = false;
 }
 
-void IOCPServer::SaveUserData()
-{
-		//지금 자야되니까 나중에 이거보면 
-		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
-		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
-		userData.Save(isSaveOn);
-}
+//void IOCPServer::SaveUserData()
+//{
+//		//지금 자야되니까 나중에 이거보면 
+//		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
+//		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
+//		//userData.Save(isSaveOn);
+//}
