@@ -32,6 +32,9 @@ public class MeshController : MonoBehaviour {
     // Use this for initialization
 
     private bool once;
+    private Vector3 startPos;
+    private Vector3 destinationPos;
+    public bool isLandingSign;
 
     void Start () {
         terrainstate = Terrain.DEFAULT;
@@ -40,16 +43,24 @@ public class MeshController : MonoBehaviour {
         isAwake = false;
         isFixed = false;
         isMine = false;
+        isLandingSign = false;
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
         //JointMesh = new GameObject[3];
         once = false;
         Linkednum = 0;
+        startPos = transform.position;
+        destinationPos = transform.position * 1.05f;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (isLandingSign == true)
+        {
+            StartCoroutine(MoveUp());
+            isLandingSign = false;
+        }
         if (isFlagable && once == false && AllMeshController.once)
         {
             for(int i = 1; i< AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
@@ -206,6 +217,16 @@ public class MeshController : MonoBehaviour {
 
     }
 
+    public IEnumerator MoveUp()
+    {
+        while (transform.position.magnitude <= destinationPos.magnitude - 0.6)
+        {
+            transform.position = Vector3.Lerp(transform.position, destinationPos*1.0f, Time.deltaTime / 5);
+
+            yield return null;
+        }
+    }
+
     public void Picked()
     {
         if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
@@ -258,6 +279,7 @@ public class MeshController : MonoBehaviour {
     {
         return Random.Range(min, max + 1);
     }
+
     //적당
     public void setModeration()
     {

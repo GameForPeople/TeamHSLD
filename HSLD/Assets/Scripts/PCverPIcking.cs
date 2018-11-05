@@ -89,7 +89,7 @@ public class PCverPIcking : MonoBehaviour
 
                     FindObject.GetComponent<MeshController>().isFixed = true;
                     FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
-
+                    FindObject.GetComponent<MeshController>().isLandingSign = true;
                     /////// Event 카드를 위한 매시 묶기
                     myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
                         FindObject.GetComponent<MeshController>().name,
