@@ -17,3 +17,4 @@ public class BuildOnPlanet : MonoBehaviour
         target_.transform.eulerAngles = new Vector3(target_.transform.eulerAngles.x + 180, target_.transform.eulerAngles.y, target_.transform.eulerAngles.z);
     }
 }
+////// Mesh쪽으로 코드 옮겼어요! [181106]YSK

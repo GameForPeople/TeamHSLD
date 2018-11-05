@@ -35,6 +35,7 @@ public class MeshController : MonoBehaviour {
     private Vector3 startPos;
     private Vector3 destinationPos;
     public bool isLandingSign;
+    public GameObject TergetObject;
 
     void Start () {
         terrainstate = Terrain.DEFAULT;
@@ -52,10 +53,11 @@ public class MeshController : MonoBehaviour {
         Linkednum = 0;
         startPos = transform.position;
         destinationPos = transform.position * 1.05f;
+        //EulerRotCal(gameObject, BuildingObject[0], 0.5f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (isLandingSign == true)
         {
             StartCoroutine(MoveUp());
@@ -225,6 +227,55 @@ public class MeshController : MonoBehaviour {
 
             yield return null;
         }
+        // 객체 추가해서 달아주자.
+        if(terrainstate == Terrain.MODERATION)
+        {
+            //20퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 80 || isFlagable)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(14, 18)], 1.03f);
+            }
+        } else if (terrainstate == Terrain.BARREN)
+        {
+            //70퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 30 || isFlagable)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(5, 13)], 1.03f);
+            }
+
+        } else if (terrainstate == Terrain.COLD)
+        {
+            //40퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 60 || isFlagable)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(1, 4)], 1.03f);
+            }
+        } else if (terrainstate == Terrain.SEA)
+        {
+            //90퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 10 || isFlagable)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(21, 22)], 1.03f);
+            }
+        } else if (terrainstate == Terrain.MOUNTAIN)
+        {
+            //10퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 90 || isFlagable)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(19, 20)], 1.03f);
+            }
+        }
+    }
+
+    public void EulerRotCal(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        TergetObject = Instantiate(buildingObj);
+
+        TergetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TergetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+        
+        TergetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+        TergetObject.transform.eulerAngles = new Vector3(TergetObject.transform.eulerAngles.x + 180, TergetObject.transform.eulerAngles.y, TergetObject.transform.eulerAngles.z);
     }
 
     public void Picked()
@@ -286,11 +337,6 @@ public class MeshController : MonoBehaviour {
         terrainstate = Terrain.MODERATION;
         domMaterial = Resources.Load<Material>("M_Moderation");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
-
-        //20퍼센트 확률로 생기지 않음.
-        if (randomValue(0, 100) < 20 || isFlagable)
-            return;
-        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(14, 18)], 0.5f);
     }
     //건조
     public void setBarren()
@@ -299,10 +345,6 @@ public class MeshController : MonoBehaviour {
         domMaterial = Resources.Load<Material>("M_Barren");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-        //70퍼센트 확률로 생기지 않음.
-        if (randomValue(0, 100) < 70 || isFlagable)
-            return;
-        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(5, 13)], 0.5f);
     }
     //한랭
     public void setCold()
@@ -311,10 +353,6 @@ public class MeshController : MonoBehaviour {
         domMaterial = Resources.Load<Material>("M_Cold");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-        //40퍼센트 확률로 생기지 않음.
-        if (randomValue(0, 100) < 40 || isFlagable)
-            return;
-        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(1,4)], 0.5f);
     }
 
     public void setSea()
@@ -323,10 +361,7 @@ public class MeshController : MonoBehaviour {
         domMaterial = Resources.Load<Material>("M_Sea");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-        //90퍼센트 확률로 생기지 않음.
-        if (randomValue(0, 100) < 90 || isFlagable)
-            return;
-        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(21, 22)], 0.5f);
+
     }
 
     public void setMountain()
@@ -335,9 +370,6 @@ public class MeshController : MonoBehaviour {
         domMaterial = Resources.Load<Material>("M_Mountain");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-        //10퍼센트 확률로 생기지 않음.
-        if (randomValue(0, 100) < 10 || isFlagable)
-            return;
-        GameObject.FindWithTag("GameManager").GetComponent<BuildOnPlanet>().EulerRotCal(gameObject, AllMeshController.instance_.buildingObj[randomValue(19, 20)], 0.5f);
+
     }
 }
