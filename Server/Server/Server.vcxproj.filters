@@ -57,15 +57,6 @@
     <ClCompile Include="IOCPServer\IOCPServer.cpp">
       <Filter>소스 파일\IOCPServer</Filter>
     </ClCompile>
-    <ClCompile Include="UserData\UserDataManager.cpp">
-      <Filter>소스 파일\UserData</Filter>
-    </ClCompile>
-    <ClCompile Include="UserData\UserData.cpp">
-      <Filter>소스 파일\UserData</Filter>
-    </ClCompile>
-    <ClCompile Include="GameRoom\GameRoom.cpp">
-      <Filter>소스 파일\Room</Filter>
-    </ClCompile>
     <ClCompile Include="GameRoom\GameRoomManager.cpp">
       <Filter>소스 파일\Room</Filter>
     </ClCompile>
@@ -90,6 +81,18 @@
     <ClCompile Include="PCH\stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
+    <ClCompile Include="GameRoom\GameRoom.cpp">
+      <Filter>소스 파일\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="UserData\UserDataManager.cpp">
+      <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="UserData\UserData.cpp">
+      <Filter>소스 파일\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="IOCPServer\SocketInfo.cpp">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IOCPServer\IOCPServer.h">
@@ -97,15 +100,6 @@
     </ClInclude>
     <ClInclude Include="Protocol\CommunicationProtocol.h">
       <Filter>소스 파일\Protocol</Filter>
-    </ClInclude>
-    <ClInclude Include="GameRoom\GameRoom.h">
-      <Filter>소스 파일\Room</Filter>
-    </ClInclude>
-    <ClInclude Include="UserData\UserData.h">
-      <Filter>소스 파일\UserData</Filter>
-    </ClInclude>
-    <ClInclude Include="UserData\UserDataManager.h">
-      <Filter>소스 파일\UserData</Filter>
     </ClInclude>
     <ClInclude Include="GameRoom\GameRoomManager.h">
       <Filter>소스 파일\Room</Filter>
@@ -136,6 +130,24 @@
     </ClInclude>
     <ClInclude Include="PCH\stdafx.h">
       <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPServer\SocketInfo.h">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\Room_List.h">
+      <Filter>소스 파일\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoom\GameRoom.h">
+      <Filter>소스 파일\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\UserData.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\UserDataManager.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData\User_RBTree.h">
+      <Filter>소스 파일\UserData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

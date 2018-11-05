@@ -14,8 +14,8 @@ using System.Text;
 public class LoginSceneManager : MonoBehaviour {
     
     public string IDBuffer;
-    string PWStringBuffer;
-    public int PWBuffer;
+    //string PWStringBuffer;
+    //public int PWBuffer;
 
     public int typeBuffer;
 
@@ -36,12 +36,10 @@ public class LoginSceneManager : MonoBehaviour {
         typeBuffer = 1;
 
         IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-        PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        //PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        //PWBuffer = Int32.Parse(PWStringBuffer);
 
-        PWBuffer = Int32.Parse(PWStringBuffer);
-
-        Debug.Log("로그인을 시도합니다. ID : " + IDBuffer + "PW : " + PWBuffer);
-
+        Debug.Log("로그인을 시도합니다. ID : " + IDBuffer /*+ "PW : " + PWBuffer*/);
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
@@ -51,7 +49,7 @@ public class LoginSceneManager : MonoBehaviour {
         {
             // ForOnlyClientTest
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_Account";
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
+           // GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
 
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 7777777;
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().winCount = 0;
@@ -68,11 +66,11 @@ public class LoginSceneManager : MonoBehaviour {
         typeBuffer = 2;
 
         IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-        PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+       // PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
-        PWBuffer = Int32.Parse(PWStringBuffer);
+       // PWBuffer = Int32.Parse(PWStringBuffer);
 
-        Debug.Log("회원가입을 시도합니다. ID : " + IDBuffer + "PW : " + PWBuffer);
+        //Debug.Log("회원가입을 시도합니다. ID : " + IDBuffer + "PW : " + PWBuffer);
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
@@ -82,7 +80,7 @@ public class LoginSceneManager : MonoBehaviour {
         {
             // ForOnlyClientTest
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_Account";
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
+            //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
 
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 7777777;
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().winCount = 0;
@@ -95,7 +93,7 @@ public class LoginSceneManager : MonoBehaviour {
     public void PermitLoginProcess()
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
+        //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
 
         // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
 

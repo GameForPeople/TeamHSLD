@@ -1,61 +1,55 @@
-#include "GameRoomManager.h"
+#include "../GameRoom/GameRoomManager.h"
+#include "../IOCPServer/SocketInfo.h"
 
-GameRoomManager::GameRoomManager()
+
+GameRoom* GameRoomManager::_CreateRoom(rbTreeNode<string, UserData>* pInUserNode)
 {
-	rooms.reserve(ROOM_MAX);
-
-	for (int i = 0; i < ROOM_MAX; ++i)
-	{
-		rooms.emplace_back();
-	}
+	return waitRoomCont.Create(pInUserNode);
 }
 
-int GameRoomManager::CreateRoom(const int& InHostIndex)
+GameRoom* GameRoomManager::_JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom)
 {
-	for (int i = 0; i < ROOM_MAX; ++i)
-	{
-		// 나중에 임계영역 걸어주긴 해야함.
-		if (rooms[i].roomState == ROOM_STATE::ROOM_STATE_VOID)
-		{
-			rooms[i].CreateRoom(InHostIndex);
+	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
 
-			return i; // roomIndex;
-		}
-	}
+	pRetRoom = waitRoomCont.GetOneRoom(pRetRoom);
+
+	playRoomCont.Push(pRetRoom);
+
+	pRetRoom->JoinRoom(pInUserNode);
+
+	return pRetRoom;
 }
 
-int GameRoomManager::JoinRoom(const int& InGuestIndex, int& RetRoomIndex)
+void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 {
-	if (RetRoomIndex == -1)
+	if (pClient->pRoomIter->GetGameReady())
 	{
-		for (RetRoomIndex = 0; RetRoomIndex < ROOM_MAX; ++RetRoomIndex)
-		{
-			if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_SOLO)
-			{
-				rooms[RetRoomIndex].JoinRoom(InGuestIndex);
-
-				return 0;
-			}
-		}
-		return 3; //들어갈 수 있는 방이 없음
+		playRoomCont.Pop(pClient->pRoomIter);
 	}
 	else
 	{
-		if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_SOLO)
-		{
-			rooms[RetRoomIndex].JoinRoom(InGuestIndex);
-
-			return 0;
-		}
-		else if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_VOID)
-		{
-			return 1;
-		}
-		else if (rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_PLAY
-			|| rooms[RetRoomIndex].roomState == ROOM_STATE::ROOM_STATE_WAIT)
-		{
-			return 2;
-		}
+		waitRoomCont.Pop(pClient->pRoomIter);
 	}
+
+	delete (pClient->pRoomIter);
+
+	pClient->pRoomIter = nullptr;
+}
+
+GameRoom* GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
+{
+	if (waitRoomCont.IsEmpty()) // Create!
+	{
+		RetBoolBuffer = true;
+		pRetRoom = _CreateRoom(pInUser);
+
+	}
+	else // Join
+	{
+		RetBoolBuffer = false;
+		pRetRoom = _JoinRoom(pInUser, pRetRoom);
+	}
+	
+	return pRetRoom;
 }
 

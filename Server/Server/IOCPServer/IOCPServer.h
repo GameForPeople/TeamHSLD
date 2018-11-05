@@ -3,6 +3,8 @@
 #include "../PCH/stdafx.h"
 
 #include "../Protocol/CommunicationProtocol.h"
+#include "../IOCPServer/SocketInfo.h"
+
 #include "../UserData/UserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
@@ -95,63 +97,63 @@ public:
 	// Init Server
 	void Init()
 	{
-		PrintServerInfoUI();
-		LoadUserData();
-		InitWinSocket();
-		CreateBindListen();
-		BindSceneDataProcess();
+		_PrintServerInfoUI();
+		//LoadUserData();
+		_InitWinSocket();
+		_CreateBindListen();
+		_BindSceneDataProcess();
 
-		CreateUDPSocket();
+		_CreateUDPSocket();
 	}
 
 	void Run()
 	{
-		RunSaveUserDataThread();
-		AcceptProcess();
+		_RunSaveUserDataThread();
+		_AcceptProcess();
 	}
 
 	void Close()
 	{
-		DestroyAndClean();
+		_DestroyAndClean();
 	}
 
 private:
 	//Init
-	int GetExternalIP(char *ip);
+	int _GetExternalIP(char *ip);
 
-	void PrintServerInfoUI();
+	void _PrintServerInfoUI();
 	
-	void LoadUserData();
+	//void LoadUserData();
 	
-	void InitWinSocket();
+	void _InitWinSocket();
 
-	void CreateBindListen();
+	void _CreateBindListen();
 
-	void BindSceneDataProcess();
+	void _BindSceneDataProcess();
 
 	//Init - For UDP [DEV_53]
-	void CreateUDPSocket();
+	void _CreateUDPSocket();
 
 	//Run
-	void AcceptProcess();
+	void _AcceptProcess();
 
-	void RunSaveUserDataThread()
+	void _RunSaveUserDataThread()
 	{
 		hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 		//CloseHandle(hSaveUserDataThread);
 		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
 	}
 	//Close
-	void DestroyAndClean();
+	void _DestroyAndClean();
 
 private:
 	//ThreadFunction
 	static DWORD WINAPI WorkerThread(LPVOID arg);
-	void WorkerThreadFunction();
+	void _WorkerThreadFunction();
 	static DWORD WINAPI ManagerThread(LPVOID arg);
-	void ManagerLoop();
-	void SaveUserData();
+	void _ManagerLoop();
+	// void SaveUserData();
 
 	// UDPSocket
-	void SendDynamicMessage();
+	void _SendDynamicMessage();
 };
