@@ -50,6 +50,7 @@
     <ClInclude Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.h" />
     <ClInclude Include="SceneNetworkManager\_4_RoomScene\RoomScene.h" />
     <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h" />
+    <ClInclude Include="UserData\Custom_Map_RedBlackTree.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />
     <ClInclude Include="UserData\User_RBTree.h" />
