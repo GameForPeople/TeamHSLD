@@ -16,7 +16,7 @@ public class LobbySceneManager : MonoBehaviour {
     private bool isOnRandomMatchingNetwork = false;  // 큐돌릴때 바로 돌리는게 아니고 3초정도 대기하는데, 이거 3초 지낫는지 안지났는지 여부 체크.
 
     private int minuteCount;
-    private int secondCount; 
+    private int secondCount;
 
     void Start()
     {
@@ -24,13 +24,16 @@ public class LobbySceneManager : MonoBehaviour {
 
         minuteCount = 0;
         secondCount = 0;
-        GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
+        // GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
+
+        // 해당 씬 들어가자마자 바로 Random Matching 하도록 변경.
+        ClickRandomMatching();
     }
 
     public void ClickRandomMatching()
     {
         //대기 UI 출력
-        GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
+        //GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
 
         CoroutineInstance_Network = WaitMatchingCoroutine();
         CoroutineInstance_CountTime = CountTimeCoroutine();
