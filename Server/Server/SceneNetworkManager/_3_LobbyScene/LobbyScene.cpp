@@ -5,8 +5,12 @@
 #include "../../GameRoom/GameRoomManager.h"
 
 SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene() 
-	: BaseScene(), PERMIT_MAKE_RANDOM(Protocol::PERMIT_MAKE_RANDOM), PERMIT_JOIN_RANDOM(Protocol::PERMIT_JOIN_RANDOM),
-	PERMIT_GUEST_JOIN(Protocol::PERMIT_GUEST_JOIN), PERMIT_GUEST_NOT_JOIN(Protocol::PERMIT_GUEST_NOT_JOIN)
+	: BaseScene(), 
+	PERMIT_MAKE_RANDOM(Protocol::PERMIT_MAKE_RANDOM), 
+	PERMIT_JOIN_RANDOM(Protocol::PERMIT_JOIN_RANDOM),
+	PERMIT_GUEST_JOIN(Protocol::PERMIT_GUEST_JOIN), 
+	PERMIT_GUEST_NOT_JOIN(Protocol::PERMIT_GUEST_NOT_JOIN), 
+	ANSWER_EXIT_RANDOM(Protocol::ANSWER_EXIT_RANDOM)
 {
 
 }
@@ -20,6 +24,10 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, Socke
 	else if(InRecvType == DEMAND_GUEST_JOIN)
 	{
 		DemandGuestJoin(ptr, InRoomData, InUserData);
+	}
+	else if (InRecvType == DEMAND_EXIT_RANDOM)
+	{
+		DemandExitRandom(ptr, InRoomData, InUserData);
 	}
 }
 
@@ -92,5 +100,24 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SocketInfo* ptr, GameRoo
 		memcpy(ptr->buf, (char*)&PERMIT_GUEST_NOT_JOIN, sizeof(int));
 
 		ptr->dataSize = 4;
+	}
+}
+
+void SCENE_NETWORK_MANAGER::LobbyScene::DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
+
+	if (InRoomData.CancelWait(ptr))
+		// 랜덤 매칭 취소가 성공함.
+	{
+		//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
+
+		memcpy(ptr->buf, (char*)&ANSWER_EXIT_RANDOM, sizeof(int));
+		ptr->dataSize = 4;
+	}
+	else
+		// 랜덤 매칭 취소가 실패함 (그 사이 다른 게스트가 접속함)
+	{
+		DemandGuestJoin(ptr, InRoomData, InUserData);
 	}
 }

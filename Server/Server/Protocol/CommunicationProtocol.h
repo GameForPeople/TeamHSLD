@@ -47,9 +47,11 @@ enum Protocol {
 	PERMIT_JOIN_RANDOM	=	313	,   // 방에 접속했다고 알립니다.
 
 	DEMAND_GUEST_JOIN	=	314	,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
-	PERMIT_GUEST_JOIN	=	315,	// 방에 게스트가 접속했음.
-	PERMIT_GUEST_NOT_JOIN = 316,	// 방에 게스트가 접속했음.
+	PERMIT_GUEST_JOIN	=	315 ,	// 방에 게스트가 접속했음.
+	PERMIT_GUEST_NOT_JOIN = 316 ,	// 방에 게스트가 접속했음.
 
+	DEMAND_EXIT_RANDOM	=	317	,	// 랜덤큐를 취소함을 알림.
+	ANSWER_EXIT_RANDOM	=	318	,	// 랜덤큐 취소 여부에 대해 알림 (성공시 보내고, 실패시는, Guest_Join 처리함)
 
 	// for RoomScene 구 룸씬
 	DEMAND_ROOMHOST		=	400	,

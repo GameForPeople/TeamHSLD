@@ -13,6 +13,8 @@ public class LobbySceneManager : MonoBehaviour {
 
     public bool isRecvTrue = false;
 
+    private bool isOnRandomMatchingNetwork = false;  // 큐돌릴때 바로 돌리는게 아니고 3초정도 대기하는데, 이거 3초 지낫는지 안지났는지 여부 체크.
+
     private int minuteCount;
     private int secondCount; 
 
@@ -39,16 +41,35 @@ public class LobbySceneManager : MonoBehaviour {
 
     public void ClickExitMatching()
     {
-        //StopCoroutine(CoroutineInstance_Network);
-        //StopCoroutine(CoroutineInstance_CountTime);
-        //
-        //// ---
-        //// 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
-        //// ---
-        //
-        //GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
-        //GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().
-        //    ChangeScene(SCENE_NAME.MainUI_SCENE);
+        if(isOnRandomMatchingNetwork)
+            StartCoroutine("ExitMatchingCoroutine");
+        else
+            SuccessExitMatching();
+    }
+
+    public IEnumerator ExitMatchingCoroutine()
+    {
+        // 해당 코루틴 종료 위치에 대한 숙고 필요.
+        StopCoroutine(CoroutineInstance_Network);
+
+        // ---
+        // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
+        while (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().networkSyncLock == true)
+        {
+            yield return new WaitForSeconds(0.03f); // True이면 이거 건들면안 됌 감히.
+        }
+        // ---
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_EXIT_RANDOM);
+    }
+
+    public void SuccessExitMatching()
+    {
+        StopCoroutine(CoroutineInstance_CountTime);
+        //StopCoroutine(CoroutineInstance_Network); -> 이건 종료시켜주지 않아도 되는지에 대한 여부 판단 필요 ( 동기화는 항상 되는가? )
+
+        GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").
+        GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
     }
 
     public IEnumerator CountTimeCoroutine()
@@ -73,7 +94,9 @@ public class LobbySceneManager : MonoBehaviour {
     public IEnumerator WaitMatchingCoroutine()
     {
         int a;
-        yield return new WaitForSeconds(2.0f); // 고냥 있어보일러고...
+        yield return new WaitForSeconds(3.0f); // 고냥 있어보일러고...
+
+        isOnRandomMatchingNetwork = true;
 
         //서버 네트워크 처리 - 방만들어 주세요 -> 항상 가능! 방 인덱스 서버에서 받아야지 관리하기 좋을 듯.
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_RANDOM_MATCH);

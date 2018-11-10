@@ -62,7 +62,7 @@ public:
 		return pRetNode;
 	}
 
-	__inline bool IsEmpty()
+	__inline bool IsEmpty() const
 	{
 		if (pDoor->right == nullptr)
 			return true;

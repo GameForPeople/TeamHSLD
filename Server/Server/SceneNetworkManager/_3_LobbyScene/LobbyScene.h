@@ -19,6 +19,8 @@ namespace SCENE_NETWORK_MANAGER
 		const int PERMIT_GUEST_JOIN;
 		const int PERMIT_GUEST_NOT_JOIN;
 
+		const int ANSWER_EXIT_RANDOM;	
+
 	public:
 		LobbyScene();
 		virtual ~LobbyScene() override = default;
@@ -37,5 +39,7 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		void DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+
+		void DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 }

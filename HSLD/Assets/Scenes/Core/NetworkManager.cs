@@ -44,12 +44,14 @@ public class NetworkManager : MonoBehaviour
     //public Thread thread;
     public Socket socket;
 
-    public bool isRecvOn = false;
+    public bool networkSyncLock = false;    // 임시적으로 네트워크 데이터 통신에 대한 중첩적인 함수를 제어합니다.
+
     public int recvType = 0;
     public int sendType = 0;
 
     //Client Data
 
+    #region [ In Scene's variable]
     // Init Login Scene
     public string ID = "TEST_Account";
     public string nickName = "TEST_Account";
@@ -78,6 +80,8 @@ public class NetworkManager : MonoBehaviour
 
     public int playerCharacterIndex;
     public int enemyCharacterIndex;
+
+    #endregion 
 
     public object _obj = new object();
 
@@ -120,6 +124,17 @@ public class NetworkManager : MonoBehaviour
 
     public void SendData(int InMsg)
     {
+        StartCoroutine(SendDataCoroutine(InMsg));
+    }
+
+    public IEnumerator SendDataCoroutine(int InMsg)
+    {
+        while (networkSyncLock)
+        {
+            yield return new WaitForSeconds(0.1f); //현재 다른 함수에 의해 네트워크 통신중인지를 확인합니다.
+        }
+        networkSyncLock = true;    // 다른 네트워크 함수의 통신을 억제합니다.
+
         if (NetworkInterface.GetIsNetworkAvailable())
         {
             if (isOnNetwork)
@@ -161,11 +176,16 @@ public class NetworkManager : MonoBehaviour
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GUEST_JOIN), 0, DataSendBuffer, 0, 4);
                     socket.Send(DataSendBuffer, 4, SocketFlags.None);
                 }
+                else if (InMsg == (int)PROTOCOL.DEMAND_EXIT_RANDOM)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_EXIT_RANDOM), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
 
                 // RoomScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
 
-                // RoomScene - new
+                    // RoomScene - new
                 else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, DataSendBuffer, 0, 4);
@@ -247,7 +267,6 @@ public class NetworkManager : MonoBehaviour
         else
         {
             GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(true, 1);
-            return;
         }
     }
 
@@ -255,6 +274,8 @@ public class NetworkManager : MonoBehaviour
     {
         RecvProtocolType();
         ProcessRecvData();
+
+        networkSyncLock = false;    // 다른 네트워크 함수의 통신을 억제합니다.
     }
 
     void RecvProtocolType()
@@ -387,6 +408,11 @@ public class NetworkManager : MonoBehaviour
             Debug.Log("적 닉네임은 : " + enemyId);
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
+        }
+        else if (recvType == (int)PROTOCOL.ANSWER_EXIT_RANDOM)
+        {
+            isHost = false; // 굳이 상관은 없어보임.
+            GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().SuccessExitMatching();
         }
 
         // RoomScene
@@ -600,6 +626,9 @@ enum PROTOCOL : int
     DEMAND_GUEST_JOIN = 314,   // 방에 게스트가 접속했는지의 여부를 확인합니다.
     PERMIT_GUEST_JOIN = 315,    // 방에 게스트가 접속했음.
     PERMIT_GUEST_NOT_JOIN = 316,	// 방에 게스트가 접속했음.
+
+    DEMAND_EXIT_RANDOM = 317, // 랜덤큐를 취소함을 알림.
+    ANSWER_EXIT_RANDOM = 318, // 랜덤큐 취소 여부에 대해 알림 (성공시만 받고, 실패시는, guest Join 으로 날라옴)
 
     //for RoomScene
 

@@ -28,7 +28,18 @@ private:
 	
 public:
 	void DestroyRoom(SocketInfo* pClient);
+	
+	bool CancelWait(SocketInfo* pClient);
 
+public:
+	void DEBUG_PRINT_LIST_EMPTY(int InValue) const
+	{
+		if (InValue == 0)
+			std::cout << "waitRoomCont는 비어있는 여부 : " << waitRoomCont.IsEmpty() << "\n";
+		
+		else if (InValue == 1)
+			std::cout << "playRoomCont는 비어있는 여부 : " << playRoomCont.IsEmpty() << "\n";
+	}
 #pragma region [old functions]
 public:
 	//__inline int GetDataProtocol(const int& InRoomIndex, const bool& InIsHost) const

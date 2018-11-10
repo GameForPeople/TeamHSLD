@@ -36,6 +36,19 @@ void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 	pClient->pRoomIter = nullptr;
 }
 
+bool GameRoomManager::CancelWait(SocketInfo* pClient)
+{
+	if (pClient->pRoomIter->GetGameReady())
+	{
+		return false;
+	}
+	else
+	{
+		DestroyRoom(pClient);
+		return true;
+	}
+}
+
 GameRoom* GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
 {
 	if (waitRoomCont.IsEmpty()) // Create!
