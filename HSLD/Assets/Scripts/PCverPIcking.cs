@@ -90,6 +90,7 @@ public class PCverPIcking : MonoBehaviour
                     FindObject.GetComponent<MeshController>().isFixed = true;
                     FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
                     FindObject.GetComponent<MeshController>().isLandingSign = true;
+
                     /////// Event 카드를 위한 매시 묶기
                     myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
                         FindObject.GetComponent<MeshController>().name,
@@ -150,10 +151,15 @@ public class PCverPIcking : MonoBehaviour
                                         for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
                                         {
                                             myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFlagable = false;
+                                            myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().TargetObject.transform.position = new Vector3(3,3,3);
+                                            Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().TargetObject);
                                             myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
                                         } 
                                         myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(0, 4);
+
                                         myPlanet.GetComponent<AllMeshController>().FlagContainer.Add(PickedMeshObj);
+                                        PickedMeshObj.GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble"); 
+                                        PickedMeshObj.GetComponent<MeshController>().EulerRotCal(PickedMeshObj, myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f); // 내 색 오브젝트 필요할듯?
                                     }
                                     else // 깃발 획득했지만, 아직 점령 전일 때
                                     {

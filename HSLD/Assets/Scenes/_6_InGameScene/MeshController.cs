@@ -35,7 +35,7 @@ public class MeshController : MonoBehaviour {
     private Vector3 startPos;
     private Vector3 destinationPos;
     public bool isLandingSign;
-    public GameObject TergetObject;
+    public GameObject TargetObject;
 
     void Start () {
         terrainstate = Terrain.DEFAULT;
@@ -269,13 +269,13 @@ public class MeshController : MonoBehaviour {
 
     public void EulerRotCal(GameObject targetObj, GameObject buildingObj, float offset)
     {
-        TergetObject = Instantiate(buildingObj);
+        TargetObject = Instantiate(buildingObj);
 
-        TergetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
-        TergetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+        TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
         
-        TergetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
-        TergetObject.transform.eulerAngles = new Vector3(TergetObject.transform.eulerAngles.x + 180, TergetObject.transform.eulerAngles.y, TergetObject.transform.eulerAngles.z);
+        TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+        TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
     }
 
     public void Picked()
