@@ -90,6 +90,44 @@ public class LoginSceneManager : MonoBehaviour {
         }
     }
 
+    public void ClickNewNicknameButton()
+    {
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
+        {
+            string nickNameBuffer = GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+
+            //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+
+            // 글자수 제한, 4 이상, 10 이하일 떄만 트루
+            if (nickNameBuffer.Length < 4) return;
+            if (nickNameBuffer.Length > 10) return;
+
+            bool nickNameTest = false;
+
+            for(int i = 0; i < nickNameBuffer.Length; ++i)
+            {
+                if (nickNameBuffer[i] >= 'A' && nickNameBuffer[i] <= 'Z')
+                { }
+                else if (nickNameBuffer[i] >= 'a' && nickNameBuffer[i] <= 'z')
+                { }
+                else
+                {
+                    nickNameTest = true;
+                }
+            }
+
+            if (nickNameTest) return;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().nickName = nickNameBuffer;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.CHANGE_NICKNAME);
+        }
+        else
+        {
+            Debug.Log("Network Error");
+        }
+    }
+
     public void PermitLoginProcess()
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
@@ -99,6 +137,15 @@ public class LoginSceneManager : MonoBehaviour {
 
         // 메인 UI로 넘어갑니다~~
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
+    }
+
+    public void OnNewNicknameUI()
+    {
+        //GameObject.Find("SignUp_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
+        GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").gameObject.SetActive(true);
+        Debug.Log("SignUp_UI 켰습니다.");
+
+        //GameObject.Find("OnOff_UI").gameObject.SetActive(true);
     }
 
     public void FailLoginProcess()
@@ -122,7 +169,6 @@ public class LoginSceneManager : MonoBehaviour {
             Debug.Log("이미 존재하는 아이디로 회원가입이 불가능합니다.");
         }
     }
-
 
     void ParsingLoginData()
     {

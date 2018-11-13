@@ -159,6 +159,20 @@ public class NetworkManager : MonoBehaviour
 
                     socket.Send(NewDataSendBuffer, 8 + idSize, SocketFlags.None);
                 }
+                else if (InMsg == (int)PROTOCOL.CHANGE_NICKNAME)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_NICKNAME), 0, NewDataSendBuffer, 0, 4);
+
+                    int nickNameSize = nickName.Length;
+
+                    Debug.Log(" " + nickName + "는 입력한 nickName 값, nickName Size =>> " + nickNameSize);
+
+                    Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
+
+                    Buffer.BlockCopy(Encoding.Default.GetBytes(nickName), 0, NewDataSendBuffer, 8, nickNameSize);
+
+                    socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
+                }
 
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
@@ -329,9 +343,15 @@ public class NetworkManager : MonoBehaviour
             nickName = Encoding.Default.GetString(DataRecvBuffer, 32, stringSizeBuffer);
             Debug.Log("nickName is --> " + nickName);
             //
+            if (money == -1)
+                GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().OnNewNicknameUI();
+            else 
+                GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
+        }
+        else if (recvType == (int)PROTOCOL.PERMIT_NICKNAME)
+        {
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
         }
-
         //LobbyScene - old
         //else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
         //else if (recvType == (int)PROTOCOL.PERMIT_JOINROOM)
@@ -610,6 +630,8 @@ enum PROTOCOL : int
     PERMIT_LOGIN = 102,
 
     //for LobbyScene
+    CHANGE_NICKNAME = 103,  // Client To Server
+    PERMIT_NICKNAME = 104,	// Server to Client - buffer
 
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
