@@ -1,3 +1,17 @@
+# only TeamHSLD
+
+Server/Server/Debug/
+
+Server/Server/x64/Debug/
+
+HSLD/.vs
+
+Server/.vs
+
+Server/Server/UserData/Saved/
+
+Server/Server/UserData/Saved/.txt
+
 # =============== #
 
 # Unity generated #
@@ -77,12 +91,6 @@ Thumbs.db
 
 *.exe
 
-HSLD/.vs
-
-Server/Server/Debug/
-
-Server/Server/x64/Debug/
-
 *.ipch
 
 *.pdb
@@ -96,5 +104,3 @@ Server/Server/x64/Debug/
 *.idb
 
 *.ilk
-
-Server/.vs
