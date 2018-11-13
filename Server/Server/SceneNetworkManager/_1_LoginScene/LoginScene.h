@@ -16,6 +16,7 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		const int PERMIT_LOGIN;
 		const int FAIL_LOGIN;
+		const int PERMIT_NICKNAME; //104
 
 	public:
 		LoginScene();
@@ -35,6 +36,9 @@ namespace SCENE_NETWORK_MANAGER
 		
 		void SendFailLogin(SocketInfo* ptr, const int& RetFailReason);
 
+	private:
+		void RecvChangeNickName(SocketInfo* ptr, UserDataManager& InUserData);
+		void SendChangeNickName(SocketInfo* ptr);
 	private:
 		//int LoginTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
 		//int SignUpTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);

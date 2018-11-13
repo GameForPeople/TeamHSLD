@@ -59,6 +59,10 @@ public:
 	{
 		return value;
 	}
+	__inline VALUE&					SetValue()
+	{
+		return value;
+	}
 
 public:
 	//for Debug.

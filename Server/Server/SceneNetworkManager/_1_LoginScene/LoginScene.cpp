@@ -1,7 +1,8 @@
 #include "../_1_LoginScene/LoginScene.h"
 #include "../../IOCPServer/SocketInfo.h"
 
-SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): BaseScene(), PERMIT_LOGIN(Protocol::PERMIT_LOGIN), FAIL_LOGIN(Protocol::FAIL_LOGIN)
+SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): 
+	BaseScene(), PERMIT_LOGIN(Protocol::PERMIT_LOGIN), FAIL_LOGIN(Protocol::FAIL_LOGIN), PERMIT_NICKNAME(Protocol::PERMIT_NICKNAME)
 {
 
 }
@@ -10,7 +11,10 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 {
 	//ProcessRecv(InRecvType, ptr, InUserData);
 	//ProcessSend(InRecvType, ptr, InUserData);
-	RecvDemandLogin(ptr, InUserData);
+	if (InRecvType == DEMAND_LOGIN)
+		RecvDemandLogin(ptr, InUserData);
+	else // CHANGE_NICKNAME
+		RecvChangeNickName(ptr, InUserData);
 }
 
 //void SCENE_NETWORK_MANAGER::LoginScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, UserDataManager& InUserData)
@@ -30,11 +34,14 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDat
 
 	for (int i = 0; i < idSizeBuffer; ++i)
 	{
+		// Refactor 필요.
+
 		//idBuffer.append(&(ptr->buf[16+i]));
 		idBuffer += ptr->buf[8 + i];
 	}
 
 	std::cout << " 로그인을 요청받은 아이디는 : " << idBuffer << "  , idSize는 " << idSizeBuffer << "\n";
+	
 	int outWinCount{0};
 	int outLoseCount{0};
 	int outMoney{0};
@@ -135,4 +142,30 @@ void SCENE_NETWORK_MANAGER::LoginScene::SendFailLogin(SocketInfo* ptr, const int
 	memcpy(ptr->buf + 4, (char*)&RetFailReason, sizeof(int));
 
 	ptr->dataSize = 8;
+}
+
+
+void SCENE_NETWORK_MANAGER::LoginScene::RecvChangeNickName(SocketInfo* ptr, UserDataManager& InUserData)
+{
+	int nickNameSizeBuffer = (int&)(ptr->buf[4]);
+
+	string nickNameBuffer;
+
+	for (int i = 0; i < nickNameSizeBuffer; ++i)
+	{
+		// Refactor 필요.
+
+		nickNameBuffer += ptr->buf[8 + i];
+	}
+
+	ptr->pUserNode->SetValue().SetNickName(nickNameBuffer);
+
+	SendChangeNickName(ptr);
+}
+
+void SCENE_NETWORK_MANAGER::LoginScene::SendChangeNickName(SocketInfo* ptr)
+{
+	memcpy(ptr->buf, (char*)&PERMIT_NICKNAME, sizeof(int));
+
+	ptr->dataSize = 4;
 }

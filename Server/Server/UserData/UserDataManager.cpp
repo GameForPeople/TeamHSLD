@@ -62,6 +62,8 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	{
 		pInSocketInfo->pUserNode = userDataCont[pInSocketInfo->userDataContIndex].Insert(InID, UserData(pInSocketInfo, InID));
 
+		// RetMoney가 -1일 경우, 클라언트에서 닉네임 입력 필요. (Login Scene ? // Main UI Scene ?)
+
 		std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
 		return 0;
 	}
@@ -98,33 +100,55 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 
 void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 {
-	// 파일명 제작
-	string fileNameBuffer = "UserData/Saved/.txt";
-	string keyBuffer = pInSocketInfo->pUserNode->GetKey();
-	fileNameBuffer.insert(fileNameBuffer.begin() + 15, keyBuffer.begin(), keyBuffer.end());
-
-	// 파일 쓰기 모드로 오픈
-	std::ofstream outFile(fileNameBuffer, std::ios::out);
-	
-	// 파일 쓰기 (저장)
-	outFile
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetID()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetNickName()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetWinCount()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetLoseCount()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetMoney()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetAchievementBit()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetTitleBit()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetCharacterBit()
-		<< " " << pInSocketInfo->pUserNode->GetValue().GetFriendStringCont().size() << std::endl;
-
-	// 친구 있으면 해당 이름 (저장)
-	auto iterBuffer = pInSocketInfo->pUserNode->GetValue().GetFriendStringCont();
-	for (auto iter = iterBuffer.begin();
-		iter != iterBuffer.end();
-		++iter)
+	if (pInSocketInfo->pUserNode->SetValue().GetNickName().size() == 0)
 	{
-		outFile << " " << *iter << std::endl;
+		// 야 이거는 닉네임 없는거야 저장하지 마 
+	}
+	else
+	{
+		// 파일명 제작
+		string fileNameBuffer = "UserData/Saved/.txt";
+		string keyBuffer = pInSocketInfo->pUserNode->GetKey();
+
+		UserData valueBuffer = pInSocketInfo->pUserNode->SetValue();
+
+		fileNameBuffer.insert(fileNameBuffer.begin() + 15, keyBuffer.begin(), keyBuffer.end());
+
+		// 파일 쓰기 모드로 오픈
+		std::ofstream outFile(fileNameBuffer, std::ios::out);
+
+		// 파일 쓰기 (저장)
+		//outFile
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetID()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetNickName()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetWinCount()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetLoseCount()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetMoney()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetAchievementBit()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetTitleBit()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetCharacterBit()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetFriendStringCont().size() << std::endl;
+
+		outFile
+			<< " " << valueBuffer.GetID()
+			<< " " << valueBuffer.GetNickName()
+			<< " " << valueBuffer.GetWinCount()
+			<< " " << valueBuffer.GetLoseCount()
+			<< " " << valueBuffer.GetMoney()
+			<< " " << valueBuffer.GetAchievementBit()
+			<< " " << valueBuffer.GetTitleBit()
+			<< " " << valueBuffer.GetCharacterBit()
+			<< " " << valueBuffer.GetFriendStringCont().size() << std::endl;
+
+		// 친구 있으면 해당 이름 (저장)
+		auto iterBuffer = valueBuffer.GetFriendStringCont();
+
+		for (auto iter = iterBuffer.begin();
+			iter != iterBuffer.end();
+			++iter)
+		{
+			outFile << " " << *iter << std::endl;
+		}
 	}
 
 	// UserCont(MAP)에서 해당 정보 삭제.
@@ -159,5 +183,5 @@ int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
 void UserDataManager::SetGameResult(rbTreeNode<string, UserData>* InUserIter, const bool& InWinOrLose)
 {
 	//InUserIter->second.SetGameResult(InWinOrLose);
-	InUserIter->GetValue().SetGameResult(InWinOrLose);
+	InUserIter->SetValue().SetGameResult(InWinOrLose);
 }

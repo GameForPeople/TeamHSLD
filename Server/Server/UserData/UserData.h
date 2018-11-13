@@ -107,6 +107,14 @@ public:
 		if (InWinOrLose) ++winCount;
 		else ++loseCount;
 	}
+	__inline void   SetNickName(const string& InNickName)
+	{
+		nickName = InNickName;
+	}
+	__inline void	SetMoney(const int& InMoney)
+	{
+		money = InMoney;
+	}
 };
 
 

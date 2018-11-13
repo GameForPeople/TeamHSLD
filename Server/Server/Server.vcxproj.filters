@@ -146,9 +146,6 @@
     <ClInclude Include="UserData\UserDataManager.h">
       <Filter>소스 파일\UserData</Filter>
     </ClInclude>
-    <ClInclude Include="UserData\User_RBTree.h">
-      <Filter>소스 파일\UserData</Filter>
-    </ClInclude>
     <ClInclude Include="UserData\Custom_Map_RedBlackTree.h">
       <Filter>소스 파일\UserData</Filter>
     </ClInclude>

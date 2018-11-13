@@ -33,7 +33,12 @@ enum Protocol {
 	DEMAND_LOGIN		=	100	,
 	FAIL_LOGIN			=	101	,
 	PERMIT_LOGIN		=	102	,
+
+	CHANGE_NICKNAME		=	103 ,	// Client To Server
+	PERMIT_NICKNAME		=	104 ,	// Server to Client - buffer
 	
+	// for MainUiScene
+
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)
