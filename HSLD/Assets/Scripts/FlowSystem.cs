@@ -39,6 +39,7 @@ public class FlowSystem : MonoBehaviour
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
         tmpAnimationImage.SetActive(true);
+        currentFlow = FLOW.WAITING;
         isWaitingTime = true;
         time_ = 0;
         while (true)
