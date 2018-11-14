@@ -104,3 +104,5 @@ Thumbs.db
 *.idb
 
 *.ilk
+Server/Server/UserData/Saved/abcd.txt
+Server/Server/UserData/Saved/star.txt

@@ -31,7 +31,7 @@ struct SocketInfo
 
 	// 룸씐 인덱스, 방 제작 시나 접속 시 사용됨 ( 초기화 미필요 )
 	GameRoom* pRoomIter;
-	bool isInRoom;
+	//bool isInRoom;
 
 	// 룸씐, 인게임씬에서 호스트 여부 체크 (초기화 미필요)
 	bool isHost;
@@ -45,7 +45,7 @@ public:
 		//bufferProtocol(0), 
 		buf(),
 		pRoomIter(nullptr),
-		isInRoom(false),
+		//isInRoom(false),
 		isHost(false),
 		//dataSize(), 
 		isRecvTurn(true),

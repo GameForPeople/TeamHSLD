@@ -3,8 +3,9 @@
 GameRoom::GameRoom(rbTreeNode<string, UserData>* InHostUser, GameRoom* InLeft, GameRoom* InRight)
 	:
 	roomState(ROOM_STATE::ROOM_STATE_SOLO), 
-	left(InLeft), right(InRight), roomDynamicData(new RoomDynamicData())
+	left(InLeft), right(InRight), roomDynamicData()
 {
+	roomDynamicData = new RoomDynamicData;
 	pUserNode[0] = InHostUser;
 }
 
@@ -19,6 +20,8 @@ GameRoom::~GameRoom()
 {
 	//if (left != nullptr || right != nullptr)
 	//	std::cout << "아마도 GameRoom ERROR 입니다. \n";
+	if (roomDynamicData != nullptr)
+		delete roomDynamicData;
 }
 
 void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)

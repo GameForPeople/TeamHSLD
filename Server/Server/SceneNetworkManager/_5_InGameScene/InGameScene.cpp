@@ -96,6 +96,11 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameReady(SocketInfo* ptr, GameRoom
 {
 	// 모든 게임에 대한 내 클라이언트의 준비가 끝나면, VOID_GAME_STATE으로 변경함 (최초 NOTIFY_GAME_READY 상태임.)
 	ptr->pRoomIter->SetDataProtocol(ptr->isHost, VOID_GAME_STATE);
+
+	//----------------------------------- DEV_59 - 1
+	// 하나라도 Wait 상태되면, 굳이 
+	ptr->pRoomIter->DeleteDynamicData();
+	//-----------------------------------
 }
 
 // send Functions
@@ -175,18 +180,13 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendNetworkExecption(SocketInfo* ptr, G
 //#ifdef _DEBUG
 //	std::cout << "!! 그럴일이 없는데, 인 게임씬의 SendNetworkExecption가 호출되었습니다. 확인해주세요. " << "\n" ;
 //#endif
-	
-	// 상대방이 게임 중 나갔을 때, 이미 네트워크 소켓 예외에서, 해당 게임에 대한 결과를 처리해줌. (나간사람 1패, 잇던 사람 1승)
-	// 여기서는 방만 없애주고, 해당 클라이언트에게, MainUIScene으로의 이등을 명령.
+	InUserData.SetGameResult(ptr->pUserNode, false);
 
-	//InRoomData.ExitRoom(ptr->roomIndex);
 	InRoomData.DestroyRoom(ptr);
-
-	//ptr->roomIndex = -1; // DestoryRoom에서 얼려줌..
 
 	ptr->dataSize = 4;
 
-	*IsSaveOn = true;
+	//*IsSaveOn = true;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendGameReady(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)

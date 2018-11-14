@@ -420,7 +420,7 @@ void IOCPServer::_WorkerThreadFunction()
 			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 #endif
 			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
-			if (pClient->isInRoom)
+			if (pClient->pRoomIter != nullptr)
 			{
 				//if (map<const std::string, UserData>::iterator enemyIter; 
 				//roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
@@ -434,6 +434,9 @@ void IOCPServer::_WorkerThreadFunction()
 				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
 				//	//...? 할게 없나...?
 				//}
+				userData.SetGameResult(pClient->pUserNode, false);
+				pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
+				pClient->pRoomIter = nullptr;
 			}
 
 			userData.LogoutProcess(pClient);

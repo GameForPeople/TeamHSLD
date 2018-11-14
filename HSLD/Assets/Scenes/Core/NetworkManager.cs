@@ -523,6 +523,8 @@ public class NetworkManager : MonoBehaviour
             //
             // BGM 제가 꺼드리겠습니다.
             GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().BGMMaximumVolume = 0;
+            
+            // 씬 이동 ( 추후 상대방 탕출에 의한 승리 결과창 및, 씐 이동으로 변경 필요)
             GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true, 2);
             //
             //SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);
