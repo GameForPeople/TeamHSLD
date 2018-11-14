@@ -67,8 +67,6 @@ enum Protocol {
 	DEMAND_ENEMY_CHARACTER = 421,   // 내 캐릭터 변경 정보를 전송하고,
 	PERMIT_ENEMY_CHARACTER = 422,   // 상대방의 캐릭터 정보를 받아옵니다.
 
-	DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
-	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 
 	// for GameScene // 단방향으로 수정 적용 완료(2018/10/19ver)
 	VOID_GAME_STATE =500 ,	// 디펜스 턴인 친구가, 야 공격턴이 공격햇어??를 여쭤봄
@@ -82,6 +80,11 @@ enum Protocol {
 	NOTIFY_TERRAIN_INDEXS = 504,	// A클라이언트가 변경한 지형 카드 인덱스를 서버에 전달
 
 	NOTIFY_EVENTCARD_INDEX = 505, // A클라이언트가 사용한 이벤트 카드 인덱스 
+
+	DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
+	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
+	
+	NOTIFY_GAME_READY = 507	// 이거 주고 받으면 꼴토롱됨.
 };
 
 enum class SCENE_NAME {

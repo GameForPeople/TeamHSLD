@@ -10,6 +10,32 @@ enum class ROOM_STATE {
 	ROOM_STATE_PLAY		// 게임이 플레이 중인 상태
 };
 
+struct RoomDynamicData
+{
+	int hostMissionIndex;
+	int guestMissionIndex;
+	int subMissionIndex;
+
+	int hostCharacterIndex;
+	int guestCharacterIndex;
+
+	// For Packing! --> bool고냥 쓰고(데이터 절약) Data Structure 에서만 int로 변환하여 전송..! 
+	// 이엿지만, 동적으로 되면서 크게 상관없긴 한데..?
+	bool isHostFirst;
+
+	//bool hostUserReady;
+	//bool guestUserReady;
+	//atomic<int> userReadyCount;
+
+	RoomDynamicData()
+		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
+		, hostCharacterIndex(1), guestCharacterIndex(1)
+		, isHostFirst(rand() % 2)
+		//, userReadyCount(0)
+		//hostUserReady(false), guestUserReady(false)
+	{}
+};
+
 class GameRoom {
 public:
 	ROOM_STATE roomState;
@@ -19,15 +45,7 @@ public:
 private:
 	rbTreeNode<string, UserData>* pUserNode[2]{};
 
-	int hostMissionIndex;
-	int guestMissionIndex;
-	int subMissionIndex;
-
-	int hostCharacterIndex;
-	int guestCharacterIndex;
-
-	// For Packing! --> bool고냥 쓰고(데이터 절약) Data Structure 에서만 int로 변환하여 전송..! 
-	bool isHostFirst;
+	RoomDynamicData* roomDynamicData;
 
 	int dataProtocol[2];
 
@@ -37,7 +55,6 @@ private:
 	// 안쓰기로 결정..
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
-
 public:
 	GameRoom(rbTreeNode<string, UserData>* InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
 	//for pDoor
@@ -51,22 +68,24 @@ public:
 
 	void JoinRoom(rbTreeNode<string, UserData>* InGuestUserIter);
 	
+	__inline void DeleteDynamicData() { delete roomDynamicData;  roomDynamicData = nullptr; }
+
 	//new Function
 public:
 	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, int& retEnemyMissionIndex, int& retSubMissionIndex)
 	{
 		if (InIsHost)
 		{
-			retPlayerMissionIndex = hostMissionIndex;
-			retEnemyMissionIndex = guestMissionIndex;
+			retPlayerMissionIndex = roomDynamicData->hostMissionIndex;
+			retEnemyMissionIndex = roomDynamicData->guestMissionIndex;
 		}
 		else
 		{
-			retPlayerMissionIndex = guestMissionIndex;
-			retEnemyMissionIndex = hostMissionIndex;
+			retPlayerMissionIndex = roomDynamicData->guestMissionIndex;
+			retEnemyMissionIndex = roomDynamicData->hostMissionIndex;
 		}
 
-		if (isHostFirst)
+		if (roomDynamicData->isHostFirst)
 		{
 			retIsHostFirst = 1;
 		}
@@ -75,7 +94,7 @@ public:
 			retIsHostFirst = 0;
 		}
 
-		retSubMissionIndex = subMissionIndex;
+		retSubMissionIndex = roomDynamicData->subMissionIndex;
 
 		return;
 	}
@@ -84,11 +103,11 @@ public:
 	{
 		if (InIsHost)
 		{
-			hostCharacterIndex = InCharacterIndex;
+			roomDynamicData->hostCharacterIndex = InCharacterIndex;
 		}
 		else
 		{
-			guestCharacterIndex = InCharacterIndex;
+			roomDynamicData->guestCharacterIndex = InCharacterIndex;
 		}
 	}
 
@@ -96,11 +115,11 @@ public:
 	{
 		if (InIsHost)
 		{
-			return guestCharacterIndex;
+			return roomDynamicData->guestCharacterIndex;
 		}
 		else
 		{
-			return hostCharacterIndex;
+			return roomDynamicData->hostCharacterIndex;
 		}
 	}
 

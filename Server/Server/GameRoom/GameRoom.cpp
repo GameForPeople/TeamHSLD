@@ -1,17 +1,17 @@
 #include "../GameRoom/GameRoom.h"
 
 GameRoom::GameRoom(rbTreeNode<string, UserData>* InHostUser, GameRoom* InLeft, GameRoom* InRight)
-	:roomState(ROOM_STATE::ROOM_STATE_SOLO), 
-	hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5), 
-	hostCharacterIndex(1), guestCharacterIndex(1), isHostFirst(rand() % 2),
-	left(InLeft), right(InRight)
+	:
+	roomState(ROOM_STATE::ROOM_STATE_SOLO), 
+	left(InLeft), right(InRight), roomDynamicData(new RoomDynamicData())
 {
 	pUserNode[0] = InHostUser;
 }
 
 GameRoom::GameRoom(const int& InBuffer)
-	:hostMissionIndex(), guestMissionIndex(), subMissionIndex(),
-	hostCharacterIndex(), guestCharacterIndex(), isHostFirst(),
+	:
+	roomState(),
+	roomDynamicData(nullptr),
 	left(nullptr), right(nullptr)
 {}
 
@@ -29,8 +29,9 @@ void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)
 	//hostDataProtocol = VOID_GAME_STATE;
 	//guestDataProtocol = VOID_GAME_STATE;
 
-	dataProtocol[0] = VOID_GAME_STATE;
-	dataProtocol[1] = VOID_GAME_STATE;
+	// NOTIFY_GAME_READY으로 하고, 두 유저 모두 Void_Game_State인지 확인. 게임 준비가 되면, VOID_GAME_STATE으로 변경함.
+	dataProtocol[0] = NOTIFY_GAME_READY;
+	dataProtocol[1] = NOTIFY_GAME_READY;
 
 	pUserNode[1] = InGuestUser;
 

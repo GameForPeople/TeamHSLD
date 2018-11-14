@@ -62,6 +62,10 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameR
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
 		ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
+		//----------------------------------- DEV_59 - 1
+		ptr->pRoomIter->DeleteDynamicData();
+		//-----------------------------------
+
 		rbTreeNode<string,UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
 		
 		//string stringBuffer((*EnemyIter)->first);
