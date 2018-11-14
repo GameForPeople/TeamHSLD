@@ -620,7 +620,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ID \uC785\uB825\uD574\n"
+  m_Text: "  ID \uC785\uB825\uD574\n"
 --- !u!222 &370125808
 CanvasRenderer:
   m_ObjectHideFlags: 0

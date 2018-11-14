@@ -23,7 +23,7 @@ public class RoomSceneManager : MonoBehaviour {
         //GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
 
         // 자기 자신의 아이디 노출
-        GameObject.Find("PlayerID_TEXT").GetComponent< Text >().text = networkObject.GetComponent<NetworkManager>().ID;
+        GameObject.Find("PlayerID_TEXT").GetComponent< Text >().text = networkObject.GetComponent<NetworkManager>().nickName;
 
         // 나중에 계급이나 랭크, 캐릭터 이미지 같은것도 추가되면 여기서 해야처리해야할 듯
 
@@ -77,6 +77,8 @@ public class RoomSceneManager : MonoBehaviour {
 
         yield return new WaitForSeconds(1.0f);
 
+        // UseDataUI Off
+        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
     }
 
