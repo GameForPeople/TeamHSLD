@@ -344,6 +344,18 @@ void IOCPServer::_AcceptProcess()
 	}
 }
 
+void IOCPServer::_RunManagerThread()
+{
+	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
+	//CloseHandle(hSaveUserDataThread);
+	std::cout << "     [UserDataManager] Run Manager Thread! " << "\n";
+}
+
+void IOCPServer::_RunTestThread()
+{
+	hTestThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
+	std::cout << "     [UserDataManager] Run Test Thread! " << "\n";
+}
 
 //Close
 void IOCPServer::_DestroyAndClean()
@@ -369,7 +381,7 @@ void IOCPServer::_DestroyAndClean()
 //thread's
 DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 {
-	IOCPServer* server = (IOCPServer*)arg;
+	IOCPServer* server = static_cast<IOCPServer*>(arg);
 	server->_WorkerThreadFunction();
 
 	return 0;
@@ -492,7 +504,7 @@ void IOCPServer::_WorkerThreadFunction()
 
 DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 {
-	IOCPServer* server = (IOCPServer*)arg;
+	IOCPServer* server = static_cast<IOCPServer*>(arg);
 	
 	server->_ManagerLoop();
 
@@ -518,15 +530,43 @@ void IOCPServer::_ManagerLoop()
 	}
 }
 
+DWORD WINAPI IOCPServer::TestThread(LPVOID arg)
+{
+	IOCPServer* server = static_cast<IOCPServer*>(arg);
+
+	server->_TestThreadFunction();
+
+	return 0;
+}
+
+void IOCPServer::_TestThreadFunction()
+{
+	int buffer;
+
+	udpMessageBuffer = 'a';
+
+	while (7)
+	{
+		std::cout << "기능 입력 : ";
+		std::cin >> buffer;
+
+		if (buffer == 0) break;
+		else if (buffer == 1) _SendDynamicMessage();
+	}
+}
+
 // UDP Function
 void IOCPServer::_SendDynamicMessage()
 {
 	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	//getpeername(pClient->sock, (SOCKADDR *)&clientAddr, &addrLength);
 
 	udpMessageBuffer[0] = 1;
 
 	// !! for (UserData) for GetPeerName
-	sendto(udpSocket, udpMessageBuffer.data(), 50, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+	sendto(udpSocket, udpMessageBuffer.data(), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
 
 	isSendUDPMessage = false;
 }

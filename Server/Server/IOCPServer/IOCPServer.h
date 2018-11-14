@@ -56,12 +56,13 @@ private:
 	WSADATA wsa;
 	HANDLE hIOCP;
 	SOCKET listenSocket;
-	SOCKET udpSocket;
 
 	SOCKADDR_IN serverAddr;
 	SOCKADDR_IN serverUDPAddr;
 
 	HANDLE hManagerThread;
+	HANDLE hTestThread;
+	CRITICAL_SECTION testCriticalSection;
 
 	//For Game
 	UserDataManager userData;
@@ -73,6 +74,8 @@ private:
 	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음..다음 턴에 어짜피 동기화 됨.
 	bool isSaveOn;
 
+	// for udp
+	SOCKET udpSocket;
 	bool isSendUDPMessage;
 	string udpMessageBuffer;
 
@@ -108,7 +111,8 @@ public:
 
 	void Run()
 	{
-		_RunSaveUserDataThread();
+		_RunManagerThread();
+		_RunTestThread();
 		_AcceptProcess();
 	}
 
@@ -137,12 +141,10 @@ private:
 	//Run
 	void _AcceptProcess();
 
-	void _RunSaveUserDataThread()
-	{
-		hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
-		//CloseHandle(hSaveUserDataThread);
-		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
-	}
+	void _RunManagerThread();
+
+	void _RunTestThread();
+
 	//Close
 	void _DestroyAndClean();
 
@@ -150,9 +152,13 @@ private:
 	//ThreadFunction
 	static DWORD WINAPI WorkerThread(LPVOID arg);
 	void _WorkerThreadFunction();
+
 	static DWORD WINAPI ManagerThread(LPVOID arg);
 	void _ManagerLoop();
 	// void SaveUserData();
+
+	static DWORD WINAPI TestThread(LPVOID arg);
+	void _TestThreadFunction();
 
 	// UDPSocket
 	void _SendDynamicMessage();
