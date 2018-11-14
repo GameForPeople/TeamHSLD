@@ -75,8 +75,8 @@ public class TurnSystem : MonoBehaviour
             timerTxt.text = (selectOrderTime - (int)time_).ToString() + " 초";
 
             yield return new WaitForEndOfFrame();
-            //if (SetTurn.isPicking)
-            //    break;
+            if (SetTurn.isPicking)
+                break;
 
             //랜덤으로 아무거나 픽킹하기
             if (time_ > selectOrderTime)
@@ -119,7 +119,7 @@ public class TurnSystem : MonoBehaviour
             time_ += Time.deltaTime;
             timerTxt.text = (selectCardTime - (int)time_).ToString() + " 초";
             yield return new WaitForEndOfFrame();
-            if (time_ > selectCardTime /*|| CardSet.isSelect*/)
+            if (time_ > selectCardTime || CardSet.isSelect)
                 break;
         }
         StartCoroutine(ReadySetOrderTimer());
@@ -217,7 +217,7 @@ public class TurnSystem : MonoBehaviour
                     beforeFlow = FLOW.TO_ROLLINGDICE;
                 }
 
-                displayTurnTimerTxt.text = "(임시)다이스를 굴려주세요.( ";
+                displayTurnTimerTxt.text = "( ";
                 displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
                 displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
             }
@@ -234,7 +234,7 @@ public class TurnSystem : MonoBehaviour
                     beforeFlow = FLOW.TO_PICKINGCARD;
                 }
 
-                displayTurnTimerTxt.text = "(임시)지형 카드를 선택해주세요. ( ";
+                displayTurnTimerTxt.text = "( ";
                 displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
                 displayTurnTimerTxt.text += " / " + pickingTerrainCardTime + " )";
             }
@@ -252,7 +252,7 @@ public class TurnSystem : MonoBehaviour
                     beforeFlow = FLOW.TO_PICKINGLOC;
                 }
 
-                displayTurnTimerTxt.text = "(임시)지형을 설치해주세요. ( ";
+                displayTurnTimerTxt.text = "( ";
                 displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
                 displayTurnTimerTxt.text += " / " + selectPlanetTerrainTime + " )";
             }
@@ -269,7 +269,7 @@ public class TurnSystem : MonoBehaviour
                     beforeFlow = FLOW.TO_PICKEVENTCARD;
                 }
 
-                displayTurnTimerTxt.text = "(임시)이벤트 카드를 선택해주세요. ( ";
+                displayTurnTimerTxt.text = "( ";
                 displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
                 displayTurnTimerTxt.text += " / " + pickingEventCardTime + " )";
             }

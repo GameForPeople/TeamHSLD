@@ -16,5 +16,13 @@ public class BuildOnPlanet : MonoBehaviour
         target_.transform.LookAt(gameObject.transform.position);
         target_.transform.eulerAngles = new Vector3(target_.transform.eulerAngles.x + 180, target_.transform.eulerAngles.y, target_.transform.eulerAngles.z);
     }
+
+    public void SetDone()
+    {
+        if (CameraController.ChangeableCount != 0)
+            return;
+
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+    }
 }
 ////// Mesh쪽으로 코드 옮겼어요! [181106]YSK

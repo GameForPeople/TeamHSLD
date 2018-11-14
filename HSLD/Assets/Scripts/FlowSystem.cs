@@ -29,6 +29,8 @@ public class FlowSystem : MonoBehaviour
     public GameObject matchingCompleteCanvas;
     public GameObject spinCanvas;
     public GameObject displayMissionCanvas;
+    public GameObject diceCanvas;
+    public GameObject setTerrainCanvas;
 
     public GameObject tmpAnimationImage;
 
@@ -113,6 +115,11 @@ public class FlowSystem : MonoBehaviour
                 cardSetCanvas.SetActive(true);
                 currentFlow = FLOW.READY_SETCARD;
                 break;
+            case FLOW.READY_SETCARD:
+                cardSetCanvas.SetActive(false);
+                turnSetCanvas.SetActive(true);
+                currentFlow = FLOW.READY_TURNORDER;
+                break;
             case FLOW.READY_TURNORDER:
                 
                 turnSetCanvas.SetActive(false);
@@ -122,11 +129,7 @@ public class FlowSystem : MonoBehaviour
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 spinCanvas.SetActive(true);                
                 break;
-            case FLOW.READY_SETCARD:
-                cardSetCanvas.SetActive(false);
-                turnSetCanvas.SetActive(true);
-                currentFlow = FLOW.READY_TURNORDER;
-                break;
+
             case FLOW.READY_DONE:
                 break;
             case FLOW.WAITING:
@@ -134,6 +137,8 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
+                diceCanvas.SetActive(false);
+                setTerrainCanvas.SetActive(true);
                 if (GameObject.Find("GameCores") != null)
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
@@ -154,6 +159,8 @@ public class FlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
+                diceCanvas.SetActive(true);
+                setTerrainCanvas.SetActive(false);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:

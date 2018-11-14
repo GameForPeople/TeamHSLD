@@ -9,13 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb7b0d883e143604bbea6740e51b89ed, type: 3}
-  m_Name: Event3
+  m_Name: Event1
   m_EditorClassIdentifier: 
   currentCard: 0
   currentZoom: 0
-  zoomInSatusCardVec: {x: 194, y: -294}
-  zoomOutSatusCardVec: {x: 309, y: -294}
-  cardIndex: 8
+  zoomInSatusCardVec: {x: 118, y: -294}
+  zoomOutSatusCardVec: {x: 144, y: -294}
+  cardIndex: 6
+  cardName: 
   currentCnt: 0
   maximumCnt: 0
   minumumCnt: 0

@@ -20,7 +20,7 @@ public class CardSet : MonoBehaviour
         obj.GetComponent<CardData>().data.currentCnt += 1;
         totalCard += 1;
         obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.currentCnt.ToString();
-        displayTotalCnt.text = totalCard.ToString();
+        displayTotalCnt.text = totalCard.ToString() + " / 30";
     }
 
     public void DelCard(GameObject obj)
@@ -34,7 +34,7 @@ public class CardSet : MonoBehaviour
         obj.GetComponent<CardData>().data.currentCnt -= 1;
         totalCard -= 1;
         obj.GetComponentInChildren<Text>().text = obj.GetComponent<CardData>().data.currentCnt.ToString();
-        displayTotalCnt.text = totalCard.ToString();
+        displayTotalCnt.text = totalCard.ToString() + " / 30";
     }
 
     public void Select()
