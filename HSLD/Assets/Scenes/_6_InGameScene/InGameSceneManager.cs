@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InGameSceneManager : MonoBehaviour
 {
-
     public int network_recvProtocolFlag;
     public int network_sendProtocol;
 
@@ -19,9 +18,11 @@ public class InGameSceneManager : MonoBehaviour
     public int[] network_terrainIndex = new int[12];
     public int[] recvTerrainIndex = new int[12]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
 
-
     // 사용된 이벤트카드의 타입(인덱스) 입니다.
     public int network_eventCardType;
+
+    // GameReady 여부에 따른 bool 변수.
+    public bool isOnWaitGameReady;
 
     private NetworkManager networkManager;
     
@@ -49,7 +50,7 @@ public class InGameSceneManager : MonoBehaviour
         network_eventCardType = 0;
         network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE;
 
-        StartCoroutine("InGameNetworkCoroutine");
+        //StartCoroutine("InGameNetworkCoroutine");
     }
 
     //public void SendData(int InMsg, int InTerrainType = -1, int InChangeTerrainCount = -1, int[] InTerrainIndex = null, int InEventCardType = -1)
@@ -225,11 +226,55 @@ public class InGameSceneManager : MonoBehaviour
         Debug.Log("아직까진 이벤트카드 없음.");
     }
 
+    //
+    // 대기 상태를 시작할 때, 클라이언트에서 호출
+    public void StartWaitCoroutine()
+    {
+        isOnWaitGameReady = false;
+
+        StartCoroutine("WaitCoroutine");
+    }
+
+    // 대기 상태에서 게임 시작 상태가 시작될 때, 네트워크 매니저에서 호출.
+    public void StartInGameCoroutine()
+    {
+        isOnWaitGameReady = true;
+
+        StopCoroutine("WaitCoroutine");
+        StartCoroutine("InGameNetworkCoroutine");
+    }
+
+    IEnumerator WaitCoroutine()
+    {
+        isOnWaitGameReady = false;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
+            while (networkManager.networkSyncLock == true)
+            {
+                yield return new WaitForSeconds(0.03f); // True이면 이거 건들면 안 됌 감히 씬매니저주제에 디질라공.
+            }
+            // ---
+
+            networkManager.SendData((int)PROTOCOL.NOTIFY_GAME_READY);
+        }
+    }
+
     IEnumerator InGameNetworkCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(1.0f);
+
+            // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
+            while (networkManager.networkSyncLock == true)
+            {
+                yield return new WaitForSeconds(0.03f); // True이면 이거 건들면 안 됌 감히 씬매니저주제에 디질라공.
+            }
+            // ---
 
             if (network_sendProtocol == (int)PROTOCOL.VOID_GAME_STATE)
             {

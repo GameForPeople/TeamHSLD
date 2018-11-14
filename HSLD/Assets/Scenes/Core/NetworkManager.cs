@@ -289,7 +289,7 @@ public class NetworkManager : MonoBehaviour
         RecvProtocolType();
         ProcessRecvData();
 
-        networkSyncLock = false;    // 다른 네트워크 함수의 통신을 억제합니다.
+        networkSyncLock = false;    // 다른 네트워크 함수의 통신을 허용합니다.
     }
 
     void RecvProtocolType()
@@ -463,7 +463,12 @@ public class NetworkManager : MonoBehaviour
         //InGameScene //-> 이부분 다 InGameScene으로 들어내도 괜찮을듯!
         else if (recvType == (int)PROTOCOL.VOID_GAME_STATE)
         {
-            // 뭐야 니 아무것도 없엉
+            // 뭐야 니 아무것도 없엉 // ? 생김.
+
+            if (! inGameSceneManager.isOnWaitGameReady)
+            {
+                inGameSceneManager.StartInGameCoroutine();
+            }
             return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
@@ -680,6 +685,9 @@ enum PROTOCOL : int
     NOTIFY_TERRAIN_INDEXS = 504,    // A클라이언트가 변경한 지형 카드 인덱스를 서버에 전달
 
     NOTIFY_EVENTCARD_INDEX = 505, // A클라이언트가 사용한 이벤트 카드 인덱스 
+
+    NOTIFY_GAME_READY = 507	// 이거 주고 받으면 꼴토롱됨.
+
 };
 
 

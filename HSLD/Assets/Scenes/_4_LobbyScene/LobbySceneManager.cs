@@ -59,9 +59,10 @@ public class LobbySceneManager : MonoBehaviour {
         // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
         while (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().networkSyncLock == true)
         {
-            yield return new WaitForSeconds(0.03f); // True이면 이거 건들면안 됌 감히.
+            yield return new WaitForSeconds(0.03f); // True이면 이거 건들면 안 됌 감히 씬매니저주제에 디질라공.
         }
         // ---
+
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_EXIT_RANDOM);
     }
 

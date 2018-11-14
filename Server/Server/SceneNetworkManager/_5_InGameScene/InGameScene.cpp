@@ -15,7 +15,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(bool* InIsSaveOn) : BaseScene(),
 	RecvFunctions[4] = &InGameScene::RecvTerrainIndexs;
 	RecvFunctions[5] = &InGameScene::RecvEventcardIndex;
 	RecvFunctions[6] = &InGameScene::RecvNetworkExecption;
-
+	RecvFunctions[7] = &InGameScene::RecvGameReady;
 
 	SendFunctions[0] = &InGameScene::SendGameState;
 	SendFunctions[1] = &InGameScene::SendChangeTurn;
@@ -24,6 +24,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(bool* InIsSaveOn) : BaseScene(),
 	SendFunctions[4] = &InGameScene::SendTerrainIndexs;
 	SendFunctions[5] = &InGameScene::SendEventcardIndex;
 	SendFunctions[6] = &InGameScene::SendNetworkExecption;
+	SendFunctions[7] = &InGameScene::SendGameReady;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -91,7 +92,11 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvNetworkExecption(SocketInfo* ptr, G
 
 }
 
-
+void SCENE_NETWORK_MANAGER::InGameScene::RecvGameReady(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	// 모든 게임에 대한 내 클라이언트의 준비가 끝나면, VOID_GAME_STATE으로 변경함 (최초 NOTIFY_GAME_READY 상태임.)
+	ptr->pRoomIter->SetDataProtocol(ptr->isHost, VOID_GAME_STATE);
+}
 
 // send Functions
 
@@ -107,6 +112,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, Socke
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendGameState(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
+	// 이거를 최초로 받으면, 두 클라 모두 GameReady 상태가 된 것으로 판단.
+
 	ptr->dataSize = 4;
 }
 
@@ -180,4 +187,10 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendNetworkExecption(SocketInfo* ptr, G
 	ptr->dataSize = 4;
 
 	*IsSaveOn = true;
+}
+
+void SCENE_NETWORK_MANAGER::InGameScene::SendGameReady(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	// 이거 받으면, 507이니, 상대방이 아직 GameReady 상태가 안됨.
+	ptr->dataSize = 4;
 }

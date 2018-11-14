@@ -42,6 +42,7 @@ namespace SCENE_NETWORK_MANAGER
 		void RecvTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void RecvEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void RecvNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void RecvGameReady(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 		void SendGameState(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void SendChangeTurn(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
@@ -50,6 +51,7 @@ namespace SCENE_NETWORK_MANAGER
 		void SendTerrainIndexs(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void SendEventcardIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void SendNetworkExecption(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void SendGameReady(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 
 	//void RecvGameState(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
