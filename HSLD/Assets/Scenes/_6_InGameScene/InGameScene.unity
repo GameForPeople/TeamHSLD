@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3884,6 +3884,7 @@ GameObject:
   - component: {fileID: 374445975}
   - component: {fileID: 374445976}
   - component: {fileID: 374445977}
+  - component: {fileID: 374445978}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3997,6 +3998,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
   myPlanet: {fileID: 0}
+  cameraShake: {fileID: 374445978}
+  duration: 0.5
+  magnitude: 2
+--- !u!114 &374445978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 374445970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e61e0fea02b214f88037a70930cfa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &377410625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100158, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8628,6 +8643,7 @@ MonoBehaviour:
   network_terrainIndex: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   recvTerrainIndex: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   network_eventCardType: 0
+  isOnWaitGameReady: 0
   recvDiceValue: 0
   recvTerrainType: 0
 --- !u!4 &823012257
@@ -21215,7 +21231,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 5.289913, y: 0}
   m_SizeDelta: {x: 17.46, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22237,8 +22253,8 @@ RectTransform:
   m_Father: {fileID: 2008367093}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.48222223, y: 0}
+  m_AnchorMax: {x: 0.48222223, y: 1}
   m_AnchoredPosition: {x: 2.1, y: -2.8}
   m_SizeDelta: {x: 22, y: 165.1}
   m_Pivot: {x: 0.5, y: 0.5}

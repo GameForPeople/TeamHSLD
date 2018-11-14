@@ -10,6 +10,9 @@ public class PCverPIcking : MonoBehaviour
     public static bool isGetFlag;
     public static bool isCheck;
     RaycastHit hit;
+    public CameraShake cameraShake;
+    public float duration;
+    public float magnitude;
 
     private void Start()
     {
@@ -20,6 +23,11 @@ public class PCverPIcking : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(cameraShake.Shake(duration, magnitude));
+        }
+
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
         if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow == FLOW.TO_PICKINGCARD)
