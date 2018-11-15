@@ -353,7 +353,7 @@ void IOCPServer::_RunManagerThread()
 
 void IOCPServer::_RunTestThread()
 {
-	hTestThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
+	hTestThread = CreateThread(NULL, 0, TestThread, (LPVOID)this, 0, NULL);
 	std::cout << "     [UserDataManager] Run Test Thread! " << "\n";
 }
 
@@ -427,7 +427,8 @@ void IOCPServer::_WorkerThreadFunction()
 		if (retVal == 0 || cbTransferred == 0)
 		{
 #ifdef _DEBUG
-			std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << pClient->pUserNode->GetKey() << std::endl;
+			if(pClient != nullptr && pClient->pUserNode != nullptr)
+				std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << pClient->pUserNode->GetKey() << std::endl;
 			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
 			//	inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 #endif
@@ -555,7 +556,9 @@ void IOCPServer::_TestThreadFunction()
 	}
 }
 
-// UDP Function
+// UDP Function 
+// 실제로 쓸 때는, *ptr을 받고 (nullptr) 여부 검사하여 쓰고, Msg Char 1 byte 받도록 짜야지.
+// 아니면 이 내부에서, 큐를 다 돌리는 식으로 짜도 돼고! 음음.
 void IOCPServer::_SendDynamicMessage()
 {
 	bool isSendTrue = false;
@@ -569,7 +572,7 @@ void IOCPServer::_SendDynamicMessage()
 		getpeername(pUdpClient->SetValue().GetSocketInfo()->sock, (SOCKADDR *)&clientAddr, &addrLength);
 		clientAddr.sin_port = htons(SERVER_UDP_PORT);
 
-		udpMessageBuffer[0] = 1;
+		udpMessageBuffer[0] = static_cast<char>(1);
 
 		// !! for (UserData) for GetPeerName
 		sendto(udpSocket, udpMessageBuffer.data(), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));

@@ -1,4 +1,4 @@
-﻿//#define UDP
+﻿#define UDP
 
 using System.Collections;
 using System.Collections.Generic;
@@ -28,14 +28,6 @@ public class NetworkManager : MonoBehaviour
     //////////////////////////////// FOR ONLY CLIENT TEST
     public bool isOnNetwork = false;
     ////////////////////////////////
-
-    //[StructLayout(LayoutKind.Sequential)]
-    //public class socket_data
-    //{
-    //    public int msg;
-    //
-    //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)] public char[] data;
-    //}
 
     public string iP_ADDRESS;
     private const int SERVER_PORT = 9000;
@@ -104,9 +96,10 @@ public class NetworkManager : MonoBehaviour
         socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 10000);
 
         // Socket connect.
+        IPAddress ipAddr;
         try
         {
-            IPAddress ipAddr = System.Net.IPAddress.Parse(iP_ADDRESS);
+            ipAddr = System.Net.IPAddress.Parse(iP_ADDRESS);
             IPEndPoint ipEndPoint = new System.Net.IPEndPoint(ipAddr, SERVER_PORT);
             socket.Connect(ipEndPoint); // 아니 솔직히 커넥트는 비동기로 안한다. 이거는 c++서버도 안했다 오바지
         }
@@ -118,6 +111,8 @@ public class NetworkManager : MonoBehaviour
         }
 
         Debug.Log("Connect가 정상적으로 완료됐습니다!");
+        UDP_Receive(ipAddr);
+        
         //SendData(100);
         //m_scenenManager = GameObject.Find("SceneManager");
     }
@@ -534,6 +529,7 @@ public class NetworkManager : MonoBehaviour
     }
 
 #if UDP
+
     public class UDP_StateObject
     {
        public UdpClient u;
@@ -541,6 +537,33 @@ public class NetworkManager : MonoBehaviour
     }
 
     public static bool messageReceived = false;
+
+    public void UDP_Receive(IPAddress InIPAddress)
+    {
+        StartCoroutine(UdpCoroutine(InIPAddress));
+    }
+
+    IEnumerator UdpCoroutine(IPAddress InIPAddress)
+    {
+        // Receive a message and write it to the console.
+        IPEndPoint e = new IPEndPoint(/*IPAddress.Any*/ InIPAddress, 9001);
+        UdpClient u = new UdpClient(e);
+
+        UDP_StateObject s = new UDP_StateObject();
+        s.e = e;
+        s.u = u;
+
+        u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
+
+        while (!messageReceived)
+        {
+            yield return new WaitForSeconds(1.0f);
+            Debug.Log("대기");
+        }
+
+        Debug.Log(" UDP Message를 받았습니다. ");
+        messageReceived = false;
+    }
 
     public static void UDP_ReceiveCallback(IAsyncResult ar)
     {
@@ -554,26 +577,6 @@ public class NetworkManager : MonoBehaviour
         messageReceived = true;
     }
 
-    public static void UDP_Receive()
-    {
-        // Receive a message and write it to the console.
-        IPEndPoint e = new IPEndPoint(IPAddress.Any, 9001);
-        UdpClient u = new UdpClient(e);
-
-        UDP_StateObject s = new UDP_StateObject();
-        s.e = e;
-        s.u = u;
-
-        //Console.WriteLine("listening for messages");
-        u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
-
-        // Do some work while we wait for a message. For this example,
-        // we'll just sleep
-        while (!messageReceived)
-        {
-            Thread.Sleep(1000);
-        }
-    }
     
 #endif
 
