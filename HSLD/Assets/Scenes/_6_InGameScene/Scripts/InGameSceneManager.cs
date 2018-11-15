@@ -242,6 +242,8 @@ public class InGameSceneManager : MonoBehaviour
 
         StopCoroutine("WaitCoroutine");
         StartCoroutine("InGameNetworkCoroutine");
+
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
     }
 
     IEnumerator WaitCoroutine()

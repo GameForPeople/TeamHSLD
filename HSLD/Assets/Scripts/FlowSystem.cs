@@ -124,13 +124,17 @@ public class FlowSystem : MonoBehaviour
                 
                 turnSetCanvas.SetActive(false);
                 readyCanvas.SetActive(false);
+                spinCanvas.SetActive(true);
+                currentFlow = FLOW.READY_DONE;
 
-                //선공 / 후공 - 임시, 서버붙이면 변경
-                gameObject.GetComponent<TurnSystem>().TurnSet();
-                spinCanvas.SetActive(true);                
+                //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
+                if (GameObject.Find("NetworkManager") == null)
+                    FlowChange(FLOW.READY_DONE);
+                else
+                    gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
                 break;
-
             case FLOW.READY_DONE:
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
             case FLOW.WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
