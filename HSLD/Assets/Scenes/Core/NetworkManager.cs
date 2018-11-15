@@ -199,7 +199,7 @@ public class NetworkManager : MonoBehaviour
                 // RoomScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
 
-                    // RoomScene - new
+                // RoomScene - new
                 else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, DataSendBuffer, 0, 4);
@@ -268,6 +268,12 @@ public class NetworkManager : MonoBehaviour
                 else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+                
+                else if(InMsg == (int)PROTOCOL.NOTIFY_GAME_READY)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_GAME_READY), 0, DataSendBuffer, 0, 4);
                     socket.Send(DataSendBuffer, 4, SocketFlags.None);
                 }
 
@@ -469,7 +475,7 @@ public class NetworkManager : MonoBehaviour
             {
                 inGameSceneManager.StartInGameCoroutine();
             }
-            return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
+            //return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
         {

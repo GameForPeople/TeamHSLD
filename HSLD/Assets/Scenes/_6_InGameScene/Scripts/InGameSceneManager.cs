@@ -24,6 +24,9 @@ public class InGameSceneManager : MonoBehaviour
     // GameReady 여부에 따른 bool 변수.
     public bool isOnWaitGameReady;
 
+    IEnumerator CoroutineHandle_Wait;
+    IEnumerator CoroutineHandle_Play;
+
     private NetworkManager networkManager;
     
     // 변수 2개 추가했어요. - 181022 YSH
@@ -50,6 +53,8 @@ public class InGameSceneManager : MonoBehaviour
         network_eventCardType = 0;
         network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE;
 
+        CoroutineHandle_Wait = WaitCoroutine();
+        CoroutineHandle_Play = InGameNetworkCoroutine();
         //StartCoroutine("InGameNetworkCoroutine");
     }
 
@@ -232,7 +237,7 @@ public class InGameSceneManager : MonoBehaviour
     {
         isOnWaitGameReady = false;
 
-        StartCoroutine("WaitCoroutine");
+        StartCoroutine(CoroutineHandle_Wait);
     }
 
     // 대기 상태에서 게임 시작 상태가 시작될 때, 네트워크 매니저에서 호출.
@@ -240,8 +245,14 @@ public class InGameSceneManager : MonoBehaviour
     {
         isOnWaitGameReady = true;
 
-        StopCoroutine("WaitCoroutine");
-        StartCoroutine("InGameNetworkCoroutine");
+        StopCoroutine(CoroutineHandle_Wait);
+
+        //while (networkManager.networkSyncLock == true)
+        //{
+        //    yield return new WaitForSeconds(0.03f); // True이면 이거 건들면 안 됌 감히 씬매니저주제에 디질라공.
+        //}
+
+        StartCoroutine(CoroutineHandle_Play);
 
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
     }
