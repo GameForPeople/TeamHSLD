@@ -12,12 +12,8 @@ namespace SCENE_NETWORK_MANAGER
 {
 	class InGameScene : public BaseScene
 	{
-	private:
-		bool* IsSaveOn;
-
 	public:
-		InGameScene() = delete;
-		InGameScene(bool* InIsSaveOn);
+		InGameScene();
 		virtual ~InGameScene() override = default;
 
 	public:

@@ -1,12 +1,6 @@
 #include "../PCH/stdafx.h"
 #include "IOCPServer.h"
 
-/*
-
- 1. InGameScene 나중에 맨 앞으로 옮기고 ( if 500 <=  hi  < 600 ) 함수포인터로 해싱해버리기.
-
-*/
-
 // Server's global Function
 namespace NETWORK_UTIL {
 	void ERROR_QUIT(char *msg)
@@ -240,7 +234,7 @@ void IOCPServer::_BindSceneDataProcess()
 	sceneNetworkManagerArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
 	sceneNetworkManagerArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
 	sceneNetworkManagerArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
-	sceneNetworkManagerArr[5] = new SCENE_NETWORK_MANAGER::InGameScene(&isSaveOn);
+	sceneNetworkManagerArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
 
 	//sceneArr.reserve(6);
 	//
@@ -266,19 +260,9 @@ void IOCPServer::_BindSceneDataProcess()
 	//SceneDataProcess[5] = inGameScene.ProcessData;
 }
 
-void IOCPServer::_CreateUDPSocket()
+void IOCPServer::_CreateSocket()
 {
-	udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
-	if (udpSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT((char *)"Socket()");
-
-	ZeroMemory(&serverUDPAddr, sizeof(serverUDPAddr));
-	serverUDPAddr.sin_family = AF_INET;
-	serverUDPAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	serverUDPAddr.sin_port = htons(SERVER_UDP_PORT);
-
-	if (int retval = ::bind(udpSocket, (SOCKADDR *)&serverUDPAddr, sizeof(serverUDPAddr)); 
-	retval == SOCKET_ERROR)
-		NETWORK_UTIL::ERROR_QUIT((char *)"bind()");
+	udpManager._CreateUDPSocket();
 }
 
 //Run
@@ -344,18 +328,16 @@ void IOCPServer::_AcceptProcess()
 	}
 }
 
-void IOCPServer::_RunManagerThread()
+void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
 	std::cout << "     [UserDataManager] Run Manager Thread! " << "\n";
+
+	hUDPThread = CreateThread(NULL, 0, UDPThread, (LPVOID)this, 0, NULL);
+	std::cout << "     [UserDataManager] Run UDP Manager Thread! " << "\n";
 }
 
-void IOCPServer::_RunTestThread()
-{
-	hTestThread = CreateThread(NULL, 0, TestThread, (LPVOID)this, 0, NULL);
-	std::cout << "     [UserDataManager] Run Test Thread! " << "\n";
-}
 
 //Close
 void IOCPServer::_DestroyAndClean()
@@ -364,17 +346,8 @@ void IOCPServer::_DestroyAndClean()
 	WSACleanup();
 	//....? 우리 열심히 일한 불쌍한 쓰레드들은 어떻게 하나,, 전능하신 운영체제께서 알아서..ㅎ 
 	// 임마 쇼하지 말고 나중에...초반에 핸들값들 다 벡터에 차곡차곡 모아서 여기서 멈추게해드려..
-	isSaveOn = true;
 
-	while (7) 
-	{
-		if (!isSaveOn) 
-		{
-			printf(" [System] User Data Last Save Success! \n\n");
-			CloseHandle(hManagerThread);
-		}
-	}
-
+	// UserData 변경으로, 여기서 없음.
 }
 
 
@@ -503,6 +476,23 @@ void IOCPServer::_WorkerThreadFunction()
 	}
 }
 
+DWORD WINAPI IOCPServer::UDPThread(LPVOID arg)
+{
+	IOCPServer* server = static_cast<IOCPServer*>(arg);
+	server->_UDPThreadFunction();
+
+	return 0;
+};
+
+void IOCPServer::_UDPThreadFunction()
+{
+	while (7)
+	{
+		udpManager.UDPSend();
+		Sleep(1000);
+	}
+}
+
 DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 {
 	IOCPServer* server = static_cast<IOCPServer*>(arg);
@@ -514,77 +504,17 @@ DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 
 void IOCPServer::_ManagerLoop()
 {
-	isSaveOn = false;
-	isSendUDPMessage = false;
-
-	while (777)
-	{
-		Sleep(1000);
-
-		//if (isSaveOn) SaveUserData();
-		//
-		//Sleep(1000);
-
-		if (isSendUDPMessage)_SendDynamicMessage();
-
-		Sleep(1000);
-	}
-}
-
-DWORD WINAPI IOCPServer::TestThread(LPVOID arg)
-{
-	IOCPServer* server = static_cast<IOCPServer*>(arg);
-
-	server->_TestThreadFunction();
-
-	return 0;
-}
-
-void IOCPServer::_TestThreadFunction()
-{
-	int buffer;
-
-	udpMessageBuffer = 'a';
+	int managerLoopBuffer{};
 
 	while (7)
 	{
-		std::cout << "기능 입력 : ";
-		std::cin >> buffer;
+		std::cout << "기능을 선택해주세요. 1) UDP Message : ";
+		std::cin >> managerLoopBuffer;
 
-		if (buffer == 0) break;
-		else if (buffer == 1) _SendDynamicMessage();
+		switch (managerLoopBuffer)
+		{
+		//case 1:
+		//	udpManager.UDPSend();
+		}
 	}
 }
-
-// UDP Function 
-// 실제로 쓸 때는, *ptr을 받고 (nullptr) 여부 검사하여 쓰고, Msg Char 1 byte 받도록 짜야지.
-// 아니면 이 내부에서, 큐를 다 돌리는 식으로 짜도 돼고! 음음.
-void IOCPServer::_SendDynamicMessage()
-{
-	bool isSendTrue = false;
-	rbTreeNode<string, UserData>* pUdpClient = userData.SearchUserNode("abcd", isSendTrue);
-
-	if (isSendTrue)
-	{
-		SOCKADDR_IN clientAddr;
-		int addrLength = sizeof(clientAddr);
-
-		getpeername(pUdpClient->SetValue().GetSocketInfo()->sock, (SOCKADDR *)&clientAddr, &addrLength);
-		clientAddr.sin_port = htons(SERVER_UDP_PORT);
-
-		udpMessageBuffer[0] = static_cast<char>(1);
-
-		// !! for (UserData) for GetPeerName
-		sendto(udpSocket, udpMessageBuffer.data(), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
-
-		isSendUDPMessage = false;
-	}
-}
-
-//void IOCPServer::SaveUserData()
-//{
-//		//지금 자야되니까 나중에 이거보면 
-//		//isSaveOn == if문 함수 밖으로 뺴라 멍청아... 이걸 거따가 집어넣었네ㅡㅡ
-//		// ? 레퍼런스로 안에서 바꿔줄건데 바보?
-//		//userData.Save(isSaveOn);
-//}
