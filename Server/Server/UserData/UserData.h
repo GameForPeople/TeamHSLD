@@ -86,6 +86,7 @@ public:
 			<< "\n";
 	}
 
+	__inline SocketInfo* GetSocketInfo() const { return pSocketInfo; }
 	__inline string	GetID()  const { return id; }
 	__inline string	GetNickName()   const { return nickName; }
 	__inline int	GetWinCount()  const { return winCount; }

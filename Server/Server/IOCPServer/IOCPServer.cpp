@@ -558,17 +558,24 @@ void IOCPServer::_TestThreadFunction()
 // UDP Function
 void IOCPServer::_SendDynamicMessage()
 {
-	SOCKADDR_IN clientAddr;
-	int addrLength = sizeof(clientAddr);
+	bool isSendTrue = false;
+	rbTreeNode<string, UserData>* pUdpClient = userData.SearchUserNode("abcd", isSendTrue);
 
-	//getpeername(pClient->sock, (SOCKADDR *)&clientAddr, &addrLength);
+	if (isSendTrue)
+	{
+		SOCKADDR_IN clientAddr;
+		int addrLength = sizeof(clientAddr);
 
-	udpMessageBuffer[0] = 1;
+		getpeername(pUdpClient->SetValue().GetSocketInfo()->sock, (SOCKADDR *)&clientAddr, &addrLength);
+		clientAddr.sin_port = htons(SERVER_UDP_PORT);
 
-	// !! for (UserData) for GetPeerName
-	sendto(udpSocket, udpMessageBuffer.data(), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+		udpMessageBuffer[0] = 1;
 
-	isSendUDPMessage = false;
+		// !! for (UserData) for GetPeerName
+		sendto(udpSocket, udpMessageBuffer.data(), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+
+		isSendUDPMessage = false;
+	}
 }
 
 //void IOCPServer::SaveUserData()
