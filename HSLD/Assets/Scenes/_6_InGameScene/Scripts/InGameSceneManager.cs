@@ -136,10 +136,8 @@ public class InGameSceneManager : MonoBehaviour
     // 사용자가 턴을 종료하면 나의턴이 됩니다.
     public void RecvChangeTurn()
     {
-        //거점을 정복했는지 여부에따라서 분기
-
-        gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-        //gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_GETFLAG;
+        //상대방의 이벤트카드 갯수의 여부에따라 분기
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
     }
 
     // 상대방이 굴린 주사위 눈금을 연출
@@ -150,6 +148,7 @@ public class InGameSceneManager : MonoBehaviour
 
         //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
         gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ recvDiceValue.ToString() + " !!!", 5f);   //ref - 2f 수정.
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_ROLLINGDICE);
     }
 
     // 상대방이 뽑은 카드를 연출
@@ -163,6 +162,7 @@ public class InGameSceneManager : MonoBehaviour
             {
                 Debug.Log("뽑은카드타입 왜 안뜨는거야 도대체 !! : " + gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName);
                 gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대가 뽑은 카드 타입 : " + gameObject.GetComponent<CardSystem>().cardSet[i].GetComponent<CardData>().data.cardName + " !!!", 5f);
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGCARD);
                 break;
             }
         }
@@ -221,6 +221,7 @@ public class InGameSceneManager : MonoBehaviour
                 Debug.Log("에러 : 3");
             }
         }
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
         recvTerrainType = 0;
         recvDiceValue = 0;
     }
@@ -229,6 +230,7 @@ public class InGameSceneManager : MonoBehaviour
     public void RecvEventcardIndex(int InEventcardIndex)
     {
         Debug.Log("아직까진 이벤트카드 없음.");
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
 
     //

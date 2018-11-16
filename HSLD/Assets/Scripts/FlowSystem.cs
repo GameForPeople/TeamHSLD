@@ -9,11 +9,16 @@ public enum FLOW
     READY_TURNORDER,
     READY_SETCARD,
     READY_DONE,
-    WAITING,
+    READY_WAITING,
+    DISPLAYANIMATION_WAITING,
     TO_ROLLINGDICE,
     TO_PICKINGCARD,
     TO_PICKINGLOC,
     TO_PICKEVENTCARD,
+    ENEMYTURN_ROLLINGDICE,
+    ENEMYTURN_PICKINGCARD,
+    ENEMYTURN_PICKINGLOC,
+    ENEMYTURN_PICKEVENTCARD,
     TSETVER
 }
 
@@ -41,7 +46,7 @@ public class FlowSystem : MonoBehaviour
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
         tmpAnimationImage.SetActive(true);
-        currentFlow = FLOW.WAITING;
+        currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         isWaitingTime = true;
         time_ = 0;
         while (true)
@@ -60,7 +65,10 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
                 if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
+                {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
+                }
+                    
                 else
                 {
                     if (GameObject.Find("GameCores") != null)
@@ -68,13 +76,12 @@ public class FlowSystem : MonoBehaviour
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
-
-
-                    currentFlow = FLOW.WAITING;
+                    currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                    gameObject.GetComponent<TurnSystem>().TurnSet();
                 }
                 break;
             case FLOW.TO_PICKEVENTCARD:
-                gameObject.GetComponent<TurnSystem>().TurnSet();
                 if (GameObject.Find("GameCores") != null)
                 {
                     GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
@@ -82,9 +89,25 @@ public class FlowSystem : MonoBehaviour
 
                     //1.5초 여유 ..!!
                     gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
-                }   
-                currentFlow = FLOW.WAITING;
+                }
+                currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
+            case FLOW.ENEMYTURN_ROLLINGDICE:
+                currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
+                break;
+            case FLOW.ENEMYTURN_PICKINGLOC:
+                currentFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
+                //gameObject.GetComponent<TurnSystem>().TurnSet();
+                break;
+            
+            case FLOW.ENEMYTURN_PICKEVENTCARD:
+                currentFlow = FLOW.TO_ROLLINGDICE;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                break;
+
         }
         tmpAnimationImage.SetActive(false);
         isWaitingTime = false;
@@ -121,22 +144,27 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.READY_TURNORDER;
                 break;
             case FLOW.READY_TURNORDER:
-                
                 turnSetCanvas.SetActive(false);
                 readyCanvas.SetActive(false);
                 spinCanvas.SetActive(true);
                 currentFlow = FLOW.READY_DONE;
+                tmpAnimationImage.SetActive(true);
 
                 //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
-                if (GameObject.Find("NetworkManager") == null)
+                if (GameObject.Find("GameCores") == null)
+                {
+                    currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     FlowChange(FLOW.READY_DONE);
+                }
+                    
                 else
                     gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
                 break;
             case FLOW.READY_DONE:
+                tmpAnimationImage.SetActive(false);
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
-            case FLOW.WAITING:
+            case FLOW.READY_WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
             case FLOW.TO_PICKINGCARD:
@@ -145,11 +173,9 @@ public class FlowSystem : MonoBehaviour
                 setTerrainCanvas.SetActive(true);
                 if (GameObject.Find("GameCores") != null)
                 {
-                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;  //이게 될까 .. 안되면 이거문제일듯.
+                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
                     gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
-
                 }
-
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
@@ -170,7 +196,19 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_PICKEVENTCARD:
                 //애니메이션 여기
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
-
+                break;
+            case FLOW.ENEMYTURN_ROLLINGDICE:
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5));
+                break;
+            case FLOW.ENEMYTURN_PICKINGCARD:
+                currentFlow = FLOW.ENEMYTURN_PICKINGLOC;
+                break;
+            //거점을 정복했는지 여부에따라서 분기
+            case FLOW.ENEMYTURN_PICKINGLOC:
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));
+                break;
+            case FLOW.ENEMYTURN_PICKEVENTCARD:
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
