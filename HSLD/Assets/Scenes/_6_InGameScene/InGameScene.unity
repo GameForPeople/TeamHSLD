@@ -3999,7 +3999,7 @@ MonoBehaviour:
   mainCamera: {fileID: 374445972}
   myPlanet: {fileID: 0}
   cameraShake: {fileID: 374445978}
-  duration: 0.5
+  duration: 1
   magnitude: 2
 --- !u!114 &374445978
 MonoBehaviour:
@@ -4012,6 +4012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e61e0fea02b214f88037a70930cfa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  UIList: []
 --- !u!1 &377410625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100158, guid: e0e6c540bb21a994890f7a93ac229b27,

@@ -54,6 +54,7 @@ public class MeshController : MonoBehaviour {
         startPos = transform.position;
         destinationPos = transform.position * 1.05f;
         //EulerRotCal(gameObject, BuildingObject[0], 0.5f);
+        isLandingSign = true;
     }
 
     // Update is called once per frame
@@ -264,6 +265,18 @@ public class MeshController : MonoBehaviour {
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(19, 20)], 1.03f);
             }
+        }
+    }
+
+    public IEnumerator MoveDown()
+    {
+        while (transform.position.magnitude >= startPos.magnitude)
+        {
+            Debug.Log("찍히냐?");
+            transform.position = Vector3.Lerp(transform.position, startPos * 1.0f, Time.deltaTime / 5);
+            // 객체가 있었다면 객체들을 지워야 함.
+            Destroy(TargetObject);
+            yield return null;
         }
     }
 
