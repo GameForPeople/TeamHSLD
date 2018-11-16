@@ -5,7 +5,7 @@
 #include "../../GameRoom/GameRoomManager.h"
 #include "../../UserData/UserDataManager.h"
 
-SCENE_NETWORK_MANAGER::InGameScene::InGameScene(bool* InIsSaveOn) : BaseScene(), IsSaveOn(InIsSaveOn)
+SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 {
 	//functionPointers.emplace_back(FunctionPointer(DemandGameState));
 	RecvFunctions[0] = &InGameScene::RecvGameState;

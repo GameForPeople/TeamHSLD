@@ -23,11 +23,6 @@ public class PCverPIcking : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            StartCoroutine(cameraShake.Shake(duration, magnitude));
-        }
-
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
         if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow == FLOW.TO_PICKINGCARD)
@@ -129,6 +124,18 @@ public class PCverPIcking : MonoBehaviour
                 if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
                 {
                     PickedMeshObj = hitObj.transform.gameObject;
+
+                    // CameraShake Test Code
+                    if (Input.GetMouseButton(1))
+                    {
+                        if (!CameraShake.isCameraShake)
+                        {
+                            StartCoroutine(cameraShake.Shake(duration, magnitude, PickedMeshObj.GetComponent<MeshController>().Linkednum));
+                            // Linkednum != 0 && isMine == false 일 때 이벤트 카드
+                        }
+                        CameraController.offset = 2;
+                        return;
+                    }
 
                     if (PickedMeshObj.GetComponent<MeshController>() == null)
                     {

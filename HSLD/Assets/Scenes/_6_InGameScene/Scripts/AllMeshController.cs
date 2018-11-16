@@ -17,8 +17,6 @@ public class AllMeshController : MonoBehaviour {
     static public AllMeshController instance_;
     static public int giveLinkNum = 0;
 
-    public List<List<GameObject>> ListLinkedMesh;
-
     // Use this for initialization
     void Start () {
         once = false;
@@ -109,6 +107,22 @@ public class AllMeshController : MonoBehaviour {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public void InitLinkedMesh(int Linknumber) // 해당
+    {
+        for(int i = 1; i< AllContainer.Length; i++)
+        {
+            if(AllContainer[i].GetComponent<MeshController>().Linkednum == Linknumber)
+            {
+                StartCoroutine(AllContainer[i].GetComponent<MeshController>().MoveDown());
+                AllContainer[i].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                AllContainer[i].GetComponent<MeshController>().GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                AllContainer[i].GetComponent<MeshController>().Linkednum = 0;
+                AllContainer[i].GetComponent<MeshController>().isFixed = false;
+                AllContainer[i].GetComponent<MeshController>().isMine = false;
             }
         }
     }

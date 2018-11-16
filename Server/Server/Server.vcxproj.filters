@@ -93,6 +93,9 @@
     <ClCompile Include="IOCPServer\SocketInfo.cpp">
       <Filter>소스 파일\IOCPServer</Filter>
     </ClCompile>
+    <ClCompile Include="IOCPServer\UDPManager.cpp">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IOCPServer\IOCPServer.h">
@@ -148,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="UserData\Custom_Map_RedBlackTree.h">
       <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPServer\Custom_Node_Queue.h">
+      <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPServer\UDPManager.h">
+      <Filter>소스 파일\IOCPServer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

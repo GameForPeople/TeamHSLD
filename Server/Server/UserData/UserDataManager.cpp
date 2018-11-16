@@ -155,6 +155,11 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 	userDataCont[pInSocketInfo->userDataContIndex].Delete(pInSocketInfo->pUserNode);
 }
 
+rbTreeNode<string, UserData>* UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
+{
+	return userDataCont[GetStringFirstChar(keyString[0])].Search(keyString, RetBool);
+}
+
 int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
 {
 	// 0 ~ 25

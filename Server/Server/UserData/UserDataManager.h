@@ -23,6 +23,7 @@ public:
 
 	void LogoutProcess(SocketInfo* pInSocketInfo);
 
+	rbTreeNode<string, UserData>* SearchUserNode(const string& keyString, bool& RetBool);
 private:
 	// for userDataCont Hash, 첫글자처리필요.
 	int GetStringFirstChar(const char& InStringFirstChar);
