@@ -1,4 +1,4 @@
-﻿#define UDP
+﻿//#define UDP
 
 using System.Collections;
 using System.Collections.Generic;
@@ -111,8 +111,11 @@ public class NetworkManager : MonoBehaviour
         }
 
         Debug.Log("Connect가 정상적으로 완료됐습니다!");
+
+#if UDP
         UDP_Receive(ipAddr);
-        
+#endif  
+              
         //SendData(100);
         //m_scenenManager = GameObject.Find("SceneManager");
     }
