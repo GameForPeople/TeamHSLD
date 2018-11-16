@@ -22,6 +22,7 @@ public class BuildOnPlanet : MonoBehaviour
         if (CameraController.ChangeableCount != 0)
             return;
 
+        Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
     }
 }

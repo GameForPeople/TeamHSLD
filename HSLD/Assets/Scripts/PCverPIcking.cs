@@ -39,69 +39,7 @@ public class PCverPIcking : MonoBehaviour
             //Debug.Log("Enemy Turn");
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
-                AllMeshController.giveLinkNum++;
-                Debug.Log("내 턴에서 넘어갈 때 한번만");
-                for (int i = 0; i < Length; i++) // 링크드넘버 세팅
-                {
-                    GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
-                    FindObject.GetComponent<MeshController>().Linkednum = AllMeshController.giveLinkNum;
-                }
-
-                for (int i = 0; i < Length; i++)
-                {
-                    GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
-
-                    if(isGetFlag == true)
-                    {
-                        isCheck = true;
-                        Debug.Log("거점 등록");
-                    }
-                    //able 모두 삭제
-                    for (int j = 0; j < 3; j++)
-                    {
-                        bool temp = false;
-
-                        if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
-                        {
-                            if (isCheck == false)
-                            {
-                                for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
-                                {
-                                    if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0] ||
-                                        myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] == FindObject)
-                                    {
-                                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                                        temp = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (temp == false)
-                            {
-                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
-                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
-                            }
-                        }
-                    }
-
-                    if (GameObject.Find("GameCores") != null)
-                    {
-                        GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainIndex(myPlanet.GetComponent<AllMeshController>().PickContainer.ToArray());
-                        Debug.Log("SEND : 행성 픽킹로케이션");
-                    }
-
-                    FindObject.GetComponent<MeshController>().isFixed = true;
-                    FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
-                    FindObject.GetComponent<MeshController>().isLandingSign = true;
-
-                    /////// Event 카드를 위한 매시 묶기
-                    myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
-                        FindObject.GetComponent<MeshController>().name,
-                        FindObject.GetComponent<MeshController>().terrainstate);
-                }
-                
-                myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
-                CameraController.Once = false;
+                TurnChangeLogic();
             }
         }
 
@@ -246,6 +184,75 @@ public class PCverPIcking : MonoBehaviour
                 CameraController.Once = true;
             }
         }
+    }
+
+    public void TurnChangeLogic()
+    {
+        int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
+
+        AllMeshController.giveLinkNum++;
+        Debug.Log("내 턴에서 넘어갈 때 한번만");
+        for (int i = 0; i < Length; i++) // 링크드넘버 세팅
+        {
+            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+            FindObject.GetComponent<MeshController>().Linkednum = AllMeshController.giveLinkNum;
+        }
+
+        for (int i = 0; i < Length; i++)
+        {
+            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+
+            if (isGetFlag == true)
+            {
+                isCheck = true;
+                Debug.Log("거점 등록");
+            }
+            //able 모두 삭제
+            for (int j = 0; j < 3; j++)
+            {
+                bool temp = false;
+
+                if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
+                {
+                    if (isCheck == false)
+                    {
+                        for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
+                        {
+                            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[0] ||
+                                myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] == FindObject)
+                            {
+                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                                temp = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (temp == false)
+                    {
+                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                    }
+                }
+            }
+
+            if (GameObject.Find("GameCores") != null)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainIndex(myPlanet.GetComponent<AllMeshController>().PickContainer.ToArray());
+                Debug.Log("SEND : 행성 픽킹로케이션");
+            }
+
+            FindObject.GetComponent<MeshController>().isFixed = true;
+            FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
+            FindObject.GetComponent<MeshController>().isLandingSign = true;
+
+            /////// Event 카드를 위한 매시 묶기
+            myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
+                FindObject.GetComponent<MeshController>().name,
+                FindObject.GetComponent<MeshController>().terrainstate);
+        }
+
+        myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
+        CameraController.Once = false;
     }
 
 }
