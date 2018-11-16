@@ -21,6 +21,11 @@ namespace UDP_UTIL {
 	};
 };
 
+UDPManager::UDPManager() 
+	: INVITE_ROOM(static_cast<char>(1)), DEMAND_FRIEND(static_cast<char>(2)), DYNAMIC_MESSAGE(static_cast<char>(3))
+	, UDP_PORT(htons(SERVER_UDP_PORT))
+{}
+
 void UDPManager::_CreateUDPSocket()
 {
 	udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -33,22 +38,23 @@ void UDPManager::_CreateUDPSocket()
 
 	if (int retval = ::bind(udpSocket, (SOCKADDR *)&serverUDPAddr, sizeof(serverUDPAddr));
 	retval == SOCKET_ERROR)
-		UDP_UTIL::ERROR_QUIT((char *)"bind()");
+		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
-void UDPManager::_SendFriendMessage()
+void UDPManager::_SendMessage(const char& InChar)
 {
-	CustomNode* pNodeBuffer = friendMessageQueue.Pop();
+	CustomNode* pNodeBuffer = friendInviteMessageQueue.Pop();
 
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
 
-	if (pNodeBuffer->GetData().first != nullptr) 
+	if (pNodeBuffer->GetData() != nullptr)
 	{
-		getpeername(pNodeBuffer->GetData().first->sock, (SOCKADDR *)&clientAddr, &addrLength);
-		clientAddr.sin_port = htons(SERVER_UDP_PORT);
+		getpeername(pNodeBuffer->GetData()->sock, (SOCKADDR *)&clientAddr, &addrLength);
+		//clientAddr.sin_port = htons(SERVER_UDP_PORT);
+		clientAddr.sin_port = UDP_PORT;
 
-		sendto(udpSocket, (char*)(pNodeBuffer->GetData().second), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+		sendto(udpSocket, reinterpret_cast<char*>(InChar), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
 	}
 	delete pNodeBuffer;
 }

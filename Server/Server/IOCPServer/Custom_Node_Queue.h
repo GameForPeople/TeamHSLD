@@ -5,23 +5,23 @@
 
 class CustomNode
 {
-	pair<SocketInfo*, char> data;
+	SocketInfo* data;
 
 public:
 	CustomNode * left;
 	CustomNode * right;
 
 public:
-	CustomNode(const pair<SocketInfo*, char>& InData)
+	CustomNode(SocketInfo* InData)
 		: data(InData), left(nullptr), right(nullptr)
 	{}
 
-	CustomNode(const pair<SocketInfo*, char>& InData, CustomNode* InLeft, CustomNode* InRight)
+	CustomNode(SocketInfo* InData, CustomNode* InLeft, CustomNode* InRight)
 		: data(InData), left(InLeft), right(InRight)
 	{};
 
 public:
-	pair<SocketInfo*, char>& GetData()
+	SocketInfo* GetData()
 	{
 		return data;
 	}
@@ -37,7 +37,7 @@ public:
 		: pStart(nullptr), pEnd(nullptr)
 	{}
 
-	CustomNode* Push(const pair<SocketInfo*, char>& InDATA)
+	CustomNode* Push(SocketInfo* InDATA)
 	{
 		CustomNode* pRetNode = new CustomNode(InDATA);
 
