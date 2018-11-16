@@ -38,6 +38,8 @@ enum Protocol {
 	PERMIT_NICKNAME		=	104 ,	// Server to Client - buffer
 	
 	// for MainUiScene
+	DEMAND_FRIEND_INFO	=	201	,	// Client to Server - 친구 정보 보내주세요.
+	PERMIT_FRIEND_INFO	=	202 ,	// Server to Client
 
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
