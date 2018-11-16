@@ -4,15 +4,17 @@
 #pragma comment(lib, "wininet.lib")
 
 #include <WinSock2.h>
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <utility>
 
 #include <fstream>
 
 #include <vector>
 #include <map>
-
+#include <queue>
 #include <string>
 
 //thread
@@ -24,11 +26,16 @@
 #include "wininet.h"
 #include <tchar.h>
 
+// C++17
 #include <string_view>
 
-using namespace std;
+// custom
 
 // For Login
 #define		MAX_ID_LEN		30
 #define		BUF_SIZE		100
 
+#define		SERVER_PORT		9000
+#define		SERVER_UDP_PORT 9001
+
+using namespace std;

@@ -5,6 +5,8 @@
 #include "../Protocol/CommunicationProtocol.h"
 #include "../IOCPServer/SocketInfo.h"
 
+#include "../IOCPServer/UDPManager.h"
+
 #include "../UserData/UserDataManager.h"
 #include "../GameRoom/GameRoomManager.h"
 
@@ -17,8 +19,8 @@
 #include "../SceneNetworkManager/_4_RoomScene/RoomScene.h"
 #include "../SceneNetworkManager/_5_InGameScene/InGameScene.h"
 
-#define		SERVER_PORT		9000
-#define		SERVER_UDP_PORT 9001
+//#define		SERVER_PORT		9000
+//#define		SERVER_UDP_PORT 9001
 
 // For ExternalIP
 #define		EXTERNALIP_FINDER_URL	"http://checkip.dyndns.org/"
@@ -51,30 +53,25 @@ PauseThreadList
 
 class IOCPServer {
 private:
-	bool bIsPrintDebugMessage;
+	bool bIsPrintDebugMessage; // 이거 추후 삭제.
 
 	WSADATA wsa;
 	HANDLE hIOCP;
 	SOCKET listenSocket;
-	SOCKET udpSocket;
 
 	SOCKADDR_IN serverAddr;
-	SOCKADDR_IN serverUDPAddr;
 
 	HANDLE hManagerThread;
+	HANDLE hUDPThread;
 
 	//For Game
 	UserDataManager userData;
 	GameRoomManager roomData;
 
+	UDPManager udpManager;
+
 	SCENE_NETWORK_MANAGER::BaseScene* sceneNetworkManagerArr[6];
 	//void(*SceneDataProcess[6])(const int& InRecvType,SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-
-	//std::atomic_bool isSaveOn; // 굳이 성능 떨굴 필요없음..다음 턴에 어짜피 동기화 됨.
-	bool isSaveOn;
-
-	bool isSendUDPMessage;
-	string udpMessageBuffer;
 
 public:
 	__inline IOCPServer() : bIsPrintDebugMessage(false)
@@ -103,12 +100,12 @@ public:
 		_CreateBindListen();
 		_BindSceneDataProcess();
 
-		_CreateUDPSocket();
+		_CreateSocket();
 	}
 
 	void Run()
 	{
-		_RunSaveUserDataThread();
+		_RunOtherThread();
 		_AcceptProcess();
 	}
 
@@ -132,17 +129,13 @@ private:
 	void _BindSceneDataProcess();
 
 	//Init - For UDP [DEV_53]
-	void _CreateUDPSocket();
+	void _CreateSocket();
 
 	//Run
 	void _AcceptProcess();
 
-	void _RunSaveUserDataThread()
-	{
-		hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
-		//CloseHandle(hSaveUserDataThread);
-		std::cout << "     [UserDataManager] Run Save Thread! " << "\n";
-	}
+	void _RunOtherThread();
+
 	//Close
 	void _DestroyAndClean();
 
@@ -150,10 +143,10 @@ private:
 	//ThreadFunction
 	static DWORD WINAPI WorkerThread(LPVOID arg);
 	void _WorkerThreadFunction();
+
+	static DWORD WINAPI UDPThread(LPVOID arg);
+	void _UDPThreadFunction();
+
 	static DWORD WINAPI ManagerThread(LPVOID arg);
 	void _ManagerLoop();
-	// void SaveUserData();
-
-	// UDPSocket
-	void _SendDynamicMessage();
 };
