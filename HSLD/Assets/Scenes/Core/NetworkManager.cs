@@ -169,10 +169,16 @@ public class NetworkManager : MonoBehaviour
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }
 
+                // Main UI
+                else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_INFO)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_FRIEND_INFO), 0, DataSendBuffer, 0, 4);
+                    socket.Send(DataSendBuffer, 4, SocketFlags.None);
+                }
+
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
                 //else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
-
 
                 //LobbyScene - new
                 else if (InMsg == (int)PROTOCOL.DEMAND_RANDOM_MATCH)
@@ -346,7 +352,7 @@ public class NetworkManager : MonoBehaviour
             //
             if (money == -1)
                 GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().OnNewNicknameUI();
-            else 
+            else
                 GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
         }
         else if (recvType == (int)PROTOCOL.PERMIT_NICKNAME)
@@ -357,6 +363,17 @@ public class NetworkManager : MonoBehaviour
         //else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
         //else if (recvType == (int)PROTOCOL.PERMIT_JOINROOM)
         //else if (recvType == (int)PROTOCOL.FAIL_JOINROOM)
+
+        else if (recvType == (int)PROTOCOL.PERMIT_FRIEND_INFO)
+        {
+            /* 데이터 송수신 처리.
+              
+             */
+
+            // 친구 UI On
+            GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(true);
+        }
+
 
         //LobbyScene - new
         else if (recvType == (int)PROTOCOL.PERMIT_MAKE_RANDOM)
@@ -648,6 +665,10 @@ enum PROTOCOL : int
     //for LobbyScene
     CHANGE_NICKNAME = 103,  // Client To Server
     PERMIT_NICKNAME = 104,	// Server to Client - buffer
+
+    //for MainUI
+    DEMAND_FRIEND_INFO = 201,
+    PERMIT_FRIEND_INFO = 202,	// Server to Client
 
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
