@@ -54,7 +54,6 @@ public class MeshController : MonoBehaviour {
         startPos = transform.position;
         destinationPos = transform.position * 1.05f;
         //EulerRotCal(gameObject, BuildingObject[0], 0.5f);
-        isLandingSign = true;
     }
 
     // Update is called once per frame
