@@ -106,7 +106,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::SendPermitLogin(SocketInfo* ptr, const s
 
 	ptr->dataSize = 32 + stringSizeBuffer;
 
-	// 친구 기능 일단 주석처리함.
+	// 친구 기능 일단 주석처리함. // 이 때 굳이 보낼 필요 없음.
 	/*
 	int stringSizeBuffer = InFriendStringCont.size();
 	int totalSizeBuffer{ 0 };
