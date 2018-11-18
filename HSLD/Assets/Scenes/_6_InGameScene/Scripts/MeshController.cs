@@ -37,6 +37,9 @@ public class MeshController : MonoBehaviour {
     public bool isLandingSign;
     public GameObject TargetObject;
 
+    const float initSize = 1.02f;
+    const float landingSize = 1.05f;
+
     void Start () {
         terrainstate = Terrain.DEFAULT;
         domMaterial = Resources.Load<Material>("M_Cold");
@@ -45,15 +48,15 @@ public class MeshController : MonoBehaviour {
         isFixed = false;
         isMine = false;
         isLandingSign = false;
+        once = false;
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
-        //JointMesh = new GameObject[3];
-        once = false;
         Linkednum = 0;
+
+        transform.position *= initSize; // 초기 테두리 사이즈
         startPos = transform.position;
-        destinationPos = transform.position * 1.05f;
-        //EulerRotCal(gameObject, BuildingObject[0], 0.5f);
+        destinationPos = transform.position * landingSize; // Landing 사이즈
     }
 
     // Update is called once per frame
