@@ -14,6 +14,8 @@ namespace SCENE_NETWORK_MANAGER
 	class MainUiScene : public BaseScene
 	{
 		const int PERMIT_FRIEND_INFO;
+
+
 		const int CONST_TRUE;
 		const int CONST_FALSE;
 
