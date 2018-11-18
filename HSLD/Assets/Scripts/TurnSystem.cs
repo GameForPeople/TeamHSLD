@@ -45,6 +45,14 @@ public class TurnSystem : MonoBehaviour
     Coroutine myCoroutine;
     Coroutine enemyCoroutine;
 
+    public void TurnChange(bool change)
+    {
+        if (change)
+        {
+            currentTurn = TURN.MYTURN_GETFLAG;
+        }
+    }
+
     private void Start()
     {
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))

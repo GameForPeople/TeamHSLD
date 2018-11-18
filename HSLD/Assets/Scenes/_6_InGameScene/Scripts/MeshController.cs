@@ -74,7 +74,7 @@ public class MeshController : MonoBehaviour {
                 {
                     float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
 
-                    if (pTop < 19 && pTop != 0)
+                    if (pTop < 19.5 && pTop != 0)
                     {
                         DomMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
 
