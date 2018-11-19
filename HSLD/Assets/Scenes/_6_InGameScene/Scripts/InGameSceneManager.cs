@@ -136,6 +136,7 @@ public class InGameSceneManager : MonoBehaviour
     // 사용자가 턴을 종료하면 나의턴이 됩니다.
     public void RecvChangeTurn()
     {
+        Debug.Log("1111");
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
     }
@@ -221,7 +222,7 @@ public class InGameSceneManager : MonoBehaviour
                 Debug.Log("에러 : 3");
             }
         }
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
+        //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
         recvTerrainType = 0;
         recvDiceValue = 0;
     }
@@ -255,7 +256,6 @@ public class InGameSceneManager : MonoBehaviour
         //}
 
         StartCoroutine(CoroutineHandle_Play);
-
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
     }
 

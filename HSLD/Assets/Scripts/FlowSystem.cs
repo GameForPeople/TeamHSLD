@@ -96,8 +96,9 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
             case FLOW.ENEMYTURN_PICKINGLOC:
-                currentFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
-                //gameObject.GetComponent<TurnSystem>().TurnSet();
+                currentFlow = FLOW.TO_ROLLINGDICE;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
             
             case FLOW.ENEMYTURN_PICKEVENTCARD:
@@ -149,7 +150,10 @@ public class FlowSystem : MonoBehaviour
                 }
 
                 else
+                {
                     gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+                }
+                    
                 break;
 
             case FLOW.READY_DONE:

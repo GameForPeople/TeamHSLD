@@ -168,7 +168,11 @@ public class TurnSystem : MonoBehaviour
         }
         //내턴이아닐때의 코루틴 진입
         else
+        {
+            gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             StartCoroutine(EndTurnAndWaiting());
+        }
+            
     }
 
     IEnumerator EnemyTurnCounting()
@@ -188,8 +192,7 @@ public class TurnSystem : MonoBehaviour
 
         displayTurnTimerTxt.text = "( ";
         displayTurnTimerTxt.text += currentEnemyTurnTimer.ToString();
-
-
+        
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))
         {
             displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
@@ -214,11 +217,18 @@ public class TurnSystem : MonoBehaviour
             beforeFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
+        else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
+        {
+            displayTurnTimerTxt.text = "";
+            beforeFlow = FLOW.DISPLAYANIMATION_WAITING;
+            enemyCoroutine = StartCoroutine(EnemyTurnCounting());
+        }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
             displayTurnTimerTxt.text = "";
             currentTurn = TURN.MYTURN_GETFLAG;
         }
+        
     }
 
     //내턴일때 카운팅
@@ -310,10 +320,7 @@ public class TurnSystem : MonoBehaviour
                 warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
             }
         }
-        
     }
-
-
 
     //내턴이 아닐때 
     IEnumerator EndTurnAndWaiting()
@@ -327,8 +334,8 @@ public class TurnSystem : MonoBehaviour
             if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))
                 break;
         }
-
-        StopCoroutine(enemyCoroutine);
+        if (enemyCoroutine != null)
+            StopCoroutine(enemyCoroutine);
         gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
         myCoroutine = StartCoroutine(MyTurnCounting());
     }
