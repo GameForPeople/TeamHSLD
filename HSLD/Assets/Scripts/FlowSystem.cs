@@ -64,6 +64,7 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
+                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
                 if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;

@@ -180,7 +180,6 @@ public class TurnSystem : MonoBehaviour
 
     IEnumerator EnemyTurnCounting()
     {
-        Debug.Log("ENEMY turn counting 중");
         currentEnemyTurnTimer += 1;
         yield return new WaitForSeconds(1);
 
@@ -232,7 +231,6 @@ public class TurnSystem : MonoBehaviour
     //내턴일때 카운팅
     IEnumerator MyTurnCounting()
     {
-        Debug.Log("my turn counting 중");
         currentMyTurnTimer += 1;
         yield return new WaitForSeconds(1);
         //init
