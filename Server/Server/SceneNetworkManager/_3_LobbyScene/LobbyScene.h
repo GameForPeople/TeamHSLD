@@ -21,12 +21,18 @@ namespace SCENE_NETWORK_MANAGER
 
 		const int ANSWER_EXIT_RANDOM;	
 
+		const int ANSWER_FRIEND_JOIN; // for friend;
+		const int HOSTCHECK_FRIEND_INVITE; // 친구 기능에서, 방을 아에 나갔을 경우 동일하게 처리함.
+
+		const int CONST_TRUE;
+		const int CONST_FALSE;
+
 	public:
 		LobbyScene();
 		virtual ~LobbyScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
+		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager) override;
 
 	public:
 		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
@@ -37,9 +43,10 @@ namespace SCENE_NETWORK_MANAGER
 		//void(*SendFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 	private:
-		void DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		void DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
-		void DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandFriendJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 }

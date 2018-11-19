@@ -4,6 +4,7 @@
 
 #include "../../GameRoom/GameRoomManager.h"
 #include "../../UserData/UserDataManager.h"
+#include "../../IOCPServer/UDPManager.h"
 
 SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 {
@@ -27,7 +28,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene() : BaseScene()
 	SendFunctions[7] = &InGameScene::SendGameReady;
 }
 
-void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	ProcessRecv(InRecvType, ptr, InRoomData, InUserData);
 

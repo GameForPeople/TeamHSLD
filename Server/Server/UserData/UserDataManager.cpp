@@ -130,7 +130,7 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetFriendStringCont().size() << std::endl;
 
 		outFile
-			<< " " << valueBuffer.GetID()
+			<< " " << keyBuffer //== valueBuffer.GetID()
 			<< " " << valueBuffer.GetNickName()
 			<< " " << valueBuffer.GetWinCount()
 			<< " " << valueBuffer.GetLoseCount()

@@ -41,6 +41,19 @@ enum Protocol {
 	DEMAND_FRIEND_INFO	=	201	,	// Client to Server - 친구 정보 보내주세요.
 	PERMIT_FRIEND_INFO	=	202 ,	// Server to Client
 
+	DEMAND_FRIEND_INVITE =	203 ,   // Client to Server - with Index , A클라이언트가, index(B) 클라이언트에게 같이 플레이하고 싶다고 요청.
+	NOTIFY_FRIEND_INVITE =  204 ,	// Server to Client - with bool , Search를 통해, nullptr이 아닐 경우, true및 UDP에 Push
+
+	ANSWER_FRIEND_INVITE =	205	,	// Client to Server  - index(B) 클라이언트에게서 대답이 옴, 근데 이 때 만약 대답이 true일 경우, 206
+									// 대답이 False일 경우, 서버내부(Server Define)에서, 이를 호스트 클라이언트에게 알리는데 쓰임. -> 안쓰임
+	GUESTCHECK_FRIEND_INVITE =	206 ,	// Server to Client  - 최초 A클라이언트와 roomPtr의 포인터 유효성 검사 후, 가능하면 true.
+
+	// 이전 까지는, DEMAND_ROOMHOST 호출.
+	DELAY_FRIEND_INVITE  =  207 ,	// Client to Server  - 야 씨, 나 7초나 기달렸는데 왜 대답없냐?
+	HOSTCHECK_FRIEND_INVITE = 208,  // Server to Client - 야 GuestUser nullptr 맞다. 게임안하려나 봐.
+
+
+
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)
@@ -59,6 +72,9 @@ enum Protocol {
 
 	DEMAND_EXIT_RANDOM	=	317	,	// 랜덤큐를 취소함을 알림.
 	ANSWER_EXIT_RANDOM	=	318	,	// 랜덤큐 취소 여부에 대해 알림 (성공시 보내고, 실패시는, Guest_Join 처리함)
+
+	DEMAND_FRIEND_JOIN  =	319 ,	// [FRIEND] 친구가 초대에 응하는 지 여부 판단 (Friend 전용)
+	ANSWER_FRIEND_JOIN	=	320	,	// [FRIEND] 이에 따른 대답 해줌.
 
 	// for RoomScene 구 룸씬
 	DEMAND_ROOMHOST		=	400	,

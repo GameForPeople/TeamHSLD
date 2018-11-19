@@ -35,7 +35,7 @@ public:
 	~UDPManager() = default;
 
 public:
-	__inline void Push(const int& InContNumber, SocketInfo* pInSocket, const char InChar)
+	__inline void Push(const int& InContNumber, SocketInfo* pInSocket)
 	{
 		switch (InContNumber)
 		{

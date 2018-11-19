@@ -7,7 +7,7 @@ struct SocketInfo;
 class UserData {
 	SocketInfo*				pSocketInfo;			// 소켓 정보 구조체
 
-	std::string				id{};					// 아이디
+	std::string				id{};					// 아이디 -> 키 값으로 변경되면서, 제거 필요.
 	std::string				nickName{};				//닉네임
 
 	int						winCount;				//승리 횟수
@@ -96,6 +96,8 @@ public:
 	__inline int	GetTitleBit()  const { return titleBit; }
 	__inline int	GetCharacterBit()  const { return characterBit; }
 	__inline vector<string> GetFriendStringCont() const { return friendStringCont; }
+	__inline string GetFriendStringWithIndex(const int& InIndex ) const { return friendStringCont[InIndex]; }
+	__inline SocketInfo* GetFriendSocketInfo( const int& InIndex ) const { return friendSocketInfoCont[InIndex]; }
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
 	//	if (value == 1) { winCount++; }
@@ -103,19 +105,10 @@ public:
 	//}
 
 	// True일 경우 승리, False일 경우 패배.
-	__inline void	SetGameResult(const bool& InWinOrLose)
-	{
-		if (InWinOrLose) ++winCount;
-		else ++loseCount;
-	}
-	__inline void   SetNickName(const string& InNickName)
-	{
-		nickName = InNickName;
-	}
-	__inline void	SetMoney(const int& InMoney)
-	{
-		money = InMoney;
-	}
+	__inline void	SetGameResult(const bool& InWinOrLose)	{ if (InWinOrLose) ++winCount; 	else ++loseCount; }
+	__inline void   SetNickName(const string& InNickName)	{	nickName = InNickName; }
+	__inline void	SetMoney(const int& InMoney)			{ money = InMoney; }
+	__inline void   SetFreindSocketInfo(SocketInfo* InSocketInfo, const int& InIndex) { friendSocketInfoCont[InIndex] = InSocketInfo; }
 };
 
 

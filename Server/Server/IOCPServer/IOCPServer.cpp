@@ -468,7 +468,7 @@ void IOCPServer::_WorkerThreadFunction()
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData);
+			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData, udpManager);
 
 			if (NETWORK_UTIL::SendProcess(pClient))
 				continue;
