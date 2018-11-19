@@ -40,9 +40,10 @@ public class FlowSystem : MonoBehaviour
     static public bool isWaitingTime = false;
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
-    IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
+    IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
     {
-        tmpAnimationImage.SetActive(true);
+        if(animationImg)
+            tmpAnimationImage.SetActive(true);
         isWaitingTime = true;
         currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         time_ = 0;
@@ -61,7 +62,6 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
-                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
                 if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
@@ -106,7 +106,8 @@ public class FlowSystem : MonoBehaviour
                 break;
 
         }
-        tmpAnimationImage.SetActive(false);
+        if(animationImg)
+            tmpAnimationImage.SetActive(false);
         isWaitingTime = false;
     }
 
@@ -177,7 +178,7 @@ public class FlowSystem : MonoBehaviour
                     SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
 
                 //애니메이션 여기
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, true));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 
             //이벤트카드가 없다면 바로 대기상태로 변경
@@ -185,24 +186,25 @@ public class FlowSystem : MonoBehaviour
                 //애니메이션 여기
                 diceCanvas.SetActive(true);
                 setTerrainCanvas.SetActive(false);
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
+                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 //애니메이션 여기
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2, true));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
             case FLOW.ENEMYTURN_ROLLINGDICE:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5, true));
                 break;
             case FLOW.ENEMYTURN_PICKINGCARD:
                 currentFlow = FLOW.ENEMYTURN_PICKINGLOC;
                 break;
             //거점을 정복했는지 여부에따라서 분기
             case FLOW.ENEMYTURN_PICKINGLOC:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
