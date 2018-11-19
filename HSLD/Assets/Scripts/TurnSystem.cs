@@ -183,13 +183,6 @@ public class TurnSystem : MonoBehaviour
         if (beforeFlow != gameObject.GetComponent<FlowSystem>().currentFlow)
             currentEnemyTurnTimer = 0;
 
-        if (FlowSystem.isWaitingTime)
-        {
-            displayTurnTimerTxt.text = "";
-            currentEnemyTurnTimer = 0;
-            enemyCoroutine =  StartCoroutine(EnemyTurnCounting());
-        }
-
         displayTurnTimerTxt.text = "( ";
         displayTurnTimerTxt.text += currentEnemyTurnTimer.ToString();
         
@@ -219,8 +212,9 @@ public class TurnSystem : MonoBehaviour
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
         {
-            displayTurnTimerTxt.text = "";
             beforeFlow = FLOW.DISPLAYANIMATION_WAITING;
+            displayTurnTimerTxt.text = "";
+            currentEnemyTurnTimer = 0;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
@@ -228,7 +222,10 @@ public class TurnSystem : MonoBehaviour
             displayTurnTimerTxt.text = "";
             currentTurn = TURN.MYTURN_GETFLAG;
         }
-        
+        else
+        {
+            Debug.Log("예외처리 : " + gameObject.GetComponent<FlowSystem>().currentFlow);
+        }
     }
 
     //내턴일때 카운팅

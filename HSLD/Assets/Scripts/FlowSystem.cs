@@ -43,8 +43,8 @@ public class FlowSystem : MonoBehaviour
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
         tmpAnimationImage.SetActive(true);
-        currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         isWaitingTime = true;
+        currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         time_ = 0;
         while (true)
         {
@@ -96,15 +96,13 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
             case FLOW.ENEMYTURN_PICKINGLOC:
-                currentFlow = FLOW.TO_ROLLINGDICE;
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                //gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
             
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                currentFlow = FLOW.TO_ROLLINGDICE;
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                //gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
 
         }
@@ -194,17 +192,17 @@ public class FlowSystem : MonoBehaviour
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
             case FLOW.ENEMYTURN_ROLLINGDICE:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5));
                 break;
             case FLOW.ENEMYTURN_PICKINGCARD:
                 currentFlow = FLOW.ENEMYTURN_PICKINGLOC;
                 break;
             //거점을 정복했는지 여부에따라서 분기
             case FLOW.ENEMYTURN_PICKINGLOC:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2));
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
