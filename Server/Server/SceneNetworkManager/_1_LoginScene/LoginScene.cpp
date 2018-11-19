@@ -1,5 +1,6 @@
 #include "../_1_LoginScene/LoginScene.h"
 #include "../../IOCPServer/SocketInfo.h"
+#include "../../IOCPServer/UDPManager.h"
 
 SCENE_NETWORK_MANAGER::LoginScene::LoginScene(): 
 	BaseScene(), PERMIT_LOGIN(Protocol::PERMIT_LOGIN), FAIL_LOGIN(Protocol::FAIL_LOGIN), PERMIT_NICKNAME(Protocol::PERMIT_NICKNAME)
@@ -7,7 +8,7 @@ SCENE_NETWORK_MANAGER::LoginScene::LoginScene():
 
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	//ProcessRecv(InRecvType, ptr, InUserData);
 	//ProcessSend(InRecvType, ptr, InUserData);

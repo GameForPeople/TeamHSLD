@@ -1,13 +1,14 @@
 #include "../_4_RoomScene/RoomScene.h"
 
 #include "../../IOCPServer/SocketInfo.h"
+#include "../../IOCPServer/UDPManager.h"
 
 SCENE_NETWORK_MANAGER::RoomScene::RoomScene() : BaseScene(), PERMIT_ENEMY_CHARACTER(Protocol::PERMIT_ENEMY_CHARACTER)
 {
 
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	DemandEnemyCharacterIndex(ptr, InRoomData, InUserData);
 }

@@ -3,35 +3,44 @@
 #include "../../IOCPServer/SocketInfo.h"
 #include "../../UserData/UserDataManager.h"
 #include "../../GameRoom/GameRoomManager.h"
+#include "../../IOCPServer/UDPManager.h"
 
 SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene() 
-	: BaseScene(), 
-	PERMIT_MAKE_RANDOM(Protocol::PERMIT_MAKE_RANDOM), 
-	PERMIT_JOIN_RANDOM(Protocol::PERMIT_JOIN_RANDOM),
-	PERMIT_GUEST_JOIN(Protocol::PERMIT_GUEST_JOIN), 
-	PERMIT_GUEST_NOT_JOIN(Protocol::PERMIT_GUEST_NOT_JOIN), 
-	ANSWER_EXIT_RANDOM(Protocol::ANSWER_EXIT_RANDOM)
+	: BaseScene() 
+	, PERMIT_MAKE_RANDOM(Protocol::PERMIT_MAKE_RANDOM)
+	, PERMIT_JOIN_RANDOM(Protocol::PERMIT_JOIN_RANDOM)
+	, PERMIT_GUEST_JOIN(Protocol::PERMIT_GUEST_JOIN)
+	, PERMIT_GUEST_NOT_JOIN(Protocol::PERMIT_GUEST_NOT_JOIN)
+	, ANSWER_EXIT_RANDOM(Protocol::ANSWER_EXIT_RANDOM)
+	, ANSWER_FRIEND_JOIN(Protocol::ANSWER_FRIEND_JOIN)
+	, HOSTCHECK_FRIEND_INVITE(Protocol::HOSTCHECK_FRIEND_INVITE)
+	, CONST_TRUE(1)
+	, CONST_FALSE(0)
 {
 
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	if (InRecvType == DEMAND_RANDOM_MATCH)
 	{
-		DemandRandomMatch(ptr, InRoomData, InUserData);
+		_DemandRandomMatch(ptr, InRoomData, InUserData);
 	}
 	else if(InRecvType == DEMAND_GUEST_JOIN)
 	{
-		DemandGuestJoin(ptr, InRoomData, InUserData);
+		_DemandGuestJoin(ptr, InRoomData, InUserData);
 	}
 	else if (InRecvType == DEMAND_EXIT_RANDOM)
 	{
-		DemandExitRandom(ptr, InRoomData, InUserData);
+		_DemandExitRandom(ptr, InRoomData, InUserData);
+	}
+	else if (InRecvType == DEMAND_FRIEND_JOIN)
+	{
+		_DemandFriendJoin(ptr, InRoomData, InUserData);
 	}
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	bool retBoolBuffer; 
 	ptr->pRoomIter = InRoomData.RandomMatchingProcess(ptr->pUserNode, ptr->pRoomIter, retBoolBuffer);
@@ -81,7 +90,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandRandomMatch(SocketInfo* ptr, GameR
 	}
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	if (ptr->pRoomIter->GetGameReady())
 	{
@@ -104,7 +113,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandGuestJoin(SocketInfo* ptr, GameRoo
 	}
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
 	//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
 
@@ -119,6 +128,41 @@ void SCENE_NETWORK_MANAGER::LobbyScene::DemandExitRandom(SocketInfo* ptr, GameRo
 	else
 		// 랜덤 매칭 취소가 실패함 (그 사이 다른 게스트가 접속함)
 	{
-		DemandGuestJoin(ptr, InRoomData, InUserData);
+		_DemandGuestJoin(ptr, InRoomData, InUserData);
+	}
+}
+
+void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	if (ptr->pRoomIter == nullptr)
+	{
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));	// 방 나가짐.
+
+		ptr->dataSize = 8;
+	}
+	else 
+	{
+		if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
+		{
+			memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+
+			ptr->dataSize = 8;
+		}
+		else // Join Enemy
+		{
+			rbTreeNode<string, UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
+
+			string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
+			int sizeBuffer = stringBuffer.size();
+
+			memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+			memcpy(ptr->buf + 8, (char*)&sizeBuffer, sizeof(int));
+			memcpy(ptr->buf + 12, stringBuffer.data(), sizeof(int));
+
+			ptr->dataSize = 12 + sizeBuffer;
+		}
 	}
 }
