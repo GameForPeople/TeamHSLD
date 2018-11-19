@@ -25,10 +25,10 @@ public class TurnSystem : MonoBehaviour
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
-    public float matchingCompleteTime = 10;
-    public float displayMissionTime = 15;
+    public float matchingCompleteTime = 5;
+    public float selectOrderTime = 10;
     public float selectCardTime = 5;
-    public float selectOrderTime = 5;
+    
 
 
     public float rollingDiceTime = 10;
@@ -79,10 +79,12 @@ public class TurnSystem : MonoBehaviour
     {
         time_ = 0;
         mainTxt.text = "카드를 선택해 주세요.";
+        timerTxt.text = "";
+        mainTxt.transform.localPosition = new Vector3(0, 200, 0);
         while (true)
         {
             time_ += Time.deltaTime;
-            timerTxt.text = (selectOrderTime - (int)time_).ToString() + " 초";
+            //timerTxt.text = (selectOrderTime - (int)time_).ToString() + " 초";
 
             yield return new WaitForEndOfFrame();
             if (SetTurn.isPicking)
@@ -107,23 +109,25 @@ public class TurnSystem : MonoBehaviour
                     else
                         gameObject.GetComponent<SetTurn>().PickCard(turnSet.transform.GetChild(1).gameObject);
                 }
-
                 break;
             }
 
             //if (상대방이 먼저 픽했을때)
             //    break;
         }
-
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_TURNORDER);
         Destroy(gameObject.GetComponent<SetTurn>());
+        StartCoroutine(ReadySetCardTimer());
     }
 
     IEnumerator ReadySetCardTimer()
     {
         time_ = 0;
         mainTxt.text = "덱을 선택해 주세요.";
+        mainTxt.transform.localPosition = new Vector3(264, 269, 0);
+        timerTxt.transform.localPosition = new Vector3(590, 250, 0);
+
         while (true)
         {
             time_ += Time.deltaTime;
@@ -132,13 +136,12 @@ public class TurnSystem : MonoBehaviour
             if (time_ > selectCardTime || CardSet.isSelect)
                 break;
         }
-        StartCoroutine(ReadySetOrderTimer());
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
     }
 
     IEnumerator ReadyMatchingComplete()
     {
         time_ = 0;
-        mainTxt.text = "일반게임";
         while (true)
         {
             time_ += Time.deltaTime;
@@ -148,23 +151,7 @@ public class TurnSystem : MonoBehaviour
                 break;
         }
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_MATCHINGCOMPLETE);
-        StartCoroutine(ReadyDisplayMission());
-    }
-
-    IEnumerator ReadyDisplayMission()
-    {
-        time_ = 0;
-        mainTxt.text = "미션을 확인하세요.";
-        while (true)
-        {
-            time_ += Time.deltaTime;
-            timerTxt.text = (displayMissionTime - (int)time_).ToString() + "초 후 시작";
-            yield return new WaitForEndOfFrame();
-            if (time_ > displayMissionTime)
-                break;
-        }
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DISPLAYMISSION);
-        StartCoroutine(ReadySetCardTimer());
+        StartCoroutine(ReadySetOrderTimer());
     }
 
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
@@ -172,8 +159,6 @@ public class TurnSystem : MonoBehaviour
     {
         if (SoundManager.instance_ != null)
             SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
-
-        Debug.Log(currentTurn);
 
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))

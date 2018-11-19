@@ -5,7 +5,6 @@ using UnityEngine;
 public enum FLOW
 {
     READY_MATCHINGCOMPLETE,
-    READY_DISPLAYMISSION,
     READY_TURNORDER,
     READY_SETCARD,
     READY_DONE,
@@ -27,13 +26,11 @@ public class FlowSystem : MonoBehaviour
 {
     public FLOW currentFlow;
 
-    public GameObject cardCanvas;
     public GameObject cardSetCanvas;
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
     public GameObject matchingCompleteCanvas;
     public GameObject spinCanvas;
-    public GameObject displayMissionCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
 
@@ -130,37 +127,31 @@ public class FlowSystem : MonoBehaviour
         switch(doneFlow)
         {
             case FLOW.READY_MATCHINGCOMPLETE:
-                displayMissionCanvas.SetActive(true);
                 matchingCompleteCanvas.SetActive(false);
-                currentFlow = FLOW.READY_DISPLAYMISSION;
-                break;
-            case FLOW.READY_DISPLAYMISSION:
-                displayMissionCanvas.SetActive(false);
-                cardSetCanvas.SetActive(true);
-                currentFlow = FLOW.READY_SETCARD;
-                break;
-            case FLOW.READY_SETCARD:
-                cardSetCanvas.SetActive(false);
                 turnSetCanvas.SetActive(true);
                 currentFlow = FLOW.READY_TURNORDER;
                 break;
             case FLOW.READY_TURNORDER:
                 turnSetCanvas.SetActive(false);
-                readyCanvas.SetActive(false);
-                spinCanvas.SetActive(true);
-                currentFlow = FLOW.READY_DONE;
+                cardSetCanvas.SetActive(true);
+                currentFlow = FLOW.READY_SETCARD;
+                break;
+            case FLOW.READY_SETCARD:
+                cardSetCanvas.SetActive(false);
                 tmpAnimationImage.SetActive(true);
-
+                spinCanvas.SetActive(true);
+                readyCanvas.SetActive(false);
                 //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
                 if (GameObject.Find("GameCores") == null)
                 {
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     FlowChange(FLOW.READY_DONE);
                 }
-                    
+
                 else
                     gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
                 break;
+
             case FLOW.READY_DONE:
                 tmpAnimationImage.SetActive(false);
                 gameObject.GetComponent<TurnSystem>().TurnSet();

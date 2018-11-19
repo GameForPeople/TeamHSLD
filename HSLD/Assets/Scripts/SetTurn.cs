@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SetTurn : MonoBehaviour
 {
-    private float spinTime = 2;
+    private float spinTime = 3;
     private float time_;
     private bool isTrigger = false;
     static public bool isPicking = false;
@@ -41,7 +41,6 @@ public class SetTurn : MonoBehaviour
                 obj.name = "preOrder";
             }
 
-
             else
             {
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
@@ -50,10 +49,10 @@ public class SetTurn : MonoBehaviour
         }
         
         if (obj.name.Equals("preOrder"))
-            StartCoroutine(SpinCard(obj, orderSpr[0]));
+            StartCoroutine(SpinCard(obj, orderSpr[0], "선공"));
 
         else if(obj.name.Equals("backOrder"))
-            StartCoroutine(SpinCard(obj, orderSpr[1]));
+            StartCoroutine(SpinCard(obj, orderSpr[1], "후공"));
     }
 
     public int RndNum()
@@ -61,20 +60,24 @@ public class SetTurn : MonoBehaviour
         return Random.Range(0,2);
     }
 
-    IEnumerator SpinCard(GameObject obj, Sprite order)
+    IEnumerator SpinCard(GameObject obj, Sprite order, string val)
     {
         isPicking = true;
         time_ = 0;
         while (true)
         {
-            time_ += Time.deltaTime;
-            obj.transform.eulerAngles = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0, 180, 0), time_ / spinTime);
-
-            if(time_ > spinTime * 0.5f)
+            time_ += Time.deltaTime / 3;
+            obj.transform.eulerAngles = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0, 180, 0), time_);
+            if (time_ > 0.5f)
+            {
                 obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
+                GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().mainTxt.text = "";
+                GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.text = val;
+            }
+                
 
             yield return new WaitForEndOfFrame();
-            if (time_ > spinTime)
+            if (time_ > 1f)
                 break;
         }
     }
