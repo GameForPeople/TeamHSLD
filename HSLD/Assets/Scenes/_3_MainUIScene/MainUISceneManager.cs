@@ -6,9 +6,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUISceneManager : MonoBehaviour {
+public class MainUISceneManager : MonoBehaviour
+{
+    //string friendName_1 = "";
+    //string friendName_2 = "";
+    //string friendName_3 = "";
+    //string friendName_4 = "";
+
+    string[] stateConstString = new string[3];
 
     public NetworkManager networkObject;
+
+    bool isDrawFriendUI = false;
+
 
     // Use this for initialization
     void Start()
@@ -21,7 +31,6 @@ public class MainUISceneManager : MonoBehaviour {
         //GameObject.Find("Lose_InTEXT").GetComponent<Text>().text = networkObject.loseCount.ToString();
         //GameObject.Find("Money_InTEXT").GetComponent<Text>().text = networkObject.money.ToString();
 
-
         //
         GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(true);
         GameObject.Find("GameCores").transform.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("Money_Text").gameObject.GetComponent<Text>().text
@@ -29,6 +38,19 @@ public class MainUISceneManager : MonoBehaviour {
 
         GameObject.Find("GameCores").transform.Find("UserDataUI").transform.Find("Canvas").transform.Find("NickName_Text").gameObject.GetComponent<Text>().text
             = networkObject.nickName.ToString();
+
+        // 친구 UI Off
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE1_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE2_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE3_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE4_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(false);
+
+        stateConstString[0] = "X";
+        stateConstString[1] = "게임중";
+        stateConstString[2] = "로비";
+
+        isDrawFriendUI = false;
     }
 
     public void ClickInGameWithServerButton()
@@ -39,5 +61,44 @@ public class MainUISceneManager : MonoBehaviour {
     public void ClickInGameOnlyClientButton()
     {
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+    }
+
+    public void ClickFriendUIButton()
+    {
+        if (isDrawFriendUI)
+            OffFriendUI();
+        else
+            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
+    }
+
+    public void OffFriendUI()
+    {
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE1_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE2_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE3_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE4_BUTTON").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(false);
+    }
+
+    public void OnFriendUI_NetworkManager()
+    {
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(true);
+
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("State1_Text").GetComponent<Text>().text = stateConstString[networkObject.friendState[0]].ToString();
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("State2_Text").GetComponent<Text>().text = stateConstString[networkObject.friendState[1]].ToString();
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("State3_Text").GetComponent<Text>().text = stateConstString[networkObject.friendState[2]].ToString();
+        GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("State4_Text").GetComponent<Text>().text = stateConstString[networkObject.friendState[3]].ToString();
+
+        if (networkObject.friendState[0] != 0) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("Name1_Text").GetComponent<Text>().text = networkObject.friendNickNameCont[0].ToString(); }
+        if (networkObject.friendState[1] != 0) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("Name2_Text").GetComponent<Text>().text = networkObject.friendNickNameCont[1].ToString(); }
+        if (networkObject.friendState[2] != 0) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("Name3_Text").GetComponent<Text>().text = networkObject.friendNickNameCont[2].ToString(); }
+        if (networkObject.friendState[3] != 0) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("Name4_Text").GetComponent<Text>().text = networkObject.friendNickNameCont[3].ToString(); }
+
+        if (networkObject.friendState[0] == 2) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE1_BUTTON").gameObject.SetActive(true); }
+        if (networkObject.friendState[1] == 2) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE2_BUTTON").gameObject.SetActive(true); }
+        if (networkObject.friendState[2] == 2) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE3_BUTTON").gameObject.SetActive(true); }
+        if (networkObject.friendState[3] == 2) { GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").transform.Find("INVITE4_BUTTON").gameObject.SetActive(true); }
+
+        isDrawFriendUI = true;
     }
 }

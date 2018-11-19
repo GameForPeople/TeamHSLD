@@ -13,6 +13,12 @@ namespace SCENE_NETWORK_MANAGER
 {
 	class MainUiScene : public BaseScene
 	{
+		const int PERMIT_FRIEND_INFO;
+
+
+		const int CONST_TRUE;
+		const int CONST_FALSE;
+
 	public:
 		MainUiScene();
 		virtual ~MainUiScene() override = default;
@@ -27,5 +33,7 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		//void(*RecvFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		//void(*SendFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+	private:
+		void _DemandFriendInfoProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 	};
 }
