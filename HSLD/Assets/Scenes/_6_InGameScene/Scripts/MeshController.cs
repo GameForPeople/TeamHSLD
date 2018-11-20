@@ -74,7 +74,7 @@ public class MeshController : MonoBehaviour {
                 {
                     float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
 
-                    if (pTop < 19.5 && pTop != 0)
+                    if (pTop < 19.45f && pTop != 0)
                     {
                         DomMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
 
@@ -224,9 +224,9 @@ public class MeshController : MonoBehaviour {
 
     public IEnumerator MoveUp()
     {
-        while (transform.position.magnitude <= destinationPos.magnitude - 0.6)
+        while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
         {
-            transform.position = Vector3.Lerp(transform.position, destinationPos*1.0f, Time.deltaTime / 5);
+            transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime/2.0f);
 
             yield return null;
         }

@@ -90,7 +90,6 @@ public class CameraController : MonoBehaviour
 
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
-
                     PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
