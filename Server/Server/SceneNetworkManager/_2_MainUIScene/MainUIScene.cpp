@@ -33,6 +33,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pt
 
 	ptr->dataSize = 8;
 
+	std::cout << " " << ptr->pUserNode->GetKey() << "의 친구 수는 : " << friendNum << "\n";
+
 	if (friendNum)
 	{
 		int stringSize{};
@@ -44,13 +46,13 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pt
 		{
 			// 해당 컨테이너의 i번째 아이디 스트링의 사이즈.
 			stringBuffer = ptr->pUserNode->SetValue().GetFriendStringCont()[i];
-			stringSize = stringBuffer.size();
+				//stringSize = stringBuffer.size();
+			std::cout << " " << ptr->pUserNode->GetKey() << "의 친구 : " << stringBuffer << "\n";
 
 			// 아이디 스트링 사이즈와, 아이디 적재.
-			memcpy(ptr->buf + ptr->dataSize, reinterpret_cast<char*>(&stringSize), sizeof(int));
-			memcpy(ptr->buf + ptr->dataSize + 4, stringBuffer.data(), stringSize);
-
-			ptr->dataSize += 4 + stringSize;
+				//memcpy(ptr->buf + ptr->dataSize, reinterpret_cast<char*>(&stringSize), sizeof(int));
+				//memcpy(ptr->buf + ptr->dataSize + 4, stringBuffer.data(), stringSize);
+				//ptr->dataSize += 4 + stringSize;
 
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
 			pBuffer = InUserData.SearchUserNode(stringBuffer, isOnLogin);
@@ -59,17 +61,18 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pt
 			if (isOnLogin)
 			{
 				// 현재 클라이언트의, UserNode에, 친구 소켓 인포 저장
-				ptr->pUserNode->SetValue().SetFreindSocketInfo(pBuffer->SetValue().GetSocketInfo(), i); 				// 이거 쪼금 위험할 수도 있음. 테스트 필요.
+					//ptr->pUserNode->SetValue().SetFreindSocketInfo(pBuffer->SetValue().GetSocketInfo(), i); 				// 이거 쪼금 위험할 수도 있음. 테스트 필요.
 
 				memcpy(ptr->buf + ptr->dataSize, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
-				stringBuffer = ptr->pUserNode->GetValue().GetNickName();
+
+				stringBuffer = pBuffer->SetValue().GetNickName();
 				stringSize = stringBuffer.size();
 
 				memcpy(ptr->buf + ptr->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
 				memcpy(ptr->buf + ptr->dataSize + 8, stringBuffer.data(), stringSize);
 				
-				ptr->dataSize += 12 + stringSize; // 4 Bool isOnLogin, 4 nickNameSize, 4 (바로 뒷줄) 방 들어가 있는지 없는지 여부.
+				ptr->dataSize += (12 + stringSize); // 4 Bool isOnLogin, 4 nickNameSize, 4 (바로 뒷줄) 방 들어가 있는지 없는지 여부.
 
 				if (pBuffer->GetValue().GetSocketInfo()->pRoomIter != nullptr)
 				{

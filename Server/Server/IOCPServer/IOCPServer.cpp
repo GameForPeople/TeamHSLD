@@ -397,6 +397,7 @@ void IOCPServer::_WorkerThreadFunction()
 
 		//비동기 입출력 결과 확인 // 아무것도 안보낼 때는, 해당 클라이언트 접속에 문제가 생긴것으로 판단, 닫아버리겠다!
 		// 근데 이거 에코서버일떄만 그래야되는거 아니야???? 몰봐 임마 뭘봐 모를수도 있지
+		ERROR_CLIENT_DISCONNECT:
 		if (retVal == 0 || cbTransferred == 0)
 		{
 #ifdef _DEBUG
@@ -468,10 +469,18 @@ void IOCPServer::_WorkerThreadFunction()
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData, udpManager);
+			if (recvType > 0 && recvType < 600)
+			{
+				sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData, udpManager);
 
-			if (NETWORK_UTIL::SendProcess(pClient))
-				continue;
+				if (NETWORK_UTIL::SendProcess(pClient))
+					continue;
+			}
+			else 
+			{
+				retVal = 0;
+				goto ERROR_CLIENT_DISCONNECT;
+			}
 		}
 	}
 }
