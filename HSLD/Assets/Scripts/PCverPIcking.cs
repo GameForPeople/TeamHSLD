@@ -45,16 +45,15 @@ public class PCverPIcking : MonoBehaviour
 
         if (Input.GetMouseButton(0) && CameraController.offset < 0.5)
         {
-            Picked();
+            Picked(false);
         }
     }
 
-    public void Picked()
+    public void Picked(bool isMoblie)
     {
         if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC ||
             AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn == TURN.ENEMYTURN)
             return;
-
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitObj;
 
@@ -82,6 +81,12 @@ public class PCverPIcking : MonoBehaviour
             if (!PickedMeshObj.GetComponent<MeshController>().isFixed && 
                 !PickedMeshObj.GetComponent<MeshController>().isAwake)
             {
+                if (isMoblie == true)
+                {
+                    Vector3 a = PickedMeshObj.transform.position.normalized * 135;
+                    StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(a));
+                }
+
                 if (myPlanet.GetComponent<AllMeshController>().isEmpty()) // 턴 시작후 첫번째 로직
                 {
                     //점령이 끝난 뒤 첫턴 로직

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4044,7 +4044,7 @@ MonoBehaviour:
   orthoZoomSpeed: 0.04
   minDistance: 150
   maxDistance: 80
-  RotationSensitivity: 0.05
+  RotationSensitivity: 0.1
   myTurn: 0
 --- !u!45 &374445975
 Skybox:

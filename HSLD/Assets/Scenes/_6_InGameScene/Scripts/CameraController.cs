@@ -48,6 +48,19 @@ public class CameraController : MonoBehaviour
             mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
     }
 
+    public IEnumerator movePosition(Vector3 position)
+    {
+        float amount = 0;
+        while (amount < 0.5)
+        {
+            Debug.Log(amount);
+            amount += Time.deltaTime * 1;
+            transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime);
+            Camera.main.transform.LookAt(MyPlanet);
+            yield return null;
+        }
+    }
+
     void Update()
     {
         Vector3 normalDirection = myTransform.position - MyPlanet.position;
@@ -93,7 +106,7 @@ public class CameraController : MonoBehaviour
                     PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                        (Input.GetTouch(0).position.y - PrevPoint.y) * 0.5f * RotationSensitivity);
+                        (Input.GetTouch(0).position.y - PrevPoint.y) * RotationSensitivity);
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
                         (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
@@ -106,7 +119,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.touchCount == 1 && CameraController.offset < 0.5)
         {
-            Camera.main.GetComponent<PCverPIcking>().Picked();
+            Camera.main.GetComponent<PCverPIcking>().Picked(true);
         }
     }
 }
