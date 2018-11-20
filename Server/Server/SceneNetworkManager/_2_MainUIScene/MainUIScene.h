@@ -17,6 +17,7 @@ namespace SCENE_NETWORK_MANAGER
 		const int NOTIFY_FRIEND_INVITE;
 		const int GUESTCHECK_FRIEND_INVITE;
 		const int HOSTCHECK_FRIEND_INVITE;
+		const int ANSWER_MAKE_FRIEND;
 
 		const int CONST_TRUE;
 		const int CONST_FALSE;
@@ -40,5 +41,6 @@ namespace SCENE_NETWORK_MANAGER
 		void _DemandFriendInviteProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager);
 		void _AnswerFriendInviteProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 		void _DelayFriendInviteProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager);
 	};
 }

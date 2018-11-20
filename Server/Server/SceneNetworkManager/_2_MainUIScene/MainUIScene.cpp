@@ -8,6 +8,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene()
 	, PERMIT_FRIEND_INFO(Protocol::PERMIT_FRIEND_INFO), NOTIFY_FRIEND_INVITE(Protocol::NOTIFY_FRIEND_INVITE)
 	, GUESTCHECK_FRIEND_INVITE(Protocol::GUESTCHECK_FRIEND_INVITE), HOSTCHECK_FRIEND_INVITE(Protocol::HOSTCHECK_FRIEND_INVITE)
 	//, ANSWER_FRIEND_INVITE(Protocol::ANSWER_FRIEND_INVITE)
+	, ANSWER_MAKE_FRIEND(Protocol::ANSWER_MAKE_FRIEND)
 	, CONST_TRUE(1) , CONST_FALSE (0)
 {}
 
@@ -21,6 +22,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int& InRecvType, Sock
 		_AnswerFriendInviteProcess(ptr, InRoomData, InUserData);
 	else if (InRecvType == DELAY_FRIEND_INVITE)
 		_DelayFriendInviteProcess(ptr, InRoomData, InUserData);
+	else if (InRecvType == DEMAND_MAKE_FRIEND)
+		_DemandMakeFriendProcess(ptr, InRoomData, InUserData, InUDPManager);
 }
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -194,4 +197,53 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 	}
 
 	ptr->dataSize = 8;
+}
+
+void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
+{
+	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
+
+	string idBuffer;
+
+	for (int i = 0; i < iBuffer; ++i)
+	{
+		// Refactor 필요.
+
+		//idBuffer.append(&(ptr->buf[16+i]));
+		idBuffer += ptr->buf[8 + i];
+	}
+
+	std::cout << "[Debug] DemandMakeFriend 내가 친구요청할 ID는 : " << idBuffer << "입니다. \n";
+
+	bool isOnLogin{ false };
+	rbTreeNode<string, UserData>* pBuffer = InUserData.SearchUserNode(idBuffer, isOnLogin);
+
+	if (!isOnLogin)
+	{
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+
+		ptr->dataSize = 8;
+	}
+	else
+	{
+		iBuffer = pBuffer->SetValue().GetFriendStringContSize();
+
+		if (iBuffer >= 4)
+		{
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+
+			ptr->dataSize = 8;
+		}
+		else
+		{
+			pBuffer->SetValue().SetFriendID( ptr->pUserNode->GetKey() , iBuffer);
+
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+			ptr->dataSize = 8;
+		}
+	}
 }
