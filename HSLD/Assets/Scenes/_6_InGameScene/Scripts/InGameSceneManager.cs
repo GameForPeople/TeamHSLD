@@ -187,6 +187,7 @@ public class InGameSceneManager : MonoBehaviour
         //적용
         for(int i =0; i< recvDiceValue; i++)
         {
+            // Flag 터레인도 받을 수 있도록 해줘야 합니다
             if(recvTerrainType == 1)
             {
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();

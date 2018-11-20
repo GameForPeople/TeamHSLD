@@ -41,7 +41,14 @@ public class MeshController : MonoBehaviour {
     const float landingSize = 1.05f;
 
     void Start () {
-        terrainstate = Terrain.DEFAULT;
+        if (isFlagable == true)
+        {
+            terrainstate = Terrain.FLAG;
+        }
+        else
+        {
+            terrainstate = Terrain.DEFAULT;
+        }
         domMaterial = Resources.Load<Material>("M_Cold");
         defaultMaterial = Resources.Load<Material>("M_Default");
         isAwake = false;
@@ -90,12 +97,16 @@ public class MeshController : MonoBehaviour {
 
         if (isAwake)
         {
-            if (terrainstate == Terrain.ABLE)
+            if (terrainstate == Terrain.ABLE || terrainstate == Terrain.DEFAULT)
             {
                 Picked();
             }
-            else if (terrainstate == Terrain.DEFAULT) {
-                Picked();
+            else if (terrainstate == Terrain.FLAG)
+            {
+                GetComponent<MeshController>().terrainstate = Terrain.FLAG;
+                GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f);
+                // 내 색 오브젝트 필요할듯?
             }
             else
             {

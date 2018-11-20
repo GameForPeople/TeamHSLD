@@ -8753,7 +8753,7 @@ MonoBehaviour:
   currentTurn: 0
   matchingCompleteTime: 5
   selectOrderTime: 10
-  selectCardTime: 10
+  selectCardTime: 3
   rollingDiceTime: 10
   pickingTerrainCardTime: 10
   pickingEventCardTime: 5
@@ -11076,7 +11076,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CameraHorizontal
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

@@ -99,10 +99,6 @@ public class PCverPIcking : MonoBehaviour
                     {
                         if (PickedMeshObj.GetComponent<MeshController>().isFlagable == true) // 가장 처음
                         {
-                            PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                            CameraController.ChangeableCount++;
-                            myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-
                             // 깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
                             for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
                             {
@@ -113,9 +109,10 @@ public class PCverPIcking : MonoBehaviour
                             }
                             myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(0, 4);
 
+
+                            PickedMeshObj.GetComponent<MeshController>().isAwake = true;
+                            myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                             myPlanet.GetComponent<AllMeshController>().FlagContainer.Add(PickedMeshObj);
-                            PickedMeshObj.GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                            PickedMeshObj.GetComponent<MeshController>().EulerRotCal(PickedMeshObj, myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f); // 내 색 오브젝트 필요할듯?
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때
                         {
