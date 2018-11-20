@@ -110,7 +110,10 @@ public:
 	__inline void   SetNickName(const string& InNickName)	{	nickName = InNickName; }
 	__inline void	SetMoney(const int& InMoney)			{ money = InMoney; }
 	__inline void   SetFreindSocketInfo(SocketInfo* InSocketInfo, const int& InIndex) { friendSocketInfoCont[InIndex] = InSocketInfo; }
-	__inline void	SetFriendID(const string& InFriendID, const int& InIndex) { friendStringCont[InIndex] = InFriendID; }
+	__inline void	SetFriendID(const string& InFriendID) { 
+		if (friendStringCont.size() >= 4) return;
+		friendStringCont.emplace_back(InFriendID); 
+	}
 };
 
 

@@ -530,7 +530,7 @@ public class NetworkManager : MonoBehaviour
                 recvType = 0;
 
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OffFriendUI();
-                SendData((int)PROTOCOL.PERMIT_FRIEND_INFO);
+                SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
             }
             else
             {

@@ -208,8 +208,6 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 	for (int i = 0; i < iBuffer; ++i)
 	{
 		// Refactor ÇÊ¿ä.
-
-		//idBuffer.append(&(ptr->buf[16+i]));
 		idBuffer += ptr->buf[8 + i];
 	}
 
@@ -238,7 +236,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 		}
 		else
 		{
-			pBuffer->SetValue().SetFriendID( ptr->pUserNode->GetKey() , iBuffer);
+			pBuffer->SetValue().SetFriendID( ptr->pUserNode->GetKey());
+			ptr->pUserNode->SetValue().SetFriendID(pBuffer->GetKey());
 
 			memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
 			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));

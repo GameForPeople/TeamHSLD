@@ -30,8 +30,7 @@ struct RoomDynamicData
 	RoomDynamicData()
 		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
 		, hostCharacterIndex(1), guestCharacterIndex(1)
-		//, isHostFirst(rand() % 2)
-		, isHostFirst(true)
+		, isHostFirst(rand() % 2)
 		
 		//, userReadyCount(0)
 		//hostUserReady(false), guestUserReady(false)
