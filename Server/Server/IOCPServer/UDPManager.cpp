@@ -56,5 +56,5 @@ void UDPManager::_SendMessage(const char& InChar)
 
 		sendto(udpSocket, reinterpret_cast<char*>(InChar), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
 	}
-	delete pNodeBuffer;
+	//delete pNodeBuffer;
 }

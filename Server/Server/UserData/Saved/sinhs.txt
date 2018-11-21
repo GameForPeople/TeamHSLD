@@ -1,1 +1,1 @@
- sinhs GM_SinHS 0 0 1234 0 0 0 0
+ sinhs GM_SinHS 0 3 1234 0 0 0 0

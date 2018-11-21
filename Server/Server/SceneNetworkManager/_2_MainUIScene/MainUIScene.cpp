@@ -8,8 +8,10 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene()
 	, PERMIT_FRIEND_INFO(Protocol::PERMIT_FRIEND_INFO), NOTIFY_FRIEND_INVITE(Protocol::NOTIFY_FRIEND_INVITE)
 	, GUESTCHECK_FRIEND_INVITE(Protocol::GUESTCHECK_FRIEND_INVITE), HOSTCHECK_FRIEND_INVITE(Protocol::HOSTCHECK_FRIEND_INVITE)
 	//, ANSWER_FRIEND_INVITE(Protocol::ANSWER_FRIEND_INVITE)
-	, ANSWER_MAKE_FRIEND(Protocol::ANSWER_MAKE_FRIEND)
-	, CONST_TRUE(1) , CONST_FALSE (0)
+	, CHECK_DEMAND_MAKE_FRIEND(Protocol::CHECK_DEMAND_MAKE_FRIEND)
+	, NOTIFY_MAKE_FRIEND_INFO(Protocol::NOTIFY_MAKE_FRIEND_INFO)
+	, CHECK_ANSWER_MAKE_FRIEND(Protocol::CHECK_ANSWER_MAKE_FRIEND)
+	, CONST_TRUE(1) , CONST_FALSE (0), CONST_2(2), CONST_3(3)
 {}
 
 void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
@@ -24,6 +26,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int& InRecvType, Sock
 		_DelayFriendInviteProcess(ptr, InRoomData, InUserData);
 	else if (InRecvType == DEMAND_MAKE_FRIEND)
 		_DemandMakeFriendProcess(ptr, InRoomData, InUserData, InUDPManager);
+	else if (InRecvType == DEMAND_MAKE_FRIEND_INFO)
+		_DemandMakeFriendInfoProcess(ptr, InRoomData, InUserData);
+	else if (InRecvType == ANSWER_MAKE_FRIEND)
+		_AnswerMakeFriendProcess(ptr, InRoomData, InUserData, InUDPManager);
 }
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
@@ -118,7 +124,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 		pBuffer->SetValue().GetSocketInfo()->pRoomIter = ptr->pRoomIter;
 
 		// UDP Packet 등록.
-		InUDPManager.Push(1, pBuffer->SetValue().GetSocketInfo());
+		InUDPManager.Push(UDP_PROTOCOL::INVITE_FRIEND, pBuffer->SetValue().GetSocketInfo());
 
 		// TCP True Send 필요.
 		memcpy(ptr->buf, reinterpret_cast<const char*>(&NOTIFY_FRIEND_INVITE), sizeof(int));
@@ -202,47 +208,110 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
-
-	string idBuffer;
-
-	for (int i = 0; i < iBuffer; ++i)
-	{
-		// Refactor 필요.
-		idBuffer += ptr->buf[8 + i];
-	}
+	ptr->buf[8 + iBuffer] = '\n';
+	
+	string idBuffer(ptr->buf + 8);
 
 	std::cout << "[Debug] DemandMakeFriend 내가 친구요청할 ID는 : " << idBuffer << "입니다. \n";
 
 	bool isOnLogin{ false };
 	rbTreeNode<string, UserData>* pBuffer = InUserData.SearchUserNode(idBuffer, isOnLogin);
 
+	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0
 	if (!isOnLogin)
 	{
-		memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
-		ptr->dataSize = 8;
+		ptr->dataSize = 12;
+		return;
 	}
+
+	iBuffer = pBuffer->SetValue().GetFriendStringContSize();
+
+	// 상대방이 맥스 프렌드인 상황 : ANSWER_MAKE_FRIEND + 0 + 1 
+	if (iBuffer >= 4)
+	{
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+		ptr->dataSize = 12;
+		return;
+	}
+
+	// 상대방이 이미 친구 관련 중인 상황 : ANSWER_MAKE_FRIEND + 0 + 2
+	if (pBuffer->SetValue().GetDemandFriendContIndex() != -1)
+	{
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+
+		ptr->dataSize = 12;
+		return;
+	}
+
+	// 상대방에게 친구 요청을 보냄 : ANSWER_MAKE_FRIEND + 1
+	pBuffer->SetValue().SetDemandFriendContIndex(pBuffer->SetValue().SetInsertFriendID(ptr->pUserNode->GetKey()));
+	InUDPManager.Push(UDP_PROTOCOL::DEMAND_FRIEND, pBuffer->SetValue().GetSocketInfo());
+	//ptr->pUserNode->SetValue().SetInsertFriendID(pBuffer->GetKey());
+
+	memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
+	memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+	ptr->dataSize = 8;
+}
+
+void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+{
+	string stringBuffer = ptr->pUserNode->SetValue().GetFriendStringWithIndex(ptr->pUserNode->SetValue().GetDemandFriendContIndex());
+	int stringSize = stringBuffer.size();
+
+	memcpy(ptr->buf, reinterpret_cast<const char*>(&NOTIFY_MAKE_FRIEND_INFO), sizeof(int));
+	memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&stringSize), sizeof(int));
+	memcpy(ptr->buf + 8, stringBuffer.data(), stringSize);
+
+	ptr->dataSize = 8 + stringSize;
+}
+
+void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
+{
+	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
+	bool bBuffer{ false };
+
+	rbTreeNode<string, UserData> *pBuffer =
+		InUserData.SearchUserNode(ptr->pUserNode->GetValue().GetFriendStringWithIndex(ptr->pUserNode->GetValue().GetDemandFriendContIndex()), bBuffer);
+
+	// 친구 거절했다 임마. // 내꺼에서만 알면 되지 않나...?
+	if (iBuffer == 0)
+	{
+		if(bBuffer)
+		// 친구 거절 정보 알려줌.
+			InUDPManager.Push(UDP_PROTOCOL::DENY_FRIEND, pBuffer->SetValue().GetSocketInfo());
+
+		// 잘라냅시다. // 내부에서 친구 인자정리함.
+		ptr->pUserNode->SetValue().SetDeleteFriendID();
+
+	}
+
+	// 친구 신청한 유저가 나가서 친구 등록 프로세스를 진행하기 어려움.
+	else if (!bBuffer)
+	{
+		// 친구 거절 정보 알려줌.
+		//InUDPManager.Push(UDP_PROTOCOL::DENY_FRIEND, pBuffer->SetValue().GetSocketInfo());
+
+		// 잘라냅시다. // 내부에서 친구 인자정리함.
+		ptr->pUserNode->SetValue().SetDeleteFriendID();
+	}
+
+	// 친구 신청한 유저가 존재함. 친구 등록 최종 프로세스 시행. (친구하나 만들기도 힘들다;)
 	else
 	{
-		iBuffer = pBuffer->SetValue().GetFriendStringContSize();
-
-		if (iBuffer >= 4)
-		{
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
-
-			ptr->dataSize = 8;
-		}
-		else
-		{
-			pBuffer->SetValue().SetFriendID( ptr->pUserNode->GetKey());
-			ptr->pUserNode->SetValue().SetFriendID(pBuffer->GetKey());
-
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&ANSWER_MAKE_FRIEND), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-
-			ptr->dataSize = 8;
-		}
+		pBuffer->SetValue().SetInsertFriendID(ptr->pUserNode->GetKey());
 	}
+
+	//항상 똑같은 값 전달.
+	memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_ANSWER_MAKE_FRIEND), sizeof(int));
+	ptr->dataSize = 4;
 }

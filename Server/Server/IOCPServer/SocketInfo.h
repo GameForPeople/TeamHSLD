@@ -39,18 +39,20 @@ struct SocketInfo
 	// 캐릭터의 정보를 담아넣는 구조체입니다.
 	//UserData* pUserData;
 
+
+
 public:
 	//생성자 필요에 의해 추가.
 	__inline SocketInfo() :
 		//bufferProtocol(0), 
-		buf(),
-		pRoomIter(nullptr),
-		//isInRoom(false),
-		isHost(false),
-		//dataSize(), 
-		isRecvTurn(true),
-		pUserNode(nullptr),
-		userDataContIndex()//,
+			buf()
+		,	pRoomIter(nullptr)
+		//,	isInRoom(false)
+		,	isHost(false)
+		//,	dataSize() 
+		,	isRecvTurn(true)
+		,	pUserNode(nullptr)
+		,	userDataContIndex()
 		//enemyIter()
 	{};
 

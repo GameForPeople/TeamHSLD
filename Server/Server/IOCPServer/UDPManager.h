@@ -5,6 +5,13 @@
 
 class SocketInfo;
 
+enum UDP_PROTOCOL 
+{
+		INVITE_FRIEND = 1
+	,	DEMAND_FRIEND = 2
+	,	DENY_FRIEND	=	3
+};
+
 class UDPManager
 {
 	//enum UDP_PROTOCOL
@@ -39,10 +46,10 @@ public:
 	{
 		switch (InContNumber)
 		{
-		case 1:
+		case UDP_PROTOCOL::INVITE_FRIEND:
 			friendInviteMessageQueue.Push(pInSocket);
 			break;
-		case 2:
+		case UDP_PROTOCOL::DEMAND_FRIEND:
 			friendDemandMessageQueue.Push(pInSocket);
 			break;
 		}

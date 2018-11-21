@@ -106,6 +106,12 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 	}
 	else
 	{
+		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함.
+		if (pInSocketInfo->pUserNode->SetValue().GetDemandFriendContIndex() != -1)
+		{
+			pInSocketInfo->pUserNode->SetValue().SetDeleteFriendID();
+		}
+
 		// 파일명 제작
 		string fileNameBuffer = "UserData/Saved/.txt";
 		string keyBuffer = pInSocketInfo->pUserNode->GetKey();

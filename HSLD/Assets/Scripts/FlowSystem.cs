@@ -186,6 +186,7 @@ public class FlowSystem : MonoBehaviour
                 //애니메이션 여기
                 diceCanvas.SetActive(true);
                 setTerrainCanvas.SetActive(false);
+                TurnSystem.isSetTerrainDone = true;
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
