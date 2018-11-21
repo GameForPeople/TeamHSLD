@@ -99,20 +99,9 @@ public class PCverPIcking : MonoBehaviour
                     {
                         if (PickedMeshObj.GetComponent<MeshController>().isFlagable == true) // 가장 처음
                         {
-                            // 깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
-                            for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
-                            {
-                                myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFlagable = false;
-                                myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().TargetObject.transform.position = new Vector3(3, 3, 3);
-                                Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().TargetObject);
-                                myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
-                            }
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(0, 4);
-
-
                             PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                             myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer.Add(PickedMeshObj);
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(0, PickedMeshObj);
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때
                         {
@@ -178,7 +167,7 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
 
-            CameraController.offset = 2;
+            CameraController.offset = 1.5f;
         }
         CameraController.Once = true;
     }
@@ -248,8 +237,36 @@ public class PCverPIcking : MonoBehaviour
                 FindObject.GetComponent<MeshController>().terrainstate);
         }
 
+        FlagSetting(); // Flag검사
         myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
         CameraController.Once = false;
+    }
+
+    public void FlagSetting()
+    {
+        int tempint = 0;
+        //깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
+        for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
+        {
+            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+            {
+                tempint++;
+            }
+            if (tempint == 4)
+            {
+                for (int j = 2; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                {
+                    if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlagable)
+                    {
+                        myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlagable = false;
+                        Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                    }
+                    myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+                }
+                myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(2, 6);
+            }
+        }
+        Debug.Log("!!!!!! -> " + tempint);
     }
 
 }

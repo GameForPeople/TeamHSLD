@@ -33,6 +33,8 @@ public class InGameSceneManager : MonoBehaviour
     [HideInInspector] public int recvDiceValue = 0;          //상대방 굴린 주사위 눈금
     [HideInInspector] public int recvTerrainType = 0;        //상대방이 뽑은 카드타입
 
+    static bool isfirstincome = true;
+
     void Start()
     {
         for (int i = 0; i < 12; ++i)
@@ -81,6 +83,11 @@ public class InGameSceneManager : MonoBehaviour
     public void SendDiceValue(int InDiceValue)
     {
         network_changeTerrainCount = InDiceValue;
+        if (isfirstincome)
+        {
+            network_changeTerrainCount++;
+            isfirstincome = false;
+        }
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
         //Debug.Log("주사위 보내는 값 : " + network_changeTerrainCount);
     }
@@ -95,7 +102,7 @@ public class InGameSceneManager : MonoBehaviour
     public void SendTerrainIndex(/*int InDiceValue, */int[] InTerrainIndex)
     {
         //network_changeTerrainCount = InDiceValue;
-        Debug.Log("network_changeTerrainCount 의 값은 : " + network_changeTerrainCount + "입니다. ");
+        Debug.Log("network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
 
         for ( int i = 0; i < network_changeTerrainCount; ++i)
         {
@@ -183,12 +190,20 @@ public class InGameSceneManager : MonoBehaviour
             Debug.Log("에러 : 2");
             return;
         }
-
         //적용
         for(int i =0; i< recvDiceValue; i++)
         {
-            // Flag 터레인도 받을 수 있도록 해줘야 합니다
-            if(recvTerrainType == 1)
+            Debug.Log(gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
+            if (gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlagable)
+            {
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setFlag();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(1, gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]]);
+                Debug.Log("상대방이 FLAG 획득");
+                continue;
+            }
+            if (recvTerrainType == 1)
             {
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
@@ -224,6 +239,7 @@ public class InGameSceneManager : MonoBehaviour
             }
         }
         //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
+        Camera.main.GetComponent<PCverPIcking>().FlagSetting();
         recvTerrainType = 0;
         recvDiceValue = 0;
     }

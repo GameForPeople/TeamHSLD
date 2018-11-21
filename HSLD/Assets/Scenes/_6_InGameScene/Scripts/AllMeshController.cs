@@ -126,4 +126,18 @@ public class AllMeshController : MonoBehaviour {
             }
         }
     }
+
+    public void CleanPickContainer()
+    {
+        int Length = PickContainer.Count;
+        for(int i = 0; i< Length; i++)
+        {
+            GameObject target = GameObject.Find(PickContainer[i].ToString());
+            //target.GetComponent<MeshController>().set
+
+
+        }
+        PickContainer.Clear();
+        CameraController.ChangeableCount += Length;
+    }
 }
