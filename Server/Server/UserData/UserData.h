@@ -150,7 +150,7 @@ public:
 		friendStringCont.emplace_back(InFriendID); 
 		return friendStringCont.size() - 1;
 	}
-	__inline int	SetDeleteFriendID()
+	__inline void	SetDeleteFriendID()
 	{
 		friendStringCont.erase(friendStringCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;

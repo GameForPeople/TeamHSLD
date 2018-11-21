@@ -281,7 +281,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pt
 	bool bBuffer{ false };
 
 	rbTreeNode<string, UserData> *pBuffer =
-		InUserData.SearchUserNode(ptr->pUserNode->GetValue().GetFriendStringWithIndex[(ptr->pUserNode->GetValue().GetDemandFriendContIndex)], bBuffer);
+		InUserData.SearchUserNode(ptr->pUserNode->GetValue().GetFriendStringWithIndex(ptr->pUserNode->GetValue().GetDemandFriendContIndex()), bBuffer);
 
 	// 친구 거절했다 임마. // 내꺼에서만 알면 되지 않나...?
 	if (iBuffer == 0)
