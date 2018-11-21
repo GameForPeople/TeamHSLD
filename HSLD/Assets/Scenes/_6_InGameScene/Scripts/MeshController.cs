@@ -17,7 +17,9 @@ public enum Terrain{
 public class MeshController : MonoBehaviour {
     private int dominator;
     private Material domMaterial;
-    private Material priorMaterial;
+    public Material priorMaterial;
+    public Terrain priorState;
+
     public int MeshNumber;
     static int giveNumber;
     public Terrain terrainstate;
@@ -49,6 +51,8 @@ public class MeshController : MonoBehaviour {
             terrainstate = Terrain.DEFAULT;
         }
         domMaterial = Resources.Load<Material>("M_Cold");
+        priorMaterial = gameObject.GetComponent<Renderer>().material;
+        priorState = gameObject.GetComponent<MeshController>().terrainstate;
         isAwake = false;
         isFixed = false;
         isMine = false;
@@ -101,10 +105,9 @@ public class MeshController : MonoBehaviour {
             }
             else if (terrainstate == Terrain.FLAG)
             {
-                GetComponent<MeshController>().terrainstate = Terrain.FLAG;
-                priorMaterial = GetComponent<Renderer>().material;
-                GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f);
+                //GetComponent<MeshController>().terrainstate = Terrain.FLAG;
+                //GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f);
                 // 내 색 오브젝트 필요할듯?
             }
             else
@@ -404,5 +407,11 @@ public class MeshController : MonoBehaviour {
         domMaterial = Resources.Load<Material>("M_FlagAble");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
     }
-    
+
+    public void setDefault()
+    {
+        terrainstate = Terrain.DEFAULT;
+        domMaterial = Resources.Load<Material>("M_Default");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+    }
 }

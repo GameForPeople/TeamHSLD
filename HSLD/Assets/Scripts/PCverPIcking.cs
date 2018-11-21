@@ -187,6 +187,9 @@ public class PCverPIcking : MonoBehaviour
         for (int i = 0; i < Length; i++)
         {
             GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+            if (FindObject.GetComponent<MeshController>().isFlagable) {
+                myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(0, FindObject);
+            }
 
             if (isGetFlag == true)
             {
@@ -237,7 +240,8 @@ public class PCverPIcking : MonoBehaviour
                 FindObject.GetComponent<MeshController>().terrainstate);
         }
 
-        FlagSetting(); // Flag검사
+        FlagSetting(); // Flag검사 
+        myPlanet.GetComponent<AllMeshController>().PriorMaterialSetting(); // PriorSetting
         myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
         CameraController.Once = false;
     }
@@ -260,10 +264,11 @@ public class PCverPIcking : MonoBehaviour
                     {
                         myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlagable = false;
                         Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                        myPlanet.GetComponent<AllMeshController>().FlagContainer.Remove(myPlanet.GetComponent<AllMeshController>().FlagContainer[j]);
                     }
                     myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
                 }
-                myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(2, 6);
+                //myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(3, 6);
             }
         }
         Debug.Log("!!!!!! -> " + tempint);

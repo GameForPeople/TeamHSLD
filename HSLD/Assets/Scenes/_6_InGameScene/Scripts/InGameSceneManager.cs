@@ -33,7 +33,8 @@ public class InGameSceneManager : MonoBehaviour
     [HideInInspector] public int recvDiceValue = 0;          //상대방 굴린 주사위 눈금
     [HideInInspector] public int recvTerrainType = 0;        //상대방이 뽑은 카드타입
 
-    static bool isfirstincome = true;
+    static bool isfirstSend = true;
+    static bool isfirstRecv = true;
 
     void Start()
     {
@@ -83,10 +84,10 @@ public class InGameSceneManager : MonoBehaviour
     public void SendDiceValue(int InDiceValue)
     {
         network_changeTerrainCount = InDiceValue;
-        if (isfirstincome)
+        if (isfirstSend)
         {
             network_changeTerrainCount++;
-            isfirstincome = false;
+            isfirstSend = false;
         }
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
         //Debug.Log("주사위 보내는 값 : " + network_changeTerrainCount);
@@ -102,9 +103,11 @@ public class InGameSceneManager : MonoBehaviour
     public void SendTerrainIndex(/*int InDiceValue, */int[] InTerrainIndex)
     {
         //network_changeTerrainCount = InDiceValue;
-        Debug.Log("network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
+        //Debug.Log("!network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
+        Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
+        Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
 
-        for ( int i = 0; i < network_changeTerrainCount; ++i)
+        for ( int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; ++i)
         {
             network_terrainIndex[i] = InTerrainIndex[i];
             Debug.Log("InTerrainIndex 의 인덱스 " + i + " 값은 : " + InTerrainIndex[i] + "입니다. ");
@@ -179,7 +182,7 @@ public class InGameSceneManager : MonoBehaviour
     //ref으로 index만 받자 !
     public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
-        if (recvDiceValue == 0)
+        if (recvTerrainType == 0)
         {
             Debug.Log("에러 : 1");
             return;
@@ -190,26 +193,37 @@ public class InGameSceneManager : MonoBehaviour
             Debug.Log("에러 : 2");
             return;
         }
-        //적용
-        for(int i =0; i< recvDiceValue; i++)
+        if (isfirstRecv)
         {
-            Debug.Log(gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
-            if (gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlagable)
+            //recvDiceValue++;
+            isfirstRecv = false;
+        }
+        for (int i =0; i< recvDiceValue; i++)
+        {
+            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]] == null)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setFlag();
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+                Debug.Log("벗어나자.;;");
+                break;
+            }
+            Debug.Log("recvDiceValue??" + recvDiceValue);
+            Debug.Log("이름이뭐니??" + gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
+            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlagable)
+            {
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setFlag();
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
                 AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(1, gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]]);
-                Debug.Log("상대방이 FLAG 획득");
+                Debug.Log("상대방이 FLAG 획득" + recvTerrainIndex[i]);
                 continue;
             }
+
             if (recvTerrainType == 1)
             {
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }
-            else if(recvTerrainType == 2)
+            else if (recvTerrainType == 2)
             {
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(); // setModeration() -> setBarren()
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;

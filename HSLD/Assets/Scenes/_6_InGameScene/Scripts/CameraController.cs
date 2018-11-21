@@ -121,5 +121,10 @@ public class CameraController : MonoBehaviour
         {
             Camera.main.GetComponent<PCverPIcking>().Picked(true);
         }
+
+        if (Input.touchCount == 4 && CameraController.offset < 0.5)
+        {
+            MyPlanet.GetComponent<AllMeshController>().CleanPickContainer(); 
+        }
     }
 }

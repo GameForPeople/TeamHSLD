@@ -133,11 +133,18 @@ public class AllMeshController : MonoBehaviour {
         for(int i = 0; i< Length; i++)
         {
             GameObject target = GameObject.Find(PickContainer[i].ToString());
-            //target.GetComponent<MeshController>().set
-
-
+            target.GetComponent<Renderer>().material = target.GetComponent<MeshController>().priorMaterial;
+            target.GetComponent<MeshController>().terrainstate = target.GetComponent<MeshController>().priorState;
         }
         PickContainer.Clear();
         CameraController.ChangeableCount += Length;
+    }
+
+    public void PriorMaterialSetting()
+    {
+        for (int i = 1; i < MaxMesh; i++)
+        {
+            AllContainer[i].GetComponent<MeshController>().priorMaterial = AllContainer[i].GetComponent<MeshRenderer>().material;
+        }
     }
 }

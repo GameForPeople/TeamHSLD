@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -275,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -319,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -363,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -407,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -526,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -570,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -614,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -658,6 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -702,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -746,6 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -790,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -834,6 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1049,6 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1169,6 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1288,6 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1454,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1498,6 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1542,6 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1586,6 +1607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1630,6 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1674,6 +1697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1718,6 +1742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1762,6 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1806,6 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1850,6 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1963,6 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2007,6 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2051,6 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2095,6 +2126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2139,6 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2183,6 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2227,6 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2271,6 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2315,6 +2351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2359,6 +2396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2403,6 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2447,6 +2486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2491,6 +2531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2535,6 +2576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2579,6 +2621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2623,6 +2666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2742,6 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2855,6 +2900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2899,6 +2945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3047,6 +3094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3091,6 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3204,6 +3253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3323,6 +3373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3367,6 +3418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3411,6 +3463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3668,6 +3721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3712,6 +3766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3756,6 +3811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3800,6 +3856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3844,6 +3901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3888,6 +3946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3932,6 +3991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4120,6 +4180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4308,6 +4369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4427,6 +4489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4541,6 +4604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4585,6 +4649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4629,6 +4694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4673,6 +4739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4717,6 +4784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4761,6 +4829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4805,6 +4874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4849,6 +4919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4893,6 +4964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5022,6 +5094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5066,6 +5139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5110,6 +5184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5154,6 +5229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5198,6 +5274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5242,6 +5319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5286,6 +5364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5330,6 +5409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5600,6 +5680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5644,6 +5725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5688,6 +5770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5732,6 +5815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5776,6 +5860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5820,6 +5905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5864,6 +5950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6030,6 +6117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6074,6 +6162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6266,6 +6355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6310,6 +6400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6354,6 +6445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6398,6 +6490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6511,6 +6604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6555,6 +6649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6599,6 +6694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6643,6 +6739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6687,6 +6784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6731,6 +6829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6775,6 +6874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6819,6 +6919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6863,6 +6964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6907,6 +7009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6951,6 +7054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6995,6 +7099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7039,6 +7144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7254,6 +7360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7429,6 +7536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7473,6 +7581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7517,6 +7626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7561,6 +7671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7605,6 +7716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7734,6 +7846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7997,6 +8110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8041,6 +8155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8085,6 +8200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8129,6 +8245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8173,6 +8290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8287,6 +8405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8331,6 +8450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8375,6 +8495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8419,6 +8540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8530,6 +8652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8574,6 +8697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8618,6 +8742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8662,6 +8787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8750,10 +8876,11 @@ MonoBehaviour:
   mainTxt: {fileID: 107147629}
   timerTxt: {fileID: 50010881}
   turnSet: {fileID: 806044292}
+  dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 5
+  matchingCompleteTime: 1
   selectOrderTime: 10
-  selectCardTime: 3
+  selectCardTime: 1
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 5
@@ -8914,6 +9041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8958,6 +9086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9002,6 +9131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9046,6 +9176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9090,6 +9221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9134,6 +9266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9178,6 +9311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9222,6 +9356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9266,6 +9401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9310,6 +9446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9354,6 +9491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9398,6 +9536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9442,6 +9581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9486,6 +9626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9530,6 +9671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9574,6 +9716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9654,6 +9797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9698,6 +9842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9742,6 +9887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9866,6 +10012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9910,6 +10057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9954,6 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9998,6 +10147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10042,6 +10192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10120,6 +10271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10233,6 +10385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10399,6 +10552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10443,6 +10597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10487,6 +10642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10531,6 +10687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10575,6 +10732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10619,6 +10777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10663,6 +10822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10707,6 +10867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10751,6 +10912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10795,6 +10957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10839,6 +11002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11360,6 +11524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11404,6 +11569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11448,6 +11614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11492,6 +11659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11598,6 +11766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11686,6 +11855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11773,6 +11943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11817,6 +11988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11861,6 +12033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11905,6 +12078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11977,6 +12151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12021,6 +12196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12065,6 +12241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12225,6 +12402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12269,6 +12447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12313,6 +12492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12357,6 +12537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12401,6 +12582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12445,6 +12627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12489,6 +12672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12533,6 +12717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12577,6 +12762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12621,6 +12807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12665,6 +12852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12709,6 +12897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12753,6 +12942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12797,6 +12987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12910,6 +13101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21015,6 +21207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21093,6 +21286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21371,6 +21565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21415,6 +21610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21534,6 +21730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21578,6 +21775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21622,6 +21820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21735,6 +21934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -21883,6 +22083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22049,6 +22250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22093,6 +22295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22137,6 +22340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22501,6 +22705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22545,6 +22750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22589,6 +22795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22633,6 +22840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22677,6 +22885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22721,6 +22930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22765,6 +22975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22809,6 +23020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22853,6 +23065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22897,6 +23110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22941,6 +23155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22985,6 +23200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23029,6 +23245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23073,6 +23290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23117,6 +23335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23161,6 +23380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23205,6 +23425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23249,6 +23470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23293,6 +23515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23337,6 +23560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23381,6 +23605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23500,6 +23725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23544,6 +23770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23694,6 +23921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23738,6 +23966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23782,6 +24011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23826,6 +24056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23870,6 +24101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24027,6 +24259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24071,6 +24304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24115,6 +24349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24281,6 +24516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24325,6 +24561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24645,6 +24882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24689,6 +24927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24733,6 +24972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24777,6 +25017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24821,6 +25062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24865,6 +25107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25100,6 +25343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25213,6 +25457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25257,6 +25502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25301,6 +25547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25345,6 +25592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25480,6 +25728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25524,6 +25773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25568,6 +25818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25734,6 +25985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25778,6 +26030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25822,6 +26075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25866,6 +26120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25910,6 +26165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25954,6 +26210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26073,6 +26330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26117,6 +26375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26299,6 +26558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26493,6 +26753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26612,6 +26873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26656,6 +26918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26775,6 +27038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26819,6 +27083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26863,6 +27128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26907,6 +27173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27020,6 +27287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27064,6 +27332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27108,6 +27377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27274,6 +27544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27318,6 +27589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27362,6 +27634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27406,6 +27679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27489,6 +27763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27533,6 +27808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27577,6 +27853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27621,6 +27898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27665,6 +27943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27709,6 +27988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27753,6 +28033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28026,6 +28307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28070,6 +28352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28114,6 +28397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28158,6 +28442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28202,6 +28487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28246,6 +28532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28290,6 +28577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28334,6 +28622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28378,6 +28667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28422,6 +28712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28466,6 +28757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28510,6 +28802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28554,6 +28847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28598,6 +28892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28642,6 +28937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28686,6 +28982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28852,6 +29149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28896,6 +29194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29128,6 +29427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29172,6 +29472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29216,6 +29517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29326,6 +29628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29370,6 +29673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29602,6 +29906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29750,6 +30055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29907,6 +30213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29951,6 +30258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30080,6 +30388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30259,6 +30568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30378,6 +30688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30422,6 +30733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30466,6 +30778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30579,6 +30892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30623,6 +30937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30667,6 +30982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30711,6 +31027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30755,6 +31072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30799,6 +31117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30843,6 +31162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30887,6 +31207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b489f227d4bb40aee9354c25c05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priorMaterial: {fileID: 0}
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
