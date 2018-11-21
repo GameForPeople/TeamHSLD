@@ -279,9 +279,11 @@ public class TurnSystem : MonoBehaviour
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
-                    gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    currentTurn = TURN.ENEMYTURN;
-                    TurnSet();
+                    displayTurnTimerTxt.text = "";
+                    warningRadio = 0;
+                    warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+                    gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+                    StopCoroutine(myCoroutine);
                 }
 
                 beforeFlow = FLOW.TO_PICKINGCARD;
@@ -299,9 +301,11 @@ public class TurnSystem : MonoBehaviour
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
-                    gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    currentTurn = TURN.ENEMYTURN;
-                    TurnSet();
+                    displayTurnTimerTxt.text = "";
+                    warningRadio = 0;
+                    warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+                    gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+                    StopCoroutine(myCoroutine);
                 }
 
                 beforeFlow = FLOW.TO_PICKINGLOC;
