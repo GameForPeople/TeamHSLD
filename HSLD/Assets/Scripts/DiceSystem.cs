@@ -14,7 +14,7 @@ public class DiceSystem : MonoBehaviour
     private bool raiseValue = true;
     public float constValue;
     private int characterDiceRateUp = 5;        //tmp
-   
+    private float time_;
 
     public void OnTrigger()
     {
@@ -24,7 +24,7 @@ public class DiceSystem : MonoBehaviour
         //init
         diceSlider.value = 0;
         gaze = 0;
-
+        time_ = 0;
         isTriggerEnter = true;
     }
     public void OffTrigger()
@@ -33,7 +33,6 @@ public class DiceSystem : MonoBehaviour
             return;
 
         isTriggerEnter = false;
-
         //0123
         if ((int)gaze < 4)
             RollingDice(1);
@@ -58,7 +57,7 @@ public class DiceSystem : MonoBehaviour
     }
 
     //슬라이드 값을 바탕으로 다이스 눈 설정.
-    void RollingDice(int index)
+    public void RollingDice(int index)
     {
         switch(index)
         {
@@ -589,10 +588,21 @@ public class DiceSystem : MonoBehaviour
     {
         if (isTriggerEnter && GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
+            time_ += Time.deltaTime;
+            if (time_ > 6f)
+            {
+                Debug.Log("예외처리 : 주사위 클릭했는데 6초가 지났을때");
+                isTriggerEnter = false;
+                RollingDice(Random.Range(1, 5));
+            }
+                
+
             if (Input.GetMouseButton(0))
             {
                 SetSliderValue();
             }
         }
+        else if (!isTriggerEnter)
+            time_ = 0;
     }
 }

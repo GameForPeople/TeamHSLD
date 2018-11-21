@@ -21,20 +21,17 @@ public class TurnSystem : MonoBehaviour
     public Text mainTxt;
     public Text timerTxt;
     public GameObject turnSet;
-
+    public GameObject dice;
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
     public float matchingCompleteTime = 5;
     public float selectOrderTime = 10;
     public float selectCardTime = 5;
-    
-
 
     public float rollingDiceTime = 10;
-    public float pickingTerrainCardTime = 10;
+    public float setTerrainOnPlanet = 50;
     public float pickingEventCardTime = 5;
-    public float selectPlanetTerrainTime = 20;
 
     private float warningTime;
     public GameObject warningPanel;
@@ -180,7 +177,7 @@ public class TurnSystem : MonoBehaviour
         currentEnemyTurnTimer += 1;
         yield return new WaitForSeconds(1);
 
-        if (beforeFlow != gameObject.GetComponent<FlowSystem>().currentFlow)
+        if (beforeFlow != gameObject.GetComponent<FlowSystem>().currentFlow && !gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGLOC))
             currentEnemyTurnTimer = 0;
 
         displayTurnTimerTxt.text = "( ";
@@ -194,13 +191,13 @@ public class TurnSystem : MonoBehaviour
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGCARD))
         {
-            displayTurnTimerTxt.text += " / " + pickingTerrainCardTime + " )";
+            displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
             beforeFlow = FLOW.ENEMYTURN_PICKINGCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGLOC))
         {
-            displayTurnTimerTxt.text += " / " + selectPlanetTerrainTime + " )";
+            displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
             beforeFlow = FLOW.ENEMYTURN_PICKINGLOC;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
@@ -246,7 +243,7 @@ public class TurnSystem : MonoBehaviour
         
         else
         {
-            if (!gameObject.GetComponent<FlowSystem>().currentFlow.Equals(beforeFlow))
+            if (!gameObject.GetComponent<FlowSystem>().currentFlow.Equals(beforeFlow) && !gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
             {
                 currentMyTurnTimer = 0;
                 warningRadio = 0;
@@ -260,31 +257,55 @@ public class TurnSystem : MonoBehaviour
             {
                 warningTime = rollingDiceTime - 3;
                 if (currentMyTurnTimer >= rollingDiceTime)
+                {
+                    Debug.Log("예외처리 : 주사위 클릭안했을때 랜덤으로 굴리기");
+                    dice.GetComponent<DiceSystem>().RollingDice(Random.Range(1, 5));
                     gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
+                }
+                    
 
                 beforeFlow = FLOW.TO_ROLLINGDICE;
                 displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
             {
-                warningTime = pickingTerrainCardTime - 3;
-                if (currentMyTurnTimer >= pickingTerrainCardTime)
-                    gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);
+                warningTime = setTerrainOnPlanet - 3;
+
+                //예외처리
+                if (currentMyTurnTimer >= setTerrainOnPlanet)
+                {
+                    if (GameObject.Find("GameCores") != null)
+                    {
+                        Debug.Log("SEND : 턴종료");
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                    }
+                    gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                    currentTurn = TURN.ENEMYTURN;
+                    TurnSet();
+                }
 
                 beforeFlow = FLOW.TO_PICKINGCARD;
-                displayTurnTimerTxt.text += " / " + pickingTerrainCardTime + " )";
+                displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
             {
-                warningTime = selectPlanetTerrainTime - 3;
-                if (currentMyTurnTimer >= selectPlanetTerrainTime)
+                warningTime = setTerrainOnPlanet - 3;
+
+                //예외처리
+                if (currentMyTurnTimer >= setTerrainOnPlanet)
                 {
-                    isSetTerrainDone = true;
-                    gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+                    if (GameObject.Find("GameCores") != null)
+                    {
+                        Debug.Log("SEND : 턴종료");
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                    }
+                    gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                    currentTurn = TURN.ENEMYTURN;
+                    TurnSet();
                 }
 
                 beforeFlow = FLOW.TO_PICKINGLOC;
-                displayTurnTimerTxt.text += " / " + selectPlanetTerrainTime + " )";
+                displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKEVENTCARD))
             {
