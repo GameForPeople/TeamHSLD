@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4044,7 +4044,7 @@ MonoBehaviour:
   orthoZoomSpeed: 0.04
   minDistance: 150
   maxDistance: 80
-  RotationSensitivity: 0.05
+  RotationSensitivity: 0.1
   myTurn: 0
 --- !u!45 &374445975
 Skybox:
@@ -8753,7 +8753,7 @@ MonoBehaviour:
   currentTurn: 0
   matchingCompleteTime: 5
   selectOrderTime: 10
-  selectCardTime: 10
+  selectCardTime: 3
   rollingDiceTime: 10
   pickingTerrainCardTime: 10
   pickingEventCardTime: 5
@@ -11076,7 +11076,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CameraHorizontal
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -25594,7 +25594,6 @@ GameObject:
   - component: {fileID: 1661368944}
   - component: {fileID: 1661368943}
   - component: {fileID: 1661368942}
-  - component: {fileID: 1661368941}
   m_Layer: 5
   m_Name: TurnChange
   m_TagString: Untagged
@@ -25620,21 +25619,6 @@ RectTransform:
   m_AnchoredPosition: {x: 512, y: 21}
   m_SizeDelta: {x: 130, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1661368941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1661368939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62857ebb7059c5c4d977d52afa14cd49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 374445972}
-  MyPlanet: {fileID: 1132190347}
-  MyPlanet_Pos: {fileID: 1275639254}
-  RotationSensitivity: 10
 --- !u!114 &1661368942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25674,16 +25658,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: ef3029995ddc16049960eed4294cfe84, type: 3}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 823012258}
+        m_MethodName: TurnChange
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CameraHorizontal
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

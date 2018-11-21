@@ -99,15 +99,15 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* ptr, GameRo
 		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 		int sizeBuffer = stringBuffer.size();
 
-		memcpy(ptr->buf, (char*)&PERMIT_GUEST_JOIN, sizeof(int));
-		memcpy(ptr->buf + 4, (char*)&sizeBuffer, sizeof(int));
-		memcpy(ptr->buf + 8, stringBuffer.data(), sizeof(int));
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&sizeBuffer), sizeof(int));
+		memcpy(ptr->buf + 8, stringBuffer.data(), sizeBuffer);
 
 		ptr->dataSize = 8 + sizeBuffer;
 	}
 	else
 	{
-		memcpy(ptr->buf, (char*)&PERMIT_GUEST_NOT_JOIN, sizeof(int));
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_NOT_JOIN), sizeof(int));
 
 		ptr->dataSize = 4;
 	}

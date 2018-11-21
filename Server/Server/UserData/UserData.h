@@ -98,6 +98,7 @@ public:
 	__inline vector<string> GetFriendStringCont() const { return friendStringCont; }
 	__inline string GetFriendStringWithIndex(const int& InIndex ) const { return friendStringCont[InIndex]; }
 	__inline SocketInfo* GetFriendSocketInfo( const int& InIndex ) const { return friendSocketInfoCont[InIndex]; }
+	__inline int GetFriendStringContSize() const { return friendStringCont.size(); }
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
 	//	if (value == 1) { winCount++; }
@@ -109,6 +110,10 @@ public:
 	__inline void   SetNickName(const string& InNickName)	{	nickName = InNickName; }
 	__inline void	SetMoney(const int& InMoney)			{ money = InMoney; }
 	__inline void   SetFreindSocketInfo(SocketInfo* InSocketInfo, const int& InIndex) { friendSocketInfoCont[InIndex] = InSocketInfo; }
+	__inline void	SetFriendID(const string& InFriendID) { 
+		if (friendStringCont.size() >= 4) return;
+		friendStringCont.emplace_back(InFriendID); 
+	}
 };
 
 
