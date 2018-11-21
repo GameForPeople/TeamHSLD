@@ -9,7 +9,9 @@ public class AppQuitManager : MonoBehaviour {
 
     void Start()
     {
-        quitUI[0] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("ExitUI_1").gameObject;
+        GameObject.Find("GameCores").transform.Find("ExitUI_Canvas").gameObject.SetActive(true);
+
+        quitUI[0] = GameObject.Find("GameCores").transform.Find("ExitUI_Canvas").transform.Find("ExitUI_1").gameObject;
 
         quitUI[0].SetActive(false);
     }
