@@ -518,25 +518,25 @@ public class NetworkManager : MonoBehaviour
                
             }
         }
-        else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
-        {
-            // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
-            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
-
-            if (iBuffer == 1)
-            {
-                // 여기서 갱신해줘야하는데 귀찮으니까 고냥 창을 꺼버릴까? 오 왕쩌는걸?
-                // 아니지 고냥 여기서 또 보내주면 돼지!....ㅎ
-                recvType = 0;
-
-                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OffFriendUI();
-                SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
-            }
-            else
-            {
-                // 여기서 할거 없고.
-            }
-        }
+        //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
+        //{
+        //    // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
+        //    int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+        //
+        //    if (iBuffer == 1)
+        //    {
+        //        // 여기서 갱신해줘야하는데 귀찮으니까 고냥 창을 꺼버릴까? 오 왕쩌는걸?
+        //        // 아니지 고냥 여기서 또 보내주면 돼지!....ㅎ
+        //        recvType = 0;
+        //
+        //        GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OffFriendUI();
+        //        SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
+        //    }
+        //    else
+        //    {
+        //        // 여기서 할거 없고.
+        //    }
+        //}
 
         //LobbyScene - old
         //else if (recvType == (int)PROTOCOL.PERMIT_MAKEROOM)
@@ -872,7 +872,7 @@ enum PROTOCOL : int
     HOSTCHECK_FRIEND_INVITE = 208,  // Server to Client - 야 GuestUser nullptr 맞다. 게임안하려나 봐.
 
     DEMAND_MAKE_FRIEND = 209,   // 친구하고 싶어요. (상대방 허락 안맡음. -> 내가 4명 이상이면 애초에 안되고, 상대방이 4명 이하면 OK)
-    ANSWER_MAKE_FRIEND = 210,	// 오키 친구해! 안돼 안돼 친구안해.
+    CHECK_DEMAND_MAKE_FRIEND = 210, // UDP Message 전송 여부. 및 실패 사유
 
 
     // 구 Lobby Protocol

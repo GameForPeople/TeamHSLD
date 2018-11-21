@@ -31,15 +31,10 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData)
 {
 	int idSizeBuffer = (int&)(ptr->buf[4]);
-	string idBuffer;
 
-	for (int i = 0; i < idSizeBuffer; ++i)
-	{
-		// Refactor 필요.
+	ptr->buf[8 + idSizeBuffer] = '\n';
 
-		//idBuffer.append(&(ptr->buf[16+i]));
-		idBuffer += ptr->buf[8 + i];
-	}
+	string idBuffer(ptr->buf + 8);
 
 	std::cout << " 로그인을 요청받은 아이디는 : " << idBuffer << "  , idSize는 " << idSizeBuffer << "\n";
 	
