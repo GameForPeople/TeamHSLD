@@ -17,16 +17,19 @@ public class MainUISceneManager : MonoBehaviour
 
     public NetworkManager networkObject;
 
-    bool isDrawFriendUI = false;
+    public bool isDrawFriendUI = false; // in coreUiManager Ref
 
     public int invitedFriendIndex;
 
     int friendNum;
+    public int friendWaitTimeCount = 7;
 
     const string voidFriendNickName = "비밀이야..사실몰라";
     public string makeFriendIDBuffer;
 
     GameObject FriendUICanvas;
+    GameObject FriendUIDynamicCanvas;
+
     GameObject[] StateTextUI = new GameObject[4];
     GameObject[] NickNameTextUI = new GameObject[4];
     GameObject[] InviteButtonUI = new GameObject[4];
@@ -52,6 +55,7 @@ public class MainUISceneManager : MonoBehaviour
 
         //  친구 UI Set
         FriendUICanvas = GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas").gameObject;
+        FriendUIDynamicCanvas = GameObject.Find("Friend_UI").transform.Find("OnOFF").transform.Find("Canvas_Dynamic").gameObject;
 
         StateTextUI[0] = FriendUICanvas.transform.Find("State1_Text").gameObject;
         StateTextUI[1] = FriendUICanvas.transform.Find("State2_Text").gameObject;
@@ -104,7 +108,11 @@ public class MainUISceneManager : MonoBehaviour
     public void ClickMakeFriendButton()
     {
         if (friendNum >= 4)
+        {
+            // 내 친구수가 4명 이상.
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(4);
             return;
+        }
 
         makeFriendIDBuffer =
         FriendUICanvas.transform.Find("INVITE_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
@@ -120,7 +128,26 @@ public class MainUISceneManager : MonoBehaviour
             }
         }
 
-        if (bBuffer) return;
+        if (bBuffer)
+        {
+            // 이미 친구인 놈.
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(3);
+            return;
+        }
+
+        if (String.Compare(makeFriendIDBuffer, networkObject.ID) == 0)
+        {
+            // 내 아이디잖아
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
+            return;
+        }
+
+        if (String.Compare(makeFriendIDBuffer, networkObject.nickName) == 0)
+        {
+            // 내 닉네임이잖아.
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
+            return;
+        }
 
         networkObject.SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND);
     }
@@ -129,7 +156,6 @@ public class MainUISceneManager : MonoBehaviour
     {
         invitedFriendIndex = InIndex;
 
-        // 일단 오늘까지 너무 힘드니까, 지금 안되니까 주석으로 꺼놓자.
         networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
     }
 
@@ -184,18 +210,108 @@ public class MainUISceneManager : MonoBehaviour
     public void OnFriendWaitUI_NetworkManager()
     {
         // 상대방의 의사를 물어보는 중입니다. 7초 코루틴 실행 필요함.
+        friendWaitTimeCount = 7;
+
+        StartCoroutine(WaitFriendJoinCoroutine());
+    }
+
+    public IEnumerator WaitFriendJoinCoroutine()
+    {
+        while (friendWaitTimeCount > 0)
+        {
+            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_JOIN);
+            yield return new WaitForSeconds(1.0f);
+            friendWaitTimeCount--;
+            
+            // UI Set
+
+        }
+        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
 
     }
 
     public void OnFriendBadStateUI_NetworkManager(int InCase)
     {
-        if(InCase == 1)
+        if (InCase == 1)
         {
             // 친구가 게임 초대를 받을 수 없는 상태입니다.
         }
         else if (InCase == 2)
         {
             // 친구가 게임 초대를 받을 수 없는 상태입니다.
+        }
+    }
+
+    public void OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
+    {
+        // by Network Send or 
+
+        if (InFailReason == -1)
+        {
+            // 정상적으로 친구에세 데이터 송신
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_TRUE").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 0)
+        {
+            // 상대방이 미로그인
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_0").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 1)
+        {
+            // 상대방이 맥스 왕인싸
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_1").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 2)
+        {
+            // 상대방이 받을 수 없는 상태.
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_2").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 3)
+        {
+            // 이미 상대방이 친구인 경우
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_3").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 4)
+        {
+            // 님 인싸여서 더이상 친구 추가 못함 ㅋ
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_4").gameObject.SetActive(true);
+        }
+        //else if (InFailReason == 5) // 스스로 친추 하려고 할 때.
+    }
+
+    public void OffUI_CHECK_DEMAND_MAKE_FRIEND(int InUIIndex)
+    {
+        //Click
+
+        if (InUIIndex == -1)
+        {
+            // 정상적으로 친구에세 데이터 송신
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_TRUE").gameObject.SetActive(false);
+        }
+        else if (InUIIndex == 0)
+        {
+            // 상대방이 미로그인
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_0").gameObject.SetActive(false);
+        }
+        else if (InUIIndex == 1)
+        {
+            // 상대방이 맥스 왕인싸
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_1").gameObject.SetActive(false);
+        }
+        else if (InUIIndex == 2)
+        {
+            // 상대방이 받을 수 없는 상태.
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_2").gameObject.SetActive(false);
+        }
+        else if (InUIIndex == 3)
+        {
+            // 이미 상대방이 친구인 경우
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_3").gameObject.SetActive(false);
+        }
+        else if (InUIIndex == 4)
+        {
+            // 님 인싸여서 더이상 친구 추가 못함 ㅋ
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_4").gameObject.SetActive(false);
         }
     }
 

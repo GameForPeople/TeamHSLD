@@ -184,18 +184,22 @@ public partial class NetworkManager : MonoBehaviour {
         }
         else if (recvType == (int)PROTOCOL.HOSTCHECK_FRIEND_INVITE)
         {
-            // 초대한 친구가, 7초 지연시 뭐야? 패킷 전송후 받는 프로토콜(항상은 아님, 고냥 Demand_Guest - fail 시에도 받음)
-
-            // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
+            // 
+            //  0이면 안들어옴. 1이면 들어옴. 2이면 방삭제함.
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            if (inviteBuffer == 1)
+            if (inviteBuffer == 0)
             {
+                //? 아무것도 안해도됨.
+            }
+            else if (inviteBuffer == 1)
+            {
+                // 게임 방 정보 요구하고, 룸씬으로 변경.
 
             }
-            else
+            else if (inviteBuffer == 2)
             {
-
+                // 상대방이 초대 안받은거 알림.
             }
         }
 
@@ -205,24 +209,17 @@ public partial class NetworkManager : MonoBehaviour {
 
             if(iBuffer == 1)
             {
-
+                // 해줄 부분 없음? -> 상대방에게 친구 요청을 정상적으로 보냈습니다.
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnUI_CHECK_DEMAND_MAKE_FRIEND(-1);
             }
             else
             {
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 8);
 
-                if(iBuffer == 0)
-                {
-
-                }
-                else if (iBuffer == 1)
-                {
-
-                }
-                else if (iBuffer == 2)
-                {
-
-                }
+                //if(iBuffer == 0)
+                //else if (iBuffer == 1)
+                //else if (iBuffer == 2)
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnUI_CHECK_DEMAND_MAKE_FRIEND(iBuffer);
             }
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_MAKE_FRIEND_INFO)
@@ -230,10 +227,13 @@ public partial class NetworkManager : MonoBehaviour {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
             string nickNameBuffer = Encoding.Default.GetString(NewDataRecvBuffer, 8, iBuffer);
 
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_DEMAND_FRIEND_UDP(nickNameBuffer);
         }
         else if (recvType == (int)PROTOCOL.CHECK_ANSWER_MAKE_FRIEND)
         {
-            // 딱히 할 일 없음. ㅎ
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_CHECK_ANSWER_MAKE_FRIEND(iBuffer);
         }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{

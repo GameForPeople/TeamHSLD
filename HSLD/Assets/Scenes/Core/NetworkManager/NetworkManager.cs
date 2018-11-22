@@ -40,6 +40,11 @@ public partial class NetworkManager : MonoBehaviour
 
     // 5. Parsing Server IP, 등등.
     // NetworkManager_Others
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 }
 
 

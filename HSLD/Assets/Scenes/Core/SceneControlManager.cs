@@ -19,7 +19,7 @@ public enum SCENE_NAME //: string
 
 public class SceneControlManager : MonoBehaviour
 {
-
+    public bool isOnNetwork;
     public SCENE_NAME nowScene;
     GameObject gameCore;
     GameObject[] loadUI = new GameObject[5];
@@ -27,6 +27,8 @@ public class SceneControlManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        isOnNetwork = false;
+
         // Release!
         nowScene = SCENE_NAME.TITLE_SCENE;
         // Test!
@@ -52,6 +54,10 @@ public class SceneControlManager : MonoBehaviour
     //{
     //    StartCoroutine(ChangeSceneCoroutine(InSceneName));
     //}
+    public void StartNetworkFunction()
+    {
+        gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
+    }
 
     public void ChangeScene(SCENE_NAME InSceneName, bool InOnPrintLoadUI = false, int InLoadUIIndex = -1)
     {
@@ -81,7 +87,7 @@ public class SceneControlManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.MoveGameObjectToScene(gameCore, SceneManager.GetSceneByBuildIndex((int)InSceneName));
+        //SceneManager.MoveGameObjectToScene(gameCore, SceneManager.GetSceneByBuildIndex((int)InSceneName));
 
         SceneManager.UnloadSceneAsync((int)nowScene);
         nowScene = InSceneName;

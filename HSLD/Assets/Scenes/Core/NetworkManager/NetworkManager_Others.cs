@@ -1,5 +1,4 @@
-﻿//#define UDP
-
+﻿#define UDP
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +19,9 @@ using UnityEngine.Networking;
 using System.Net.NetworkInformation;
 
 public partial class NetworkManager : MonoBehaviour {
+    // Socket connect.
+    IPAddress ipAddr;
+    NetworkManager self;
 
     // Use this for initialization
     public void StartNetworkFunction()
@@ -31,8 +33,6 @@ public partial class NetworkManager : MonoBehaviour {
         socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.SendTimeout, 10000);
         socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 10000);
 
-        // Socket connect.
-        IPAddress ipAddr;
         try
         {
             ipAddr = System.Net.IPAddress.Parse(iP_ADDRESS);
@@ -46,14 +46,12 @@ public partial class NetworkManager : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Connect가 정상적으로 완료됐습니다!");
-
+        self = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 #if UDP
-        UDP_Receive(ipAddr);
+        UDP_Receive();
 #endif
 
-        //SendData(100);
-        //m_scenenManager = GameObject.Find("SceneManager");
+        Debug.Log("Connect가 정상적으로 완료됐습니다!");
     }
 
     public void ParsingServerIP()

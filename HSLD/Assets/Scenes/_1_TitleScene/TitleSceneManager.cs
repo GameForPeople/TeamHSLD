@@ -19,7 +19,8 @@ public class TitleSceneManager : MonoBehaviour
 
     public void ClickNetworkTestButton()
     {
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
+        //GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().StartNetworkFunction();
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork = true;
 
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
     }
