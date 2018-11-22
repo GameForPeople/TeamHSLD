@@ -122,6 +122,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 
 		// 친구 방도 등록.
 		pBuffer->SetValue().GetSocketInfo()->pRoomIter = ptr->pRoomIter;
+		ptr->pRoomIter->SetFriendUserPtr(pBuffer);
 
 		// UDP Packet 등록.
 		InUDPManager.Push(UDP_PROTOCOL::INVITE_FRIEND, pBuffer->SetValue().GetSocketInfo());
@@ -180,26 +181,52 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	if (ptr->pRoomIter == nullptr)
-	{
-		// 이대로 끝 OK!
-		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-	}
-	else if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
-	{
-		// 방 제거해줌. 여기서 이대로 끝! -> guest의 UDP 손실 가능성또는 동기화 실패 가능성-> 이거를 검사할 수 있으면 좋지 않을 까?
-		delete ptr->pRoomIter;
-		ptr->pRoomIter = nullptr;
+	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
 
-		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-	}
-	else
+	if (iBuffer)
 	{
-		// 적이 딱 맥스타임에 들어온거겠지? 해당 부분 어케한다냐 // 뭘어째 False보내면 돼지 뭐.
-		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
+		{
+			// 방 제거해줌. 여기서 이대로 끝! -> guest의 UDP 손실 가능성또는 동기화 실패 가능성-> 이거를 검사할 수 있으면 좋지 않을 까?
+			delete ptr->pRoomIter;
+			ptr->pRoomIter = nullptr;
+
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+		}
+		else if (ptr->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
+		{
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+		}
+		else
+		{
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		}
+	}
+	else {
+		if (ptr->pRoomIter == nullptr)
+		{
+			// 이대로 끝 OK!
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+		}
+		else if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
+		{
+			// 방 제거해줌. 여기서 이대로 끝! -> guest의 UDP 손실 가능성또는 동기화 실패 가능성-> 이거를 검사할 수 있으면 좋지 않을 까?
+			delete ptr->pRoomIter;
+			ptr->pRoomIter = nullptr;
+
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+		}
+		else
+		{
+			// 적이 딱 맥스타임에 들어온거겠지? 해당 부분 어케한다냐 // 뭘어째 False보내면 돼지 뭐.
+			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+		}
 	}
 
 	ptr->dataSize = 8;
@@ -208,11 +235,11 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
 {
 	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
-	ptr->buf[8 + iBuffer] = '\n';
+	ptr->buf[8 + iBuffer] = '\0';
 	
 	string idBuffer(ptr->buf + 8);
 
-	std::cout << "[Debug] DemandMakeFriend 내가 친구요청할 ID는 : " << idBuffer << "입니다. \n";
+	std::cout << "[Debug] DemandMakeFriend "<< ptr->pUserNode->GetKey() <<"가 친구요청할 ID는 : " << idBuffer << "입니다. \n";
 
 	bool isOnLogin{ false };
 	rbTreeNode<string, UserData>* pBuffer = InUserData.SearchUserNode(idBuffer, isOnLogin);
@@ -225,6 +252,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
 		ptr->dataSize = 12;
+
+		//std::cout << "상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0 \n";
 		return;
 	}
 
@@ -238,6 +267,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
 		ptr->dataSize = 12;
+		//std::cout << "상대방이 맥스 프렌드인 상황 : ANSWER_MAKE_FRIEND + 0 + 1  \n";
+
 		return;
 	}
 
@@ -249,6 +280,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 		memcpy(ptr->buf + 8, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
 
 		ptr->dataSize = 12;
+		//std::cout << "상대방이 이미 친구 관련 중인 상황 : ANSWER_MAKE_FRIEND + 0 + 2 \n";
 		return;
 	}
 
@@ -260,6 +292,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pt
 	memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 	memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
+	//std::cout << "상대방에게 친구 요청을 보냄 : ANSWER_MAKE_FRIEND + 1 \n";
 	ptr->dataSize = 8;
 }
 
@@ -292,26 +325,29 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pt
 
 		// 잘라냅시다. // 내부에서 친구 인자정리함.
 		ptr->pUserNode->SetValue().SetDeleteFriendID();
-
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 	}
 
 	// 친구 신청한 유저가 나가서 친구 등록 프로세스를 진행하기 어려움.
 	else if (!bBuffer)
 	{
-		// 친구 거절 정보 알려줌.
+		// 친구 거절 정보 알려줄수가 없음 (이미 나갔는 걸? )
 		//InUDPManager.Push(UDP_PROTOCOL::DENY_FRIEND, pBuffer->SetValue().GetSocketInfo());
 
 		// 잘라냅시다. // 내부에서 친구 인자정리함.
 		ptr->pUserNode->SetValue().SetDeleteFriendID();
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 	}
 
 	// 친구 신청한 유저가 존재함. 친구 등록 최종 프로세스 시행. (친구하나 만들기도 힘들다;)
 	else
 	{
 		pBuffer->SetValue().SetInsertFriendID(ptr->pUserNode->GetKey());
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 	}
 
 	//항상 똑같은 값 전달.
 	memcpy(ptr->buf, reinterpret_cast<const char*>(&CHECK_ANSWER_MAKE_FRIEND), sizeof(int));
-	ptr->dataSize = 4;
+
+	ptr->dataSize = 8;
 }

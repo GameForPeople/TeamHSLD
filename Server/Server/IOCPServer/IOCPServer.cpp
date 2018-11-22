@@ -3,7 +3,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	void ERROR_QUIT(char *msg)
+	[[noreturn]] void ERROR_QUIT(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -21,7 +21,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	void ERROR_DISPLAY(char *msg)
+	[[noreturn]] void ERROR_DISPLAY(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(

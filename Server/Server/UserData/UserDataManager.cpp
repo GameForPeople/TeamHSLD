@@ -68,8 +68,6 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 		return 0;
 	}
 
-	std::cout << "로드한 유저의 닉네임은 : " << RetNickName << "입니다. \n";
-
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{

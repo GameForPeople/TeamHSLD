@@ -14,8 +14,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 	//ProcessSend(InRecvType, ptr, InUserData);
 	if (InRecvType == DEMAND_LOGIN)
 		RecvDemandLogin(ptr, InUserData);
-	else // CHANGE_NICKNAME
+	else if (InRecvType == CHANGE_NICKNAME)
 		RecvChangeNickName(ptr, InUserData);
+	// 나머지는 날림.
 }
 
 //void SCENE_NETWORK_MANAGER::LoginScene::ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, UserDataManager& InUserData)
@@ -32,7 +33,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::RecvDemandLogin(SocketInfo* ptr, UserDat
 {
 	int idSizeBuffer = (int&)(ptr->buf[4]);
 
-	ptr->buf[8 + idSizeBuffer] = '\n';
+	ptr->buf[8 + idSizeBuffer] = '\0';
 
 	string idBuffer(ptr->buf + 8);
 

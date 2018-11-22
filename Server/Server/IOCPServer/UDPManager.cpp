@@ -43,18 +43,37 @@ void UDPManager::_CreateUDPSocket()
 
 void UDPManager::_SendMessage(const char& InChar)
 {
-	CustomNode* pNodeBuffer = friendInviteMessageQueue.Pop();
+	CustomNode* pNodeBuffer; // = friendInviteMessageQueue.Pop();
+	
+	if(InChar == INVITE_ROOM)
+		pNodeBuffer = friendInviteMessageQueue.Pop();
+	else if (InChar == DEMAND_FRIEND)
+		pNodeBuffer = friendDemandMessageQueue.Pop();
 
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
 
+	if (pNodeBuffer == nullptr)
+	{
+		std::cout << "Error UDP Send \n";
+		return;
+	}
+
 	if (pNodeBuffer->GetData() != nullptr)
 	{
-		getpeername(pNodeBuffer->GetData()->sock, (SOCKADDR *)&clientAddr, &addrLength);
+		getpeername(pNodeBuffer->GetSocket(), (SOCKADDR *)&clientAddr, &addrLength);
 		//clientAddr.sin_port = htons(SERVER_UDP_PORT);
 		clientAddr.sin_port = UDP_PORT;
 
-		sendto(udpSocket, reinterpret_cast<char*>(InChar), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+		if (int retValue = 
+			sendto(udpSocket, reinterpret_cast<const char*>(&InChar), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr))
+			; retValue == SOCKET_ERROR)
+		{
+			UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+		}
+		//std::cout << "[UDP_MANAGER] 정상적으로 메세지 " << (int)InChar << "를 "<< pNodeBuffer->GetData()->pUserNode->SetValue().GetID() <<"보냈습니다. \n";
 	}
+
 	//delete pNodeBuffer;
+	//pNodeBuffer = nullptr;
 }

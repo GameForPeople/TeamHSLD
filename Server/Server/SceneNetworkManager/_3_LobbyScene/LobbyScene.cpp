@@ -137,7 +137,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* ptr, GameR
 	if (ptr->pRoomIter == nullptr)
 	{
 		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));	// ¹æ ³ª°¡Áü.
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));	// ¹æ ³ª°¡Áü.
 
 		ptr->dataSize = 8;
 	}

@@ -20,10 +20,16 @@ public:
 		: data(InData), left(InLeft), right(InRight)
 	{};
 
+	~CustomNode() = default;
 public:
 	SocketInfo* GetData()
 	{
 		return data;
+	}
+
+	SOCKET& GetSocket()
+	{
+		return (*data).sock;
 	}
 };
 
