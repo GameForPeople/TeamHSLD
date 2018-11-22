@@ -20,7 +20,6 @@ public class MainUISceneManager : MonoBehaviour
     bool isDrawFriendUI = false;
 
     public int invitedFriendIndex;
-    public int AnswerFriendInviteValue = 0; // UI에서 Ok를 누르면 1, No를 누르면 0
 
     int friendNum;
 
@@ -70,7 +69,7 @@ public class MainUISceneManager : MonoBehaviour
         InviteButtonUI[3] = FriendUICanvas.transform.Find("INVITE4_BUTTON").gameObject;
 
         // 친구 UI Off
-        for(int i = 0; i < 4; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             InviteButtonUI[i].SetActive(false);
         }
@@ -110,6 +109,19 @@ public class MainUISceneManager : MonoBehaviour
         makeFriendIDBuffer =
         FriendUICanvas.transform.Find("INVITE_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
+        bool bBuffer = false;
+
+        for (int i = 0; i < friendNum; ++i)
+        {
+            if (String.Compare(makeFriendIDBuffer, networkObject.friendNickNameCont[i]) == 0)
+            {
+                bBuffer = true;
+                break;
+            }
+        }
+
+        if (bBuffer) return;
+
         networkObject.SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND);
     }
 
@@ -118,8 +130,16 @@ public class MainUISceneManager : MonoBehaviour
         invitedFriendIndex = InIndex;
 
         // 일단 오늘까지 너무 힘드니까, 지금 안되니까 주석으로 꺼놓자.
-        //networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
+        networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
     }
+
+    // In Game Cores.
+    //public void ClickAnswerFriendInvite(int InTrueFalse)
+    //{
+    //    answerFriendInviteValue = InTrueFalse;
+    //
+    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
+    //}
 
     public void OffFriendUI()
     {
@@ -159,6 +179,24 @@ public class MainUISceneManager : MonoBehaviour
         }
 
         isDrawFriendUI = true;
+    }
+
+    public void OnFriendWaitUI_NetworkManager()
+    {
+        // 상대방의 의사를 물어보는 중입니다. 7초 코루틴 실행 필요함.
+
+    }
+
+    public void OnFriendBadStateUI_NetworkManager(int InCase)
+    {
+        if(InCase == 1)
+        {
+            // 친구가 게임 초대를 받을 수 없는 상태입니다.
+        }
+        else if (InCase == 2)
+        {
+            // 친구가 게임 초대를 받을 수 없는 상태입니다.
+        }
     }
 
 }

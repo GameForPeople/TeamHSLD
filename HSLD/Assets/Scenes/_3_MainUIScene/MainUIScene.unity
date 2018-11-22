@@ -1168,7 +1168,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6f6c3523552a4a6438ffda897d22484f, type: 3}
-    m_FontSize: 70
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1371,8 +1371,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 466, y: -290}
-  m_SizeDelta: {x: 300, y: 83.4}
+  m_AnchoredPosition: {x: 492.3, y: -290}
+  m_SizeDelta: {x: 247.3, y: 83.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &641618845
 MonoBehaviour:
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.06575231, b: 0.3679245, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2018,7 +2018,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &1253216108
 GameObject:
@@ -2062,7 +2062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkObject: {fileID: 0}
   invitedFriendIndex: 0
-  AnswerFriendInviteValue: 0
+  answerFriendInviteValue: 0
   makeFriendIDBuffer: 
 --- !u!1 &1265964712
 GameObject:
@@ -2472,8 +2472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 471.5, y: -204.5}
-  m_SizeDelta: {x: 306.1, y: 293}
+  m_AnchoredPosition: {x: 486.1, y: -204.5}
+  m_SizeDelta: {x: 276.9, y: 293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656842015
 MonoBehaviour:
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0.79607844}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3005,8 +3005,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 466, y: -144}
-  m_SizeDelta: {x: 300, y: 144.3}
+  m_AnchoredPosition: {x: 492.3, y: -144}
+  m_SizeDelta: {x: 247.3, y: 144.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874207312
 MonoBehaviour:
@@ -3331,7 +3331,7 @@ GameObject:
   - component: {fileID: 1901819183}
   - component: {fileID: 1901819182}
   m_Layer: 0
-  m_Name: INVITE_BUTTON
+  m_Name: MAKE_FRIEND_BUTTON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

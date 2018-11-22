@@ -34,11 +34,13 @@ public class SceneControlManager : MonoBehaviour
 
         gameCore = GameObject.Find("GameCores").gameObject;
 
-        loadUI[0] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("LoadUI_0").gameObject;
-        loadUI[1] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("LoadUI_1").gameObject;
-        loadUI[2] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("LoadUI_2").gameObject;
-        loadUI[3] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("LoadUI_3").gameObject;
-        loadUI[4] = GameObject.Find("GameCores").transform.Find("Canvas").transform.Find("LoadUI_4").gameObject;
+        GameObject.Find("GameCores").transform.Find("LoadUI").gameObject.SetActive(true);
+
+        loadUI[0] = GameObject.Find("GameCores").transform.Find("LoadUI").transform.Find("Canvas").transform.Find("LoadUI_0").gameObject;
+        loadUI[1] = GameObject.Find("GameCores").transform.Find("LoadUI").transform.Find("Canvas").transform.Find("LoadUI_1").gameObject;
+        loadUI[2] = GameObject.Find("GameCores").transform.Find("LoadUI").transform.Find("Canvas").transform.Find("LoadUI_2").gameObject;
+        loadUI[3] = GameObject.Find("GameCores").transform.Find("LoadUI").transform.Find("Canvas").transform.Find("LoadUI_3").gameObject;
+        loadUI[4] = GameObject.Find("GameCores").transform.Find("LoadUI").transform.Find("Canvas").transform.Find("LoadUI_4").gameObject;
 
         for(int i = 0; i < 5; ++i)
         {

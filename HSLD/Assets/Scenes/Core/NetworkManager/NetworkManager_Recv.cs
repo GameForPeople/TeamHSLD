@@ -156,10 +156,12 @@ public partial class NetworkManager : MonoBehaviour {
             if (inviteBuffer == 1)
             {
                 isHost = true;
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnFriendWaitUI_NetworkManager();
                 //친구가 정상적인 상태
             }
             else
             {
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnFriendBadStateUI_NetworkManager(1);
                 // 친구가 비정상적인 상태
             }
             //GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>()
@@ -195,6 +197,43 @@ public partial class NetworkManager : MonoBehaviour {
             {
 
             }
+        }
+
+        else if (recvType == (int)PROTOCOL.CHECK_DEMAND_MAKE_FRIEND)
+        {
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            if(iBuffer == 1)
+            {
+
+            }
+            else
+            {
+                iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 8);
+
+                if(iBuffer == 0)
+                {
+
+                }
+                else if (iBuffer == 1)
+                {
+
+                }
+                else if (iBuffer == 2)
+                {
+
+                }
+            }
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_MAKE_FRIEND_INFO)
+        {
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+            string nickNameBuffer = Encoding.Default.GetString(NewDataRecvBuffer, 8, iBuffer);
+
+        }
+        else if (recvType == (int)PROTOCOL.CHECK_ANSWER_MAKE_FRIEND)
+        {
+            // 딱히 할 일 없음. ㅎ
         }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{

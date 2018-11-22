@@ -90,9 +90,9 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
-                        GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().AnswerFriendInviteValue
+                        GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().answerFriendInviteValue
                         ), 0, NewDataSendBuffer, 4, 4);
-
+                    
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 else if (InMsg == (int)PROTOCOL.DELAY_FRIEND_INVITE)
@@ -110,6 +110,18 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(Encoding.Default.GetBytes(stringBuffer), 0, NewDataSendBuffer, 8, stringSize);
 
                     socket.Send(NewDataSendBuffer, 8 + stringSize, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO), 0, NewDataSendBuffer, 0, 4);
+                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+                }
+                else if (InMsg == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
+
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_MAKE_FRIEND), 0, NewDataSendBuffer, 4, 4);
+                    socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)

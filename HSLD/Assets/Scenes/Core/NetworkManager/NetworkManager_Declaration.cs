@@ -46,6 +46,11 @@ enum PROTOCOL : int
     DEMAND_MAKE_FRIEND = 209,   // 친구하고 싶어요. (상대방 허락 안맡음. -> 내가 4명 이상이면 애초에 안되고, 상대방이 4명 이하면 OK)
     CHECK_DEMAND_MAKE_FRIEND = 210, // UDP Message 전송 여부. 및 실패 사유
 
+    DEMAND_MAKE_FRIEND_INFO = 211,  // 닉네임 정보 및 관련 정보 전달 요구
+    NOTIFY_MAKE_FRIEND_INFO = 212,  // 야 닉네임 이런 애가 너한테 친구하재
+
+    ANSWER_MAKE_FRIEND = 213,       // 클라로부터 답변이 옴. 친구할지 안할지 여부.
+    CHECK_ANSWER_MAKE_FRIEND = 214, // 해당 답변 처리중 에러여부에 대해 확인시켜줌.
 
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
