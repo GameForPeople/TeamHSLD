@@ -87,6 +87,7 @@ public class InGameSceneManager : MonoBehaviour
         if (isfirstSend)
         {
             network_changeTerrainCount++;
+            Debug.Log("network_changeTerrainCount : " + network_changeTerrainCount);
             isfirstSend = false;
         }
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
@@ -193,11 +194,12 @@ public class InGameSceneManager : MonoBehaviour
             Debug.Log("에러 : 2");
             return;
         }
-        if (isfirstRecv)
-        {
-            //recvDiceValue++;
-            isfirstRecv = false;
-        }
+        //if (isfirstRecv)
+        //{
+        //    recvDiceValue++;
+        //    Debug.Log("recvDiceValue : " + recvDiceValue);
+        //    isfirstRecv = false;
+        //}
         for (int i =0; i< recvDiceValue; i++)
         {
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]] == null)
@@ -207,12 +209,12 @@ public class InGameSceneManager : MonoBehaviour
             }
             Debug.Log("recvDiceValue??" + recvDiceValue);
             Debug.Log("이름이뭐니??" + gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
-            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlagable)
+            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlag)
             {
                 AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setFlag();
                 AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(1, gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]]);
+                //AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(1, gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]]);
                 Debug.Log("상대방이 FLAG 획득" + recvTerrainIndex[i]);
                 continue;
             }
@@ -252,8 +254,10 @@ public class InGameSceneManager : MonoBehaviour
                 Debug.Log("에러 : 3");
             }
         }
+
         //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
         Camera.main.GetComponent<PCverPIcking>().FlagSetting();
+        AllMeshController.myPlanet.GetComponent<AllMeshController>().AllPriorSetting(); // PriorSetting
         recvTerrainType = 0;
         recvDiceValue = 0;
     }

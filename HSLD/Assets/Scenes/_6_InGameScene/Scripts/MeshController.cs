@@ -26,10 +26,10 @@ public class MeshController : MonoBehaviour {
     public bool isAwake;
     public bool isFixed;
     public bool isMine;
-    public bool isFlagable;     //거점
+    public bool isFlag;     //거점
     public int Linkednum;
     public GameObject[] JointMesh;
-    public List<GameObject> DomMesh;
+    public List<GameObject> NearMesh;
     // Use this for initialization
 
     private bool once;
@@ -42,9 +42,10 @@ public class MeshController : MonoBehaviour {
     const float landingSize = 1.05f;
 
     void Start () {
-        if (isFlagable == true)
+        if (isFlag == true)
         {
             terrainstate = Terrain.FLAG;
+            gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_FlagAble");
         }
         else
         {
@@ -75,7 +76,7 @@ public class MeshController : MonoBehaviour {
             StartCoroutine(MoveUp());
             isLandingSign = false;
         }
-        if (isFlagable && once == false && AllMeshController.once)
+        if (isFlag && once == false && AllMeshController.once)
         {
             for(int i = 1; i< AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
             {
@@ -85,7 +86,8 @@ public class MeshController : MonoBehaviour {
 
                     if (pTop < 19.45f && pTop != 0)
                     {
-                        DomMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
+                        NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
+                        AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
 
                         //Debug.Log(name);
                         //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
@@ -99,6 +101,12 @@ public class MeshController : MonoBehaviour {
 
         if (isAwake)
         {
+            if (true) // isMoblie == true
+            {
+                Vector3 a = gameObject.transform.position.normalized * 138;
+                StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(a));
+            }
+            
             if (terrainstate == Terrain.ABLE || terrainstate == Terrain.DEFAULT)
             {
                 Picked();
@@ -112,121 +120,20 @@ public class MeshController : MonoBehaviour {
             }
             else
             {
-                GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Default"); ;
-                terrainstate = Terrain.DEFAULT;
+                GetComponent<MeshRenderer>().material = priorMaterial;
+                terrainstate = priorState;
                 for (int j = 0; j < 3; j++)
                 {
                     if (JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
                     {
-                        JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
-                        JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
+                        JointMesh[j].GetComponent<MeshController>().setDefault();
                     }
                 }
                 CameraController.ChangeableCount++;
             }
 
             // Able 다시 세팅
-            for (int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; i++)
-            {
-                GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
-
-                // 우선 able 다 지워
-                for (int j = 0; j < 3; j++)
-                {
-                    if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
-                    {
-                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
-                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
-                    }
-                }
-
-                // 마지막 회전할 때 우선순위에 따라 세팅
-                if (i == AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1)
-                {
-                    GameObject FirstObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString());
-
-                    // 1.거점 주변 세팅
-                    if (PCverPIcking.isCheck == false)
-                    {
-                        int DomCount = 0;
-                        for (int k = 0; k < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
-                        {
-                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT ||
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<MeshController>().terrainstate == Terrain.ABLE)
-                            {
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                            }
-                            else
-                            {
-                                DomCount++;
-                            }
-                        }
-                        if (DomCount == AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count) // 거점 획득
-                        {
-                            PCverPIcking.isGetFlag = true;
-                            GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                        }
-                        else
-                        {
-                            PCverPIcking.isGetFlag = false;
-                        }
-                    }
-
-                    // 2.Able에 대한 세팅해줘
-                    for (int j = 0; j < 3; j++)
-                    {
-                        if (PCverPIcking.isGetFlag == false) // 거점 획득 전
-                        {
-                            if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // able일 때 default로 바꿔줘
-                            {
-                                for (int k = 0; k < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
-                                {
-                                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] ==
-                                        FindObject.GetComponent<MeshController>().JointMesh[j])
-                                    {
-                                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
-                                        FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
-                                    }
-                                }
-                            }
-
-                            if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
-                            {
-                                for (int k = 0; k < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh.Count; k++)
-                                {
-                                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[0].GetComponent<MeshController>().DomMesh[k] ==
-                                        FirstObject.GetComponent<MeshController>().JointMesh[j])
-                                    {
-                                        FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
-                                        FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
-                                    }
-                                }
-                            }
-                        }
-                        else // 거점 획득 후
-                        {
-                            if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // able일 때 default로 바꿔줘
-                            {
-                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
-                                FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
-                            }
-                            if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT)
-                            {
-                                FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
-                                FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
-                            }
-                        }
-                    }
-
-                    // 3.마지막으로 거점 세팅
-                    for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
-                    {
-                        AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().terrainstate = Terrain.FLAG;
-                        AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material
-                            = Resources.Load<Material>("M_FlagAble");
-                    }
-                }
-            }
+            AllMeshController.myPlanet.GetComponent<AllMeshController>().ResettingAble();
 
             isAwake = false;
         }
@@ -247,14 +154,14 @@ public class MeshController : MonoBehaviour {
         if(terrainstate == Terrain.MODERATION)
         {
             //20퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 80 || isFlagable)
+            if (randomValue(0, 100) < 80 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(14, 18)], 1.03f);
             }
         } else if (terrainstate == Terrain.BARREN)
         {
             //70퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 30 || isFlagable)
+            if (randomValue(0, 100) < 30 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(5, 13)], 1.03f);
             }
@@ -262,21 +169,21 @@ public class MeshController : MonoBehaviour {
         } else if (terrainstate == Terrain.COLD)
         {
             //40퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 60 || isFlagable)
+            if (randomValue(0, 100) < 60 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(1, 4)], 1.03f);
             }
         } else if (terrainstate == Terrain.SEA)
         {
             //90퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 10 || isFlagable)
+            if (randomValue(0, 100) < 10 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(21, 22)], 1.03f);
             }
         } else if (terrainstate == Terrain.MOUNTAIN)
         {
             //10퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 90 || isFlagable)
+            if (randomValue(0, 100) < 90 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(19, 20)], 1.03f);
             }

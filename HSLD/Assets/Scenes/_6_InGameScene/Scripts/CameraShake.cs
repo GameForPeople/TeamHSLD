@@ -20,6 +20,11 @@ public class CameraShake : MonoBehaviour
         originList = new Vector2[UIList.Count];
     }
 
+    public void ShakeOnce()
+    {
+        StartCoroutine(Shake(1, 2));
+    }
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         isCameraShake = true;

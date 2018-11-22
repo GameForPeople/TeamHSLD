@@ -144,18 +144,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1618581648}
   - {fileID: 308354441}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &5238884 stripped
@@ -189,18 +190,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1341906189}
   - {fileID: 1804820475}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &17053615 stripped
@@ -234,18 +236,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1584743552}
   - {fileID: 54068526}
   - {fileID: 1341906189}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &29789798 stripped
@@ -279,18 +282,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 98057181}
   - {fileID: 940027214}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &31305738 stripped
@@ -324,18 +328,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1584589151}
   - {fileID: 976986711}
   - {fileID: 2008778987}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &35264477 stripped
@@ -369,18 +374,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1684928952}
   - {fileID: 1417611858}
   - {fileID: 1154691102}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &38060710 stripped
@@ -414,18 +420,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1618581648}
   - {fileID: 78281895}
   - {fileID: 864600778}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &50010879
@@ -534,18 +541,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1218839681}
   - {fileID: 237075393}
   - {fileID: 17053615}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &54276500 stripped
@@ -579,18 +587,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1417611858}
   - {fileID: 676650459}
   - {fileID: 1261314925}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &68865990 stripped
@@ -624,18 +633,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2045645539}
   - {fileID: 1717299218}
   - {fileID: 710214495}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &69651916 stripped
@@ -669,18 +679,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1263336280}
   - {fileID: 521397301}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &78281895 stripped
@@ -714,18 +725,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 321731969}
   - {fileID: 38060710}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &80989887 stripped
@@ -759,18 +771,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 552896767}
   - {fileID: 212851319}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &81462916 stripped
@@ -804,18 +817,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 401093704}
   - {fileID: 912114743}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &82822055 stripped
@@ -849,18 +863,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 401093704}
   - {fileID: 2045645539}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &83329541
@@ -1065,18 +1080,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 1931759691}
   - {fileID: 229308353}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &92151563
@@ -1186,18 +1202,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 1341906189}
   - {fileID: 29789798}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &107147627
@@ -1306,18 +1323,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1454669962}
   - {fileID: 171084210}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &113498411
@@ -1473,18 +1491,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 759865688}
   - {fileID: 82822055}
   - {fileID: 2121401002}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &119588798 stripped
@@ -1518,18 +1537,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 1288132296}
   - {fileID: 400803864}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &130673201 stripped
@@ -1563,18 +1583,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1666188838}
   - {fileID: 442304538}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &131071464 stripped
@@ -1608,18 +1629,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 1
   Linkednum: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1483358713}
   - {fileID: 80989887}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &136879311 stripped
@@ -1653,18 +1675,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 820614603}
   - {fileID: 857221682}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &141128050 stripped
@@ -1698,18 +1721,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 517522759}
   - {fileID: 1097889542}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &143664514 stripped
@@ -1743,18 +1767,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 262676126}
   - {fileID: 1479212787}
   - {fileID: 1932610389}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &151276141 stripped
@@ -1788,18 +1813,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 490978572}
   - {fileID: 1290884983}
   - {fileID: 237075393}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &153429358 stripped
@@ -1833,18 +1859,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 1288132296}
   - {fileID: 1263336280}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &154895502 stripped
@@ -1878,18 +1905,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1176474312}
   - {fileID: 225109579}
   - {fileID: 393552564}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &161344818
@@ -1992,18 +2020,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 819413570}
   - {fileID: 241331999}
   - {fileID: 562826426}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &168106307 stripped
@@ -2037,18 +2066,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1186906118}
   - {fileID: 765737525}
   - {fileID: 801686902}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &170091625 stripped
@@ -2082,18 +2112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 2059590419}
   - {fileID: 554599682}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &171084210 stripped
@@ -2127,18 +2158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 108271741}
   - {fileID: 377410625}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &177965627 stripped
@@ -2172,18 +2204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 1048219039}
   - {fileID: 1186906118}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &180195419 stripped
@@ -2217,18 +2250,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 883398229}
   - {fileID: 2059590419}
   - {fileID: 1666188838}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &183157152 stripped
@@ -2262,18 +2296,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1548505194}
   - {fileID: 1239070744}
   - {fileID: 820614603}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &184317044 stripped
@@ -2307,18 +2342,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1213065812}
   - {fileID: 705472189}
   - {fileID: 1042028599}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &193711801 stripped
@@ -2352,18 +2388,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 469612648}
   - {fileID: 1445801239}
   - {fileID: 1840761793}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &201099082 stripped
@@ -2397,18 +2434,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 1759653697}
   - {fileID: 911726643}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &203382341 stripped
@@ -2442,18 +2480,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1393643889}
   - {fileID: 710214495}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &209742190 stripped
@@ -2487,18 +2526,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 909569341}
   - {fileID: 639710108}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &212851319 stripped
@@ -2532,18 +2572,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 80989887}
   - {fileID: 1215777087}
   - {fileID: 1581329931}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &224623750 stripped
@@ -2577,18 +2618,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1143189273}
   - {fileID: 1022145317}
   - {fileID: 1927571657}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &225109579 stripped
@@ -2622,18 +2664,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 801686902}
   - {fileID: 996155335}
   - {fileID: 154895502}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &229308353 stripped
@@ -2667,18 +2710,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1392800020}
   - {fileID: 85295933}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &231310371
@@ -2787,18 +2831,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1932610389}
   - {fileID: 54068526}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &237976455
@@ -2901,18 +2946,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1917340613}
   - {fileID: 448909662}
   - {fileID: 163169701}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &247549460 stripped
@@ -2946,18 +2992,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1097889542}
   - {fileID: 1809212946}
   - {fileID: 407687209}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &247661245
@@ -3095,18 +3142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 305919173}
   - {fileID: 1218839681}
   - {fileID: 143664514}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &269784875 stripped
@@ -3140,18 +3188,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 577297393}
   - {fileID: 2059590419}
   - {fileID: 1378642440}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &274445792
@@ -3254,18 +3303,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 564520935}
   - {fileID: 1069206627}
   - {fileID: 914525503}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &291195183
@@ -3374,18 +3424,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 639710108}
   - {fileID: 1589159573}
   - {fileID: 262676126}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &308354441 stripped
@@ -3419,18 +3470,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 960246270}
   - {fileID: 3175447}
   - {fileID: 1451947889}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &310438292 stripped
@@ -3464,18 +3516,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 1656699970}
   - {fileID: 770755763}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &318329054
@@ -3722,18 +3775,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 78281895}
   - {fileID: 1897195109}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &326723863 stripped
@@ -3767,18 +3821,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1445464223}
   - {fileID: 408417171}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &334954668 stripped
@@ -3812,18 +3867,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1809212946}
   - {fileID: 1682309906}
   - {fileID: 744774717}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &336637860 stripped
@@ -3857,18 +3913,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 1618581648}
   - {fileID: 1897195109}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &339052602 stripped
@@ -3902,18 +3959,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 1675717126}
   - {fileID: 1649489986}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &369500355 stripped
@@ -3947,18 +4005,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1865527400}
   - {fileID: 1987983262}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &370807055 stripped
@@ -3992,18 +4051,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1099322961}
   - {fileID: 517522759}
   - {fileID: 883914049}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &374445970
@@ -4181,18 +4241,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1934944938}
   - {fileID: 1335827416}
   - {fileID: 171084210}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &377995504
@@ -4370,18 +4431,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 523081367}
   - {fileID: 1204631829}
   - {fileID: 700057829}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &389602587
@@ -4490,18 +4552,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 1724664729}
   - {fileID: 1417611858}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &398479998
@@ -4605,18 +4668,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 119588798}
   - {fileID: 960246270}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &401093704 stripped
@@ -4650,18 +4714,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 82822055}
   - {fileID: 81462916}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &402824842 stripped
@@ -4695,18 +4760,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 171084210}
   - {fileID: 1456686515}
   - {fileID: 1342977608}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &407687209 stripped
@@ -4740,18 +4806,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 2135420763}
   - {fileID: 1298144830}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &408417171 stripped
@@ -4785,18 +4852,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1415961201}
   - {fileID: 1434057303}
   - {fileID: 326723863}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &417514189 stripped
@@ -4830,18 +4898,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 441066154}
   - {fileID: 1865527400}
   - {fileID: 912114743}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &418698308 stripped
@@ -4875,18 +4944,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 2122743421}
   - {fileID: 1175704379}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &441066154 stripped
@@ -4920,18 +4990,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 417514189}
   - {fileID: 1976316790}
   - {fileID: 2114854827}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &442304538 stripped
@@ -4965,18 +5036,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 130673201}
   - {fileID: 1689437357}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &445073188
@@ -5095,18 +5167,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 539841174}
   - {fileID: 1288132296}
   - {fileID: 241331999}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &451282576 stripped
@@ -5140,18 +5213,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 940027214}
   - {fileID: 866923194}
   - {fileID: 883914049}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &453035472 stripped
@@ -5185,18 +5259,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 744774717}
   - {fileID: 1953178002}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &455685414 stripped
@@ -5230,18 +5305,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1589159573}
   - {fileID: 177965627}
   - {fileID: 1479212787}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &469612648 stripped
@@ -5275,18 +5351,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1503486730}
   - {fileID: 1953921687}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &482001743 stripped
@@ -5320,18 +5397,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 2045645539}
   - {fileID: 636920731}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &485024293 stripped
@@ -5365,18 +5443,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1682309906}
   - {fileID: 990093047}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &490978572 stripped
@@ -5410,18 +5489,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1584743552}
   - {fileID: 876933951}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &505266696
@@ -5681,18 +5761,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 2028252334}
   - {fileID: 1494492458}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &513719430 stripped
@@ -5726,18 +5807,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 1242337981}
   - {fileID: 1186906118}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &517522759 stripped
@@ -5771,18 +5853,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 141128050}
   - {fileID: 370807055}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &521397301 stripped
@@ -5816,18 +5899,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 1451947889}
   - {fileID: 1335827416}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &523081367 stripped
@@ -5861,18 +5945,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 389245239}
   - {fileID: 524108108}
   - {fileID: 1407792010}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &524108108 stripped
@@ -5906,18 +5991,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 523081367}
   - {fileID: 1565404600}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &528286862 stripped
@@ -5951,18 +6037,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 819413570}
   - {fileID: 539841174}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &529892250
@@ -6118,18 +6205,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 98057181}
   - {fileID: 1691402369}
   - {fileID: 883914049}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &539841174 stripped
@@ -6163,18 +6251,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 714531778}
   - {fileID: 448909662}
   - {fileID: 528286862}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &540423455
@@ -6356,18 +6445,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2135420763}
   - {fileID: 1298144830}
   - {fileID: 1809212946}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &552896767 stripped
@@ -6401,18 +6491,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 1158831593}
   - {fileID: 80989887}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &554599682 stripped
@@ -6446,18 +6537,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 990876920}
   - {fileID: 170091625}
   - {fileID: 601488987}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &562826426 stripped
@@ -6491,18 +6583,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 1292857123}
   - {fileID: 1833062141}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &564435792
@@ -6605,18 +6698,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 2122743421}
   - {fileID: 815214205}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &566916473 stripped
@@ -6650,18 +6744,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2088653622}
   - {fileID: 1940715308}
   - {fileID: 631769067}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &577297393 stripped
@@ -6695,18 +6790,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 1233286846}
   - {fileID: 1281981034}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &579928386 stripped
@@ -6740,18 +6836,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 1278295456}
   - {fileID: 1804755840}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &580781577 stripped
@@ -6785,18 +6882,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 876933951}
   - {fileID: 453035472}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &589364665 stripped
@@ -6830,18 +6928,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 482001743}
   - {fileID: 759865688}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &599982271 stripped
@@ -6875,18 +6974,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 326723863}
   - {fileID: 1452564279}
   - {fileID: 2088653622}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &601488987 stripped
@@ -6920,18 +7020,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1378642440}
   - {fileID: 1042028599}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &622994259 stripped
@@ -6965,18 +7066,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 1410575699}
   - {fileID: 1842956326}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &631769067 stripped
@@ -7010,18 +7112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 770755763}
   - {fileID: 566916473}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &636920731 stripped
@@ -7055,18 +7158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1927571657}
   - {fileID: 482001743}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &637065895 stripped
@@ -7100,18 +7204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 909569341}
   - {fileID: 1589159573}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &639710108 stripped
@@ -7145,18 +7250,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 209742190}
   - {fileID: 305919173}
   - {fileID: 2095191245}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &668090650
@@ -7361,18 +7467,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1176474312}
   - {fileID: 2133652124}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &678267381
@@ -7537,18 +7644,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 1
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1003098075}
   - {fileID: 1922279662}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &700057829 stripped
@@ -7582,18 +7690,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 1175704379}
   - {fileID: 389245239}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &705472189 stripped
@@ -7627,18 +7736,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 1129775041}
   - {fileID: 184317044}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &710214495 stripped
@@ -7672,18 +7782,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 203382341}
   - {fileID: 68865990}
   - {fileID: 1518446044}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &714531778 stripped
@@ -7717,18 +7828,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 539841174}
   - {fileID: 1597660255}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &719286450
@@ -7847,18 +7959,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2095191245}
   - {fileID: 1218839681}
   - {fileID: 5238884}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &738747529
@@ -8111,18 +8224,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 453035472}
   - {fileID: 334954668}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &753988995 stripped
@@ -8156,18 +8270,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1879379202}
   - {fileID: 1989463809}
   - {fileID: 1080994616}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &759865688 stripped
@@ -8201,18 +8316,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 1176474312}
   - {fileID: 589364665}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &765737525 stripped
@@ -8246,18 +8362,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 965007035}
   - {fileID: 1479212787}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &765903032 stripped
@@ -8291,18 +8408,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 1454669962}
   - {fileID: 1046382994}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &768716456
@@ -8406,18 +8524,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 631769067}
   - {fileID: 310438292}
   - {fileID: 976986711}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &784074200 stripped
@@ -8451,18 +8570,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 1
   Linkednum: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 1415961201}
   - {fileID: 1548505194}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &784154797 stripped
@@ -8496,18 +8616,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1854507475}
   - {fileID: 965007035}
   - {fileID: 1314629576}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &801686902 stripped
@@ -8541,18 +8662,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 1314629576}
   - {fileID: 225109579}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &806044292
@@ -8653,18 +8775,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1194826732}
   - {fileID: 996261728}
   - {fileID: 990876920}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &815214205 stripped
@@ -8698,18 +8821,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1017469028}
   - {fileID: 1216192729}
   - {fileID: 564520935}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &819413570 stripped
@@ -8743,18 +8867,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 528286862}
   - {fileID: 1865527400}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &820614603 stripped
@@ -8788,18 +8913,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 183157152}
   - {fileID: 136879311}
   - {fileID: 1989463809}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &823012255
@@ -9042,18 +9168,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 136879311}
   - {fileID: 1080994616}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &864161486 stripped
@@ -9087,18 +9214,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 1099322961}
   - {fileID: 1842956326}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &864600778 stripped
@@ -9132,18 +9260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 1451947889}
   - {fileID: 1934944938}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &866923194 stripped
@@ -9177,18 +9306,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 451282576}
   - {fileID: 1653531691}
   - {fileID: 1840761793}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &871229243 stripped
@@ -9222,18 +9352,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1804755840}
   - {fileID: 1612747182}
   - {fileID: 1239070744}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &876933951 stripped
@@ -9267,18 +9398,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 1999727450}
   - {fileID: 490978572}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &883398229 stripped
@@ -9312,18 +9444,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1393643889}
   - {fileID: 1689437357}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &883914049 stripped
@@ -9357,18 +9490,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 370807055}
   - {fileID: 451282576}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &893787805 stripped
@@ -9402,18 +9536,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1434057303}
   - {fileID: 1434980117}
   - {fileID: 209742190}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &904318239 stripped
@@ -9447,18 +9582,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 1392800020}
   - {fileID: 1503486730}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &909569341 stripped
@@ -9492,18 +9628,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1675717126}
   - {fileID: 209742190}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &911726643 stripped
@@ -9537,18 +9674,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 714531778}
   - {fileID: 201099082}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &912114743 stripped
@@ -9582,18 +9720,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 1
   Linkednum: 0
   JointMesh:
   - {fileID: 2121401002}
   - {fileID: 81462916}
   - {fileID: 417514189}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &914525503 stripped
@@ -9627,18 +9766,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 1430233578}
   - {fileID: 1389247442}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &914654594 stripped
@@ -9672,18 +9812,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1649489986}
   - {fileID: 1048219039}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &940027214 stripped
@@ -9717,18 +9858,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 451282576}
   - {fileID: 29789798}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &951168820
@@ -9798,18 +9940,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1241291164}
   - {fileID: 308354441}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &965007035 stripped
@@ -9843,18 +9986,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 1417626605}
   - {fileID: 784154797}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &976986711 stripped
@@ -9888,18 +10032,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 770755763}
   - {fileID: 31305738}
   - {fileID: 1953921687}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &985856290
@@ -10013,18 +10158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1671755731}
   - {fileID: 485024293}
   - {fileID: 1154691102}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &990876920 stripped
@@ -10058,18 +10204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1213065812}
   - {fileID: 814200909}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &996155335 stripped
@@ -10103,18 +10250,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 513719430}
   - {fileID: 225109579}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &996261728 stripped
@@ -10148,18 +10296,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 814200909}
   - {fileID: 1804755840}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &999083812 stripped
@@ -10193,18 +10342,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1204631829}
   - {fileID: 1142711213}
   - {fileID: 524108108}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1001726854
@@ -10272,18 +10422,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1430233578}
   - {fileID: 693976558}
   - {fileID: 1069206627}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1007513771
@@ -10386,18 +10537,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1759653697}
   - {fileID: 1918495570}
   - {fileID: 1396172116}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1011064339
@@ -10553,18 +10705,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2122743421}
   - {fileID: 1389247442}
   - {fileID: 552896767}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1017469028 stripped
@@ -10598,18 +10751,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 815214205}
   - {fileID: 1042028599}
   - {fileID: 1371651135}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1022145317 stripped
@@ -10643,18 +10797,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1048219039}
   - {fileID: 224623750}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1023298873 stripped
@@ -10688,18 +10843,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 551994290}
   - {fileID: 1499730604}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1029591818 stripped
@@ -10733,18 +10889,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1759258860}
   - {fileID: 1454669962}
   - {fileID: 1335827416}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1033011305 stripped
@@ -10778,18 +10935,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1580498753}
   - {fileID: 1612747182}
   - {fileID: 1548505194}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1042028599 stripped
@@ -10823,18 +10981,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 601488987}
   - {fileID: 184317044}
   - {fileID: 1017469028}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1046382994 stripped
@@ -10868,18 +11027,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 765903032}
   - {fileID: 1970553916}
   - {fileID: 1430233578}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1048219039 stripped
@@ -10913,18 +11073,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 177965627}
   - {fileID: 1022145317}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1048693602 stripped
@@ -10958,18 +11119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1143189273}
   - {fileID: 1278295456}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1053455927 stripped
@@ -11003,18 +11165,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1858226403}
   - {fileID: 1918495570}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1055192444
@@ -11525,18 +11688,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 1003098075}
   - {fileID: 276030393}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1080994616 stripped
@@ -11570,18 +11734,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 857221682}
   - {fileID: 1204631829}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1097889542 stripped
@@ -11615,18 +11780,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 141128050}
   - {fileID: 1818289660}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1099322961 stripped
@@ -11660,18 +11826,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 370807055}
   - {fileID: 864161486}
   - {fileID: 1840761793}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1108906098
@@ -11767,18 +11934,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1989463809}
   - {fileID: 1445464223}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1123455735
@@ -11856,18 +12024,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 705472189}
   - {fileID: 1639980498}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1132190347 stripped
@@ -11888,6 +12057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickContainer: 
   FlagContainer: []
+  myFlag: {fileID: 0}
   AllContainer: []
   buildingObj:
   - {fileID: 1238513038330338, guid: bc133df8dba2a5843be61bb6a8cd3365, type: 2}
@@ -11944,18 +12114,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1618495978}
   - {fileID: 203382341}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1137437418 stripped
@@ -11989,18 +12160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 1858026425}
   - {fileID: 1239070744}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1142711213 stripped
@@ -12034,18 +12206,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 1879379202}
   - {fileID: 2132958254}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1143189273 stripped
@@ -12079,18 +12252,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 1048693602}
   - {fileID: 1649489986}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1149021771
@@ -12152,18 +12326,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 990093047}
   - {fileID: 35264477}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1158397419 stripped
@@ -12197,18 +12372,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2028252334}
   - {fileID: 1456686515}
   - {fileID: 1392800020}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1158831593 stripped
@@ -12242,18 +12418,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1175704379}
   - {fileID: 552896767}
   - {fileID: 1407792010}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1161714766
@@ -12403,18 +12580,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1158831593}
   - {fileID: 418698308}
   - {fileID: 700057829}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1176474312 stripped
@@ -12448,18 +12626,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 759865688}
   - {fileID: 676650459}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1186906118 stripped
@@ -12493,18 +12672,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 177965627}
   - {fileID: 168106307}
   - {fileID: 513719430}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1194826732 stripped
@@ -12538,18 +12718,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 814200909}
   - {fileID: 2073474912}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1204631829 stripped
@@ -12583,18 +12764,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 389245239}
   - {fileID: 1080994616}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1209512908 stripped
@@ -12628,18 +12810,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1261314925}
   - {fileID: 1759653697}
   - {fileID: 1976316790}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1213065812 stripped
@@ -12673,18 +12856,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 184317044}
   - {fileID: 990876920}
   - {fileID: 1702758665}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1215777087 stripped
@@ -12718,18 +12902,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 229308353}
   - {fileID: 1977953338}
   - {fileID: 212851319}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1216192729 stripped
@@ -12763,18 +12948,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1378642440}
   - {fileID: 1669602914}
   - {fileID: 815214205}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1218839681 stripped
@@ -12808,18 +12994,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 54068526}
   - {fileID: 262676126}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1233286846 stripped
@@ -12853,18 +13040,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 577297393}
   - {fileID: 1922279662}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1239070744 stripped
@@ -12898,18 +13086,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 871229243}
   - {fileID: 183157152}
   - {fileID: 1137437418}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1241291164 stripped
@@ -12943,18 +13132,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 960246270}
   - {fileID: 1916176356}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1242337981 stripped
@@ -12988,18 +13178,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1022145317}
   - {fileID: 636920731}
   - {fileID: 513719430}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1247643233
@@ -13102,18 +13293,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 1916176356}
   - {fileID: 1918495570}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1250263463
@@ -21208,18 +21400,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1684928952}
   - {fileID: 1209512908}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1263061056
@@ -21287,18 +21480,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 1759258860}
   - {fileID: 69651916}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1265216244
@@ -21566,18 +21760,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 579928386}
   - {fileID: 1780604838}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1281981034 stripped
@@ -21611,18 +21806,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1292857123}
   - {fileID: 1666188838}
   - {fileID: 577297393}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1282844373
@@ -21731,18 +21927,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 448909662}
   - {fileID: 119588798}
   - {fileID: 153429358}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1290884983 stripped
@@ -21776,18 +21973,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 151276141}
   - {fileID: 1417626605}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1292857123 stripped
@@ -21821,18 +22019,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1281981034}
   - {fileID: 2033697905}
   - {fileID: 562826426}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1294829817
@@ -21935,18 +22134,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 407687209}
   - {fileID: 2022488928}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1299518536
@@ -22084,18 +22284,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1724664729}
   - {fileID: 801686902}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1330806688
@@ -22251,18 +22452,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 521397301}
   - {fileID: 377410625}
   - {fileID: 1029591818}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1341906189 stripped
@@ -22296,18 +22498,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 5238884}
   - {fileID: 98057181}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1342977608 stripped
@@ -22341,18 +22544,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 1372942047}
   - {fileID: 2028252334}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1349182170
@@ -22706,18 +22910,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1129775041}
   - {fileID: 418698308}
   - {fileID: 1017469028}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1372942047 stripped
@@ -22751,18 +22956,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 1524489844}
   - {fileID: 1934944938}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1374729968 stripped
@@ -22796,18 +23002,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 310438292}
   - {fileID: 940027214}
   - {fileID: 1653531691}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1378642440 stripped
@@ -22841,18 +23048,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1216192729}
   - {fileID: 601488987}
   - {fileID: 269784875}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1389247442 stripped
@@ -22886,18 +23094,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 914525503}
   - {fileID: 1013984363}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1392800020 stripped
@@ -22931,18 +23140,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 229308353}
   - {fileID: 1158397419}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1393643889 stripped
@@ -22976,18 +23186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 883398229}
   - {fileID: 203382341}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1396172116 stripped
@@ -23021,18 +23232,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 1671755731}
   - {fileID: 1684928952}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1407792010 stripped
@@ -23066,18 +23278,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 1158831593}
   - {fileID: 523081367}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1410575699 stripped
@@ -23111,18 +23324,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 1298144830}
   - {fileID: 321731969}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1415961201 stripped
@@ -23156,18 +23370,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1434980117}
   - {fileID: 408417171}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1417611858 stripped
@@ -23201,18 +23416,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 35264477}
   - {fileID: 393552564}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1417626605 stripped
@@ -23246,18 +23462,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1932610389}
   - {fileID: 965007035}
   - {fileID: 1290884983}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1428031916 stripped
@@ -23291,18 +23508,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 3175447}
   - {fileID: 1920964238}
   - {fileID: 1916176356}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1430233578 stripped
@@ -23336,18 +23554,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 914525503}
   - {fileID: 1003098075}
   - {fileID: 1046382994}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1434057303 stripped
@@ -23381,18 +23600,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1480288513}
   - {fileID: 893787805}
   - {fileID: 408417171}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1434980117 stripped
@@ -23426,18 +23646,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 1580498753}
   - {fileID: 1415961201}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1445464223 stripped
@@ -23471,18 +23692,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 326723863}
   - {fileID: 1940715308}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1445801239 stripped
@@ -23516,18 +23738,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 1
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1842956326}
   - {fileID: 1943202257}
   - {fileID: 193711801}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1451947889 stripped
@@ -23561,18 +23784,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 308354441}
   - {fileID: 521397301}
   - {fileID: 864600778}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1452564279 stripped
@@ -23606,18 +23830,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1480288513}
   - {fileID: 1804820475}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1453434012
@@ -23726,18 +23951,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 108271741}
   - {fileID: 765903032}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1456686515 stripped
@@ -23771,18 +23997,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1977953338}
   - {fileID: 402824842}
   - {fileID: 1158397419}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1462233347
@@ -23922,18 +24149,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 455685414}
   - {fileID: 143664514}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1480288513 stripped
@@ -23967,18 +24195,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1452564279}
   - {fileID: 1434057303}
   - {fileID: 2095191245}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1483358713 stripped
@@ -24012,18 +24241,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 1389247442}
   - {fileID: 765903032}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1494492458 stripped
@@ -24057,18 +24287,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 622994259}
   - {fileID: 510968972}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1499730604 stripped
@@ -24102,18 +24333,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1682309906}
   - {fileID: 1023298873}
   - {fileID: 1858226403}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1500401967
@@ -24260,18 +24492,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 469612648}
   - {fileID: 904318239}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1518446044 stripped
@@ -24305,18 +24538,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 401093704}
   - {fileID: 710214495}
   - {fileID: 1689437357}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1524489844 stripped
@@ -24350,18 +24584,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 78281895}
   - {fileID: 1372942047}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1547662485
@@ -24517,18 +24752,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1033011305}
   - {fileID: 183157152}
   - {fileID: 784074200}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1565404600 stripped
@@ -24562,18 +24798,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 524108108}
   - {fileID: 1931759691}
   - {fileID: 1584589151}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1572146875
@@ -24883,18 +25120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1434980117}
   - {fileID: 1675717126}
   - {fileID: 1033011305}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1581329931 stripped
@@ -24928,18 +25166,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1931759691}
   - {fileID: 212851319}
   - {fileID: 1407792010}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1584589151 stripped
@@ -24973,18 +25212,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 1565404600}
   - {fileID: 31305738}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1584743552 stripped
@@ -25018,18 +25258,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 1691402369}
   - {fileID: 490978572}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1589159573 stripped
@@ -25063,18 +25304,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 305919173}
   - {fileID: 637065895}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1597660255 stripped
@@ -25108,18 +25350,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 119588798}
   - {fileID: 1241291164}
   - {fileID: 714531778}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1600033476
@@ -25344,18 +25587,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1691402369}
   - {fileID: 517522759}
   - {fileID: 1999727450}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1612312985
@@ -25458,18 +25702,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 871229243}
   - {fileID: 1033011305}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1618495978 stripped
@@ -25503,18 +25748,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1194826732}
   - {fileID: 579928386}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1618581648 stripped
@@ -25548,18 +25794,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 336637860}
   - {fileID: 3175447}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1639980498 stripped
@@ -25593,18 +25840,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 857221682}
   - {fileID: 1129775041}
   - {fileID: 700057829}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1642138704
@@ -25729,18 +25977,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 339052602}
   - {fileID: 1143189273}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1653531691 stripped
@@ -25774,18 +26023,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 866923194}
   - {fileID: 1953921687}
   - {fileID: 1374729968}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1656699970 stripped
@@ -25819,18 +26069,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 2088653622}
   - {fileID: 310438292}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1661368939
@@ -25986,18 +26237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1281981034}
   - {fileID: 130673201}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1669602914 stripped
@@ -26031,18 +26283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1069206627}
   - {fileID: 1233286846}
   - {fileID: 1216192729}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1671755731 stripped
@@ -26076,18 +26329,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 990093047}
   - {fileID: 1858226403}
   - {fileID: 1396172116}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1675717126 stripped
@@ -26121,18 +26375,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 909569341}
   - {fileID: 339052602}
   - {fileID: 1580498753}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1682309906 stripped
@@ -26166,18 +26421,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 485024293}
   - {fileID: 334954668}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1684928952 stripped
@@ -26211,18 +26467,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 1
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 35264477}
   - {fileID: 1261314925}
   - {fileID: 1396172116}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1684964638
@@ -26331,18 +26588,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 883398229}
   - {fileID: 442304538}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1691402369 stripped
@@ -26376,18 +26634,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 1584743552}
   - {fileID: 535453979}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1694394054
@@ -26559,18 +26818,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 996261728}
   - {fileID: 1137437418}
   - {fileID: 1213065812}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1705047646
@@ -26754,18 +27014,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 1927571657}
   - {fileID: 1915899304}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1723470223
@@ -26874,18 +27135,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 1314629576}
   - {fileID: 393552564}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1728010970 stripped
@@ -26919,18 +27181,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1023298873}
   - {fileID: 336637860}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1759034366
@@ -27039,18 +27302,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 1263336280}
   - {fileID: 1970553916}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1759653697 stripped
@@ -27084,18 +27348,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 201099082}
   - {fileID: 1209512908}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1771726575 stripped
@@ -27129,18 +27394,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 108271741}
   - {fileID: 131071464}
   - {fileID: 1977953338}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1780604838 stripped
@@ -27174,18 +27440,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1612747182}
   - {fileID: 1278295456}
   - {fileID: 339052602}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1800966433
@@ -27288,18 +27555,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 579928386}
   - {fileID: 871229243}
   - {fileID: 996261728}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1804820475 stripped
@@ -27333,18 +27601,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 5238884}
   - {fileID: 1452564279}
   - {fileID: 1805881791}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1805881791 stripped
@@ -27378,18 +27647,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1656699970}
   - {fileID: 1804820475}
   - {fileID: 29789798}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1806623670
@@ -27545,18 +27815,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1854507475}
   - {fileID: 1903221677}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1809212946 stripped
@@ -27590,18 +27861,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 334954668}
   - {fileID: 551994290}
   - {fileID: 247549460}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1818289660 stripped
@@ -27635,18 +27907,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1999727450}
   - {fileID: 1097889542}
   - {fileID: 744774717}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1833062141 stripped
@@ -27680,18 +27953,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 130673201}
   - {fileID: 562826426}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1835083234
@@ -27764,18 +28038,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1099322961}
   - {fileID: 866923194}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1842956326 stripped
@@ -27809,18 +28084,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 864161486}
   - {fileID: 1445801239}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1853483681 stripped
@@ -27854,18 +28130,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 2063560789}
   - {fileID: 1917340613}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1854507475 stripped
@@ -27899,18 +28176,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1808188071}
   - {fileID: 1906793472}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1858026425 stripped
@@ -27944,18 +28222,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 705472189}
   - {fileID: 1137437418}
   - {fileID: 136879311}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1858226403 stripped
@@ -27989,18 +28268,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 1671755731}
   - {fileID: 1053455927}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1865527400 stripped
@@ -28034,18 +28314,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 819413570}
   - {fileID: 417514189}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1866580831
@@ -28308,18 +28589,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 1940715308}
   - {fileID: 1142711213}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1897195109 stripped
@@ -28353,18 +28635,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 321731969}
   - {fileID: 336637860}
   - {fileID: 2135420763}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1903221677 stripped
@@ -28398,18 +28681,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1724664729}
   - {fileID: 1808188071}
   - {fileID: 1154691102}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1906793472 stripped
@@ -28443,18 +28727,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1290884983}
   - {fileID: 1854507475}
   - {fileID: 580781577}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1915899304 stripped
@@ -28488,18 +28773,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 1135955283}
   - {fileID: 1717299218}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1916176356 stripped
@@ -28533,18 +28819,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 1241291164}
   - {fileID: 1428031916}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1917340613 stripped
@@ -28578,18 +28865,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 2033697905}
   - {fileID: 241331999}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1918495570 stripped
@@ -28623,18 +28911,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1053455927}
   - {fileID: 1249768407}
   - {fileID: 1010536049}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1920964238 stripped
@@ -28668,18 +28957,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1728010970}
   - {fileID: 1053455927}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1922279662 stripped
@@ -28713,18 +29003,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1233286846}
   - {fileID: 693976558}
   - {fileID: 2033697905}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1927571657 stripped
@@ -28758,18 +29049,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 636920731}
   - {fileID: 1717299218}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1931759691 stripped
@@ -28803,18 +29095,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 85295933}
   - {fileID: 1565404600}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1932610389 stripped
@@ -28848,18 +29141,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 237075393}
   - {fileID: 143664514}
   - {fileID: 1417626605}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1934944938 stripped
@@ -28893,18 +29187,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 377410625}
   - {fileID: 864600778}
   - {fileID: 1372942047}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1940715308 stripped
@@ -28938,18 +29233,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 1879379202}
   - {fileID: 1445464223}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1943202257 stripped
@@ -28983,18 +29279,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 510968972}
   - {fileID: 1445801239}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1944993362
@@ -29150,18 +29447,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1808188071}
   - {fileID: 485024293}
   - {fileID: 453035472}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1953921687 stripped
@@ -29195,18 +29493,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1653531691}
   - {fileID: 469612648}
   - {fileID: 976986711}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1959160752
@@ -29428,18 +29727,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1759258860}
   - {fileID: 1046382994}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1976316790 stripped
@@ -29473,18 +29773,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 2133652124}
   - {fileID: 1209512908}
   - {fileID: 441066154}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1977953338 stripped
@@ -29518,18 +29819,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1456686515}
   - {fileID: 1771726575}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1984604338
@@ -29629,18 +29931,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 81462916}
   - {fileID: 369500355}
-  - {fileID: 1417626605}
-  DomMesh: []
+  - {fileID: 442304538}
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1989463809 stripped
@@ -29674,18 +29977,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 820614603}
   - {fileID: 1120616346}
   - {fileID: 753988995}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1991324174
@@ -29907,18 +30211,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 876933951}
   - {fileID: 1606157092}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2004537515
@@ -30056,18 +30361,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1503486730}
   - {fileID: 85295933}
   - {fileID: 31305738}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2022098493
@@ -30214,18 +30520,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 1
   Linkednum: 0
   JointMesh:
   - {fileID: 141128050}
   - {fileID: 1298144830}
   - {fileID: 864161486}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2028252334 stripped
@@ -30259,18 +30566,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 510968972}
   - {fileID: 1158397419}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2031406676
@@ -30389,18 +30697,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1922279662}
   - {fileID: 1292857123}
   - {fileID: 1917340613}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2039015322
@@ -30569,18 +30878,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 82822055}
   - {fileID: 482001743}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2055642680
@@ -30689,18 +30999,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 170091625}
   - {fileID: 180195419}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2063560789 stripped
@@ -30734,18 +31045,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 693976558}
   - {fileID: 1970553916}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2073474912 stripped
@@ -30779,18 +31091,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 170091625}
   - {fileID: 1194826732}
   - {fileID: 1393643889}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2078951998
@@ -30893,18 +31206,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 599982271}
   - {fileID: 1656699970}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2095191245 stripped
@@ -30938,18 +31252,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 1
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1480288513}
   - {fileID: 639710108}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2114854827 stripped
@@ -30983,18 +31298,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 201099082}
   - {fileID: 528286862}
   - {fileID: 441066154}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2121401002 stripped
@@ -31028,18 +31344,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 912114743}
   - {fileID: 2133652124}
   - {fileID: 116977033}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2122743421 stripped
@@ -31073,18 +31390,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 418698308}
   - {fileID: 564520935}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2132958254 stripped
@@ -31118,18 +31436,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 1142711213}
   - {fileID: 631769067}
   - {fileID: 1584589151}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2133652124 stripped
@@ -31163,18 +31482,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 676650459}
   - {fileID: 2121401002}
   - {fileID: 1976316790}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2135420763 stripped
@@ -31208,18 +31528,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
+  priorState: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
   isFixed: 0
   isMine: 0
-  isFlagable: 0
+  isFlag: 0
   Linkednum: 0
   JointMesh:
   - {fileID: 407687209}
   - {fileID: 551994290}
   - {fileID: 1897195109}
-  DomMesh: []
+  NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2142263823

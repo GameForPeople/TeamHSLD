@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
         float amount = 0;
         while (amount < 0.5)
         {
-            Debug.Log(amount);
+            //Debug.Log(amount);
             amount += Time.deltaTime * 1;
             transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime);
             Camera.main.transform.LookAt(MyPlanet);
