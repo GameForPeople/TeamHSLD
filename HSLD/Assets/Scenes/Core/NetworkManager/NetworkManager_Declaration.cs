@@ -169,7 +169,7 @@ public partial class NetworkManager : MonoBehaviour {
 
     public InGameSceneManager inGameSceneManager; // 이 변수는 인게임씬 생성자에서 보장을 해줘야합니다.
 
-    ~NetworkManager()
+    void OnDestroy()
     {
         socket.Close();
         socket = null;
