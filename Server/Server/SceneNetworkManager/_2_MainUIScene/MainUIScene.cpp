@@ -120,7 +120,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 		// 나는야 방장님이시다.
 		ptr->isHost = true;
 
-		// 친구 방도 등록.
+		// 친구 방과 친구의 소켓주소구조체도 등록.
 		pBuffer->SetValue().GetSocketInfo()->pRoomIter = ptr->pRoomIter;
 		ptr->pRoomIter->SetFriendUserPtr(pBuffer);
 
@@ -150,28 +150,45 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 		if (isTrueBuffer == 0)
 		{
 			// 동기화 오바칠 수 있음.
-			//ptr->pRoomIter->SetDataProtocol(false, );
-			ptr->pRoomIter->RetEnemyUserIter(ptr->isHost)->SetValue().GetSocketInfo()->pRoomIter = nullptr;
+			ptr->pRoomIter->SetUserPtr(true, nullptr);
 
-			delete ptr->pRoomIter;
-			ptr->pRoomIter = nullptr;
+			// 방 삭제 호스트가 하도록 변경됨.
+			//delete ptr->pRoomIter;
+			//ptr->pRoomIter = nullptr;
 
-			// 거절에 의해 방 삭제.
 			memcpy(ptr->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
 			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 		}
 		else
 		{
 			ptr->pRoomIter->JoinRoom(ptr->pUserNode);
+			ptr->isHost = false;
 
 			// 방 접속.
 			memcpy(ptr->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
 			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+			ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
+			memcpy(ptr->buf + 8, (char*)&retIsHostFirst, sizeof(int));
+			memcpy(ptr->buf + 12, (char*)&retPlayerMissionIndex, sizeof(int));
+			memcpy(ptr->buf + 16, (char*)&retEnemyMissionIndex, sizeof(int));
+			memcpy(ptr->buf + 20, (char*)&retSubMissionIndex, sizeof(int));
+
+			rbTreeNode<string, UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
+			string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
+			int sizeBuffer = stringBuffer.size();
+			
+			memcpy(ptr->buf + 24, (char*)&sizeBuffer, sizeof(int));
+			memcpy(ptr->buf + 28, stringBuffer.data(), sizeBuffer);
+
+			ptr->dataSize = 32 + sizeBuffer;
 		}
 	}
 	else
 	{
-		//이미 10초가 지난 방.
+		//이미 호스트가 이상하거나 시간이 늦은 방.
 		memcpy(ptr->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
 		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 	}
@@ -181,55 +198,52 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	int iBuffer = reinterpret_cast<int&>(ptr->buf[4]);
-
-	if (iBuffer)
+	if (rbTreeNode<string, UserData> *pBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);  
+	pBuffer == nullptr)
 	{
-		if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
-		{
-			// 방 제거해줌. 여기서 이대로 끝! -> guest의 UDP 손실 가능성또는 동기화 실패 가능성-> 이거를 검사할 수 있으면 좋지 않을 까?
-			delete ptr->pRoomIter;
-			ptr->pRoomIter = nullptr;
+		// 방 제거해줌.-> 친구(적) 유저 나간 케이스. 여기서 이대로 끝!
+		delete ptr->pRoomIter;
+		ptr->pRoomIter = nullptr;
 
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
-		}
-		else if (ptr->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
-		{
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-		}
-		else
-		{
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
-		}
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+
+		ptr->dataSize = 8;
 	}
-	else {
-		if (ptr->pRoomIter == nullptr)
-		{
-			// 이대로 끝 OK!
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
-		}
-		else if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
-		{
-			// 방 제거해줌. 여기서 이대로 끝! -> guest의 UDP 손실 가능성또는 동기화 실패 가능성-> 이거를 검사할 수 있으면 좋지 않을 까?
-			delete ptr->pRoomIter;
-			ptr->pRoomIter = nullptr;
+	else if (ptr->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
+	{
+		// 일반적인 친구 입장과 동일하게 처리.
+		int _ANSWER_FRIEND_JOIN = Protocol::ANSWER_FRIEND_JOIN;
 
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
-		}
-		else
-		{
-			// 적이 딱 맥스타임에 들어온거겠지? 해당 부분 어케한다냐 // 뭘어째 False보내면 돼지 뭐.
-			memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-		}
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&_ANSWER_FRIEND_JOIN), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+		ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+		memcpy(ptr->buf + 8, (char*)&retIsHostFirst, sizeof(int));
+		memcpy(ptr->buf + 12, (char*)&retPlayerMissionIndex, sizeof(int));
+		memcpy(ptr->buf + 16, (char*)&retEnemyMissionIndex, sizeof(int));
+		memcpy(ptr->buf + 20, (char*)&retSubMissionIndex, sizeof(int));
+
+		ptr->dataSize = 24;
 	}
+	// 정상적으로 방삭제 (UDP 손실 가능성에 의한 경우의 수 존재) - 혹은 상대방 타임아웃
+	else
+	{
+		// 야 미안 내가 너방 잘못 만들었어. 
+		if (ptr->pRoomIter == pBuffer->SetValue().GetSocketInfo()->pRoomIter) 
+		{
+			pBuffer->SetValue().GetSocketInfo()->pRoomIter = nullptr;
+		}
 
-	ptr->dataSize = 8;
+		delete ptr->pRoomIter;
+		ptr->pRoomIter = nullptr;
+
+		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+
+		ptr->dataSize = 8;
+	}
 }
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
@@ -320,8 +334,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pt
 	if (iBuffer == 0)
 	{
 		if(bBuffer)
-		// 친구 거절 정보 알려줌.
-			InUDPManager.Push(UDP_PROTOCOL::DENY_FRIEND, pBuffer->SetValue().GetSocketInfo());
+		// 친구 정보 알려줌.
 
 		// 잘라냅시다. // 내부에서 친구 인자정리함.
 		ptr->pUserNode->SetValue().SetDeleteFriendID();
@@ -342,6 +355,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pt
 	// 친구 신청한 유저가 존재함. 친구 등록 최종 프로세스 시행. (친구하나 만들기도 힘들다;)
 	else
 	{
+		InUDPManager.Push(UDP_PROTOCOL::RESULT_FRIEND, pBuffer->SetValue().GetSocketInfo());
+
 		pBuffer->SetValue().SetInsertFriendID(ptr->pUserNode->GetKey());
 		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 	}

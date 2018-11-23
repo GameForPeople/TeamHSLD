@@ -1,1 +1,2 @@
- sincy GM_SinCY 0 1 1234 0 0 0 0
+ sincy GM_SinCY 0 1 1234 0 0 0 1
+ wonsy

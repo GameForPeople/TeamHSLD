@@ -9,34 +9,24 @@ enum UDP_PROTOCOL
 {
 		INVITE_FRIEND = 1
 	,	DEMAND_FRIEND = 2
-	,	DENY_FRIEND	=	3
+	,	RESULT_FRIEND =	7
 };
 
 class UDPManager
 {
-	//enum UDP_PROTOCOL
-	//{
-	//	DEMAND_FRIEND =	(char)1,
-	//	//PERMIT_FRIEND =	(char)2,  // TCP
-	//	//FAIL_FRIEND	 =	(char)3,  // TCP
-	//	
-	//	INVITE_ROOM = (char)2,
-	//	//PERMIT_INVITE = (char)5, // TCP
-	//	//FAIL_INVITE = (char)6	   // TCP
-	//};
-
-	const char INVITE_ROOM;
-	const char DEMAND_FRIEND;
-	const char DYNAMIC_MESSAGE;
+	const char CONST_INVITE_FRIEND;
+	const char CONST_DEMAND_FRIEND;
+	const char CONST_RESULT_FRIEND;
 
 	const USHORT UDP_PORT;
 
 	SOCKET udpSocket;
 	SOCKADDR_IN serverUDPAddr;
 
-	Custom_Node_Queue friendInviteMessageQueue;
-	Custom_Node_Queue friendDemandMessageQueue;
+	Custom_Node_Queue friendInviteMessageQueue;	// INVITE_FRIEND = 1
+	Custom_Node_Queue friendDemandMessageQueue; // DEMAND_FRIEND = 2
 
+	Custom_Node_Queue friendResultMessageQueue;	// RESULT_FRIEND = 7
 public:
 	UDPManager();
 	~UDPManager() = default;
@@ -52,6 +42,9 @@ public:
 		case UDP_PROTOCOL::DEMAND_FRIEND:
 			friendDemandMessageQueue.Push(pInSocket);
 			break;
+		case UDP_PROTOCOL::RESULT_FRIEND:	
+			friendResultMessageQueue.Push(pInSocket);
+			break;
 		}
 	}
 
@@ -59,11 +52,18 @@ public:
 	{
 		if (!friendInviteMessageQueue.IsEmpty())
 		{
-			_SendMessage(INVITE_ROOM);
+			_SendMessage(CONST_INVITE_FRIEND);
 		}
 		else if (!friendDemandMessageQueue.IsEmpty())
 		{
-			_SendMessage(DEMAND_FRIEND);
+			_SendMessage(CONST_DEMAND_FRIEND);
+		}
+
+
+
+		else if (!friendResultMessageQueue.IsEmpty())
+		{
+			_SendMessage(CONST_RESULT_FRIEND);
 		}
 	}
 

@@ -1,2 +1,3 @@
- wonsy GM_WonSY 100 31 7777 0 0 0 1
+ wonsy GM_WonSY 100 32 7777 0 0 0 2
  star
+ sinhs
