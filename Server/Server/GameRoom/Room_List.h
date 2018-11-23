@@ -38,6 +38,9 @@ public:
 
 	void Pop(GameRoom* pRetNode)
 	{
+		if (pDoor == nullptr)
+			return;
+
 		// 헤더 노드를 빼야할때.
 		if (pRetNode->left == nullptr)
 		{

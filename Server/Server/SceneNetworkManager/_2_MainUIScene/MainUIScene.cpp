@@ -161,8 +161,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 		}
 		else
 		{
-			ptr->pRoomIter->JoinRoom(ptr->pUserNode);
 			ptr->isHost = false;
+			ptr->pRoomIter->JoinRoom(ptr->pUserNode);
 
 			// 방 접속.
 			memcpy(ptr->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
@@ -180,6 +180,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 			int sizeBuffer = stringBuffer.size();
 			
+			std::cout << "보내는 닉네임은 : " << stringBuffer << "입니다. 사이즈는 "<< sizeBuffer << " \n";
+
 			memcpy(ptr->buf + 24, (char*)&sizeBuffer, sizeof(int));
 			memcpy(ptr->buf + 28, stringBuffer.data(), sizeBuffer);
 
@@ -355,7 +357,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pt
 	// 친구 신청한 유저가 존재함. 친구 등록 최종 프로세스 시행. (친구하나 만들기도 힘들다;)
 	else
 	{
-		InUDPManager.Push(UDP_PROTOCOL::RESULT_FRIEND, pBuffer->SetValue().GetSocketInfo());
+		std::cout << " " << pBuffer->GetKey() << "님이 보낸 친구초대를 " << ptr->pUserNode->GetKey() << "님이 받았어요! \n";
+		InUDPManager.Push(UDP_PROTOCOL::RESULT_FRIEND, pBuffer->SetValue().GetSocketInfo() /*ptr->pUserNode->SetValue().GetSocketInfo()*/);
 
 		pBuffer->SetValue().SetInsertFriendID(ptr->pUserNode->GetKey());
 		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));

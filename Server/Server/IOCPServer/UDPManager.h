@@ -9,6 +9,7 @@ enum UDP_PROTOCOL
 {
 		INVITE_FRIEND = 1
 	,	DEMAND_FRIEND = 2
+
 	,	RESULT_FRIEND =	7
 };
 
@@ -16,6 +17,7 @@ class UDPManager
 {
 	const char CONST_INVITE_FRIEND;
 	const char CONST_DEMAND_FRIEND;
+
 	const char CONST_RESULT_FRIEND;
 
 	const USHORT UDP_PORT;
@@ -42,6 +44,7 @@ public:
 		case UDP_PROTOCOL::DEMAND_FRIEND:
 			friendDemandMessageQueue.Push(pInSocket);
 			break;
+
 		case UDP_PROTOCOL::RESULT_FRIEND:	
 			friendResultMessageQueue.Push(pInSocket);
 			break;
@@ -58,8 +61,6 @@ public:
 		{
 			_SendMessage(CONST_DEMAND_FRIEND);
 		}
-
-
 
 		else if (!friendResultMessageQueue.IsEmpty())
 		{
