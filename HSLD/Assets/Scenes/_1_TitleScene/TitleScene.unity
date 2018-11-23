@@ -2628,6 +2628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138955742}
+  - component: {fileID: 1138955743}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2648,6 +2649,45 @@ Transform:
   m_Father: {fileID: 1229031545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1138955743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138955741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f64bee8cada34c4996be1c1067083ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnNetwork: 0
+  iP_ADDRESS: 
+  networkSyncLock: 0
+  recvType: 0
+  sendType: 0
+  ID: TEST_Account
+  nickName: TEST_Account
+  winCount: 0
+  loseCount: 0
+  money: 7777777
+  friendNum: 0
+  friendNickNameCont:
+  - 
+  - 
+  - 
+  - 
+  friendState: 00000000000000000000000000000000
+  isHost: 1
+  enemyId: 
+  NewDataSendBuffer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  NewDataRecvBuffer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  isAttackFirst: 0
+  playerMissionIndex: 0
+  enemyMissionIndex: 0
+  subMissionIndex: 0
+  playerCharacterIndex: 0
+  enemyCharacterIndex: 0
+  inGameSceneManager: {fileID: 0}
 --- !u!1 &1154955486
 GameObject:
   m_ObjectHideFlags: 0

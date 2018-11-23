@@ -13,6 +13,7 @@ public class CoreUIManager : MonoBehaviour
     public NetworkManager networkObject;
     GameObject MakeFriendUI;
     GameObject InviteFriendUI;
+    GameObject DetailUserDataUI;
 
     // Use this for initialization
     void Start()
@@ -20,6 +21,7 @@ public class CoreUIManager : MonoBehaviour
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         MakeFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("MakeFriendUI").gameObject;
         InviteFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("InviteFriendUI").gameObject;
+        DetailUserDataUI = GameObject.Find("GameCores").transform.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("DetailUserDataUI").gameObject;
     }
 
     public void ClickAnswerFriendInvite(int InTrueFalse)
@@ -89,6 +91,21 @@ public class CoreUIManager : MonoBehaviour
         {
             GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").
             transform.Find("CHECK_ANSWER_MAKE_FRIEND_TRUE_UI").gameObject.SetActive(false);
+        }
+    }
+
+    public void OnOffDetailUserDataUI(bool InBValue)
+    {
+        if(InBValue == true)
+        {
+            DetailUserDataUI.transform.Find("WinText").GetComponent<Text>().text = networkObject.winCount.ToString();
+            DetailUserDataUI.transform.Find("LoseText").GetComponent<Text>().text = networkObject.loseCount.ToString();
+
+            DetailUserDataUI.SetActive(true);
+        }
+        else if(InBValue == false)
+        {
+            DetailUserDataUI.SetActive(false);
         }
     }
 }

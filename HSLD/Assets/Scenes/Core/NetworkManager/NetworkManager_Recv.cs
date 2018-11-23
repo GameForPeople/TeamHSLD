@@ -207,6 +207,8 @@ public partial class NetworkManager : MonoBehaviour {
                 int sizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 24);
                 enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 28, sizeBuffer);
 
+                Debug.Log("적 닉네임은 : " + enemyId);
+
                 GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
