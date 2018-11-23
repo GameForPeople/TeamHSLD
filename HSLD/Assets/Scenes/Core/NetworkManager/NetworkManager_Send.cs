@@ -88,6 +88,8 @@ public partial class NetworkManager : MonoBehaviour {
                 }
                 else if (InMsg == (int)PROTOCOL.ANSWER_FRIEND_INVITE)
                 {
+                    isHost = false;
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
                         GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().answerFriendInviteValue
@@ -99,19 +101,7 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DELAY_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
 
-                    int iBuffer;
-                    if (GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().friendWaitTimeCount > 0)
-                    {
-                        iBuffer = 1;
-                    }
-                    else
-                    {
-                        iBuffer = 0;
-                    }
-
-                    Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, NewDataSendBuffer, 4, 4);
-
-                    socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
+                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
 
                 else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND)

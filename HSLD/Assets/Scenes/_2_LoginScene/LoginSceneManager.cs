@@ -33,7 +33,7 @@ public class LoginSceneManager : MonoBehaviour {
     {
         if (GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork == true)
         {
-            GameObject.Find("GameCores").GetComponent<GameCores>().StartNetworkFunction();
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
         }
     }
 

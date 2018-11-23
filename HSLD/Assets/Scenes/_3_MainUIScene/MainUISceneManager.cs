@@ -19,12 +19,14 @@ public class MainUISceneManager : MonoBehaviour
 
     public bool isDrawFriendUI = false; // in coreUiManager Ref
 
+    bool isDrawFriendInviteWait = false;
+
     public int invitedFriendIndex;
 
     int friendNum;
     public int friendWaitTimeCount = 7;
 
-    const string voidFriendNickName = "비밀이야..사실몰라";
+    const string voidFriendNickName = "_ERROR_NOT_FIND_NickName_";
     public string makeFriendIDBuffer;
 
     GameObject FriendUICanvas;
@@ -155,7 +157,7 @@ public class MainUISceneManager : MonoBehaviour
     public void ClickInviteButton(int InIndex)
     {
         invitedFriendIndex = InIndex;
-
+        networkObject.enemyId = networkObject.friendNickNameCont[InIndex];
         networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
     }
 
@@ -212,6 +214,7 @@ public class MainUISceneManager : MonoBehaviour
         // 상대방의 의사를 물어보는 중입니다. 7초 코루틴 실행 필요함.
         friendWaitTimeCount = 7;
 
+        OnFriendInviteWaitUI();
         StartCoroutine(WaitFriendJoinCoroutine());
     }
 
@@ -219,15 +222,35 @@ public class MainUISceneManager : MonoBehaviour
     {
         while (friendWaitTimeCount > 0)
         {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").
+                transform.Find("WaitTime").GetComponent<Text>().text = friendWaitTimeCount.ToString();
+
             networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_JOIN);
             yield return new WaitForSeconds(1.0f);
             friendWaitTimeCount--;
-            
             // UI Set
-
         }
-        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
 
+        OffFriendInviteWaitUI();
+        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
+    }
+
+    public void OnFriendInviteWaitUI()
+    {
+        if(!isDrawFriendInviteWait)
+        {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(true);
+            isDrawFriendInviteWait = true;
+        }
+    }
+
+    public void OffFriendInviteWaitUI()
+    {
+        if (isDrawFriendInviteWait)
+        {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(false);
+            isDrawFriendInviteWait = false;
+        }
     }
 
     public void OnFriendBadStateUI_NetworkManager(int InCase)

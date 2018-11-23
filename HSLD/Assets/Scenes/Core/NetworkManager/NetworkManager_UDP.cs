@@ -38,10 +38,12 @@ public partial class NetworkManager : MonoBehaviour
     {
         if (InBuffer == 1)
         {
+            Debug.Log("UDP Message : 게임 초대를 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_INVITE_FRIEND_UDP();
         }
         else if (InBuffer == 2)
         {
+            Debug.Log("UDP Message : 친구 추가 요청을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO);
         }
         else if (InBuffer == 3)
@@ -81,7 +83,7 @@ public partial class NetworkManager : MonoBehaviour
                 //Debug.Log("대기");
             }
 
-            //Debug.Log(" UDP Message를 받았습니다. : ");
+            Debug.Log(" UDP Message를 받았습니다. : " + (int)(receiveData[0] ));
             //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().
             if (self)
                 ProcessRecvUDPData((int)(receiveData[0]));

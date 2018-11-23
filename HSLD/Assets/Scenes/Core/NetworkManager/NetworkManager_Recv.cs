@@ -159,7 +159,7 @@ public partial class NetworkManager : MonoBehaviour {
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnFriendWaitUI_NetworkManager();
                 //친구가 정상적인 상태
             }
-            else
+            else if (inviteBuffer == 0)
             {
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnFriendBadStateUI_NetworkManager(1);
                 // 친구가 비정상적인 상태
@@ -174,33 +174,65 @@ public partial class NetworkManager : MonoBehaviour {
 
             if (inviteBuffer == 1)
             {
+                isHost = false;
+
                 //친구가 정상적인 상태
+                if (BitConverter.ToInt32(NewDataRecvBuffer, 8) == 1)
+                {
+                    if (isHost == true)
+                    {
+                        isAttackFirst = true;
+                    }
+                    else
+                    {
+                        isAttackFirst = false;
+                    }
+                }
+                else
+                {
+                    if (isHost == true)
+                    {
+                        isAttackFirst = false;
+                    }
+                    else
+                    {
+                        isAttackFirst = true;
+                    }
+                }
+
+                playerMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 12);
+                enemyMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 16);
+                subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 20);
+
+                int sizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 24);
+                enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 28, sizeBuffer);
+
+                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+
+                //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
+                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
             }
             else
             {
-                // 친구가 비정상적인 상태
+                // 친구의 방이 삭제된 상태.
+                // ? 할거 없음.
             }
 
         }
         else if (recvType == (int)PROTOCOL.HOSTCHECK_FRIEND_INVITE)
         {
-            // 
-            //  0이면 안들어옴. 1이면 들어옴. 2이면 방삭제함.
+            // 항상 방 삭제
+            // 0이면 상대방 거절, 트루면 TimeOut or UDP 
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
             if (inviteBuffer == 0)
             {
-                //? 아무것도 안해도됨.
             }
             else if (inviteBuffer == 1)
             {
-                // 게임 방 정보 요구하고, 룸씬으로 변경.
+            }
 
-            }
-            else if (inviteBuffer == 2)
-            {
-                // 상대방이 초대 안받은거 알림.
-            }
+
         }
 
         else if (recvType == (int)PROTOCOL.CHECK_DEMAND_MAKE_FRIEND)
@@ -340,22 +372,50 @@ public partial class NetworkManager : MonoBehaviour {
 
         else if (recvType == (int)PROTOCOL.ANSWER_FRIEND_JOIN)
         {
-            // 초대한 친구가, 7초 전까지 매초마다 친구들어왔는 지 확인. 하 내가 이걸 왜 로비로 뺏을 까
+            // 초대한 친구가, 7초 전까지 매초마다 친구들어왔는 지 확인하는 함수. 하 내가 이걸 왜 로비로 뺏을 까
 
-            // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            if (inviteBuffer == 1)
+            if (inviteBuffer == 0)
             {
-                isHost = false; // 굳이 상관은 없어보임.
-                //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().SuccessExitMatching();
+                // 고냥 아직 친구 안들어온거임.
             }
             else
             {
-                int idSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 8);
-                enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 12, idSizeBuffer);
+                isHost = true;
 
-                //게임시작 개굿
+                if (BitConverter.ToInt32(NewDataRecvBuffer, 8) == 1)
+                {
+                    if (isHost == true)
+                    {
+                        isAttackFirst = true;
+                    }
+                    else
+                    {
+                        isAttackFirst = false;
+                    }
+                }
+                else
+                {
+                    if (isHost == true)
+                    {
+                        isAttackFirst = false;
+                    }
+                    else
+                    {
+                        isAttackFirst = true;
+                    }
+                }
+
+                playerMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 12);
+                enemyMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 16);
+                subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 20);
+
+                //게임시작 개굿 ( UserDataUI가 On이면 꺼줘야함)
+                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+
+                //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
+                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
             }
         }
 
