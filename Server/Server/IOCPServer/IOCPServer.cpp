@@ -3,7 +3,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	void ERROR_QUIT(char *msg)
+	[[noreturn]] void ERROR_QUIT(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -21,7 +21,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	void ERROR_DISPLAY(char *msg)
+	[[noreturn]] void ERROR_DISPLAY(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -465,7 +465,8 @@ void IOCPServer::_WorkerThreadFunction()
 		{
 			recvType = (int&)(pClient->buf);
 		
-			std::cout << " [] 받은 타입은 : " << recvType << " 입니다. \n";
+			if(pClient->pUserNode != nullptr)
+			std::cout << pClient->pUserNode->SetValue().GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 

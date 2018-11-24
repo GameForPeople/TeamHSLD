@@ -1,2 +1,1 @@
- wonsy GM_WonSY 100 31 7777 0 0 0 1
- star
+ wonsy GM_WonSY 100 34 7777 0 0 0 0

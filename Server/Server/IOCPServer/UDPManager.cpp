@@ -22,7 +22,9 @@ namespace UDP_UTIL {
 };
 
 UDPManager::UDPManager() 
-	: INVITE_ROOM(static_cast<char>(1)), DEMAND_FRIEND(static_cast<char>(2)), DYNAMIC_MESSAGE(static_cast<char>(3))
+	: CONST_INVITE_FRIEND(static_cast<char>(1))
+	, CONST_DEMAND_FRIEND(static_cast<char>(2))
+	, CONST_RESULT_FRIEND(static_cast<char>(7))
 	, UDP_PORT(htons(SERVER_UDP_PORT))
 {}
 
@@ -43,18 +45,42 @@ void UDPManager::_CreateUDPSocket()
 
 void UDPManager::_SendMessage(const char& InChar)
 {
-	CustomNode* pNodeBuffer = friendInviteMessageQueue.Pop();
+	CustomNode* pNodeBuffer; // = friendInviteMessageQueue.Pop();
+	
+	// 이부분 비효율적; 차라리. 함수 여러개 만들기.
+	if (InChar == CONST_INVITE_FRIEND)
+		pNodeBuffer = friendInviteMessageQueue.Pop();
+	else if (InChar == CONST_DEMAND_FRIEND)
+		pNodeBuffer = friendDemandMessageQueue.Pop();
+
+	else if (InChar == CONST_RESULT_FRIEND)
+		pNodeBuffer = friendResultMessageQueue.Pop();
+	else return;
 
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
 
+	if (pNodeBuffer == nullptr) // 댕글링 포인터 에러. 이미 딤진 소켓. 여기서 이거 nullptr 절대 안걸려 지고 고냥 서버 터짐.
+	{
+		std::cout << "Error UDP Send \n";
+		return;
+	}
+
 	if (pNodeBuffer->GetData() != nullptr)
 	{
-		getpeername(pNodeBuffer->GetData()->sock, (SOCKADDR *)&clientAddr, &addrLength);
-		//clientAddr.sin_port = htons(SERVER_UDP_PORT);
+		getpeername(pNodeBuffer->GetSocket(), reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
 		clientAddr.sin_port = UDP_PORT;
 
-		sendto(udpSocket, reinterpret_cast<char*>(InChar), 1, 0, (sockaddr*)&clientAddr, sizeof(clientAddr));
+		if (int retValue 
+			= sendto(udpSocket, reinterpret_cast<const char*>(&InChar), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+			; retValue == SOCKET_ERROR)
+		{
+			UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+		}
+
+		std::cout << " UDP -> " << (int)(InChar) << "를 보냈습니다.  \n";
 	}
-	//delete pNodeBuffer;
+
+	delete pNodeBuffer;
+	pNodeBuffer = nullptr;
 }

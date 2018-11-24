@@ -29,6 +29,14 @@ public class LoginSceneManager : MonoBehaviour {
     //    void Update () {
     //	}
 
+    void Start()
+    {
+        if (GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork == true)
+        {
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
+        }
+    }
+
     public void ClickSignInButton()
     {
         // 로그인 버튼 처리입니다.

@@ -68,8 +68,6 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 		return 0;
 	}
 
-	std::cout << "로드한 유저의 닉네임은 : " << RetNickName << "입니다. \n";
-
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
@@ -106,7 +104,7 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 	}
 	else
 	{
-		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함.
+		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함 // 이거 잘못하면 간다 간다 훅간다!
 		if (pInSocketInfo->pUserNode->SetValue().GetDemandFriendContIndex() != -1)
 		{
 			pInSocketInfo->pUserNode->SetValue().SetDeleteFriendID();
@@ -144,14 +142,16 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 			<< " " << valueBuffer.GetAchievementBit()
 			<< " " << valueBuffer.GetTitleBit()
 			<< " " << valueBuffer.GetCharacterBit()
-			<< " " << valueBuffer.GetFriendStringCont().size() << std::endl;
+			<< " " << valueBuffer.GetFriendStringCont().size() 
+			<< std::endl;
 
-		// 친구 있으면 해당 이름 (저장)
+		// 친구 있으면 해당 이름 (저장) - 이상해보이는데, called by Value라서 이렇게 안하면 오류남;
 		auto iterBuffer = valueBuffer.GetFriendStringCont();
 
-		for (auto iter = iterBuffer.begin();
-			iter != iterBuffer.end();
-			++iter)
+		for (auto iter 
+			= iterBuffer.begin()
+			; iter != iterBuffer.end()
+			; ++iter)
 		{
 			outFile << " " << *iter << std::endl;
 		}

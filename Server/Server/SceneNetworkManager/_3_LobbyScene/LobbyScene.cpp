@@ -71,7 +71,6 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* ptr, Game
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
 		ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
-
 		rbTreeNode<string,UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
 		
 		//string stringBuffer((*EnemyIter)->first);
@@ -134,35 +133,46 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* ptr, GameR
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
 {
-	if (ptr->pRoomIter == nullptr)
+	// 상대방이 거절한 것이 명확함.
+	if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
 	{
 		memcpy(ptr->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));	// 방 나가짐.
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));	// 방 나가짐.
 
 		ptr->dataSize = 8;
+
+		delete ptr->pRoomIter;
+		ptr->pRoomIter = nullptr;
+
+		//ptr->isHost = false;
 	}
-	else 
+	else if (ptr->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
 	{
-		if (ptr->pRoomIter->RetEnemyUserIter(ptr->isHost) == nullptr)
-		{
-			memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		//Join Enemy 
+		
+		//닉네임 아는데 또 보내야해? 인덱스에 닉네임 있잖아;
+		
+		//rbTreeNode<string, UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
+		//string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
+		//int sizeBuffer = stringBuffer.size();
 
-			ptr->dataSize = 8;
-		}
-		else // Join Enemy
-		{
-			rbTreeNode<string, UserData>* EnemyPtrBuffer = ptr->pRoomIter->RetEnemyUserIter(ptr->isHost);
+		memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
-			string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
-			int sizeBuffer = stringBuffer.size();
+		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+		ptr->pRoomIter->GetRoomGameData(ptr->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+		memcpy(ptr->buf + 8, (char*)&retIsHostFirst, sizeof(int));
+		memcpy(ptr->buf + 12, (char*)&retPlayerMissionIndex, sizeof(int));
+		memcpy(ptr->buf + 16, (char*)&retEnemyMissionIndex, sizeof(int));
+		memcpy(ptr->buf + 20, (char*)&retSubMissionIndex, sizeof(int));
 
-			memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
-			memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-			memcpy(ptr->buf + 8, (char*)&sizeBuffer, sizeof(int));
-			memcpy(ptr->buf + 12, stringBuffer.data(), sizeof(int));
+		ptr->dataSize = 24;
+	}
+	else
+	{
+		memcpy(ptr->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+		memcpy(ptr->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
-			ptr->dataSize = 12 + sizeBuffer;
-		}
+		ptr->dataSize = 8;
 	}
 }

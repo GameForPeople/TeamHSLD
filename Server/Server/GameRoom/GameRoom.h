@@ -197,5 +197,15 @@ public:
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
+
+	__inline void SetFriendUserPtr(rbTreeNode<string, UserData>* InPtr)
+	{
+		pUserNode[1] = InPtr;
+	}
+
+	__inline void SetUserPtr(const bool& InIsGuest, rbTreeNode<string, UserData>* InPtr)
+	{
+		pUserNode[InIsGuest] = InPtr;
+	}
 };
 
