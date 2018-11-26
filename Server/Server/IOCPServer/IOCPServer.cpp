@@ -1,6 +1,10 @@
 #include "../PCH/stdafx.h"
 #include "IOCPServer.h"
 
+#import "GetServerIP.tlb" no_namespace named_guids
+
+#pragma warning (disable: 4278)
+
 // Server's global Function
 namespace NETWORK_UTIL {
 	[[noreturn]] void ERROR_QUIT(char *msg)
@@ -147,10 +151,59 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternIP)
 	printf("■                                ver 2.3 181126\n");
 	printf("■\n");
 
-	if(InIsTrueLoadExternIP)
+	if (InIsTrueLoadExternIP) {
 		printf("■    IP Address : ExternIP(%s) \n", retIPChar);
-	else 
+
+		// For Test! Extern IP == HSLD WebServer IP
+		[&retIPChar]()  throw() -> void 
+		{
+			NetworkInterface_CS* networkInterFace = nullptr;
+			CoInitialize(NULL);
+
+			HRESULT hResult = CoCreateInstance(CLSID_NetworkClass_CS,
+				NULL, CLSCTX_INPROC_SERVER,
+				IID_NetworkInterface_CS,
+				reinterpret_cast<void**>(&networkInterFace));
+
+			if (SUCCEEDED(hResult))
+			{
+				long retIpAddr[4]{};
+				networkInterFace->ParsingServerIP(&retIpAddr[0], &retIpAddr[1], &retIpAddr[2], &retIpAddr[3]);
+
+				char *pBuffer = strtok(retIPChar, "."); 
+
+				long valueBuffer[4]{ 0 };
+				int  indexBuffer{ 0 };
+
+				while (pBuffer != NULL)               // 자른 문자열이 나오지 않을 때까지 반복
+				{
+					valueBuffer[indexBuffer++] = atoi(pBuffer);
+					pBuffer = strtok(NULL, "."); 
+				}
+
+				bool isIPSame{ true };
+				for (int i = 0; i < 4; ++i)
+				{
+					if (retIpAddr[i] != valueBuffer[i])
+						isIPSame = false;
+				}
+
+				if (!isIPSame)
+				{
+					std::cout << "PARSING_SERVER_IP_ERROR : Please Change HSLD Web Server IP \n";
+					throw ERROR;
+				}
+			}
+			else
+			{
+				std::cout << "PARSING_SERVER_IP_ERROR : Parsing Fail \n";
+				throw ERROR;
+			}
+		}();
+	}
+	else {
 		printf("■    IP Address : LocalHost(127.0.0.1) \n");
+	}
 
 	printf("■    Server Port : %d \n", SERVER_PORT);
 	printf("■■■■■■■■■■■■■■■■■■■■■■■■■\n\n");

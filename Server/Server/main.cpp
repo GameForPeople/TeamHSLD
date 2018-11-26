@@ -1,8 +1,6 @@
 #include "../Server/PCH/stdafx.h"
 #include "../Server/IOCPServer/IOCPServer.h"
 
-#include <functional>
-
 int main(int argc, char * argv[])
 {
 	unique_ptr<IOCPServer> GameServer 

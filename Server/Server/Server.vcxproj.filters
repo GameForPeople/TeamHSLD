@@ -159,4 +159,12 @@
       <Filter>소스 파일\IOCPServer</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IOCPServer\GetServerIP.dll">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="IOCPServer\GetServerIP.tlb">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
 </Project>
