@@ -89,9 +89,9 @@ public:
 	
 public:
 	// Init Server
-	void Init(bool InIsTrueLoadExternIP)
+	void Init(bool InIsTrueLoadExternalIP)
 	{
-		_PrintServerInfoUI(InIsTrueLoadExternIP);
+		_PrintServerInfoUI(InIsTrueLoadExternalIP);
 		//LoadUserData();
 		_InitWinSocket();
 		_CreateBindListen();
@@ -115,7 +115,7 @@ private:
 	//Init
 	int _GetExternalIP(char *ip);
 
-	void _PrintServerInfoUI(const bool& InIsTrueLoadExternIP = true);
+	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);
 	
 	//void LoadUserData();
 	

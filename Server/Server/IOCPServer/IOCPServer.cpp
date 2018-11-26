@@ -140,7 +140,7 @@ int IOCPServer::_GetExternalIP(char *ip)
 	return 0;
 }
 
-void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternIP)
+void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
@@ -151,8 +151,8 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternIP)
 	printf("■                                ver 2.3 181126\n");
 	printf("■\n");
 
-	if (InIsTrueLoadExternIP) {
-		printf("■    IP Address : ExternIP(%s) \n", retIPChar);
+	if (InIsTrueLoadExternalIP) {
+		printf("■    IP Address : ExternalIP(%s) \n", retIPChar);
 
 		// For Test! Extern IP == HSLD WebServer IP
 		[&retIPChar]()  throw() -> void 
