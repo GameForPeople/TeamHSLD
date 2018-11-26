@@ -136,17 +136,22 @@ int IOCPServer::_GetExternalIP(char *ip)
 	return 0;
 }
 
-void IOCPServer::_PrintServerInfoUI()
+void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
 	_GetExternalIP(retIPChar);
 
-	printf("■■■■■■■■■■■■■■■■■■■■■■■■■\n");
+	printf("\n■■■■■■■■■■■■■■■■■■■■■■■■■\n");
 	printf("■ IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("■                                ver 2.0 181101\n");
+	printf("■                                ver 2.3 181126\n");
 	printf("■\n");
-	printf("■    IP Address : %s \n", retIPChar);
+
+	if(InIsTrueLoadExternIP)
+		printf("■    IP Address : ExternIP(%s) \n", retIPChar);
+	else 
+		printf("■    IP Address : LocalHost(127.0.0.1) \n");
+
 	printf("■    Server Port : %d \n", SERVER_PORT);
 	printf("■■■■■■■■■■■■■■■■■■■■■■■■■\n\n");
 
