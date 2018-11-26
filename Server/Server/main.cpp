@@ -17,8 +17,7 @@ int main(int argc, char * argv[])
 				int serverInitType{};
 				std::cout << "Server IP를 선택해주세요.\n   1. Extern IP\n   2. LocalHost\n   --> ";
 				std::cin >> serverInitType;
-
-				std::cout << "\n\n\n";
+				system("cls");
 
 				if (serverInitType == SERVER_INIT_TYPE::EXTERN_IP) return true;
 				else if (serverInitType == SERVER_INIT_TYPE::LOCAL_HOST)  return false;
