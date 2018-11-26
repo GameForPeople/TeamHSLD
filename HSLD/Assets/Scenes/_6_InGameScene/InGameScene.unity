@@ -9006,7 +9006,7 @@ MonoBehaviour:
   currentTurn: 0
   matchingCompleteTime: 1
   selectOrderTime: 10
-  selectCardTime: 1
+  selectCardTime: 30
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 5

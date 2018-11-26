@@ -54,6 +54,7 @@ public class SceneControlManager : MonoBehaviour
     //{
     //    StartCoroutine(ChangeSceneCoroutine(InSceneName));
     //}
+
     public void StartNetworkFunction()
     {
         gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();

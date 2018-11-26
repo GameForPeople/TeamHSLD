@@ -23,7 +23,10 @@ using System.Net.NetworkInformation;
 public partial class NetworkManager : MonoBehaviour
 {
     string receiveData;
+    IPEndPoint e;
+    UdpClient u;
     //public IPAddress IPAddressBuffer;
+    UDP_StateObject s;
 
     public class UDP_StateObject
     {
@@ -50,25 +53,23 @@ public partial class NetworkManager : MonoBehaviour
         {
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>();
         }
+        else if (InBuffer == 7)
+        {
+            Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true);
+        }
     }
 
     public void UDP_Receive()
     {
-        //IPAddressBuffer = InIPAddress;
+        e = new IPEndPoint(/*IPAddress.Any*/ ipAddr, 9001);
+        u = new UdpClient(e);
 
-        // Receive a message and write it to the console.
-        IPEndPoint e = new IPEndPoint(/*IPAddress.Any*/ ipAddr, 9001);
-        UdpClient u = new UdpClient(e);
-
-        UDP_StateObject s = new UDP_StateObject()
+        s = new UDP_StateObject()
         {
             e = e,
             u = u
         };
-
-        Debug.Log("생성한 UDP 포트는 : " + s.e.ToString());
-        
-        u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
 
         self.StartCoroutine(self.UdpCoroutine());
     }
@@ -77,6 +78,10 @@ public partial class NetworkManager : MonoBehaviour
     {
         while (true)
         {
+            //Debug.Log("생성한 UDP 포트는 : " + s.e.ToString());
+
+            u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
+
             while (!messageReceived)
             {
                 yield return new WaitForSeconds(1.0f);
@@ -84,10 +89,9 @@ public partial class NetworkManager : MonoBehaviour
             }
 
             Debug.Log(" UDP Message를 받았습니다. : " + (int)(receiveData[0] ));
-            //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().
             if (self)
                 ProcessRecvUDPData((int)(receiveData[0]));
-            //ProcessRecvUDPData((int)receiveData[0]);
+
             messageReceived = false;
         }
     }
