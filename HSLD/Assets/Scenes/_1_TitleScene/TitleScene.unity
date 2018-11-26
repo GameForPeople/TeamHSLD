@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 229052690}
   - component: {fileID: 229052689}
   m_Layer: 5
-  m_Name: ClientTest_Button
+  m_Name: BUTTON_ClientTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,12 +748,12 @@ RectTransform:
   m_Children:
   - {fileID: 52010806}
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.30005, y: -124}
-  m_SizeDelta: {x: 400, y: 76.7}
+  m_AnchoredPosition: {x: 425.30005, y: -194.4}
+  m_SizeDelta: {x: 400, y: 93.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229052689
 MonoBehaviour:
@@ -795,7 +795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickOnlyClientTestButton
+        m_MethodName: UI_StartOnlyClient
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1457,7 +1457,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1532,7 +1532,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2261,7 +2261,7 @@ GameObject:
   - component: {fileID: 860982840}
   - component: {fileID: 860982839}
   m_Layer: 5
-  m_Name: LoadUITest_Button
+  m_Name: BUTTON_LoadUITest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2283,8 +2283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426.65005, y: -304}
-  m_SizeDelta: {x: 397.3, y: 67.9}
+  m_AnchoredPosition: {x: 425.29007, y: -295.92}
+  m_SizeDelta: {x: 399.98, y: 84.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860982839
 MonoBehaviour:
@@ -2326,7 +2326,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickLoadUITestButton
+        m_MethodName: UI_TestLoadUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3388,7 +3388,7 @@ GameObject:
   - component: {fileID: 1242233750}
   - component: {fileID: 1242233749}
   m_Layer: 5
-  m_Name: ParsingServerIPTest_Button
+  m_Name: BUTTON_LocalTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3410,8 +3410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.98004, y: -215}
-  m_SizeDelta: {x: 398.65, y: 76.1}
+  m_AnchoredPosition: {x: 425.2901, y: -80.8}
+  m_SizeDelta: {x: 400, y: 113.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242233749
 MonoBehaviour:
@@ -3453,7 +3453,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: PasingServerIPButton
+        m_MethodName: UI_StartWithLocal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4073,12 +4073,12 @@ RectTransform:
   - {fileID: 1804536583}
   - {fileID: 220295785}
   - {fileID: 1685040003}
-  - {fileID: 1489711605}
-  - {fileID: 229052688}
   - {fileID: 387874313}
   - {fileID: 401107545}
   - {fileID: 1859433680}
   - {fileID: 1762146930}
+  - {fileID: 1489711605}
+  - {fileID: 229052688}
   - {fileID: 1709238292}
   - {fileID: 1990671540}
   - {fileID: 1242233748}
@@ -4419,7 +4419,7 @@ GameObject:
   - component: {fileID: 1489711607}
   - component: {fileID: 1489711606}
   m_Layer: 5
-  m_Name: NetworkTest_Button
+  m_Name: BUTTON_NetworkTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4437,12 +4437,12 @@ RectTransform:
   m_Children:
   - {fileID: 1781796683}
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.30005, y: 50.699997}
-  m_SizeDelta: {x: 400, y: 226.6}
+  m_AnchoredPosition: {x: 425.30005, y: 78.9}
+  m_SizeDelta: {x: 400, y: 188.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489711606
 MonoBehaviour:
@@ -4484,7 +4484,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickNetworkTestButton
+        m_MethodName: UI_StartWithServer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5612,7 +5612,7 @@ GameObject:
   - component: {fileID: 1709238294}
   - component: {fileID: 1709238293}
   m_Layer: 5
-  m_Name: IP_InputField
+  m_Name: INPUTFIELD_IP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5791,7 +5791,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -5802,7 +5802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Parsing Server IP
+  m_Text: Test With Local Server
 --- !u!222 &1714452370
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5838,7 +5838,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6272,7 +6272,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6902,7 +6902,7 @@ GameObject:
   - component: {fileID: 1990671542}
   - component: {fileID: 1990671541}
   m_Layer: 5
-  m_Name: IP_Button
+  m_Name: BUTTON_CHANGEIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6967,7 +6967,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickChangeIPButton
+        m_MethodName: UI_ChangeIPButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

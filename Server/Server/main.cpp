@@ -28,6 +28,6 @@ int main(int argc, char * argv[])
 
 	GameServer->Run();
 
-	/*GameServer.reset();*/
+	/*GameServer.reset();*/		// auto! 
 }
 

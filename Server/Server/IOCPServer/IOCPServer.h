@@ -79,12 +79,7 @@ public:
 
 	IOCPServer(bool InIsTrueLoadExternIP) 
 	{
-		if(InIsTrueLoadExternIP)
-			Init();
-		else
-		{
-
-		}
+			Init(InIsTrueLoadExternIP);
 	}
 
 	~IOCPServer()
@@ -94,9 +89,9 @@ public:
 	
 public:
 	// Init Server
-	void Init()
+	void Init(bool InIsTrueLoadExternIP)
 	{
-		_PrintServerInfoUI();
+		_PrintServerInfoUI(InIsTrueLoadExternIP);
 		//LoadUserData();
 		_InitWinSocket();
 		_CreateBindListen();
