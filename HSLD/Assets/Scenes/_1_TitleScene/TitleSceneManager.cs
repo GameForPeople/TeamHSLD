@@ -46,4 +46,10 @@ public class TitleSceneManager : MonoBehaviour
     {
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE , true);
     }
+
+    // Test Function 1128 in Dice
+    public void UI_GoToMainUIScene()
+    {
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
+    }
 }
