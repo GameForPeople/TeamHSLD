@@ -66,6 +66,8 @@ public class FlowSystem : MonoBehaviour
                     Debug.Log("SEND : 턴종료");
                     gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }
+
+                diceCanvas.SetActive(true);
                 currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
                 gameObject.GetComponent<TurnSystem>().TurnSet();
@@ -86,15 +88,15 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
-            case FLOW.ENEMYTURN_PICKINGLOC:
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                //gameObject.GetComponent<TurnSystem>().TurnSet();
-                break;
+            //case FLOW.ENEMYTURN_PICKINGLOC:
+            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+            //    gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    break;
             
-            case FLOW.ENEMYTURN_PICKEVENTCARD:
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                //gameObject.GetComponent<TurnSystem>().TurnSet();
-                break;
+            //case FLOW.ENEMYTURN_PICKEVENTCARD:
+            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+            //    //gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    break;
 
         }
         if(animationImg)
@@ -174,7 +176,7 @@ public class FlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
-                diceCanvas.SetActive(true);
+                
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
@@ -192,10 +194,12 @@ public class FlowSystem : MonoBehaviour
                 break;
             //거점을 정복했는지 여부에따라서 분기
             case FLOW.ENEMYTURN_PICKINGLOC:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
+                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;

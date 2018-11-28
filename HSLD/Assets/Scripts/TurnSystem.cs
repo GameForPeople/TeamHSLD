@@ -164,6 +164,9 @@ public class TurnSystem : MonoBehaviour
             gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
             gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(false);
             gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(true);
+
+            if(myCoroutine != null)
+                StopCoroutine(myCoroutine);
             myCoroutine = StartCoroutine(MyTurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
@@ -250,6 +253,9 @@ public class TurnSystem : MonoBehaviour
             currentMyTurnTimer = 0;
             warningRadio = 0;
             warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+
+            if (myCoroutine != null)
+                StopCoroutine(myCoroutine);
             myCoroutine = StartCoroutine(MyTurnCounting());
         }
         
@@ -349,7 +355,11 @@ public class TurnSystem : MonoBehaviour
                 StopCoroutine(myCoroutine);
             }
             else
+            {
+                if (myCoroutine != null)
+                    StopCoroutine(myCoroutine);
                 myCoroutine = StartCoroutine(MyTurnCounting());
+            }
 
             if (warningTime < currentMyTurnTimer + 1)
             {
@@ -365,6 +375,7 @@ public class TurnSystem : MonoBehaviour
         if (myCoroutine != null)
             StopCoroutine(myCoroutine);
         enemyCoroutine = StartCoroutine(EnemyTurnCounting());
+
         while (true)
         {
             yield return new WaitForEndOfFrame();
@@ -374,6 +385,7 @@ public class TurnSystem : MonoBehaviour
         if (enemyCoroutine != null)
             StopCoroutine(enemyCoroutine);
 
-        TurnSet();
+        if(GameObject.Find("NetworkManager") == null)
+            TurnSet();
     }
 }
