@@ -1,2 +1,2 @@
- choisl GM_ChoiSL 0 0 1234 0 0 0 1
+ choisl GM_ChoiSL 0 3 1234 0 0 0 1
  wonsy

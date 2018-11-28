@@ -33,18 +33,19 @@ public class FlowSystem : MonoBehaviour
     public GameObject spinCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
-
+    public GameObject enemyImage;
+    public GameObject turnTimerImg;
     public GameObject tmpAnimationImage;
+    public Transform missionSetParentTransform;
+    public GameObject missionCanvas;
 
     private float time_;
-    static public bool isWaitingTime = false;
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
     {
         if(animationImg)
             tmpAnimationImage.SetActive(true);
-        isWaitingTime = true;
         currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         time_ = 0;
         while (true)
@@ -62,22 +63,21 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
-                if (gameObject.GetComponent<CardSystem>().cardSet.Length > 5)
+                if (GameObject.Find("GameCores") != null)
                 {
-                    currentFlow = FLOW.TO_PICKEVENTCARD;
+                    Debug.Log("SEND : 턴종료");
+                    gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }
-                    
-                else
-                {
-                    if (GameObject.Find("GameCores") != null)
-                    {
-                        Debug.Log("SEND : 턴종료");
-                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
-                    }
-                    currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
-                    gameObject.GetComponent<TurnSystem>().TurnSet();
-                }
+
+                //init
+                gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
+                gameObject.GetComponent<CardSystem>().CardCntUpdate();
+                gameObject.GetComponent<CardSystem>().CardPosInit();
+
+                diceCanvas.SetActive(true);
+                currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 if (GameObject.Find("GameCores") != null)
@@ -95,20 +95,19 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
-            case FLOW.ENEMYTURN_PICKINGLOC:
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                //gameObject.GetComponent<TurnSystem>().TurnSet();
-                break;
+            //case FLOW.ENEMYTURN_PICKINGLOC:
+            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+            //    gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    break;
             
-            case FLOW.ENEMYTURN_PICKEVENTCARD:
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
-                //gameObject.GetComponent<TurnSystem>().TurnSet();
-                break;
+            //case FLOW.ENEMYTURN_PICKEVENTCARD:
+            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+            //    //gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    break;
 
         }
         if(animationImg)
             tmpAnimationImage.SetActive(false);
-        isWaitingTime = false;
     }
 
     private void Start()
@@ -141,6 +140,10 @@ public class FlowSystem : MonoBehaviour
                 tmpAnimationImage.SetActive(true);
                 spinCanvas.SetActive(true);
                 readyCanvas.SetActive(false);
+
+                //init - card Cnt Update
+                gameObject.GetComponent<CardSystem>().CardCntUpdate();
+
                 //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
                 if (GameObject.Find("GameCores") == null)
                 {
@@ -184,7 +187,7 @@ public class FlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
-                diceCanvas.SetActive(true);
+                
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
@@ -202,10 +205,12 @@ public class FlowSystem : MonoBehaviour
                 break;
             //거점을 정복했는지 여부에따라서 분기
             case FLOW.ENEMYTURN_PICKINGLOC:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
+                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
                 break;
             case FLOW.TSETVER:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;

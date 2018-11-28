@@ -1,1 +1,2 @@
- wonsy GM_WonSY 100 34 7777 0 0 0 0
+ wonsy GM_WonSY 100 0 703 0 0 0 1
+ yoosh

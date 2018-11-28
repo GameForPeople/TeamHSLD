@@ -5,10 +5,7 @@ using UnityEngine;
 public class CardInfo : ScriptableObject
 {
     public CARDSET currentCard;
-    public ZOOMSTATE currentZoom;
-
-    public Vector2 zoomInSatusCardVec;
-    public Vector2 zoomOutSatusCardVec;
+    //public ZOOMSTATE currentZoom;
 
     public int cardIndex;
     public string cardName;

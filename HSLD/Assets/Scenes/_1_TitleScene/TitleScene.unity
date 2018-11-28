@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 229052690}
   - component: {fileID: 229052689}
   m_Layer: 5
-  m_Name: ClientTest_Button
+  m_Name: BUTTON_ClientTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,12 +748,12 @@ RectTransform:
   m_Children:
   - {fileID: 52010806}
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.30005, y: -124}
-  m_SizeDelta: {x: 400, y: 76.7}
+  m_AnchoredPosition: {x: 425.30005, y: -194.4}
+  m_SizeDelta: {x: 400, y: 93.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229052689
 MonoBehaviour:
@@ -795,7 +795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickOnlyClientTestButton
+        m_MethodName: UI_StartOnlyClient
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1457,7 +1457,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1532,7 +1532,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2261,7 +2261,7 @@ GameObject:
   - component: {fileID: 860982840}
   - component: {fileID: 860982839}
   m_Layer: 5
-  m_Name: LoadUITest_Button
+  m_Name: BUTTON_LoadUITest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2279,12 +2279,12 @@ RectTransform:
   m_Children:
   - {fileID: 2055823955}
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426.65005, y: -304}
-  m_SizeDelta: {x: 397.3, y: 67.9}
+  m_AnchoredPosition: {x: 425.29007, y: -295.92}
+  m_SizeDelta: {x: 399.98, y: 84.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860982839
 MonoBehaviour:
@@ -2326,7 +2326,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickLoadUITestButton
+        m_MethodName: UI_TestLoadUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3388,7 +3388,7 @@ GameObject:
   - component: {fileID: 1242233750}
   - component: {fileID: 1242233749}
   m_Layer: 5
-  m_Name: ParsingServerIPTest_Button
+  m_Name: BUTTON_LocalTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3410,8 +3410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.98004, y: -215}
-  m_SizeDelta: {x: 398.65, y: 76.1}
+  m_AnchoredPosition: {x: 425.2901, y: -80.8}
+  m_SizeDelta: {x: 400, y: 113.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242233749
 MonoBehaviour:
@@ -3453,7 +3453,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: PasingServerIPButton
+        m_MethodName: UI_StartWithLocal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3835,6 +3835,81 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1300836998}
   m_CullTransparentMesh: 0
+--- !u!1 &1302228301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302228302}
+  - component: {fileID: 1302228304}
+  - component: {fileID: 1302228303}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1302228302
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302228301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1987613522}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1302228303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302228301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6f6c3523552a4a6438ffda897d22484f, type: 3}
+    m_FontSize: 35
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: GoTo MainUIScene
+--- !u!222 &1302228304
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302228301}
+  m_CullTransparentMesh: 0
 --- !u!1 &1313320623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,15 +4148,16 @@ RectTransform:
   - {fileID: 1804536583}
   - {fileID: 220295785}
   - {fileID: 1685040003}
-  - {fileID: 1489711605}
-  - {fileID: 229052688}
   - {fileID: 387874313}
   - {fileID: 401107545}
   - {fileID: 1859433680}
   - {fileID: 1762146930}
+  - {fileID: 1489711605}
+  - {fileID: 229052688}
   - {fileID: 1709238292}
   - {fileID: 1990671540}
   - {fileID: 1242233748}
+  - {fileID: 1987613522}
   - {fileID: 860982838}
   - {fileID: 1889997500}
   m_Father: {fileID: 0}
@@ -4419,7 +4495,7 @@ GameObject:
   - component: {fileID: 1489711607}
   - component: {fileID: 1489711606}
   m_Layer: 5
-  m_Name: NetworkTest_Button
+  m_Name: BUTTON_NetworkTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4437,12 +4513,12 @@ RectTransform:
   m_Children:
   - {fileID: 1781796683}
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.30005, y: 50.699997}
-  m_SizeDelta: {x: 400, y: 226.6}
+  m_AnchoredPosition: {x: 425.30005, y: 78.9}
+  m_SizeDelta: {x: 400, y: 188.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489711606
 MonoBehaviour:
@@ -4484,7 +4560,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickNetworkTestButton
+        m_MethodName: UI_StartWithServer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5612,7 +5688,7 @@ GameObject:
   - component: {fileID: 1709238294}
   - component: {fileID: 1709238293}
   m_Layer: 5
-  m_Name: IP_InputField
+  m_Name: INPUTFIELD_IP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5791,7 +5867,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -5802,7 +5878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Parsing Server IP
+  m_Text: Test With Local Server
 --- !u!222 &1714452370
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5838,7 +5914,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6272,7 +6348,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6347,7 +6423,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361245654}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6890,6 +6966,129 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1963764181}
   m_CullTransparentMesh: 0
+--- !u!1 &1987613521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987613522}
+  - component: {fileID: 1987613525}
+  - component: {fileID: 1987613524}
+  - component: {fileID: 1987613523}
+  m_Layer: 5
+  m_Name: "BUTTON_\uB098\uC911\uC5D0\uC9C0\uC6CC\uC57C\uD568"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1987613522
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987613521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1302228302}
+  m_Father: {fileID: 1361245654}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -484.9, y: -274.8}
+  m_SizeDelta: {x: 276.2, y: 128.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1987613523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987613521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1987613524}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1272330223}
+        m_MethodName: UI_GoToMainUIScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1987613524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987613521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1987613525
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987613521}
+  m_CullTransparentMesh: 0
 --- !u!1 &1990671539
 GameObject:
   m_ObjectHideFlags: 0
@@ -6902,7 +7101,7 @@ GameObject:
   - component: {fileID: 1990671542}
   - component: {fileID: 1990671541}
   m_Layer: 5
-  m_Name: IP_Button
+  m_Name: BUTTON_CHANGEIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6967,7 +7166,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: ClickChangeIPButton
+        m_MethodName: UI_ChangeIPButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

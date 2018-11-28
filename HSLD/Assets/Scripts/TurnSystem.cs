@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public enum TURN
 {
     NOTYETSET,
-    MYTURN_NOTYETFLAG,
-    MYTURN_GETFLAG,
+    MYTURN,
     ENEMYTURN
 }
 
@@ -46,7 +45,7 @@ public class TurnSystem : MonoBehaviour
     {
         if (change)
         {
-            currentTurn = TURN.MYTURN_GETFLAG;
+            currentTurn = TURN.MYTURN;
         }
     }
 
@@ -122,8 +121,8 @@ public class TurnSystem : MonoBehaviour
     {
         time_ = 0;
         mainTxt.text = "덱을 선택해 주세요.";
-        mainTxt.transform.localPosition = new Vector3(264, 269, 0);
-        timerTxt.transform.localPosition = new Vector3(590, 250, 0);
+        mainTxt.transform.localPosition = new Vector3(211, 269, 0);
+        timerTxt.transform.localPosition = new Vector3(463.3f, -190, 0);
 
         while (true)
         {
@@ -133,6 +132,10 @@ public class TurnSystem : MonoBehaviour
             if (time_ > selectCardTime || CardSet.isSelect)
                 break;
         }
+
+        gameObject.GetComponent<FlowSystem>().missionCanvas.transform.parent = gameObject.GetComponent<FlowSystem>().missionSetParentTransform;
+        gameObject.GetComponent<FlowSystem>().missionCanvas.transform.localPosition = new Vector3(-318, gameObject.GetComponent<FlowSystem>().missionCanvas.transform.localPosition.y, 0);
+
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
     }
 
@@ -158,15 +161,26 @@ public class TurnSystem : MonoBehaviour
             SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
 
         //내턴일때의 코루틴 진입
-        if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))
+        if (currentTurn.Equals(TURN.MYTURN))
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
+            displayTurnTimerTxt.transform.localPosition = new Vector3(503, 246.1f, 0);
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
+            gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(false);
+            gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(true);
+
+            if(myCoroutine != null)
+                StopCoroutine(myCoroutine);
             myCoroutine = StartCoroutine(MyTurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
         else
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+            displayTurnTimerTxt.transform.localPosition = new Vector3(550, -308, 0);
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(549.3f, -260.3f, 0);
+            gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(true);
+            gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(false);
             StartCoroutine(EndTurnAndWaiting());
         }
             
@@ -180,44 +194,48 @@ public class TurnSystem : MonoBehaviour
         if (beforeFlow != gameObject.GetComponent<FlowSystem>().currentFlow && !gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGLOC))
             currentEnemyTurnTimer = 0;
 
-        displayTurnTimerTxt.text = "( ";
-        displayTurnTimerTxt.text += currentEnemyTurnTimer.ToString();
         
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))
         {
-            displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+            displayTurnTimerTxt.text = (rollingDiceTime - currentEnemyTurnTimer).ToString() + " 초";
             beforeFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGCARD))
         {
-            displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString() + " 초";
             beforeFlow = FLOW.ENEMYTURN_PICKINGCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGLOC))
         {
-            displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString() + " 초";
             beforeFlow = FLOW.ENEMYTURN_PICKINGLOC;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKEVENTCARD))
         {
-            displayTurnTimerTxt.text += " / " + pickingEventCardTime + " )";
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+            displayTurnTimerTxt.text = (pickingEventCardTime - currentEnemyTurnTimer).ToString() + " 초";
             beforeFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
         {
             beforeFlow = FLOW.DISPLAYANIMATION_WAITING;
+
             displayTurnTimerTxt.text = "";
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(false);
             currentEnemyTurnTimer = 0;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
             displayTurnTimerTxt.text = "";
-            currentTurn = TURN.MYTURN_GETFLAG;
+            currentTurn = TURN.MYTURN;
         }
         else
         {
@@ -232,26 +250,28 @@ public class TurnSystem : MonoBehaviour
         yield return new WaitForSeconds(1);
         //init
 
-        if (FlowSystem.isWaitingTime)
+        if (gameObject.GetComponent <FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
         {
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(false);
             displayTurnTimerTxt.text = "";
             currentMyTurnTimer = 0;
             warningRadio = 0;
             warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
+
+            if (myCoroutine != null)
+                StopCoroutine(myCoroutine);
             myCoroutine = StartCoroutine(MyTurnCounting());
         }
         
         else
         {
+            
             if (!gameObject.GetComponent<FlowSystem>().currentFlow.Equals(beforeFlow) && !gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
             {
                 currentMyTurnTimer = 0;
                 warningRadio = 0;
                 warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
             }
-
-            displayTurnTimerTxt.text = "( ";
-            displayTurnTimerTxt.text += currentMyTurnTimer.ToString();
 
             if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             {
@@ -262,10 +282,10 @@ public class TurnSystem : MonoBehaviour
                     dice.GetComponent<DiceSystem>().RollingDice(Random.Range(1, 5));
                     gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
                 }
-                    
 
+                gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_ROLLINGDICE;
-                displayTurnTimerTxt.text += " / " + rollingDiceTime + " )";
+                displayTurnTimerTxt.text = (rollingDiceTime - currentMyTurnTimer).ToString() + " 초";
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
             {
@@ -279,6 +299,7 @@ public class TurnSystem : MonoBehaviour
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
+                    
                     displayTurnTimerTxt.text = "";
                     warningRadio = 0;
                     warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
@@ -286,8 +307,9 @@ public class TurnSystem : MonoBehaviour
                     StopCoroutine(myCoroutine);
                 }
 
+                gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKINGCARD;
-                displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
+                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString() + " 초"; 
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
             {
@@ -301,6 +323,7 @@ public class TurnSystem : MonoBehaviour
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
+                    
                     displayTurnTimerTxt.text = "";
                     warningRadio = 0;
                     warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
@@ -308,8 +331,9 @@ public class TurnSystem : MonoBehaviour
                     StopCoroutine(myCoroutine);
                 }
 
+                gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKINGLOC;
-                displayTurnTimerTxt.text += " / " + setTerrainOnPlanet + " )";
+                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString() + " 초";
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKEVENTCARD))
             {
@@ -317,8 +341,9 @@ public class TurnSystem : MonoBehaviour
                 if (currentMyTurnTimer >= pickingEventCardTime)
                     gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
 
+                gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKEVENTCARD;
-                displayTurnTimerTxt.text += " / " + pickingEventCardTime + " )";
+                displayTurnTimerTxt.text = (pickingEventCardTime - currentMyTurnTimer).ToString() + " 초";
             }
 
             if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))
@@ -334,11 +359,15 @@ public class TurnSystem : MonoBehaviour
                 StopCoroutine(myCoroutine);
             }
             else
+            {
+                if (myCoroutine != null)
+                    StopCoroutine(myCoroutine);
                 myCoroutine = StartCoroutine(MyTurnCounting());
+            }
 
             if (warningTime < currentMyTurnTimer + 1)
             {
-                warningRadio += 0.05f;
+                warningRadio += 0.03f;
                 warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, warningRadio);
             }
         }
@@ -350,15 +379,17 @@ public class TurnSystem : MonoBehaviour
         if (myCoroutine != null)
             StopCoroutine(myCoroutine);
         enemyCoroutine = StartCoroutine(EnemyTurnCounting());
+
         while (true)
         {
             yield return new WaitForEndOfFrame();
-            if (currentTurn.Equals(TURN.MYTURN_NOTYETFLAG) || currentTurn.Equals(TURN.MYTURN_GETFLAG))
+            if (currentTurn.Equals(TURN.MYTURN))
                 break;
         }
         if (enemyCoroutine != null)
             StopCoroutine(enemyCoroutine);
-        gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
-        myCoroutine = StartCoroutine(MyTurnCounting());
+
+        if(GameObject.Find("NetworkManager") == null)
+            TurnSet();
     }
 }

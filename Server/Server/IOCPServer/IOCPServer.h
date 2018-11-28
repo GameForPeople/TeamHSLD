@@ -53,8 +53,6 @@ PauseThreadList
 
 class IOCPServer {
 private:
-	bool bIsPrintDebugMessage; // 이거 추후 삭제.
-
 	WSADATA wsa;
 	HANDLE hIOCP;
 	SOCKET listenSocket;
@@ -74,27 +72,26 @@ private:
 	//void(*SceneDataProcess[6])(const int& InRecvType,SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
 
 public:
-	__inline IOCPServer() : bIsPrintDebugMessage(false)
+	//IOCPServer() : bIsPrintDebugMessage(false)
+	//{
+	//	Init();
+	//}
+
+	IOCPServer(bool InIsTrueLoadExternIP) 
 	{
-		Init();
+			Init(InIsTrueLoadExternIP);
 	}
 
-	__inline IOCPServer(bool InIsPrintDebugMessage) 
-		: bIsPrintDebugMessage(InIsPrintDebugMessage)
-	{
-		Init();
-	}
-
-	__inline ~IOCPServer()
+	~IOCPServer()
 	{
 		Close();
 	}
 	
 public:
 	// Init Server
-	void Init()
+	void Init(bool InIsTrueLoadExternalIP)
 	{
-		_PrintServerInfoUI();
+		_PrintServerInfoUI(InIsTrueLoadExternalIP);
 		//LoadUserData();
 		_InitWinSocket();
 		_CreateBindListen();
@@ -118,7 +115,7 @@ private:
 	//Init
 	int _GetExternalIP(char *ip);
 
-	void _PrintServerInfoUI();
+	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);
 	
 	//void LoadUserData();
 	

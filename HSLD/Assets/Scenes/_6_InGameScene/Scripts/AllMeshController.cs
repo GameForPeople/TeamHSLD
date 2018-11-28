@@ -215,7 +215,7 @@ public class AllMeshController : MonoBehaviour {
                     if (DomCount == myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count) // 거점 획득
                     {
                         PCverPIcking.isDominatedCheck = true;
-                        GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                        GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
                     }
                     else
                     {

@@ -96,6 +96,7 @@ public class MainUISceneManager : MonoBehaviour
 
     public void ClickInGameOnlyClientButton()
     {
+        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
     }
 

@@ -147,6 +147,7 @@ public:
 	__inline void   SetFreindSocketInfo(SocketInfo* InSocketInfo, const int& InIndex) { friendSocketInfoCont[InIndex] = InSocketInfo; }
 	__inline int	SetInsertFriendID(const string& InFriendID) { 
 		if (friendStringCont.size() >= 4) return -1;
+
 		friendStringCont.emplace_back(InFriendID); 
 		return friendStringCont.size() - 1;
 	}
