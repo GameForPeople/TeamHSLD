@@ -18,6 +18,6 @@ public class CardData : MonoBehaviour
         if (data.currentCard.Equals(CARDSET.TERRAIN_NORMAL))
             data.currentCnt = 5;
 
-        data.currentZoom = ZOOMSTATE.IN;
+        //data.currentZoom = ZOOMSTATE.IN;
     }
 }

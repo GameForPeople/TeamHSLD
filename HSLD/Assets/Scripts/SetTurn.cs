@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SetTurn : MonoBehaviour
 {
-    private float spinTime = 3;
     private float time_;
     private bool isTrigger = false;
     static public bool isPicking = false;
@@ -23,7 +22,7 @@ public class SetTurn : MonoBehaviour
         if(GameObject.Find("NetworkManager") == null)
             if(RndNum() == 0)
             {
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
                 obj.name = "preOrder";
             }
             else
@@ -37,7 +36,7 @@ public class SetTurn : MonoBehaviour
         {
             if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
             {
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN_NOTYETFLAG;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
                 obj.name = "preOrder";
             }
 
@@ -66,7 +65,7 @@ public class SetTurn : MonoBehaviour
         time_ = 0;
         while (true)
         {
-            time_ += Time.deltaTime / 3;
+            time_ += Time.deltaTime;
             obj.transform.eulerAngles = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0, 180, 0), time_);
             if (time_ > 0.5f)
             {
@@ -74,7 +73,6 @@ public class SetTurn : MonoBehaviour
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().mainTxt.text = "";
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.text = val;
             }
-                
 
             yield return new WaitForEndOfFrame();
             if (time_ > 1f)
