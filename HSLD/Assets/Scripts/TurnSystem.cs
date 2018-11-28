@@ -132,6 +132,10 @@ public class TurnSystem : MonoBehaviour
             if (time_ > selectCardTime || CardSet.isSelect)
                 break;
         }
+
+        gameObject.GetComponent<FlowSystem>().missionCanvas.transform.parent = gameObject.GetComponent<FlowSystem>().missionSetParentTransform;
+        gameObject.GetComponent<FlowSystem>().missionCanvas.transform.localPosition = new Vector3(-318, gameObject.GetComponent<FlowSystem>().missionCanvas.transform.localPosition.y, 0);
+
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_SETCARD);
     }
 

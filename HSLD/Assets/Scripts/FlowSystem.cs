@@ -36,6 +36,8 @@ public class FlowSystem : MonoBehaviour
     public GameObject enemyImage;
     public GameObject turnTimerImg;
     public GameObject tmpAnimationImage;
+    public Transform missionSetParentTransform;
+    public GameObject missionCanvas;
 
     private float time_;
 
@@ -66,6 +68,11 @@ public class FlowSystem : MonoBehaviour
                     Debug.Log("SEND : 턴종료");
                     gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }
+
+                //init
+                gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
+                gameObject.GetComponent<CardSystem>().CardCntUpdate();
+                gameObject.GetComponent<CardSystem>().CardPosInit();
 
                 diceCanvas.SetActive(true);
                 currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
@@ -133,6 +140,10 @@ public class FlowSystem : MonoBehaviour
                 tmpAnimationImage.SetActive(true);
                 spinCanvas.SetActive(true);
                 readyCanvas.SetActive(false);
+
+                //init - card Cnt Update
+                gameObject.GetComponent<CardSystem>().CardCntUpdate();
+
                 //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
                 if (GameObject.Find("GameCores") == null)
                 {

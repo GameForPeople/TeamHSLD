@@ -20,4 +20,5 @@ public class CardData : MonoBehaviour
 
         //data.currentZoom = ZOOMSTATE.IN;
     }
+
 }

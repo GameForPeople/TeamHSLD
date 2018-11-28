@@ -24,7 +24,22 @@ public class CardSystem : MonoBehaviour
 
     public GameObject[] cardSet = new GameObject[5];
 
-    //줌 인 / 아웃 판별
+    public void CardCntUpdate()
+    {
+        for (int i = 0; i < cardSet.Length; i++)
+            cardSet[i].GetComponentInChildren<Text>().text = cardSet[i].GetComponent<CardData>().data.currentCnt.ToString();
+    }
+
+    public void CardPosInit()
+    {
+        for (int i = 0; i < cardSet.Length; i++)
+        {
+            cardSet[i].transform.localPosition = new Vector3(cardSet[i].transform.localPosition.x, -330, 0);
+            cardSet[i].GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
+        }
+    }
+
+    //카드선택
     public void PickingCard(GameObject card)
     {
         if (!isTriggerDone)
@@ -41,13 +56,17 @@ public class CardSystem : MonoBehaviour
         {
             //init - 지형설치 카드도 초기화할것.
             //여기에다가
-            for(int i =0; i < cardSet.Length;i++)
-            {
-                cardSet[i].transform.localPosition = new Vector3(cardSet[i].transform.localPosition.x, -330, 0);
-                cardSet[i].GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
-            }
+            CardPosInit();
 
             pickedCard = card;
+
+            //카드 갯수가 0개있으면, 뽑을수 없음.
+            if (pickedCard.GetComponent<CardData>().data.currentCnt < 1)
+            {
+                pickedCard = null;
+                return;
+            }
+
             pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
             pickedCard.GetComponent<Image>().color = new Color(1, 1, 1, 1.0f);
 
