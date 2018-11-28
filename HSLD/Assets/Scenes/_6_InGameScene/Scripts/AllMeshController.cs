@@ -146,7 +146,7 @@ public class AllMeshController : MonoBehaviour {
                 temp = true;
             }
         }
-        ResettingAble();
+        AllPriorSetting();
         if (temp)
         {
             NearMeshSetting();
