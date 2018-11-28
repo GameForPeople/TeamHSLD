@@ -55,6 +55,7 @@ public class CardSystem : MonoBehaviour
         if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD) || GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
         {
             //init - 지형설치 카드도 초기화할것.
+            AllMeshController.myPlanet.GetComponent<AllMeshController>().CleanPickContainer();
             //여기에다가
             CardPosInit();
 
