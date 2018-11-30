@@ -162,7 +162,7 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
 
-            CameraController.offset = 1.5f;
+            CameraController.offset = 2.0f;
         }
         CameraController.Once = true;
     }

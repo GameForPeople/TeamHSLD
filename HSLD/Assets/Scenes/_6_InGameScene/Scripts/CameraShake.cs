@@ -22,7 +22,7 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeOnce()
     {
-        StartCoroutine(Shake(1, 2));
+        StartCoroutine(Shake(0.5f, 0.5f));
     }
 
     public IEnumerator Shake(float duration, float magnitude)

@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour
         {
             if (offset > 0)
             {
-                offset -= 0.1f;
+                offset -= 3.0f * Time.deltaTime;
             } // 피킹 관련 
 
             if (fdistance >= minDistance || fdistance <= maxDistance)
