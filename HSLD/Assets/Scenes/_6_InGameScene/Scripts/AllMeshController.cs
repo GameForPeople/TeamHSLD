@@ -130,7 +130,10 @@ public class AllMeshController : MonoBehaviour {
 
     public void CleanPickContainer()
     {
-        Camera.main.GetComponent<CameraShake>().ShakeOnce();
+        if (!isEmpty())
+        {
+            Camera.main.GetComponent<CameraShake>().ShakeOnce();
+        }
         int Length = PickContainer.Count;
         bool temp = false;
         for (int i = 0; i < Length; i++)
