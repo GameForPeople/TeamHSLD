@@ -8,6 +8,9 @@ TextureImporter:
     21300006: EventCard_3
     21300008: EventCard_4
     21300010: EventCard_5
+    21300012: EventCard_6
+    21300014: EventCard_7
+    21300016: EventCard_8
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -105,17 +108,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 90
-        y: 1535
+        y: 1919
         width: 473
         height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e295fb08694535c418de375e8af523b5
+      spriteID: 546a093f42140fd48850b6f45e2456d6
       vertices: []
       indices: 
       edges: []
@@ -124,18 +127,18 @@ TextureImporter:
       name: EventCard_1
       rect:
         serializedVersion: 2
-        x: 679
-        y: 1535
-        width: 473
+        x: 678
+        y: 1919
+        width: 474
         height: 439
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deda49e000f0667498389547e295e3a6
+      spriteID: 4f3e946a9cd2f6a4c83a5040c323ca59
       vertices: []
       indices: 
       edges: []
@@ -144,18 +147,18 @@ TextureImporter:
       name: EventCard_2
       rect:
         serializedVersion: 2
-        x: 89
-        y: 914
-        width: 474
-        height: 441
+        x: 90
+        y: 1297
+        width: 473
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a0dce828db9a7a44b9daa0fd2a9fb01
+      spriteID: 94122aa066dad6545a3df8275d3b329e
       vertices: []
       indices: 
       edges: []
@@ -164,18 +167,18 @@ TextureImporter:
       name: EventCard_3
       rect:
         serializedVersion: 2
-        x: 696
-        y: 916
-        width: 470
-        height: 445
+        x: 695
+        y: 1300
+        width: 472
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb0dbbe8c496a07449653323e83a602d
+      spriteID: 18ce93b053a2ac246b2487b62549e078
       vertices: []
       indices: 
       edges: []
@@ -184,18 +187,18 @@ TextureImporter:
       name: EventCard_4
       rect:
         serializedVersion: 2
-        x: 89
-        y: 308
-        width: 474
-        height: 440
+        x: 90
+        y: 692
+        width: 473
+        height: 438
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acb117f28e8e03a4b9d74d3f1eec3a9a
+      spriteID: 7c85308f60874a649ba3c383b561794a
       vertices: []
       indices: 
       edges: []
@@ -204,18 +207,58 @@ TextureImporter:
       name: EventCard_5
       rect:
         serializedVersion: 2
-        x: 699
-        y: 305
+        x: 700
+        y: 689
         width: 467
         height: 439
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcdb22796ec89f74895a71949627fa83
+      spriteID: ebd49be1e3ef55d4398433ee60c17b61
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EventCard_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 116
+        width: 474
+        height: 441
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752ec633ccad18641af85a83283c2374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EventCard_8
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 112
+        width: 473
+        height: 441
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0653b09d4a3494f9d3a7be03313cde
       vertices: []
       indices: 
       edges: []

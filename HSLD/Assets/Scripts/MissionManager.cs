@@ -21,7 +21,7 @@ public class MissionManager : MonoBehaviour
     private float time_ = 0;
 
     private GameObject missionCanvas;
-
+    private int[] indexSaved = new int[6];
 
     //중복되지않게 메인미션 / 서브미션 부여
     private void randomValue(int min, int max, MissionSet set)
@@ -34,11 +34,16 @@ public class MissionManager : MonoBehaviour
             {
                 case MissionSet.MAIN:
                     readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[value].text;
+                    readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[value].currentCnt + " / " + missionSet[value].goalCnt + " )";
+                    indexSaved[0] = value;
                     break;
                 case MissionSet.SUB:
+                    
                     readyDisplaySubMissionObj.transform.GetChild(index).GetComponent<Text>().text = missionSet[value].text;
+                    readyDisplaySubMissionObj.transform.GetChild(index).GetComponent<Text>().text += "( " + missionSet[value].currentCnt + " / " + missionSet[value].goalCnt + " )";
                     //inGameDisplaySubMissionObj.transform.GetChild(1 + index).transform.GetChild(0).GetComponent<Text>().text = missionSet[value].text;
                     index += 1;
+                    indexSaved[index] = value;
                     break;
             }
         }
@@ -73,6 +78,7 @@ public class MissionManager : MonoBehaviour
 
     private IEnumerator Active()
     {
+        ResetMissionDisplay();
         isActive = true;
         time_ = 0;
         isTrigger = true;
@@ -106,5 +112,17 @@ public class MissionManager : MonoBehaviour
         }
         missionCanvas.transform.localPosition = closeCanvasVec;
         isTrigger = false;
+    }
+
+    public void ResetMissionDisplay()
+    {
+        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[indexSaved[0]].text;
+        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[indexSaved[0]].currentCnt + " / " + missionSet[indexSaved[0]].goalCnt + " )";
+
+        for (int i =1; i<indexSaved.Length;i++)
+        {
+            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text = missionSet[indexSaved[i]].text;
+            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text += "( " + missionSet[indexSaved[i]].currentCnt + " / " + missionSet[indexSaved[i]].goalCnt + " )";
+        }
     }
 }

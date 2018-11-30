@@ -13,4 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionSet: 1
   index: 222
-  text: "\uD55C\uB7AD\uC9C0\uD615 3\uD68C \uACF5\uACA9 \uC131\uACF5 (0 / 3)"
+  text: "\uD55C\uB7AD\uC9C0\uD615 3\uD68C \uACF5\uACA9 \uC131\uACF5 "
+  currentCnt: 0
+  goalCnt: 3

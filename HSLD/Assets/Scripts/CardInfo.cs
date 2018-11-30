@@ -10,6 +10,8 @@ public class CardInfo : ScriptableObject
     public int cardIndex;
     public string cardName;
 
+    public Sprite img;
+
     public int currentCnt;
     public int maximumCnt;
     public int minumumCnt;

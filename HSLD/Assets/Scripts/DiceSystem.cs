@@ -922,7 +922,6 @@ public class DiceSystem : MonoBehaviour
 
         if (GameObject.Find("GameCores") != null)
             GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendDiceValue(CameraController.DiceCount);
-
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
     }

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Name: Event3
   m_EditorClassIdentifier: 
   currentCard: 0
-  currentZoom: 0
-  zoomInSatusCardVec: {x: 194, y: -294}
-  zoomOutSatusCardVec: {x: 309, y: -294}
-  cardIndex: 8
-  cardName: 
+  cardIndex: 202
+  cardName: "\uC0C1\uB300 \uACF5\uACA9 \uCE74\uB4DC \uBC29\uC5B4 \uCE74\uB4DC - [\uACF5\uACA9]
+    \uC0C1\uB300 \uB545 \uD30C\uAD34"
+  img: {fileID: 21300004, guid: 0154f933b9973ed4ea0de490f499affa, type: 3}
   currentCnt: 0
   maximumCnt: 0
   minumumCnt: 0

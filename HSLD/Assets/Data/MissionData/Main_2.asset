@@ -14,4 +14,6 @@ MonoBehaviour:
   missionSet: 0
   index: 101
   text: "\uCD94\uC6C0 \uC9C0\uD615\uC73C\uB85C \uD589\uC131 \uC678 240\uCE78 \uC774\uC0C1\uC744
-    \uCC28\uC9C0\uD558\uC138\uC694. (0 / 240)"
+    \uCC28\uC9C0\uD558\uC138\uC694."
+  currentCnt: 0
+  goalCnt: 240

@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Name: Terrain3
   m_EditorClassIdentifier: 
   currentCard: 2
-  currentZoom: 0
-  zoomInSatusCardVec: {x: -261, y: -294}
-  zoomOutSatusCardVec: {x: -151, y: -294}
   cardIndex: 3
   cardName: "\uD55C\uB7AD"
-  currentCnt: 5
+  img: {fileID: 21300006, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
+  currentCnt: 8
   maximumCnt: 15
   minumumCnt: 5
