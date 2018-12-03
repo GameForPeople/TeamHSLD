@@ -19,30 +19,23 @@ namespace SCENE_NETWORK_MANAGER
 		const int PERMIT_NICKNAME; //104
 
 	public:
-		LoginScene();
+		LoginScene() = delete;
+		LoginScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager);
 		virtual ~LoginScene() override = default;
-	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager) override;
 
 	public:
-		//void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, UserDataManager& InUserData);
-		//void ProcessSend(const int& InSendType, SOCKETINFO* ptr, UserDataManager& InUserData);
+		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
 
 	private:
-		void RecvDemandLogin(SocketInfo* ptr, UserDataManager& InUserData);
+		void _RecvDemandLogin(SocketInfo* pClient);
 
-		void SendPermitLogin(SocketInfo* ptr, const string& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
+		void __SendPermitLogin(SocketInfo* pClient, const string& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
 			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<string>& RetFriendStringCont);
 		
-		void SendFailLogin(SocketInfo* ptr, const int& RetFailReason);
+		void __SendFailLogin(SocketInfo* pClient, const int& RetFailReason);
 
 	private:
-		void RecvChangeNickName(SocketInfo* ptr, UserDataManager& InUserData);
-		void SendChangeNickName(SocketInfo* ptr);
-	private:
-		//int LoginTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney);
-		//int SignUpTest(SocketInfo* ptr, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer);
-		int LoginProcess(SocketInfo* pInSocketInfo, UserDataManager& InUserData, const string& InID, string& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
-			int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<string>& RetFriendStringCont);
+		void _RecvChangeNickName(SocketInfo* pClient);
+		void __SendChangeNickName(SocketInfo* pClient);
 	};
 }

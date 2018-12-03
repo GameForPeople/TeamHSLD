@@ -3,27 +3,29 @@
 #include "../../IOCPServer/SocketInfo.h"
 #include "../../IOCPServer/UDPManager.h"
 
-SCENE_NETWORK_MANAGER::RoomScene::RoomScene() : BaseScene(), PERMIT_ENEMY_CHARACTER(Protocol::PERMIT_ENEMY_CHARACTER)
+SCENE_NETWORK_MANAGER::RoomScene::RoomScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager) 
+	: BaseScene(pInRoomData, pInUserData, pInUDPManager)
+	, PERMIT_ENEMY_CHARACTER(Protocol::PERMIT_ENEMY_CHARACTER)
 {
 
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
+void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
 {
-	DemandEnemyCharacterIndex(ptr, InRoomData, InUserData);
+	_DemandEnemyCharacterIndex(pClient);
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::DemandEnemyCharacterIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData)
+void SCENE_NETWORK_MANAGER::RoomScene::_DemandEnemyCharacterIndex(SocketInfo* pClient)
 {
 	//InRoomData.SetCharacterIndex(ptr->roomIndex, ptr->isHost, (int&)ptr->buf[4]);
-	ptr->pRoomIter->SetCharacterIndex(ptr->isHost, (int&)ptr->buf[4]);
+	pClient->pRoomIter->SetCharacterIndex(pClient->isHost, (int&)pClient->buf[4]);
 
 
 	//ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
-	int enemyIndexBuffer = (ptr->pRoomIter->GetEnemyCharacterIndex(ptr->isHost));
+	int enemyIndexBuffer = (pClient->pRoomIter->GetEnemyCharacterIndex(pClient->isHost));
 
-	memcpy(ptr->buf, (char*)&PERMIT_ENEMY_CHARACTER, sizeof(int));
-	memcpy(ptr->buf + 4, (char*)&enemyIndexBuffer, sizeof(int));
+	memcpy(pClient->buf, (char*)&PERMIT_ENEMY_CHARACTER, sizeof(int));
+	memcpy(pClient->buf + 4, (char*)&enemyIndexBuffer, sizeof(int));
 	
-	ptr->dataSize = 8;
+	pClient->dataSize = 8;
 }

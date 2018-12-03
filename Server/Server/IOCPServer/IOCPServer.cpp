@@ -287,40 +287,19 @@ void IOCPServer::_CreateBindListen()
 
 void IOCPServer::_BindSceneDataProcess()
 {
-	sceneNetworkManagerArr[0] = new SCENE_NETWORK_MANAGER::TitleScene;
-	sceneNetworkManagerArr[1] = new SCENE_NETWORK_MANAGER::LoginScene;
-	sceneNetworkManagerArr[2] = new SCENE_NETWORK_MANAGER::MainUiScene;
-	sceneNetworkManagerArr[3] = new SCENE_NETWORK_MANAGER::LobbyScene;
-	sceneNetworkManagerArr[4] = new SCENE_NETWORK_MANAGER::RoomScene;
-	sceneNetworkManagerArr[5] = new SCENE_NETWORK_MANAGER::InGameScene;
+	sceneNetworkManagerCont.reserve(6);	//	Scene Count = 6;
 
-	//sceneArr.reserve(6);
-	//
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::TitleScene);
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LoginScene);
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::MainUiScene);
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::LobbyScene);
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::RoomScene);
-	//sceneArr.emplace_back(new SCENE_NETWORK_MANAGER::InGameScene);
-
-	//SceneDataProcess[0] = &(sceneArr[0].ProcessData);
-	//SceneDataProcess[1] = &(sceneArr[1].ProcessData);
-	//SceneDataProcess[2] = &(sceneArr[2].ProcessData);
-	//SceneDataProcess[3] = &(sceneArr[3].ProcessData);
-	//SceneDataProcess[4] = &(sceneArr[4].ProcessData);
-	//SceneDataProcess[5] = &(sceneArr[5].ProcessData);
-
-	//SceneDataProcess[0] = titleScene.ProcessData;
-	//SceneDataProcess[1] = loginScene.ProcessData;
-	//SceneDataProcess[2] = mainUiScene.ProcessData;
-	//SceneDataProcess[3] = lobbyScene.ProcessData;
-	//SceneDataProcess[4] = roomScene.ProcessData;
-	//SceneDataProcess[5] = inGameScene.ProcessData;
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::TitleScene>(pRoomData, pUserData, pUdpManager));
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::LoginScene>(pRoomData, pUserData, pUdpManager));
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::MainUiScene>(pRoomData, pUserData, pUdpManager));
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::LobbyScene>(pRoomData, pUserData, pUdpManager));
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::RoomScene>(pRoomData, pUserData, pUdpManager));
+	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::InGameScene>(pRoomData, pUserData, pUdpManager));
 }
 
 void IOCPServer::_CreateSocket()
 {
-	udpManager._CreateUDPSocket();
+	pUdpManager->_CreateUDPSocket();
 }
 
 //Run
@@ -479,12 +458,12 @@ void IOCPServer::_WorkerThreadFunction()
 				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
 				//	//...? 할게 없나...?
 				//}
-				userData.SetGameResult(pClient->pUserNode, false);
+				pUserData->SetGameResult(pClient->pUserNode, false);
 				pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
 				pClient->pRoomIter = nullptr;
 			}
 
-			userData.LogoutProcess(pClient);
+			pUserData->LogoutProcess(pClient);
 
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
@@ -530,7 +509,7 @@ void IOCPServer::_WorkerThreadFunction()
 
 			if (recvType > 0 && recvType < 600)
 			{
-				sceneNetworkManagerArr[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient, roomData, userData, udpManager);
+				sceneNetworkManagerCont[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient);
 
 				if (NETWORK_UTIL::SendProcess(pClient))
 					continue;
@@ -556,7 +535,7 @@ void IOCPServer::_UDPThreadFunction()
 {
 	while (7)
 	{
-		udpManager.UDPSend();
+		pUdpManager->UDPSend();
 		Sleep(1000);
 	}
 }
@@ -574,15 +553,15 @@ void IOCPServer::_ManagerLoop()
 {
 	int managerLoopBuffer{};
 
-	while (7)
-	{
-		std::cout << "기능을 선택해주세요. 1) UDP Message : ";
-		std::cin >> managerLoopBuffer;
-
-		switch (managerLoopBuffer)
-		{
-		//case 1:
-		//	udpManager.UDPSend();
-		}
-	}
+	//while (7)
+	//{
+	//	std::cout << "기능을 선택해주세요. 1) UDP Message : ";
+	//	std::cin >> managerLoopBuffer;
+	//
+	//	switch (managerLoopBuffer)
+	//	{
+	//	//case 1:
+	//	//	udpManager.UDPSend();
+	//	}
+	//}
 }

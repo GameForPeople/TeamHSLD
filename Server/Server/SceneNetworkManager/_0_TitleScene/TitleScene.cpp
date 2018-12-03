@@ -1,11 +1,11 @@
 #include "../_0_TitleScene/TitleScene.h"
 
-SCENE_NETWORK_MANAGER::TitleScene::TitleScene() : BaseScene()
+SCENE_NETWORK_MANAGER::TitleScene::TitleScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager) : BaseScene(pInRoomData, pInUserData, pInUDPManager)
 {
 
 }
 
-void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager)
+void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
 {
 
 }

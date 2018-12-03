@@ -30,17 +30,21 @@ namespace SCENE_NETWORK_MANAGER
 		BaseScene & operator=(const BaseScene&) = delete;
 
 	public:
-		BaseScene() = default;
-		//BaseScene(int InSceneIndex) : sceneProtocolStartIndex(InSceneIndex) {};
+		BaseScene() = delete;
+		BaseScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager)
+			: pRoomData(pInRoomData), pUserData(pInUserData), pUDPManager(pInUDPManager)
+		{};
+
 		virtual ~BaseScene() = 0 {};
 
-	protected:
-		//const int sceneProtocolStartIndex;
+	public:
+		GameRoomManager*	pRoomData;	// 해당 리소스는 SceneNetwork 수준에서 제거하면 안됩니다.
+		UserDataManager*	pUserData;	// 해당 리소스는 SceneNetwork 수준에서 제거하면 안됩니다.
+		UDPManager*			pUDPManager;		// 해당 리소스는 SceneNetwork 수준에서 제거하면 안됩니다.
+
+		//std::reference_wrapper<UserDataManager> refUserData;
 
 	public:
-		virtual void ProcessData(const int& InType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager) = 0;
-		//virtual void ProcessData(const int& InType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
-		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
-		//virtual void ProcessSend(const int& InSendType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) = 0;
+		virtual void ProcessData(const int& InType, SocketInfo* pClient) = 0;
 	};
 }

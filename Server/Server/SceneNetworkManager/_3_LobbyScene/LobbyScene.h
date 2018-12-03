@@ -28,25 +28,18 @@ namespace SCENE_NETWORK_MANAGER
 		const int CONST_FALSE;
 
 	public:
-		LobbyScene();
+		LobbyScene() = delete;
+		LobbyScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager);
 		virtual ~LobbyScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager) override;
-
-	public:
-		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		//void ProcessSend(const int& InSendType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
 
 	private:
-		//void(*RecvFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		//void(*SendFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandRandomMatch(SocketInfo* pClient);
+		void _DemandGuestJoin(SocketInfo* pClient);
 
-	private:
-		void _DemandRandomMatch(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		void _DemandGuestJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-
-		void _DemandExitRandom(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		void _DemandFriendJoin(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandExitRandom(SocketInfo* pClient);
+		void _DemandFriendJoin(SocketInfo* pClient);
 	};
 }

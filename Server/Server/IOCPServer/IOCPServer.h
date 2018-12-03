@@ -63,21 +63,17 @@ private:
 	HANDLE hUDPThread;
 
 	//For Game
-	UserDataManager userData;
-	GameRoomManager roomData;
+	UserDataManager* pUserData;
+	GameRoomManager* pRoomData;
+	UDPManager* pUdpManager;
 
-	UDPManager udpManager;
-
-	SCENE_NETWORK_MANAGER::BaseScene* sceneNetworkManagerArr[6];
-	//void(*SceneDataProcess[6])(const int& InRecvType,SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+	std::vector<unique_ptr<SCENE_NETWORK_MANAGER::BaseScene>> sceneNetworkManagerCont;
 
 public:
-	//IOCPServer() : bIsPrintDebugMessage(false)
-	//{
-	//	Init();
-	//}
-
 	IOCPServer(bool InIsTrueLoadExternIP) 
+		:	pUserData(new UserDataManager())
+		,	pRoomData(new GameRoomManager())
+		,	pUdpManager(new UDPManager())
 	{
 			Init(InIsTrueLoadExternIP);
 	}

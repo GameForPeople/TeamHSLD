@@ -15,21 +15,14 @@ namespace SCENE_NETWORK_MANAGER
 		const int PERMIT_ENEMY_CHARACTER;
 
 	public:
-		RoomScene();
+		RoomScene() = delete;
+		RoomScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager);
 		virtual ~RoomScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData, UDPManager& InUDPManager) override;
-
-	public:
-		//void ProcessRecv(const int& InRecvType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		//void ProcessSend(const int& InSendType,	SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
 
 	private:
-		//void(*RecvFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-		//void(*SendFunctions[1])(SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
-
-	private:
-		void DemandEnemyCharacterIndex(SocketInfo* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData);
+		void _DemandEnemyCharacterIndex(SocketInfo* pClient);
 	};
 }
