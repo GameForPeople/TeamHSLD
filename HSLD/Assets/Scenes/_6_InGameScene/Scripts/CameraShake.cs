@@ -11,7 +11,6 @@ public class CameraShake : MonoBehaviour
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
         isCameraShake = false;
         canvas.GetComponentsInChildren<RectTransform>(UIList);
         //Debug.Log(canvas.GetComponentsInChildren<RectTransform>());

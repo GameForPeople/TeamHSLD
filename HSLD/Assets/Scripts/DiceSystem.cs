@@ -958,8 +958,6 @@ public class DiceSystem : MonoBehaviour
                 isTriggerEnter = false;
                 RollingDice(Random.Range(1, 5));
             }
-                
-
             if (Input.GetMouseButton(0))
             {
                 SetSliderValue();

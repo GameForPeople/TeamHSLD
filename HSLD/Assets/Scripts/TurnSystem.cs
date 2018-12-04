@@ -160,6 +160,8 @@ public class TurnSystem : MonoBehaviour
         if (SoundManager.instance_ != null)
             SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
 
+        Debug.Log(currentTurn);
+
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {

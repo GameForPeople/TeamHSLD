@@ -67,6 +67,7 @@ public class FlowSystem : MonoBehaviour
                 //init
                 gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
                 gameObject.GetComponent<CardSystem>().CardCntUpdate();
+                gameObject.GetComponent<CardSystem>().pickedCard = null;
                 gameObject.GetComponent<CardSystem>().CardPosInit();
 
                 //이벤트카드로 갈지 말지 분기
@@ -86,9 +87,7 @@ public class FlowSystem : MonoBehaviour
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
                     gameObject.GetComponent<TurnSystem>().TurnSet();
-                }
-                diceCanvas.SetActive(true);
-                
+                }                
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 if (GameObject.Find("GameCores") != null)
@@ -175,7 +174,6 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-                diceCanvas.SetActive(false);
                 setTerrainCanvas.SetActive(true);
                 if (GameObject.Find("GameCores") != null)
                 {
@@ -189,6 +187,7 @@ public class FlowSystem : MonoBehaviour
                     SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
 
                 //애니메이션 여기
+                diceCanvas.SetActive(false);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, true));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 

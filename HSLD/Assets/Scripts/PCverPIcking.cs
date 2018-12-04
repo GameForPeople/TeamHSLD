@@ -172,7 +172,7 @@ public class PCverPIcking : MonoBehaviour
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
         AllMeshController.giveLinkNum++;
-        Debug.Log("내 턴에서 넘어갈 때 한번만");
+        //Debug.Log("내 턴에서 넘어갈 때 한번만");
         for (int i = 0; i < Length; i++) // 링크드넘버 세팅
         {
             GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());

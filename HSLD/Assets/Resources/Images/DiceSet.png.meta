@@ -1,33 +1,14 @@
 fileFormatVersion: 2
-guid: 52d8e68622ed6c349b139fe26298bfac
+guid: 1c93468efa87d61479b410b04da5b989
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dice_0
-    21300002: Dice_1
-    21300004: Dice_2
-    21300006: Dice_3
-    21300008: Dice_4
-    21300010: Dice_5
-    21300012: Dice_6
-    21300014: Dice_7
-    21300016: Dice_8
-    21300018: Dice_9
-    21300020: Dice_10
-    21300022: Dice_11
-    21300024: Dice_12
-    21300026: Dice_13
-    21300028: Dice_14
-    21300030: Dice_15
-    21300032: Dice_16
-    21300034: Dice_17
-    21300036: Dice_18
-    21300038: Dice_19
-    21300040: Dice_20
-    21300042: Dice_21
-    21300044: Dice_22
-    21300046: Dice_23
-    21300048: Dice_24
-    21300050: Dice_25
+    21300000: DiceSet_0
+    21300002: DiceSet_1
+    21300004: DiceSet_2
+    21300006: DiceSet_3
+    21300008: DiceSet_4
+    21300010: DiceSet_5
+    21300012: DiceSet_6
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -58,7 +39,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -121,121 +102,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dice_0
+      name: DiceSet_0
       rect:
         serializedVersion: 2
-        x: 825
-        y: 2602
-        width: 1953
-        height: 2000
+        x: 64
+        y: 269
+        width: 99
+        height: 98
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1de5fc70d960d9a49839b84449c938a2
+      spriteID: a9b13075ba1b81e419d0a718719be920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_1
+      name: DiceSet_1
       rect:
         serializedVersion: 2
-        x: 3286
-        y: 4445
-        width: 1222
-        height: 1031
+        x: 183
+        y: 271
+        width: 122
+        height: 107
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40924b2ac9432e440af04719ef0fa40b
+      spriteID: aaf9a84309d9276439df0d3612f8e092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_7
+      name: DiceSet_2
       rect:
         serializedVersion: 2
-        x: 3128
-        y: 3344
-        width: 1532
-        height: 518
+        x: 90
+        y: 148
+        width: 23
+        height: 93
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89543791d520553499a2150e2387f18d
+      spriteID: 160f0c4e631d1fc4ca805fa60401d5e2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_10
+      name: DiceSet_3
       rect:
         serializedVersion: 2
-        x: 4730
-        y: 3069
-        width: 22
-        height: 111
+        x: 137
+        y: 148
+        width: 23
+        height: 93
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21707393eaf4ab944a6dd993950e8548
+      spriteID: b7f715262b97da3428f790396df85e6f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_15
+      name: DiceSet_4
       rect:
         serializedVersion: 2
-        x: 3164
-        y: 2286
-        width: 1457
-        height: 460
+        x: 187
+        y: 145
+        width: 25
+        height: 100
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 567aa3cfc12df9047b4bed51ef70a011
+      spriteID: 4e1e7db9129bb964387bdeef7defed80
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_21
+      name: DiceSet_5
       rect:
         serializedVersion: 2
-        x: 3247
-        y: 766
-        width: 1221
-        height: 1026
+        x: 89
+        y: 14
+        width: 123
+        height: 107
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5075262dfd2c954bb866425f45d4797
+      spriteID: c113eb83f25db7141a4c855bdfe71247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DiceSet_6
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 14
+        width: 123
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ebdfe11e41a8f4eb7cf65be8a1d81e
       vertices: []
       indices: 
       edges: []
@@ -243,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e25347d326b50d240841d9423b2ac625
+    spriteID: d89516441b6943a49a3adc43ed2ba0fe
     vertices: []
     indices: 
     edges: []

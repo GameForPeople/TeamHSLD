@@ -54,24 +54,24 @@ public class CardSystem : MonoBehaviour
         //pick
         if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD) || GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
         {
+            
             //init - 지형설치 카드도 초기화할것.
             AllMeshController.myPlanet.GetComponent<AllMeshController>().CleanPickContainer();
+            pickedCard = card;
             //여기에다가
             CardPosInit();
-
-            pickedCard = card;
-
-            //카드 갯수가 0개있으면, 뽑을수 없음.
-            if (pickedCard.GetComponent<CardData>().data.currentCnt < 1)
-            {
-                pickedCard = null;
-                return;
-            }
 
             pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
             pickedCard.GetComponent<Image>().color = new Color(1, 1, 1, 1.0f);
 
-            Debug.Log(pickedCard.name + "카드 뽑힘");
+            //카드 갯수가 0개있으면, 뽑을수 없음.
+            if (card.GetComponent<CardData>().data.currentCnt < 1)
+            {
+                card = null;
+                return;
+            }
+
+            Debug.Log(card.name + "카드 뽑힘");
 
             if (SoundManager.instance_ != null)
                 SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[7], 1.0f);
