@@ -23,8 +23,8 @@
 //#define		SERVER_UDP_PORT 9001
 
 // For ExternalIP
-#define		EXTERNALIP_FINDER_URL	"http://checkip.dyndns.org/"
-#define		TITLE_PARSER			"<body>Current IP Address: "
+#define		EXTERNALIP_FINDER_URL	TEXT("http://checkip.dyndns.org/")
+#define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
 
 
 //#define SERVER_DEBUG_LOG_PRINT
@@ -115,7 +115,7 @@ public:
 
 private:
 	//Init
-	void _GetExternalIP(char *ip);
+	void _GetExternalIP(TCHAR *ip);
 
 	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);	// 서버 관리자에게 필요한 UI를 띄어줍니다.
 	

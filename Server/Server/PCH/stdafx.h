@@ -26,6 +26,7 @@
 #include "wininet.h"
 #include <tchar.h>
 
+
 // C++17
 #include <string_view>
 
@@ -42,3 +43,6 @@
 #define		_NODISCARD			[[nodiscard]]
 
 using namespace std;
+
+//using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 wstring적용하는걸로 변경.
+

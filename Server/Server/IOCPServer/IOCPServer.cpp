@@ -7,7 +7,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	_NORETURN void ERROR_QUIT(char *msg)
+	_NORETURN void ERROR_QUIT(const TCHAR *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -25,7 +25,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	_NORETURN void ERROR_DISPLAY(char *msg)
+	_NORETURN void ERROR_DISPLAY(const TCHAR *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -38,7 +38,7 @@ namespace NETWORK_UTIL {
 			NULL
 		);
 		
-		printf(" [%s]  %S", msg, (char *)lpMsgBuf);
+		printf(" [%s]  %S", msg, (TCHAR *)lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
 
@@ -97,7 +97,7 @@ namespace NETWORK_UTIL {
 		{
 			if (WSAGetLastError() != WSA_IO_PENDING)
 			{
-				ERROR_DISPLAY((char *)"WSASend()");
+				ERROR_DISPLAY(TEXT("WSASend()"));
 			}
 			return true;
 		}
@@ -106,11 +106,12 @@ namespace NETWORK_UTIL {
 };
 
 //Init
-_NORETURN void IOCPServer::_GetExternalIP(char *ip)
+_NORETURN void IOCPServer::_GetExternalIP(TCHAR *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
-	char buffer[256] = { 0 };
+	
+	TCHAR buffer[256] = { 0 };
 
 	hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 
@@ -128,10 +129,10 @@ _NORETURN void IOCPServer::_GetExternalIP(char *ip)
 		buffer[rSize] = '\0';
 
 		int nShift = _tcslen(TITLE_PARSER);
-		std::string strHTML = buffer;
-		std::string::size_type nIdx = strHTML.find(TITLE_PARSER);
+		tstring strHTML = buffer;
+		tstring::size_type nIdx = strHTML.find(TITLE_PARSER);
 		strHTML.erase(strHTML.begin(), strHTML.begin() + nIdx + nShift);
-		nIdx = strHTML.find("</body>");
+		nIdx = strHTML.find(TEXT("</body>"));
 		strHTML.erase(strHTML.begin() + nIdx, strHTML.end());
 
 		_tcscpy(ip, strHTML.c_str());
@@ -145,7 +146,6 @@ _NORETURN void IOCPServer::_GetExternalIP(char *ip)
 		std::cout << "[서버 오류] : 서버의 ExternalIP를 확인할 수 없습니다. " << "\n";
 		std::exit(EXIT_FAILURE);
 	}
-	
 }
 
 _NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
@@ -279,7 +279,7 @@ _NORETURN void IOCPServer::_CreateBindListen()
 {
 	//Socket()
 	listenSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if (listenSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT((char *)"socket()");
+	if (listenSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT(TEXT("socket()"));
 
 	//bind()
 	ZeroMemory(&serverAddr, sizeof(serverAddr));
@@ -287,11 +287,11 @@ _NORETURN void IOCPServer::_CreateBindListen()
 	serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serverAddr.sin_port = htons(SERVER_PORT);
 	int retVal = ::bind(listenSocket, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
-	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"bind()");
+	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT(TEXT("bind()"));
 
 	// Listen()!
 	retVal = listen(listenSocket, SOMAXCONN);
-	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
+	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT(TEXT("listen()"));
 }
 
 _NORETURN void IOCPServer::_BindSceneDataProcess()
@@ -328,7 +328,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 		clientSocket = accept(listenSocket, (SOCKADDR *)&clientAddr, &addrLength);
 		if (clientSocket == INVALID_SOCKET)
 		{
-			NETWORK_UTIL::ERROR_DISPLAY((char *)"accept()");
+			NETWORK_UTIL::ERROR_DISPLAY(TEXT("accept()"));
 			break;
 		}
 
@@ -370,7 +370,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 		{
 			if (WSAGetLastError() != ERROR_IO_PENDING)
 			{
-				NETWORK_UTIL::ERROR_DISPLAY((char *)"WSARecv()");
+				NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSARecv()"));
 			}
 
 			continue;
@@ -484,7 +484,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			{
 				DWORD temp1, temp2;
 				WSAGetOverlappedResult(pClient->sock, &pClient->overlapped, &temp1, FALSE, &temp2);
-				NETWORK_UTIL::ERROR_DISPLAY((char *)"WSAGetOverlappedResult()");
+				NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSAGetOverlappedResult()"));
 			}
 			closesocket(pClient->sock);
 
@@ -507,7 +507,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			{
 				if (WSAGetLastError() != ERROR_IO_PENDING)
 				{
-					NETWORK_UTIL::ERROR_DISPLAY((char *)"WSARecv()");
+					NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSARecv()"));
 				}
 				continue;
 			}
