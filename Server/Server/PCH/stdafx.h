@@ -32,10 +32,13 @@
 // custom
 
 // For Login
-#define		MAX_ID_LEN		30
-#define		BUF_SIZE		100
+#define		MAX_ID_LEN			30
+#define		BUF_SIZE			100
 
-#define		SERVER_PORT		9000
-#define		SERVER_UDP_PORT 9001
+#define		SERVER_PORT			9000
+#define		SERVER_UDP_PORT		9001
+
+#define		_NORETURN			[[noreturn]]
+#define		_NODISCARD			[[nodiscard]]
 
 using namespace std;

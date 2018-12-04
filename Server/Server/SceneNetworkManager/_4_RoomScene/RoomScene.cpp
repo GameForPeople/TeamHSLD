@@ -24,8 +24,8 @@ void SCENE_NETWORK_MANAGER::RoomScene::_DemandEnemyCharacterIndex(SocketInfo* pC
 	//ptr->dataBuffer = new PermitEnemyCharacterStruct(roomData.GetEnemyCharacterIndex(ptr->roomIndex, ptr->isHost));
 	int enemyIndexBuffer = (pClient->pRoomIter->GetEnemyCharacterIndex(pClient->isHost));
 
-	memcpy(pClient->buf, (char*)&PERMIT_ENEMY_CHARACTER, sizeof(int));
-	memcpy(pClient->buf + 4, (char*)&enemyIndexBuffer, sizeof(int));
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_ENEMY_CHARACTER), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<char*>(&enemyIndexBuffer), sizeof(int));
 	
 	pClient->dataSize = 8;
 }

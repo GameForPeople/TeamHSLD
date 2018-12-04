@@ -23,21 +23,13 @@ SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene(GameRoomManager* pInRoomData, User
 void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
 {
 	if (InRecvType == DEMAND_RANDOM_MATCH)
-	{
-		_DemandRandomMatch(pClient);
-	}
+			_DemandRandomMatch(pClient);
 	else if(InRecvType == DEMAND_GUEST_JOIN)
-	{
-		_DemandGuestJoin(pClient);
-	}
+			_DemandGuestJoin(pClient);
 	else if (InRecvType == DEMAND_EXIT_RANDOM)
-	{
-		_DemandExitRandom(pClient);
-	}
+			_DemandExitRandom(pClient);
 	else if (InRecvType == DEMAND_FRIEND_JOIN)
-	{
-		_DemandFriendJoin(pClient);
-	}
+			_DemandFriendJoin(pClient);
 }
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
@@ -55,11 +47,11 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 		 pClient->pRoomIter->GetRoomGameData( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
 		// pClient->dataBuffer = new PermitMakeRandomStruct( pClient->roomIndex, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
-		memcpy( pClient->buf, (char*)&PERMIT_MAKE_RANDOM, sizeof(int));
-		memcpy( pClient->buf + 4, (char*)&retIsHostFirst, sizeof(int));
-		memcpy( pClient->buf + 8, (char*)&retPlayerMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 12, (char*)&retEnemyMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 16, (char*)&retSubMissionIndex, sizeof(int));
+		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_MAKE_RANDOM), sizeof(int));
+		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
+		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
 		 pClient->dataSize = 20;
 	}
@@ -77,12 +69,12 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 		int sizeBuffer = stringBuffer.size();
 
-		memcpy( pClient->buf, (char*)&PERMIT_JOIN_RANDOM, sizeof(int));
-		memcpy( pClient->buf + 4, (char*)&retIsHostFirst, sizeof(int));
-		memcpy( pClient->buf + 8, (char*)&retPlayerMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 12, (char*)&retEnemyMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 16, (char*)&retSubMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 20, (char*)&sizeBuffer, sizeof(int));
+		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
+		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
+		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 		memcpy( pClient->buf + 24, stringBuffer.data(), sizeBuffer);
 
 		 pClient->dataSize = 28 + sizeBuffer;
@@ -99,7 +91,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
-		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&sizeBuffer), sizeof(int));
+		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 		memcpy( pClient->buf + 8, stringBuffer.data(), sizeBuffer);
 
 		 pClient->dataSize = 8 + sizeBuffer;
@@ -121,7 +113,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 	{
 		//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
 
-		memcpy( pClient->buf, (char*)&ANSWER_EXIT_RANDOM, sizeof(int));
+		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_EXIT_RANDOM), sizeof(int));
 		 pClient->dataSize = 4;
 	}
 	else
@@ -156,21 +148,22 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* pClient)
 		//string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
 		//int sizeBuffer = stringBuffer.size();
 
-		memcpy( pClient->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_FRIEND_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
 		 pClient->pRoomIter->GetRoomGameData( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
-		memcpy( pClient->buf + 8, (char*)&retIsHostFirst, sizeof(int));
-		memcpy( pClient->buf + 12, (char*)&retPlayerMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 16, (char*)&retEnemyMissionIndex, sizeof(int));
-		memcpy( pClient->buf + 20, (char*)&retSubMissionIndex, sizeof(int));
+		
+		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
+		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
+		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
 		 pClient->dataSize = 24;
 	}
 	else
 	{
-		memcpy( pClient->buf, (char*)&ANSWER_FRIEND_JOIN, sizeof(int));
+		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_FRIEND_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
 		 pClient->dataSize = 8;

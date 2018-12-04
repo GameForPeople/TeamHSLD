@@ -62,7 +62,7 @@ private:
 	HANDLE hManagerThread;
 	HANDLE hUDPThread;
 
-	//For Game
+	// Only Use 
 	UserDataManager* pUserData;
 	GameRoomManager* pRoomData;
 	UDPManager* pUdpManager;
@@ -80,7 +80,12 @@ public:
 
 	~IOCPServer()
 	{
-		Close();
+		try { Close(); }
+		catch (...)
+		{
+			std::cout << "[서버 오류] : IOCPServer 소멸자에서 예외가 발생했습니다. " << "\n";
+			std::exit(EXIT_FAILURE);
+		}
 	}
 	
 public:
@@ -88,7 +93,8 @@ public:
 	void Init(bool InIsTrueLoadExternalIP)
 	{
 		_PrintServerInfoUI(InIsTrueLoadExternalIP);
-		//LoadUserData();
+		//LoadUserData();	// 나중에 닉네임 해싱 트리 만드는 작업 여기서 필요함.
+
 		_InitWinSocket();
 		_CreateBindListen();
 		_BindSceneDataProcess();
@@ -109,9 +115,9 @@ public:
 
 private:
 	//Init
-	int _GetExternalIP(char *ip);
+	void _GetExternalIP(char *ip);
 
-	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);
+	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);	// 서버 관리자에게 필요한 UI를 띄어줍니다.
 	
 	//void LoadUserData();
 	

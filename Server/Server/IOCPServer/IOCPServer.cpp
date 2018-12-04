@@ -7,7 +7,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	[[noreturn]] void ERROR_QUIT(char *msg)
+	_NORETURN void ERROR_QUIT(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -25,7 +25,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	[[noreturn]] void ERROR_DISPLAY(char *msg)
+	_NORETURN void ERROR_DISPLAY(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -37,6 +37,7 @@ namespace NETWORK_UTIL {
 			0,
 			NULL
 		);
+		
 		printf(" [%s]  %S", msg, (char *)lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
@@ -105,7 +106,7 @@ namespace NETWORK_UTIL {
 };
 
 //Init
-int IOCPServer::_GetExternalIP(char *ip)
+_NORETURN void IOCPServer::_GetExternalIP(char *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
@@ -113,8 +114,11 @@ int IOCPServer::_GetExternalIP(char *ip)
 
 	hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 
-	if (NULL == hInternet)
-		return 0;
+	if (hInternet == NULL)
+	{
+		std::cout << "[서버 오류] : 서버의 ExternalIP를 확인할 수 없습니다. " << "\n";
+		std::exit(EXIT_FAILURE);
+	}
 
 	hFile = InternetOpenUrl(hInternet, EXTERNALIP_FINDER_URL, NULL, 0, INTERNET_FLAG_RELOAD, 0);
 
@@ -134,13 +138,17 @@ int IOCPServer::_GetExternalIP(char *ip)
 		InternetCloseHandle(hFile);
 		InternetCloseHandle(hInternet);
 
-		return _tcslen(ip);
+		// return true; //_tcslen(ip);
 	}
-
-	return 0;
+	else
+	{
+		std::cout << "[서버 오류] : 서버의 ExternalIP를 확인할 수 없습니다. " << "\n";
+		std::exit(EXIT_FAILURE);
+	}
+	
 }
 
-void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
+_NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
@@ -216,13 +224,13 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 //	userData.Load();
 //}
 
-void IOCPServer::_InitWinSocket()
+_NORETURN void IOCPServer::_InitWinSocket()
 {
 	//윈속 초기화
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
 	{
-		printf("윈속 초기화 실패");
-		exit(1);
+		std::cout << "[서버 오류] : 윈속 초기화 실패로 인한 종료. " << "\n";
+		exit(EXIT_FAILURE);
 	}
 
 	// 입출력 완료 포트 생성
@@ -240,8 +248,8 @@ void IOCPServer::_InitWinSocket()
 
 	if (hIOCP == NULL)
 	{
-		printf("입출력 완료 포트 생성 실패");
-		exit(1);
+		std::cout << "[서버 오류] : 입출력 완료 포트 생성 실패로 인한 종료. " << "\n";
+		exit(EXIT_FAILURE);
 	}
 
 	// CPU 개수 확인
@@ -254,19 +262,20 @@ void IOCPServer::_InitWinSocket()
 	// 하지만 과연 이 2배라는 수가 내가 만든 서버에서 가장 최적의 성능을 낼 수 있다고 보장할 수 있는 것일까..
 	HANDLE hThread;
 	//for (int i = 0; i < (int)si.dwNumberOfProcessors * 2; ++i)
-	for (int i = 0; i < (int)2; ++i)
+
+	for (int i = 0; i < (int)2; ++i)	// 현재 2 쓰레드만 사용.
 	{
 		hThread = CreateThread(NULL, 0, WorkerThread, (LPVOID)this, 0, NULL);
 		if (hThread == NULL)
 		{
-			printf("작업 스레드 생성 중, Null");
-			exit(1);
+			std::cout << "[서버 오류] : WorkerThread 생성 실패로 인한 종료. " << "\n";
+			exit(EXIT_FAILURE);
 		}
 		CloseHandle(hThread);
 	}
 }
 
-void IOCPServer::_CreateBindListen()
+_NORETURN void IOCPServer::_CreateBindListen()
 {
 	//Socket()
 	listenSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -285,7 +294,7 @@ void IOCPServer::_CreateBindListen()
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
 }
 
-void IOCPServer::_BindSceneDataProcess()
+_NORETURN void IOCPServer::_BindSceneDataProcess()
 {
 	sceneNetworkManagerCont.reserve(6);	//	Scene Count = 6;
 
@@ -297,13 +306,13 @@ void IOCPServer::_BindSceneDataProcess()
 	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::InGameScene>(pRoomData, pUserData, pUdpManager));
 }
 
-void IOCPServer::_CreateSocket()
+_NORETURN void IOCPServer::_CreateSocket()
 {
 	pUdpManager->_CreateUDPSocket();
 }
 
 //Run
-void IOCPServer::_AcceptProcess()
+_NORETURN void IOCPServer::_AcceptProcess()
 {
 	printf("     [ServerCore] Dedicated server activated!\n\n");
 
@@ -330,26 +339,30 @@ void IOCPServer::_AcceptProcess()
 		CreateIoCompletionPort((HANDLE)clientSocket, hIOCP, clientSocket, 0);
 
 		// 소켓 정보 구조체 할당
-		SocketInfo *ptr = new SocketInfo;
-		if (ptr == NULL) break;
+		SocketInfo *pClient = new SocketInfo;
+		if (pClient == nullptr)
+		{
+			std::cout << "[서버 오류] : Accept한 Client가 nullptr으로 AcceptThread 종료." << "\n";
+			break;
+		}
 
-		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
+		ZeroMemory(&pClient->overlapped, sizeof(pClient->overlapped));
 
-		ptr->sock = clientSocket;
-		ptr->isRecvTurn = true;
+		pClient->sock = clientSocket;
+		pClient->isRecvTurn = true;
 
-		ptr->wsabuf.buf = ptr->buf;
-		ptr->wsabuf.len = BUF_SIZE;
+		pClient->wsabuf.buf = pClient->buf;
+		pClient->wsabuf.len = BUF_SIZE;
 
 		// 비동기 입출력의 시작
 		flags = 0;
 		retValBuffer = WSARecv(
 			clientSocket, // 클라이언트 소켓
-			&ptr->wsabuf, // 읽을 데이터 버퍼의 포인터
+			&pClient->wsabuf, // 읽을 데이터 버퍼의 포인터
 			1,			 // 데이터 입력 버퍼의 개수
 			&recvBytes,  // recv 결과 읽은 바이트 수, IOCP에서는 비동기 방식으로 사용하지 않으므로 nullPtr를 넘겨도 무방
 			&flags,		 // recv에 사용될 플래그
-			&ptr->overlapped, // overlapped구조체의 포인터
+			&pClient->overlapped, // overlapped구조체의 포인터
 			NULL			// IOCP에서는 사용하지 않으므로 NULL, nullptr넘겨도 무방
 		);
 
@@ -365,7 +378,7 @@ void IOCPServer::_AcceptProcess()
 	}
 }
 
-void IOCPServer::_RunOtherThread()
+_NORETURN void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
@@ -377,10 +390,11 @@ void IOCPServer::_RunOtherThread()
 
 
 //Close
-void IOCPServer::_DestroyAndClean()
+_NORETURN void IOCPServer::_DestroyAndClean()
 {
 	closesocket(listenSocket);
 	WSACleanup();
+
 	//....? 우리 열심히 일한 불쌍한 쓰레드들은 어떻게 하나,, 전능하신 운영체제께서 알아서..ㅎ 
 	// 임마 쇼하지 말고 나중에...초반에 핸들값들 다 벡터에 차곡차곡 모아서 여기서 멈추게해드려..
 
@@ -391,13 +405,13 @@ void IOCPServer::_DestroyAndClean()
 //thread's
 DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 {
-	IOCPServer* server = static_cast<IOCPServer*>(arg);
-	server->_WorkerThreadFunction();
+	IOCPServer* pServer = static_cast<IOCPServer*>(arg);
+	pServer->_WorkerThreadFunction();
 
 	return 0;
 };
 
-void IOCPServer::_WorkerThreadFunction()
+_NORETURN void IOCPServer::_WorkerThreadFunction()
 {
 	// 한 번만 선언해서 여러번 씁시다. 아껴써야지...
 	int retVal{};
@@ -531,7 +545,7 @@ DWORD WINAPI IOCPServer::UDPThread(LPVOID arg)
 	return 0;
 };
 
-void IOCPServer::_UDPThreadFunction()
+_NORETURN void IOCPServer::_UDPThreadFunction()
 {
 	while (7)
 	{
@@ -543,13 +557,12 @@ void IOCPServer::_UDPThreadFunction()
 DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 {
 	IOCPServer* server = static_cast<IOCPServer*>(arg);
-	
 	server->_ManagerLoop();
 
 	return 0;
 }
 
-void IOCPServer::_ManagerLoop()
+_NORETURN void IOCPServer::_ManagerLoop()
 {
 	int managerLoopBuffer{};
 

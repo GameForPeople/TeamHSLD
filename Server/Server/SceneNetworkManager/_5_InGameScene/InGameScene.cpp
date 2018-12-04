@@ -109,7 +109,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameReady(SocketInfo* pClient)
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SocketInfo* pClient)
 {
-	memcpy(pClient->buf, (char*)&InSendType, sizeof(int));
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&InSendType), sizeof(int));
 	
 	//if(InSendType != 500)
 	//	std::cout << "InSendType : " << InSendType << "\n";

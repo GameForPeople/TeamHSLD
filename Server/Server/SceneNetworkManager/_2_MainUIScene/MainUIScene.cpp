@@ -171,10 +171,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
 			pClient->pRoomIter->GetRoomGameData(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
-			memcpy(pClient->buf + 8, (char*)&retIsHostFirst, sizeof(int));
-			memcpy(pClient->buf + 12, (char*)&retPlayerMissionIndex, sizeof(int));
-			memcpy(pClient->buf + 16, (char*)&retEnemyMissionIndex, sizeof(int));
-			memcpy(pClient->buf + 20, (char*)&retSubMissionIndex, sizeof(int));
+			memcpy(pClient->buf + 8, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
+			memcpy(pClient->buf + 12, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
+			memcpy(pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
+			memcpy(pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
 			rbTreeNode<string, UserData>* EnemypClientBuffer = pClient->pRoomIter->RetEnemyUserIter(pClient->isHost);
 			string stringBuffer(EnemypClientBuffer->GetValue().GetNickName());
@@ -182,7 +182,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			
 			std::cout << "보내는 닉네임은 : " << stringBuffer << "입니다. 사이즈는 "<< sizeBuffer << " \n";
 
-			memcpy(pClient->buf + 24, (char*)&sizeBuffer, sizeof(int));
+			memcpy(pClient->buf + 24, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 			memcpy(pClient->buf + 28, stringBuffer.data(), sizeBuffer);
 
 			pClient->dataSize = 32 + sizeBuffer;
