@@ -47,7 +47,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 	if (friendNum)
 	{
 		int stringSize{};
-		string stringBuffer{};
+		wstring stringBuffer{};
 		bool isOnLogin{};
 		rbTreeNode<string, UserData> *pBuffer = nullptr;
 
@@ -56,7 +56,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			// 해당 컨테이너의 i번째 아이디 스트링의 사이즈.
 			stringBuffer = pClient->pUserNode->SetValue().GetFriendStringCont()[i];
 				//stringSize = stringBuffer.size();
-			std::cout << " " << pClient->pUserNode->GetKey() << "의 친구 : " << stringBuffer << "\n";
+			
+			//std::cout << " " << pClient->pUserNode->GetKey() << "의 친구 : " << stringBuffer << "\n";
 
 			// 아이디 스트링 사이즈와, 아이디 적재.
 				//memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<char*>(&stringSize), sizeof(int));
@@ -64,7 +65,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 				//pClient->dataSize += 4 + stringSize;
 
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
-			pBuffer = pUserData->SearchUserNode(stringBuffer, isOnLogin);
+			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin);
 
 			// 로그인 햇을 때, 해당 유저 닉네임 사이즈와, 닉네임, 현재 상태를 보냄.
 			if (isOnLogin)
@@ -110,7 +111,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 	//pClient->pUserNode->SetValue().GetFriendSocketInfo(indexBuffer);
 	bool isOnUser{ false };
 
-	rbTreeNode<string, UserData> *pBuffer = pUserData->SearchUserNode(pClient->pUserNode->SetValue().GetFriendStringWithIndex(indexBuffer), isOnUser);
+	rbTreeNode<string, UserData> *pBuffer = pUserData->SearchUserNodeWithNickname(pClient->pUserNode->SetValue().GetFriendStringWithIndex(indexBuffer), isOnUser);
 
 	if (isOnUser && pBuffer->SetValue().GetSocketInfo()->pRoomIter == nullptr)
 	{
@@ -176,11 +177,11 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			memcpy(pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 			memcpy(pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
-			rbTreeNode<string, UserData>* EnemypClientBuffer = pClient->pRoomIter->RetEnemyUserIter(pClient->isHost);
-			string stringBuffer(EnemypClientBuffer->GetValue().GetNickName());
+			rbTreeNode<string, UserData>* pEnemyClientBuffer = pClient->pRoomIter->RetEnemyUserIter(pClient->isHost);
+			wstring stringBuffer(pEnemyClientBuffer->GetValue().GetNickName());
 			int sizeBuffer = stringBuffer.size();
 			
-			std::cout << "보내는 닉네임은 : " << stringBuffer << "입니다. 사이즈는 "<< sizeBuffer << " \n";
+			//std::cout << "보내는 닉네임은 : " << stringBuffer << "입니다. 사이즈는 "<< sizeBuffer << " \n";
 
 			memcpy(pClient->buf + 24, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 			memcpy(pClient->buf + 28, stringBuffer.data(), sizeBuffer);

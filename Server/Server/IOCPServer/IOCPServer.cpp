@@ -7,7 +7,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	_NORETURN void ERROR_QUIT(const TCHAR *msg)
+	_NORETURN void ERROR_QUIT(const char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -25,7 +25,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	_NORETURN void ERROR_DISPLAY(const TCHAR *msg)
+	_NORETURN void ERROR_DISPLAY(const char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -38,7 +38,7 @@ namespace NETWORK_UTIL {
 			NULL
 		);
 		
-		printf(" [%s]  %S", msg, (TCHAR *)lpMsgBuf);
+		printf(" [%s]  %S", msg, lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
 
@@ -106,12 +106,12 @@ namespace NETWORK_UTIL {
 };
 
 //Init
-_NORETURN void IOCPServer::_GetExternalIP(TCHAR *ip)
+_NORETURN void IOCPServer::_GetExternalIP(char *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
 	
-	TCHAR buffer[256] = { 0 };
+	char buffer[256] = { 0 };
 
 	hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 
@@ -129,8 +129,8 @@ _NORETURN void IOCPServer::_GetExternalIP(TCHAR *ip)
 		buffer[rSize] = '\0';
 
 		int nShift = _tcslen(TITLE_PARSER);
-		tstring strHTML = buffer;
-		tstring::size_type nIdx = strHTML.find(TITLE_PARSER);
+		string strHTML = buffer;
+		string::size_type nIdx = strHTML.find(TITLE_PARSER);
 		strHTML.erase(strHTML.begin(), strHTML.begin() + nIdx + nShift);
 		nIdx = strHTML.find(TEXT("</body>"));
 		strHTML.erase(strHTML.begin() + nIdx, strHTML.end());

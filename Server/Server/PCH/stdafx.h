@@ -30,6 +30,10 @@
 // C++17
 #include <string_view>
 
+// DEV_66
+#include <locale>
+#include <codecvt>
+
 // custom
 
 // For Login

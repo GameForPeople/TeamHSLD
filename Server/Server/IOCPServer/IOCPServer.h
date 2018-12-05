@@ -44,13 +44,6 @@ PauseThreadList
 만약 일시정지가 풀리더라도 ReleaseThreadList가 꽉 차있다면 바로 ReleaseThreadList로 보내지 않고 대기한다.
 */
 
-// IOCP 클래스에서 탈출... 
-//이 친구들 백프로 써야해서 굳이 싱글톤을...?
-// 전역이 좋을 까, 쓰레도 인자로 넘기는게 좋을까..
-//CUserData userData;
-//CGameRoom roomData;
-// 일단 서버 멤버변수로, 각 쓰레드에는 넘기도록합시다;;
-
 class IOCPServer {
 private:
 	WSADATA wsa;
@@ -80,6 +73,12 @@ public:
 
 	~IOCPServer()
 	{
+		sceneNetworkManagerCont.clear();
+
+		delete pUserData;
+		delete pRoomData;
+		delete pUdpManager;
+
 		try { Close(); }
 		catch (...)
 		{
@@ -115,7 +114,7 @@ public:
 
 private:
 	//Init
-	void _GetExternalIP(TCHAR *ip);
+	void _GetExternalIP(char *ip);
 
 	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);	// 서버 관리자에게 필요한 UI를 띄어줍니다.
 	
