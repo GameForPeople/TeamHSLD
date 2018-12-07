@@ -2,7 +2,8 @@
 
 #include "../PCH/stdafx.h"
 #include "../UserData/UserData.h"
-#include "../UserData/Custom_Map_RedBlackTree.h"
+#include "../Custom_DataStructure/Custom_Map_RedBlackTree.h"
+#include "../Custom_DataStructure/Custom_SET_RedBlackTree.h"
 
 
 struct SocketInfo;
@@ -17,15 +18,17 @@ class UserDataManager {
 		,	KOREAN	=	1
 	};
 
-	std::vector<rbTree<string, UserData>>	userDataCont;
-	std::vector<rbTree<wstring, string>>	nicknameCont;
+	std::vector<CUSTOM_SET::rbTree<shared_ptr<UserData>, string>>	userDataCont;
+	std::vector<CUSTOM_MAP::rbTree<wstring, string>>				nicknameCont;
 
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter; //DEV_66 닉네임 멀티바이트 <-> 유니코드 변환을 위해 사용.
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>			converter; //DEV_66 닉네임 멀티바이트 <-> 유니코드 변환을 위해 사용.
 
 	const wstring CONST_A; //DEV_66 닉네임 Cont 인덱스를 알기 위해 사용.
 	const wstring CONST_Z;
 	const wstring CONST_a;
 	const wstring CONST_z;
+
+	shared_ptr<UserData> CONST_NULL_USERDATA{nullptr};
 
 public:
 	UserDataManager(); // = delete;
@@ -36,17 +39,17 @@ public:
 	int LoginProcess(SocketInfo* pInSocketInfo, const string& InID, wstring& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
 		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<wstring>& RetFriendStringCont);
 
-	void LogoutProcess(SocketInfo* pInSocketInfo);
+	_NORETURN void LogoutProcess(shared_ptr<UserData>& pUserNode);
 
-	rbTreeNode<string, UserData>* SearchUserNode(const string& keyString, bool& RetBool);	// 아이디를 통해, 유저 노드를 탐색합니다.
+	shared_ptr<UserData>& SearchUserNode(const string& keyString, bool& RetBool);	// 아이디를 통해, 유저 노드를 탐색합니다.
 
-	rbTreeNode<string, UserData>* SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool);	// 닉네임을 통해, 유저노드를 탐색합니다.
+	shared_ptr<UserData>& SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool);	// 닉네임을 통해, 유저노드를 탐색합니다.
 
 private:
 	// for userDataCont Hash, 첫글자처리필요.
-	int GetStringFirstChar(const char& InStringFirstChar);
+	_NODISCARD int GetStringFirstChar(const char& InStringFirstChar) noexcept;
 
 public:
-	void SetGameResult(rbTreeNode<string, UserData>* InUserIter, const bool& InWinOrLose);
+	_NORETURN __inline void SetGameResult(const shared_ptr<UserData>& InUserData, const bool& InWinOrLose) noexcept { InUserData->SetGameResult(InWinOrLose); }
 };
 

@@ -45,7 +45,7 @@ void UDPManager::_CreateUDPSocket()
 
 void UDPManager::_SendMessage(const char& InChar)
 {
-	CustomNode* pNodeBuffer; // = friendInviteMessageQueue.Pop();
+	weak_ptr<UserData> pNodeBuffer; // = friendInviteMessageQueue.Pop();
 	
 	// 이부분 비효율적; 차라리. 함수 여러개 만들기.
 	if (InChar == CONST_INVITE_FRIEND)
@@ -60,27 +60,26 @@ void UDPManager::_SendMessage(const char& InChar)
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
 
-	if (pNodeBuffer == nullptr) // 댕글링 포인터 에러. 이미 딤진 소켓. 여기서 이거 nullptr 절대 안걸려 지고 고냥 서버 터짐.
+	shared_ptr<UserData> pUserData = pNodeBuffer.lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 에러. 이미 딤진 소켓. 여기서 이거 nullptr 절대 안걸려 지고 고냥 서버 터짐.
 	{
 		std::cout << "Error UDP Send \n";
 		return;
 	}
 
-	if (pNodeBuffer->GetData() != nullptr)
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = UDP_PORT;
+
+	if (int retValue 
+		= sendto(udpSocket, reinterpret_cast<const char*>(&InChar), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
 	{
-		getpeername(pNodeBuffer->GetSocket(), reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
-		clientAddr.sin_port = UDP_PORT;
-
-		if (int retValue 
-			= sendto(udpSocket, reinterpret_cast<const char*>(&InChar), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
-			; retValue == SOCKET_ERROR)
-		{
-			UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
-		}
-
-		std::cout << " UDP -> " << (int)(InChar) << "를 보냈습니다.  \n";
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
 	}
 
-	delete pNodeBuffer;
-	pNodeBuffer = nullptr;
+	//std::cout << " UDP -> " << (int)(InChar) << "를 보냈습니다.  \n";
+
+	//delete pUserData;
+	//delete pNodeBuffer;
 }

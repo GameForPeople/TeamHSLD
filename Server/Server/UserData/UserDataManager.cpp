@@ -65,6 +65,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	
 	//pInSocketInfo->pUserNode = 
 		userDataCont[pInSocketInfo->userDataContIndex].Search(InID, RetBoolBuffer);
+	//pInSocketInfo->pUserNode = nullptr;	//? 이게 무슨 짓이야?
 
 	// 이미 로그인 여부 체크.
 	if (RetBoolBuffer)
@@ -114,10 +115,10 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
-		pInSocketInfo->pUserNode = userDataCont[pInSocketInfo->userDataContIndex].Insert(InID, UserData(pInSocketInfo, InID));
+		pInSocketInfo->pUserNode = make_shared<UserData>();
+		/*pInSocketInfo->pUserNode = */ userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
 
 		// RetMoney가 -1일 경우, 클라언트에서 닉네임 입력 필요. (Login Scene ? // Main UI Scene ?)
-
 		std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
 		return 0;
 	}
@@ -125,8 +126,10 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
-		pInSocketInfo->pUserNode = userDataCont[pInSocketInfo->userDataContIndex].Insert(InID, UserData(pInSocketInfo, InID, RetNickName,
-			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit));
+		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
+			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit);
+		
+		userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
 		return 0;
 	}
 
@@ -146,31 +149,30 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	}
 
 	// 정상적인 로그인.
-	pInSocketInfo->pUserNode = userDataCont[pInSocketInfo->userDataContIndex].Insert(InID, UserData(pInSocketInfo, InID, RetNickName,
-		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont));
+	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
+		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
 
+	/*pInSocketInfo->pUserNode =*/ userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
 	return 0;
 }
 
-void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
+void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 {
-	if (pInSocketInfo->pUserNode->SetValue().GetNickName().size() == 0)
+	if (pUserNode->GetNickName().size() == 0)
 	{
 		// 야 이거는 닉네임 없는거야 저장하지 마 
 	}
 	else
 	{
 		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함 // 이거 잘못하면 간다 간다 훅간다!
-		if (pInSocketInfo->pUserNode->SetValue().GetDemandFriendContIndex() != -1)
+		if (pUserNode->GetDemandFriendContIndex() != -1)
 		{
-			pInSocketInfo->pUserNode->SetValue().SetDeleteFriendID();
+			pUserNode->SetDeleteFriendID();
 		}
 
 		// 파일명 제작
 		string fileNameBuffer = "UserData/Saved/.txt";
-		string keyBuffer = pInSocketInfo->pUserNode->GetKey();
-
-		UserData valueBuffer = pInSocketInfo->pUserNode->SetValue();
+		string keyBuffer = pUserNode->GetKey();
 
 		fileNameBuffer.insert(fileNameBuffer.begin() + 15, keyBuffer.begin(), keyBuffer.end());
 
@@ -191,18 +193,18 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 
 		outFile
 			<< " " << keyBuffer //== valueBuffer.GetID()
-			<< " " << converter.to_bytes(valueBuffer.GetNickName())	// [DEV_66]
-			<< " " << valueBuffer.GetWinCount()
-			<< " " << valueBuffer.GetLoseCount()
-			<< " " << valueBuffer.GetMoney()
-			<< " " << valueBuffer.GetAchievementBit()
-			<< " " << valueBuffer.GetTitleBit()
-			<< " " << valueBuffer.GetCharacterBit()
-			<< " " << valueBuffer.GetFriendStringCont().size() 
+			<< " " << converter.to_bytes(pUserNode->GetNickName())	// [DEV_66]
+			<< " " << pUserNode->GetWinCount()
+			<< " " << pUserNode->GetLoseCount()
+			<< " " << pUserNode->GetMoney()
+			<< " " << pUserNode->GetAchievementBit()
+			<< " " << pUserNode->GetTitleBit()
+			<< " " << pUserNode->GetCharacterBit()
+			<< " " << pUserNode->GetFriendNicknameCont().size() 
 			<< std::endl;
 
 		// for-iter에서 직접 받으면, begin하고 end하고 메모리주소 다르다고 오류남 ( called by Value )
-		auto iterBuffer = valueBuffer.GetFriendStringCont();
+		auto iterBuffer = pUserNode->GetFriendNicknameCont();
 
 		for (auto iter 
 			= iterBuffer.begin()
@@ -214,15 +216,15 @@ void UserDataManager::LogoutProcess(SocketInfo* pInSocketInfo)
 	}
 
 	// UserCont(MAP)에서 해당 정보 삭제.
-	userDataCont[pInSocketInfo->userDataContIndex].Delete(pInSocketInfo->pUserNode);
+	userDataCont[pUserNode->GetSocketInfo()->userDataContIndex].DeleteWithSearch(pUserNode->GetKey());
 }
 
-rbTreeNode<string, UserData>* UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
+shared_ptr<UserData>& UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
 {
 	return userDataCont[GetStringFirstChar(keyString[0])].Search(keyString, RetBool);
 }
 
-rbTreeNode<string, UserData>* UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool)
+shared_ptr<UserData>& UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool)
 {
 	bool isReturnTrue{ false };
 	string idBuffer{};
@@ -245,7 +247,7 @@ rbTreeNode<string, UserData>* UserDataManager::SearchUserNodeWithNickname(const 
 	if (!isReturnTrue)
 	{
 		RetBool = false;
-		return nullptr;
+		return CONST_NULL_USERDATA;
 	}
 
 	return SearchUserNode(idBuffer, RetBool);
@@ -274,10 +276,4 @@ int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
 	{
 		return 36;
 	}
-}
-
-void UserDataManager::SetGameResult(rbTreeNode<string, UserData>* InUserIter, const bool& InWinOrLose)
-{
-	//InUserIter->second.SetGameResult(InWinOrLose);
-	InUserIter->SetValue().SetGameResult(InWinOrLose);
 }

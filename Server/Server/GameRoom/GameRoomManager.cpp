@@ -2,16 +2,16 @@
 #include "../IOCPServer/SocketInfo.h"
 
 
-GameRoom* GameRoomManager::_CreateRoom(rbTreeNode<string, UserData>* pInUserNode)
+GameRoom* GameRoomManager::_CreateRoom(const shared_ptr<UserData>& pInUserNode)
 {
 	return waitRoomCont.Create(pInUserNode);
 }
 
-GameRoom* GameRoomManager::_JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom)
+GameRoom* GameRoomManager::_JoinRoom(const shared_ptr<UserData>& pInUserNode, GameRoom* pRetRoom)
 {
 	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
 
-	pRetRoom = waitRoomCont.GetOneRoom(pRetRoom);
+	pRetRoom = waitRoomCont.GetRootNode(pRetRoom);
 
 	playRoomCont.Push(pRetRoom);
 
@@ -49,13 +49,12 @@ bool GameRoomManager::CancelWait(SocketInfo* pClient)
 	}
 }
 
-GameRoom* GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
+GameRoom* GameRoomManager::RandomMatchingProcess(const shared_ptr<UserData>& pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
 {
 	if (waitRoomCont.IsEmpty()) // Create!
 	{
 		RetBoolBuffer = true;
 		pRetRoom = _CreateRoom(pInUser);
-
 	}
 	else // Join
 	{

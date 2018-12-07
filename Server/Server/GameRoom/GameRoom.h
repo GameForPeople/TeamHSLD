@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../PCH/stdafx.h"
-#include "../Protocol/CommunicationDataStruct.h"
+#include "../Protocol/CommunicationProtocol.h"
 #include "../UserData/UserDataManager.h"
 
 enum class ROOM_STATE {
@@ -12,6 +12,9 @@ enum class ROOM_STATE {
 
 struct RoomDynamicData
 {
+	wstring hostNickName;
+	wstring guestNickName;
+
 	int hostMissionIndex;
 	int guestMissionIndex;
 	int subMissionIndex;
@@ -44,8 +47,6 @@ public:
 	GameRoom* right;
 
 private:
-	rbTreeNode<string, UserData>* pUserNode[2]{};
-
 	RoomDynamicData* roomDynamicData;
 
 	int dataProtocol[2];
@@ -57,7 +58,7 @@ private:
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
 public:
-	GameRoom(rbTreeNode<string, UserData>* InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
+	GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
 	//for pDoor
 	GameRoom(const int& InBuffer);
 	~GameRoom();
@@ -67,23 +68,26 @@ public:
 
 public:
 
-	void JoinRoom(rbTreeNode<string, UserData>* InGuestUserIter);
+	void JoinRoom(const shared_ptr<UserData>& InGuestUserIter);
 	
 	__inline void DeleteDynamicData() { delete roomDynamicData;  roomDynamicData = nullptr; }
 
 	//new Function
 public:
-	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, int& retEnemyMissionIndex, int& retSubMissionIndex)
+	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, 
+		int& retEnemyMissionIndex, int& retSubMissionIndex, wstring& retEnemyNickname)
 	{
 		if (InIsHost)
 		{
 			retPlayerMissionIndex = roomDynamicData->hostMissionIndex;
 			retEnemyMissionIndex = roomDynamicData->guestMissionIndex;
+			retEnemyNickname = roomDynamicData->guestNickName;
 		}
 		else
 		{
 			retPlayerMissionIndex = roomDynamicData->guestMissionIndex;
 			retEnemyMissionIndex = roomDynamicData->hostMissionIndex;
+			retEnemyNickname = roomDynamicData->hostNickName;
 		}
 
 		if (roomDynamicData->isHostFirst)
@@ -159,11 +163,6 @@ public:
 		//}
 	}
 
-	__inline rbTreeNode<string, UserData>*  RetEnemyUserIter(const bool& InIsHost)
-	{
-		return pUserNode[InIsHost];
-	}
-
 	__inline bool GetGameReady() const
 	{
 		if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
@@ -198,14 +197,22 @@ public:
 		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 
-	__inline void SetFriendUserPtr(rbTreeNode<string, UserData>* InPtr)
-	{
-		pUserNode[1] = InPtr;
-	}
+#pragma region [Old Function]
 
-	__inline void SetUserPtr(const bool& InIsGuest, rbTreeNode<string, UserData>* InPtr)
-	{
-		pUserNode[InIsGuest] = InPtr;
-	}
+	//__inline rbTreeNode<string, UserData>*  RetEnemyUserIter(const bool& InIsHost)
+	//{
+	//	return pUserNode[InIsHost];
+	//}
+	//__inline void SetFriendUserPtr(rbTreeNode<string, UserData>* InPtr)
+	//{
+	//	pUserNode[1] = InPtr;
+	//}
+	//
+	//__inline void SetUserPtr(const bool& InIsGuest, rbTreeNode<string, UserData>* InPtr)
+	//{
+	//	pUserNode[InIsGuest] = InPtr;
+	//}
+#pragma endregion
+
 };
 

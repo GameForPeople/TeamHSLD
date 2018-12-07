@@ -477,7 +477,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 				pClient->pRoomIter = nullptr;
 			}
 
-			pUserData->LogoutProcess(pClient);
+			pUserData->LogoutProcess(pClient->pUserNode);
 
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
@@ -517,7 +517,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			recvType = (int&)(pClient->buf);
 		
 			if(pClient->pUserNode != nullptr)
-			std::cout << pClient->pUserNode->SetValue().GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
+			std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 

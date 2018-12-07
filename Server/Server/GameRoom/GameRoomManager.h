@@ -2,15 +2,15 @@
 
 #include "../PCH/stdafx.h"
 #include "../GameRoom/GameRoom.h"
-#include "../GameRoom/Room_List.h"
-#include "../UserData/Custom_Map_RedBlackTree.h"
+#include "../Custom_DataStructure/Custom_Node_List.h"
+#include "../Custom_DataStructure/Custom_Set_RedBlackTree.h"
 
 
 struct SocketInfo;
 
 class GameRoomManager {
-	room_list waitRoomCont;
-	room_list playRoomCont;
+	CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> waitRoomCont;
+	CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> playRoomCont;
 
 public:
 	GameRoomManager() = default;
@@ -19,12 +19,12 @@ public:
 public: //for InGameScene
 
 	// True = Create , False = Join
-	GameRoom* RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuuffer);
+	GameRoom* RandomMatchingProcess(const shared_ptr<UserData>& pInUser, GameRoom* pRetRoom, bool& RetBoolBuuffer);
 
 private:
-	GameRoom* _CreateRoom(rbTreeNode<string, UserData>* pInUserNode);
+	GameRoom* _CreateRoom(const shared_ptr<UserData>& pInUserNode);
 
-	GameRoom* _JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom);
+	GameRoom* _JoinRoom(const shared_ptr<UserData>& pInUserNode, GameRoom* pRetRoom);
 	
 public:
 	void DestroyRoom(SocketInfo* pClient);

@@ -2,7 +2,6 @@
 
 #include "../PCH/stdafx.h"
 #include "../UserData/UserDataManager.h"
-#include "../UserData/Custom_Map_RedBlackTree.h"
 
 class GameRoom;
 
@@ -25,7 +24,9 @@ struct SocketInfo
 	// 현재 컨테이너 Std::Vector
 
 	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
-	rbTreeNode<string,UserData>* pUserNode;
+	shared_ptr<UserData>	pUserNode;
+	//CUSTOM_SET::rbTreeNode<UserData, string>* pUserNode;
+
 	// 한번만 계산해서 여러번 사용합시다.
 	int userDataContIndex;
 
@@ -38,8 +39,6 @@ struct SocketInfo
 
 	// 캐릭터의 정보를 담아넣는 구조체입니다.
 	//UserData* pUserData;
-
-
 
 public:
 	//생성자 필요에 의해 추가.

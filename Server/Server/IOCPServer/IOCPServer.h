@@ -46,19 +46,19 @@ PauseThreadList
 
 class IOCPServer {
 private:
-	WSADATA wsa;
-	HANDLE hIOCP;
-	SOCKET listenSocket;
+	WSADATA				wsa;
+	HANDLE				hIOCP;
+	SOCKET				listenSocket;
 
-	SOCKADDR_IN serverAddr;
+	SOCKADDR_IN			serverAddr;
 
-	HANDLE hManagerThread;
-	HANDLE hUDPThread;
+	HANDLE				hManagerThread;
+	HANDLE				hUDPThread;
 
 	// Only Use 
-	UserDataManager* pUserData;
-	GameRoomManager* pRoomData;
-	UDPManager* pUdpManager;
+	UserDataManager*	pUserData;
+	GameRoomManager*	pRoomData;
+	UDPManager*			pUdpManager;
 
 	std::vector<unique_ptr<SCENE_NETWORK_MANAGER::BaseScene>> sceneNetworkManagerCont;
 

@@ -49,6 +49,9 @@
     <Filter Include="소스 파일\SceneNetworkManager\_5_InGameScene">
       <UniqueIdentifier>{ea0848a3-d699-44c7-a8d3-a312a2c6e40c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Custom_DataStructure">
+      <UniqueIdentifier>{da7c2158-d742-4d96-9af1-2b9958f29b22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,9 +140,6 @@
     <ClInclude Include="IOCPServer\SocketInfo.h">
       <Filter>소스 파일\IOCPServer</Filter>
     </ClInclude>
-    <ClInclude Include="GameRoom\Room_List.h">
-      <Filter>소스 파일\Room</Filter>
-    </ClInclude>
     <ClInclude Include="GameRoom\GameRoom.h">
       <Filter>소스 파일\Room</Filter>
     </ClInclude>
@@ -149,14 +149,20 @@
     <ClInclude Include="UserData\UserDataManager.h">
       <Filter>소스 파일\UserData</Filter>
     </ClInclude>
-    <ClInclude Include="UserData\Custom_Map_RedBlackTree.h">
-      <Filter>소스 파일\UserData</Filter>
-    </ClInclude>
-    <ClInclude Include="IOCPServer\Custom_Node_Queue.h">
-      <Filter>소스 파일\IOCPServer</Filter>
-    </ClInclude>
     <ClInclude Include="IOCPServer\UDPManager.h">
       <Filter>소스 파일\IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="Custom_DataStructure\Custom_Map_RedBlackTree.h">
+      <Filter>소스 파일\Custom_DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Custom_DataStructure\Custom_Node_Queue.h">
+      <Filter>소스 파일\Custom_DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Custom_DataStructure\Custom_Set_RedBlackTree.h">
+      <Filter>소스 파일\Custom_DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Custom_DataStructure\Custom_Node_List.h">
+      <Filter>소스 파일\Custom_DataStructure</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

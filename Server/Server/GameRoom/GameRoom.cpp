@@ -1,12 +1,13 @@
 #include "../GameRoom/GameRoom.h"
 
-GameRoom::GameRoom(rbTreeNode<string, UserData>* InHostUser, GameRoom* InLeft, GameRoom* InRight)
+GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight)
 	:
 	roomState(ROOM_STATE::ROOM_STATE_SOLO), 
 	left(InLeft), right(InRight), roomDynamicData()
 {
 	roomDynamicData = new RoomDynamicData;
-	pUserNode[0] = InHostUser;
+	
+	roomDynamicData->hostNickName = InHostUserIter->GetNickName();
 }
 
 GameRoom::GameRoom(const int& InBuffer)
@@ -24,7 +25,7 @@ GameRoom::~GameRoom()
 		delete roomDynamicData;
 }
 
-void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)
+void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)
 {
 	// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 	//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
@@ -36,7 +37,7 @@ void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)
 	dataProtocol[0] = NOTIFY_GAME_READY;
 	dataProtocol[1] = NOTIFY_GAME_READY;
 
-	pUserNode[1] = InGuestUser;
+	roomDynamicData->guestNickName = InGuestUserIter->GetNickName();
 
 	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
 	roomState = ROOM_STATE::ROOM_STATE_PLAY;
