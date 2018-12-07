@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour
     public float RotationSensitivity;
     private Transform myTransform;
     private Vector3 priorPosition;
-    public static GameObject PickedMeshObj;
     public static float offset;
     
     public static int DiceCount;
@@ -23,6 +22,7 @@ public class CameraController : MonoBehaviour
     public bool myTurn;
     public static bool Once;
     public static bool TurnChange;
+    public static int lastmesh;
     
     void Start()
     {
@@ -48,14 +48,23 @@ public class CameraController : MonoBehaviour
             mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
     }
 
-    public IEnumerator movePosition(Vector3 position)
+    public IEnumerator movePosition(Vector3 start, Vector3 end)
     {
-        float amount = 0;
-        while (amount < 0.5)
+        // 새로 피킹했으면 점유하던애는 out 새로들어온애는 작동
+        float amount = 0; // 
+        int enterMesh = lastmesh;
+        while (true)
         {
-            //Debug.Log(amount);
-            amount += Time.deltaTime * 1;
-            transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime);
+            //Debug.Log(enterMesh + "<-->" + lastmesh + "amout : "+ amount++);
+            if (lastmesh != enterMesh)
+            {
+                Debug.Log("out??");
+                yield break; // 선택 매쉬가 달라졌으면 off
+            }
+
+            //Debug.Log(amount++);
+            Debug.Log(transform.position);
+            transform.position = Vector3.Lerp(transform.position, end, Time.deltaTime);
             Camera.main.transform.LookAt(MyPlanet);
             yield return null;
         }
