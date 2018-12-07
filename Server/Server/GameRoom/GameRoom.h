@@ -30,11 +30,14 @@ struct RoomDynamicData
 	//bool guestUserReady;
 	//atomic<int> userReadyCount;
 
+	// DEV_66 작업 중 추가, 친구 초대로 인한 게임일 경우를 위해 사용하며, 해당을 False로 Guest가 바꿀 경우, 초대를 거절한 상황임.
+	bool friendInviteBuffer;	// 1바이트이며 동적으로 사용하기 때문에, 친구방 아닐 경우에도 뭐 큰 상관없이 사용할 수 있을 듯.
+
 	RoomDynamicData()
 		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
 		, hostCharacterIndex(1), guestCharacterIndex(1)
 		, isHostFirst(rand() % 2)
-		
+		, friendInviteBuffer(true)
 		//, userReadyCount(0)
 		//hostUserReady(false), guestUserReady(false)
 	{}
@@ -75,6 +78,35 @@ public:
 	//new Function
 public:
 	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, 
+		int& retEnemyMissionIndex, int& retSubMissionIndex)
+	{
+		if (InIsHost)
+		{
+			retPlayerMissionIndex = roomDynamicData->hostMissionIndex;
+			retEnemyMissionIndex = roomDynamicData->guestMissionIndex;
+		}
+		else
+		{
+			retPlayerMissionIndex = roomDynamicData->guestMissionIndex;
+			retEnemyMissionIndex = roomDynamicData->hostMissionIndex;
+		}
+
+		if (roomDynamicData->isHostFirst)
+		{
+			retIsHostFirst = 1;
+		}
+		else
+		{
+			retIsHostFirst = 0;
+		}
+
+		retSubMissionIndex = roomDynamicData->subMissionIndex;
+
+		return;
+	}
+
+	//DEV_66 닉네임이, 다이나믹 데이터에 추가되면서, Iter대신, 닉네임만 요청하는 내용이 적용.
+	__inline void GetRoomGameDataWithNickname(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
 		int& retEnemyMissionIndex, int& retSubMissionIndex, wstring& retEnemyNickname)
 	{
 		if (InIsHost)
@@ -103,6 +135,23 @@ public:
 
 		return;
 	}
+
+	//DEV_66
+	_NODISCARD __inline wstring& GetEnemyNickname(const bool& InIsHost)
+	{
+		if (InIsHost)
+		{
+			return roomDynamicData->guestNickName;
+		}
+		else
+		{
+			return roomDynamicData->hostNickName;
+		}
+	}
+
+	//DEV_66 For Friend
+	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() { return roomDynamicData->friendInviteBuffer; }
+	_NORETURN __inline bool SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
 
 	__inline void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
 	{

@@ -138,7 +138,7 @@ public:
 	_NODISCARD __inline int	GetCharacterBit()  const noexcept { return characterBit; }
 	_NODISCARD __inline vector<wstring>& GetFriendNicknameCont() /*const*/ noexcept { return friendNicknameCont; }
 	_NODISCARD __inline wstring& GetFriendNicknameWithIndex(const int& InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
-	_NODISCARD __inline weak_ptr<UserData>& GetFriendUserDataCont( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
+	_NODISCARD __inline weak_ptr<UserData>& GetFriendUserDataWithIndex( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
 	// 애는 왜 중복...?

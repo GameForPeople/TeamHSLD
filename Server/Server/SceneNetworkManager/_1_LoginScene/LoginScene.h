@@ -29,8 +29,8 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		void _RecvDemandLogin(SocketInfo* pClient);
 
-		void __SendPermitLogin(SocketInfo* pClient, const string& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
-			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<string>& RetFriendStringCont);
+		void __SendPermitLogin(SocketInfo* pClient, const wstring& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
+			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<wstring>& RetFriendStringCont);
 		
 		void __SendFailLogin(SocketInfo* pClient, const int& RetFailReason);
 
