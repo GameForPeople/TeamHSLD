@@ -41,7 +41,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 
 	pClient->dataSize = 8;
 
-	std::cout << " " << pClient->pUserNode->GetKey() << "의 친구 수는 : " << friendNum << "\n";
+	//std::cout << " " << pClient->pUserNode->GetKey() << "의 친구 수는 : " << friendNum << "\n";
 
 	// (최적화) 현재는 해당 요청이 들어 올때마다, 
 	// 동일하게 Nickname을 통해 ID를 찾고, 해당 ID를 통해 UserNode를 찾는 행위를 반복하고 있는데,
@@ -51,6 +51,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 		int stringSize{};
 		wstring stringBuffer{};
 		bool isOnLogin{};
+		bool isOnMatch{};
 		shared_ptr<UserData> pBuffer = nullptr;
 
 		for (int i = 0; i < friendNum; ++i)
@@ -59,39 +60,34 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(i);
 
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
-			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin);
+			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin, isOnMatch);
 
-			// 로그인 햇을 때, 해당 유저 닉네임 사이즈와, 닉네임, 현재 상태를 보냄.
-			if (isOnLogin)
-			{
-				// 현재 클라이언트의, UserNode에, 친구 소켓 인포 저장
-				pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
+			// 0일 경우, 없는 닉네임, 1일 경우, 있는데 비로그인, 2일 경우 로비, 3일 경우 게임중.
+			pClient->dataSize += sizeof(int);	// 4 Bool Type
 
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-
-				stringBuffer = pBuffer->GetNickName();	// 반복되는 작업. 필요없는 문구.
-				stringSize = stringBuffer.size() * 2;	// DEV_66 사이즈 * 2
-
-				memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
-				memcpy(pClient->buf + pClient->dataSize + 8, stringBuffer.data(), stringSize);
-				
-				pClient->dataSize += (12 + stringSize); // 4 Bool isOnLogin, 4 nickNameSize, 4 (바로 뒷줄) 방 들어가 있는지 없는지 여부.
-
-				if (pBuffer->GetSocketInfo()->pRoomIter != nullptr)
-				{
-					memcpy(pClient->buf + pClient->dataSize - 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-				}
-				else
-				{
-					memcpy(pClient->buf + pClient->dataSize - 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
-				}
-			}
-			// 로그인 하지 않았을 때, 해당 데이터 적재.
-			else
+			// 0인 경우, (현재 로직상 이 조건이 트루이면 안됨)
+			if (!isOnMatch)
 			{
 				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
-				pClient->dataSize += sizeof(int);	// 4 Bool isOnLogin
+
+				continue;
 			}
+
+			if (!isOnLogin)	// 로그인 안했을 때,
+				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+			else if (pBuffer->GetSocketInfo()->pRoomIter != nullptr)	// 접속 후, 로비
+				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+			else	// 접속 후, 게임중.
+				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+
+			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
+
+			stringSize = stringBuffer.size() * 2;	// DEV_66 사이즈 * 2
+
+			memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
+			memcpy(pClient->buf + pClient->dataSize + 8, stringBuffer.data(), stringSize);
+
+			pClient->dataSize += (4 + stringSize); 
 		}
 	}
 }
@@ -254,9 +250,21 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	wstring nicknameBuffer((WCHAR*)(pClient->buf + 8));
 
 	bool isOnLogin{ false };
-	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(nicknameBuffer, isOnLogin);
+	bool isOnMatch{ false };
+	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(nicknameBuffer, isOnLogin, isOnMatch);
 
-	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0
+	// 해당 닉네임이가 아에 없는 경우 : ANSWER_MAKE_FRIEND + 0 + 3
+	if (!isOnMatch)
+	{
+		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
+		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+
+		pClient->dataSize = 12;
+		return;
+	}
+
+	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0 .
 	if (!isOnLogin)
 	{
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
@@ -264,8 +272,6 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 		memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
 		pClient->dataSize = 12;
-
-		//std::cout << "상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0 \n";
 		return;
 	}
 
@@ -338,9 +344,12 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 {
 	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 	bool bBuffer{ false };
+	bool bIsOnMatch{ false };
 
 	shared_ptr<UserData> pBuffer =
-		pUserData->SearchUserNodeWithNickname(pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex()), bBuffer);
+		pUserData->SearchUserNodeWithNickname(pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex()), bBuffer, bIsOnMatch);
+
+	// bIsOnMatch <- 이거 그냥 어쩔수 없이 넣어주긴하는데 여기서는, 무의미하다.
 
 	// 친구 거절했다 임마. // 내꺼에서만 알면 되지 않나...?
 	if (iBuffer == 0)

@@ -28,7 +28,7 @@ struct SocketInfo
 	//CUSTOM_SET::rbTreeNode<UserData, string>* pUserNode;
 
 	// 한번만 계산해서 여러번 사용합시다.
-	int userDataContIndex;
+	// int userDataContIndex; -> 여러번 안쓰이는데 굳이..?
 
 	// 룸씐 인덱스, 방 제작 시나 접속 시 사용됨 ( 초기화 미필요 )
 	GameRoom* pRoomIter;
@@ -51,7 +51,7 @@ public:
 		//,	dataSize() 
 		,	isRecvTurn(true)
 		,	pUserNode(nullptr)
-		,	userDataContIndex()
+		//,	userDataContIndex()
 		//enemyIter()
 	{};
 

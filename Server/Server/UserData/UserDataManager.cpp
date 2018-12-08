@@ -58,13 +58,13 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<wstring>& RetFriendStringCont)
 {
 	//RetFailReson = 0;
-	// 유저 데이터 
-	pInSocketInfo->userDataContIndex = GetStringFirstChar(InID[0]);
+	// 유저 데이터 번호
+	int userDataContIndex = GetStringFirstChar(InID[0]);
 
 	bool RetBoolBuffer;
 	
 	//pInSocketInfo->pUserNode = 
-		userDataCont[pInSocketInfo->userDataContIndex].Search(InID, RetBoolBuffer);
+		userDataCont[userDataContIndex].Search(InID, RetBoolBuffer);
 	//pInSocketInfo->pUserNode = nullptr;	//? 이게 무슨 짓이야?
 
 	// 이미 로그인 여부 체크.
@@ -116,7 +116,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	if (RetMoney == -1)
 	{
 		pInSocketInfo->pUserNode = make_shared<UserData>();
-		/*pInSocketInfo->pUserNode = */ userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
+		/*pInSocketInfo->pUserNode = */ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 
 		// RetMoney가 -1일 경우, 클라언트에서 닉네임 입력 필요. (Login Scene ? // Main UI Scene ?)
 		std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
@@ -129,7 +129,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
 			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit);
 		
-		userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
+		userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 		return 0;
 	}
 
@@ -152,7 +152,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
 		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
 
-	/*pInSocketInfo->pUserNode =*/ userDataCont[pInSocketInfo->userDataContIndex].Insert(pInSocketInfo->pUserNode);
+	/*pInSocketInfo->pUserNode =*/ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 	return 0;
 }
 
@@ -216,7 +216,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 	}
 
 	// UserCont(MAP)에서 해당 정보 삭제.
-	userDataCont[pUserNode->GetSocketInfo()->userDataContIndex].DeleteWithSearch(pUserNode->GetKey());
+	userDataCont[GetStringFirstChar(pUserNode->GetID()[0])].DeleteWithSearch(pUserNode->GetKey());
 }
 
 shared_ptr<UserData> UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
@@ -224,7 +224,7 @@ shared_ptr<UserData> UserDataManager::SearchUserNode(const string& keyString, bo
 	return userDataCont[GetStringFirstChar(keyString[0])].Search(keyString, RetBool);
 }
 
-shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool)
+shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetIsOnLogin, bool& RetIsMatch)
 {
 	bool isReturnTrue{ false };
 	string idBuffer{};
@@ -246,11 +246,13 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& 
 	// 못찾음.
 	if (!isReturnTrue)
 	{
-		RetBool = false;
+		RetIsMatch = false;
+		RetIsOnLogin = false;
 		return CONST_NULL_USERDATA;
 	}
 
-	return SearchUserNode(idBuffer, RetBool);
+	RetIsMatch = true;
+	return SearchUserNode(idBuffer, RetIsOnLogin);
 }
 
 int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) noexcept
