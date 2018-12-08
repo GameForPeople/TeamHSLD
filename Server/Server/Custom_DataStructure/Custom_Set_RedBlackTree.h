@@ -140,7 +140,7 @@ namespace CUSTOM_SET
 		};
 
 	public:
-		DATA&										Search(const KEY_TYPE& InKey, bool& RetResult) const;
+		DATA										Search(const KEY_TYPE& InKey, bool& RetResult) const;
 		/*DATA&*/ void								Insert(const DATA& InDATA);
 		void										Delete(rbTreeNode<DATA, KEY_TYPE>* pDeletedNode);
 		void										DeleteWithSearch(const KEY_TYPE& InKey);
@@ -184,7 +184,7 @@ namespace CUSTOM_SET
 	*/
 
 	template <typename DATA, typename KEY_TYPE>
-	DATA& rbTree<DATA, KEY_TYPE>::Search(const KEY_TYPE& InKey, bool& RetResult) const
+	DATA rbTree<DATA, KEY_TYPE>::Search(const KEY_TYPE& InKey, bool& RetResult) const
 	{
 		RetResult = false;
 
@@ -527,7 +527,7 @@ namespace CUSTOM_SET
 
 
 	template <typename DATA, typename KEY_TYPE>
-	void rbTree<DATA, KEY_TYPE>::DeleteWithSearch(const KEY_TYPE& InKEY)
+	void rbTree<DATA, KEY_TYPE>::DeleteWithSearch(const KEY_TYPE& InKey)
 	{
 		//--- Search
 		bool isTrueSearch = false;

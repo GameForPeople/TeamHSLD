@@ -219,12 +219,12 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 	userDataCont[pUserNode->GetSocketInfo()->userDataContIndex].DeleteWithSearch(pUserNode->GetKey());
 }
 
-shared_ptr<UserData>& UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
+shared_ptr<UserData> UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
 {
 	return userDataCont[GetStringFirstChar(keyString[0])].Search(keyString, RetBool);
 }
 
-shared_ptr<UserData>& UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool)
+shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool)
 {
 	bool isReturnTrue{ false };
 	string idBuffer{};
@@ -253,7 +253,7 @@ shared_ptr<UserData>& UserDataManager::SearchUserNodeWithNickname(const wstring&
 	return SearchUserNode(idBuffer, RetBool);
 }
 
-int UserDataManager::GetStringFirstChar(const char& InStringFirstChar)
+int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) noexcept
 {
 	// 0 ~ 25
 	// '@' = 64, 'A' = 65,,, 'Z' = 90, '[' = 91

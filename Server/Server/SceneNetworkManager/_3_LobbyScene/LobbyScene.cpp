@@ -89,7 +89,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 	{
 		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
 
-		wstring stringBuffer(pClient->pRoomIter->GetEnemyNickname);
+		wstring stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
 		int sizeBuffer = stringBuffer.size() * 2; //DEV_66
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));

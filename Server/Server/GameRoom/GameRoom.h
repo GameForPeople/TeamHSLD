@@ -151,7 +151,8 @@ public:
 
 	//DEV_66 For Friend
 	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() { return roomDynamicData->friendInviteBuffer; }
-	_NORETURN __inline bool SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
+	
+	_NORETURN __inline void SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
 
 	__inline void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
 	{

@@ -251,12 +251,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 	pClient->buf[8 + iBuffer] = '\0';
 	
-	string idBuffer(pClient->buf + 8);
-
-	std::cout << "[Debug] DemandMakeFriend "<< pClient->pUserNode->GetKey() <<"가 친구요청할 ID는 : " << idBuffer << "입니다. \n";
+	wstring nicknameBuffer((WCHAR*)(pClient->buf + 8));
 
 	bool isOnLogin{ false };
-	shared_ptr<UserData> pBuffer = pUserData->SearchUserNode(idBuffer, isOnLogin);
+	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(nicknameBuffer, isOnLogin);
 
 	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0
 	if (!isOnLogin)
@@ -298,8 +296,22 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 		return;
 	}
 
-	// 상대방에게 친구 요청을 보냄 : ANSWER_MAKE_FRIEND + 1
-	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendID(pClient->pUserNode->GetNickName()));
+	// 지금 내가 누구의 친구 관련 중인 상황 일 경우. : ANSWER_MAKE_FRIEND + 0 + 2 위와 동일한 경우를 줌.
+	if (pClient->pUserNode->GetDemandFriendContIndex() != -1)
+	{
+		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
+		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+
+		pClient->dataSize = 12;
+		//std::cout << "상대방이 이미 친구 관련 중인 상황 : ANSWER_MAKE_FRIEND + 0 + 2 \n";
+		return;
+	}
+
+	// 상대방에게 친구 요청을 보내고, 나와 친구에 임시로 모두 저장함. : ANSWER_MAKE_FRIEND + 1
+	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendNickname(pClient->pUserNode->GetNickName()));
+	pClient->pUserNode->SetDemandFriendContIndex(pClient->pUserNode->SetInsertFriendNickname(pBuffer->GetNickName()));
+	
 	pUDPManager->Push(UDP_PROTOCOL::DEMAND_FRIEND, pBuffer);
 	//pClient->pUserNode->SetValue().SetInsertFriendID(pBuffer->GetKey());
 
@@ -313,7 +325,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo* pClient)
 {
 	wstring stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex());
-	int stringSize = stringBuffer.size();
+	int stringSize = stringBuffer.size() * 2; //DEV_66
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_MAKE_FRIEND_INFO), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&stringSize), sizeof(int));
@@ -358,11 +370,11 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 		std::cout << " " << pBuffer->GetKey() << "님이 보낸 친구초대를 " << pClient->pUserNode->GetKey() << "님이 받았어요! \n";
 		pUDPManager->Push(UDP_PROTOCOL::RESULT_FRIEND, pBuffer /*pClient->pUserNode->SetValue().GetSocketInfo()*/);
 
-		pBuffer->SetInsertFriendID(pClient->pUserNode->GetNickName());
+		pBuffer->SetDemandFriendContIndex(-1);
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 	}
 
-	//항상 똑같은 값 전달.
+	// 앞의 4바이트는 항상 똑같은 값 전달.
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_ANSWER_MAKE_FRIEND), sizeof(int));
 
 	pClient->dataSize = 8;

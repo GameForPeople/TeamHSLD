@@ -41,9 +41,9 @@ public:
 
 	_NORETURN void LogoutProcess(shared_ptr<UserData>& pUserNode);
 
-	shared_ptr<UserData>& SearchUserNode(const string& keyString, bool& RetBool);	// 아이디를 통해, 유저 노드를 탐색합니다.
+	shared_ptr<UserData> SearchUserNode(const string& keyString, bool& RetBool);	// 아이디를 통해, 유저 노드를 탐색합니다.
 
-	shared_ptr<UserData>& SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool);	// 닉네임을 통해, 유저노드를 탐색합니다.
+	shared_ptr<UserData> SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetBool);	// 닉네임을 통해, 유저노드를 탐색합니다.
 
 private:
 	// for userDataCont Hash, 첫글자처리필요.

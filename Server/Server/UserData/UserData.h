@@ -20,7 +20,8 @@ class UserData {
 
 	vector<std::wstring>			friendNicknameCont;		// 친구 닉네임 컨테이너
 	vector<weak_ptr<UserData>>		friendUserDataCont;		// 친구 소켓 정보 컨테이너
-	int								demandFriendContIndex;	// 친구 추가 시, 추가하는 친구가 받는 친구에게
+
+	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
 
 public:
 	// For rbTreeNode's nullNode
@@ -141,6 +142,7 @@ public:
 	_NODISCARD __inline weak_ptr<UserData>& GetFriendUserDataWithIndex( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
+	
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
 	//	if (value == 1) { winCount++; }
@@ -153,19 +155,20 @@ public:
 	_NORETURN __inline void	SetMoney(const int& InMoney) noexcept { money = InMoney; }
 	_NORETURN __inline void   SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int& InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }
 	
-	__inline int	SetInsertFriendID(const wstring& InFriendID) noexcept { 
+	__inline int	SetInsertFriendNickname(const wstring& InFriendID) noexcept { 
 		if (friendNicknameCont.size() >= 4) return -1;
 
 		friendNicknameCont.emplace_back(InFriendID); 
 		return friendNicknameCont.size() - 1;
 	}
+	
+	_NORETURN __inline void	SetDemandFriendContIndex(const int& InIndex) noexcept { demandFriendContIndex = InIndex; }
 
 	_NORETURN __inline void	SetDeleteFriendID() noexcept
 	{
 		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;
 	}
-	_NORETURN __inline void	SetDemandFriendContIndex(const int& InIndex) noexcept { demandFriendContIndex = InIndex; }
 };
 
 

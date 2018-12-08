@@ -42,7 +42,7 @@ namespace CUSTOM_QUEUE
 			: pStart(nullptr), pEnd(nullptr)
 		{}
 
-		CustomNode<DATA>& Push(const DATA& InDATA);
+		void Push(const DATA& InDATA);
 
 		DATA& Pop(bool& retBool);
 
@@ -51,30 +51,28 @@ namespace CUSTOM_QUEUE
 	public:
 		__inline bool IsEmpty() const
 		{
-			if (pStart == nullptr) return true;
+			if ( pStart == nullptr) return true;
 			return false;
 		}
 	};
 
 	template<typename DATA>
-	CustomNode<DATA>& CustomQueue<DATA>::Push(const DATA& InDATA)
+	void CustomQueue<DATA>::Push(const DATA& InDATA)
 	{
-		CustomNode<DATA> pRetNode = new CustomNode<DATA>(InDATA);
+		CustomNode<DATA>* pNewNode = new CustomNode<DATA>(InDATA);
 
 		if (pEnd == nullptr)
 		{
-			pStart = pRetNode;
-			pEnd = pRetNode;
+			pStart = pNewNode;
+			pEnd = pNewNode;
 		}
 		else
 		{
-			pEnd->right = pRetNode;
-			pRetNode->left = pEnd;
+			pEnd->right = pNewNode;
+			pNewNode->left = pEnd;
 
-			pEnd = pRetNode;
+			pEnd = pNewNode;
 		}
-
-		return pRetNode;
 	}
 
 	template<typename DATA>
@@ -87,7 +85,7 @@ namespace CUSTOM_QUEUE
 		}
 		else
 		{
-			CustomNode<DATA> pRetNode = pStart;
+			CustomNode<DATA> pRetNode = *pStart;
 
 			if (pStart->right == nullptr)
 			{
@@ -100,7 +98,7 @@ namespace CUSTOM_QUEUE
 			}
 
 			retBool = true;
-			return pRetNode->GetData();
+			return pRetNode.GetData();
 		}
 	}
 
@@ -113,7 +111,7 @@ namespace CUSTOM_QUEUE
 		//}
 		//else
 		//{
-		CustomNode<DATA> pRetNode = pStart;
+		CustomNode<DATA> pRetNode = *pStart;
 
 		if (pStart->right == nullptr)
 		{
@@ -124,7 +122,7 @@ namespace CUSTOM_QUEUE
 		{
 			pStart = pStart->right;
 		}
-		return pRetNode->GetData();
+		return pRetNode.GetData();
 		//}
 	}
 }
