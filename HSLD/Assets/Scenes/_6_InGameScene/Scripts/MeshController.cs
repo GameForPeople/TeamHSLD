@@ -107,7 +107,7 @@ public class MeshController : MonoBehaviour {
                 Debug.Log("Pick : " + CameraController.lastmesh);
                 int cameraYAmount = 138;
                 Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
-                StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(Camera.main.transform.position, destinationPos));
+                StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
             }
             
             if (terrainstate == Terrain.ABLE || terrainstate == Terrain.DEFAULT)

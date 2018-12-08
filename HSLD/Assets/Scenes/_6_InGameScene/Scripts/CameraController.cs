@@ -48,22 +48,19 @@ public class CameraController : MonoBehaviour
             mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
     }
 
-    public IEnumerator movePosition(Vector3 start, Vector3 end)
+    public IEnumerator movePosition(Vector3 end)
     {
-        // 새로 피킹했으면 점유하던애는 out 새로들어온애는 작동
-        float amount = 0; // 
         int enterMesh = lastmesh;
         while (true)
         {
-            //Debug.Log(enterMesh + "<-->" + lastmesh + "amout : "+ amount++);
             if (lastmesh != enterMesh)
             {
-                Debug.Log("out??");
                 yield break; // 선택 매쉬가 달라졌으면 off
             }
+            
+            if (Mathf.Abs((transform.position - end).magnitude) < 1.0f) yield break; // 보간 제한
+            
 
-            //Debug.Log(amount++);
-            Debug.Log(transform.position);
             transform.position = Vector3.Lerp(transform.position, end, Time.deltaTime);
             Camera.main.transform.LookAt(MyPlanet);
             yield return null;
