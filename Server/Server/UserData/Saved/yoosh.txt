@@ -1,2 +1,1 @@
- YooSH GM_YooSH 0 6 1234 0 0 0 1
- wonsy
+ YooSH GM_YooSH 0 6 1234 0 0 0 0

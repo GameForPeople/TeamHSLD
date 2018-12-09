@@ -13,7 +13,7 @@ public class MainUISceneManager : MonoBehaviour
     //string friendName_3 = "";
     //string friendName_4 = "";
 
-    string[] stateConstString = new string[3];
+    string[] stateConstString = new string[4];
 
     public NetworkManager networkObject;
 
@@ -26,7 +26,7 @@ public class MainUISceneManager : MonoBehaviour
     int friendNum;
     public int friendWaitTimeCount = 7;
 
-    const string voidFriendNickName = "_ERROR_NOT_FIND_NickName_";
+    const string voidFriendNickName = "_NOT_DEFINE_ID_";
     public string makeFriendIDBuffer;
 
     GameObject FriendUICanvas;
@@ -82,9 +82,10 @@ public class MainUISceneManager : MonoBehaviour
 
         GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(false);
 
-        stateConstString[0] = "미접속";
-        stateConstString[1] = "로비";
-        stateConstString[2] = "게임중";
+        stateConstString[0] = "ERROR";
+        stateConstString[1] = "미접속";
+        stateConstString[2] = "로비";
+        stateConstString[3] = "게임중";
 
         isDrawFriendUI = false;
     }
@@ -147,7 +148,7 @@ public class MainUISceneManager : MonoBehaviour
 
         if (String.Compare(makeFriendIDBuffer, networkObject.nickName) == 0)
         {
-            // 내 닉네임이잖아.
+            // 니 닉네임이잖아 ㅡㅡ
             OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
             return;
         }
@@ -201,7 +202,7 @@ public class MainUISceneManager : MonoBehaviour
                 NickNameTextUI[i].GetComponent<Text>().text = voidFriendNickName.ToString();
             }
 
-            if (networkObject.friendState[i] == 1)
+            if (networkObject.friendState[i] == 2)
             {
                 InviteButtonUI[i].SetActive(true);
             }

@@ -20,6 +20,8 @@ UserDataManager::UserDataManager()
 
 	string fileNameBuffer = "UserData/Saved/_NickName.txt";
 
+	return;
+
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
 
 	string idBuffer;
@@ -28,20 +30,35 @@ UserDataManager::UserDataManager()
 
 	while (!inFile.eof())
 	{
+		nicknameBuffer.clear();
+		nicknameUnicode.clear();
+
+		std::cout << "1. \n";
+
 		inFile >> idBuffer >> nicknameBuffer;
+
+		std::cout << idBuffer << " " << nicknameBuffer << " " << nicknameBuffer.size() << std::endl;
+
+		std::cout << "2. \n";
+
 		nicknameUnicode = converter.from_bytes(nicknameBuffer);
+
+		std::cout << "3. \n";
 
 		// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
 		if (nicknameUnicode[0] >= CONST_A[0] && nicknameUnicode[0] <= CONST_Z[0])
 		{
 			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(nicknameUnicode, idBuffer);
+			std::cout << "영어 대문자입니다. \n";
 		}
 		else if (nicknameUnicode[0] >= CONST_a[0] && nicknameUnicode[0] <= CONST_z[0])
 		{
 			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(nicknameUnicode, idBuffer);
+			std::cout << "영어 소문자입니다. \n";
 		}
 		else
 		{
+			std::cout << "한글입니다. \n";
 			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(nicknameUnicode, idBuffer);
 		}
 	}

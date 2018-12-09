@@ -74,7 +74,7 @@ public partial class NetworkManager : MonoBehaviour {
             Debug.Log("characterBit is --> " + characterBit);
 
             int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
-            nickName = Encoding.Default.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
+            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
             Debug.Log("nickName is --> " + nickName);
             //
             if (money == -1)
@@ -114,9 +114,13 @@ public partial class NetworkManager : MonoBehaviour {
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
 
+                friendState[i] = iBuffer;
+
                 if (iBuffer == 0)
                 {
                     //Not Login!
+                    // 친구 닉네임이 갑자기 없어짐... 이런경우 있으면 안됨!!
+                    Debug.Log("?????????? 에혀 친구닉네임이 없어질리가 없는데 ???????????????????");
 
                     //friendState[i] = 0;
                     dataLocation += 4;
@@ -125,23 +129,19 @@ public partial class NetworkManager : MonoBehaviour {
                 else
                 {
                     idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 4);
-                    friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);
+                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
 
-                    dataLocation += idSize + 12;
-
-                    iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation - 4);
+                    dataLocation += idSize + 8;
 
                     Debug.Log("상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
-                    if (iBuffer == 0)
-                    {
-                        // 로그인 했지만, 인 게임 불가능
-                        friendState[i] = 1;
-                    }
-                    else
-                    {
-                        // 로그인 했고 초대 가능상태.
-                        friendState[i] = 2;
-                    }
+
+                    //조건문 전 처리.
+                    //if (iBuffer == 1)
+                    //    friendState[i] = 1; // 로그인 안함.
+                    //else if (iBuffer == 2)
+                    //    friendState[i] = 2; // 로그인 했고 초대 가능상태.
+                    //else if (iBuffer == 3)
+                    //    friendState[i] = 3; // 로그인 했고 현재 게임중인상태.
                 }
             }
 

@@ -46,6 +46,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 	// (최적화) 현재는 해당 요청이 들어 올때마다, 
 	// 동일하게 Nickname을 통해 ID를 찾고, 해당 ID를 통해 UserNode를 찾는 행위를 반복하고 있는데,
 	// 기존 weak_ptr Cont에서 nullptr이 아닐때의, 리소스 만료 여부를 검사해, 문제가 없다면, 해당 노드의 Get을 활용하는 방안이 필요함.
+	// 동일하게 관련 닉네임을 계속 요청할 필요도 없고 상태만 요청하면 됨. 해당에 대한 처리가 최적화할때 꼭 필요해보임.
+
 	if (friendNum)
 	{
 		int stringSize{};

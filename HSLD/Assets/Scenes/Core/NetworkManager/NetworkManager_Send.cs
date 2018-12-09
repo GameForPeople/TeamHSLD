@@ -60,13 +60,13 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_NICKNAME), 0, NewDataSendBuffer, 0, 4);
 
-                    int nickNameSize = nickName.Length;
+                    int nickNameSize = nickName.Length * 2; //DEV_66
 
                     Debug.Log(" " + nickName + "는 입력한 nickName 값, nickName Size =>> " + nickNameSize);
 
                     Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
 
-                    Buffer.BlockCopy(Encoding.Default.GetBytes(nickName), 0, NewDataSendBuffer, 8, nickNameSize);
+                    Buffer.BlockCopy(Encoding.Unicode.GetBytes(nickName), 0, NewDataSendBuffer, 8, nickNameSize);
 
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using System.Text;
 
 public class TitleSceneManager : MonoBehaviour
 {
@@ -51,5 +52,14 @@ public class TitleSceneManager : MonoBehaviour
     public void UI_GoToMainUIScene()
     {
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
+    }
+
+    // Test For Byte Size
+    public void UI_LOGTEST()
+    {
+        string testString = "ABC안녕";
+        byte[] contents = Encoding.Default.GetBytes(testString);
+        Debug.Log("스트링의 내용 : " + testString + " 스트링의 크기 : " + testString.Length);
+        Debug.Log("contents의 내용 : " + contents.ToString() + " 바이트의 크기 : " + contents.Length);
     }
 }
