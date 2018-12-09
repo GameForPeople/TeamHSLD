@@ -6,7 +6,7 @@ SCENE_NETWORK_MANAGER::LoginScene::LoginScene(GameRoomManager* pInRoomData, User
 	: BaseScene(pInRoomData, pInUserData, pInUDPManager)
 	, PERMIT_LOGIN(Protocol::PERMIT_LOGIN)
 	, FAIL_LOGIN(Protocol::FAIL_LOGIN)
-	, PERMIT_NICKNAME(Protocol::PERMIT_NICKNAME)
+	, PERMIT_Nickname(Protocol::PERMIT_Nickname)
 {
 	
 }
@@ -15,8 +15,8 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 {
 	if (InRecvType == DEMAND_LOGIN)
 		_RecvDemandLogin(pClient);
-	else if (InRecvType == CHANGE_NICKNAME)
-		_RecvChangeNickName(pClient);
+	else if (InRecvType == CHANGE_Nickname)
+		_RecvChangeNickname(pClient);
 	// 나머지는 날림.
 }
 
@@ -43,13 +43,13 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 	int outWinCount{0};
 	int outLoseCount{0};
 	int outMoney{0};
-	wstring outNickName;
+	Type_Nickname outNickname;
 	int outAchievementBit{ 0 };
 	int outTitleBit{ 0 };
 	int outCharacterBit{ 0 };
-	vector<wstring> outFriendStringCont;
+	vector<Type_Nickname> outFriendStringCont;
 
-	int failReason = pUserData->LoginProcess(pClient, idBuffer, outNickName, outWinCount, outLoseCount, outMoney,
+	int failReason = pUserData->LoginProcess(pClient, idBuffer, outNickname, outWinCount, outLoseCount, outMoney,
 		outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont);
 
 	//typeBuffer == 1 
@@ -60,10 +60,8 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 		__SendFailLogin(pClient, failReason);
 	else 
 	{
-		__SendPermitLogin(pClient, outNickName, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont );
-		std::cout << "     [UserDataManager] ";
-		std::wcout << outNickName;
-		std::cout << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
+		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont );
+		std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
 	}
 
 }
@@ -79,9 +77,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 //	return InUserData.SignUp(InIdBuffer, InPwBuffer, pClient->userIndex);
 //}
 
-void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, const wstring& InNickName, 
+void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, 
 	const int& InWinCount, const int& InLoseCount, const int& InMoney,
-	const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, const vector<wstring>& InFriendStringCont)
+	const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, const vector<Type_Nickname>& InFriendStringCont)
 {
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_LOGIN), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&InWinCount), sizeof(int));
@@ -91,10 +89,10 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 	memcpy(pClient->buf + 20, reinterpret_cast<const char*>(&InTitleBit), sizeof(int));
 	memcpy(pClient->buf + 24, reinterpret_cast<const char*>(&InCharacterBit), sizeof(int));
 
-	int stringSizeBuffer = InNickName.size() * 2; // DEV_66 char * 2 = wchar
+	int stringSizeBuffer = InNickname.size(); // DEV_66 char * 2 = wchar
 
 	memcpy(pClient->buf + 28, reinterpret_cast<const char*>(&stringSizeBuffer), sizeof(int));
-	memcpy(pClient->buf + 32, InNickName.data(), stringSizeBuffer);
+	memcpy(pClient->buf + 32, InNickname.data(), stringSizeBuffer);
 
 	pClient->dataSize = 32 + stringSizeBuffer;
 
@@ -137,26 +135,26 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, con
 }
 
 
-void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickName(SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 {
-	int nickNameSizeBuffer = reinterpret_cast<int&>(pClient->buf[4]);
+	int NicknameSizeBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 	
-	//for (int i = 0; i < nickNameSizeBuffer; ++i)
+	//for (int i = 0; i < NicknameSizeBuffer; ++i)
 	//{
 	//	// Refactor 필요.
-	//	nickNameBuffer += pClient->buf[8 + i];
+	//	NicknameBuffer += pClient->buf[8 + i];
 	//}
 
-	pClient->buf[8 + nickNameSizeBuffer] = '\0';
+	pClient->buf[8 + NicknameSizeBuffer] = '\0';
 	
-	wstring nickNameBuffer(reinterpret_cast<WCHAR *>(pClient->buf + 8));
+	Type_Nickname NicknameBuffer(pClient->buf + 8);
 
-	pClient->pUserNode->SetNickName(nickNameBuffer);
+	pClient->pUserNode->SetNickname(NicknameBuffer);
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::__SendChangeNickName(SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::LoginScene::__SendChangeNickname(SocketInfo* pClient)
 {
-	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_NICKNAME), sizeof(int));
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_Nickname), sizeof(int));
 
 	pClient->dataSize = 4;
 }

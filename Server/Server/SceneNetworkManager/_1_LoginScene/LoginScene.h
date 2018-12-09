@@ -16,7 +16,7 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		const int PERMIT_LOGIN;
 		const int FAIL_LOGIN;
-		const int PERMIT_NICKNAME; //104
+		const int PERMIT_Nickname; //104
 
 	public:
 		LoginScene() = delete;
@@ -29,13 +29,13 @@ namespace SCENE_NETWORK_MANAGER
 	private:
 		void _RecvDemandLogin(SocketInfo* pClient);
 
-		void __SendPermitLogin(SocketInfo* pClient, const wstring& InNickName, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
-			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<wstring>& RetFriendStringCont);
+		void __SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
+			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<Type_Nickname>& RetFriendStringCont);
 		
 		void __SendFailLogin(SocketInfo* pClient, const int& RetFailReason);
 
 	private:
-		void _RecvChangeNickName(SocketInfo* pClient);
-		void __SendChangeNickName(SocketInfo* pClient);
+		void _RecvChangeNickname(SocketInfo* pClient);
+		void __SendChangeNickname(SocketInfo* pClient);
 	};
 }

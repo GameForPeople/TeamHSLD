@@ -61,7 +61,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 		 pClient->isHost = false;
 
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-		wstring stringBuffer;
+		Type_Nickname stringBuffer;
 
 		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, stringBuffer);
 
@@ -69,7 +69,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 		
 		//string stringBuffer((*EnemyIter)->first);
 		
-		int sizeBuffer = stringBuffer.size() * 2;
+		int sizeBuffer = stringBuffer.size();
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
@@ -89,8 +89,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 	{
 		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
 
-		wstring stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
-		int sizeBuffer = stringBuffer.size() * 2; //DEV_66
+		Type_Nickname stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
+		int sizeBuffer = stringBuffer.size(); //DEV_66
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));

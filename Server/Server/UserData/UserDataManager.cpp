@@ -2,10 +2,10 @@
 #include "../IOCPServer/SocketInfo.h"
 
 UserDataManager::UserDataManager() 
-	:	CONST_A(converter.from_bytes("A"))
-	,	CONST_Z(converter.from_bytes("Z"))
-	,	CONST_a(converter.from_bytes("a"))
-	,	CONST_z(converter.from_bytes("z"))
+	:	CONST_A(/*converter.from_bytes(*/"A"/*)*/)
+	,	CONST_Z(/*converter.from_bytes(*/"Z"/*)*/)
+	,	CONST_a(/*converter.from_bytes(*/"a"/*)*/)
+	,	CONST_z(/*converter.from_bytes(*/"z"/*)*/)
 {
 	userDataCont.reserve(37); // A ~ Z : 26 , 0 ~ 9 : 10 , . : 1 -> 36
 
@@ -18,48 +18,34 @@ UserDataManager::UserDataManager()
 	nicknameCont.emplace_back();
 	nicknameCont.emplace_back();
 
-	string fileNameBuffer = "UserData/Saved/_NickName.txt";
+	string fileNameBuffer = "UserData/Saved/_Nickname.txt";
 
 	return;
 
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
 
-	string idBuffer;
-	string nicknameBuffer;
-	wstring nicknameUnicode;
+	Type_ID idBuffer;
+	Type_Nickname NicknameBuffer;
 
 	while (!inFile.eof())
 	{
-		nicknameBuffer.clear();
-		nicknameUnicode.clear();
-
-		std::cout << "1. \n";
-
-		inFile >> idBuffer >> nicknameBuffer;
-
-		std::cout << idBuffer << " " << nicknameBuffer << " " << nicknameBuffer.size() << std::endl;
-
-		std::cout << "2. \n";
-
-		nicknameUnicode = converter.from_bytes(nicknameBuffer);
-
-		std::cout << "3. \n";
+		inFile >> idBuffer >> NicknameBuffer;
 
 		// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
-		if (nicknameUnicode[0] >= CONST_A[0] && nicknameUnicode[0] <= CONST_Z[0])
+		if (NicknameBuffer[0] >= CONST_A[0] && NicknameBuffer[0] <= CONST_Z[0])
 		{
-			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(nicknameUnicode, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, idBuffer);
 			std::cout << "영어 대문자입니다. \n";
 		}
-		else if (nicknameUnicode[0] >= CONST_a[0] && nicknameUnicode[0] <= CONST_z[0])
+		else if (NicknameBuffer[0] >= CONST_a[0] && NicknameBuffer[0] <= CONST_z[0])
 		{
-			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(nicknameUnicode, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, idBuffer);
 			std::cout << "영어 소문자입니다. \n";
 		}
 		else
 		{
 			std::cout << "한글입니다. \n";
-			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(nicknameUnicode, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(NicknameBuffer, idBuffer);
 		}
 	}
 
@@ -71,8 +57,8 @@ UserDataManager::~UserDataManager()
 
 }
 
-int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID, wstring& RetNickName, int& RetWinCount, int& RetLoseCount, int& RetMoney,
-	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<wstring>& RetFriendStringCont)
+int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
+	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<Type_Nickname>& RetFriendNicknameCont)
 {
 	//RetFailReson = 0;
 	// 유저 데이터 번호
@@ -93,7 +79,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	// 변수선언 부
 	RetMoney = -1; // 재화가 -1일리 없음. 해당상황은, 파일 오픈 여부를 확인하기 위함.
 	int friendNum;			// (친구 명수버퍼)
-	string idStringBuffer;			// idBuffer
+	Type_ID idStringBuffer;			// idBuffer
 
 	// 시간 정보.
 	//time_t timeBuffer = time(0);   // get time now
@@ -109,7 +95,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	//fileNameBuffer[16] = InID[1];
 
 	// DEV_66 닉네임 유니코드 처리
-	string nickNameBuffer{};
+	//string NicknameBuffer{};
 
 	// 파일 오픈
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
@@ -117,7 +103,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	// 파일 데이터 로드
 	inFile 
 		>> idStringBuffer 
-		>> nickNameBuffer /* == RetNickName // DEV_66으로 인해 버퍼 사용 */
+		>> RetNickname /* == RetNickname // DEV_66으로 인해 버퍼 사용 */
 		>> RetWinCount 
 		>> RetLoseCount 
 		>> RetMoney 
@@ -127,7 +113,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 		>> friendNum;
 
 	// [DEV_66] 멀티바이트에서 유니코드 변환
-	RetNickName = converter.from_bytes(nickNameBuffer);
+	//RetNickname = converter.from_bytes(NicknameBuffer);
 
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
@@ -143,7 +129,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
-		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
+		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickname,
 			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit);
 		
 		userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
@@ -151,7 +137,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 	}
 
 	// 친구 수에 따라 벡터 reserve.
-	RetFriendStringCont.reserve(friendNum); // 해당 벡터 reserve.
+	RetFriendNicknameCont.reserve(friendNum); // 해당 벡터 reserve.
 
 	// 친구 데이터를, 적재.
 	for (int iter = 0; iter < friendNum; ++iter) // idBuffer를 버퍼로해서 사용.
@@ -159,15 +145,15 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 		inFile >> idStringBuffer;
 		
 		//DEV_66 저장및 불러들이는 것은 멀티바이트로, 이걸 내부에서는 결과적으로 유니코드로, 
-		RetFriendStringCont.emplace_back(converter.from_bytes(idStringBuffer));
+		RetFriendNicknameCont.emplace_back(/*converter.from_bytes(*/idStringBuffer/*)*/);
 
 		// 친구가 로그인 중인지 아닌지의 체크가, 여기서 이루어지면 안되고, 친구 UI를 On할 경우 해야함. -> 짜피 하드에서 Load할 필요 없는 데이터임.
 		//if (userDataCont[userDataContHashValueBuffer].find(idStringBuffer) == userDataCont[userDataContHashValueBuffer].end())
 	}
 
 	// 정상적인 로그인.
-	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickName,
-		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendStringCont);
+	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickname,
+		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendNicknameCont);
 
 	/*pInSocketInfo->pUserNode =*/ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 	return 0;
@@ -175,7 +161,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const string& InID,
 
 void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 {
-	if (pUserNode->GetNickName().size() == 0)
+	if (pUserNode->GetNickname().size() == 0)
 	{
 		// 야 이거는 닉네임 없는거야 저장하지 마 
 	}
@@ -199,7 +185,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 		// 파일 쓰기 (저장)
 		//outFile
 		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetID()
-		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetNickName()
+		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetNickname()
 		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetWinCount()
 		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetLoseCount()
 		//	<< " " << pInSocketInfo->pUserNode->GetValue().GetMoney()
@@ -210,7 +196,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 
 		outFile
 			<< " " << keyBuffer //== valueBuffer.GetID()
-			<< " " << converter.to_bytes(pUserNode->GetNickName())	// [DEV_66]
+			<< " " << pUserNode->GetNickname()	// [DEV_66]
 			<< " " << pUserNode->GetWinCount()
 			<< " " << pUserNode->GetLoseCount()
 			<< " " << pUserNode->GetMoney()
@@ -228,7 +214,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 			; iter != iterBuffer.end()
 			; ++iter)
 		{
-			outFile << " " << converter.to_bytes(*iter) << std::endl;	// [DEV_66]
+			outFile << " " << /*converter.to_bytes(*iter)*/ *iter << std::endl;	// [DEV_66]
 		}
 	}
 
@@ -236,28 +222,28 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
 	userDataCont[GetStringFirstChar(pUserNode->GetID()[0])].DeleteWithSearch(pUserNode->GetKey());
 }
 
-shared_ptr<UserData> UserDataManager::SearchUserNode(const string& keyString, bool& RetBool)
+shared_ptr<UserData> UserDataManager::SearchUserNode(const Type_ID& keyID, bool& RetBool)
 {
-	return userDataCont[GetStringFirstChar(keyString[0])].Search(keyString, RetBool);
+	return userDataCont[GetStringFirstChar(keyID[0])].Search(keyID, RetBool);
 }
 
-shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& KeyNickName, bool& RetIsOnLogin, bool& RetIsMatch)
+shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const Type_Nickname& KeyNickname, bool& RetIsOnLogin, bool& RetIsMatch)
 {
 	bool isReturnTrue{ false };
-	string idBuffer{};
+	Type_ID idBuffer{};
 
 	// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
-	if (KeyNickName[0] >= CONST_A[0] && KeyNickName[0] <= CONST_Z[0])
+	if (KeyNickname[0] >= CONST_A[0] && KeyNickname[0] <= CONST_Z[0])
 	{
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickName, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
-	else if (KeyNickName[0] >= CONST_a[0] && KeyNickName[0] <= CONST_z[0])
+	else if (KeyNickname[0] >= CONST_a[0] && KeyNickname[0] <= CONST_z[0])
 	{
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickName, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 	else
 	{
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickName, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 
 	// 못찾음.
@@ -272,7 +258,7 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const wstring& 
 	return SearchUserNode(idBuffer, RetIsOnLogin);
 }
 
-int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) noexcept
+int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) const noexcept
 {
 	// 0 ~ 25
 	// '@' = 64, 'A' = 65,,, 'Z' = 90, '[' = 91

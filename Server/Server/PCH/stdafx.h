@@ -45,8 +45,14 @@
 
 #define		_NORETURN			[[noreturn]]
 #define		_NODISCARD			[[nodiscard]]
+#define		_DEPRECATED			[[deprecated]]
+#define		_MAYBE_UNUSED		[[maybe_unused]]
+#define		_FALLTHROUGH		[[fallthrough]]
 
 using namespace std;
 
-//using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 wstring적용하는걸로 변경.
+using Type_Nickname = std::string;
+using Type_ID = std::string;
+
+//using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 TCHAR 적용하는걸로 변경.
 

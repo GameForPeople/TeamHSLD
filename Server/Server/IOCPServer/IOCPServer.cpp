@@ -106,7 +106,7 @@ namespace NETWORK_UTIL {
 };
 
 //Init
-_NORETURN void IOCPServer::_GetExternalIP(char *ip)
+void IOCPServer::_GetExternalIP(char *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
@@ -148,7 +148,7 @@ _NORETURN void IOCPServer::_GetExternalIP(char *ip)
 	}
 }
 
-_NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
+void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
@@ -224,7 +224,7 @@ _NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP
 //	userData.Load();
 //}
 
-_NORETURN void IOCPServer::_InitWinSocket()
+void IOCPServer::_InitWinSocket()
 {
 	//윈속 초기화
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
@@ -275,7 +275,7 @@ _NORETURN void IOCPServer::_InitWinSocket()
 	}
 }
 
-_NORETURN void IOCPServer::_CreateBindListen()
+void IOCPServer::_CreateBindListen()
 {
 	//Socket()
 	listenSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -294,7 +294,7 @@ _NORETURN void IOCPServer::_CreateBindListen()
 	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT(TEXT("listen()"));
 }
 
-_NORETURN void IOCPServer::_BindSceneDataProcess()
+void IOCPServer::_BindSceneDataProcess()
 {
 	sceneNetworkManagerCont.reserve(6);	//	Scene Count = 6;
 
@@ -306,13 +306,13 @@ _NORETURN void IOCPServer::_BindSceneDataProcess()
 	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::InGameScene>(pRoomData, pUserData, pUdpManager));
 }
 
-_NORETURN void IOCPServer::_CreateSocket()
+void IOCPServer::_CreateSocket()
 {
 	pUdpManager->_CreateUDPSocket();
 }
 
 //Run
-_NORETURN void IOCPServer::_AcceptProcess()
+void IOCPServer::_AcceptProcess()
 {
 	printf("     [ServerCore] Dedicated server activated!\n\n");
 
@@ -378,7 +378,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 	}
 }
 
-_NORETURN void IOCPServer::_RunOtherThread()
+void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
@@ -390,7 +390,7 @@ _NORETURN void IOCPServer::_RunOtherThread()
 
 
 //Close
-_NORETURN void IOCPServer::_DestroyAndClean()
+void IOCPServer::_DestroyAndClean()
 {
 	closesocket(listenSocket);
 	WSACleanup();
@@ -411,7 +411,7 @@ DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 	return 0;
 };
 
-_NORETURN void IOCPServer::_WorkerThreadFunction()
+void IOCPServer::_WorkerThreadFunction()
 {
 	// 한 번만 선언해서 여러번 씁시다. 아껴써야지...
 	int retVal{};
@@ -545,7 +545,7 @@ DWORD WINAPI IOCPServer::UDPThread(LPVOID arg)
 	return 0;
 };
 
-_NORETURN void IOCPServer::_UDPThreadFunction()
+void IOCPServer::_UDPThreadFunction()
 {
 	while (7)
 	{
@@ -562,7 +562,7 @@ DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 	return 0;
 }
 
-_NORETURN void IOCPServer::_ManagerLoop()
+void IOCPServer::_ManagerLoop()
 {
 	int managerLoopBuffer{};
 

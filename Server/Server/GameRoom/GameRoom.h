@@ -12,8 +12,8 @@ enum class ROOM_STATE {
 
 struct RoomDynamicData
 {
-	wstring hostNickName;
-	wstring guestNickName;
+	Type_Nickname hostNickname;
+	Type_Nickname guestNickname;
 
 	int hostMissionIndex;
 	int guestMissionIndex;
@@ -70,10 +70,9 @@ public:
 	GameRoom & operator=(const GameRoom&) = delete;
 
 public:
-
 	void JoinRoom(const shared_ptr<UserData>& InGuestUserIter);
 	
-	__inline void DeleteDynamicData() { delete roomDynamicData;  roomDynamicData = nullptr; }
+	__inline void DeleteDynamicData() noexcept { delete roomDynamicData;  roomDynamicData = nullptr; }
 
 	//new Function
 public:
@@ -107,19 +106,19 @@ public:
 
 	//DEV_66 닉네임이, 다이나믹 데이터에 추가되면서, Iter대신, 닉네임만 요청하는 내용이 적용.
 	__inline void GetRoomGameDataWithNickname(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
-		int& retEnemyMissionIndex, int& retSubMissionIndex, wstring& retEnemyNickname)
+		int& retEnemyMissionIndex, int& retSubMissionIndex, Type_Nickname& retEnemyNickname)
 	{
 		if (InIsHost)
 		{
 			retPlayerMissionIndex = roomDynamicData->hostMissionIndex;
 			retEnemyMissionIndex = roomDynamicData->guestMissionIndex;
-			retEnemyNickname = roomDynamicData->guestNickName;
+			retEnemyNickname = roomDynamicData->guestNickname;
 		}
 		else
 		{
 			retPlayerMissionIndex = roomDynamicData->guestMissionIndex;
 			retEnemyMissionIndex = roomDynamicData->hostMissionIndex;
-			retEnemyNickname = roomDynamicData->hostNickName;
+			retEnemyNickname = roomDynamicData->hostNickname;
 		}
 
 		if (roomDynamicData->isHostFirst)
@@ -137,22 +136,22 @@ public:
 	}
 
 	//DEV_66
-	_NODISCARD __inline wstring& GetEnemyNickname(const bool& InIsHost)
+	_NODISCARD __inline Type_Nickname& GetEnemyNickname(const bool& InIsHost) const noexcept
 	{
 		if (InIsHost)
 		{
-			return roomDynamicData->guestNickName;
+			return roomDynamicData->guestNickname;
 		}
 		else
 		{
-			return roomDynamicData->hostNickName;
+			return roomDynamicData->hostNickname;
 		}
 	}
 
 	//DEV_66 For Friend
 	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() { return roomDynamicData->friendInviteBuffer; }
 	
-	_NORETURN __inline void SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
+	__inline void SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
 
 	__inline void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
 	{
@@ -166,7 +165,7 @@ public:
 		}
 	}
 
-	__inline int GetEnemyCharacterIndex(const bool& InIsHost)
+	 _NODISCARD __inline int GetEnemyCharacterIndex(const bool& InIsHost)
 	{
 		if (InIsHost)
 		{
@@ -222,27 +221,27 @@ public:
 	}
 
 public:
-	__inline void SetDataBuffer(const bool& InIsHost, const char* InBuffer, const int& InCopySize)
+	__inline void SetDataBuffer(const bool& InIsHost, const char* InBuffer, const int& InCopySize) noexcept
 	{
 		memcpy(dataBuffer[!InIsHost], InBuffer, InCopySize);
 	}
 
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize)
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize) noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], InCopySize);
 	}
 
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer)
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer) noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], (int)dataBuffer[InIsHost] + sizeof(int));
 	}
 
-	__inline int GetDataProtocol(const bool& InIsHost) const
+	_NODISCARD __inline int GetDataProtocol(const bool& InIsHost) const noexcept
 	{
 		return dataProtocol[InIsHost];
 	}
 	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
-	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol)
+	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol) noexcept
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}

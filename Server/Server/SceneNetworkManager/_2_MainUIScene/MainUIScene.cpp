@@ -51,7 +51,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 	if (friendNum)
 	{
 		int stringSize{};
-		wstring stringBuffer{};
+		Type_Nickname stringBuffer{};
 		bool isOnLogin{};
 		bool isOnMatch{};
 		shared_ptr<UserData> pBuffer = nullptr;
@@ -84,7 +84,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 
 			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
 
-			stringSize = stringBuffer.size() * 2;	// DEV_66 사이즈 * 2
+			stringSize = stringBuffer.size();	// DEV_66 사이즈
 
 			memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
 			memcpy(pClient->buf + pClient->dataSize + 8, stringBuffer.data(), stringSize);
@@ -167,7 +167,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 
 			// 방 데이터 및 상대편 닉네임 정보 얻기 --> 이거도 당연히 그 전에 알아야하는 거 아닌가? 그렇게 하자.
 			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-			//wstring stringBuffer;
+			//Type_Nickname stringBuffer;
 
 			pClient->pRoomIter->GetRoomGameData(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
@@ -177,7 +177,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			memcpy(pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 			memcpy(pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
-			//int sizeBuffer = stringBuffer.size() * 2; // DEV_66;
+			//int sizeBuffer = stringBuffer.size(); // DEV_66;
 			//memcpy(pClient->buf + 24, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 			//memcpy(pClient->buf + 28, stringBuffer.data(), sizeBuffer);
 			//pClient->dataSize = 32 + sizeBuffer;
@@ -249,11 +249,11 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 	pClient->buf[8 + iBuffer] = '\0';
 	
-	wstring nicknameBuffer((WCHAR*)(pClient->buf + 8));
+	Type_Nickname NicknameBuffer((pClient->buf + 8));
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };
-	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(nicknameBuffer, isOnLogin, isOnMatch);
+	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(NicknameBuffer, isOnLogin, isOnMatch);
 
 	// 해당 닉네임이가 아에 없는 경우 : ANSWER_MAKE_FRIEND + 0 + 3
 	if (!isOnMatch)
@@ -317,8 +317,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	}
 
 	// 상대방에게 친구 요청을 보내고, 나와 친구에 임시로 모두 저장함. : ANSWER_MAKE_FRIEND + 1
-	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendNickname(pClient->pUserNode->GetNickName()));
-	pClient->pUserNode->SetDemandFriendContIndex(pClient->pUserNode->SetInsertFriendNickname(pBuffer->GetNickName()));
+	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendNickname(pClient->pUserNode->GetNickname()));
+	pClient->pUserNode->SetDemandFriendContIndex(pClient->pUserNode->SetInsertFriendNickname(pBuffer->GetNickname()));
 	
 	pUDPManager->Push(UDP_PROTOCOL::DEMAND_FRIEND, pBuffer);
 	//pClient->pUserNode->SetValue().SetInsertFriendID(pBuffer->GetKey());
@@ -332,8 +332,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo* pClient)
 {
-	wstring stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex());
-	int stringSize = stringBuffer.size() * 2; //DEV_66
+	Type_Nickname stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex());
+	int stringSize = stringBuffer.size(); //DEV_66
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_MAKE_FRIEND_INFO), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&stringSize), sizeof(int));

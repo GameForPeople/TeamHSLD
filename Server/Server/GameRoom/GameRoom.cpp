@@ -7,7 +7,7 @@ GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft,
 {
 	roomDynamicData = new RoomDynamicData;
 	
-	roomDynamicData->hostNickName = InHostUserIter->GetNickName();
+	roomDynamicData->hostNickname = InHostUserIter->GetNickname();
 }
 
 GameRoom::GameRoom(const int& InBuffer)
@@ -37,7 +37,7 @@ void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)
 	dataProtocol[0] = NOTIFY_GAME_READY;
 	dataProtocol[1] = NOTIFY_GAME_READY;
 
-	roomDynamicData->guestNickName = InGuestUserIter->GetNickName();
+	roomDynamicData->guestNickname = InGuestUserIter->GetNickname();
 
 	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
 	roomState = ROOM_STATE::ROOM_STATE_PLAY;
