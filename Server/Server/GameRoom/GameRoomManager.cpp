@@ -22,7 +22,7 @@ GameRoom* GameRoomManager::_JoinRoom(const shared_ptr<UserData>& pInUserNode, Ga
 
 void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 {
-	if (pClient->pRoomIter->GetGameReady())
+	if (pClient->pRoomIter->GetGamePlay())
 	{
 		playRoomCont.Pop(pClient->pRoomIter);
 	}
@@ -38,7 +38,7 @@ void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 
 bool GameRoomManager::CancelWait(SocketInfo* pClient)
 {
-	if (pClient->pRoomIter->GetGameReady())
+	if (pClient->pRoomIter->GetGamePlay())
 	{
 		return false;
 	}

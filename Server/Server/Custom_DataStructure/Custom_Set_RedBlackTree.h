@@ -160,10 +160,10 @@ namespace CUSTOM_SET
 
 		//for Debug
 	public:
-		void										PrintTree();
+		_DEPRECATED void							PrintTree();
 
 	private:
-		void										_PrintNodes(rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer);
+		_DEPRECATED void							_PrintNodes(rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer);
 	};
 
 #pragma endregion
@@ -840,7 +840,7 @@ namespace CUSTOM_SET
 	*/
 
 	template <typename DATA, typename KEY_TYPE>
-	void rbTree<DATA, KEY_TYPE>::PrintTree()
+	_DEPRECATED void rbTree<DATA, KEY_TYPE>::PrintTree()
 	{
 		rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer = pRoot;
 
@@ -855,7 +855,7 @@ namespace CUSTOM_SET
 	}
 
 	template <typename DATA, typename KEY_TYPE>
-	void rbTree<DATA, KEY_TYPE>::_PrintNodes(rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer)
+	_DEPRECATED void rbTree<DATA, KEY_TYPE>::_PrintNodes(rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer)
 	{
 		if (pNodeBuffer->left != pNullNode)
 			_PrintNodes(pNodeBuffer->left);

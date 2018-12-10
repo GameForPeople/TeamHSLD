@@ -57,11 +57,12 @@ private:
 	// 데이터 담아두는 곳.
 	char dataBuffer[2][100];
 
+	bool isFriendMode;
 	// 안쓰기로 결정..
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
 public:
-	GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight);
+	GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight, bool InIsFriendMode = false );
 	//for pDoor
 	GameRoom(const int& InBuffer);
 	~GameRoom();
@@ -73,6 +74,41 @@ public:
 	void JoinRoom(const shared_ptr<UserData>& InGuestUserIter);
 	
 	__inline void DeleteDynamicData() noexcept { delete roomDynamicData;  roomDynamicData = nullptr; }
+
+	__inline bool RoomOut(const bool& isHost)
+	{
+		// DEV_55 제외.
+
+		//if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
+		//{
+		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
+		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
+		//
+		//	return false;
+		//}
+		//else if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
+		//{
+		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
+		//
+		//	// 여기서 게임 결과 처리...!
+		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
+		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
+		//
+		//	if (isHost)
+		//	{
+		//		(*pUserNode[0]).
+		//	}
+		//	else
+		//	{
+		//		RetEnemyIndex = userIndex[0];
+		//	}
+		//
+		//	return true;
+		//}
+	}
 
 	//new Function
 public:
@@ -149,8 +185,10 @@ public:
 	}
 
 	//DEV_66 For Friend
-	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() { return roomDynamicData->friendInviteBuffer; }
+	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() const { return roomDynamicData->friendInviteBuffer; }
 	
+	_NODISCARD __inline bool GetIsFriendMode() const noexcept { return isFriendMode; }
+
 	__inline void SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
 
 	__inline void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
@@ -177,42 +215,7 @@ public:
 		}
 	}
 
-	__inline bool RoomOut(const bool& isHost)
-	{
-		// DEV_55 제외.
-
-		//if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
-		//{
-		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	return false;
-		//}
-		//else if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
-		//{
-		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	// 여기서 게임 결과 처리...!
-		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	if (isHost)
-		//	{
-		//		(*pUserNode[0]).
-		//	}
-		//	else
-		//	{
-		//		RetEnemyIndex = userIndex[0];
-		//	}
-		//
-		//	return true;
-		//}
-	}
-
-	__inline bool GetGameReady() const
+	__inline bool GetGamePlay() const
 	{
 		if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
 			return true;
@@ -241,6 +244,7 @@ public:
 		return dataProtocol[InIsHost];
 	}
 	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
+
 	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol) noexcept
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;

@@ -171,10 +171,10 @@ namespace CUSTOM_MAP
 
 		//for Debug
 	public:
-		void								PrintTree();
+		_DEPRECATED void					PrintTree();
 
 	private:
-		void								_PrintNodes(rbTreeNode<KEY, VALUE>* pNodeBuffer);
+		_DEPRECATED void					_PrintNodes(rbTreeNode<KEY, VALUE>* pNodeBuffer);
 	};
 
 #pragma endregion
@@ -816,7 +816,7 @@ namespace CUSTOM_MAP
 	*/
 
 	template <typename KEY, typename VALUE>
-	void rbTree<KEY, VALUE>::PrintTree()
+	_DEPRECATED void rbTree<KEY, VALUE>::PrintTree()
 	{
 		rbTreeNode<KEY, VALUE>* pNodeBuffer = pRoot;
 
@@ -831,7 +831,7 @@ namespace CUSTOM_MAP
 	}
 
 	template <typename KEY, typename VALUE>
-	void rbTree<KEY, VALUE>::_PrintNodes(rbTreeNode<KEY, VALUE>* pNodeBuffer)
+	_DEPRECATED void rbTree<KEY, VALUE>::_PrintNodes(rbTreeNode<KEY, VALUE>* pNodeBuffer)
 	{
 		if (pNodeBuffer->left != pNullNode)
 			_PrintNodes(pNodeBuffer->left);

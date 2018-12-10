@@ -85,7 +85,7 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 {
-	if ( pClient->pRoomIter->GetGameReady())
+	if ( pClient->pRoomIter->GetGamePlay())
 	{
 		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
 

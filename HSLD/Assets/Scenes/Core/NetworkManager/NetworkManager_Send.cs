@@ -60,13 +60,14 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_NICKNAME), 0, NewDataSendBuffer, 0, 4);
 
-                    int nickNameSize = nickName.Length * 2; //DEV_66
+                    byte[] stringToByteBuffer = Encoding.Default.GetBytes(nickName);
+                    int nickNameSize = stringToByteBuffer.Length; //DEV_66
 
                     Debug.Log(" " + nickName + "는 입력한 nickName 값, nickName Size =>> " + nickNameSize);
 
                     Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
 
-                    Buffer.BlockCopy(Encoding.Unicode.GetBytes(nickName), 0, NewDataSendBuffer, 8, nickNameSize);
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize);
 
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }
@@ -107,13 +108,15 @@ public partial class NetworkManager : MonoBehaviour {
                 else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
-                    string stringBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().makeFriendIDBuffer;
-                    int stringSize = stringBuffer.Length;
+                    string nicknameBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().makeFriendIDBuffer;
 
-                    Buffer.BlockCopy(BitConverter.GetBytes(stringSize), 0, NewDataSendBuffer, 4, 4);
-                    Buffer.BlockCopy(Encoding.Default.GetBytes(stringBuffer), 0, NewDataSendBuffer, 8, stringSize);
+                    byte[] stringToByteBuffer = Encoding.Default.GetBytes(nicknameBuffer);
+                    int nickNameSize = stringToByteBuffer.Length; //DEV_66
 
-                    socket.Send(NewDataSendBuffer, 8 + stringSize, SocketFlags.None);
+                    Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize);
+
+                    socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }
                 else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO)
                 {

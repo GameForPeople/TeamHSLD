@@ -7806,7 +7806,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: UI_GoToMainUIScene
+        m_MethodName: UI_LOGTEST
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

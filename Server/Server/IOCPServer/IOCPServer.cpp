@@ -460,21 +460,24 @@ void IOCPServer::_WorkerThreadFunction()
 			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
 			if (pClient->pRoomIter != nullptr)
 			{
-				//if (map<const std::string, UserData>::iterator enemyIter; 
-				//roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
-				//{
-				//	// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
-				//	userData.SetGameResult(ReturnEnemyIndexBuffer, true);
-				//	userData.SetGameResult(ptr->userIndex, false);
-				//}
-				//else
-				//{
-				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
-				//	//...? 할게 없나...?
-				//}
-				pUserData->SetGameResult(pClient->pUserNode, false);
-				pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
-				pClient->pRoomIter = nullptr;
+				if (pClient->pRoomIter->GetGamePlay())	// 게임중일 때,
+				{
+					pUserData->SetGameResult(pClient->pUserNode, false);
+					pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
+					pClient->pRoomIter = nullptr;
+				}
+				else
+				{
+					if (pClient->pRoomIter->GetIsFriendMode())	// 친구모드일 때,
+					{
+						pClient->pRoomIter->SetDynamicFriendInviteBuffer();
+						pClient->pRoomIter = nullptr;
+					}
+					else
+					{
+						pRoomData->CancelWait(pClient);
+					}
+				}
 			}
 
 			pUserData->LogoutProcess(pClient->pUserNode);

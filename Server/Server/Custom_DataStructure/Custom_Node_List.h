@@ -37,7 +37,7 @@ namespace CUSTOM_LIST
 			return false;
 		}
 
-		void Print()
+		_DEPRECATED void Print()
 		{
 			//GameRoom* newNode = WaitNodeCont;
 			//
