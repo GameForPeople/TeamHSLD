@@ -32,7 +32,7 @@ namespace CUSTOM_SET
 
 	public:
 		// Define the constructor for pNullNode, buffer #1 Key, Value에 대한 기본생성자가 필요합니다.
-		rbTreeNode<DATA, KEY_TYPE>()
+		rbTreeNode<DATA, KEY_TYPE>() noexcept
 			: data(), up(this), left(this), right(this), color(BLACK)
 		{}
 
@@ -115,7 +115,7 @@ namespace CUSTOM_SET
 		rbTreeNode<DATA, KEY_TYPE>*				pRoot;		// Root!
 
 	public:
-		rbTree<DATA, KEY_TYPE>()
+		rbTree<DATA, KEY_TYPE>() noexcept
 			: pNullNode(new rbTreeNode<DATA, KEY_TYPE>()), pRoot(pNullNode)
 		{
 			/* In Node Construct rbTreeNode::rbTreeNode()
@@ -770,6 +770,7 @@ namespace CUSTOM_SET
 
 			return pRetNode;
 		}
+		std::cout << "ERROR RBTree - 773 \n";
 	};
 
 

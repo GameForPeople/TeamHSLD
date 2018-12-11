@@ -38,7 +38,7 @@ namespace CUSTOM_QUEUE
 		CustomNode<DATA>* pEnd;
 
 	public:
-		CustomQueue<DATA>()
+		CustomQueue<DATA>() noexcept
 			: pStart(nullptr), pEnd(nullptr)
 		{}
 

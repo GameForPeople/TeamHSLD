@@ -38,7 +38,7 @@ namespace NETWORK_UTIL {
 			NULL
 		);
 		
-		printf(" [%s]  %S", msg, lpMsgBuf);
+		printf(" [%s]  %s", msg, (LPTSTR)&lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
 
@@ -163,7 +163,7 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 		printf("бс    IP Address : ExternalIP(%s) \n", retIPChar);
 
 		// For Test! Extern IP == HSLD WebServer IP
-		[&retIPChar]()  throw() -> void 
+		[&retIPChar]()  noexcept(false) -> void 
 		{
 			NetworkInterface_CS* networkInterFace = nullptr;
 			CoInitialize(NULL);
@@ -310,6 +310,7 @@ void IOCPServer::_CreateSocket()
 {
 	pUdpManager->_CreateUDPSocket();
 }
+
 
 //Run
 void IOCPServer::_AcceptProcess()

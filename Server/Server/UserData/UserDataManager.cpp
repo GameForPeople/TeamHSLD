@@ -1,7 +1,7 @@
 #include "../UserData/UserDataManager.h"
 #include "../IOCPServer/SocketInfo.h"
 
-UserDataManager::UserDataManager() 
+UserDataManager::UserDataManager() noexcept
 	:	CONST_A(/*converter.from_bytes(*/"A"/*)*/)
 	,	CONST_Z(/*converter.from_bytes(*/"Z"/*)*/)
 	,	CONST_a(/*converter.from_bytes(*/"a"/*)*/)

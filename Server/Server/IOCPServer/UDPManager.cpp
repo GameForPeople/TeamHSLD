@@ -21,12 +21,21 @@ namespace UDP_UTIL {
 	};
 };
 
-UDPManager::UDPManager() 
+UDPManager::UDPManager() noexcept
 	: CONST_INVITE_FRIEND(static_cast<char>(1))
 	, CONST_DEMAND_FRIEND(static_cast<char>(2))
 	, CONST_RESULT_FRIEND(static_cast<char>(7))
 	, UDP_PORT(htons(SERVER_UDP_PORT))
-{}
+	, udpSocket()
+	//, csUDP()
+{
+	//::InitializeCriticalSection(&csUDP);
+}
+
+UDPManager::~UDPManager()
+{
+	//::DeleteCriticalSection(&csUDP);
+}
 
 void UDPManager::_CreateUDPSocket()
 {

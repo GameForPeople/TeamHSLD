@@ -31,7 +31,7 @@ class UserDataManager {
 	shared_ptr<UserData> CONST_NULL_USERDATA{nullptr};
 
 public:
-	UserDataManager(); // = delete;
+	UserDataManager() noexcept; // = delete;
 	~UserDataManager(); // = delete;
 
 public:

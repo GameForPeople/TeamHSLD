@@ -42,9 +42,11 @@ struct SocketInfo
 
 public:
 	//생성자 필요에 의해 추가.
-	__inline SocketInfo() :
+	SocketInfo() noexcept
 		//bufferProtocol(0), 
-			buf()
+		:	overlapped()
+		,	wsabuf()
+		,	buf()
 		//,	isInRoom(false)
 		,	isHost(false)
 		//,	dataSize() 
@@ -55,5 +57,5 @@ public:
 		//enemyIter()
 	{};
 
-	__inline ~SocketInfo() = default;
+	~SocketInfo() = default;
 };

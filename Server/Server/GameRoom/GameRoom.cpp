@@ -5,6 +5,8 @@ GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLef
 	//,	left(InLeft), right(InRight)
 	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname()))
 	,	isFriendMode(InIsFriendMode)
+	,	dataProtocol()
+	,	dataBuffer()
 {}
 
 GameRoom::~GameRoom()
@@ -28,4 +30,6 @@ void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)
 
 	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
 	roomState = ROOM_STATE::ROOM_STATE_PLAY;
+
+	// 추국하다 유리창 깨놓고선 건물주오니까 전화받는 척
 }

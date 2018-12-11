@@ -64,7 +64,9 @@ private:
 
 public:
 	IOCPServer(bool InIsTrueLoadExternIP) 
-		:	pUserData(new UserDataManager())
+		:	wsa()
+		,	listenSocket()
+		,	pUserData(new UserDataManager())
 		,	pRoomData(new GameRoomManager())
 		,	pUdpManager(new UDPManager())
 	{
@@ -82,7 +84,7 @@ public:
 		try { Close(); }
 		catch (...)
 		{
-			std::cout << "[서버 오류] : IOCPServer 소멸자에서 예외가 발생했습니다. " << "\n";
+			std::cout << "[서버 오류] : IOCPServer 소멸자에서 예외가 발생했습니다. (사실 상관없어요!)" << "\n";
 			std::exit(EXIT_FAILURE);
 		}
 	}

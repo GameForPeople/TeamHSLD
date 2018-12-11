@@ -34,7 +34,7 @@ namespace CUSTOM_MAP
 
 	public:
 		// Define the constructor for pNullNode, buffer #1 Key, Value에 대한 기본생성자가 필요합니다.
-		rbTreeNode<KEY, VALUE>()
+		rbTreeNode<KEY, VALUE>() noexcept 
 			: key(), value(), up(this), left(this), right(this), color(false)
 		{}
 
@@ -125,7 +125,7 @@ namespace CUSTOM_MAP
 		rbTreeNode<KEY, VALUE>*				pRoot;		// Root!
 
 	public:
-		rbTree<KEY, VALUE>()
+		rbTree<KEY, VALUE>() noexcept
 			: pNullNode(new rbTreeNode<KEY, VALUE>()), pRoot(pNullNode)
 		{
 			/* In Node Construct rbTreeNode::rbTreeNode()

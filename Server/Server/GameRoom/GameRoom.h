@@ -80,41 +80,6 @@ public:
 	
 	__inline void DeleteDynamicData() noexcept { roomDynamicData.reset(); }
 
-	__inline bool RoomOut(const bool& isHost)
-	{
-		// DEV_55 제외.
-
-		//if (roomState == ROOM_STATE::ROOM_STATE_WAIT)
-		//{
-		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	return false;
-		//}
-		//else if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
-		//{
-		//	//hostDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//	//guestDataProtocol = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	// 여기서 게임 결과 처리...!
-		//	dataProtocol[0] = DISCONNECTED_ENEMY_CLIENT;
-		//	dataProtocol[1] = DISCONNECTED_ENEMY_CLIENT;
-		//
-		//	if (isHost)
-		//	{
-		//		(*pUserNode[0]).
-		//	}
-		//	else
-		//	{
-		//		RetEnemyIndex = userIndex[0];
-		//	}
-		//
-		//	return true;
-		//}
-	}
-
 	//new Function
 public:
 	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, 
@@ -149,66 +114,30 @@ public:
 	__inline void GetRoomGameDataWithNickname(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
 		int& retEnemyMissionIndex, int& retSubMissionIndex, Type_Nickname& retEnemyNickname)
 	{
+		GetRoomGameData(InIsHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+
 		if (InIsHost)
 		{
-			retPlayerMissionIndex = roomDynamicData->hostMissionIndex;
-			retEnemyMissionIndex = roomDynamicData->guestMissionIndex;
 			retEnemyNickname = roomDynamicData->guestNickname;
 		}
 		else
 		{
-			retPlayerMissionIndex = roomDynamicData->guestMissionIndex;
-			retEnemyMissionIndex = roomDynamicData->hostMissionIndex;
 			retEnemyNickname = roomDynamicData->hostNickname;
 		}
-
-		if (roomDynamicData->isHostFirst)
-		{
-			retIsHostFirst = 1;
-		}
-		else
-		{
-			retIsHostFirst = 0;
-		}
-
-		retSubMissionIndex = roomDynamicData->subMissionIndex;
-
 		return;
 	}
 
 	//DEV_66
-	_NODISCARD __inline Type_Nickname& GetEnemyNickname(const bool& InIsHost) const noexcept
+	_NODISCARD	__inline Type_Nickname&		GetEnemyNickname(const bool& InIsHost) const noexcept
 	{
 		if (InIsHost)
-		{
 			return roomDynamicData->guestNickname;
-		}
 		else
-		{
 			return roomDynamicData->hostNickname;
-		}
 	}
-
-	//DEV_66 For Friend
-	_NODISCARD __inline bool GetDynamicFriendInviteBuffer() const { return roomDynamicData->friendInviteBuffer; }
-	
-	_NODISCARD __inline bool GetIsFriendMode() const noexcept { return isFriendMode; }
-
-	__inline void SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
-
-	__inline void SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
-	{
-		if (InIsHost)
-		{
-			roomDynamicData->hostCharacterIndex = InCharacterIndex;
-		}
-		else
-		{
-			roomDynamicData->guestCharacterIndex = InCharacterIndex;
-		}
-	}
-
-	 _NODISCARD __inline int GetEnemyCharacterIndex(const bool& InIsHost)
+	_NODISCARD	__inline bool				GetDynamicFriendInviteBuffer() const { return roomDynamicData->friendInviteBuffer; }
+	_NODISCARD	__inline bool				GetIsFriendMode() const noexcept { return isFriendMode; }
+	_NODISCARD	__inline int				GetEnemyCharacterIndex(const bool& InIsHost)
 	{
 		if (InIsHost)
 		{
@@ -219,13 +148,20 @@ public:
 			return roomDynamicData->hostCharacterIndex;
 		}
 	}
-
-	__inline bool GetGamePlay() const
+	_NODISCARD	__inline bool				GetGamePlay() const noexcept
 	{
 		if (roomState == ROOM_STATE::ROOM_STATE_PLAY)
 			return true;
-
 		return false;
+	}
+
+	__inline void							SetDynamicFriendInviteBuffer(/*only false*/) { roomDynamicData->friendInviteBuffer = false; }
+	__inline void							SetCharacterIndex(const bool& InIsHost, const int& InCharacterIndex)
+	{
+		if (InIsHost)
+			roomDynamicData->hostCharacterIndex = InCharacterIndex;
+		else
+			roomDynamicData->guestCharacterIndex = InCharacterIndex;
 	}
 
 public:
@@ -234,11 +170,11 @@ public:
 		memcpy(dataBuffer[!InIsHost], InBuffer, InCopySize);
 	}
 
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize) noexcept
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize)  noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], InCopySize);
 	}
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer) noexcept
+	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer)  noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], (int)dataBuffer[InIsHost] + sizeof(int));
 	}
@@ -247,7 +183,6 @@ public:
 	{
 		return dataProtocol[InIsHost];
 	}
-
 	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
 	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol) noexcept
 	{
@@ -255,7 +190,6 @@ public:
 	}
 
 #pragma region [Old Function]
-
 	//__inline rbTreeNode<string, UserData>*  RetEnemyUserIter(const bool& InIsHost)
 	//{
 	//	return pUserNode[InIsHost];

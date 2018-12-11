@@ -1,7 +1,7 @@
 #include "../GameRoom/GameRoomManager.h"
 #include "../IOCPServer/SocketInfo.h"
 
-GameRoomManager::GameRoomManager()
+GameRoomManager::GameRoomManager() noexcept
 	: pWaitRoom(), roomNum(0)
 {
 	pWaitRoom.reset();
@@ -26,7 +26,7 @@ bool GameRoomManager::RandomMatchingProcess(const shared_ptr<UserData>& pInUser)
 		//----------------------------
 		LeaveCriticalSection(&csRoom);
 
-		++roomNum;
+		++roomNum;		//atomic
 		return true;
 	}
 	else // Join

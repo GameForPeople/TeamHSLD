@@ -6,7 +6,7 @@ int main(int argc, char * argv[])
 	unique_ptr<IOCPServer> GameServer 
 		= make_unique<IOCPServer>
 		(
-			[/* void */]() throw() -> const bool
+			[/* void */]() noexcept(false) -> const bool
 			{
 				enum SERVER_INIT_TYPE
 				{

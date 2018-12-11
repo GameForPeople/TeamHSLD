@@ -25,7 +25,7 @@ class UserData {
 
 public:
 	// For rbTreeNode's nullNode
-	UserData() 
+	UserData() noexcept
 		:	pSocketInfo(nullptr)
 		,	id()
 		,	nickname()
@@ -163,6 +163,7 @@ public:
 
 	__inline void	SetDeleteFriendID()
 	{
+		//warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
 		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;
 	}

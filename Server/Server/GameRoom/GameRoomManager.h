@@ -18,7 +18,7 @@ class GameRoomManager {
 	CRITICAL_SECTION		csRoom;
 
 public:
-	GameRoomManager();
+	GameRoomManager() noexcept;
 	~GameRoomManager();
 
 public:

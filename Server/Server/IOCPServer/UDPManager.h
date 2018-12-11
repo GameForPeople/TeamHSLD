@@ -15,23 +15,26 @@ enum UDP_PROTOCOL
 
 class UDPManager
 {
-	const char CONST_INVITE_FRIEND;
-	const char CONST_DEMAND_FRIEND;
+	const char				CONST_INVITE_FRIEND;
+	const char				CONST_DEMAND_FRIEND;
 
-	const char CONST_RESULT_FRIEND;
+	const char				CONST_RESULT_FRIEND;
 
-	const USHORT UDP_PORT;
+	const USHORT			UDP_PORT;
 
-	SOCKET udpSocket;
-	SOCKADDR_IN serverUDPAddr;
+	SOCKET					udpSocket;
+	SOCKADDR_IN				serverUDPAddr;
 
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendInviteMessageQueue;	// INVITE_FRIEND = 1
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendDemandMessageQueue; // DEMAND_FRIEND = 2
 
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendResultMessageQueue;	// RESULT_FRIEND = 7
+
+	//CRITICAL_SECTION		csUDP;
+
 public:
-	UDPManager();
-	~UDPManager() = default;
+	UDPManager() noexcept;
+	~UDPManager();
 
 public:
 	__inline void Push(const int& InContNumber, const shared_ptr<UserData>& pInUserData)
@@ -51,7 +54,7 @@ public:
 		}
 	}
 
-	void UDPSend()
+	__inline void UDPSend()
 	{
 		if (!friendInviteMessageQueue.IsEmpty())
 		{
