@@ -15,6 +15,7 @@ public class AllMeshController : MonoBehaviour {
     public GameObject myFlag;
     public GameObject[] AllContainer;
     public GameObject[] buildingObj;
+    public GameObject[] MovingObj;
     static public AllMeshController instance_;
     static public int giveLinkNum = 0;
 

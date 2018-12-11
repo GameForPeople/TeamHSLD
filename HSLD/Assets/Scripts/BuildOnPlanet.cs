@@ -7,14 +7,22 @@ public class BuildOnPlanet : MonoBehaviour
     private GameObject target_;
     public Transform objectSet;
 
-    public void EulerRotCal(GameObject targetObj, GameObject buildingObj,float offset)
+    public void EulerRotCal(GameObject targetObj, GameObject buildingObj,float offset, int index, int buildIndex)
     {
         target_ = Instantiate(buildingObj);
         target_.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y + offset, targetObj.transform.position.z); ;
         target_.transform.parent = objectSet;
-
+        StartCoroutine(ComponentOn(index, buildIndex));
         target_.transform.LookAt(gameObject.transform.position);
         target_.transform.eulerAngles = new Vector3(target_.transform.eulerAngles.x + 180, target_.transform.eulerAngles.y, target_.transform.eulerAngles.z);
+    }
+
+    IEnumerator ComponentOn(int index, int buildIndex)
+    {
+        yield return new WaitForSeconds(1f);
+        target_.AddComponent<ObjectMoving>();
+        target_.GetComponent<ObjectMoving>().startingIndex = index;
+        target_.GetComponent<ObjectMoving>().thisObject = (MOVINGOBJECT)buildIndex;
     }
 
     public void SetDone()

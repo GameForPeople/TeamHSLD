@@ -159,9 +159,7 @@ public class FlowSystem : MonoBehaviour
                 }
 
                 else
-                {
                     gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
-                }
                     
                 break;
 
@@ -197,7 +195,22 @@ public class FlowSystem : MonoBehaviour
                 
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
-                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
+                switch (gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
+                {
+                    //비옥 - 병아리
+                    case 1:
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1],0);
+                        break;
+                    //한랭 - 펭귄
+                    case 3:
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[1], 1.03f, AllMeshController.instance_.PickContainer[1],1);
+                        break;
+                    //바다 - 고래
+                    case 4:
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[2], 5f, AllMeshController.instance_.PickContainer[1],2);
+                        break;
+                }
+                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();                
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:

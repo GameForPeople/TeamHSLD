@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3184,7 +3184,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -4.49}
   m_SizeDelta: {x: 0, y: 1.02}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12485,6 +12485,10 @@ MonoBehaviour:
   - {fileID: 1995373763876344, guid: 30e50d5e693873b49b1006ed161c12db, type: 2}
   - {fileID: 1937199620671318, guid: 644656c6db20a5145b722945739d79e2, type: 2}
   - {fileID: 1625536764460096, guid: d966b2b1d6f306d4db5f894d74bfe1e1, type: 2}
+  MovingObj:
+  - {fileID: 1691401098984286, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
+  - {fileID: 1230391639665232, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+  - {fileID: 1416012954653702, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
 --- !u!1 &1135955283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100446, guid: e0e6c540bb21a994890f7a93ac229b27,
