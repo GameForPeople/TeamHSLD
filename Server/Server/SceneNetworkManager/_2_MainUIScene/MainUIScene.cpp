@@ -104,7 +104,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 	if (pBuffer != nullptr && pBuffer->GetSocketInfo()->pRoomIter == nullptr)
 	{
 		// 방 생성 필요
-		pClient->pRoomIter = new GameRoom(pClient->pUserNode, nullptr, nullptr);
+		pClient->pRoomIter = make_shared<GameRoom>(pClient->pUserNode, true);
 
 		// 친구 방과 친구의 소켓주소구조체도 등록.	// 이 때 nullptr이 아닐경우 문제가 될 요지가 충분함.! 동기화 처리!필요!
 		pBuffer->GetSocketInfo()->pRoomIter = pClient->pRoomIter;
@@ -140,14 +140,11 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 	{
 		if (isTrueBuffer == 0)
 		{
-			// 방 삭제는 호스트가 하도록 변경됨.
-			//delete pClient->pRoomIter;
-
-			// DEV_66 False라고 알림. -> 동기화 오바될 수 있음 (pRoomIter가 그 사이 Destory 될 수 있음)
+			// 메롱 나 게임 안할껀데?
 			pClient->pRoomIter->SetDynamicFriendInviteBuffer();
 
-			// 내 방은 내가 정한다.
-			pClient->pRoomIter = nullptr;
+			// 방 삭제는 호스트가 하도록 변경됨. -> shared_ptr으로 변경됨. 마음대로해.
+			pClient->pRoomIter.reset();
 
 			memcpy(pClient->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
 			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -188,8 +185,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 	else
 	{
 		//이미 호스트가 7초가 지나 방을 나갔거나, 이상해짐.
-		delete pClient->pRoomIter;
-		pClient->pRoomIter = nullptr;
+		pClient->pRoomIter.reset();
+		//pClient->pRoomIter = nullptr;
 
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -202,9 +199,9 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 {
 	if (pClient->pRoomIter->GetDynamicFriendInviteBuffer() == false)
 	{
-		// 방 제거해줌.-> 친구(적) 유저 나간 케이스. 여기서 이대로 끝!
-		delete pClient->pRoomIter;
-		pClient->pRoomIter = nullptr;
+		// 방 제거해줌.-> 친구(적) 유저 나간 것이 확실한 케이스. 여기서 이대로 끝!
+		pClient->pRoomIter.reset();
+		//pClient->pRoomIter = nullptr;
 
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -213,7 +210,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 	}
 	else if (pClient->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
 	{
-		// 게임 시작함.
+		// 게임 시작한 것이 확실한 케이스.
 
 		// 일반적인 친구 입장과 동일하게 처리.
 		int _ANSWER_FRIEND_JOIN = Protocol::ANSWER_FRIEND_JOIN;
@@ -231,11 +228,14 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 
 		pClient->dataSize = 24;
 	}
-	// 상대방이 어떤 반응이 없었음. (동기화 처리 필요함. )
+	// 상대방이 어떤 반응이 없었음. ( UDP 소실이거나, 할튼 다른 애매한 케이스. )
 	else
 	{
 		// 기존에는 해당 방을 삭제했다면, 앞으로는 DynamicData를 false로 바꾸도록 변경.
 		pClient->pRoomIter->SetDynamicFriendInviteBuffer();
+
+		// shared_ptr로 바뀜.. 여기서도 삭제해줘야함..
+		pClient->pRoomIter.reset();
 
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));

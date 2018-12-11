@@ -34,11 +34,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, Socke
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 {
-	bool retBoolBuffer; 
-	pClient->pRoomIter = pRoomData->RandomMatchingProcess( pClient->pUserNode, pClient->pRoomIter, retBoolBuffer);
-	
 	// 랜덤매칭에서, userIter까지 다 넣음.
-	if (retBoolBuffer)
+	if (pRoomData->RandomMatchingProcess(pClient->pUserNode))
 		// Create Room
 	{
 		 pClient->isHost = true;
@@ -65,10 +62,6 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 
 		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, stringBuffer);
 
-		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
-		
-		//string stringBuffer((*EnemyIter)->first);
-		
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
@@ -88,7 +81,6 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 	if ( pClient->pRoomIter->GetGamePlay())
 	{
 		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
-
 		Type_Nickname stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
 		int sizeBuffer = stringBuffer.size(); //DEV_66
 
@@ -96,19 +88,19 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 		memcpy( pClient->buf + 8, stringBuffer.data(), sizeBuffer);
 
-		 pClient->dataSize = 8 + sizeBuffer;
+		pClient->dataSize = 8 + sizeBuffer;
 	}
 	else
 	{
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_NOT_JOIN), sizeof(int));
 
-		 pClient->dataSize = 4;
+		pClient->dataSize = 4;
 	}
 }
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 {
-	if (pRoomData->CancelWait(pClient))
+	if (pRoomData->HostCancelWaiting(pClient))
 		// 랜덤 매칭 취소가 성공함.
 	{
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_EXIT_RANDOM), sizeof(int));
@@ -133,8 +125,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* pClient)
 
 		pClient->dataSize = 8;
 
-		delete pClient->pRoomIter;
-		pClient->pRoomIter = nullptr;
+		pClient->pRoomIter.reset();
+		//pClient->pRoomIter = nullptr;
 	}
 	// 상대방이 게임 초대를수락함.
 	else if ( pClient->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)

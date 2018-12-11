@@ -1,28 +1,15 @@
 #include "../GameRoom/GameRoom.h"
 
-GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight, bool InIsFriendMode)
+GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
 	:	roomState(ROOM_STATE::ROOM_STATE_SOLO)
-	,	left(InLeft), right(InRight)
-	,	roomDynamicData()
+	//,	left(InLeft), right(InRight)
+	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname()))
 	,	isFriendMode(InIsFriendMode)
-{
-	roomDynamicData = new RoomDynamicData;
-	roomDynamicData->hostNickname = InHostUserIter->GetNickname();
-}
-
-GameRoom::GameRoom(const int& InBuffer)
-	:
-	roomState(),
-	roomDynamicData(nullptr),
-	left(nullptr), right(nullptr)
 {}
 
 GameRoom::~GameRoom()
 {
-	//if (left != nullptr || right != nullptr)
-	//	std::cout << "아마도 GameRoom ERROR 입니다. \n";
-	if (roomDynamicData != nullptr)
-		delete roomDynamicData;
+	roomDynamicData.reset();
 }
 
 void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)

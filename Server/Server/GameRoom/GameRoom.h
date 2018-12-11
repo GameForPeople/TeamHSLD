@@ -33,24 +33,27 @@ struct RoomDynamicData
 	// DEV_66 작업 중 추가, 친구 초대로 인한 게임일 경우를 위해 사용하며, 해당을 False로 Guest가 바꿀 경우, 초대를 거절한 상황임.
 	bool friendInviteBuffer;	// 1바이트이며 동적으로 사용하기 때문에, 친구방 아닐 경우에도 뭐 큰 상관없이 사용할 수 있을 듯.
 
-	RoomDynamicData()
+	RoomDynamicData(const Type_Nickname& InHostNickName)
 		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
 		, hostCharacterIndex(1), guestCharacterIndex(1)
 		, isHostFirst(rand() % 2)
 		, friendInviteBuffer(true)
 		//, userReadyCount(0)
-		//hostUserReady(false), guestUserReady(false)
+		//, hostUserReady(false), guestUserReady(false)
 	{}
 };
 
 class GameRoom {
 public:
 	ROOM_STATE roomState;
+	
+	/*
 	GameRoom* left;
 	GameRoom* right;
+	*/
 
 private:
-	RoomDynamicData* roomDynamicData;
+	shared_ptr<RoomDynamicData> roomDynamicData;
 
 	int dataProtocol[2];
 
@@ -58,22 +61,24 @@ private:
 	char dataBuffer[2][100];
 
 	bool isFriendMode;
+
 	// 안쓰기로 결정..
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
+
 public:
-	GameRoom(const shared_ptr<UserData>& InHostUserIter, GameRoom* InLeft, GameRoom* InRight, bool InIsFriendMode = false );
-	//for pDoor
-	GameRoom(const int& InBuffer);
+	GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode = false );
+	
+	GameRoom() = delete;
 	~GameRoom();
 
 	//GameRoom(const GameRoom&) = delete; 
-	GameRoom & operator=(const GameRoom&) = delete;
+	//GameRoom & operator=(const GameRoom&) = delete;
 
 public:
 	void JoinRoom(const shared_ptr<UserData>& InGuestUserIter);
 	
-	__inline void DeleteDynamicData() noexcept { delete roomDynamicData;  roomDynamicData = nullptr; }
+	__inline void DeleteDynamicData() noexcept { roomDynamicData.reset(); }
 
 	__inline bool RoomOut(const bool& isHost)
 	{
@@ -233,7 +238,6 @@ public:
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], InCopySize);
 	}
-
 	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer) noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], (int)dataBuffer[InIsHost] + sizeof(int));
@@ -243,8 +247,8 @@ public:
 	{
 		return dataProtocol[InIsHost];
 	}
-	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
 
+	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
 	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol) noexcept
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;
@@ -266,6 +270,5 @@ public:
 	//	pUserNode[InIsGuest] = InPtr;
 	//}
 #pragma endregion
-
 };
 

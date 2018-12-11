@@ -3,43 +3,44 @@
 #include "../PCH/stdafx.h"
 #include "../GameRoom/GameRoom.h"
 #include "../Custom_DataStructure/Custom_Node_List.h"
-#include "../Custom_DataStructure/Custom_Set_RedBlackTree.h"
-
 
 struct SocketInfo;
 
 class GameRoomManager {
-	CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> waitRoomCont;
-	CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> playRoomCont;
+	// 방 관리 안하도록 변경.
+	//CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> waitRoomCont;
+	//CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> playRoomCont;
+
+	weak_ptr<GameRoom>		pWaitRoom;
+	
+	atomic<int>				roomNum;
+	
+	CRITICAL_SECTION		csRoom;
 
 public:
-	GameRoomManager() = default;
-	~GameRoomManager() = default;
+	GameRoomManager();
+	~GameRoomManager();
 
-public: //for InGameScene
-
-	// True = Create , False = Join
-	GameRoom* RandomMatchingProcess(const shared_ptr<UserData>& pInUser, GameRoom* pRetRoom, bool& RetBoolBuuffer);
+public:
+	bool RandomMatchingProcess(const shared_ptr<UserData>& pInUser); 	// True = Create , False = Join
 
 private:
-	GameRoom* _CreateRoom(const shared_ptr<UserData>& pInUserNode);
-
-	GameRoom* _JoinRoom(const shared_ptr<UserData>& pInUserNode, GameRoom* pRetRoom);
+	void _CreateRoom(const shared_ptr<UserData>& pClient);
+	void _JoinRoom(const shared_ptr<UserData>& pClient);
+	void _DestroyRoom(SocketInfo* pClient);
 	
 public:
-	void DestroyRoom(SocketInfo* pClient);
+	bool HostCancelWaiting(SocketInfo* pClient);
 	
-	bool CancelWait(SocketInfo* pClient);
-
 public:
-	void DEBUG_PRINT_LIST_EMPTY(int InValue) const
+	_DEPRECATED void DEBUG_PRINT_WAIT_EMPTY( /*int InValue */) const
 	{
-		if (InValue == 0)
-			std::cout << "waitRoomCont는 비어있는 여부 : " << waitRoomCont.IsEmpty() << "\n";
-		
-		else if (InValue == 1)
-			std::cout << "playRoomCont는 비어있는 여부 : " << playRoomCont.IsEmpty() << "\n";
+		if(pWaitRoom.expired() == true)
+			std::cout << "현재 게임 대기중인 유저가 없습니다. \n";
+		else
+			std::cout << "현재 게임을 위해 대기중인 유저가 있습니다. \n";
 	}
+
 #pragma region [old functions]
 public:
 	//__inline int GetDataProtocol(const int& InRoomIndex, const bool& InIsHost) const

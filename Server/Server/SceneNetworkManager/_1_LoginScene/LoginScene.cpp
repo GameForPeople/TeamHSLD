@@ -8,7 +8,6 @@ SCENE_NETWORK_MANAGER::LoginScene::LoginScene(GameRoomManager* pInRoomData, User
 	, FAIL_LOGIN(Protocol::FAIL_LOGIN)
 	, PERMIT_Nickname(Protocol::PERMIT_Nickname)
 {
-	
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
@@ -20,62 +19,44 @@ void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, Socke
 	// 나머지는 날림.
 }
 
-//void SCENE_NETWORK_MANAGER::LoginScene::ProcessRecv(const int& InRecvType, SOCKETINFO* pClient, UserDataManager& InUserData)
-//{
-//	// only Demand Login Recv
-//}
-
-//void SCENE_NETWORK_MANAGER::LoginScene::ProcessSend(const int& InSendType, SOCKETINFO* pClient, UserDataManager& InUserData)
-//{
-//	//memcpy(pClient->buf, (char*)&InSendType, sizeof(int));
-//}
+// About Login ---------------------------------------------------------------------------------
 
 void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 {
 	int idSizeBuffer = (int&)(pClient->buf[4]);
-
 	pClient->buf[8 + idSizeBuffer] = '\0';
 
 	string idBuffer(pClient->buf + 8);
 
-	std::cout << " 로그인을 요청받은 아이디는 : " << idBuffer << "  , idSize는 " << idSizeBuffer << "\n";
-	
 	int outWinCount{0};
 	int outLoseCount{0};
 	int outMoney{0};
-	Type_Nickname outNickname;
+	Type_Nickname outNickname{};
 	int outAchievementBit{ 0 };
 	int outTitleBit{ 0 };
 	int outCharacterBit{ 0 };
 	vector<Type_Nickname> outFriendStringCont;
 
-	int failReason = pUserData->LoginProcess(pClient, idBuffer, outNickname, outWinCount, outLoseCount, outMoney,
-		outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont);
-
 	//typeBuffer == 1 
 	//? LoginTest(pClient, InUserData, idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney) 
 	//: SignUpTest(pClient, InUserData, idBuffer, pwBuffer);
 
-	if (failReason)
+	if (int failReason 
+		= pUserData->LoginProcess(pClient, idBuffer, outNickname, outWinCount, outLoseCount, outMoney,outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont)
+		; failReason)
 		__SendFailLogin(pClient, failReason);
 	else 
-	{
 		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outFriendStringCont );
 		std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
-	}
-
 }
 
-//int SCENE_NETWORK_MANAGER::LoginScene::LoginTest(SocketInfo* pClient, UserDataManager& InUserData,
-//	const string& InIdBuffer, const int& InPwBuffer, int& outWinCount, int& outLoseCount, int& outMoney)
-//{
-//	return InUserData.SignIn(InIdBuffer, InPwBuffer, outWinCount, outLoseCount, outMoney, pClient->userIndex);
-//}
-//
-//int SCENE_NETWORK_MANAGER::LoginScene::SignUpTest(SocketInfo* pClient, UserDataManager& InUserData, const string& InIdBuffer, const int& InPwBuffer)
-//{
-//	return InUserData.SignUp(InIdBuffer, InPwBuffer, pClient->userIndex);
-//}
+void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int& RetFailReason)
+{
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&FAIL_LOGIN), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&RetFailReason), sizeof(int));
+
+	pClient->dataSize = 8;
+}
 
 void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, 
 	const int& InWinCount, const int& InLoseCount, const int& InMoney,
@@ -126,14 +107,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 }
 
 
-void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int& RetFailReason)
-{
-	memcpy(pClient->buf, reinterpret_cast<const char*>(&FAIL_LOGIN), sizeof(int));
-	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&RetFailReason), sizeof(int));
-
-	pClient->dataSize = 8;
-}
-
+// About Nickname ---------------------------------------------------------------------------------
 
 void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 {

@@ -464,18 +464,23 @@ void IOCPServer::_WorkerThreadFunction()
 				{
 					pUserData->SetGameResult(pClient->pUserNode, false);
 					pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
-					pClient->pRoomIter = nullptr;
+					pClient->pRoomIter.reset();
 				}
 				else
 				{
 					if (pClient->pRoomIter->GetIsFriendMode())	// 친구모드일 때,
 					{
 						pClient->pRoomIter->SetDynamicFriendInviteBuffer();
-						pClient->pRoomIter = nullptr;
+						pClient->pRoomIter.reset();
+					}
+					else if(pClient->isHost)
+					{
+						pRoomData->HostCancelWaiting(pClient);
 					}
 					else
 					{
-						pRoomData->CancelWait(pClient);
+						std::cout << " 이상해요! " << std::endl;
+						pClient->pRoomIter.reset();
 					}
 				}
 			}
