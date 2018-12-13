@@ -16,6 +16,9 @@ public class DiceSystem : MonoBehaviour
     public float constValue;
     private int characterDiceRateUp = 5;        //tmp
 
+    private Color initColor = Color.yellow;
+    private Color desColor = Color.red;
+
     private float time_;
 
     public void OnTrigger()
@@ -937,15 +940,13 @@ public class DiceSystem : MonoBehaviour
             raiseValue = true;
 
         if (raiseValue)
-        {
             gaze += (Time.deltaTime * constValue);
-        }
         else
-        {
             gaze -= (Time.deltaTime * constValue);
-        }
 
         diceSlider.value = gaze;
+        //gameObject.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
+        diceSlider.fillRect.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
     }
 
     private void Update()
@@ -966,5 +967,11 @@ public class DiceSystem : MonoBehaviour
         }
         else if (!isTriggerEnter)
             time_ = 0;
+    }
+
+    private void OnDisable()
+    {
+        gaze = 0;
+        diceSlider.value = gaze;
     }
 }

@@ -10,7 +10,7 @@ public class BuildOnPlanet : MonoBehaviour
     public void EulerRotCal(GameObject targetObj, GameObject buildingObj,float offset, int index, int buildIndex)
     {
         target_ = Instantiate(buildingObj);
-        target_.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y + offset, targetObj.transform.position.z); ;
+        target_.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
         target_.transform.parent = objectSet;
         StartCoroutine(ComponentOn(index, buildIndex));
         target_.transform.LookAt(gameObject.transform.position);

@@ -17,6 +17,8 @@ public class ObjectMoving : MonoBehaviour
     private int randomVal;
     private float time_;
 
+    private GameObject tmpObj;
+
     private void Start()
     {
         StartCoroutine(Moving(GameObject.Find(startingIndex.ToString())));
@@ -44,16 +46,17 @@ public class ObjectMoving : MonoBehaviour
             StartCoroutine(Moving(startingPoint));
         else
         {
+            gameObject.transform.LookAt(new Vector3(ableToGoObj[randomVal].transform.position.x, ableToGoObj[randomVal].transform.position.y, ableToGoObj[randomVal].transform.position.z + 90) * 1.05f);
+            //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
+            //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
+
             time_ = 0;
             while (true)
             {
                 time_ += Time.deltaTime * 0.5f;
-                gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position + new Vector3(0, 1.03f, 0), ableToGoObj[randomVal].transform.position + new Vector3(0, 1.03f, 0), time_);
-                gameObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
-                gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x + 180, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z); 
-
+                gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                 yield return new WaitForEndOfFrame();
-                if (time_ > 1f)
+                if (time_ > 0.95f)
                     break;
             }
 

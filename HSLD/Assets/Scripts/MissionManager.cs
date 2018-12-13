@@ -13,7 +13,7 @@ public class MissionManager : MonoBehaviour
     public GameObject readyDisplaySubMissionObj;
 
     public float missionCanvasActiveTime;
-    private Vector3 openCanvasVec = new Vector3(-37,0,0);
+    private Vector3 openCanvasVec = new Vector3(-78, 0,0);
     private Vector3 closeCanvasVec = new Vector3(-576, 0, 0);
 
     private bool isActive = false;

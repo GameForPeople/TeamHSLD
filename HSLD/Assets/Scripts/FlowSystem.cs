@@ -127,7 +127,11 @@ public class FlowSystem : MonoBehaviour
         if (currentFlow.Equals(FLOW.TSETVER))
             FlowChange(currentFlow);
     }
-
+    IEnumerator DiceActiveOff()
+    {
+        yield return new WaitForSeconds(1f);
+        diceCanvas.SetActive(false);
+    }
     public void FlowChange(FLOW doneFlow)
     {
         switch(doneFlow)
@@ -185,7 +189,7 @@ public class FlowSystem : MonoBehaviour
                     SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
 
                 //애니메이션 여기
-                diceCanvas.SetActive(false);
+                StartCoroutine(DiceActiveOff());
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, true));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 

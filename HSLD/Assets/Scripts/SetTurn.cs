@@ -71,6 +71,7 @@ public class SetTurn : MonoBehaviour
             {
                 obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().mainTxt.text = "";
+                GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.transform.localPosition = new Vector3(0, 261, 0);
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.text = val;
             }
 

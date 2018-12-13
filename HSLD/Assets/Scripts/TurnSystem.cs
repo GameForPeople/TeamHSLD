@@ -76,7 +76,7 @@ public class TurnSystem : MonoBehaviour
         time_ = 0;
         mainTxt.text = "카드를 선택해 주세요.";
         timerTxt.text = "";
-        mainTxt.transform.localPosition = new Vector3(0, 200, 0);
+        mainTxt.transform.localPosition = new Vector3(0, 263, 0);
         while (true)
         {
             time_ += Time.deltaTime;
@@ -121,13 +121,13 @@ public class TurnSystem : MonoBehaviour
     {
         time_ = 0;
         mainTxt.text = "덱을 선택해 주세요.";
-        mainTxt.transform.localPosition = new Vector3(211, 269, 0);
-        timerTxt.transform.localPosition = new Vector3(463.3f, -190, 0);
+        mainTxt.transform.localPosition = new Vector3(276, 269, 0);
+        timerTxt.transform.localPosition = new Vector3(463.3f, -146, 0);
 
         while (true)
         {
             time_ += Time.deltaTime;
-            timerTxt.text = (selectCardTime - (int)time_).ToString() + " 초";
+            timerTxt.text = (selectCardTime - (int)time_).ToString();
             yield return new WaitForEndOfFrame();
             if (time_ > selectCardTime || CardSet.isSelect)
                 break;
@@ -145,7 +145,7 @@ public class TurnSystem : MonoBehaviour
         while (true)
         {
             time_ += Time.deltaTime;
-            timerTxt.text = (matchingCompleteTime - (int)time_).ToString() + "초 후 시작";
+            timerTxt.text = (matchingCompleteTime - (int)time_).ToString() + "초후에 게임에 입장합니다.";
             yield return new WaitForEndOfFrame();
             if (time_ > matchingCompleteTime)
                 break;
@@ -166,8 +166,8 @@ public class TurnSystem : MonoBehaviour
         if (currentTurn.Equals(TURN.MYTURN))
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
-            displayTurnTimerTxt.transform.localPosition = new Vector3(503, 246.1f, 0);
-            gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
+            //displayTurnTimerTxt.transform.localPosition = new Vector3(0, 265f, 0);
+            //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
             gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(false);
             gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(true);
 
@@ -179,8 +179,8 @@ public class TurnSystem : MonoBehaviour
         else
         {
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-            displayTurnTimerTxt.transform.localPosition = new Vector3(550, -308, 0);
-            gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(549.3f, -260.3f, 0);
+            //displayTurnTimerTxt.transform.localPosition = new Vector3(550, -308, 0);
+            //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(549.3f, -260.3f, 0);
             gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(true);
             gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(false);
             StartCoroutine(EndTurnAndWaiting());
@@ -200,28 +200,28 @@ public class TurnSystem : MonoBehaviour
         if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))
         {
             gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
-            displayTurnTimerTxt.text = (rollingDiceTime - currentEnemyTurnTimer).ToString() + " 초";
+            displayTurnTimerTxt.text = (rollingDiceTime - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGCARD))
         {
             gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
-            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString() + " 초";
+            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_PICKINGCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGLOC))
         {
             gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
-            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString() + " 초";
+            displayTurnTimerTxt.text = (setTerrainOnPlanet - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_PICKINGLOC;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKEVENTCARD))
         {
             gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
-            displayTurnTimerTxt.text = (pickingEventCardTime - currentEnemyTurnTimer).ToString() + " 초";
+            displayTurnTimerTxt.text = (pickingEventCardTime - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
         }
@@ -287,7 +287,7 @@ public class TurnSystem : MonoBehaviour
 
                 gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_ROLLINGDICE;
-                displayTurnTimerTxt.text = (rollingDiceTime - currentMyTurnTimer).ToString() + " 초";
+                displayTurnTimerTxt.text = (rollingDiceTime - currentMyTurnTimer).ToString();
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
             {
@@ -311,7 +311,7 @@ public class TurnSystem : MonoBehaviour
 
                 gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKINGCARD;
-                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString() + " 초"; 
+                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString(); 
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
             {
@@ -335,7 +335,7 @@ public class TurnSystem : MonoBehaviour
 
                 gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKINGLOC;
-                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString() + " 초";
+                displayTurnTimerTxt.text = (setTerrainOnPlanet - currentMyTurnTimer).ToString();
             }
             else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKEVENTCARD))
             {
@@ -345,7 +345,7 @@ public class TurnSystem : MonoBehaviour
 
                 gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKEVENTCARD;
-                displayTurnTimerTxt.text = (pickingEventCardTime - currentMyTurnTimer).ToString() + " 초";
+                displayTurnTimerTxt.text = (pickingEventCardTime - currentMyTurnTimer).ToString();
             }
 
             if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))
