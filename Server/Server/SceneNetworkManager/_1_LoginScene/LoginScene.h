@@ -34,6 +34,6 @@ namespace SCENE_NETWORK_MANAGER
 
 	private:
 		void _RecvChangeNickname(SocketInfo* pClient);
-		void __SendChangeNickname(SocketInfo* pClient);
+		void __SendChangeNickname(SocketInfo* pClient, bool InBValue);
 	};
 }

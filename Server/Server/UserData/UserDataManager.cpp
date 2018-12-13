@@ -2,59 +2,63 @@
 #include "../IOCPServer/SocketInfo.h"
 
 UserDataManager::UserDataManager() noexcept
-	:	CONST_A(/*converter.from_bytes(*/"A"/*)*/)
-	,	CONST_Z(/*converter.from_bytes(*/"Z"/*)*/)
-	,	CONST_a(/*converter.from_bytes(*/"a"/*)*/)
-	,	CONST_z(/*converter.from_bytes(*/"z"/*)*/)
+	: nicknameContFileName("UserData/Saved/_Nickname.txt")
 {
 	userDataCont.reserve(37); // A ~ Z : 26 , 0 ~ 9 : 10 , . : 1 -> 36
 
 	for(int count = 0 ; count < 37; count++)
 		userDataCont.emplace_back();
 
-	//[DEV_66] 0 ENGLISH, 1 KOREAN
-	nicknameCont.reserve(2);
+	//[DEV_66] 0 ENGLISH, 1 KOREAN, 2 ILLEGAL
+	nicknameCont.reserve(3);
+	saveFileCont.reserve(10);
 
 	nicknameCont.emplace_back();
 	nicknameCont.emplace_back();
+	nicknameCont.emplace_back();
 
-	string fileNameBuffer = "UserData/Saved/_Nickname.txt";
-
-	return;
-
-	std::ifstream inFile(fileNameBuffer, std::ios::in);
+	std::ifstream inFile(nicknameContFileName, std::ios::in);
 
 	Type_ID idBuffer;
 	Type_Nickname NicknameBuffer;
 
+	// IOCPServer 생성자에서 UserDataManager의 생성자가 호출되기 때문에, 닉네임Cont의 로드가 모두 끝난 후 서버가 켜지는 것이 보장됨.
 	while (!inFile.eof())
 	{
 		inFile >> idBuffer >> NicknameBuffer;
 
 		// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
-		if (NicknameBuffer[0] >= CONST_A[0] && NicknameBuffer[0] <= CONST_Z[0])
+		if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(NicknameBuffer.data()), 0)
+			; firstCharType == _MBC_SINGLE)
 		{
 			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, idBuffer);
-			std::cout << "영어 대문자입니다. \n";
+			//std::cout << "영어입니다. \n";
 		}
-		else if (NicknameBuffer[0] >= CONST_a[0] && NicknameBuffer[0] <= CONST_z[0])
+		else if (firstCharType == _MBC_LEAD)
 		{
-			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, idBuffer);
-			std::cout << "영어 소문자입니다. \n";
-		}
-		else
-		{
-			std::cout << "한글입니다. \n";
 			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(NicknameBuffer, idBuffer);
+			//std::cout << "아마 한글일껍니다. \n";
+		}
+		else  //  if (firstCharType == _MBC_ILLEGAL)
+		{
+			std::cout << "_MBC_ILLEGAL 입니다. \n";
+			nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Insert(NicknameBuffer, idBuffer);
 		}
 	}
 
-	// IOCPServer 생성자에서 UserDataManager의 생성자가 호출되기 때문에, 닉네임Cont의 로드가 모두 끝난 후 서버가 켜지는 것이 보장됨.
+	::InitializeCriticalSection(&csNicknameCont);
+	::InitializeCriticalSection(&csSaveNickname);
 }
 
 UserDataManager::~UserDataManager()
 {
+	if (saveFileCont.size())
+	{
+		_SaveNicknameCont();
+	}
 
+	::DeleteCriticalSection(&csNicknameCont);
+	::DeleteCriticalSection(&csSaveNickname);
 }
 
 int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
@@ -233,17 +237,18 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const Type_Nick
 	Type_ID idBuffer{};
 
 	// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
-	if (KeyNickname[0] >= CONST_A[0] && KeyNickname[0] <= CONST_Z[0])
+	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
+		; firstCharType == _MBC_SINGLE)
 	{
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
-	else if (KeyNickname[0] >= CONST_a[0] && KeyNickname[0] <= CONST_z[0])
-	{
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
-	}
-	else
+	else if (firstCharType == _MBC_LEAD)
 	{
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue)->SetValue();
+	}
+	else //  if (firstCharType == _MBC_ILLEGAL)
+	{
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 
 	// 못찾음.
@@ -282,3 +287,81 @@ int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) const noe
 		return 36;
 	}
 }
+
+int UserDataManager::GetNicknameFirstChar(const Type_Nickname& InKeyNickname) const noexcept
+{
+	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(InKeyNickname.data()), 0)
+		; firstCharType == _MBC_SINGLE)
+	{
+		return 0;
+	}
+	else if (firstCharType == _MBC_LEAD)
+	{
+		return 1;
+	}
+	else
+	{
+		return 2;
+	}
+}
+
+bool UserDataManager::SetNewNickname(SocketInfo* pInClient, const Type_Nickname& InNewString)
+{
+	bool isOnLogin{ false };
+	bool isOnMatch{ false };
+
+	::EnterCriticalSection(&csNicknameCont);
+	SearchUserNodeWithNickname(InNewString, isOnLogin, isOnMatch);
+
+	if (!isOnMatch)
+	{
+		nicknameCont[GetNicknameFirstChar(InNewString)].Insert(InNewString, pInClient->pUserNode->GetID());
+		::LeaveCriticalSection(&csNicknameCont);
+
+		SaveNicknameContProcess(pInClient->pUserNode->GetID(), InNewString);
+		pInClient->pUserNode->SetNickname(InNewString);
+		return true;
+	}
+	else
+	{
+		::LeaveCriticalSection(&csNicknameCont);
+		return false;
+	}
+}
+
+void UserDataManager::SaveNicknameContProcess(const Type_ID& InID, const Type_Nickname& InNickname)
+{
+	::EnterCriticalSection(&csSaveNickname);
+	saveFileCont.emplace_back(make_pair(InID, InNickname));
+
+	if (saveFileCont.size() < 10)
+	{
+		::LeaveCriticalSection(&csSaveNickname);
+		return;
+	}
+	else
+	{
+		_SaveNicknameCont();
+		::LeaveCriticalSection(&csSaveNickname);
+		return;
+	}
+}
+
+void UserDataManager::_SaveNicknameCont()
+{
+	std::ofstream outFile(nicknameContFileName, std::ios::app);
+
+	for (auto iter = saveFileCont.begin()
+		; iter != saveFileCont.end()
+		; ++iter)
+	{
+		outFile
+			<< " " << iter->first
+			<< " " << iter->second
+			<< std::endl;
+	}
+
+	saveFileCont.clear();
+	saveFileCont.reserve(10);
+}
+

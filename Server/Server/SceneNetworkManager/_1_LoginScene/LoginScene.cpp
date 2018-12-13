@@ -123,12 +123,20 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 	
 	Type_Nickname NicknameBuffer(pClient->buf + 8);
 
-	pClient->pUserNode->SetNickname(NicknameBuffer);
+	if (pUserData->SetNewNickname(pClient, NicknameBuffer))
+	{
+		__SendChangeNickname(pClient, true);
+	}
+	else
+	{
+		__SendChangeNickname(pClient, false);
+	}
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::__SendChangeNickname(SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::LoginScene::__SendChangeNickname(SocketInfo* pClient, bool InBValue)
 {
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_Nickname), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&InBValue), sizeof(bool));
 
-	pClient->dataSize = 4;
+	pClient->dataSize = 5;
 }
