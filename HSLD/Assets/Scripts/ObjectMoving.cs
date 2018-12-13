@@ -46,7 +46,7 @@ public class ObjectMoving : MonoBehaviour
             StartCoroutine(Moving(startingPoint));
         else
         {
-            gameObject.transform.LookAt(new Vector3(ableToGoObj[randomVal].transform.position.x, ableToGoObj[randomVal].transform.position.y, ableToGoObj[randomVal].transform.position.z + 90) * 1.05f);
+            gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f,Vector3.up);
             //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
             //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
 

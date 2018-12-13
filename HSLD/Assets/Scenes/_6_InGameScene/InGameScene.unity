@@ -12360,11 +12360,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!1 &1068715765 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1817737365146324, guid: 081e368f7671bd84d9d7960c10978b1e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1633579110}
 --- !u!1 &1069206627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -12457,48 +12452,6 @@ MonoBehaviour:
   NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
---- !u!1001 &1084666629
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221234828070246, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1097889542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100072, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -12834,9 +12787,9 @@ MonoBehaviour:
   - {fileID: 1937199620671318, guid: 644656c6db20a5145b722945739d79e2, type: 2}
   - {fileID: 1625536764460096, guid: d966b2b1d6f306d4db5f894d74bfe1e1, type: 2}
   MovingObj:
-  - {fileID: 1660732252377254, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-  - {fileID: 1229244354677892, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
-  - {fileID: 1068715765}
+  - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
+  - {fileID: 1749881923002708, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+  - {fileID: 1430203538077520, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
 --- !u!1 &1135955283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100446, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -26839,48 +26792,6 @@ MonoBehaviour:
   NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
---- !u!1001 &1633579110
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.9158344
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.7815304
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.7388926
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159126038773088, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1639980498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100262, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -29856,48 +29767,6 @@ MonoBehaviour:
   NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
---- !u!1001 &1883790219
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.6379833
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.14085478
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4084561442590128, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1897195109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100340, guid: e0e6c540bb21a994890f7a93ac229b27,
