@@ -84,7 +84,10 @@ public partial class NetworkManager : MonoBehaviour {
         }
         else if (recvType == (int)PROTOCOL.PERMIT_NICKNAME)
         {
-            GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
+            if (BitConverter.ToBoolean(NewDataRecvBuffer, 4))
+                GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
+            else
+                Debug.Log("실패했습니다.");
         }
 
         //MainUIScene
@@ -120,7 +123,7 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     //Not Login!
                     // 친구 닉네임이 갑자기 없어짐... 이런경우 있으면 안됨!!
-                    Debug.Log("?????????? 에혀 친구닉네임이 없어질리가 없는데 ???????????????????");
+                    Debug.Log("에혀...친구닉네임이 없어질리가 없는데 ???????????????????");
 
                     //friendState[i] = 0;
                     dataLocation += 4;

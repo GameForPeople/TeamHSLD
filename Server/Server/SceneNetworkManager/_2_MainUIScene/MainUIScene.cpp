@@ -36,6 +36,12 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 {
 	int friendNum = pClient->pUserNode->GetFriendNicknameContSize();
 	
+	if (pClient->pUserNode->GetDemandFriendContIndex() != -1)
+	{
+		friendNum -= 1;
+	}
+
+
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_FRIEND_INFO), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<char*>(&friendNum), sizeof(int));
 
@@ -48,7 +54,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 	// 기존 weak_ptr Cont에서 nullptr이 아닐때의, 리소스 만료 여부를 검사해, 문제가 없다면, 해당 노드의 Get을 활용하는 방안이 필요함.
 	// 동일하게 관련 닉네임을 계속 요청할 필요도 없고 상태만 요청하면 됨. 해당에 대한 처리가 최적화할때 꼭 필요해보임.
 
-	if (friendNum)
+	if (friendNum > 0)
 	{
 		int stringSize{};
 		Type_Nickname stringBuffer{};

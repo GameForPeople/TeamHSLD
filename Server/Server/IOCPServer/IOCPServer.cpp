@@ -486,8 +486,9 @@ void IOCPServer::_WorkerThreadFunction()
 				}
 			}
 
-			pUserData->LogoutProcess(pClient->pUserNode);
-
+			if (pClient->pUserNode != nullptr) {
+				pUserData->LogoutProcess(pClient->pUserNode);
+			}
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
 			{
