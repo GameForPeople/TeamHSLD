@@ -2,7 +2,6 @@
 
 #include "../PCH/stdafx.h"
 #include "../UserData/UserDataManager.h"
-#include "../UserData/Custom_Map_RedBlackTree.h"
 
 class GameRoom;
 
@@ -25,12 +24,14 @@ struct SocketInfo
 	// 현재 컨테이너 Std::Vector
 
 	// STL답게 아름다운 우리 이터레이터를 사용합니다. 24바이트;;오바야;;
-	rbTreeNode<string,UserData>* pUserNode;
+	shared_ptr<UserData>	pUserNode;
+	//CUSTOM_SET::rbTreeNode<UserData, string>* pUserNode;
+
 	// 한번만 계산해서 여러번 사용합시다.
-	int userDataContIndex;
+	// int userDataContIndex; -> 여러번 안쓰이는데 굳이..?
 
 	// 룸씐 인덱스, 방 제작 시나 접속 시 사용됨 ( 초기화 미필요 )
-	GameRoom* pRoomIter;
+	shared_ptr<GameRoom>	pRoomIter;
 	//bool isInRoom;
 
 	// 룸씐, 인게임씬에서 호스트 여부 체크 (초기화 미필요)
@@ -39,22 +40,22 @@ struct SocketInfo
 	// 캐릭터의 정보를 담아넣는 구조체입니다.
 	//UserData* pUserData;
 
-
-
 public:
 	//생성자 필요에 의해 추가.
-	__inline SocketInfo() :
+	SocketInfo() noexcept
 		//bufferProtocol(0), 
-			buf()
-		,	pRoomIter(nullptr)
+		:	overlapped()
+		,	wsabuf()
+		,	buf()
 		//,	isInRoom(false)
 		,	isHost(false)
 		//,	dataSize() 
 		,	isRecvTurn(true)
 		,	pUserNode(nullptr)
-		,	userDataContIndex()
+		,	pRoomIter(nullptr)
+		//,	userDataContIndex()
 		//enemyIter()
 	{};
 
-	__inline ~SocketInfo() = default;
+	~SocketInfo() = default;
 };

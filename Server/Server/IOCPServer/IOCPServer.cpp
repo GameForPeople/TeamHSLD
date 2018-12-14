@@ -7,7 +7,7 @@
 
 // Server's global Function
 namespace NETWORK_UTIL {
-	_NORETURN void ERROR_QUIT(char *msg)
+	_NORETURN void ERROR_QUIT(const char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -25,7 +25,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	_NORETURN void ERROR_DISPLAY(char *msg)
+	_NORETURN void ERROR_DISPLAY(const char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -38,7 +38,7 @@ namespace NETWORK_UTIL {
 			NULL
 		);
 		
-		printf(" [%s]  %S", msg, (char *)lpMsgBuf);
+		printf(" [%s]  %s", msg, (LPTSTR)&lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
 
@@ -97,7 +97,7 @@ namespace NETWORK_UTIL {
 		{
 			if (WSAGetLastError() != WSA_IO_PENDING)
 			{
-				ERROR_DISPLAY((char *)"WSASend()");
+				ERROR_DISPLAY(TEXT("WSASend()"));
 			}
 			return true;
 		}
@@ -106,10 +106,11 @@ namespace NETWORK_UTIL {
 };
 
 //Init
-_NORETURN void IOCPServer::_GetExternalIP(char *ip)
+void IOCPServer::_GetExternalIP(char *ip)
 {
 	HINTERNET hInternet, hFile;
 	DWORD rSize;
+	
 	char buffer[256] = { 0 };
 
 	hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
@@ -128,10 +129,10 @@ _NORETURN void IOCPServer::_GetExternalIP(char *ip)
 		buffer[rSize] = '\0';
 
 		int nShift = _tcslen(TITLE_PARSER);
-		std::string strHTML = buffer;
-		std::string::size_type nIdx = strHTML.find(TITLE_PARSER);
+		string strHTML = buffer;
+		string::size_type nIdx = strHTML.find(TITLE_PARSER);
 		strHTML.erase(strHTML.begin(), strHTML.begin() + nIdx + nShift);
-		nIdx = strHTML.find("</body>");
+		nIdx = strHTML.find(TEXT("</body>"));
 		strHTML.erase(strHTML.begin() + nIdx, strHTML.end());
 
 		_tcscpy(ip, strHTML.c_str());
@@ -145,10 +146,9 @@ _NORETURN void IOCPServer::_GetExternalIP(char *ip)
 		std::cout << "[서버 오류] : 서버의 ExternalIP를 확인할 수 없습니다. " << "\n";
 		std::exit(EXIT_FAILURE);
 	}
-	
 }
 
-_NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
+void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
@@ -163,7 +163,7 @@ _NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP
 		printf("■    IP Address : ExternalIP(%s) \n", retIPChar);
 
 		// For Test! Extern IP == HSLD WebServer IP
-		[&retIPChar]()  throw() -> void 
+		[&retIPChar]()  noexcept(false) -> void 
 		{
 			NetworkInterface_CS* networkInterFace = nullptr;
 			CoInitialize(NULL);
@@ -224,7 +224,7 @@ _NORETURN void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP
 //	userData.Load();
 //}
 
-_NORETURN void IOCPServer::_InitWinSocket()
+void IOCPServer::_InitWinSocket()
 {
 	//윈속 초기화
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
@@ -275,11 +275,11 @@ _NORETURN void IOCPServer::_InitWinSocket()
 	}
 }
 
-_NORETURN void IOCPServer::_CreateBindListen()
+void IOCPServer::_CreateBindListen()
 {
 	//Socket()
 	listenSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if (listenSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT((char *)"socket()");
+	if (listenSocket == INVALID_SOCKET) NETWORK_UTIL::ERROR_QUIT(TEXT("socket()"));
 
 	//bind()
 	ZeroMemory(&serverAddr, sizeof(serverAddr));
@@ -287,14 +287,14 @@ _NORETURN void IOCPServer::_CreateBindListen()
 	serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serverAddr.sin_port = htons(SERVER_PORT);
 	int retVal = ::bind(listenSocket, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
-	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"bind()");
+	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT(TEXT("bind()"));
 
 	// Listen()!
 	retVal = listen(listenSocket, SOMAXCONN);
-	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT((char *)"listen()");
+	if (retVal == SOCKET_ERROR) NETWORK_UTIL::ERROR_QUIT(TEXT("listen()"));
 }
 
-_NORETURN void IOCPServer::_BindSceneDataProcess()
+void IOCPServer::_BindSceneDataProcess()
 {
 	sceneNetworkManagerCont.reserve(6);	//	Scene Count = 6;
 
@@ -306,13 +306,14 @@ _NORETURN void IOCPServer::_BindSceneDataProcess()
 	sceneNetworkManagerCont.push_back(make_unique<SCENE_NETWORK_MANAGER::InGameScene>(pRoomData, pUserData, pUdpManager));
 }
 
-_NORETURN void IOCPServer::_CreateSocket()
+void IOCPServer::_CreateSocket()
 {
 	pUdpManager->_CreateUDPSocket();
 }
 
+
 //Run
-_NORETURN void IOCPServer::_AcceptProcess()
+void IOCPServer::_AcceptProcess()
 {
 	printf("     [ServerCore] Dedicated server activated!\n\n");
 
@@ -328,7 +329,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 		clientSocket = accept(listenSocket, (SOCKADDR *)&clientAddr, &addrLength);
 		if (clientSocket == INVALID_SOCKET)
 		{
-			NETWORK_UTIL::ERROR_DISPLAY((char *)"accept()");
+			NETWORK_UTIL::ERROR_DISPLAY(TEXT("accept()"));
 			break;
 		}
 
@@ -370,7 +371,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 		{
 			if (WSAGetLastError() != ERROR_IO_PENDING)
 			{
-				NETWORK_UTIL::ERROR_DISPLAY((char *)"WSARecv()");
+				NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSARecv()"));
 			}
 
 			continue;
@@ -378,7 +379,7 @@ _NORETURN void IOCPServer::_AcceptProcess()
 	}
 }
 
-_NORETURN void IOCPServer::_RunOtherThread()
+void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
@@ -390,7 +391,7 @@ _NORETURN void IOCPServer::_RunOtherThread()
 
 
 //Close
-_NORETURN void IOCPServer::_DestroyAndClean()
+void IOCPServer::_DestroyAndClean()
 {
 	closesocket(listenSocket);
 	WSACleanup();
@@ -411,7 +412,7 @@ DWORD WINAPI IOCPServer::WorkerThread(LPVOID arg)
 	return 0;
 };
 
-_NORETURN void IOCPServer::_WorkerThreadFunction()
+void IOCPServer::_WorkerThreadFunction()
 {
 	// 한 번만 선언해서 여러번 씁시다. 아껴써야지...
 	int retVal{};
@@ -460,31 +461,40 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			// 게임 방 접속 여부 확인. // 방 나갈 경우 해당 조건 False 필요.
 			if (pClient->pRoomIter != nullptr)
 			{
-				//if (map<const std::string, UserData>::iterator enemyIter; 
-				//roomData.SignOut(ptr->roomIndex, ptr->isHost, ReturnEnemyIndexBuffer))
-				//{
-				//	// 게임 중이였을 경우, 현재 클라이언트의 패배 처리 및, 상대 클라이언트 승리 처리
-				//	userData.SetGameResult(ReturnEnemyIndexBuffer, true);
-				//	userData.SetGameResult(ptr->userIndex, false);
-				//}
-				//else
-				//{
-				//	// 게임 중이 아니였거나, 완전히 다른 거 중. 
-				//	//...? 할게 없나...?
-				//}
-				pUserData->SetGameResult(pClient->pUserNode, false);
-				pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
-				pClient->pRoomIter = nullptr;
+				if (pClient->pRoomIter->GetGamePlay())	// 게임중일 때,
+				{
+					pUserData->SetGameResult(pClient->pUserNode, false);
+					pClient->pRoomIter->SetDataProtocol(pClient->isHost, DISCONNECTED_ENEMY_CLIENT);
+					pClient->pRoomIter.reset();
+				}
+				else
+				{
+					if (pClient->pRoomIter->GetIsFriendMode())	// 친구모드일 때,
+					{
+						pClient->pRoomIter->SetDynamicFriendInviteBuffer();
+						pClient->pRoomIter.reset();
+					}
+					else if(pClient->isHost)
+					{
+						pRoomData->HostCancelWaiting(pClient);
+					}
+					else
+					{
+						std::cout << " 이상해요! " << std::endl;
+						pClient->pRoomIter.reset();
+					}
+				}
 			}
 
-			pUserData->LogoutProcess(pClient);
-
+			if (pClient->pUserNode != nullptr) {
+				pUserData->LogoutProcess(pClient->pUserNode);
+			}
 			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
 			if (retVal == 0)
 			{
 				DWORD temp1, temp2;
 				WSAGetOverlappedResult(pClient->sock, &pClient->overlapped, &temp1, FALSE, &temp2);
-				NETWORK_UTIL::ERROR_DISPLAY((char *)"WSAGetOverlappedResult()");
+				NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSAGetOverlappedResult()"));
 			}
 			closesocket(pClient->sock);
 
@@ -507,7 +517,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			{
 				if (WSAGetLastError() != ERROR_IO_PENDING)
 				{
-					NETWORK_UTIL::ERROR_DISPLAY((char *)"WSARecv()");
+					NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSARecv()"));
 				}
 				continue;
 			}
@@ -517,7 +527,7 @@ _NORETURN void IOCPServer::_WorkerThreadFunction()
 			recvType = (int&)(pClient->buf);
 		
 			if(pClient->pUserNode != nullptr)
-			std::cout << pClient->pUserNode->SetValue().GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
+			std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
@@ -545,7 +555,7 @@ DWORD WINAPI IOCPServer::UDPThread(LPVOID arg)
 	return 0;
 };
 
-_NORETURN void IOCPServer::_UDPThreadFunction()
+void IOCPServer::_UDPThreadFunction()
 {
 	while (7)
 	{
@@ -562,7 +572,7 @@ DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 	return 0;
 }
 
-_NORETURN void IOCPServer::_ManagerLoop()
+void IOCPServer::_ManagerLoop()
 {
 	int managerLoopBuffer{};
 

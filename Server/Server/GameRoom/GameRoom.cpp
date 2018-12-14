@@ -1,30 +1,20 @@
 #include "../GameRoom/GameRoom.h"
 
-GameRoom::GameRoom(rbTreeNode<string, UserData>* InHostUser, GameRoom* InLeft, GameRoom* InRight)
-	:
-	roomState(ROOM_STATE::ROOM_STATE_SOLO), 
-	left(InLeft), right(InRight), roomDynamicData()
-{
-	roomDynamicData = new RoomDynamicData;
-	pUserNode[0] = InHostUser;
-}
-
-GameRoom::GameRoom(const int& InBuffer)
-	:
-	roomState(),
-	roomDynamicData(nullptr),
-	left(nullptr), right(nullptr)
+GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
+	:	roomState(ROOM_STATE::ROOM_STATE_SOLO)
+	//,	left(InLeft), right(InRight)
+	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname()))
+	,	isFriendMode(InIsFriendMode)
+	,	dataProtocol()
+	,	dataBuffer()
 {}
 
 GameRoom::~GameRoom()
 {
-	//if (left != nullptr || right != nullptr)
-	//	std::cout << "아마도 GameRoom ERROR 입니다. \n";
-	if (roomDynamicData != nullptr)
-		delete roomDynamicData;
+	roomDynamicData.reset();
 }
 
-void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)
+void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)
 {
 	// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 	//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {
@@ -36,8 +26,10 @@ void GameRoom::JoinRoom(rbTreeNode<string, UserData>* InGuestUser)
 	dataProtocol[0] = NOTIFY_GAME_READY;
 	dataProtocol[1] = NOTIFY_GAME_READY;
 
-	pUserNode[1] = InGuestUser;
+	roomDynamicData->guestNickname = InGuestUserIter->GetNickname();
 
 	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
 	roomState = ROOM_STATE::ROOM_STATE_PLAY;
+
+	// 추국하다 유리창 깨놓고선 건물주오니까 전화받는 척
 }

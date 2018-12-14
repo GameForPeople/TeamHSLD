@@ -23,8 +23,8 @@
 //#define		SERVER_UDP_PORT 9001
 
 // For ExternalIP
-#define		EXTERNALIP_FINDER_URL	"http://checkip.dyndns.org/"
-#define		TITLE_PARSER			"<body>Current IP Address: "
+#define		EXTERNALIP_FINDER_URL	TEXT("http://checkip.dyndns.org/")
+#define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
 
 
 //#define SERVER_DEBUG_LOG_PRINT
@@ -44,34 +44,29 @@ PauseThreadList
 만약 일시정지가 풀리더라도 ReleaseThreadList가 꽉 차있다면 바로 ReleaseThreadList로 보내지 않고 대기한다.
 */
 
-// IOCP 클래스에서 탈출... 
-//이 친구들 백프로 써야해서 굳이 싱글톤을...?
-// 전역이 좋을 까, 쓰레도 인자로 넘기는게 좋을까..
-//CUserData userData;
-//CGameRoom roomData;
-// 일단 서버 멤버변수로, 각 쓰레드에는 넘기도록합시다;;
-
 class IOCPServer {
 private:
-	WSADATA wsa;
-	HANDLE hIOCP;
-	SOCKET listenSocket;
+	WSADATA				wsa;
+	HANDLE				hIOCP;
+	SOCKET				listenSocket;
 
-	SOCKADDR_IN serverAddr;
+	SOCKADDR_IN			serverAddr;
 
-	HANDLE hManagerThread;
-	HANDLE hUDPThread;
+	HANDLE				hManagerThread;
+	HANDLE				hUDPThread;
 
 	// Only Use 
-	UserDataManager* pUserData;
-	GameRoomManager* pRoomData;
-	UDPManager* pUdpManager;
+	UserDataManager*	pUserData;
+	GameRoomManager*	pRoomData;
+	UDPManager*			pUdpManager;
 
 	std::vector<unique_ptr<SCENE_NETWORK_MANAGER::BaseScene>> sceneNetworkManagerCont;
 
 public:
 	IOCPServer(bool InIsTrueLoadExternIP) 
-		:	pUserData(new UserDataManager())
+		:	wsa()
+		,	listenSocket()
+		,	pUserData(new UserDataManager())
 		,	pRoomData(new GameRoomManager())
 		,	pUdpManager(new UDPManager())
 	{
@@ -80,10 +75,16 @@ public:
 
 	~IOCPServer()
 	{
+		sceneNetworkManagerCont.clear();
+
+		delete pUserData;
+		delete pRoomData;
+		delete pUdpManager;
+
 		try { Close(); }
 		catch (...)
 		{
-			std::cout << "[서버 오류] : IOCPServer 소멸자에서 예외가 발생했습니다. " << "\n";
+			std::cout << "[서버 오류] : IOCPServer 소멸자에서 예외가 발생했습니다. (사실 상관없어요!)" << "\n";
 			std::exit(EXIT_FAILURE);
 		}
 	}

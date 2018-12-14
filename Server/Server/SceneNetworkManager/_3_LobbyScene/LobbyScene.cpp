@@ -34,12 +34,9 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, Socke
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 {
-	bool retBoolBuffer; 
-	pClient->pRoomIter = pRoomData->RandomMatchingProcess( pClient->pUserNode, pClient->pRoomIter, retBoolBuffer);
-	
 	// 랜덤매칭에서, userIter까지 다 넣음.
-	if (retBoolBuffer)
-		// Create!!
+	if (pRoomData->RandomMatchingProcess(pClient->pUserNode))
+		// Create Room
 	{
 		 pClient->isHost = true;
 
@@ -53,20 +50,18 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
-		 pClient->dataSize = 20;
+		pClient->dataSize = 20;
 	}
 	else
-		// Join!
+		// Join Room
 	{
 		 pClient->isHost = false;
 
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-		 pClient->pRoomIter->GetRoomGameData( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+		Type_Nickname stringBuffer;
 
-		rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
-		
-		//string stringBuffer((*EnemyIter)->first);
-		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
+		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, stringBuffer);
+
 		int sizeBuffer = stringBuffer.size();
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
@@ -83,38 +78,34 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 {
-	if ( pClient->pRoomIter->GetGameReady())
+	if ( pClient->pRoomIter->GetGamePlay())
 	{
-		rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
-
-		string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
-		int sizeBuffer = stringBuffer.size();
+		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
+		Type_Nickname stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
+		int sizeBuffer = stringBuffer.size(); //DEV_66
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
 		memcpy( pClient->buf + 8, stringBuffer.data(), sizeBuffer);
 
-		 pClient->dataSize = 8 + sizeBuffer;
+		pClient->dataSize = 8 + sizeBuffer;
 	}
 	else
 	{
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_NOT_JOIN), sizeof(int));
 
-		 pClient->dataSize = 4;
+		pClient->dataSize = 4;
 	}
 }
 
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 {
-	//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
-
-	if (pRoomData->CancelWait(pClient))
+	if (pRoomData->HostCancelWaiting(pClient))
 		// 랜덤 매칭 취소가 성공함.
 	{
-		//InRoomData.DEBUG_PRINT_LIST_EMPTY(0);
-
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_EXIT_RANDOM), sizeof(int));
-		 pClient->dataSize = 4;
+		
+		pClient->dataSize = 4;
 	}
 	else
 		// 랜덤 매칭 취소가 실패함 (그 사이 다른 게스트가 접속함)
@@ -126,46 +117,43 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* pClient)
 {
 	// 상대방이 거절한 것이 명확함.
-	if ( pClient->pRoomIter->RetEnemyUserIter( pClient->isHost) == nullptr)
+	if ( pClient->pRoomIter->GetDynamicFriendInviteBuffer() == false)
 	{
+		// 상대방이 초대를 거절함을 알림.
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&HOSTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));	// 방 나가짐.
+		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));	// 클라이언트에서 방을 나가야함.
 
-		 pClient->dataSize = 8;
+		pClient->dataSize = 8;
 
-		delete pClient->pRoomIter;
-		 pClient->pRoomIter = nullptr;
-
-		// pClient->isHost = false;
+		pClient->pRoomIter.reset();
+		//pClient->pRoomIter = nullptr;
 	}
+	// 상대방이 게임 초대를수락함.
 	else if ( pClient->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_PLAY)
 	{
 		//Join Enemy 
-		
-		//닉네임 아는데 또 보내야해? 인덱스에 닉네임 있잖아;
-		
-		//rbTreeNode<string, UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
-		//string stringBuffer(EnemyPtrBuffer->GetValue().GetNickName());
-		//int sizeBuffer = stringBuffer.size();
+		//닉네임 아는데 또 보내야해? 인덱스에 닉네임 있잖아; 그 전에 이미 초대할 때 보내야 옳음.
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_FRIEND_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
 		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-		 pClient->pRoomIter->GetRoomGameData( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+		
+		pClient->pRoomIter->GetRoomGameData( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 		
 		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
 		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
-		 pClient->dataSize = 24;
+		pClient->dataSize = 24;
 	}
+	// 아직 어떠한 상황도 아닌 경우. -> UDP소실 가능성, 아직 수락이나 거절 안누른 상태 (7초 대기중)
 	else
 	{
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&ANSWER_FRIEND_JOIN), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 
-		 pClient->dataSize = 8;
+		pClient->dataSize = 8;
 	}
 }

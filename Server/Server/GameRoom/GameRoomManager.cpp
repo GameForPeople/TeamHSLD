@@ -1,68 +1,81 @@
 #include "../GameRoom/GameRoomManager.h"
 #include "../IOCPServer/SocketInfo.h"
 
-
-GameRoom* GameRoomManager::_CreateRoom(rbTreeNode<string, UserData>* pInUserNode)
+GameRoomManager::GameRoomManager() noexcept
+	: pWaitRoom(), roomNum(0)
 {
-	return waitRoomCont.Create(pInUserNode);
+	pWaitRoom.reset();
+	::InitializeCriticalSection(&csRoom);
 }
 
-GameRoom* GameRoomManager::_JoinRoom(rbTreeNode<string, UserData>* pInUserNode, GameRoom* pRetRoom)
+GameRoomManager::~GameRoomManager()
 {
-	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
-
-	pRetRoom = waitRoomCont.GetOneRoom(pRetRoom);
-
-	playRoomCont.Push(pRetRoom);
-
-	pRetRoom->JoinRoom(pInUserNode);
-
-	return pRetRoom;
+	pWaitRoom.reset();
+	::DeleteCriticalSection(&csRoom);
 }
 
-void GameRoomManager::DestroyRoom(SocketInfo* pClient)
+bool GameRoomManager::RandomMatchingProcess(const shared_ptr<UserData>& pInUser)
 {
-	if (pClient->pRoomIter->GetGameReady())
-	{
-		playRoomCont.Pop(pClient->pRoomIter);
-	}
-	else
-	{
-		waitRoomCont.Pop(pClient->pRoomIter);
-	}
+	EnterCriticalSection(&csRoom);
+	//----------------------------
 
-	delete (pClient->pRoomIter);
-
-	pClient->pRoomIter = nullptr;
-}
-
-bool GameRoomManager::CancelWait(SocketInfo* pClient)
-{
-	if (pClient->pRoomIter->GetGameReady())
+	if (pWaitRoom.expired()) // Create!
 	{
-		return false;
-	}
-	else
-	{
-		DestroyRoom(pClient);
+		_CreateRoom(pInUser);
+
+		//----------------------------
+		LeaveCriticalSection(&csRoom);
+
+		++roomNum;		//atomic
 		return true;
-	}
-}
-
-GameRoom* GameRoomManager::RandomMatchingProcess(rbTreeNode<string, UserData>* pInUser, GameRoom* pRetRoom, bool& RetBoolBuffer)
-{
-	if (waitRoomCont.IsEmpty()) // Create!
-	{
-		RetBoolBuffer = true;
-		pRetRoom = _CreateRoom(pInUser);
-
 	}
 	else // Join
 	{
-		RetBoolBuffer = false;
-		pRetRoom = _JoinRoom(pInUser, pRetRoom);
+		_JoinRoom(pInUser);
+
+		//----------------------------
+		LeaveCriticalSection(&csRoom);
+		return false;
 	}
-	
-	return pRetRoom;
 }
+
+
+void GameRoomManager::_CreateRoom(const shared_ptr<UserData>& pClient)
+{
+	pClient->GetSocketInfo()->pRoomIter = make_shared<GameRoom>(pClient);
+	pWaitRoom = pClient->GetSocketInfo()->pRoomIter;
+}
+
+void GameRoomManager::_JoinRoom(const shared_ptr<UserData>& pClient)
+{
+	// Push -> Pop을 먼저 하고 (criticalSection을 걸고) 빼고 넣은 방에다가, 그 후 설정까지 끝내고 방 바꿈.
+	pClient->GetSocketInfo()->pRoomIter = pWaitRoom.lock();
+	pClient->GetSocketInfo()->pRoomIter->JoinRoom(pClient);
+	pWaitRoom.reset();
+}
+
+bool GameRoomManager::HostCancelWaiting(SocketInfo* pClient)
+{
+	EnterCriticalSection(&csRoom);
+
+	if (pClient->pRoomIter->roomState == ROOM_STATE::ROOM_STATE_SOLO)
+	{
+		pClient->pRoomIter.reset();
+
+		LeaveCriticalSection(&csRoom);
+		return true;
+	}
+	else // ROOM_STATE::ROOM_STATE_PLAY
+	{
+		LeaveCriticalSection(&csRoom);
+		return false;
+	}
+}
+
+void GameRoomManager::_DestroyRoom(SocketInfo* pClient)
+{
+	pClient->pRoomIter.reset();
+}
+
+
 

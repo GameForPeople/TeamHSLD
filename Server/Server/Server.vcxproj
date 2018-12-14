@@ -36,10 +36,12 @@
     <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Custom_DataStructure\Custom_Map_RedBlackTree.h" />
+    <ClInclude Include="Custom_DataStructure\Custom_Node_Queue.h" />
+    <ClInclude Include="Custom_DataStructure\Custom_Set_RedBlackTree.h" />
+    <ClInclude Include="Custom_DataStructure\Custom_Node_List.h" />
     <ClInclude Include="GameRoom\GameRoomManager.h" />
     <ClInclude Include="GameRoom\GameRoom.h" />
-    <ClInclude Include="GameRoom\Room_List.h" />
-    <ClInclude Include="IOCPServer\Custom_Node_Queue.h" />
     <ClInclude Include="IOCPServer\IOCPServer.h" />
     <ClInclude Include="IOCPServer\SocketInfo.h" />
     <ClInclude Include="IOCPServer\UDPManager.h" />
@@ -53,7 +55,6 @@
     <ClInclude Include="SceneNetworkManager\_3_LobbyScene\LobbyScene.h" />
     <ClInclude Include="SceneNetworkManager\_4_RoomScene\RoomScene.h" />
     <ClInclude Include="SceneNetworkManager\_5_InGameScene\InGameScene.h" />
-    <ClInclude Include="UserData\Custom_Map_RedBlackTree.h" />
     <ClInclude Include="UserData\UserData.h" />
     <ClInclude Include="UserData\UserDataManager.h" />
   </ItemGroup>

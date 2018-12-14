@@ -184,7 +184,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendNetworkExecption(SocketInfo* pClien
 //#endif
 	pUserData->SetGameResult(pClient->pUserNode, false);
 
-	pRoomData->DestroyRoom(pClient);
+	//pRoomData->DestroyRoom(pClient);
+	pClient->pRoomIter.reset();
 
 	pClient->dataSize = 4;
 

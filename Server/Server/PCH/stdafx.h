@@ -10,12 +10,14 @@
 #include <ctime>
 #include <utility>
 
+//
 #include <fstream>
+#include <string>
 
+//STL
 #include <vector>
 #include <map>
 #include <queue>
-#include <string>
 
 //thread
 #include <thread>
@@ -29,6 +31,14 @@
 // C++17
 #include <string_view>
 
+// DEV_66
+#include <locale>
+#include <codecvt>
+#include <mbstring.h>
+#include <Mbctype.h>
+#include <AtlBase.h>
+#include <atlconv.h>
+
 // custom
 
 // For Login
@@ -40,5 +50,14 @@
 
 #define		_NORETURN			[[noreturn]]
 #define		_NODISCARD			[[nodiscard]]
+#define		_DEPRECATED			[[deprecated]]
+#define		_MAYBE_UNUSED		[[maybe_unused]]
+#define		_FALLTHROUGH		[[fallthrough]]
 
 using namespace std;
+
+using Type_Nickname = std::basic_string<char, char_traits<char>, allocator<char>>;	// == string
+using Type_ID = std::basic_string<char, char_traits<char>, allocator<char>>;		// == string
+
+//using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 TCHAR 적용하는걸로 변경.
+

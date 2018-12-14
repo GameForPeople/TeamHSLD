@@ -34,8 +34,8 @@ enum Protocol {
 	FAIL_LOGIN			=	101	,
 	PERMIT_LOGIN		=	102	,
 
-	CHANGE_NICKNAME		=	103 ,	// Client To Server
-	PERMIT_NICKNAME		=	104 ,	// Server to Client - buffer
+	CHANGE_Nickname		=	103 ,	// Client To Server
+	PERMIT_Nickname		=	104 ,	// Server to Client - buffer
 	
 	// for MainUiScene
 	DEMAND_FRIEND_INFO	=	201	,	// Client to Server - 친구 정보 보내주세요.
