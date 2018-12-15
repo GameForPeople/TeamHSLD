@@ -12,6 +12,7 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ParsingServerIP();
     }
 
+    // 실제 상용화 시, 생성자에서 해당 함수 호출이 필요합니다.
     public void UI_StartWithServer()
     {
         //GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().StartNetworkFunction();
@@ -19,7 +20,6 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
     }
 
-    // 실제 상용화 시, 생성자에서 해당 함수 호출이 필요합니다.
     public void UI_StartWithLocal()
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().iP_ADDRESS = "127.0.0.1";
@@ -61,5 +61,10 @@ public class TitleSceneManager : MonoBehaviour
         byte[] stringToByteBuffer = Encoding.Default.GetBytes(testString);
         //Debug.Log("스트링의 내용 : " + testString + " 스트링의 크기 : " + testString.Length);
         //Debug.Log("contents의 내용 : " + stringToByteBuffer.ToString() + " 바이트의 크기 : " + stringToByteBuffer.Length);
+    }
+
+    public void UI_OnOff_WaitParsingUI(bool InIsActive)
+    {
+        GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject.SetActive(InIsActive);
     }
 }

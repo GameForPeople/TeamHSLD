@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 259107899}
   - component: {fileID: 259107898}
   m_Layer: 5
-  m_Name: ID_InputField
+  m_Name: InputField_ID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,12 +999,12 @@ GameObject:
   - component: {fileID: 795927342}
   - component: {fileID: 795927341}
   m_Layer: 5
-  m_Name: ID_Text
+  m_Name: Text_ID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &795927340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1711,12 +1711,12 @@ GameObject:
   - component: {fileID: 1425270235}
   - component: {fileID: 1425270234}
   m_Layer: 5
-  m_Name: PW_InputField
+  m_Name: InputField_PW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1425270233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1989,7 +1989,7 @@ GameObject:
   - component: {fileID: 1591926137}
   - component: {fileID: 1591926136}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image_Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2340,12 +2340,12 @@ GameObject:
   - component: {fileID: 1886837955}
   - component: {fileID: 1886837954}
   m_Layer: 5
-  m_Name: PW_Text
+  m_Name: Text_PW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1886837953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2417,7 +2417,7 @@ GameObject:
   - component: {fileID: 1992739102}
   - component: {fileID: 1992739101}
   m_Layer: 5
-  m_Name: LoginScene_Text
+  m_Name: Text_LoginScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2500,7 +2500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2026298436
 RectTransform:
   m_ObjectHideFlags: 0

@@ -135,21 +135,21 @@ public class MainUISceneManager : MonoBehaviour
         if (bBuffer)
         {
             // 이미 친구인 놈.
-            OnUI_CHECK_DEMAND_MAKE_FRIEND(3);
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
             return;
         }
 
         if (String.Compare(makeFriendIDBuffer, networkObject.ID) == 0)
         {
             // 내 아이디잖아
-            OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(6);
             return;
         }
 
         if (String.Compare(makeFriendIDBuffer, networkObject.nickName) == 0)
         {
             // 니 닉네임이잖아 ㅡㅡ
-            OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
+            OnUI_CHECK_DEMAND_MAKE_FRIEND(6);
             return;
         }
 
@@ -293,7 +293,7 @@ public class MainUISceneManager : MonoBehaviour
         }
         else if (InFailReason == 3)
         {
-            // 이미 상대방이 친구인 경우
+            // 해당 닉네임이 없는 경우
             FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_3").gameObject.SetActive(true);
         }
         else if (InFailReason == 4)
@@ -301,7 +301,16 @@ public class MainUISceneManager : MonoBehaviour
             // 님 인싸여서 더이상 친구 추가 못함 ㅋ
             FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_4").gameObject.SetActive(true);
         }
-        //else if (InFailReason == 5) // 스스로 친추 하려고 할 때.
+        else if (InFailReason == 5) 
+        {
+            // 이미 친구인 경우
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_5").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 6)
+        {
+            // 니 아이디잖아
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_6").gameObject.SetActive(true);
+        }
     }
 
     public void OffUI_CHECK_DEMAND_MAKE_FRIEND(int InUIIndex)

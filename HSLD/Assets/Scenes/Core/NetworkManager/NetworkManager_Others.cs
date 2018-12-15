@@ -61,7 +61,7 @@ public partial class NetworkManager : MonoBehaviour {
 
     IEnumerator ParsingServerIPCoroutine()
     {
-        GameObject.Find("Canvas").transform.Find("WaitParsingUI").gameObject.SetActive(true);
+        GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>().UI_OnOff_WaitParsingUI(true);
 
         UnityWebRequest www = UnityWebRequest.Get("http://koreagamemaker.wixsite.com/hsld-server"); // 나중에 GitPage로 바꾸기.
         yield return www.SendWebRequest();
@@ -103,7 +103,7 @@ public partial class NetworkManager : MonoBehaviour {
                 Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
             }
 
-            GameObject.Find("Canvas").transform.Find("WaitParsingUI").gameObject.SetActive(false);
+            GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>().UI_OnOff_WaitParsingUI(false);
         }
     }
 }

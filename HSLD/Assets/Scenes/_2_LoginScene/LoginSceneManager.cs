@@ -37,14 +37,14 @@ public class LoginSceneManager : MonoBehaviour {
         }
     }
 
-    public void ClickSignInButton()
+    public void UI_SignInButton()
     {
         // 로그인 버튼 처리입니다.
 
         typeBuffer = 1;
-
-        IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-        //PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        
+        IDBuffer = GameObject.Find("InputField_ID").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        //PWStringBuffer = GameObject.Find("InputField_PW").transform.Find("Text").gameObject.GetComponent<Text>().text;
         //PWBuffer = Int32.Parse(PWStringBuffer);
 
         Debug.Log("로그인을 시도합니다. ID : " + IDBuffer /*+ "PW : " + PWBuffer*/);
@@ -67,14 +67,14 @@ public class LoginSceneManager : MonoBehaviour {
         }
     }
 
-    public void ClickSignUpButton()
+    public void UI_SignUpButton()
     {
         // 회원 가입 버튼 처리입니다.
 
         typeBuffer = 2;
 
-        IDBuffer = GameObject.Find("ID_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-       // PWStringBuffer = GameObject.Find("PW_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        IDBuffer = GameObject.Find("InputField_ID").transform.Find("Text").gameObject.GetComponent<Text>().text;
+       // PWStringBuffer = GameObject.Find("InputField_PW").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
        // PWBuffer = Int32.Parse(PWStringBuffer);
 
