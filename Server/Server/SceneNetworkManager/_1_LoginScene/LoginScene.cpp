@@ -70,13 +70,16 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 	memcpy(pClient->buf + 20, reinterpret_cast<const char*>(&InTitleBit), sizeof(int));
 	memcpy(pClient->buf + 24, reinterpret_cast<const char*>(&InCharacterBit), sizeof(int));
 
-	int stringSizeBuffer = InNickname.size(); // DEV_66 char * 2 = wchar
+	int stringSizeBuffer = MultiByteToWideChar(CP_ACP, 0, &InNickname[0], InNickname.size(), NULL, NULL);
+	//int stringSizeBuffer = InNickname.size(); // DEV_66 char * 2 = wchar
+	wstring uniStrBuffer(stringSizeBuffer, 0);
+	MultiByteToWideChar(CP_ACP, 0, &InNickname[0], InNickname.size(), &uniStrBuffer[0], stringSizeBuffer);
 
+	stringSizeBuffer = uniStrBuffer.size() * 2;
 	memcpy(pClient->buf + 28, reinterpret_cast<const char*>(&stringSizeBuffer), sizeof(int));
-	memcpy(pClient->buf + 32, InNickname.data(), stringSizeBuffer);
+	memcpy(pClient->buf + 32, uniStrBuffer.data(), stringSizeBuffer);
 
 	pClient->dataSize = 32 + stringSizeBuffer;
-
 	// 친구 기능 일단 주석처리함. // 이 때 굳이 보낼 필요 없음.
 	/*
 	int stringSizeBuffer = InFriendStringCont.size();
@@ -111,20 +114,22 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 
 void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 {
-	int NicknameSizeBuffer = reinterpret_cast<int&>(pClient->buf[4]);
+	int nicknameSizeBuf = reinterpret_cast<int&>(pClient->buf[4]);
 	
-	//for (int i = 0; i < NicknameSizeBuffer; ++i)
-	//{
-	//	// Refactor 필요.
-	//	NicknameBuffer += pClient->buf[8 + i];
-	//}
+	// UTF-16 스트링 생성
+	std::wstring wstrBuf(nicknameSizeBuf * 0.5, 0);
+	memcpy(&wstrBuf[0], &pClient->buf[8], nicknameSizeBuf);
 
-	pClient->buf[8 + NicknameSizeBuffer] = '\0';
-	
-	Type_Nickname NicknameBuffer(pClient->buf + 8);
+	// UTF-16 -> MBCS
+	nicknameSizeBuf = WideCharToMultiByte(CP_ACP, 0, &wstrBuf[0], -1, NULL, 0, NULL, NULL);
+	Type_Nickname nicknameBuf(nicknameSizeBuf, 0);
+	WideCharToMultiByte(CP_ACP, 0, &wstrBuf[0], -1, &nicknameBuf[0], nicknameSizeBuf, NULL, NULL);
 
-	if (pUserData->SetNewNickname(pClient, NicknameBuffer))
+	std::cout << "받은 닉네임은 : " << nicknameBuf << " 사이즈 : " << nicknameBuf.size() << "\n";
+
+	if (pUserData->SetNewNickname(pClient, nicknameBuf))
 	{
+		pClient->pUserNode->SetMoney(0);
 		__SendChangeNickname(pClient, true);
 	}
 	else

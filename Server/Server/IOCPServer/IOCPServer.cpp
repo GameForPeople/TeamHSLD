@@ -527,7 +527,9 @@ void IOCPServer::_WorkerThreadFunction()
 			recvType = (int&)(pClient->buf);
 		
 			if(pClient->pUserNode != nullptr)
-			std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
+				std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
+			else 
+				std::cout << "익명의 클라이언트에게 받은 타입은 : " << recvType << " 입니다. \n";
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 

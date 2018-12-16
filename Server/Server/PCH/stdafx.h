@@ -32,7 +32,7 @@
 #include <string_view>
 
 // DEV_66
-#include <locale>
+#include <clocale>
 #include <codecvt>
 #include <mbstring.h>
 #include <Mbctype.h>
@@ -58,6 +58,7 @@ using namespace std;
 
 using Type_Nickname = std::basic_string<char, char_traits<char>, allocator<char>>;	// == string
 using Type_ID = std::basic_string<char, char_traits<char>, allocator<char>>;		// == string
+
 
 //using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 TCHAR 적용하는걸로 변경.
 

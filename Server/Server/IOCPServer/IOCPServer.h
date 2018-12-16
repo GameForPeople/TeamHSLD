@@ -70,7 +70,7 @@ public:
 		,	pRoomData(new GameRoomManager())
 		,	pUdpManager(new UDPManager())
 	{
-			Init(InIsTrueLoadExternIP);
+		Init(InIsTrueLoadExternIP);
 	}
 
 	~IOCPServer()
@@ -93,6 +93,8 @@ public:
 	// Init Server
 	void Init(bool InIsTrueLoadExternalIP)
 	{
+		_wsetlocale(LC_ALL, L"Korean");
+
 		_PrintServerInfoUI(InIsTrueLoadExternalIP);
 		//LoadUserData();	// 나중에 닉네임 해싱 트리 만드는 작업 여기서 필요함.
 

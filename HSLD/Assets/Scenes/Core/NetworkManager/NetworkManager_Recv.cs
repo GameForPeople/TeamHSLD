@@ -74,7 +74,7 @@ public partial class NetworkManager : MonoBehaviour {
             Debug.Log("characterBit is --> " + characterBit);
 
             int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
-            nickName = Encoding.Default.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
+            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
             Debug.Log("nickName is --> " + nickName);
             //
             if (money == -1)

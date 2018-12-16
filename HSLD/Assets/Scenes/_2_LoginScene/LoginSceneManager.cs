@@ -107,26 +107,28 @@ public class LoginSceneManager : MonoBehaviour {
             //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             // 글자수 제한, 4 이상, 10 이하일 떄만 트루
-            if (nickNameBuffer.Length < 4) return;
-            if (nickNameBuffer.Length > 10) return;
+            if (nickNameBuffer.Length < 4) { Debug.Log("4글자 미만은 닉네임 안돼요"); return; }
+            if (nickNameBuffer.Length > 10) { Debug.Log("10글자 이상은 닉네임 안돼요"); return; }
 
-            bool nickNameTest = false;
+            // 한글 닉네임 지원에 따른 Off처리...!
 
-            for(int i = 0; i < nickNameBuffer.Length; ++i)
-            {
-                if (nickNameBuffer[i] >= 'A' && nickNameBuffer[i] <= 'Z')
-                { }
-                else if (nickNameBuffer[i] >= 'a' && nickNameBuffer[i] <= 'z')
-                { }
-                else
-                {
-                    nickNameTest = true;
-                }
-            }
-
-            if (nickNameTest) return;
+            //bool nickNameTest = false;
+            //for (int i = 0; i < nickNameBuffer.Length; ++i)
+            //{
+            //    if (nickNameBuffer[i] >= 'A' && nickNameBuffer[i] <= 'Z')
+            //    { }
+            //    else if (nickNameBuffer[i] >= 'a' && nickNameBuffer[i] <= 'z')
+            //    { }
+            //    else
+            //    {
+            //       
+            //       // nickNameTest = true;
+            //    }
+            //}
+            //if (nickNameTest) return;
 
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().nickName = nickNameBuffer;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 0;
 
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.CHANGE_NICKNAME);
         }
