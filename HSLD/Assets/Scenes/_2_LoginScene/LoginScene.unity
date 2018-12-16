@@ -1215,7 +1215,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1121980033}
-        m_MethodName: ClickSignInButton
+        m_MethodName: UI_SignInButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1541,7 +1541,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD55C\uAE00 \uC548\uB428, \uC601\uC5B4 4~10 OK?"
+  m_Text: "\uD55C\uAE00\uB3C4\uB3FC \uC774\uC81C! 4~10\uAE00\uC790"
 --- !u!222 &1336345575
 CanvasRenderer:
   m_ObjectHideFlags: 0
