@@ -125,8 +125,6 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 	Type_Nickname nicknameBuf(nicknameSizeBuf, 0);
 	WideCharToMultiByte(CP_ACP, 0, &wstrBuf[0], -1, &nicknameBuf[0], nicknameSizeBuf, NULL, NULL);
 
-	std::cout << "받은 닉네임은 : " << nicknameBuf << " 사이즈 : " << nicknameBuf.size() << "\n";
-
 	if (pUserData->SetNewNickname(pClient, nicknameBuf))
 	{
 		pClient->pUserNode->SetMoney(0);

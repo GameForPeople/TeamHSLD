@@ -41,7 +41,6 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 		friendNum -= 1;
 	}
 
-
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_FRIEND_INFO), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<char*>(&friendNum), sizeof(int));
 
@@ -70,14 +69,17 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
 			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin, isOnMatch);
 
-			// 0일 경우, 없는 닉네임, 1일 경우, 있는데 비로그인, 2일 경우 로비, 3일 경우 게임중.
+			// 0일 경우, 없는 닉네임. 
+			// 1일 경우, 닉네임은 있는데 비로그인.
+			// 2일 경우, 로비.
+			// 3일 경우, 게임중.
 			pClient->dataSize += sizeof(int);	// 4 Bool Type
 
-			// 0인 경우, (현재 로직상 이 조건이 트루이면 안됨)
+			// 0인 경우, (현재 로직상 이 조건이 트루일 수 없음)
 			if (!isOnMatch)
 			{
+				std::cout << "[Error] 이미 친구추가가 된 유저의 닉네임이 없는 닉네임으로 나옵니다. \n";
 				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
-
 				continue;
 			}
 
@@ -90,10 +92,15 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 
 			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
 
-			stringSize = stringBuffer.size();	// DEV_66 사이즈
+			stringSize = MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), NULL, NULL);
+
+			wstring uniStrBuffer(stringSize, 0);
+			MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), &uniStrBuffer[0], stringSize);
+			
+			stringSize = uniStrBuffer.size() * 2;
 
 			memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
-			memcpy(pClient->buf + pClient->dataSize + 8, stringBuffer.data(), stringSize);
+			memcpy(pClient->buf + pClient->dataSize + 8, uniStrBuffer.data(), stringSize);
 
 			pClient->dataSize += (4 + stringSize); 
 		}

@@ -524,7 +524,7 @@ void IOCPServer::_WorkerThreadFunction()
 		}
 		else
 		{
-			recvType = (int&)(pClient->buf);
+			recvType = reinterpret_cast<int&>(pClient->buf);
 		
 			if(pClient->pUserNode != nullptr)
 				std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
