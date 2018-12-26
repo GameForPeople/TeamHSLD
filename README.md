@@ -1,5 +1,5 @@
 # Bridge_UnityProject
-__Bridge_UnityProject 저장소에 방문해주셔서 감사합니다! :)__  (Ver.180908)
+__Bridge_UnityProject 저장소에 방문해주셔서 감사합니다! :)__  (Ver.181226)
 
 ![TitleImg](./ForReadme/titleImage.png)
 
@@ -19,13 +19,19 @@ About Project
 > Server (C++)
 > * IOCP Server 개발 후 유니티 연동합니다.
 
+About Concept Image
+-----------
+![animalImg](./ForReadme/animalImg.png)
+![objImage](./ForReadme/objImage_2.png)
+
+
 _프로젝트 진행상황을 비공개로 전환했습니다._
 >~~__프로젝트 진행 상황 확인__~~
 >* ~~[Trello Link]~~
 >* ~~[Task Lisk Link]~~
 
 프로젝트가 진행됨에 따라, 추가 업데이트하도록 하겠습니다
-감사합니다! 
+감사합니다! :) 
 
 [1]:https://trello.com/b/TgByYHu4
 [2]:https://1drv.ms/x/s!Aklug0TlCKIJjEoRS-8XqkUFkZ7z
