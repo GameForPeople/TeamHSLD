@@ -20,7 +20,7 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~RoomScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
+		virtual void ProcessData(const int InRecvType, SocketInfo* pClient) override;
 
 	private:
 		void _DemandEnemyCharacterIndex(SocketInfo* pClient);

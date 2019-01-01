@@ -52,7 +52,7 @@ void UDPManager::_CreateUDPSocket()
 		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
-void UDPManager::_SendMessage(const char& InChar)
+void UDPManager::_SendMessage(const char InChar)
 {
 	weak_ptr<UserData> pNodeBuffer; // = friendInviteMessageQueue.Pop();
 	
@@ -86,7 +86,6 @@ void UDPManager::_SendMessage(const char& InChar)
 	{
 		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
 	}
-
 	//std::cout << " UDP -> " << (int)(InChar) << "를 보냈습니다.  \n";
 
 	//delete pUserData;

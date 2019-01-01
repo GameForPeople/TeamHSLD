@@ -10,7 +10,7 @@ SCENE_NETWORK_MANAGER::LoginScene::LoginScene(GameRoomManager* pInRoomData, User
 {
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::LoginScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 	if (InRecvType == DEMAND_LOGIN)
 		_RecvDemandLogin(pClient);
@@ -50,7 +50,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 		std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" ´ÔÀÌ ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù. " << "\n";
 }
 
-void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int& RetFailReason)
+void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int RetFailReason)
 {
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&FAIL_LOGIN), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&RetFailReason), sizeof(int));
@@ -59,8 +59,8 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, con
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, 
-	const int& InWinCount, const int& InLoseCount, const int& InMoney,
-	const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, const vector<Type_Nickname>& InFriendStringCont)
+	const int InWinCount, const int InLoseCount, const int InMoney,
+	const int InAchievementBit, const int InTitleBit, const int InCharacterBit, const vector<Type_Nickname>& InFriendStringCont)
 {
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_LOGIN), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&InWinCount), sizeof(int));

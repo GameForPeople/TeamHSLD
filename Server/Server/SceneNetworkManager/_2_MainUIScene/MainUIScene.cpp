@@ -14,7 +14,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene(GameRoomManager* pInRoomData, Us
 	, CONST_TRUE(1), CONST_FALSE(0), CONST_2(2), CONST_3(3)
 {}
 
-void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 	if (InRecvType == DEMAND_FRIEND_INFO)
 		_DemandFriendInfoProcess(pClient);

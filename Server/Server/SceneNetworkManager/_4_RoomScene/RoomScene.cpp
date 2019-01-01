@@ -10,7 +10,7 @@ SCENE_NETWORK_MANAGER::RoomScene::RoomScene(GameRoomManager* pInRoomData, UserDa
 
 }
 
-void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::RoomScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 	_DemandEnemyCharacterIndex(pClient);
 }

@@ -29,7 +29,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	SendFunctions[7] = &InGameScene::SendGameReady;
 }
 
-void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 	ProcessRecv(InRecvType, pClient);
 
@@ -37,7 +37,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int& InRecvType, Sock
 	ProcessSend(pClient->pRoomIter->GetDataProtocol(pClient->isHost), pClient);
 }
 
-void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::InGameScene::ProcessRecv(const int InRecvType, SocketInfo* pClient)
 {
 	//if (InRecvType != 500)
 	//	std::cout << "InRecvType : " << InRecvType << "\n";

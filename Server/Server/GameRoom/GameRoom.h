@@ -67,7 +67,7 @@ private:
 	//BaseStruct* oldguestDataBuffer;
 
 public:
-	GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode = false );
+	GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode = false );
 	
 	GameRoom() = delete;
 	~GameRoom();
@@ -76,13 +76,13 @@ public:
 	//GameRoom & operator=(const GameRoom&) = delete;
 
 public:
-	void JoinRoom(const shared_ptr<UserData>& InGuestUserIter);
+	void JoinRoom(const shared_ptr<UserData> InGuestUserIter);
 	
 	__inline void DeleteDynamicData() noexcept { roomDynamicData.reset(); }
 
 	//new Function
 public:
-	__inline void GetRoomGameData(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, 
+	__inline void GetRoomGameData(const bool InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex, 
 		int& retEnemyMissionIndex, int& retSubMissionIndex)
 	{
 		if (InIsHost)
@@ -111,7 +111,7 @@ public:
 	}
 
 	//DEV_66 닉네임이, 다이나믹 데이터에 추가되면서, Iter대신, 닉네임만 요청하는 내용이 적용.
-	__inline void GetRoomGameDataWithNickname(const bool& InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
+	__inline void GetRoomGameDataWithNickname(const bool InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
 		int& retEnemyMissionIndex, int& retSubMissionIndex, Type_Nickname& retEnemyNickname)
 	{
 		GetRoomGameData(InIsHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
@@ -165,26 +165,26 @@ public:
 	}
 
 public:
-	__inline void SetDataBuffer(const bool& InIsHost, const char* InBuffer, const int& InCopySize) noexcept
+	__inline void SetDataBuffer(const bool InIsHost, const char* InBuffer, const int InCopySize) noexcept
 	{
 		memcpy(dataBuffer[!InIsHost], InBuffer, InCopySize);
 	}
 
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer, const int& InCopySize)  noexcept
+	__inline void GetDataBuffer(const bool InIsHost, char* RetBuffer, const int InCopySize)  noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], InCopySize);
 	}
-	__inline void GetDataBuffer(const bool& InIsHost, char* RetBuffer)  noexcept
+	__inline void GetDataBuffer(const bool InIsHost, char* RetBuffer)  noexcept
 	{
 		memcpy(RetBuffer, dataBuffer[InIsHost], (int)dataBuffer[InIsHost] + sizeof(int));
 	}
 
-	_NODISCARD __inline int GetDataProtocol(const bool& InIsHost) const noexcept
+	_NODISCARD __inline int GetDataProtocol(const bool InIsHost) const noexcept
 	{
 		return dataProtocol[InIsHost];
 	}
-	//enum을 메니저에서 한번 복사했으니까, 여기는 레퍼런스여도 되지 않을까?
-	__inline void SetDataProtocol(const bool& InIsHost, const int& InNewDataProtocol) noexcept
+
+	__inline void SetDataProtocol(const bool InIsHost, const int InNewDataProtocol) noexcept
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}

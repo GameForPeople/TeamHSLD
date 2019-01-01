@@ -33,7 +33,7 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~LobbyScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
+		virtual void ProcessData(const int InRecvType, SocketInfo* pClient) override;
 
 	private:
 		void _DemandRandomMatch(SocketInfo* pClient);

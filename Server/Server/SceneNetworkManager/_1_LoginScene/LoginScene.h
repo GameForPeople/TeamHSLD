@@ -24,13 +24,13 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~LoginScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
+		virtual void ProcessData(const int InRecvType, SocketInfo* pClient) override;
 
 	private:
 		void _RecvDemandLogin(SocketInfo* pClient);
-		void __SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, const int& RetWinCount, const int& RetLoseCount, const int& RetMoney,
-			const int& RetAchievementBit, const int& RetTitleBit, const int& RetCharacterBit, const vector<Type_Nickname>& RetFriendStringCont);
-		void __SendFailLogin(SocketInfo* pClient, const int& RetFailReason);
+		void __SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, const int RetWinCount, const int RetLoseCount, const int RetMoney,
+			const int RetAchievementBit, const int RetTitleBit, const int RetCharacterBit, const vector<Type_Nickname>& RetFriendStringCont);
+		void __SendFailLogin(SocketInfo* pClient, const int RetFailReason);
 
 	private:
 		void _RecvChangeNickname(SocketInfo* pClient);

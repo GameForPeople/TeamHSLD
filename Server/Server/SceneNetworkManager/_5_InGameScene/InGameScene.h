@@ -18,19 +18,21 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~InGameScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
+		virtual void ProcessData(const int InRecvType, SocketInfo* pClient) override;
 
 	private:
 		//virtual void ProcessRecv(const int& InRecvType, SOCKETINFO* ptr, GameRoomManager& InRoomData, UserDataManager& InUserData) override;
-		void ProcessRecv(const int& InRecvType, SocketInfo* pClient);
+		void ProcessRecv(const int InRecvType, SocketInfo* pClient);
 
 		//InSendType Called By Value로 전달 요구됨.
 		void ProcessSend(const int InSendType, SocketInfo* pClient);
 
 	private:
-		//std::vector<FunctionPointer> functionPointers;
 		void(InGameScene::*RecvFunctions[10])(SocketInfo* pClient);
 		void(InGameScene::*SendFunctions[10])(SocketInfo* pClient);
+
+		//std::vector<std::function<void(SocketInfo*)>>recvFunctions;
+		//std::vector<std::function<void(SocketInfo*)>>sendFunctions;
 
 		void RecvGameState(SocketInfo* pClient);
 		void RecvChangeTurn(SocketInfo* pClient);
