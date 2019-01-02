@@ -33,6 +33,11 @@ public partial class MainUISceneManager : MonoBehaviour
     #region [ Release Func ]
     void Start()
     {
+        // -----
+        GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(true);
+        // -----
+
+
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 
         // GameObject.Find("PW_InTEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().PW.ToString();
