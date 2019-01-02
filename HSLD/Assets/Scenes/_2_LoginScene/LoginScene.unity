@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 78121605}
   - component: {fileID: 78121604}
   m_Layer: 5
-  m_Name: NickName_InputField
+  m_Name: InputField_NickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1970,7 +1970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD655IN"
+  m_Text: "\uD655\uC778\n"
 --- !u!222 &1558377689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1994,7 +1994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1591926135
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2059,7 +2059,7 @@ GameObject:
   - component: {fileID: 1678051321}
   - component: {fileID: 1678051320}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_NewNickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2124,7 +2124,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1121980033}
-        m_MethodName: ClickNewNicknameButton
+        m_MethodName: UI_SetNewNicknameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -14,20 +14,12 @@ using System.Text;
 public class LoginSceneManager : MonoBehaviour {
     
     public string IDBuffer;
-    //string PWStringBuffer;
-    //public int PWBuffer;
 
-    public int typeBuffer;
+    public int typeBuffer;  // 1이면 로그인, 2이면 회원가입.
 
     public int failReason;
 
-    // Use this for initialization
-    //   void Start () {
-    //   }
-
-    // Update is called once per frame
-    //    void Update () {
-    //	}
+    #region [ Release Func ]
 
     void Start()
     {
@@ -40,7 +32,6 @@ public class LoginSceneManager : MonoBehaviour {
     public void UI_SignInButton()
     {
         // 로그인 버튼 처리입니다.
-
         typeBuffer = 1;
         
         IDBuffer = GameObject.Find("InputField_ID").transform.Find("Text").gameObject.GetComponent<Text>().text;
@@ -66,6 +57,69 @@ public class LoginSceneManager : MonoBehaviour {
             PermitLoginProcess();
         }
     }
+
+    public void UI_OnOff_NewNicknameUI(bool InIsActive = true)
+    {
+        //GameObject.Find("SignUp_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
+        GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").gameObject.SetActive(InIsActive);
+
+        //GameObject.Find("OnOff_UI").gameObject.SetActive(true);
+    }
+
+    public void UI_SetNewNicknameButton()
+    {
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
+        {
+            string nickNameBuffer = GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("InputField_NickName").transform.Find("Text").gameObject.GetComponent<Text>().text;
+
+            //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+
+            // 글자수 제한, 4 이상, 10 이하일 떄만 트루
+            if (nickNameBuffer.Length < 4) { Debug.Log("4글자 미만은 닉네임 안돼요"); return; }
+            if (nickNameBuffer.Length > 10) { Debug.Log("10글자 이상은 닉네임 안돼요"); return; }
+
+            // 한글 닉네임 지원에 따른 주석처리...!
+            //bool nickNameTest = false;
+            //for (int i = 0; i < nickNameBuffer.Length; ++i)
+            //{
+            //    if (nickNameBuffer[i] >= 'A' && nickNameBuffer[i] <= 'Z')
+            //    { }
+            //    else if (nickNameBuffer[i] >= 'a' && nickNameBuffer[i] <= 'z')
+            //    { }
+            //    else
+            //    {
+            //       
+            //       // nickNameTest = true;
+            //    }
+            //}
+            //if (nickNameTest) return;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().nickName = nickNameBuffer;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 0;
+
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.CHANGE_NICKNAME);
+        }
+        else
+        {
+            Debug.Log("Network Error");
+        }
+    }
+
+    // From Network Recv -> if (recvType == (int)PROTOCOL.PERMIT_LOGIN)
+    public void PermitLoginProcess()
+    {
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
+        //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
+
+        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
+
+        // 메인 UI로 넘어갑니다~~
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
+    }
+
+    #endregion
+
+    #region [ Old Func ]
 
     public void UI_SignUpButton()
     {
@@ -98,70 +152,9 @@ public class LoginSceneManager : MonoBehaviour {
         }
     }
 
-    public void ClickNewNicknameButton()
-    {
-        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
-        {
-            string nickNameBuffer = GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-
-            //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
-
-            // 글자수 제한, 4 이상, 10 이하일 떄만 트루
-            if (nickNameBuffer.Length < 4) { Debug.Log("4글자 미만은 닉네임 안돼요"); return; }
-            if (nickNameBuffer.Length > 10) { Debug.Log("10글자 이상은 닉네임 안돼요"); return; }
-
-            // 한글 닉네임 지원에 따른 Off처리...!
-
-            //bool nickNameTest = false;
-            //for (int i = 0; i < nickNameBuffer.Length; ++i)
-            //{
-            //    if (nickNameBuffer[i] >= 'A' && nickNameBuffer[i] <= 'Z')
-            //    { }
-            //    else if (nickNameBuffer[i] >= 'a' && nickNameBuffer[i] <= 'z')
-            //    { }
-            //    else
-            //    {
-            //       
-            //       // nickNameTest = true;
-            //    }
-            //}
-            //if (nickNameTest) return;
-
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().nickName = nickNameBuffer;
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 0;
-
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.CHANGE_NICKNAME);
-        }
-        else
-        {
-            Debug.Log("Network Error");
-        }
-    }
-
-    public void PermitLoginProcess()
-    {
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
-        //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
-
-        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
-
-        // 메인 UI로 넘어갑니다~~
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
-    }
-
-    public void OnNewNicknameUI()
-    {
-        //GameObject.Find("SignUp_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
-        GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").gameObject.SetActive(true);
-        Debug.Log("SignUp_UI 켰습니다.");
-
-        //GameObject.Find("OnOff_UI").gameObject.SetActive(true);
-    }
-
     public void FailLoginProcess()
     {
         // 나중에는 관련 UI를 띄어주고, 코루틴으로 해당 UI날리기 --> 다만 이 작업 중에, 씐 날릴 경우, 코루틴이 None에 접근하는 문제점이 발생할 수 있음!! 이거 어떻게 예외 처리해?? 몰랗ㅎㅎㅎ
-
         if(failReason == 1)
         {
             Debug.Log("동일한 아이디가 존재하지 않습니다.");
@@ -179,14 +172,6 @@ public class LoginSceneManager : MonoBehaviour {
             Debug.Log("이미 존재하는 아이디로 회원가입이 불가능합니다.");
         }
     }
-
-    void ParsingLoginData()
-    {
-    }
-
-    void SaveLoginData()
-    {
-
-    }
-
+    
+    #endregion
 }

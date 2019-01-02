@@ -7,6 +7,8 @@ using System.Text;
 
 public class TitleSceneManager : MonoBehaviour
 {
+    #region [ Release Func ]
+
     void Start()
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ParsingServerIP();
@@ -19,6 +21,15 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork = true;
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
     }
+
+    public void UI_OnOff_WaitParsingUI(bool InIsActive)
+    {
+        GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject.SetActive(InIsActive);
+    }
+
+    #endregion
+
+    #region [ Client Test Function ]
 
     public void UI_StartWithLocal()
     {
@@ -41,11 +52,15 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().iP_ADDRESS = IPv4Buffer;
     }
 
+    #endregion
+
+    #region [ Debug Func ]
+
     // 로딩 UI 테스트를 위한 함수입니다.
     // Not Network!
     public void UI_TestLoadUI()
     {
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE , true);
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE, true);
     }
 
     // Test Function 1128 in Dice
@@ -63,8 +78,5 @@ public class TitleSceneManager : MonoBehaviour
         //Debug.Log("contents의 내용 : " + stringToByteBuffer.ToString() + " 바이트의 크기 : " + stringToByteBuffer.Length);
     }
 
-    public void UI_OnOff_WaitParsingUI(bool InIsActive)
-    {
-        GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject.SetActive(InIsActive);
-    }
+    #endregion
 }

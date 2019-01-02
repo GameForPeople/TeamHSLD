@@ -15,6 +15,7 @@ public class RoomSceneManager : MonoBehaviour {
 
     bool isOnChangeCharacter = true;
 
+    #region [ Release Func ]
     void Start()
     {
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
@@ -103,8 +104,9 @@ public class RoomSceneManager : MonoBehaviour {
             GameObject.Find("Enemy_Character").GetComponent<Text>().text = "캐릭터 2";
     }
 
-    // old
+    #endregion
 
+    #region [ Old Func ]
 
     //IEnumerator HostRoomCoroutine()
     //{
@@ -116,14 +118,14 @@ public class RoomSceneManager : MonoBehaviour {
     //    }
     //}
 
-
     // host만 받는 함수입니다. 게스트가 조인한 경우!
-    public void GuestJoinRoom()
-    {
-        isGameReady = false;
-    
-        GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
-        StartCoroutine("StartCount");
-    }
+    //public void GuestJoinRoom()
+    //{
+    //    isGameReady = false;
+    //
+    //    GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
+    //    StartCoroutine("StartCount");
+    //}
 
+    #endregion
 }
