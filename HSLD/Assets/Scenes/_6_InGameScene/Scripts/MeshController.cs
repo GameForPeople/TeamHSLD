@@ -159,14 +159,14 @@ public class MeshController : MonoBehaviour {
             //20퍼센트 확률로 생기지 않음.
             if (randomValue(0, 100) < 80 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(14, 18)], 1.03f);
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(11, 14)], 1.01f);
             }
         } else if (terrainstate == Terrain.BARREN)
         {
             //70퍼센트 확률로 생기지 않음.
             if (randomValue(0, 100) < 30 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(5, 13)], 1.03f);
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(5, 10)], 1.01f);
             }
 
         } else if (terrainstate == Terrain.COLD)
@@ -174,21 +174,21 @@ public class MeshController : MonoBehaviour {
             //40퍼센트 확률로 생기지 않음.
             if (randomValue(0, 100) < 60 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(1, 4)], 1.03f);
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(1, 4)], 1.01f);
             }
         } else if (terrainstate == Terrain.SEA)
         {
             //90퍼센트 확률로 생기지 않음.
             if (randomValue(0, 100) < 10 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(21, 22)], 1.03f);
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(17, 18)], 1.01f);
             }
         } else if (terrainstate == Terrain.MOUNTAIN)
         {
-            //10퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 90 || isFlag)
+            //5퍼센트 확률로 생기지 않음.
+            if (randomValue(0, 100) < 95 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(19, 20)], 1.03f);
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(15, 16)], 1.01f);
             }
         }
     }
@@ -213,7 +213,7 @@ public class MeshController : MonoBehaviour {
         TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
         
         TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
-        TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
     }
 
     public void Picked()

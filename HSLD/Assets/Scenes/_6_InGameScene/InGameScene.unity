@@ -12764,32 +12764,34 @@ MonoBehaviour:
   AllContainer: []
   buildingObj:
   - {fileID: 1238513038330338, guid: bc133df8dba2a5843be61bb6a8cd3365, type: 2}
-  - {fileID: 1217086889136866, guid: 270aa3bbb5506044688e75e9d23fcf47, type: 2}
-  - {fileID: 1028260716320506, guid: d17b54d6098494f43a2fe2b3f750d3bc, type: 2}
-  - {fileID: 1059103556887230, guid: a5c3162903b52844caa81b2cd0ad9b33, type: 2}
-  - {fileID: 1903644178012488, guid: 1ab61055c983b6e46a4e9f9a0238c864, type: 2}
-  - {fileID: 1610223680512982, guid: f786a7dac2d82b24a90dd8227a090320, type: 2}
-  - {fileID: 1490863272216910, guid: b08ea4b53bd00cf4681a6fe47f509746, type: 2}
-  - {fileID: 1740908078713354, guid: 9a31642639f4fea408efe006f923e4d2, type: 2}
-  - {fileID: 1288836212007794, guid: 3e57757efe6a9bf45a731ce13e8ca21b, type: 2}
-  - {fileID: 1249681901824396, guid: a8074a754a4797b41b621e442b5da66f, type: 2}
-  - {fileID: 1998153201017124, guid: 1d9db3687d12877458f645626def04fc, type: 2}
-  - {fileID: 1169079862552578, guid: ce1fef99d17ffb54b9f541c75515ba79, type: 2}
-  - {fileID: 1754717914313952, guid: 49a6627adb02e6047a3035f71787a8ac, type: 2}
-  - {fileID: 1079907047529444, guid: 67a811fc857df0c45a718e1aab489e3c, type: 2}
-  - {fileID: 1294217577628370, guid: e4bcc6ebdb3e9a94fa11963134515f7a, type: 2}
-  - {fileID: 1415442017737756, guid: a766d187556cee741bb150826a51a048, type: 2}
-  - {fileID: 1552927150132992, guid: af8c7b4b0182d5348be8d39ed7839156, type: 2}
-  - {fileID: 1873774632049088, guid: 4c7cf8a3e41e04f45bc2d18b653df43d, type: 2}
-  - {fileID: 1984427051882684, guid: a12d22274268be143bdbffb972c88f9e, type: 2}
-  - {fileID: 1294241127086302, guid: 7ecac2e136a55ae41a68ac77bad0ab4d, type: 2}
-  - {fileID: 1995373763876344, guid: 30e50d5e693873b49b1006ed161c12db, type: 2}
-  - {fileID: 1937199620671318, guid: 644656c6db20a5145b722945739d79e2, type: 2}
-  - {fileID: 1625536764460096, guid: d966b2b1d6f306d4db5f894d74bfe1e1, type: 2}
+  - {fileID: 1505488560108014, guid: 0993a59c403be414a8b5181e9f38e953, type: 2}
+  - {fileID: 1489515429784068, guid: eb9b3375e98ef504bb5e9384675283f3, type: 2}
+  - {fileID: 1288764197653044, guid: a5262ed52ae3ca24c954f4109bc176fb, type: 2}
+  - {fileID: 1951864459669620, guid: f7cafe3cf4cd28147a324b29526bbe28, type: 2}
+  - {fileID: 1750962506467282, guid: 506c5261900b39a4d9a58c581aed607f, type: 2}
+  - {fileID: 1456525646938706, guid: 7e3bbe57d41c9974da40711370a48f91, type: 2}
+  - {fileID: 1712247367422962, guid: b519a802735dc9e4a897994bdfb90a6a, type: 2}
+  - {fileID: 1775509666641264, guid: f464f70da8f2a3b449a2b12fd834c1c8, type: 2}
+  - {fileID: 1408996870570958, guid: d5f59e2cbb8e51947ac277bc848670ad, type: 2}
+  - {fileID: 1617051260311500, guid: 734effc79fcbb5b4cb54552ed620b123, type: 2}
+  - {fileID: 1482828879714972, guid: 218704431c448af47981472dd115b079, type: 2}
+  - {fileID: 1666059475236748, guid: 78f92f4a87acd63408e55c7011f9068e, type: 2}
+  - {fileID: 1007314459257164, guid: 96e07e08126634b48bd6679e5d770266, type: 2}
+  - {fileID: 1667839985554530, guid: e9794e2f0ba6cdb4d818481f1553b5cc, type: 2}
+  - {fileID: 1920668943445974, guid: d299107d47e9ccd43a123e9406121128, type: 2}
+  - {fileID: 1399865818169992, guid: 20b971cafed5b5b43b0930082f66479e, type: 2}
+  - {fileID: 1980282068528890, guid: 892f0052b9319ad41a2c425a5b36026f, type: 2}
+  - {fileID: 1641192163470570, guid: e41ce1dd4c524ee4a8e31de84bc1034e, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
   - {fileID: 1749881923002708, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+  - {fileID: 1737560681500980, guid: 741c66c57a7dec54c804da46b0c0e8f7, type: 2}
+  - {fileID: 1397731370081640, guid: 4cd11cc48fd316c42afabbc4611d917a, type: 2}
   - {fileID: 1430203538077520, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
+  - {fileID: 1305021046803664, guid: a473679cfcd0a7b48aa05ca2e50e8e07, type: 2}
+  - {fileID: 1950832684761950, guid: d47111ed4c502344686679d62a8e9947, type: 2}
+  - {fileID: 1147874481913928, guid: 7f3e163bc8b5b0d4dbb640f5173ccea5, type: 2}
+  - {fileID: 1619096674601712, guid: 82acff35e6cac944e9f73c7ba725dcac, type: 2}
 --- !u!1 &1135955283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100446, guid: e0e6c540bb21a994890f7a93ac229b27,

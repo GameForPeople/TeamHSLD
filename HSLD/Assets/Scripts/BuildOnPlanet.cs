@@ -13,8 +13,8 @@ public class BuildOnPlanet : MonoBehaviour
         target_.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
         target_.transform.parent = objectSet;
         StartCoroutine(ComponentOn(index, buildIndex));
-        target_.transform.LookAt(gameObject.transform.position);
-        target_.transform.eulerAngles = new Vector3(target_.transform.eulerAngles.x + 180, target_.transform.eulerAngles.y, target_.transform.eulerAngles.z);
+        //target_.transform.LookAt(gameObject.transform.position);
+        //target_.transform.eulerAngles = new Vector3(target_.transform.eulerAngles.x - 90, target_.transform.eulerAngles.y, target_.transform.eulerAngles.z);
     }
 
     IEnumerator ComponentOn(int index, int buildIndex)
@@ -22,7 +22,7 @@ public class BuildOnPlanet : MonoBehaviour
         yield return new WaitForSeconds(1f);
         target_.AddComponent<ObjectMoving>();
         target_.GetComponent<ObjectMoving>().startingIndex = index;
-        target_.GetComponent<ObjectMoving>().thisObject = (MOVINGOBJECT)buildIndex;
+        target_.GetComponent<ObjectMoving>().thisObject = (MOVINGOBJECT)(buildIndex - 1);
     }
 
     public void SetDone()

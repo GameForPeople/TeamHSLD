@@ -4,9 +4,11 @@ using UnityEngine;
 
 public enum MOVINGOBJECT
 {
+    CHICKEN,
+    SNAKE,
     PENGUIN,
     WHALE,
-    CHICKEN
+    CLOUD,
 }
 
 public class ObjectMoving : MonoBehaviour
@@ -46,21 +48,96 @@ public class ObjectMoving : MonoBehaviour
             StartCoroutine(Moving(startingPoint));
         else
         {
-            gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f,Vector3.up);
-            //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
-            //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
-
-            time_ = 0;
-            while (true)
+            switch(thisObject)
             {
-                time_ += Time.deltaTime * 0.5f;
-                gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
-                yield return new WaitForEndOfFrame();
-                if (time_ > 0.95f)
+                case MOVINGOBJECT.CHICKEN:
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
+
+                    time_ = 0;
+                    while (true)
+                    {
+                        time_ += Time.deltaTime * 0.5f;
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        yield return new WaitForEndOfFrame();
+                        if (time_ > 0.95f)
+                            break;
+                    }
+
+                    StartCoroutine(Moving(ableToGoObj[randomVal]));
+
+                    break;
+                case MOVINGOBJECT.CLOUD:
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
+
+                    time_ = 0;
+                    while (true)
+                    {
+                        time_ += Time.deltaTime * 0.1f;
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        yield return new WaitForEndOfFrame();
+                        if (time_ > 0.95f)
+                            break;
+                    }
+
+                    StartCoroutine(Moving(ableToGoObj[randomVal]));
+                    break;
+                case MOVINGOBJECT.PENGUIN:
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
+
+                    time_ = 0;
+                    while (true)
+                    {
+                        time_ += Time.deltaTime * 0.5f;
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        yield return new WaitForEndOfFrame();
+                        if (time_ > 0.95f)
+                            break;
+                    }
+
+                    StartCoroutine(Moving(ableToGoObj[randomVal]));
+                    break;
+                case MOVINGOBJECT.SNAKE:
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
+                    //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
+                    //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
+
+                    time_ = 0;
+                    while (true)
+                    {
+                        time_ += Time.deltaTime;
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        yield return new WaitForEndOfFrame();
+                        if (time_ > 0.98f)
+                            break;
+                    }
+
+                    yield return new WaitForSeconds(1f);
+                    gameObject.transform.GetChild(0).transform.GetChild(0).transform.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(2f);
+                    gameObject.transform.GetChild(0).transform.GetChild(0).transform.gameObject.SetActive(false);
+
+                    StartCoroutine(Moving(ableToGoObj[randomVal]));
+                    break;
+                case MOVINGOBJECT.WHALE:
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
+
+                    time_ = 0;
+                    while (true)
+                    {
+                        time_ += Time.deltaTime * 0.2f;
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        yield return new WaitForEndOfFrame();
+                        if (time_ > 0.95f)
+                            break;
+                    }
+
+                    StartCoroutine(Moving(ableToGoObj[randomVal]));
                     break;
             }
 
-            StartCoroutine(Moving(ableToGoObj[randomVal]));
+           // gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f,Vector3.up);
+            //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
+            //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
         }
         
     }

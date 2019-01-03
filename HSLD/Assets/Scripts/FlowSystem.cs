@@ -40,7 +40,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject missionCanvas;
 
     private float time_;
-
+    private int randomVal;
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
     {
@@ -203,15 +203,26 @@ public class FlowSystem : MonoBehaviour
                 {
                     //비옥 - 병아리
                     case 1:
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1],0);
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        break;
+                    //건조 - 뱀
+                    case 2:
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //한랭 - 펭귄
                     case 3:
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[1], 1.03f, AllMeshController.instance_.PickContainer[1],1);
+                        randomVal = Random.Range(1, 4);
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //바다 - 고래
                     case 4:
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[2], 5f, AllMeshController.instance_.PickContainer[1],2);
+                        randomVal = Random.Range(4, 6);
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        break;
+                    //산 - 구름
+                    case 5:
+                        randomVal = Random.Range(7, 9);
+                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();                
