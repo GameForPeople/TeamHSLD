@@ -32,6 +32,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 		_AnswerMakeFriendProcess(pClient);
 }
 
+/*
+	_DemandFriendInfoProcess
+		- 클라이언트에서 친구 창을 킬 경우 보내는 프로토콜을 받았을 경우 실행 되며, 친구 정보를 전송합니다.
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pClient)
 {
 	int friendNum = pClient->pUserNode->GetFriendNicknameContSize();

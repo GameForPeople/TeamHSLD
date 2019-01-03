@@ -74,6 +74,10 @@ public partial class NetworkManager : MonoBehaviour {
                 // Main UI
                 else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_INFO)
                 {
+                    /*
+                     친구 UI창을 킬 때, 서버에게 친구 정보를 요청합니다.
+                    */
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_FRIEND_INFO), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }

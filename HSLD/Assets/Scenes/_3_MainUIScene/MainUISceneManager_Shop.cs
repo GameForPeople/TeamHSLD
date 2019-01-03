@@ -9,6 +9,11 @@ public partial class MainUISceneManager : MonoBehaviour
 {
     public bool isDrawShopUI;
 
+    private void StartForShop()
+    {
+        isDrawShopUI = false;
+    }
+
     public void UI_DrawShopUI(bool InIsDraw)
     {
         if (InIsDraw)

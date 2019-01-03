@@ -19,17 +19,62 @@ public partial class MainUISceneManager : MonoBehaviour
     const string voidFriendNickName = "_NOT_DEFINE_ID_";
     public string makeFriendIDBuffer;
 
-    GameObject FriendUICanvas;
+    GameObject FriendUIFixedCanvas;
     GameObject FriendUIDynamicCanvas;
 
     string[] stateConstString = new string[4];
 
+    GameObject[] SlotUI = new GameObject[4];
+
     GameObject[] StateTextUI = new GameObject[4];
     GameObject[] NickNameTextUI = new GameObject[4];
     GameObject[] InviteButtonUI = new GameObject[4];
-    
+    GameObject[] ConceptImageUI = new GameObject[4];
+
+    private void StartForFriend()
+    {
+        //  친구 UI Set
+        FriendUIFixedCanvas = GameObject.Find("Friend_UI").transform.Find("OnOff").transform.Find("Canvas_Fixed").gameObject;
+        FriendUIDynamicCanvas = GameObject.Find("Friend_UI").transform.Find("OnOff").transform.Find("Canvas_Dynamic").gameObject;
+
+        SlotUI[0] = FriendUIFixedCanvas.transform.Find("Slot_0").gameObject;
+        SlotUI[1] = FriendUIFixedCanvas.transform.Find("Slot_1").gameObject;
+        SlotUI[2] = FriendUIFixedCanvas.transform.Find("Slot_2").gameObject;
+        SlotUI[3] = FriendUIFixedCanvas.transform.Find("Slot_3").gameObject;
+
+        // 게임 오브젝트 로드.
+        for (int i = 0; i < 4; ++i)
+        {
+            StateTextUI[i] = SlotUI[i].transform.Find("Text_State").gameObject;
+            NickNameTextUI[i] = SlotUI[i].transform.Find("Text_Name").gameObject;
+            InviteButtonUI[i] = SlotUI[i].transform.Find("Button_Invite").gameObject;
+            ConceptImageUI[i] = SlotUI[i].transform.Find("Image_Concept").gameObject;
+        }
+
+        // 친구 UI Off
+        for (int i = 0; i < 4; ++i)
+        {
+            InviteButtonUI[i].SetActive(false);
+        }
+
+        // Friend UI 관련 설정
+        isDrawFriendUI = false;
+        GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(false);
+
+        stateConstString[0] = "ERROR";
+        stateConstString[1] = "미접속";
+        stateConstString[2] = "로비";
+        stateConstString[3] = "게임중";
+    }
+
     #region [ Release Func ]
 
+    /*
+        UI_FriendUIButton()
+
+        친구 UI를 키거나, 끌 때 사용하는 함수입니다.
+        다른 UI들과 다르게, 켜질 때, 네트워크 함수가 호출되어야합니다. (친구 정보 써치)
+    */
     public void UI_FriendUIButton()
     {
         if (isDrawFriendUI)
@@ -38,6 +83,11 @@ public partial class MainUISceneManager : MonoBehaviour
             networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
     }
 
+    /*
+        OffFriendUI()
+
+        UI_FriendUIButton()에서 친구 UI를 끌때 사용하는 함수입니다.
+    */
     private void OffFriendUI()
     {
         for (int i = 0; i < 4; ++i)
@@ -45,22 +95,29 @@ public partial class MainUISceneManager : MonoBehaviour
             InviteButtonUI[i].SetActive(false);
         }
 
-        GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(false);
+        GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(false);
 
         isDrawFriendUI = false;
     }
 
+    /*
+        UI_MakeFriendButton()
+        
+        친구 ID를 입력하고, 친구 신청 버튼을 누를 떄, 
+        클라이언트 단계에서 먼저 가능 여부 확인하고, 가능시에만 서버로 요청.
+    */
     public void UI_MakeFriendButton()
     {
         if (friendNum >= 4)
         {
-            // 내 친구수가 4명 이상.
+            // 내 친구수가 4명 이상이야 안되 저리가.
             OnUI_CHECK_DEMAND_MAKE_FRIEND(4);
             return;
         }
 
         makeFriendIDBuffer =
-        FriendUICanvas.transform.Find("INVITE_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
+        FriendUIFixedCanvas.transform.Find("InputField_Invite").transform.Find("Text").gameObject
+        .GetComponent<Text>().text;
 
         bool bBuffer = false;
 
@@ -75,7 +132,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
         if (bBuffer)
         {
-            // 이미 친구인 놈.
+            // 이미 친구인 애 또 친추하네 이자식 ㅡ
             OnUI_CHECK_DEMAND_MAKE_FRIEND(5);
             return;
         }
@@ -97,27 +154,35 @@ public partial class MainUISceneManager : MonoBehaviour
         networkObject.SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND);
     }
 
+
+    /*
+        UI_InviteButton()
+
+        내 친구 목록의 인덱스를 전송하여, 
+        클라이언트 단계에서 먼저 가능 여부 확인하고, 가능시에만 서버로 요청.
+    */
     public void UI_InviteButton(int InIndex)
     {
         invitedFriendIndex = InIndex;
+
+        // 보내려고 쓰는 게 아니고, 클라단에서 필요해서 해당 내용 저장.
         networkObject.enemyId = networkObject.friendNickNameCont[InIndex];
+
         networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
     }
 
-    #endregion
+    /*
+        OnFriendUI_NetworkManager(int InFriendNum)
 
-    //public void ClickAnswerFriendInvite(int InTrueFalse)
-    //{
-    //    answerFriendInviteValue = InTrueFalse;
-    //
-    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
-    //}
-
+        네트워크매니저(Recv)에서 호출되는 함수입니다.
+        친구 창 UI를 킬 때, 서버에 친구 정보를 요청하고, 해당 정보를 받아서 처리하는 함수에서
+        해당 데이터를 다 처리 후, 이제 UI를 켜! 하는 함수입니다.
+    */
     public void OnFriendUI_NetworkManager(int InFriendNum)
     {
         friendNum = InFriendNum;
 
-        GameObject.Find("Friend_UI").transform.Find("OnOFF").gameObject.SetActive(true);
+        GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(true);
 
         for (int i = 0; i < friendNum; ++i)
         {
@@ -140,6 +205,15 @@ public partial class MainUISceneManager : MonoBehaviour
 
         isDrawFriendUI = true;
     }
+
+    #endregion
+
+    //public void ClickAnswerFriendInvite(int InTrueFalse)
+    //{
+    //    answerFriendInviteValue = InTrueFalse;
+    //
+    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
+    //}
 
     public void OnFriendWaitUI_NetworkManager()
     {

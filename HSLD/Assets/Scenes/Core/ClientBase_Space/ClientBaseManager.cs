@@ -9,7 +9,7 @@ public class ClientBaseManager : MonoBehaviour
 
     private bool isActiveClientBaseObject;
 
-    private Vector3 cameraPosition; 
+    private Vector3 cameraPosition;
     private float cameraAngle;
     private float cameraDistance;
 
@@ -25,7 +25,7 @@ public class ClientBaseManager : MonoBehaviour
 
         cameraAngle = 270.0f;   //  0, -1
         cameraDistance = 200.0f;    // Fixed
-        cameraPosition = new Vector3(0, 0, -500.0f);
+        cameraPosition = new Vector3(0, 0, -600.0f);
 
         cameraRotate = CameraRotateCoroutine();
 
@@ -40,7 +40,7 @@ public class ClientBaseManager : MonoBehaviour
     */
     public void OnOff_ClientBaseSpace(bool InIsActive) // Default 미설정.
     {
-        if(InIsActive == true)
+        if (InIsActive == true)
         {
             // 이미 켜진 상태이면 저리가 임마.
             if (isActiveClientBaseObject == true)
@@ -69,7 +69,7 @@ public class ClientBaseManager : MonoBehaviour
         cameraObject.transform.position = cameraPosition;
 
         yield return new WaitForSeconds(1.0f);
-        
+
         while (true)
         {
             if (cameraPosition.z >= -200.0f)
@@ -92,10 +92,16 @@ public class ClientBaseManager : MonoBehaviour
     IEnumerator CameraRotateCoroutine()
     {
         Vector3 zeroVector = new Vector3(0, 0, 0);
+        float angleValue = 0.25f;
+
         while (true)
         {
-            cameraObject.transform.RotateAround(zeroVector, Vector3.up, 0.25f);
+            //if(angleValue < 0.25f)
+            //    angleValue += 0.002f;
+
+            cameraObject.transform.RotateAround(zeroVector, Vector3.up, angleValue);
             yield return new WaitForFixedUpdate();
         }
     }
+
 }
