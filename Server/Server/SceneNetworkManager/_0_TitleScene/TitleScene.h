@@ -19,7 +19,7 @@ namespace SCENE_NETWORK_MANAGER
 		virtual ~TitleScene() override = default;
 
 	public:
-		virtual void ProcessData(const int& InRecvType, SocketInfo* pClient) override;
+		virtual void ProcessData(const int InRecvType, SocketInfo* pClient) override;
 
 	};
 }

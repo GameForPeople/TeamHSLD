@@ -18,6 +18,8 @@ public class LobbySceneManager : MonoBehaviour {
     private int minuteCount;
     private int secondCount;
 
+    #region [ Release Func ]
+
     void Start()
     {
         isRecvTrue = false;
@@ -27,10 +29,10 @@ public class LobbySceneManager : MonoBehaviour {
         // GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
 
         // 해당 씬 들어가자마자 바로 Random Matching 하도록 변경.
-        ClickRandomMatching();
+        StartRandomMatching();
     }
 
-    public void ClickRandomMatching()
+    private void StartRandomMatching()
     {
         //대기 UI 출력
         //GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
@@ -42,7 +44,7 @@ public class LobbySceneManager : MonoBehaviour {
         StartCoroutine(CoroutineInstance_Network);
     }
 
-    public void ClickExitMatching()
+    public void UI_ExitMatching()
     {
         if(isOnRandomMatchingNetwork)
             StartCoroutine("ExitMatchingCoroutine");
@@ -74,6 +76,15 @@ public class LobbySceneManager : MonoBehaviour {
         GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").
         GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
+    }
+
+    public void ChangeRoomScene()
+    {
+        StopCoroutine(CoroutineInstance_Network);
+        StopCoroutine(CoroutineInstance_CountTime);
+
+        GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
     }
 
     public IEnumerator CountTimeCoroutine()
@@ -120,18 +131,9 @@ public class LobbySceneManager : MonoBehaviour {
         }
     }
 
-    public void ChangeRoomScene()
-    {
-        StopCoroutine(CoroutineInstance_Network);
-        StopCoroutine(CoroutineInstance_CountTime);
-
-        GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
-    }
-
     public void FailJoinRoom(int InFailReason)
     {
-        if(InFailReason == 1)
+        if (InFailReason == 1)
         {
             // 해당 번호의 방이 없을 떄,
         }
@@ -145,4 +147,5 @@ public class LobbySceneManager : MonoBehaviour {
         }
     }
 
+    #endregion
 }

@@ -71,8 +71,8 @@ public class CoreUIManager : MonoBehaviour
             {
                 if (GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().isDrawFriendUI == true)
                 {
-                    GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().ClickFriendUIButton();
-                    GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().ClickFriendUIButton();
+                    GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().UI_FriendUIButton();
+                    GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().UI_FriendUIButton();
                 }
             }
             //--

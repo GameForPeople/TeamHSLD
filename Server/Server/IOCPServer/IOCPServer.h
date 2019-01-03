@@ -19,14 +19,6 @@
 #include "../SceneNetworkManager/_4_RoomScene/RoomScene.h"
 #include "../SceneNetworkManager/_5_InGameScene/InGameScene.h"
 
-//#define		SERVER_PORT		9000
-//#define		SERVER_UDP_PORT 9001
-
-// For ExternalIP
-#define		EXTERNALIP_FINDER_URL	TEXT("http://checkip.dyndns.org/")
-#define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
-
-
 //#define SERVER_DEBUG_LOG_PRINT
 /*
 IOCompletionQueue

@@ -163,7 +163,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	return 0;
 }
 
-void UserDataManager::LogoutProcess(shared_ptr<UserData>& pUserNode)
+void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 {
 	if (pUserNode->GetNickname().size() == 0)
 	{
@@ -263,7 +263,7 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const Type_Nick
 	return SearchUserNode(idBuffer, RetIsOnLogin);
 }
 
-int UserDataManager::GetStringFirstChar(const char& InStringFirstChar) const noexcept
+int UserDataManager::GetStringFirstChar(const char InStringFirstChar) const noexcept
 {
 	// 0 ~ 25
 	// '@' = 64, 'A' = 65,,, 'Z' = 90, '[' = 91

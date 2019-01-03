@@ -38,6 +38,10 @@ public class InGameSceneManager : MonoBehaviour
 
     void Start()
     {
+        // -----
+        GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
+        // -----
+
         for (int i = 0; i < 12; ++i)
         {
             recvTerrainIndex[i] = 0;

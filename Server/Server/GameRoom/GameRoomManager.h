@@ -22,7 +22,9 @@ public:
 	~GameRoomManager();
 
 public:
-	bool RandomMatchingProcess(const shared_ptr<UserData>& pInUser); 	// True = Create , False = Join
+	// RandomMatchingProcess, _CreateRoom, _JoinRoom에서 &를 사용해도, 레퍼런스 카운터 1이하로 안떨어질 듯.
+
+	_DEPRECATED bool RandomMatchingProcess(const shared_ptr<UserData>& pInUser); 	// True = Create , False = Join
 
 private:
 	void _CreateRoom(const shared_ptr<UserData>& pClient);

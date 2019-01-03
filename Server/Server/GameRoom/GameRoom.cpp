@@ -1,6 +1,6 @@
 #include "../GameRoom/GameRoom.h"
 
-GameRoom::GameRoom(const shared_ptr<UserData>& InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
+GameRoom::GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
 	:	roomState(ROOM_STATE::ROOM_STATE_SOLO)
 	//,	left(InLeft), right(InRight)
 	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname()))
@@ -14,7 +14,7 @@ GameRoom::~GameRoom()
 	roomDynamicData.reset();
 }
 
-void GameRoom::JoinRoom(const shared_ptr<UserData>& InGuestUserIter)
+void GameRoom::JoinRoom(const shared_ptr<UserData> InGuestUserIter)
 {
 	// 클라에서 JoinRoom하자마자, 클라자체 바로 로딩 들어가고, 호스트는 모르니까 On시켜줌
 	//if (roomState == ROOM_STATE::ROOM_STATE_SOLO) {

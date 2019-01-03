@@ -13,7 +13,7 @@
 
 namespace SCENE_NETWORK_MANAGER
 {
-	enum SCENE_PROTOCOL_START_INDEX
+	enum SCENE_PROTOCOL_START_INDEX : unsigned int
 	{
 		TITLE_SCENE = 0,
 		LOGIN_SCENE = 100,
@@ -45,6 +45,6 @@ namespace SCENE_NETWORK_MANAGER
 		//std::reference_wrapper<UserDataManager> refUserData;
 
 	public:
-		virtual void ProcessData(const int& InType, SocketInfo* pClient) = 0;
+		virtual void ProcessData(const int InType, SocketInfo* pClient) = 0;
 	};
 }

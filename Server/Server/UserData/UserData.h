@@ -42,8 +42,8 @@ public:
 
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
-		const int& InWinCount, const int& InLoseCount, const int& InMoney, 
-		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit, 
+		const int InWinCount, const int InLoseCount, const int InMoney, 
+		const int InAchievementBit, const int InTitleBit, const int InCharacterBit, 
 		const vector<Type_Nickname>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
 		: 	pSocketInfo(pInSocketInfo)
 		,	id(InID)
@@ -61,8 +61,8 @@ public:
 
 	//친구가 없을 경우. default로 init함.
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
-		const int& InWinCount, const int& InLoseCount, const int& InMoney,
-		const int& InAchievementBit, const int& InTitleBit, const int& InCharacterBit)
+		const int InWinCount, const int InLoseCount, const int InMoney,
+		const int InAchievementBit, const int InTitleBit, const int InCharacterBit)
 		:	pSocketInfo(pInSocketInfo)
 		,	id(InID)
 		,	nickname(InNickname)
@@ -136,7 +136,7 @@ public:
 	_NODISCARD __inline int	GetCharacterBit()  const noexcept { return characterBit; }
 	_NODISCARD __inline vector<Type_Nickname>& GetFriendNicknameCont() /*const*/ noexcept { return friendNicknameCont; }
 	_NODISCARD __inline Type_Nickname& GetFriendNicknameWithIndex(const int& InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
-	_NODISCARD __inline weak_ptr<UserData>& GetFriendUserDataWithIndex( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
+	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
 	
@@ -147,10 +147,10 @@ public:
 	//}
 
 	// True일 경우 승리, False일 경우 패배.
-	__inline void	SetGameResult(const bool& InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
+	__inline void	SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
 	__inline void   SetNickname(const Type_Nickname& InNickname)	noexcept { nickname = InNickname; }
-	__inline void	SetMoney(const int& InMoney) noexcept { money = InMoney; }
-	__inline void   SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int& InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }
+	__inline void	SetMoney(const int InMoney) noexcept { money = InMoney; }
+	__inline void   SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }
 	
 	__inline int	SetInsertFriendNickname(const Type_Nickname& InFriendNickname) noexcept { 
 		if (friendNicknameCont.size() >= 4) return -1;
@@ -159,7 +159,7 @@ public:
 		return friendNicknameCont.size() - 1;
 	}
 	
-	__inline void	SetDemandFriendContIndex(const int& InIndex) noexcept { demandFriendContIndex = InIndex; }
+	__inline void	SetDemandFriendContIndex(const int InIndex) noexcept { demandFriendContIndex = InIndex; }
 
 	__inline void	SetDeleteFriendID()
 	{

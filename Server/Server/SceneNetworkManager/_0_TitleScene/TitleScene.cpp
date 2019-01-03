@@ -5,7 +5,7 @@ SCENE_NETWORK_MANAGER::TitleScene::TitleScene(GameRoomManager* pInRoomData, User
 
 }
 
-void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::TitleScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 
 }

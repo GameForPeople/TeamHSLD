@@ -37,7 +37,7 @@ public:
 	~UDPManager();
 
 public:
-	__inline void Push(const int& InContNumber, const shared_ptr<UserData>& pInUserData)
+	__inline void Push(const int InContNumber, const shared_ptr<UserData>& pInUserData)
 	{
 		switch (InContNumber)
 		{
@@ -75,5 +75,5 @@ public:
 	void _CreateUDPSocket();
 
 public:
-	void _SendMessage(const char& InChar);
+	void _SendMessage(const char InChar);
 };

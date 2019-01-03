@@ -78,7 +78,7 @@ public partial class NetworkManager : MonoBehaviour {
             Debug.Log("nickName is --> " + nickName);
             //
             if (money == -1)
-                GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().OnNewNicknameUI();
+                GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().UI_OnOff_NewNicknameUI();
             else
                 GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
         }

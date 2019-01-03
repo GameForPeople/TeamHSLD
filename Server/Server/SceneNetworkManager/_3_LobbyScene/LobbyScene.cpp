@@ -20,7 +20,7 @@ SCENE_NETWORK_MANAGER::LobbyScene::LobbyScene(GameRoomManager* pInRoomData, User
 
 }
 
-void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int& InRecvType, SocketInfo* pClient)
+void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int InRecvType, SocketInfo* pClient)
 {
 	if (InRecvType == DEMAND_RANDOM_MATCH)
 			_DemandRandomMatch(pClient);

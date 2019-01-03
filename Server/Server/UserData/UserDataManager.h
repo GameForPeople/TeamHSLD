@@ -41,7 +41,7 @@ public:
 	int LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
 		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<Type_Nickname>& RetFriendNicknameCont);
 
-	void LogoutProcess(shared_ptr<UserData>& pUserNode);
+	void LogoutProcess(shared_ptr<UserData> pUserNode);
 
 	_NODISCARD shared_ptr<UserData> SearchUserNode(const Type_ID& keyID, bool& RetIsOnLogin);	// 아이디를 통해, 유저 노드를 탐색합니다.
 
@@ -52,7 +52,7 @@ public:
 
 private:
 	// for userDataCont Hash, 첫글자처리필요.
-	_NODISCARD int GetStringFirstChar(const char& InStringFirstChar) const noexcept;
+	_NODISCARD int GetStringFirstChar(const char InStringFirstChar) const noexcept;
 
 	// for Nickname Cont Hash
 	_NODISCARD int GetNicknameFirstChar(const Type_Nickname& InKeyNickname) const noexcept;
@@ -60,6 +60,6 @@ private:
 	void SaveNicknameContProcess(const Type_ID& InID, const Type_Nickname& InNickname);
 	void _SaveNicknameCont();
 public:
-	__inline void SetGameResult(const shared_ptr<UserData>& InUserData, const bool& InWinOrLose) noexcept { InUserData->SetGameResult(InWinOrLose); }
+	__inline void SetGameResult(const shared_ptr<UserData>& InUserData, const bool InWinOrLose) noexcept { InUserData->SetGameResult(InWinOrLose); }
 };
 
