@@ -141,10 +141,10 @@ public class LoginSceneManager : MonoBehaviour {
         else
         {
             // ForOnlyClientTest
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_Account";
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = "TEST_해솔리드";
             //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = 1234;
 
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 7777777;
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 20190102;
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().winCount = 0;
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().loseCount = 0;
 

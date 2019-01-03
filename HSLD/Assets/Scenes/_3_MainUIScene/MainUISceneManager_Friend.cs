@@ -8,6 +8,26 @@ using UnityEngine.UI;
 
 public partial class MainUISceneManager : MonoBehaviour
 {
+    public bool isDrawFriendUI = false; // in coreUiManager Ref
+    bool isDrawFriendInviteWait = false;
+
+    public int invitedFriendIndex;
+
+    int friendNum;
+    public int friendWaitTimeCount = 7;
+
+    const string voidFriendNickName = "_NOT_DEFINE_ID_";
+    public string makeFriendIDBuffer;
+
+    GameObject FriendUICanvas;
+    GameObject FriendUIDynamicCanvas;
+
+    string[] stateConstString = new string[4];
+
+    GameObject[] StateTextUI = new GameObject[4];
+    GameObject[] NickNameTextUI = new GameObject[4];
+    GameObject[] InviteButtonUI = new GameObject[4];
+    
     #region [ Release Func ]
 
     public void UI_FriendUIButton()

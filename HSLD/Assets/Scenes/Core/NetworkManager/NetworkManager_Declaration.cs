@@ -128,13 +128,13 @@ public partial class NetworkManager : MonoBehaviour {
     #region [ In Scene's variable]
 
     // Init Login Scene
-    public string ID = "TEST_Account";
-    public string nickName = "TEST_Account";
+    public string ID = "TEST_해솔리드";
+    public string nickName = "TEST_해솔리드";
 
     //public int PW = 1234;
     public int winCount = 0;
     public int loseCount = 0;
-    public int money = 7777777;
+    public int money = 20190102;
 
     // Use Main UI Scene
     public int friendNum;

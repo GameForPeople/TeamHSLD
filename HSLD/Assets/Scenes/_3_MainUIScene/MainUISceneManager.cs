@@ -8,27 +8,7 @@ using UnityEngine.UI;
 
 public partial class MainUISceneManager : MonoBehaviour
 {
-    string[] stateConstString = new string[4];
-
     public NetworkManager networkObject;
-
-    public bool isDrawFriendUI = false; // in coreUiManager Ref
-    bool isDrawFriendInviteWait = false;
-
-    public int invitedFriendIndex;
-
-    int friendNum;
-    public int friendWaitTimeCount = 7;
-
-    const string voidFriendNickName = "_NOT_DEFINE_ID_";
-    public string makeFriendIDBuffer;
-
-    GameObject FriendUICanvas;
-    GameObject FriendUIDynamicCanvas;
-
-    GameObject[] StateTextUI = new GameObject[4];
-    GameObject[] NickNameTextUI = new GameObject[4];
-    GameObject[] InviteButtonUI = new GameObject[4];
 
     #region [ Release Func ]
     void Start()
@@ -86,7 +66,11 @@ public partial class MainUISceneManager : MonoBehaviour
         stateConstString[2] = "로비";
         stateConstString[3] = "게임중";
 
+
+        //
         isDrawFriendUI = false;
+        isDrawSettingUI = false;
+        isDrawShopUI = false;
     }
 
     public void UI_InGameWithServerButton()
