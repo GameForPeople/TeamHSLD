@@ -394,4 +394,9 @@ public class TurnSystem : MonoBehaviour
         if(GameObject.Find("NetworkManager") == null)
             TurnSet();
     }
+
+    public void EnemyTurnPass()
+    {
+        currentTurn = TURN.MYTURN;
+    }
 }

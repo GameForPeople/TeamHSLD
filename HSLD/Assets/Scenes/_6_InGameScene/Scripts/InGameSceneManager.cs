@@ -38,6 +38,8 @@ public class InGameSceneManager : MonoBehaviour
 
     void Start()
     {
+        if (GameObject.Find("GameCores") == null)
+            return;
         // -----
         GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
         // -----
@@ -48,8 +50,7 @@ public class InGameSceneManager : MonoBehaviour
             network_terrainIndex[i] = 0;
         }
 
-        if (GameObject.Find("GameCores") == null)
-            return;
+
 
         networkManager = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         networkManager.inGameSceneManager = GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>(); // same , return this;
