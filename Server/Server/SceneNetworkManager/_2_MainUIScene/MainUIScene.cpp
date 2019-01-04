@@ -38,15 +38,20 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 */
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pClient)
 {
+	std::cout << "DEBUG - 1 \n";
 	int friendNum = pClient->pUserNode->GetFriendNicknameContSize();
-	
+	std::cout << "DEBUG - 2 \n";
+
 	if (pClient->pUserNode->GetDemandFriendContIndex() != -1)
 	{
 		friendNum -= 1;
 	}
+	std::cout << "DEBUG - 3 \n";
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_FRIEND_INFO), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<char*>(&friendNum), sizeof(int));
+
+	std::cout << "DEBUG - 4 \n";
 
 	pClient->dataSize = 8;
 
@@ -65,6 +70,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 		bool isOnMatch{};
 		shared_ptr<UserData> pBuffer = nullptr;
 
+		std::cout << "DEBUG - 5 \n";
+
 		for (int i = 0; i < friendNum; ++i)
 		{
 			// 해당 컨테이너의 i번째 닉네임.
@@ -72,6 +79,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
 			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin, isOnMatch);
+
+			std::cout << "DEBUG - 6 \n";
 
 			// 0일 경우, 없는 닉네임. 
 			// 1일 경우, 닉네임은 있는데 비로그인.
@@ -83,28 +92,38 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			if (!isOnMatch)
 			{
 				std::cout << "[Error] 이미 친구추가가 된 유저의 닉네임이 없는 닉네임으로 나옵니다. \n";
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 				continue;
 			}
 
+			std::cout << "DEBUG - 7 \n";
+
 			if (!isOnLogin)	// 로그인 안했을 때,
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-			else if (pBuffer->GetSocketInfo()->pRoomIter != nullptr)	// 접속 후, 로비
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+			else if (pBuffer->GetSocketInfo()->pRoomIter == nullptr)	// 접속 후, 로비
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_2), sizeof(int));
 			else	// 접속 후, 게임중.
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+
+			std::cout << "DEBUG - 8 \n";
 
 			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
 
+			std::cout << "DEBUG - 9 \n";
+
 			stringSize = MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), NULL, NULL);
+
+			std::cout << "DEBUG - 10 \n";
 
 			wstring uniStrBuffer(stringSize, 0);
 			MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), &uniStrBuffer[0], stringSize);
 			
 			stringSize = uniStrBuffer.size() * 2;
 
-			memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
-			memcpy(pClient->buf + pClient->dataSize + 8, uniStrBuffer.data(), stringSize);
+			std::cout << "DEBUG - 11 \n";
+
+			memcpy(pClient->buf + pClient->dataSize , reinterpret_cast<char*>(&stringSize), sizeof(int));
+			memcpy(pClient->buf + pClient->dataSize + 4, uniStrBuffer.data(), stringSize);
 
 			pClient->dataSize += (4 + stringSize); 
 		}
@@ -263,7 +282,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 
 /*
 	_DemandMakeFriendProcess
-		- 클라이언트에서 닉네임을 보내며 친구 신청 가능여부를 확인합니다.
+		- 클라이언트에서 받은 닉네임을 통하여, 해당 닉네임의 유저에게 친구 신청이 가능한지 여부를 확인합니다.
 */
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pClient)
 {
@@ -271,10 +290,13 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	//pClient->buf[8 + iBuffer] = '\0';// wchar는 \0도 두개...
 	//pClient->buf[9 + iBuffer] = '\0';// wchar는 \0도 두개...
 	
-	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!!
-	Type_Nickname NicknameBuffer(iBuffer, 0);	// 오버플로우 가능성!!!!
+	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!! +1 이 필요할 까?
+	memcpy(&wideStrBuffer[0], pClient->buf + 8, iBuffer);
 
-	WideCharToMultiByte(CP_ACP, 0, strUnicode, -1, strMultibyte, len, NULL, NULL);
+	iBuffer = WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, NULL, 0, NULL, NULL);
+	Type_Nickname NicknameBuffer(iBuffer, 0);
+
+	WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, &NicknameBuffer[0], iBuffer, NULL, NULL);
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };

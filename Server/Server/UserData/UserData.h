@@ -24,7 +24,7 @@ class UserData {
 	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
 
 public:
-	// For rbTreeNode's nullNode
+	// For rbTreeNode's nullNode or Friend Nullptr!
 	UserData() noexcept
 		:	pSocketInfo(nullptr)
 		,	id()
@@ -57,7 +57,17 @@ public:
 		,	friendNicknameCont(InFriendStringCont)
 		,	friendUserDataCont()
 		,	demandFriendContIndex(-1)
-	{};
+	{
+		//friendUserDataCont.reserve(InFriendStringCont.size()); 
+		// reserver만 하지말고, 메모리 할당 해버려야함.
+		// 그 이유는, 클라이언트에서 친구정보를 요청할 떄, 
+		// emplace를 하지않고(할당하지 않고), 해당 인덱스로 set하기 때문에 오버플로우 에러가 발생함.
+
+		friendUserDataCont.reserve(InFriendStringCont.size());
+		
+		for (int i = 0; i < InFriendStringCont.size(); ++i)
+			friendUserDataCont.emplace_back();	//dummy -> nullptr넣으면 컴파일 에러남( 생성 불가), 어짜피 거의 무조건 사영될 메모리임....미리쓴다고 생각하자..힘내자...
+	};
 
 	//친구가 없을 경우. default로 init함.
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,

@@ -136,7 +136,9 @@ public partial class NetworkManager : MonoBehaviour {
                 else
                 {
                     idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 4);
-                    friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+
+                    //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
 
                     dataLocation += idSize + 8;
 
