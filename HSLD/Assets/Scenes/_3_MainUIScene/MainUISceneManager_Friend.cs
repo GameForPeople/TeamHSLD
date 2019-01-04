@@ -93,6 +93,7 @@ public partial class MainUISceneManager : MonoBehaviour
         for (int i = 0; i < 4; ++i)
         {
             InviteButtonUI[i].SetActive(false);
+            SlotUI[i].SetActive(false);
         }
 
         GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(false);
@@ -173,7 +174,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
     /*
         OnFriendUI_NetworkManager(int InFriendNum)
-
+         
         네트워크매니저(Recv)에서 호출되는 함수입니다.
         친구 창 UI를 킬 때, 서버에 친구 정보를 요청하고, 해당 정보를 받아서 처리하는 함수에서
         해당 데이터를 다 처리 후, 이제 UI를 켜! 하는 함수입니다.
@@ -186,6 +187,8 @@ public partial class MainUISceneManager : MonoBehaviour
 
         for (int i = 0; i < friendNum; ++i)
         {
+            SlotUI[i].SetActive(true);
+
             StateTextUI[i].GetComponent<Text>().text = stateConstString[networkObject.friendState[i]].ToString();
 
             if (networkObject.friendState[i] > 0)
@@ -206,6 +209,66 @@ public partial class MainUISceneManager : MonoBehaviour
         isDrawFriendUI = true;
     }
 
+    /*
+        OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
+
+        친구 만들기 버튼 클릭 시, 친구 만들기 실패할 경우, 호출되는 함수입니다.
+        
+        failReson을 인자로 받으며 각 인자에 따라 다른 UI 및 문구를 출력해야 합니다.
+    */
+    public void OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
+    {
+        // -1 : 좋았어!
+        // 0 : 상대방이 미로그인
+        // 1 : 상대방의 친구 수가 이미 4명 이상
+        // 2 : 상대방이 받을 수 없는 상태...? 이게 뭐지? 왜 못받아?
+        // 3 : 해당 닉네임이 없는 경우
+        // 4 : 님 인싸여서 더이상 친구 추가 못함 ㅋ
+        // 5 : 이미 친구인 경우
+        // 6 : 니 아이디잖아
+
+        if (InFailReason == -1)
+        {
+            // 정상적으로 친구에세 데이터 송신
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_TRUE").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 0)
+        {
+            // 상대방이 미로그인
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_0").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 1)
+        {
+            // 상대방이 맥스 왕인싸
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_1").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 2)
+        {
+            // 상대방이 받을 수 없는 상태.
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_2").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 3)
+        {
+            // 해당 닉네임이 없는 경우
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_3").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 4)
+        {
+            // 님 인싸여서 더이상 친구 추가 못함 ㅋ
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_4").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 5)
+        {
+            // 이미 친구인 경우
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_5").gameObject.SetActive(true);
+        }
+        else if (InFailReason == 6)
+        {
+            // 니 아이디잖아
+            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_6").gameObject.SetActive(true);
+        }
+    }
+    
     #endregion
 
     //public void ClickAnswerFriendInvite(int InTrueFalse)
@@ -271,51 +334,6 @@ public partial class MainUISceneManager : MonoBehaviour
         }
     }
 
-    public void OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
-    {
-        // by Network Send or 
-
-        if (InFailReason == -1)
-        {
-            // 정상적으로 친구에세 데이터 송신
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_TRUE").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 0)
-        {
-            // 상대방이 미로그인
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_0").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 1)
-        {
-            // 상대방이 맥스 왕인싸
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_1").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 2)
-        {
-            // 상대방이 받을 수 없는 상태.
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_2").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 3)
-        {
-            // 해당 닉네임이 없는 경우
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_3").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 4)
-        {
-            // 님 인싸여서 더이상 친구 추가 못함 ㅋ
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_4").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 5)
-        {
-            // 이미 친구인 경우
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_5").gameObject.SetActive(true);
-        }
-        else if (InFailReason == 6)
-        {
-            // 니 아이디잖아
-            FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_6").gameObject.SetActive(true);
-        }
-    }
 
     public void OffUI_CHECK_DEMAND_MAKE_FRIEND(int InUIIndex)
     {

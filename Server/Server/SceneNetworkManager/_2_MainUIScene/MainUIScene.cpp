@@ -261,12 +261,20 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 	}
 }
 
+/*
+	_DemandMakeFriendProcess
+		- 클라이언트에서 닉네임을 보내며 친구 신청 가능여부를 확인합니다.
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pClient)
 {
-	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
-	pClient->buf[8 + iBuffer] = '\0';
+	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);	// 버퍼 사이즈
+	//pClient->buf[8 + iBuffer] = '\0';// wchar는 \0도 두개...
+	//pClient->buf[9 + iBuffer] = '\0';// wchar는 \0도 두개...
 	
-	Type_Nickname NicknameBuffer((pClient->buf + 8));
+	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!!
+	Type_Nickname NicknameBuffer(iBuffer, 0);	// 오버플로우 가능성!!!!
+
+	WideCharToMultiByte(CP_ACP, 0, strUnicode, -1, strMultibyte, len, NULL, NULL);
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };
