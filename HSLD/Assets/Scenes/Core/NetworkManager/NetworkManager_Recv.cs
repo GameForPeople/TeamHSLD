@@ -93,6 +93,10 @@ public partial class NetworkManager : MonoBehaviour {
         //MainUIScene
         else if (recvType == (int)PROTOCOL.PERMIT_FRIEND_INFO)
         {
+            /*
+             서버로 부터, 친구들 정보를 받고 UI 갱신 함수를 호출합니다.
+             */
+
             /* 변수 초기화 처리 */
             for (int i = 0; i < 4; ++i)
             {
