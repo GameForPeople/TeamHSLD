@@ -83,6 +83,10 @@ public partial class NetworkManager : MonoBehaviour {
                 }
                 else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_INVITE)
                 {
+                    /*
+                     친구창 UI에서 친구 초대 버튼을 누를 때, 서버에게 몇번 인덱스의 유저에게 게임 초대를 보냈는지 확인합니다.
+                     */
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
                         GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().invitedFriendIndex
@@ -90,6 +94,7 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
+
                 else if (InMsg == (int)PROTOCOL.ANSWER_FRIEND_INVITE)
                 {
                     isHost = false;
@@ -168,6 +173,12 @@ public partial class NetworkManager : MonoBehaviour {
                 // Lobby Friend Function
                 else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_JOIN)
                 {
+                    /*
+                        호스트인 플레이어가, 친구가 들어왔는지 확인하는 함수입니다. (1초에 한번 총 7번 호출됩니다.)
+                        
+                        이 때 호스트는 관련 UI를 띄우고 대기하게됩니다.
+                    */
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_FRIEND_JOIN), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }

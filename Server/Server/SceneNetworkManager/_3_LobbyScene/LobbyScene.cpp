@@ -114,6 +114,19 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 	}
 }
 
+
+/*
+	_DemandFriendJoin
+
+	- 친구를 초대 후, 대기 중인 호스트가 "친구 접속 했어?"할 때, 호출되는 함수입니다.
+	- 약 7초 대기, 1번의 초대에 최대 7번 호출됨.
+
+		#0. 경우의 수는 4가지
+			0. 친구 초대에, 친구가 좋아! 를 함!
+			1. 친구 초대에, 친구가 싫어! 를 함!
+			2. 아직 아무 짓도 안함 ㅡㅡ
+			3. 그 외에...UDP소실 같은 거....하....
+*/
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandFriendJoin(SocketInfo* pClient)
 {
 	// 상대방이 거절한 것이 명확함.
