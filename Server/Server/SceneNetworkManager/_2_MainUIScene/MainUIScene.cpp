@@ -166,6 +166,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 	pClient->dataSize = 8;
 }
 
+/*
+	_AnswerFriendInviteProcess
+		- 게스트에서, 초대에 대한 대답을 받았을 때 실행되는 함수입니다. ( 1 -> ok , 0 -> no)
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* pClient)
 {
 	int isTrueBuffer = reinterpret_cast<int&>(pClient->buf[4]);
@@ -198,9 +202,9 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 
 			// 방 데이터 및 상대편 닉네임 정보 얻기 --> 이거도 당연히 그 전에 알아야하는 거 아닌가? 그렇게 하자.
 			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
-			//Type_Nickname stringBuffer;
+			Type_Nickname retNickname;
 
-			pClient->pRoomIter->GetRoomGameData(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
+			pClient->pRoomIter->GetRoomGameDataWithNickname(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retNickname);
 
 			// 방 다이나믹 데이터 전송
 			memcpy(pClient->buf + 8, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
@@ -208,27 +212,66 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			memcpy(pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 			memcpy(pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
 
-			//int sizeBuffer = stringBuffer.size(); // DEV_66;
-			//memcpy(pClient->buf + 24, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
-			//memcpy(pClient->buf + 28, stringBuffer.data(), sizeBuffer);
-			//pClient->dataSize = 32 + sizeBuffer;
+			auto friendCont = pClient->pUserNode->GetFriendNicknameCont();
+			
+			int nicknameIndexBuffer = -1;
+			for (int i = 0; i < friendCont.size(); ++i)
+			{
+				if (retNickname.compare(friendCont[i]) == 0)
+				{
+					nicknameIndexBuffer = i;
+					break;
+				}
+			}
 
-			pClient->dataSize = 24;
+			if (nicknameIndexBuffer == -1) {
+				std::cout << "[DEBUG] : 친구목록에 없는 친구에게 초대를 받음\n";
+				nicknameIndexBuffer = 0;
+			}
+
+			memcpy(pClient->buf + 24, reinterpret_cast<char*>(&nicknameIndexBuffer), sizeof(int));
+
+			pClient->dataSize = 28;
 		}
 	}
 	else
 	{
 		//이미 호스트가 7초가 지나 방을 나갔거나, 이상해짐.
-		pClient->pRoomIter.reset();
-		//pClient->pRoomIter = nullptr;
+		if (isTrueBuffer)
+		{
+			pClient->pRoomIter.reset();
+			//pClient->pRoomIter = nullptr;
 
-		memcpy(pClient->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
-		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+			memcpy(pClient->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
 
-		pClient->dataSize = 8;
+			pClient->dataSize = 8;
+		}
+		else
+		{
+			// 메롱 나 게임 안할껀데?
+			pClient->pRoomIter->SetDynamicFriendInviteBuffer();
+
+			// 방 삭제는 호스트가 하도록 변경됨. -> shared_ptr으로 변경됨. 마음대로해.
+			pClient->pRoomIter.reset();
+
+			memcpy(pClient->buf, reinterpret_cast<const char*>(&GUESTCHECK_FRIEND_INVITE), sizeof(int));
+			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+
+			pClient->dataSize = 8;
+		}
 	}
 }
 
+/*
+	_DelayFriendInviteProcess
+		- 호스트가, 7초가 지난 후, 마지막 Delay 패킷을 보내면 호출되는 함수.
+
+		#0. 경우의 수는 3가지
+		0. 친구가 거절을 한 것이 확실한 경우일 때, 방을 뿌시고, 방을 뿌신것을 알림.
+		1. ?? 그사이 들어와버렷네... 게임시작!
+		2. 아직도 아무 짓도 안함.. 그 외에...UDP소실 같은 거....하....  방을 뿌시고, 방을 뿌신것을 알림.
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* pClient)
 {
 	if (pClient->pRoomIter->GetDynamicFriendInviteBuffer() == false)
@@ -262,6 +305,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 
 		pClient->dataSize = 24;
 	}
+	
 	// 상대방이 어떤 반응이 없었음. ( UDP 소실이거나, 할튼 다른 애매한 케이스. )
 	else
 	{

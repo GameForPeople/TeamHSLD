@@ -182,7 +182,8 @@ public partial class NetworkManager : MonoBehaviour {
         }
         else if (recvType == (int)PROTOCOL.GUESTCHECK_FRIEND_INVITE)
         {
-            // 초대받은 친구만 받는 프로트콜, False면, 방 삭제 True면, 방접속된 상태.
+            // 초대받은 친구(게스트)가 받는 프로트콜, [ False면, 방 삭제 ]  [ True면, 방접속된 상태]
+            // 2일 경우,,,,, 내가 찬성을 눌렀는데도 방이 없어진 상태 
 
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
@@ -218,22 +219,24 @@ public partial class NetworkManager : MonoBehaviour {
                 enemyMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 16);
                 subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 20);
 
-                int sizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 24);
-                enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 28, sizeBuffer);
+                int indexBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 24);
+                enemyId = friendNickNameCont[indexBuffer];
 
-                Debug.Log("적 닉네임은 : " + enemyId + "길이는 : " + sizeBuffer);
+                Debug.Log("적 닉네임은 : " + enemyId + "이다.");
 
                 GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
                 GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
             }
-            else
+            else if (inviteBuffer == 0)
             {
-                // 친구의 방이 삭제된 상태.
-                // ? 할거 없음.
+                // 할거 없는 상태
             }
-
+            else if (inviteBuffer == 2)
+            {
+                // 팝업 하나 추가
+            }
         }
         else if (recvType == (int)PROTOCOL.HOSTCHECK_FRIEND_INVITE)
         {
@@ -247,11 +250,12 @@ public partial class NetworkManager : MonoBehaviour {
 
             if (inviteBuffer == 0)
             {
-
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OffFriendWaitUI_NetworkManager();
             }
             else if (inviteBuffer == 1)
             {
-                // 1은 아무것도 안해주는 게 맞음.
+                // 이 때는, 7초마다 하는게 아니고, 호스트의 마지막 요청에 대해서 여전히 무응답일 경우 여기에 걸림.
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OffFriendWaitUI_NetworkManager();
             }
         }
 
@@ -392,7 +396,9 @@ public partial class NetworkManager : MonoBehaviour {
 
         else if (recvType == (int)PROTOCOL.ANSWER_FRIEND_JOIN)
         {
-            // 초대한 친구가, 7초 전까지 매초마다 친구들어왔는 지 확인하는 함수. 하 내가 이걸 왜 로비로 뺏을 까
+            /*
+                초대한 친구(호스트)가, 7초 전까지 매초마다 친구들어왔는 지 확인하는 함수. 하 내가 이걸 왜 로비로 뺏을 까
+            */
 
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 

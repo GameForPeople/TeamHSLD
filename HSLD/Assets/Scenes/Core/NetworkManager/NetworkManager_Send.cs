@@ -97,6 +97,10 @@ public partial class NetworkManager : MonoBehaviour {
 
                 else if (InMsg == (int)PROTOCOL.ANSWER_FRIEND_INVITE)
                 {
+                    /*
+                         UDP를 받고, 관련해서 플레이어가 true를 선택하면 1번 , false를 선택하면 0 전송          
+                    */
+
                     isHost = false;
 
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
