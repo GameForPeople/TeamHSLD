@@ -90,9 +90,10 @@ namespace NETWORK_UTIL {
 		ptr->wsabuf.buf = ptr->buf;
 		ptr->wsabuf.len = ptr->dataSize;
 
+		std::cout << "  DEBUG - 전송한 Protocol은 : " << reinterpret_cast<int&>(ptr->buf[0]) << "\n";
+
 		// 받아랏!!!
 		int retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, NULL, 0, &ptr->overlapped, NULL);
-
 		if (retVal == SOCKET_ERROR)
 		{
 			if (WSAGetLastError() != WSA_IO_PENDING)
