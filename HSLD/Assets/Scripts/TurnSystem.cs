@@ -37,6 +37,7 @@ public class TurnSystem : MonoBehaviour
 
     private float warningRadio = 0;
     static public bool isSetTerrainDone = false;
+    static public bool enemyEventCardDefense = false;           //이벤트 카드로 인해 상대방의 이벤트카드를 막는다.
 
     Coroutine myCoroutine;
     Coroutine enemyCoroutine;
@@ -224,6 +225,14 @@ public class TurnSystem : MonoBehaviour
             displayTurnTimerTxt.text = (pickingEventCardTime - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
+
+            //서버와 송수신 필요
+            if(enemyEventCardDefense)
+            {
+                //이벤트 카드를 막고난 이후의 연출 ?
+
+            }
+
         }
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
         {

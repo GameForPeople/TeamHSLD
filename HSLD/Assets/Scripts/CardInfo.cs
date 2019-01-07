@@ -14,6 +14,6 @@ public class CardInfo : ScriptableObject
 
     public int currentCnt;
     public int maximumCnt;
-    public int minumumCnt;
+    public int minimumCnt;
 }
     

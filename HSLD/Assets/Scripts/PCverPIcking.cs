@@ -14,6 +14,9 @@ public class PCverPIcking : MonoBehaviour
     public float duration;
     public float magnitude;
 
+    public GameObject AllyLinePrefab;
+    private GameObject AllyLineObj;
+
     private void Start()
     {
         myPlanet = GameObject.Find("Sphere_320Objects_40X");
@@ -171,6 +174,8 @@ public class PCverPIcking : MonoBehaviour
     {
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
+        
+
         AllMeshController.giveLinkNum++;
         //Debug.Log("내 턴에서 넘어갈 때 한번만");
         for (int i = 0; i < Length; i++) // 링크드넘버 세팅
@@ -205,6 +210,25 @@ public class PCverPIcking : MonoBehaviour
             myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
                 FindObject.GetComponent<MeshController>().name,
                 FindObject.GetComponent<MeshController>().terrainstate);
+
+        }
+
+        //19.01.07 YSH
+        //적영역과 아군영역의 분리선입니다.
+        for (int i = 0; i < Length; i++)
+        {
+            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+
+            //for(int j = 0;j<3 ;j++)
+            //{
+            //    if(FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
+            //    {
+            //        AllyLineObj = Instantiate(AllyLinePrefab);
+            //        AllyLineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
+            //        AllyLineObj.transform.position = new Vector3((FindObject.transform.position.x + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.x * 0.5f), (FindObject.transform.position.y + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.y * 0.5f), (FindObject.transform.position.z + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.z * 0.5f));
+            //        AllyLineObj.transform.eulerAngles = new Vector3((FindObject.transform.eulerAngles.x + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.x * 0.5f), (FindObject.transform.eulerAngles.y + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.y * 0.5f), (FindObject.transform.eulerAngles.z + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.z * 0.5f));
+            //    }
+            //}
         }
 
         FlagSetting(); // Flag검사 

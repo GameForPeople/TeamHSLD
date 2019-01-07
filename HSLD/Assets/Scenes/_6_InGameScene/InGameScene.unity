@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -312,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -358,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -404,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -450,6 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -496,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -617,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -663,6 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -709,6 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -755,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -801,6 +812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -847,6 +859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -893,6 +906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -939,6 +953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1086,6 +1101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1317,6 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1507,6 +1524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1675,6 +1693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1721,6 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1836,6 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1882,6 +1903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1928,6 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -1974,6 +1997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2020,6 +2044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2066,6 +2091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2112,6 +2138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2158,6 +2185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2273,6 +2301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2319,6 +2348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2365,6 +2395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2411,6 +2442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2457,6 +2489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2503,6 +2536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2549,6 +2583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2595,6 +2630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2641,6 +2677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2687,6 +2724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2817,6 +2855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2863,6 +2902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2909,6 +2949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -2955,6 +2996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3001,6 +3043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3047,6 +3090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3168,6 +3212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3283,6 +3328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3398,6 +3444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3549,6 +3596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3595,6 +3643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3710,6 +3759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3756,6 +3806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3802,6 +3853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -3848,6 +3900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4107,6 +4160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4153,6 +4207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4199,6 +4254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4245,6 +4301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4291,6 +4348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4337,6 +4395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4383,6 +4442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4528,6 +4588,8 @@ MonoBehaviour:
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  AllyLinePrefab: {fileID: 1729640969344356, guid: d405dd02c77429747a40ee34f2a6c935,
+    type: 2}
 --- !u!114 &374445978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4643,6 +4705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -4902,6 +4965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5023,6 +5087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5069,6 +5134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5115,6 +5181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5161,6 +5228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5207,6 +5275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5253,6 +5322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5299,6 +5369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5345,6 +5416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5391,6 +5463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5437,6 +5510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5568,6 +5642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5614,6 +5689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5660,6 +5736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5706,6 +5783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5752,6 +5830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5798,6 +5877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5844,6 +5924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -5890,6 +5971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6050,6 +6132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6165,6 +6248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6211,6 +6295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6257,6 +6342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6303,6 +6389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6349,6 +6436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6395,6 +6483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6563,6 +6652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6609,6 +6699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6804,6 +6895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6850,6 +6942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -6896,6 +6989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7065,6 +7159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7111,6 +7206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7157,6 +7253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7203,6 +7300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7249,6 +7347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7295,6 +7394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7341,6 +7441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7462,6 +7563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7508,6 +7610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7554,6 +7657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7600,6 +7704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7648,7 +7753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56.6, y: -160.09999}
+  m_AnchoredPosition: {x: 3, y: -160.09999}
   m_SizeDelta: {x: 108.9, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636210709
@@ -7703,7 +7808,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 823012266}
           m_MethodName: UseCard
-          m_Mode: 1
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7747,6 +7852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7793,6 +7899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -7839,6 +7946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8056,6 +8164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8177,6 +8286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8223,6 +8333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8269,6 +8380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8315,6 +8427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8361,6 +8474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8492,6 +8606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8757,6 +8872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8803,6 +8919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8849,6 +8966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8895,6 +9013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8941,6 +9060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -8987,6 +9107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9108,6 +9229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9154,6 +9276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9200,6 +9323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9314,6 +9438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9360,6 +9485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9406,6 +9532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9452,6 +9579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9698,7 +9826,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14439c52822744c43bce05683b2c8c06, type: 2}
   - {fileID: 11400000, guid: 4bfa2925bf1920c458596ae46f4ea7f8, type: 2}
   - {fileID: 11400000, guid: c53182076368a6344b268f72800372fb, type: 2}
-  - {fileID: 11400000, guid: b690346e81e33ce43aafc90b65e4d56a, type: 2}
   eventCard: {fileID: 1475747913}
   cardName: {fileID: 680473344}
   cardImg: {fileID: 105075121}
@@ -9734,6 +9861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9780,6 +9908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9826,6 +9955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9872,6 +10002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9918,6 +10049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -9964,6 +10096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10010,6 +10143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10056,6 +10190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10102,6 +10237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10148,6 +10284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10194,6 +10331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10240,6 +10378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10286,6 +10425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10332,6 +10472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10378,6 +10519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10424,6 +10566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10551,6 +10694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10597,6 +10741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10643,6 +10788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10844,6 +10990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10890,6 +11037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10936,6 +11084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -10982,6 +11131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11028,6 +11178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11108,6 +11259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11293,6 +11445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11461,6 +11614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11507,6 +11661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11628,6 +11783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11674,6 +11830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11720,6 +11877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11766,6 +11924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11812,6 +11971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11858,6 +12018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11904,6 +12065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11950,6 +12112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -11996,6 +12159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12591,6 +12755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12637,6 +12802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12683,6 +12849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12729,6 +12896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12837,6 +13005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -12927,6 +13096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13023,6 +13193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13069,6 +13240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13115,6 +13287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13161,6 +13334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13235,6 +13409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13281,6 +13456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13327,6 +13503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13559,6 +13736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13605,6 +13783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13651,6 +13830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13697,6 +13877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13743,6 +13924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13789,6 +13971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13835,6 +14018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13881,6 +14065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13927,6 +14112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -13973,6 +14159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -14019,6 +14206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -14033,107 +14221,6 @@ MonoBehaviour:
   NearMesh: []
   isLandingSign: 0
   TargetObject: {fileID: 0}
---- !u!1 &1234186723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1234186724}
-  - component: {fileID: 1234186726}
-  - component: {fileID: 1234186725}
-  - component: {fileID: 1234186727}
-  m_Layer: 5
-  m_Name: NotUseBtn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1234186724
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234186723}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1709277182}
-  m_Father: {fileID: 1475747914}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.9, y: -161}
-  m_SizeDelta: {x: 108.9, y: 52}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1234186725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234186723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300010, guid: 2b71c7ab02b6e344aabad9afce6d304c, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1234186726
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234186723}
-  m_CullTransparentMesh: 0
---- !u!114 &1234186727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234186723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 823012266}
-          m_MethodName: DiscardCard
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1239070744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100448, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14166,6 +14253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -14212,6 +14300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -14258,6 +14347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -14448,6 +14538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22480,6 +22571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22526,6 +22618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22737,6 +22830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22783,6 +22877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22904,6 +22999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22950,6 +23046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -22996,6 +23093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23111,6 +23209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23262,6 +23361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23430,6 +23530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23476,6 +23577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23522,6 +23624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23820,6 +23923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23935,6 +24039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -23981,6 +24086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24027,6 +24133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24073,6 +24180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24119,6 +24227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24165,6 +24274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24211,6 +24321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24257,6 +24368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24303,6 +24415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24349,6 +24462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24395,6 +24509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24441,6 +24556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24487,6 +24603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24533,6 +24650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24579,6 +24697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24625,6 +24744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24771,6 +24891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24817,6 +24938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24863,6 +24985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24909,6 +25032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -24955,6 +25079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25001,6 +25126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25188,7 +25314,6 @@ RectTransform:
   - {fileID: 377393905}
   - {fileID: 105075120}
   - {fileID: 636210708}
-  - {fileID: 1234186724}
   m_Father: {fileID: 1868055927}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25264,6 +25389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25310,6 +25436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25356,6 +25483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25402,6 +25530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25448,6 +25577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25608,6 +25738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25654,6 +25785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25769,6 +25901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -25937,6 +26070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26052,6 +26186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26374,6 +26509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26420,6 +26556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26466,6 +26603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26512,6 +26650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26558,6 +26697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26604,6 +26744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26841,6 +26982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26887,6 +27029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26933,6 +27076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -26979,6 +27123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27025,6 +27170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27162,6 +27308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27277,6 +27424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27323,6 +27471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27491,6 +27640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27537,6 +27687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27583,6 +27734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27629,6 +27781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27675,6 +27828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27721,6 +27875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27842,6 +27997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -27888,6 +28044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28072,6 +28229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28161,81 +28319,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1705047646}
   m_CullTransparentMesh: 0
---- !u!1 &1709277181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1709277182}
-  - component: {fileID: 1709277184}
-  - component: {fileID: 1709277183}
-  m_Layer: 5
-  m_Name: NotUseTxt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1709277182
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709277181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1234186724}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888184, y: 0}
-  m_SizeDelta: {x: 108.9, y: 52}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1709277183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709277181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: b1a644d563796d940a23cf15aafbc5d0, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC0AC\uC6A9\uC548\uD568"
---- !u!222 &1709277184
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709277181}
-  m_CullTransparentMesh: 0
 --- !u!1 &1717299218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100414, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -28268,6 +28351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28389,6 +28473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28435,6 +28520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28556,6 +28642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28602,6 +28689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28648,6 +28736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28694,6 +28783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28809,6 +28899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28855,6 +28946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -28901,6 +28993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29069,6 +29162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29115,6 +29209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29236,6 +29331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29282,6 +29378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29403,6 +29500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29449,6 +29547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29495,6 +29594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29541,6 +29641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29587,6 +29688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29633,6 +29735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29679,6 +29782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -29954,6 +30058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30000,6 +30105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30046,6 +30152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30092,6 +30199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30138,6 +30246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30184,6 +30293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30230,6 +30340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30276,6 +30387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30322,6 +30434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30368,6 +30481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30414,6 +30528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30460,6 +30575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30506,6 +30622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30552,6 +30669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30598,6 +30716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30644,6 +30763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30812,6 +30932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -30858,6 +30979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31054,6 +31176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31100,6 +31223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31146,6 +31270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31258,6 +31383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31304,6 +31430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31539,6 +31666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31654,6 +31782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31794,6 +31923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31840,6 +31970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -31971,6 +32102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32214,6 +32346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32260,6 +32393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32306,6 +32440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32427,6 +32562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32542,6 +32678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32588,6 +32725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32634,6 +32772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32680,6 +32819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32726,6 +32866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32772,6 +32913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32818,6 +32960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0
@@ -32864,6 +33007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorMaterial: {fileID: 0}
   priorState: 0
+  currentIdentify: 0
   MeshNumber: 0
   terrainstate: 0
   isAwake: 0

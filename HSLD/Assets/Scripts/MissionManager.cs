@@ -21,7 +21,7 @@ public class MissionManager : MonoBehaviour
     private float time_ = 0;
 
     private GameObject missionCanvas;
-    private int[] indexSaved = new int[6];
+    static public int[] indexSaved = new int[6];
 
     //중복되지않게 메인미션 / 서브미션 부여
     private void randomValue(int min, int max, MissionSet set)

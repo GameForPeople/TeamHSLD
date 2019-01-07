@@ -226,31 +226,31 @@ public class InGameSceneManager : MonoBehaviour
 
             if (recvTerrainType == 1)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration(Identify.ENEMY);
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }
             else if (recvTerrainType == 2)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(); // setModeration() -> setBarren()
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(Identify.ENEMY); // setModeration() -> setBarren()
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }
             else if (recvTerrainType == 3)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold(Identify.ENEMY);
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }
             else if (recvTerrainType == 4)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea(Identify.ENEMY);
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }
             else if (recvTerrainType == 5)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain();
+                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain(Identify.ENEMY);
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                 gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
             }

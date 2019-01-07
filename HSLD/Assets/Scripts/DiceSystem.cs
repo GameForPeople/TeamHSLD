@@ -8,7 +8,7 @@ public class DiceSystem : MonoBehaviour
     public Slider diceSlider;
     public static int getDiceNum;
     private int diceValue;
-    static public bool isDouble;
+    static public bool isDouble;                //주사위가 더블이 나왔을때
     private int rndTmpValue;
     private bool isTriggerEnter = false;
     private float gaze;
@@ -19,6 +19,7 @@ public class DiceSystem : MonoBehaviour
     private Color initColor = Color.yellow;
     private Color desColor = Color.red;
 
+    static public bool isDiceDouble = false;            //이벤트카드로 인해 주사위를 더블할때
     private float time_;
 
     public void OnTrigger()
@@ -919,6 +920,12 @@ public class DiceSystem : MonoBehaviour
                     }
                 }
                 break;
+        }
+
+        if (isDiceDouble)
+        {
+            getDiceNum *= 2;
+            isDiceDouble = false;
         }
 
         Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);

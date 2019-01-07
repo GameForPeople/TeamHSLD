@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCard: 0
   cardIndex: 111
-  cardName: "\uC0C1\uB300 \uB545 \uB0B4 \uB545 \uAD50\uD658 \uCE74\uB4DC"
+  cardName: "[\uACF5\uACA9] \uC18C\uC720\uAD8C \uC804\uD658"
   img: {fileID: 21300002, guid: 0154f933b9973ed4ea0de490f499affa, type: 3}
   currentCnt: 0
   maximumCnt: 0

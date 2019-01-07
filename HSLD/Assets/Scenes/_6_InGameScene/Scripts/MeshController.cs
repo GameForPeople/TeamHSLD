@@ -14,11 +14,19 @@ public enum Terrain{
     FLAG
 }
 
+public enum Identify
+{
+    NEUTRALITY,     // 중립
+    ALLY,           // 아군
+    ENEMY           // 적군
+}
+
 public class MeshController : MonoBehaviour {
     private int dominator;
     private Material domMaterial;
     public Material priorMaterial;
     public Terrain priorState;
+    public Identify currentIdentify = Identify.NEUTRALITY;
 
     public int MeshNumber;
     static int giveNumber;
@@ -229,37 +237,27 @@ public class MeshController : MonoBehaviour {
             if (picked.name.Equals("TerrainCardImg1"))
             {
                 Debug.Log("setModeration");
-                setModeration();
+                setModeration(Identify.ALLY);
             }
             else  if (picked.name.Equals("TerrainCardImg2"))
             {
                 Debug.Log("setBarren");
-                setBarren();
+                setBarren(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg3"))
             {
                 Debug.Log("TerrainCardImg3");
-                setCold();
+                setCold(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg4"))
             {
                 Debug.Log("setSea");
-                setSea();
+                setSea(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg5"))
             {
                 Debug.Log("setMountain");
-                setMountain();
-            }
-            else if (picked.name.Equals("EventCardImg1"))
-            {
-                Debug.Log("임시");
-                setCold();
-            }
-            else if (picked.name.Equals("EventCardImg2"))
-            {
-                Debug.Log("임시");
-                setCold();
+                setMountain(Identify.ALLY);
             }
         }
     }
@@ -270,45 +268,64 @@ public class MeshController : MonoBehaviour {
     }
 
     //적당
-    public void setModeration()
+    public void setModeration(Identify identify)
     {
         terrainstate = Terrain.MODERATION;
         domMaterial = Resources.Load<Material>("M_Moderation");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+
+        if (identify.Equals(Identify.ALLY))
+            currentIdentify = Identify.ALLY;
+        else if (identify.Equals(Identify.ENEMY))
+            currentIdentify = Identify.ENEMY;
     }
     //건조
-    public void setBarren()
+    public void setBarren(Identify identify)
     {
         terrainstate = Terrain.BARREN;
         domMaterial = Resources.Load<Material>("M_Barren");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
+        if (identify.Equals(Identify.ALLY))
+            currentIdentify = Identify.ALLY;
+        else if (identify.Equals(Identify.ENEMY))
+            currentIdentify = Identify.ENEMY;
     }
     //한랭
-    public void setCold()
+    public void setCold(Identify identify)
     {
         terrainstate = Terrain.COLD;
         domMaterial = Resources.Load<Material>("M_Cold");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
+        if (identify.Equals(Identify.ALLY))
+            currentIdentify = Identify.ALLY;
+        else if (identify.Equals(Identify.ENEMY))
+            currentIdentify = Identify.ENEMY;
     }
 
-    public void setSea()
+    public void setSea(Identify identify)
     {
         terrainstate = Terrain.SEA;
         domMaterial = Resources.Load<Material>("M_Sea");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-
+        if (identify.Equals(Identify.ALLY))
+            currentIdentify = Identify.ALLY;
+        else if (identify.Equals(Identify.ENEMY))
+            currentIdentify = Identify.ENEMY;
     }
 
-    public void setMountain()
+    public void setMountain(Identify identify)
     {
         terrainstate = Terrain.MOUNTAIN;
         domMaterial = Resources.Load<Material>("M_Mountain");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
-
+        if (identify.Equals(Identify.ALLY))
+            currentIdentify = Identify.ALLY;
+        else if (identify.Equals(Identify.ENEMY))
+            currentIdentify = Identify.ENEMY;
     }
 
     public void setFlag()
@@ -323,5 +340,6 @@ public class MeshController : MonoBehaviour {
         terrainstate = Terrain.DEFAULT;
         domMaterial = Resources.Load<Material>("M_Default");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+        currentIdentify = Identify.NEUTRALITY;
     }
 }

@@ -11,15 +11,16 @@ public class EventCardManager : MonoBehaviour
     public GameObject eventCard;
     public Text cardName;
     public Image cardImg;
+    private int selectedIndex;
 
     public void EventCardInstate()
     {
         pickedCard = eventCardInfoSet[Random.Range(0, 7)];
-        Debug.Log(pickedCard);
         eventCard.SetActive(true);
 
         cardName.text = pickedCard.cardName;
         cardImg.sprite = pickedCard.img;
+        selectedIndex = pickedCard.cardIndex;
 
         //선택된 카드 서버로 보내기
         //pickedCard.data.cardIndex
@@ -30,12 +31,23 @@ public class EventCardManager : MonoBehaviour
     {
         eventCard.SetActive(false);
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
-    }
 
-    //사용 안 할 경우
-    public void DiscardCard()
-    {
-        eventCard.SetActive(false);
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
+        switch(selectedIndex)
+        {
+            case 101:
+                break;
+            case 111:
+                break;
+            case 201:
+                break;
+            case 202:
+                break;
+            case 301:
+                TurnSystem.enemyEventCardDefense = true;
+                break;
+            case 401:
+                DiceSystem.isDiceDouble = true;
+                break;
+        }
     }
 }

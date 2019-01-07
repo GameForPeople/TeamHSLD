@@ -15,6 +15,6 @@ MonoBehaviour:
   cardIndex: 1
   cardName: "\uBE44\uC625"
   img: {fileID: 21300000, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
-  currentCnt: 11
+  currentCnt: 5
   maximumCnt: 15
-  minumumCnt: 5
+  minimumCnt: 5

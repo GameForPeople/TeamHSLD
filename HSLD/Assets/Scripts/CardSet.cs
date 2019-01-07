@@ -25,7 +25,7 @@ public class CardSet : MonoBehaviour
 
     public void DelCard(GameObject obj)
     {
-        if (obj.GetComponent<CardData>().data.currentCnt == obj.GetComponent<CardData>().data.minumumCnt)
+        if (obj.GetComponent<CardData>().data.currentCnt == obj.GetComponent<CardData>().data.minimumCnt)
             return;
 
         if (SoundManager.instance_ != null)
