@@ -39,7 +39,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pClient)
 {
 	int friendNum = pClient->pUserNode->GetFriendNicknameContSize();
-	
+
 	if (pClient->pUserNode->GetDemandFriendContIndex() != -1)
 	{
 		friendNum -= 1;
@@ -83,16 +83,16 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			if (!isOnMatch)
 			{
 				std::cout << "[Error] 이미 친구추가가 된 유저의 닉네임이 없는 닉네임으로 나옵니다. \n";
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 				continue;
 			}
 
 			if (!isOnLogin)	// 로그인 안했을 때,
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
-			else if (pBuffer->GetSocketInfo()->pRoomIter != nullptr)	// 접속 후, 로비
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+			else if (pBuffer->GetSocketInfo()->pRoomIter == nullptr)	// 접속 후, 로비
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_2), sizeof(int));
 			else	// 접속 후, 게임중.
-				memcpy(pClient->buf + pClient->dataSize, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_3), sizeof(int));
 
 			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
 
@@ -103,39 +103,56 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			
 			stringSize = uniStrBuffer.size() * 2;
 
-			memcpy(pClient->buf + pClient->dataSize + 4, reinterpret_cast<char*>(&stringSize), sizeof(int));
-			memcpy(pClient->buf + pClient->dataSize + 8, uniStrBuffer.data(), stringSize);
+			memcpy(pClient->buf + pClient->dataSize , reinterpret_cast<char*>(&stringSize), sizeof(int));
+			memcpy(pClient->buf + pClient->dataSize + 4, uniStrBuffer.data(), stringSize);
 
 			pClient->dataSize += (4 + stringSize); 
 		}
 	}
 }
 
+/*
+	_DemandFriendInviteProcess
+		- 클라이언트에서 친구와 같이하기 기능과, 관련 인덱스를 받았을 때 실행되는 함수입니다.
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* pClient)
 {
 	int indexBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 
 	shared_ptr<UserData> pBuffer = pClient->pUserNode->GetFriendUserDataWithIndex(indexBuffer).lock();
 
+	//pBuffer != nullptr -> 이거는 사실 어느정도 보장됨, 친구 창 UI 키고, Invite하기 전까지, 시간이 길면 문제가 될 수 있기 때문에 조건화
+	// 
+
 	// 상대방의 shared_ptr가 지금 nullptr가 아니고, 상대방이 어느 방에도 접속해 있지 않은 경우.  
-	if (pBuffer != nullptr && pBuffer->GetSocketInfo()->pRoomIter == nullptr)
+	if (pBuffer != nullptr)
 	{
-		// 방 생성 필요
-		pClient->pRoomIter = make_shared<GameRoom>(pClient->pUserNode, true);
+		// pBuffer가 nullptr일 경우, 문제있을 수도 있어서 조건문 분리.
+		if (pBuffer->GetSocketInfo()->pRoomIter == nullptr)
+		{
+			// 방 생성 필요
+			pClient->pRoomIter = make_shared<GameRoom>(pClient->pUserNode, true);
 
-		// 친구 방과 친구의 소켓주소구조체도 등록.	// 이 때 nullptr이 아닐경우 문제가 될 요지가 충분함.! 동기화 처리!필요!
-		pBuffer->GetSocketInfo()->pRoomIter = pClient->pRoomIter;
-		//pClient->pRoomIter->SetFriendUserPtr(pBuffer);
+			// 친구 방과 친구의 소켓주소구조체도 등록.	// 이 때 nullptr이 아닐경우 문제가 될 요지가 충분함.! 동기화 처리!필요!
+			pBuffer->GetSocketInfo()->pRoomIter = pClient->pRoomIter;
+			//pClient->pRoomIter->SetFriendUserPtr(pBuffer);
 
-		// 나는야 방장님이시다.
-		pClient->isHost = true;
+			// 나는야 방장님이시다.
+			pClient->isHost = true;
 
-		// UDP Packet 등록.
-		pUDPManager->Push(UDP_PROTOCOL::INVITE_FRIEND, pBuffer);
+			// UDP Packet 등록.
+			pUDPManager->Push(UDP_PROTOCOL::INVITE_FRIEND, pBuffer);
 
-		// TCP True Send 필요.
-		memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_FRIEND_INVITE), sizeof(int));
-		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+			// TCP True Send 필요.
+			memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_FRIEND_INVITE), sizeof(int));
+			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+		}
+		else
+		{
+			// TCP False Send 필요.
+			memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_FRIEND_INVITE), sizeof(int));
+			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+		}
 	}
 	else
 	{
@@ -144,7 +161,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 	}
 
-	// pBuffer.reset(); // auto.
+	pBuffer.reset(); // auto.
 
 	pClient->dataSize = 8;
 }
@@ -261,12 +278,23 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 	}
 }
 
+/*
+	_DemandMakeFriendProcess
+		- 클라이언트에서 받은 닉네임을 통하여, 해당 닉네임의 유저에게 친구 신청이 가능한지 여부를 확인합니다.
+*/
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pClient)
 {
-	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
-	pClient->buf[8 + iBuffer] = '\0';
+	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);	// 버퍼 사이즈
+	//pClient->buf[8 + iBuffer] = '\0';// wchar는 \0도 두개...
+	//pClient->buf[9 + iBuffer] = '\0';// wchar는 \0도 두개...
 	
-	Type_Nickname NicknameBuffer((pClient->buf + 8));
+	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!! +1 이 필요할 까?
+	memcpy(&wideStrBuffer[0], pClient->buf + 8, iBuffer);
+
+	iBuffer = WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, NULL, 0, NULL, NULL);
+	Type_Nickname NicknameBuffer(iBuffer, 0);
+
+	WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, &NicknameBuffer[0], iBuffer, NULL, NULL);
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };

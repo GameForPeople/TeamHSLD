@@ -31,6 +31,8 @@ public partial class MainUISceneManager : MonoBehaviour
     GameObject[] InviteButtonUI = new GameObject[4];
     GameObject[] ConceptImageUI = new GameObject[4];
 
+    IEnumerator waitFriendJoinCoroutine;
+
     private void StartForFriend()
     {
         //  친구 UI Set
@@ -93,6 +95,7 @@ public partial class MainUISceneManager : MonoBehaviour
         for (int i = 0; i < 4; ++i)
         {
             InviteButtonUI[i].SetActive(false);
+            SlotUI[i].SetActive(false);
         }
 
         GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(false);
@@ -163,6 +166,7 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_InviteButton(int InIndex)
     {
+        // 보낼때 몇번 인덱스를 보낼 껀지 위하여 사용함.
         invitedFriendIndex = InIndex;
 
         // 보내려고 쓰는 게 아니고, 클라단에서 필요해서 해당 내용 저장.
@@ -173,7 +177,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
     /*
         OnFriendUI_NetworkManager(int InFriendNum)
-
+         
         네트워크매니저(Recv)에서 호출되는 함수입니다.
         친구 창 UI를 킬 때, 서버에 친구 정보를 요청하고, 해당 정보를 받아서 처리하는 함수에서
         해당 데이터를 다 처리 후, 이제 UI를 켜! 하는 함수입니다.
@@ -186,6 +190,8 @@ public partial class MainUISceneManager : MonoBehaviour
 
         for (int i = 0; i < friendNum; ++i)
         {
+            SlotUI[i].SetActive(true);
+
             StateTextUI[i].GetComponent<Text>().text = stateConstString[networkObject.friendState[i]].ToString();
 
             if (networkObject.friendState[i] > 0)
@@ -206,74 +212,22 @@ public partial class MainUISceneManager : MonoBehaviour
         isDrawFriendUI = true;
     }
 
-    #endregion
+    /*
+        OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
 
-    //public void ClickAnswerFriendInvite(int InTrueFalse)
-    //{
-    //    answerFriendInviteValue = InTrueFalse;
-    //
-    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
-    //}
-
-    public void OnFriendWaitUI_NetworkManager()
-    {
-        // 상대방의 의사를 물어보는 중입니다. 7초 코루틴 실행 필요함.
-        friendWaitTimeCount = 7;
-
-        OnFriendInviteWaitUI();
-        StartCoroutine(WaitFriendJoinCoroutine());
-    }
-
-    public IEnumerator WaitFriendJoinCoroutine()
-    {
-        while (friendWaitTimeCount > 0)
-        {
-            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").
-                transform.Find("WaitTime").GetComponent<Text>().text = friendWaitTimeCount.ToString();
-
-            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_JOIN);
-            yield return new WaitForSeconds(1.0f);
-            friendWaitTimeCount--;
-            // UI Set
-        }
-
-        OffFriendInviteWaitUI();
-        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
-    }
-
-    public void OnFriendInviteWaitUI()
-    {
-        if (!isDrawFriendInviteWait)
-        {
-            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(true);
-            isDrawFriendInviteWait = true;
-        }
-    }
-
-    public void OffFriendInviteWaitUI()
-    {
-        if (isDrawFriendInviteWait)
-        {
-            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(false);
-            isDrawFriendInviteWait = false;
-        }
-    }
-
-    public void OnFriendBadStateUI_NetworkManager(int InCase)
-    {
-        if (InCase == 1)
-        {
-            // 친구가 게임 초대를 받을 수 없는 상태입니다.
-        }
-        else if (InCase == 2)
-        {
-            // 친구가 게임 초대를 받을 수 없는 상태입니다.
-        }
-    }
-
+        친구 만들기 버튼 클릭 시, 친구 만들기 실패할 경우, 호출되는 함수입니다.
+        failReson을 인자로 받으며 각 인자에 따라 다른 UI 및 문구를 출력해야 합니다.
+    */
     public void OnUI_CHECK_DEMAND_MAKE_FRIEND(int InFailReason)
     {
-        // by Network Send or 
+        // -1 : 좋았어!
+        // 0 : 상대방이 미로그인
+        // 1 : 상대방의 친구 수가 이미 4명 이상
+        // 2 : 상대방이 받을 수 없는 상태...? 이게 뭐지? 왜 못받아?
+        // 3 : 해당 닉네임이 없는 경우
+        // 4 : 님 인싸여서 더이상 친구 추가 못함 ㅋ
+        // 5 : 이미 친구인 경우
+        // 6 : 니 아이디잖아
 
         if (InFailReason == -1)
         {
@@ -314,6 +268,92 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             // 니 아이디잖아
             FriendUIDynamicCanvas.transform.Find("CHECK_DEMAND_MAKE_FRIEND_FALSE_6").gameObject.SetActive(true);
+        }
+    }
+
+    /*
+        OnFriendWaitUI_NetworkManager
+     
+        - NOTIFY_FRIEND_INVITE (Network - Recv) 에서, 1일 때, (친구와 같이하기에서 상대방을 기다리는 중일 때,)
+           UI를 출력하기 위해 호출하는 함수.
+     */
+    public void OnFriendWaitUI_NetworkManager()
+    {
+        // 상대방의 의사를 물어보는 중입니다. 7초 코루틴 실행 필요함.
+        friendWaitTimeCount = 7;
+
+        OnFriendInviteWaitUI();
+        waitFriendJoinCoroutine = WaitFriendJoinCoroutine();
+        StartCoroutine(waitFriendJoinCoroutine);
+    }
+
+    /*
+       OnFriendInviteWaitUI
+
+       바로 위 OnFriendWaitUI_NetworkManager()에서 호출하며, WaitUI를 켜는 함수입니다. (굳이 함수일 필요가 있을까?)
+    */
+    private void OnFriendInviteWaitUI()
+    {
+        if (!isDrawFriendInviteWait)
+        {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(true);
+            isDrawFriendInviteWait = true;
+        }
+    }
+
+    /*
+        WaitFriendJoinCoroutine
+
+        바로 위에 위! OnFriendWaitUI_NetworkManager()에서 호출하며, WaitUI를 갱신하며, 
+        친구가 들어왔는지 여부를(네트워크 통신)을 수행하는 코루틴 함수 입니다.
+
+        7초 내에 연락이 안올경우, 마지막으로 Delay_Friend_Invite를 전송합니다.
+    */
+    public IEnumerator WaitFriendJoinCoroutine()
+    {
+        while (friendWaitTimeCount > 0)
+        {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").
+                transform.Find("WaitTime").GetComponent<Text>().text = friendWaitTimeCount.ToString();
+
+            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_JOIN);
+            yield return new WaitForSeconds(1.0f);
+            friendWaitTimeCount--;
+            // UI Set
+        }
+
+        OffFriendInviteWaitUI();
+        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
+    }
+
+    #endregion
+
+    //public void ClickAnswerFriendInvite(int InTrueFalse)
+    //{
+    //    answerFriendInviteValue = InTrueFalse;
+    //
+    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
+    //}
+
+
+    private void OffFriendInviteWaitUI()
+    {
+        if (isDrawFriendInviteWait)
+        {
+            FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(false);
+            isDrawFriendInviteWait = false;
+        }
+    }
+
+    public void OnFriendBadStateUI_NetworkManager(int InCase)
+    {
+        if (InCase == 1)
+        {
+            // 친구가 게임 초대를 받을 수 없는 상태입니다.
+        }
+        else if (InCase == 2)
+        {
+            // 친구가 게임 초대를 받을 수 없는 상태입니다.
         }
     }
 

@@ -136,7 +136,9 @@ public partial class NetworkManager : MonoBehaviour {
                 else
                 {
                     idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 4);
-                    friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+
+                    //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
 
                     dataLocation += idSize + 8;
 
@@ -157,6 +159,11 @@ public partial class NetworkManager : MonoBehaviour {
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_FRIEND_INVITE)
         {
+            /*
+                DemandFriendInvite에 대한 결과값이 옴. 
+                4~7이 true이면 가능으로 상대 응답 대기상태, false이면 불가능 UI 띄움.  
+            */
+
             // 초대한 친구만 받는 프로토콜, 1이면 친구가 정상적, 0이면 친구상태가 나갔거나 게임중으로 변경.
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
@@ -230,18 +237,22 @@ public partial class NetworkManager : MonoBehaviour {
         }
         else if (recvType == (int)PROTOCOL.HOSTCHECK_FRIEND_INVITE)
         {
-            // 항상 방 삭제
-            // 0이면 상대방 거절, 트루면 TimeOut or UDP 
+            /*
+                호스트 플레이어가, UI를 키고, 게스트 플레이어(친구)를 기다릴 때,
+                상대방이 거절하거나, 연락두절일때! ( 수락했을 때는, ANSWER_FRIEND_JOIN 을 서버에서 보내줌)
+             */
+
+            // 0이면 상대방 거절, 1이면 미입력 or UDP소실
             int inviteBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
             if (inviteBuffer == 0)
             {
+
             }
             else if (inviteBuffer == 1)
             {
+                // 1은 아무것도 안해주는 게 맞음.
             }
-
-
         }
 
         else if (recvType == (int)PROTOCOL.CHECK_DEMAND_MAKE_FRIEND)
