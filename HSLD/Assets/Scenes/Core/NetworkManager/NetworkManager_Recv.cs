@@ -383,7 +383,7 @@ public partial class NetworkManager : MonoBehaviour {
             subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 16);
 
             int idSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 20);
-            enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 24, idSizeBuffer);
+            enemyId = Encoding.Unicode.GetString(NewDataRecvBuffer, 24, idSizeBuffer);
             Debug.Log("적 닉네임은 : " + enemyId);
 
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
@@ -449,7 +449,7 @@ public partial class NetworkManager : MonoBehaviour {
         else if (recvType == (int)PROTOCOL.PERMIT_GUEST_JOIN)
         {
             int idSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
-            enemyId = Encoding.Default.GetString(NewDataRecvBuffer, 8, idSizeBuffer);
+            enemyId = Encoding.Unicode.GetString(NewDataRecvBuffer, 8, idSizeBuffer);
 
             Debug.Log("적닉네임입니다. 크기 :" + idSizeBuffer + "ID : " + enemyId);
             GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();

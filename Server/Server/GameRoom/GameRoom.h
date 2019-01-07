@@ -38,6 +38,8 @@ struct RoomDynamicData
 		, hostCharacterIndex(1), guestCharacterIndex(1)
 		, isHostFirst(rand() % 2)
 		, friendInviteBuffer(true)
+		, hostNickname(InHostNickName)
+		, guestNickname()
 		//, userReadyCount(0)
 		//, hostUserReady(false), guestUserReady(false)
 	{}

@@ -27,6 +27,7 @@ UDPManager::UDPManager() noexcept
 	, CONST_RESULT_FRIEND(static_cast<char>(7))
 	, UDP_PORT(htons(SERVER_UDP_PORT))
 	, udpSocket()
+	, serverUDPAddr()
 	//, csUDP()
 {
 	//::InitializeCriticalSection(&csUDP);

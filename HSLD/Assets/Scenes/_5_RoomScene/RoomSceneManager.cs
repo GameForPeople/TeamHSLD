@@ -43,6 +43,7 @@ public class RoomSceneManager : MonoBehaviour
 
         // 상대방 닉네임 노출
         GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
+        Debug.Log("적 닉네임 한번 찍어봅시다. " + networkObject.GetComponent<NetworkManager>().enemyId);
 
         //DEV_66
         //GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "캐릭터를 선택하세요.";

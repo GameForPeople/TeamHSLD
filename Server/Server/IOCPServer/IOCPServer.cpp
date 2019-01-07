@@ -384,10 +384,10 @@ void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
-	std::cout << "     [UserDataManager] Run Manager Thread! " << "\n";
+	std::cout << "     [UserData_Manager] Run Manager Thread! " << "\n";
 
 	hUDPThread = CreateThread(NULL, 0, UDPThread, (LPVOID)this, 0, NULL);
-	std::cout << "     [UserDataManager] Run UDP Manager Thread! " << "\n";
+	std::cout << "     [UDP_Manager] Run UDP Manager Thread! " << "\n";
 }
 
 
