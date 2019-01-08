@@ -57,6 +57,8 @@
 #define		_MAYBE_UNUSED		[[maybe_unused]]
 #define		_FALLTHROUGH		[[fallthrough]]
 
+#define		_TEST_FUNCTION		[[deprecated]]
+
 // For ExternalIP
 #define		EXTERNALIP_FINDER_URL	TEXT("http://checkip.dyndns.org/")
 #define		TITLE_PARSER			TEXT("<body>Current IP Address: ")

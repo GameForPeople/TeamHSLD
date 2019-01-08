@@ -5,7 +5,7 @@
 
 class UserData;
 
-enum UDP_PROTOCOL 
+enum UDP_PROTOCOL : int
 {
 		INVITE_FRIEND = 1
 	,	DEMAND_FRIEND = 2
@@ -39,6 +39,7 @@ public:
 public:
 	__inline void Push(const int InContNumber, const shared_ptr<UserData>& pInUserData)
 	{
+		// 약간 이거도 비효율적
 		switch (InContNumber)
 		{
 		case UDP_PROTOCOL::INVITE_FRIEND:
@@ -47,27 +48,26 @@ public:
 		case UDP_PROTOCOL::DEMAND_FRIEND:
 			friendDemandMessageQueue.Push(pInUserData);
 			break;
-
 		case UDP_PROTOCOL::RESULT_FRIEND:	
 			friendResultMessageQueue.Push(pInUserData);
 			break;
 		}
 	}
 
+	// UDP SEND 내부에서 while(7)문을 돌면서 검사할건지, Thread에서 주도적으로 할건지 정해야함
 	__inline void UDPSend()
 	{
 		if (!friendInviteMessageQueue.IsEmpty())
 		{
-			_SendMessage(CONST_INVITE_FRIEND);
+			_SendInviteMessage();
 		}
 		else if (!friendDemandMessageQueue.IsEmpty())
 		{
-			_SendMessage(CONST_DEMAND_FRIEND);
+			_SendDemandMessage();
 		}
-
 		else if (!friendResultMessageQueue.IsEmpty())
 		{
-			_SendMessage(CONST_RESULT_FRIEND);
+			_SendResultMessage();
 		}
 	}
 
@@ -75,5 +75,8 @@ public:
 	void _CreateUDPSocket();
 
 public:
-	void _SendMessage(const char InChar);
+	//void _SendMessage(const char InChar);
+	void _SendInviteMessage();
+	void _SendDemandMessage();
+	void _SendResultMessage();
 };

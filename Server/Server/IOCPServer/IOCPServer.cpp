@@ -208,6 +208,8 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 				std::cout << "PARSING_SERVER_IP_ERROR : Parsing Fail \n";
 				throw ERROR;
 			}
+
+			//delete networkInterFace;
 		}();
 	}
 	else {

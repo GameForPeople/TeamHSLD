@@ -46,7 +46,7 @@ namespace CUSTOM_QUEUE
 
 		DATA& Pop(bool& retBool);
 
-		DATA& Pop();
+		DATA Pop();
 
 	public:
 		__inline bool IsEmpty() const
@@ -54,6 +54,10 @@ namespace CUSTOM_QUEUE
 			if ( pStart == nullptr) return true;
 			return false;
 		}
+		_TEST_FUNCTION void PrintHeapPointUseCount() {
+			if (pStart == nullptr) std::cout << "Use_Count : Nullptr \n";
+			else std::cout << "Use_Count :" << pStart->GetData().use_count() << "\n";
+		};
 	};
 
 	template<typename DATA>
@@ -76,7 +80,7 @@ namespace CUSTOM_QUEUE
 	}
 
 	template<typename DATA>
-	DATA& CustomQueue<DATA>::Pop(bool& retBool)
+	DATA CustomQueue<DATA>::Pop(bool& retBool)
 	{
 		if (pStart == nullptr)
 		{
@@ -103,7 +107,7 @@ namespace CUSTOM_QUEUE
 	}
 
 	template<typename DATA>
-	DATA& CustomQueue<DATA>::Pop()
+	DATA CustomQueue<DATA>::Pop()
 	{
 		//if (pStart == nullptr)
 		//{

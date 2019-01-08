@@ -53,6 +53,88 @@ void UDPManager::_CreateUDPSocket()
 		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
+
+void UDPManager::_SendInviteMessage()
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	friendInviteMessageQueue.PrintHeapPointUseCount(); // --> 2
+
+	//weak_ptr<UserData> pNodeBuffer = friendInviteMessageQueue.Pop();
+	shared_ptr<UserData> pUserData = friendInviteMessageQueue.Pop().lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = UDP_PORT;
+
+	//reinterpret_cast<const char*>(&CONST_INVITE_FRIEND)
+	if (int retValue
+		= sendto(udpSocket, &CONST_INVITE_FRIEND, 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+	}
+
+	std::cout << "[UDP_Manager] UDP Message "<< CONST_INVITE_FRIEND << "를 " << pUserData->GetNickname() <<"에게 전송했습니다. \n";
+}
+
+void UDPManager::_SendDemandMessage()
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	//weak_ptr<UserData> pNodeBuffer = friendDemandMessageQueue.Pop();
+	shared_ptr<UserData> pUserData = friendDemandMessageQueue.Pop().lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = UDP_PORT;
+
+	if (int retValue
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_DEMAND_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+	}
+}
+
+void UDPManager::_SendResultMessage()
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	//weak_ptr<UserData> pNodeBuffer = friendResultMessageQueue.Pop();
+	shared_ptr<UserData> pUserData = friendResultMessageQueue.Pop().lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = UDP_PORT;
+
+	if (int retValue
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+	}
+}
+
+/*
 void UDPManager::_SendMessage(const char InChar)
 {
 	std::cout << "[DEBUG_UDP] 0 \n";
@@ -113,3 +195,4 @@ void UDPManager::_SendMessage(const char InChar)
 	//delete pUserData;
 	//delete pNodeBuffer;
 }
+*/

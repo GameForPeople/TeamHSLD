@@ -23,6 +23,7 @@ class UserData {
 
 	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
 
+	// int	test[1000000]; // UserData 소멸 확인.
 public:
 	// For rbTreeNode's nullNode or Friend Nullptr!
 	UserData() noexcept
