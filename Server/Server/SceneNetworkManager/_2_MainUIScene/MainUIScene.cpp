@@ -335,18 +335,24 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!! +1 이 필요할 까?
 	memcpy(&wideStrBuffer[0], pClient->buf + 8, iBuffer);
 
+	std::wcout << L"요청한 친구초대는 ~ 입니다. : " << wideStrBuffer << std::endl;
+
 	iBuffer = WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, NULL, 0, NULL, NULL);
 	Type_Nickname NicknameBuffer(iBuffer, 0);
-
 	WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, &NicknameBuffer[0], iBuffer, NULL, NULL);
+
+	std::cout << "요청한 친구초대는 ~ 입니다. : " << NicknameBuffer << std::endl;
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };
 	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(NicknameBuffer, isOnLogin, isOnMatch);
 
+	std::cout << "[FRIEND] DEBUG 1 " << std::endl;
 	// 해당 닉네임이가 아에 없는 경우 : ANSWER_MAKE_FRIEND + 0 + 3
 	if (!isOnMatch)
 	{
+		std::cout << "[FRIEND] DEBUG 2 " << std::endl;
+
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 		memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
@@ -358,6 +364,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0 .
 	if (!isOnLogin)
 	{
+		std::cout << "[FRIEND] DEBUG 3 " << std::endl;
+
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
 		memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -367,6 +375,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	}
 
 	iBuffer = pBuffer->GetFriendNicknameContSize();
+	std::cout << "[FRIEND] DEBUG 4 " << std::endl;
+
 
 	// 상대방이 맥스 프렌드인 상황 : ANSWER_MAKE_FRIEND + 0 + 1 
 	if (iBuffer >= 4)
@@ -404,6 +414,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 		//std::cout << "상대방이 이미 친구 관련 중인 상황 : ANSWER_MAKE_FRIEND + 0 + 2 \n";
 		return;
 	}
+
+	std::cout << "[FRIEND] DEBUG 5 " << std::endl;
 
 	// 상대방에게 친구 요청을 보내고, 나와 친구에 임시로 모두 저장함. : ANSWER_MAKE_FRIEND + 1
 	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendNickname(pClient->pUserNode->GetNickname()));

@@ -127,16 +127,16 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
                     string nicknameBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().makeFriendIDBuffer;
 
-                    byte[] stringToByteBuffer = Encoding.Default.GetBytes(nicknameBuffer);
+                    byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(nicknameBuffer);
 
                     // 이 아래꺼는 바이트의 크기 - 바이트당 1개
                     //int nickNameSize = stringToByteBuffer.Length; //DEV_66
 
                     // 이 아래꺼는 Wchar의 크기 (UTF-16) - 글자당 1개
-                    int nickNameSize = nicknameBuffer.Length;
+                    int nickNameSize = stringToByteBuffer.Length;
 
                     Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
-                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize);
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize );
 
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }

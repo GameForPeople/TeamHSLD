@@ -236,28 +236,40 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const Type_Nick
 	bool isReturnTrue{ false };
 	Type_ID idBuffer{};
 
+	std::cout << "[FRIEND] DEBUG 0 - 1 " << std::endl;
+
 	// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
 	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
 		; firstCharType == _MBC_SINGLE)
 	{
+		std::cout << "[FRIEND] DEBUG 0 - 2 " << std::endl;
+
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 	else if (firstCharType == _MBC_LEAD)
 	{
+		std::cout << "[FRIEND] DEBUG 0 - 3 " << std::endl;
+
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 	else //  if (firstCharType == _MBC_ILLEGAL)
 	{
+		std::cout << "[FRIEND] DEBUG 0 - 4 " << std::endl;
+
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue();
 	}
 
 	// 못찾음.
 	if (!isReturnTrue)
 	{
+		std::cout << "[FRIEND] DEBUG 0 - 5 " << std::endl;
+
 		RetIsMatch = false;
 		RetIsOnLogin = false;
 		return CONST_NULL_USERDATA;
 	}
+
+	std::cout << "[FRIEND] DEBUG 0 - 6 " << std::endl;
 
 	RetIsMatch = true;
 	return SearchUserNode(idBuffer, RetIsOnLogin);

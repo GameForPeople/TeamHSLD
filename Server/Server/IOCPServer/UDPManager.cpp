@@ -53,7 +53,6 @@ void UDPManager::_CreateUDPSocket()
 		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
-
 void UDPManager::_SendInviteMessage()
 {
 	SOCKADDR_IN clientAddr;

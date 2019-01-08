@@ -44,7 +44,7 @@ namespace CUSTOM_QUEUE
 
 		void Push(const DATA& InDATA);
 
-		DATA& Pop(bool& retBool);
+		DATA Pop(bool& retBool);
 
 		DATA Pop();
 
