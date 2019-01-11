@@ -205,7 +205,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 			<< " " << pUserNode->GetLoseCount()
 			<< " " << pUserNode->GetMoney()
 			<< " " << pUserNode->GetAchievementBit()
-			<< " " << pUserNode->GetTitleBit()
+			<< " " << pUserNode->GetItemBit()
 			<< " " << pUserNode->GetCharacterBit()
 			<< " " << pUserNode->GetFriendNicknameCont().size() 
 			<< std::endl;

@@ -45,6 +45,7 @@
     <ClInclude Include="IOCPServer\IOCPServer.h" />
     <ClInclude Include="IOCPServer\SocketInfo.h" />
     <ClInclude Include="IOCPServer\UDPManager.h" />
+    <ClInclude Include="Item\Item.h" />
     <ClInclude Include="PCH\stdafx.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />

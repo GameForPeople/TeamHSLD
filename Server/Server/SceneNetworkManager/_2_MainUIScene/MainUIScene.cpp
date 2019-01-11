@@ -11,6 +11,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene(GameRoomManager* pInRoomData, Us
 	, CHECK_DEMAND_MAKE_FRIEND(Protocol::CHECK_DEMAND_MAKE_FRIEND)
 	, NOTIFY_MAKE_FRIEND_INFO(Protocol::NOTIFY_MAKE_FRIEND_INFO)
 	, CHECK_ANSWER_MAKE_FRIEND(Protocol::CHECK_ANSWER_MAKE_FRIEND)
+	, CONST_ANSWER_BUY_ITEM(Protocol::ANSWER_BUY_ITEM)
 	, CONST_TRUE(1), CONST_FALSE(0), CONST_2(2), CONST_3(3)
 {}
 
@@ -30,6 +31,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 		_DemandMakeFriendInfoProcess(pClient);
 	else if (InRecvType == ANSWER_MAKE_FRIEND)
 		_AnswerMakeFriendProcess(pClient);
+	else if (InRecvType == DEMAND_BUY_ITEM)
+		_BuyItemProcess(pClient);
 }
 
 /*
@@ -490,4 +493,24 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_ANSWER_MAKE_FRIEND), sizeof(int));
 
 	pClient->dataSize = 8;
+}
+
+/*
+	_BuyItemProcess
+		- 클라이언트에서 받은 아이템 인덱스와 유저의 현재 재화보유량을 확인하여 아이템을 구매합니다.
+		- UserData에서 Shop관리하는 것으로 함.
+*/
+void SCENE_NETWORK_MANAGER::MainUiScene::_BuyItemProcess(SocketInfo* pClient)
+{
+	// BuyItem의 반환값
+	int iBuffer = pClient->pUserNode->BuyItem(reinterpret_cast<int&>(pClient->buf[4]));
+
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_BUY_ITEM), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&iBuffer), sizeof(int));
+
+	// 유저의 현재 돈.
+	iBuffer = pClient->pUserNode->GetMoney();
+	memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&iBuffer), sizeof(int));
+
+	pClient->dataSize = 12;
 }

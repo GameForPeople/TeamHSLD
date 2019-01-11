@@ -50,7 +50,7 @@ enum Protocol {
  	DELAY_FRIEND_INVITE  =  207 ,	// Client to Server  - 야 씨, 나 7초나 기달렸는데 왜 대답없냐? // 이전 까지는, DEMAND_ROOMHOST 호출.
 	HOSTCHECK_FRIEND_INVITE = 208,  // Server to Client - 야 GuestUser nullptr 맞다. 게임안하려나 봐.
 
-	//-- friend
+		// for MainUiScene -- friend
 	DEMAND_MAKE_FRIEND	=	209	,	// 친구하고 싶어요. (상대방 허락 안맡음. -> 내가 4명 이상이면 애초에 안되고, 상대방이 4명 이하면 OK)
 	CHECK_DEMAND_MAKE_FRIEND	=	210 ,	// UDP Message 전송 여부.
 
@@ -59,6 +59,10 @@ enum Protocol {
 
 	ANSWER_MAKE_FRIEND = 213,		// 클라로부터 답변이 옴. 친구할지 안할지 여부.
 	CHECK_ANSWER_MAKE_FRIEND = 214, // 해당 답변 처리중 에러여부에 대해 확인시켜줌.
+
+		// for MainUiScene -- shop
+	DEMAND_BUY_ITEM	=	215,		// 아이템 인덱스 날라옴.
+	ANSWER_BUY_ITEM =	216,		// 샀으면 트루, 못샀으면 False날라옴.
 
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,

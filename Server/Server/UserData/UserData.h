@@ -1,10 +1,16 @@
 #pragma once
 
 #include "../PCH/stdafx.h"
+#include "../Item/Item.h"
 
 struct SocketInfo;
 
 class UserData {
+	//	static!
+public:
+	static unique_ptr<ItemManager>	itemManager;			//Init in UserDataManager constructor
+
+private:
 	SocketInfo*						pSocketInfo;			// 소켓 정보 구조체
 
 	Type_ID							id{};					// 아이디 -> 키 값으로 변경되면서, 제거 필요.
@@ -15,7 +21,7 @@ class UserData {
 	int								money;					//인게임 재화
 
 	int								achievementBit;			//업적 비트
-	int								titleBit;				//칭호 비트
+	int								itemBit;				//아이템 비트
 	int								characterBit;			//보유 캐릭터 비트
 
 	vector<std::string>				friendNicknameCont;		// 친구 닉네임 컨테이너
@@ -34,7 +40,7 @@ public:
 		,	loseCount()
 		,	money()
 		,	achievementBit()
-		,	titleBit()
+		,	itemBit()
 		,	characterBit()
 		,	friendNicknameCont()
 		,	friendUserDataCont()
@@ -44,7 +50,7 @@ public:
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney, 
-		const int InAchievementBit, const int InTitleBit, const int InCharacterBit, 
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit, 
 		const vector<Type_Nickname>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
 		: 	pSocketInfo(pInSocketInfo)
 		,	id(InID)
@@ -53,7 +59,7 @@ public:
 		,	loseCount(InLoseCount) 
 		,	money(InMoney)
 		,	achievementBit(InAchievementBit)
-		,	titleBit(InTitleBit) 
+		,	itemBit(InItemBit)
 		,	characterBit(InCharacterBit)
 		,	friendNicknameCont(InFriendStringCont)
 		,	friendUserDataCont()
@@ -73,7 +79,7 @@ public:
 	//친구가 없을 경우. default로 init함.
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney,
-		const int InAchievementBit, const int InTitleBit, const int InCharacterBit)
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit)
 		:	pSocketInfo(pInSocketInfo)
 		,	id(InID)
 		,	nickname(InNickname)
@@ -81,7 +87,7 @@ public:
 		,	loseCount(InLoseCount)
 		,	money(InMoney)
 		,	achievementBit(InAchievementBit)
-		,	titleBit(InTitleBit)
+		,	itemBit(InItemBit)
 		,	characterBit(InCharacterBit)
 		,	friendNicknameCont()
 		,	friendUserDataCont()
@@ -97,7 +103,7 @@ public:
 		,	loseCount(0)
 		,	money(0)
 		,	achievementBit(0)
-		,	titleBit(0)
+		,	itemBit(0)
 		,	characterBit(0)
 		,	friendNicknameCont()
 		,	friendUserDataCont()
@@ -130,7 +136,7 @@ public:
 			<< ", loseCount : " << loseCount
 			<< ", money : " << money
 			<< ", achievementBit : " << achievementBit
-			<< ", titleBit : " << titleBit
+			<< ", itemBit : " << itemBit
 			<< ", characterBit : " << characterBit
 			<< "\n";
 			// friend는 출력하기 않습니다. -> 사실 귀찮습니다.
@@ -143,7 +149,7 @@ public:
 	_NODISCARD __inline int	GetLoseCount()  const noexcept { return loseCount; }
 	_NODISCARD __inline int	GetMoney()  const noexcept { return money; }
 	_NODISCARD __inline int	GetAchievementBit()  const noexcept { return achievementBit; }
-	_NODISCARD __inline int	GetTitleBit()  const noexcept { return titleBit; }
+	_NODISCARD __inline int	GetItemBit()  const noexcept { return itemBit; }
 	_NODISCARD __inline int	GetCharacterBit()  const noexcept { return characterBit; }
 	_NODISCARD __inline vector<Type_Nickname>& GetFriendNicknameCont() /*const*/ noexcept { return friendNicknameCont; }
 	_NODISCARD __inline Type_Nickname& GetFriendNicknameWithIndex(const int& InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
@@ -177,6 +183,39 @@ public:
 		//warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
 		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;
+	}
+
+	/*
+		BuyItem
+
+		인자값 : enum ITEM_INDEX
+		반환값 : -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 아이템이여서 실패, 2면 이상한값인데? 실패.
+	*/
+	_NODISCARD int BuyItem(const int InItemIndex)
+	{
+		if (InItemIndex > itemManager->GetItemCount())
+		{
+			// 그런 아이템 안팔아요.
+			return 2;
+		}
+
+		if ((itemBit & InItemIndex) == InItemIndex)
+		{
+			// 이미 구매한 아이템.
+			return 1;
+		}
+
+		if (int itemPrice = itemManager->GetItemPriceWithIndex(InItemIndex)
+			; money >= itemPrice)
+		{
+			money -= itemPrice;
+			itemBit |= InItemIndex;
+
+			return -1;
+		}
+
+		// 돈 없나벼.
+		return 0;
 	}
 };
 
