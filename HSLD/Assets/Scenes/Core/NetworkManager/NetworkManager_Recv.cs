@@ -263,7 +263,7 @@ public partial class NetworkManager : MonoBehaviour {
         {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            if(iBuffer == 1)
+            if (iBuffer == 1)
             {
                 // 해줄 부분 없음? -> 상대방에게 친구 요청을 정상적으로 보냈습니다.
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().OnUI_CHECK_DEMAND_MAKE_FRIEND(-1);
@@ -290,6 +290,13 @@ public partial class NetworkManager : MonoBehaviour {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_CHECK_ANSWER_MAKE_FRIEND(iBuffer);
+        }
+
+        else if (recvType == (int)PROTOCOL.ANSWER_BUY_ITEM)
+        {
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            money = BitConverter.ToInt32(NewDataRecvBuffer, 8);
         }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{

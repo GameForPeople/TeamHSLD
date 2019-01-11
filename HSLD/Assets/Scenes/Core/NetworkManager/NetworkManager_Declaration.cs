@@ -52,6 +52,10 @@ enum PROTOCOL : int
     ANSWER_MAKE_FRIEND = 213,       // 클라로부터 답변이 옴. 친구할지 안할지 여부.
     CHECK_ANSWER_MAKE_FRIEND = 214, // 해당 답변 처리중 에러여부에 대해 확인시켜줌.
 
+    // for MainUiScene -- shop
+    DEMAND_BUY_ITEM = 215,      // 아이템 인덱스 날라옴.
+    ANSWER_BUY_ITEM = 216,		// 샀으면 트루, 못샀으면 False날라옴.
+
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
     PERMIT_MAKEROOM = 302,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
