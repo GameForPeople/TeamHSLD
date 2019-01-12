@@ -133,11 +133,24 @@ public class MeshController : MonoBehaviour {
             {
                 GetComponent<MeshRenderer>().material = priorMaterial;
                 terrainstate = priorState;
-                for (int j = 0; j < 3; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if (JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
+                    if (JointMesh[i].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
                     {
-                        JointMesh[j].GetComponent<MeshController>().setDefault();
+                        for (int j = 0; j < 12; j++)
+                        {
+                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
+                                Equals(JointMesh[i].GetComponent<MeshController>().name))
+                            {
+                                JointMesh[i].GetComponent<MeshController>().setDefault();
+                                JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
+                                break;
+                            }
+                            else
+                            {
+                                JointMesh[i].GetComponent<MeshController>().setDefault();
+                            }
+                        }
                     }
                 }
                 CameraController.ChangeableCount++;

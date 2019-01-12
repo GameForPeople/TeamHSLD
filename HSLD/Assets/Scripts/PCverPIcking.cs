@@ -126,9 +126,8 @@ public class PCverPIcking : MonoBehaviour
                         // 다시 누른 거
                         if (myPlanet.GetComponent<AllMeshController>().PickContainer[0] == PickedMeshObj.GetComponent<MeshController>().MeshNumber ||
                             myPlanet.GetComponent<AllMeshController>().PickContainer[myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1]
-                            == PickedMeshObj.GetComponent<MeshController>().MeshNumber)
+                            == PickedMeshObj.GetComponent<MeshController>().MeshNumber) // 첫 값 혹은 마지막 값이야
                         {
-                            // 첫 값 혹은 마지막 값이야
                             if (CameraController.ChangeableCount < CameraController.DiceCount + 1)
                             {
                                 myPlanet.GetComponent<AllMeshController>().PickContainer.Remove(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
