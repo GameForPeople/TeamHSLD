@@ -5,26 +5,31 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class RoomSceneManager : MonoBehaviour {
+public class RoomSceneManager : MonoBehaviour
+{
     NetworkManager networkObject;
 
     bool isGameReady = true;
     int startCount = 5;
 
-    IEnumerator CharacterCoroutine;
+    //IEnumerator CharacterCoroutine;
+    //bool isOnChangeCharacter = true;
 
-    bool isOnChangeCharacter = true;
+    IEnumerator WaitGameCoroutine;
 
     #region [ Release Func ]
     void Start()
     {
+        // 유저 데이터 필요 없어!
+        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 
         // 방 인덱스 등록
         //GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
 
         // 자기 자신의 아이디 노출
-        GameObject.Find("PlayerID_TEXT").GetComponent< Text >().text = networkObject.GetComponent<NetworkManager>().nickName;
+        GameObject.Find("PlayerID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().nickName;
 
         // 나중에 계급이나 랭크, 캐릭터 이미지 같은것도 추가되면 여기서 해야처리해야할 듯
 
@@ -35,14 +40,37 @@ public class RoomSceneManager : MonoBehaviour {
         //}
         //else
         //{
+
+        // 상대방 닉네임 노출
         GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
+        Debug.Log("적 닉네임 한번 찍어봅시다. " + networkObject.GetComponent<NetworkManager>().enemyId);
 
-        GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "캐릭터를 선택하세요.";
+        //DEV_66
+        //GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "캐릭터를 선택하세요.";
+        GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
 
-        CharacterCoroutine = StartCharacter();
-        StartCoroutine(CharacterCoroutine);
+        WaitGameCoroutine = WaitGame();
+        StartCoroutine(WaitGameCoroutine);
         //}
     }
+
+    IEnumerator WaitGame()
+    {
+        while (startCount > 0)
+        {
+            GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
+
+            yield return new WaitForSeconds(1.0f);
+            --startCount;
+        }
+
+        // UseDataUI Off
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+    }
+
+    #endregion
+
+    #region [ DEV_66에서 제외된 함수들 ]
 
     // 게임 카운트 15부터 0까지 세도록
     IEnumerator StartCharacter()
@@ -58,12 +86,11 @@ public class RoomSceneManager : MonoBehaviour {
             --startCount;
         }
 
-
         GameObject.Find("Character_1_Button").SetActive(false);
         GameObject.Find("Character_2_Button").SetActive(false);
 
         GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
-        isOnChangeCharacter = false;
+        //isOnChangeCharacter = false;
         startCount = 3;
         yield return new WaitForSeconds(0.5f);
 
@@ -85,15 +112,15 @@ public class RoomSceneManager : MonoBehaviour {
 
     public void SetCharacterIndex(int InCharacterIndex)
     {
-        if (isOnChangeCharacter)
-        {
-            if(InCharacterIndex == 1)
+       // if (isOnChangeCharacter)
+       // {
+            if (InCharacterIndex == 1)
                 GameObject.Find("Player_Character").GetComponent<Text>().text = "캐릭터 1";
             else if (InCharacterIndex == 2)
                 GameObject.Find("Player_Character").GetComponent<Text>().text = "캐릭터 2";
 
             networkObject.playerCharacterIndex = InCharacterIndex;
-        }
+       // }
     }
 
     public void SetEnemyCharacter_Network()

@@ -57,7 +57,9 @@ private:
 public:
 	IOCPServer(bool InIsTrueLoadExternIP) 
 		:	wsa()
+		,	hIOCP()
 		,	listenSocket()
+		,	serverAddr()
 		,	pUserData(new UserDataManager())
 		,	pRoomData(new GameRoomManager())
 		,	pUdpManager(new UDPManager())

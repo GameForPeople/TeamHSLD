@@ -46,6 +46,7 @@ public:
 		//bufferProtocol(0), 
 		:	overlapped()
 		,	wsabuf()
+		,	sock()
 		,	buf()
 		//,	isInRoom(false)
 		,	isHost(false)

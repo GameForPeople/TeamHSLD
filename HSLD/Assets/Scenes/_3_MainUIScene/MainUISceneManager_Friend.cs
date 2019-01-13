@@ -326,16 +326,31 @@ public partial class MainUISceneManager : MonoBehaviour
         networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
     }
 
-    #endregion
+    /*
+        OffFriendWaitUI_NetworkManager
+        
+        친구를 초대한 호스트가, 대기 UI와 함께 대기중인 상황에서, 친구가 거절을 누른 것이 명확한 경우!
+        대기 UI를 꺼주고, 네트워크 기능 호출과, 대기 시간을 갱신하는 코루틴을 종료하는 함수.
 
-    //public void ClickAnswerFriendInvite(int InTrueFalse)
-    //{
-    //    answerFriendInviteValue = InTrueFalse;
-    //
-    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
-    //}
+        HOSTCHECK_FRIEND_INVITE (networkManager-> Recv)에서 호출됨.
+    */
+    public void OffFriendWaitUI_NetworkManager()
+    {
+        // 코루틴 동기화 문제가 발생하지 않지 않을 까요?
+        StopCoroutine(waitFriendJoinCoroutine);
+
+        // 필요 없을 수 있습니다.
+        friendWaitTimeCount = -10;
+
+        OffFriendInviteWaitUI();
+    }
 
 
+    /*
+       OffFriendInviteWaitUI
+
+       바로 위 OffFriendWaitUI_NetworkManager에서 호출하며, WaitUI를 끄는 함수입니다.
+    */
     private void OffFriendInviteWaitUI()
     {
         if (isDrawFriendInviteWait)
@@ -344,6 +359,15 @@ public partial class MainUISceneManager : MonoBehaviour
             isDrawFriendInviteWait = false;
         }
     }
+
+    #endregion
+
+    //public void ClickAnswerFriendInvite(int InTrueFalse)
+    //{
+    //    answerFriendInviteValue = InTrueFalse;
+    //
+    //    networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
+    //}
 
     public void OnFriendBadStateUI_NetworkManager(int InCase)
     {

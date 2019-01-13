@@ -62,17 +62,22 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 
 		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, stringBuffer);
 
-		int sizeBuffer = stringBuffer.size();
-
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
 		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
-		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
-		memcpy( pClient->buf + 24, stringBuffer.data(), sizeBuffer);
+		
+		int stringSizeBuffer = MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), NULL, NULL);
+		wstring uniStrBuffer(stringSizeBuffer, 0);
+		MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), &uniStrBuffer[0], stringSizeBuffer);
+		
+		stringSizeBuffer = uniStrBuffer.size() * 2;
 
-		 pClient->dataSize = 28 + sizeBuffer;
+		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
+		memcpy( pClient->buf + 24, uniStrBuffer.data(), stringSizeBuffer);
+
+		pClient->dataSize = 28 + stringSizeBuffer;
 	}
 }
 
@@ -82,13 +87,18 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 	{
 		//rbTreeNode<string,UserData>* EnemyPtrBuffer = pClient->pRoomIter->RetEnemyUserIter( pClient->isHost);
 		Type_Nickname stringBuffer(pClient->pRoomIter->GetEnemyNickname(pClient->isHost));
-		int sizeBuffer = stringBuffer.size(); //DEV_66
+		int stringSizeBuffer = MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), NULL, NULL);
+		wstring uniStrBuffer(stringSizeBuffer, 0);
+		MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), &uniStrBuffer[0], stringSizeBuffer);
+		stringSizeBuffer = uniStrBuffer.size() * 2;
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
-		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&sizeBuffer), sizeof(int));
-		memcpy( pClient->buf + 8, stringBuffer.data(), sizeBuffer);
+		
+		
+		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
+		memcpy( pClient->buf + 8, uniStrBuffer.data(), stringSizeBuffer);
 
-		pClient->dataSize = 8 + sizeBuffer;
+		pClient->dataSize = 8 + stringSizeBuffer;
 	}
 	else
 	{

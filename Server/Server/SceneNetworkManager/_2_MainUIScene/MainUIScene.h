@@ -22,6 +22,8 @@ namespace SCENE_NETWORK_MANAGER
 		const int NOTIFY_MAKE_FRIEND_INFO;
 		const int CHECK_ANSWER_MAKE_FRIEND;
 
+		const int CONST_ANSWER_BUY_ITEM;
+
 		const int CONST_TRUE;
 		const int CONST_FALSE;
 
@@ -44,5 +46,6 @@ namespace SCENE_NETWORK_MANAGER
 		void _DemandMakeFriendProcess(SocketInfo* pClient);
 		void _DemandMakeFriendInfoProcess(SocketInfo* pClient);
 		void _AnswerMakeFriendProcess(SocketInfo* pClient);
+		void _BuyItemProcess(SocketInfo* pClient);
 	};
 }

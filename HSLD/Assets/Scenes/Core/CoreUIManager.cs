@@ -26,6 +26,12 @@ public class CoreUIManager : MonoBehaviour
         ResultMakeFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("ResultMakeFriendUI").gameObject;
     }
 
+    /*
+        ClickAnswerFriendInvite
+
+        다른 친구가, 게임 초대를 요청하면 UDP 메세지를 받고, UI가 출력되는데,
+        이때, 동의 시 true, 아닐 시 false로 셋 후, 전송
+    */
     public void ClickAnswerFriendInvite(int InTrueFalse)
     {
         answerFriendInviteValue = InTrueFalse;
@@ -50,6 +56,11 @@ public class CoreUIManager : MonoBehaviour
         MakeFriendUI.SetActive(true);
     }
 
+    /*
+        OnUI_INVITE_FRIEND_UDP()
+
+        UDP로 부터, "친구와 같이하기"의 패킷을 받을 때 호출되는 함수.
+    */
     public void OnUI_INVITE_FRIEND_UDP()
     {
         InviteFriendUI.SetActive(true);

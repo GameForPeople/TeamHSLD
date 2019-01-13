@@ -90,9 +90,10 @@ namespace NETWORK_UTIL {
 		ptr->wsabuf.buf = ptr->buf;
 		ptr->wsabuf.len = ptr->dataSize;
 
+		std::cout << "  DEBUG - 전송한 Protocol은 : " << reinterpret_cast<int&>(ptr->buf[0]) << "\n";
+
 		// 받아랏!!!
 		int retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, NULL, 0, &ptr->overlapped, NULL);
-
 		if (retVal == SOCKET_ERROR)
 		{
 			if (WSAGetLastError() != WSA_IO_PENDING)
@@ -207,6 +208,8 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 				std::cout << "PARSING_SERVER_IP_ERROR : Parsing Fail \n";
 				throw ERROR;
 			}
+
+			//delete networkInterFace;
 		}();
 	}
 	else {
@@ -383,10 +386,10 @@ void IOCPServer::_RunOtherThread()
 {
 	hManagerThread = CreateThread(NULL, 0, ManagerThread, (LPVOID)this, 0, NULL);
 	//CloseHandle(hSaveUserDataThread);
-	std::cout << "     [UserDataManager] Run Manager Thread! " << "\n";
+	std::cout << "     [UserData_Manager] Run Manager Thread! " << "\n";
 
 	hUDPThread = CreateThread(NULL, 0, UDPThread, (LPVOID)this, 0, NULL);
-	std::cout << "     [UserDataManager] Run UDP Manager Thread! " << "\n";
+	std::cout << "     [UDP_Manager] Run UDP Manager Thread! " << "\n";
 }
 
 
