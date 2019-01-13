@@ -214,22 +214,22 @@ public class PCverPIcking : MonoBehaviour
         }
 
         //19.01.07 YSH
-        //적영역과 아군영역의 분리선입니다.
-        for (int i = 0; i < Length; i++)
-        {
-            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+        //적영역과 아군영역의 분리선입니다. = not worked
+        //for (int i = 0; i < Length; i++)
+        //{
+        //    GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
 
-            //for(int j = 0;j<3 ;j++)
-            //{
-            //    if(FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
-            //    {
-            //        AllyLineObj = Instantiate(AllyLinePrefab);
-            //        AllyLineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
-            //        AllyLineObj.transform.position = new Vector3((FindObject.transform.position.x + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.x * 0.5f), (FindObject.transform.position.y + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.y * 0.5f), (FindObject.transform.position.z + FindObject.GetComponent<MeshController>().JointMesh[j].transform.position.z * 0.5f));
-            //        AllyLineObj.transform.eulerAngles = new Vector3((FindObject.transform.eulerAngles.x + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.x * 0.5f), (FindObject.transform.eulerAngles.y + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.y * 0.5f), (FindObject.transform.eulerAngles.z + FindObject.GetComponent<MeshController>().JointMesh[j].transform.eulerAngles.z * 0.5f));
-            //    }
-            //}
-        }
+        //    for (int j = 0; j < 3; j++)
+        //    {
+        //        if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
+        //        {
+        //            AllyLineObj = Instantiate(AllyLinePrefab);
+        //            AllyLineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
+        //            AllyLineObj.transform.localPosition = new Vector3((FindObject.transform.localPosition.x - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.x), (FindObject.transform.localPosition.y - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.y), (FindObject.transform.localPosition.z - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.z));
+        //            AllyLineObj.transform.LookAt(new Vector3((FindObject.transform.localPosition.x - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.x), (FindObject.transform.localPosition.y - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.y), (FindObject.transform.localPosition.z - FindObject.GetComponent<MeshController>().JointMesh[j].transform.localPosition.z)));
+        //        }
+        //    }
+        //}
 
         FlagSetting(); // Flag검사 
         myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
