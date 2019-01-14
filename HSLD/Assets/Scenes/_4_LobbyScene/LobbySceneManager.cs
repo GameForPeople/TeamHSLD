@@ -65,7 +65,7 @@ public class LobbySceneManager : MonoBehaviour {
         }
         // ---
 
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_EXIT_RANDOM);
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_EXIT_RANDOM);
     }
 
     public void SuccessExitMatching()
@@ -114,7 +114,7 @@ public class LobbySceneManager : MonoBehaviour {
         isOnRandomMatchingNetwork = true;
 
         //서버 네트워크 처리 - 방만들어 주세요 -> 항상 가능! 방 인덱스 서버에서 받아야지 관리하기 좋을 듯.
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_RANDOM_MATCH);
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_RANDOM_MATCH);
 
         while (isRecvTrue == false)
         {
@@ -125,7 +125,7 @@ public class LobbySceneManager : MonoBehaviour {
         {
             while (true)
             {
-                GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_GUEST_JOIN);
+                GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_GUEST_JOIN);
                 yield return new WaitForSeconds(0.5f);
             }
         }

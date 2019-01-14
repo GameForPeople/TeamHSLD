@@ -314,7 +314,7 @@ public class InGameSceneManager : MonoBehaviour
             }
             // ---
 
-            networkManager.SendData((int)PROTOCOL.NOTIFY_GAME_READY);
+            networkManager.SendData(PROTOCOL.NOTIFY_GAME_READY);
         }
     }
 
@@ -333,11 +333,11 @@ public class InGameSceneManager : MonoBehaviour
 
             if (network_sendProtocol == (int)PROTOCOL.VOID_GAME_STATE)
             {
-                networkManager.SendData((int)PROTOCOL.VOID_GAME_STATE);
+                networkManager.SendData(PROTOCOL.VOID_GAME_STATE);
             }
             else
             {
-                networkManager.SendData(network_sendProtocol); // RECV까지 자동.
+                networkManager.SendData((PROTOCOL)network_sendProtocol); // RECV까지 자동.
                 network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE; // 여기서, 쓰레드 개입일어나면, 데이터 날라간다... -> 수정
             }
         }

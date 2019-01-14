@@ -82,7 +82,7 @@ public partial class MainUISceneManager : MonoBehaviour
         if (isDrawFriendUI)
             OffFriendUI();
         else
-            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INFO);
+            networkObject.SendData(PROTOCOL.DEMAND_FRIEND_INFO);
     }
 
     /*
@@ -154,7 +154,7 @@ public partial class MainUISceneManager : MonoBehaviour
             return;
         }
 
-        networkObject.SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND);
+        networkObject.SendData(PROTOCOL.DEMAND_MAKE_FRIEND);
     }
 
 
@@ -172,7 +172,7 @@ public partial class MainUISceneManager : MonoBehaviour
         // 보내려고 쓰는 게 아니고, 클라단에서 필요해서 해당 내용 저장.
         networkObject.enemyId = networkObject.friendNickNameCont[InIndex];
 
-        networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_INVITE);
+        networkObject.SendData(PROTOCOL.DEMAND_FRIEND_INVITE);
     }
 
     /*
@@ -316,14 +316,14 @@ public partial class MainUISceneManager : MonoBehaviour
             FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").
                 transform.Find("WaitTime").GetComponent<Text>().text = friendWaitTimeCount.ToString();
 
-            networkObject.SendData((int)PROTOCOL.DEMAND_FRIEND_JOIN);
+            networkObject.SendData(PROTOCOL.DEMAND_FRIEND_JOIN);
             yield return new WaitForSeconds(1.0f);
             friendWaitTimeCount--;
             // UI Set
         }
 
         OffFriendInviteWaitUI();
-        networkObject.SendData((int)PROTOCOL.DELAY_FRIEND_INVITE);
+        networkObject.SendData(PROTOCOL.DELAY_FRIEND_INVITE);
     }
 
     /*
