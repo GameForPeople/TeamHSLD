@@ -61,7 +61,7 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_NICKNAME), 0, NewDataSendBuffer, 0, 4);
 
                     byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(nickName);
-                    int nickNameSize = stringToByteBuffer.Length; 
+                    int nickNameSize = stringToByteBuffer.Length;
 
                     Debug.Log(" " + nickName + "는 입력한 nickName 값, nickName Size =>> " + nickNameSize);
 
@@ -123,7 +123,7 @@ public partial class NetworkManager : MonoBehaviour {
                         친구 만드는 것을 요청할 때, 로컬클라이언트에서 먼저 친구 신청 가능 여부를 테스트하고,
                         그 후, 이를 통과할 경우, 호출되는 함수입니다.
                     */
-                     
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
                     string nicknameBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().makeFriendIDBuffer;
 
@@ -136,7 +136,7 @@ public partial class NetworkManager : MonoBehaviour {
                     int nickNameSize = stringToByteBuffer.Length;
 
                     Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
-                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize );
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize);
 
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }
@@ -163,6 +163,21 @@ public partial class NetworkManager : MonoBehaviour {
                         ), 0, NewDataSendBuffer, 4, 4);
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
+                }
+
+                else if (InMsg == PROTOCOL.DEMAND_VIP_CODE)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_VIP_CODE), 0, NewDataSendBuffer, 0, 4);
+
+                    string stringBuffer = GameObject.Find("GameCores").transform.Find("MainUISceneManager").GetComponent<MainUISceneManager>().inputtedVipCode;
+
+                    byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(stringBuffer);
+                    int memorySize = stringToByteBuffer.Length;
+
+                    Buffer.BlockCopy(BitConverter.GetBytes(memorySize), 0, NewDataSendBuffer, 4, 4);
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, memorySize);
+
+                    socket.Send(NewDataSendBuffer, 8 + memorySize, SocketFlags.None);
                 }
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)

@@ -298,6 +298,12 @@ public partial class NetworkManager : MonoBehaviour {
 
             money = BitConverter.ToInt32(NewDataRecvBuffer, 8);
         }
+
+        else if (recvType == (int)PROTOCOL.ANSWER_VIP_CODE)
+        {
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+        }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{
         //    // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
