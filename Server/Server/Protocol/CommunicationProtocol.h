@@ -64,6 +64,10 @@ enum Protocol {
 	DEMAND_BUY_ITEM	=	215,		// 아이템 인덱스 날라옴.
 	ANSWER_BUY_ITEM =	216,		// 샀으면 트루, 못샀으면 False날라옴.
 
+		// for MainUiScene -- VipCode
+	DEMAND_VIP_CODE =	217,		// 님 이거 VIP Code 맞아요?
+	ANSWER_VIP_CODE =	218,		// 맞네 틀리네~
+
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)
@@ -112,7 +116,9 @@ enum Protocol {
 	DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
 	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 	
-	NOTIFY_GAME_READY = 507	// 이거 주고 받으면 꼴토롱됨.
+	NOTIFY_GAME_READY = 507,	// 이거 주고 받으면 꼴토롱됨. ? 근데 왜 있지 이거 기억이 안나네;;
+
+	NOTIFY_EMOJI = 508	// 이모티콘 // 이모지 관련입니다.
 };
 
 enum class SCENE_NAME {

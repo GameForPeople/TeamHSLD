@@ -63,7 +63,8 @@ private:
 	char dataBuffer[2][100];
 
 	bool isFriendMode;
-
+	
+	BYTE emojiBuffer[2];
 	// 안쓰기로 결정..
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
@@ -189,6 +190,26 @@ public:
 	__inline void SetDataProtocol(const bool InIsHost, const int InNewDataProtocol) noexcept
 	{
 		dataProtocol[!InIsHost] = InNewDataProtocol;
+	}
+
+public:
+	__inline pair<bool,BYTE> GetEmoji(const bool InIsHost)
+	{
+		pair<bool, BYTE> retBuffer(false,0);
+
+		if (emojiBuffer[InIsHost] != 0)
+		{
+			retBuffer.first = true;
+			retBuffer.second = emojiBuffer[InIsHost];
+			emojiBuffer[InIsHost] = 0;
+		}
+
+		return retBuffer;
+	}
+
+	__inline void SetEmoji(const bool InIsHost, const BYTE InImoji) noexcept
+	{
+		emojiBuffer[!InIsHost] = InImoji;
 	}
 
 #pragma region [Old Function]

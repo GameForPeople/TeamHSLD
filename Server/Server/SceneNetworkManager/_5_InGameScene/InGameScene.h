@@ -12,6 +12,8 @@ namespace SCENE_NETWORK_MANAGER
 {
 	class InGameScene : public BaseScene
 	{
+		const int CONST_ANSWER_EMOJI;
+
 	public:
 		InGameScene() = delete;
 		InGameScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager);
@@ -42,6 +44,7 @@ namespace SCENE_NETWORK_MANAGER
 		void RecvEventcardIndex(SocketInfo* pClient);
 		void RecvNetworkExecption(SocketInfo* pClient);
 		void RecvGameReady(SocketInfo* pClient);
+		void RecvEmoji(SocketInfo* pClient);
 
 		void SendGameState(SocketInfo* pClient);
 		void SendChangeTurn(SocketInfo* pClient);
@@ -51,5 +54,8 @@ namespace SCENE_NETWORK_MANAGER
 		void SendEventcardIndex(SocketInfo* pClient);
 		void SendNetworkExecption(SocketInfo* pClient);
 		void SendGameReady(SocketInfo* pClient);
+
+	private:
+		void SendEmoji(SocketInfo* pClient, const BYTE InByte);
 	};
 }

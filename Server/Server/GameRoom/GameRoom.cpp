@@ -7,6 +7,7 @@ GameRoom::GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft
 	,	isFriendMode(InIsFriendMode)
 	,	dataProtocol()
 	,	dataBuffer()
+	,	emojiBuffer()
 {}
 
 GameRoom::~GameRoom()
@@ -21,6 +22,8 @@ void GameRoom::JoinRoom(const shared_ptr<UserData> InGuestUserIter)
 
 	//hostDataProtocol = VOID_GAME_STATE;
 	//guestDataProtocol = VOID_GAME_STATE;
+	emojiBuffer[0] = 0;
+	emojiBuffer[1] = 0;
 
 	// NOTIFY_GAME_READY으로 하고, 두 유저 모두 Void_Game_State인지 확인. 게임 준비가 되면, VOID_GAME_STATE으로 변경함.
 	dataProtocol[0] = NOTIFY_GAME_READY;

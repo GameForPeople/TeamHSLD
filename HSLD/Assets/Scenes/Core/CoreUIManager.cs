@@ -38,7 +38,7 @@ public class CoreUIManager : MonoBehaviour
 
         InviteFriendUI.SetActive(false);
 
-        networkObject.SendData((int)PROTOCOL.ANSWER_FRIEND_INVITE);
+        networkObject.SendData(PROTOCOL.ANSWER_FRIEND_INVITE);
     }
 
     public void ClickMakeFriendInvite(int InTrueFalse)
@@ -47,7 +47,7 @@ public class CoreUIManager : MonoBehaviour
 
         MakeFriendUI.SetActive(false);
 
-        networkObject.SendData((int)PROTOCOL.ANSWER_MAKE_FRIEND);
+        networkObject.SendData(PROTOCOL.ANSWER_MAKE_FRIEND);
     }
 
     public void OnUI_DEMAND_FRIEND_UDP(string InString)

@@ -82,7 +82,7 @@ public class RoomSceneManager : MonoBehaviour
             GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
 
             yield return new WaitForSeconds(1.0f);
-            networkObject.SendData((int)PROTOCOL.DEMAND_ENEMY_CHARACTER);
+            networkObject.SendData(PROTOCOL.DEMAND_ENEMY_CHARACTER);
             --startCount;
         }
 
@@ -99,7 +99,7 @@ public class RoomSceneManager : MonoBehaviour
             GameObject.Find("TIMER_TEXT").GetComponent<Text>().text = startCount.ToString();
 
             yield return new WaitForSeconds(1.0f);
-            networkObject.SendData((int)PROTOCOL.DEMAND_ENEMY_CHARACTER);
+            networkObject.SendData(PROTOCOL.DEMAND_ENEMY_CHARACTER);
             --startCount;
         }
 

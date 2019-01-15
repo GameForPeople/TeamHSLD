@@ -47,7 +47,7 @@ public partial class NetworkManager : MonoBehaviour
         else if (InBuffer == 2)
         {
             Debug.Log("UDP Message : 친구 추가 요청을 받았습니다. ");
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO);
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_MAKE_FRIEND_INFO);
         }
         else if (InBuffer == 3)
         {

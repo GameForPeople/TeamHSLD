@@ -36,6 +36,9 @@
     <ClCompile Include="UserData\UserDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContentManager\AchievementManager.h" />
+    <ClInclude Include="ContentManager\CharacterManager.h" />
+    <ClInclude Include="ContentManager\ItemManager.h" />
     <ClInclude Include="Custom_DataStructure\Custom_Map_RedBlackTree.h" />
     <ClInclude Include="Custom_DataStructure\Custom_Node_Queue.h" />
     <ClInclude Include="Custom_DataStructure\Custom_Set_RedBlackTree.h" />
@@ -45,7 +48,6 @@
     <ClInclude Include="IOCPServer\IOCPServer.h" />
     <ClInclude Include="IOCPServer\SocketInfo.h" />
     <ClInclude Include="IOCPServer\UDPManager.h" />
-    <ClInclude Include="Item\Item.h" />
     <ClInclude Include="PCH\stdafx.h" />
     <ClInclude Include="Protocol\CommunicationDataStruct.h" />
     <ClInclude Include="Protocol\CommunicationProtocol.h" />

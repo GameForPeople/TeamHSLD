@@ -17,7 +17,7 @@ using System.IO;
 using UnityEngine.Networking;
 using System.Net.NetworkInformation;
 
-enum PROTOCOL : int
+public enum PROTOCOL : int
 {
     //for LoginScene
     DEMAND_LOGIN = 100,
@@ -54,7 +54,11 @@ enum PROTOCOL : int
 
     // for MainUiScene -- shop
     DEMAND_BUY_ITEM = 215,      // 아이템 인덱스 날라옴.
-    ANSWER_BUY_ITEM = 216,		// 샀으면 트루, 못샀으면 False날라옴.
+    ANSWER_BUY_ITEM = 216,      // 샀으면 트루, 못샀으면 False날라옴.
+
+    // for MainUiScene -- VipCode
+    DEMAND_VIP_CODE = 217,      // 님 이거 VIP Code 맞아요?
+    ANSWER_VIP_CODE = 218,		// 맞네 틀리네~
 
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..

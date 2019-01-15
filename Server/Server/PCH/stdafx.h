@@ -63,11 +63,17 @@
 #define		EXTERNALIP_FINDER_URL	TEXT("http://checkip.dyndns.org/")
 #define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
 
+// FOR VIP CODE
+#define		VIP_CODE_STRING			"짜장면은 짜장짜장"
+
 using namespace std;
 
 using Type_Nickname = std::basic_string<char, char_traits<char>, allocator<char>>;	/* == string */
 using Type_ID = std::basic_string<char, char_traits<char>, allocator<char>>;		/* == string */
 
-
 //using tstring = std::basic_string<TCHAR>; //멀티바이트로 정의하고, 닉네임만 TCHAR 적용하는걸로 변경.
 
+namespace CONVERT_UTIL
+{
+	_NODISCARD string WStringToString(wstring& InWstring);
+}

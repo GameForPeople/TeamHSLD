@@ -42,7 +42,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_LOGIN);
         }
         else
         {
@@ -97,7 +97,7 @@ public class LoginSceneManager : MonoBehaviour {
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().nickName = nickNameBuffer;
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().money = 0;
 
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.CHANGE_NICKNAME);
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.CHANGE_NICKNAME);
         }
         else
         {
@@ -136,7 +136,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
-            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData((int)PROTOCOL.DEMAND_LOGIN);
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_LOGIN);
         }
         else
         {

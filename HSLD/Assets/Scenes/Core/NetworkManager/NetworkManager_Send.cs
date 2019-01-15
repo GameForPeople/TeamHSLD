@@ -19,12 +19,12 @@ using System.Net.NetworkInformation;
 
 public partial class NetworkManager : MonoBehaviour {
 
-    public void SendData(int InMsg)
+    public void SendData(PROTOCOL InMsg)
     {
         StartCoroutine(SendDataCoroutine(InMsg));
     }
 
-    public IEnumerator SendDataCoroutine(int InMsg)
+    public IEnumerator SendDataCoroutine(PROTOCOL InMsg)
     {
         while (networkSyncLock)
         {
@@ -37,7 +37,7 @@ public partial class NetworkManager : MonoBehaviour {
             if (isOnNetwork)
             {
                 //LoginScene
-                if (InMsg == (int)PROTOCOL.DEMAND_LOGIN)
+                if (InMsg == PROTOCOL.DEMAND_LOGIN)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_LOGIN), 0, NewDataSendBuffer, 0, 4);
 
@@ -56,12 +56,12 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8 + idSize, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.CHANGE_NICKNAME)
+                else if (InMsg == PROTOCOL.CHANGE_NICKNAME)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_NICKNAME), 0, NewDataSendBuffer, 0, 4);
 
                     byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(nickName);
-                    int nickNameSize = stringToByteBuffer.Length; 
+                    int nickNameSize = stringToByteBuffer.Length;
 
                     Debug.Log(" " + nickName + "는 입력한 nickName 값, nickName Size =>> " + nickNameSize);
 
@@ -72,7 +72,7 @@ public partial class NetworkManager : MonoBehaviour {
                 }
 
                 // Main UI
-                else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_INFO)
+                else if (InMsg == PROTOCOL.DEMAND_FRIEND_INFO)
                 {
                     /*
                      친구 UI창을 킬 때, 서버에게 친구 정보를 요청합니다.
@@ -81,7 +81,7 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_FRIEND_INFO), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_INVITE)
+                else if (InMsg == PROTOCOL.DEMAND_FRIEND_INVITE)
                 {
                     /*
                      친구창 UI에서 친구 초대 버튼을 누를 때, 서버에게 몇번 인덱스의 유저에게 게임 초대를 보냈는지 확인합니다.
@@ -95,7 +95,7 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
 
-                else if (InMsg == (int)PROTOCOL.ANSWER_FRIEND_INVITE)
+                else if (InMsg == PROTOCOL.ANSWER_FRIEND_INVITE)
                 {
                     /*
                          UDP를 받고, 관련해서 플레이어가 true를 선택하면 1번 , false를 선택하면 0 전송          
@@ -110,20 +110,20 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.DELAY_FRIEND_INVITE)
+                else if (InMsg == PROTOCOL.DELAY_FRIEND_INVITE)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DELAY_FRIEND_INVITE), 0, NewDataSendBuffer, 0, 4);
 
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
 
-                else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND)
+                else if (InMsg == PROTOCOL.DEMAND_MAKE_FRIEND)
                 {
                     /*
                         친구 만드는 것을 요청할 때, 로컬클라이언트에서 먼저 친구 신청 가능 여부를 테스트하고,
                         그 후, 이를 통과할 경우, 호출되는 함수입니다.
                     */
-                     
+
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
                     string nicknameBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().makeFriendIDBuffer;
 
@@ -136,16 +136,16 @@ public partial class NetworkManager : MonoBehaviour {
                     int nickNameSize = stringToByteBuffer.Length;
 
                     Buffer.BlockCopy(BitConverter.GetBytes(nickNameSize), 0, NewDataSendBuffer, 4, 4);
-                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize );
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, nickNameSize);
 
                     socket.Send(NewDataSendBuffer, 8 + nickNameSize, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO)
+                else if (InMsg == PROTOCOL.DEMAND_MAKE_FRIEND_INFO)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_MAKE_FRIEND_INFO), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
+                else if (InMsg == PROTOCOL.ANSWER_MAKE_FRIEND)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.ANSWER_MAKE_FRIEND), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
@@ -155,7 +155,7 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
 
-                else if (InMsg == (int)PROTOCOL.DEMAND_BUY_ITEM)
+                else if (InMsg == PROTOCOL.DEMAND_BUY_ITEM)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_BUY_ITEM), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
@@ -164,28 +164,43 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
+
+                else if (InMsg == PROTOCOL.DEMAND_VIP_CODE)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_VIP_CODE), 0, NewDataSendBuffer, 0, 4);
+
+                    string stringBuffer = GameObject.Find("GameCores").transform.Find("MainUISceneManager").GetComponent<MainUISceneManager>().inputtedVipCode;
+
+                    byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(stringBuffer);
+                    int memorySize = stringToByteBuffer.Length;
+
+                    Buffer.BlockCopy(BitConverter.GetBytes(memorySize), 0, NewDataSendBuffer, 4, 4);
+                    Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, memorySize);
+
+                    socket.Send(NewDataSendBuffer, 8 + memorySize, SocketFlags.None);
+                }
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
                 //else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)
 
                 //LobbyScene - new
-                else if (InMsg == (int)PROTOCOL.DEMAND_RANDOM_MATCH)
+                else if (InMsg == PROTOCOL.DEMAND_RANDOM_MATCH)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_RANDOM_MATCH), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.DEMAND_GUEST_JOIN)
+                else if (InMsg == PROTOCOL.DEMAND_GUEST_JOIN)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_GUEST_JOIN), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.DEMAND_EXIT_RANDOM)
+                else if (InMsg == PROTOCOL.DEMAND_EXIT_RANDOM)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_EXIT_RANDOM), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
                 // Lobby Friend Function
-                else if (InMsg == (int)PROTOCOL.DEMAND_FRIEND_JOIN)
+                else if (InMsg == PROTOCOL.DEMAND_FRIEND_JOIN)
                 {
                     /*
                         호스트인 플레이어가, 친구가 들어왔는지 확인하는 함수입니다. (1초에 한번 총 7번 호출됩니다.)
@@ -200,7 +215,7 @@ public partial class NetworkManager : MonoBehaviour {
                 //else if (InMsg == (int)PROTOCOL.DEMAND_ROOMHOST)
 
                 // RoomScene - new
-                else if (InMsg == (int)PROTOCOL.DEMAND_ENEMY_CHARACTER)
+                else if (InMsg == PROTOCOL.DEMAND_ENEMY_CHARACTER)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ENEMY_CHARACTER), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(playerCharacterIndex), 0, NewDataSendBuffer, 4, 4);
@@ -209,24 +224,24 @@ public partial class NetworkManager : MonoBehaviour {
                 }
 
                 //InGameScene // Defense Turn
-                else if (InMsg == (int)PROTOCOL.VOID_GAME_STATE)
+                else if (InMsg == PROTOCOL.VOID_GAME_STATE)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.VOID_GAME_STATE), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
+                else if (InMsg == PROTOCOL.NOTIFY_CHANGE_TURN)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.NOTIFY_DICE_VALUE)
+                else if (InMsg == PROTOCOL.NOTIFY_DICE_VALUE)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_DICE_VALUE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
-                else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE)
+                else if (InMsg == PROTOCOL.NOTIFY_TERRAIN_TYPE)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_TYPE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_terrainType), 0, NewDataSendBuffer, 4, 4);
@@ -237,7 +252,7 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);  // 70..? 나중에 계산하기..!
                 }
-                else if (InMsg == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
+                else if (InMsg == PROTOCOL.NOTIFY_TERRAIN_INDEXS)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
@@ -257,7 +272,7 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 80, SocketFlags.None);  // 70..? 나중에 계산하기;;
 
                 }
-                else if (InMsg == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
+                else if (InMsg == PROTOCOL.NOTIFY_EVENTCARD_INDEX)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, NewDataSendBuffer, 4, 4);
@@ -265,13 +280,13 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 // Network Exception
-                else if (InMsg == (int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
+                else if (InMsg == PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
 
-                else if (InMsg == (int)PROTOCOL.NOTIFY_GAME_READY)
+                else if (InMsg == PROTOCOL.NOTIFY_GAME_READY)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_GAME_READY), 0, NewDataSendBuffer, 0, 4);
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);

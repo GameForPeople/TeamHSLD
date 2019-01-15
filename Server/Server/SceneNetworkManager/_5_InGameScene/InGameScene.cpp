@@ -8,6 +8,7 @@
 
 SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager) 
 	: BaseScene(pInRoomData, pInUserData, pInUDPManager)
+	, CONST_ANSWER_EMOJI(Protocol::NOTIFY_EMOJI)
 {
 	//functionPointers.emplace_back(FunctionPointer(DemandGameState));
 	RecvFunctions[0] = &InGameScene::RecvGameState;
@@ -18,6 +19,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	RecvFunctions[5] = &InGameScene::RecvEventcardIndex;
 	RecvFunctions[6] = &InGameScene::RecvNetworkExecption;
 	RecvFunctions[7] = &InGameScene::RecvGameReady;
+	RecvFunctions[8] = &InGameScene::RecvEmoji;
 
 	SendFunctions[0] = &InGameScene::SendGameState;
 	SendFunctions[1] = &InGameScene::SendChangeTurn;
@@ -27,6 +29,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	SendFunctions[5] = &InGameScene::SendEventcardIndex;
 	SendFunctions[6] = &InGameScene::SendNetworkExecption;
 	SendFunctions[7] = &InGameScene::SendGameReady;
+	SendFunctions[8] = nullptr; //&InGameScene::SendEmoji;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int InRecvType, SocketInfo* pClient)
@@ -105,6 +108,20 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameReady(SocketInfo* pClient)
 	//-----------------------------------
 }
 
+/*
+	RecvImoji
+
+		- 이모지를 받았을 경우는, 프로토콜에는 영향을 주지 않고, 
+		Room내에 있는, 이모지 버퍼면 변경한다.
+
+		- 따라서 SendImoji는 DataProtocol에 의해 호출될 수 없고,
+		Send_Void_GameState일 때, 내 이모지 버퍼가 0이 아니면 직접호출함.
+*/
+void SCENE_NETWORK_MANAGER::InGameScene::RecvEmoji(SocketInfo* pClient)
+{
+	pClient->pRoomIter->SetEmoji(pClient->isHost, pClient->buf[4]);
+}
+
 // send Functions
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SocketInfo* pClient)
@@ -120,8 +137,14 @@ void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, Socke
 void SCENE_NETWORK_MANAGER::InGameScene::SendGameState(SocketInfo* pClient)
 {
 	// 이거를 최초로 받으면, 두 클라 모두 GameReady 상태가 된 것으로 판단.
-
-	pClient->dataSize = 4;
+	if (auto ifBuf = pClient->pRoomIter->GetEmoji(pClient->isHost)
+		;	ifBuf.first == true)
+	{
+		SendEmoji(pClient, ifBuf.second);
+		pClient->dataSize = 5;
+	}
+	else
+		pClient->dataSize = 4;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendChangeTurn(SocketInfo* pClient)
@@ -196,4 +219,16 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendGameReady(SocketInfo* pClient)
 {
 	// 이거 받으면, 507이니, 상대방이 아직 GameReady 상태가 안됨.
 	pClient->dataSize = 4;
+}
+
+/*
+	SendEmoji
+
+	- SendImoji는 DataProtocol에 의해 호출될 수 없고,
+		Send_Void_GameState일 때, 내 이모지 버퍼가 0이 아니면 직접호출함.
+*/
+void SCENE_NETWORK_MANAGER::InGameScene::SendEmoji(SocketInfo* pClient, const BYTE InByte)
+{
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_EMOJI), sizeof(int));
+	pClient->buf[4] = InByte;
 }
