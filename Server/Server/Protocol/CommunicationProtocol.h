@@ -116,7 +116,9 @@ enum Protocol {
 	DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트 네트워크 예외에 대한 처리 요청 (roomProtocol 및 클라에서 적용) - (Server to client)
 	DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT = 506, // 상대편 클라이언트가 나갔음을 인지하고, 해당 처리를 요청함. (Client to Server)
 	
-	NOTIFY_GAME_READY = 507	// 이거 주고 받으면 꼴토롱됨.
+	NOTIFY_GAME_READY = 507,	// 이거 주고 받으면 꼴토롱됨. ? 근데 왜 있지 이거 기억이 안나네;;
+
+	NOTIFY_EMOJI = 508	// 이모티콘 // 이모지 관련입니다.
 };
 
 enum class SCENE_NAME {

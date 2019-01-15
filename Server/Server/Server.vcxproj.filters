@@ -52,7 +52,7 @@
     <Filter Include="소스 파일\Custom_DataStructure">
       <UniqueIdentifier>{da7c2158-d742-4d96-9af1-2b9958f29b22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Item">
+    <Filter Include="소스 파일\ContentManager">
       <UniqueIdentifier>{817989f2-efc7-41c0-93ba-0b5ba09e62de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -167,8 +167,14 @@
     <ClInclude Include="Custom_DataStructure\Custom_Node_List.h">
       <Filter>소스 파일\Custom_DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="Item\Item.h">
-      <Filter>소스 파일\Item</Filter>
+    <ClInclude Include="ContentManager\ItemManager.h">
+      <Filter>소스 파일\ContentManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentManager\CharacterManager.h">
+      <Filter>소스 파일\ContentManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentManager\AchievementManager.h">
+      <Filter>소스 파일\ContentManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

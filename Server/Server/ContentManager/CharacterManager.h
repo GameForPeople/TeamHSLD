@@ -47,5 +47,5 @@ public:
 	~CharacterManager() = default;
 public:
 	_NODISCARD __inline constexpr int GetCharacterCount() const noexcept { return characterCount; }
-	_NODISCARD __inline constexpr int GetCharacterPriceWithIndex(const int InIndex) const noexcept { return characterPriceCont[InIndex]; };
+	_NODISCARD __inline int GetCharacterPriceWithIndex(const int InIndex) const noexcept { return characterPriceCont[InIndex]; };
 };
