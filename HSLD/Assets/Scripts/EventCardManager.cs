@@ -21,7 +21,7 @@ public class EventCardManager : MonoBehaviour
 
     public void EventCardInstate()
     {
-        pickedCard = eventCardInfoSet[Random.Range(2, 3)];
+        pickedCard = eventCardInfoSet[Random.Range(0, 6)];
         eventCard.SetActive(true);
 
         cardName.text = pickedCard.cardName;
