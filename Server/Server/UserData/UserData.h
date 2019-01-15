@@ -1,15 +1,17 @@
 #pragma once
 
 #include "../PCH/stdafx.h"
-#include "../Item/Item.h"
+#include "../ContentManager/ItemManager.h"
+#include "../ContentManager/CharacterManager.h"
 
 struct SocketInfo;
 
 class UserData {
 	//	static!
 public:
-	static unique_ptr<ItemManager>	itemManager;			//Init in UserDataManager constructor
-
+	static const string					VIP_CODE;
+	static unique_ptr<ItemManager>		itemManager;		//Init in UserData.cpp
+	static unique_ptr<CharacterManager>	characterManager;	//Init in UserData.cpp
 private:
 	SocketInfo*						pSocketInfo;			// 소켓 정보 구조체
 
@@ -142,7 +144,7 @@ public:
 			// friend는 출력하기 않습니다. -> 사실 귀찮습니다.
 	}
 
-	_NODISCARD __inline SocketInfo* GetSocketInfo() const noexcept { return pSocketInfo; }
+	_NODISCARD __inline constexpr SocketInfo* GetSocketInfo() const noexcept { return pSocketInfo; }
 	_NODISCARD __inline Type_ID&	GetID()  /*const*/ noexcept { return id; }
 	_NODISCARD __inline Type_Nickname& GetNickname()   /*const*/ noexcept { return nickname; }
 	_NODISCARD __inline int	GetWinCount()  const noexcept { return winCount; }
@@ -152,8 +154,8 @@ public:
 	_NODISCARD __inline int	GetItemBit()  const noexcept { return itemBit; }
 	_NODISCARD __inline int	GetCharacterBit()  const noexcept { return characterBit; }
 	_NODISCARD __inline vector<Type_Nickname>& GetFriendNicknameCont() /*const*/ noexcept { return friendNicknameCont; }
-	_NODISCARD __inline Type_Nickname& GetFriendNicknameWithIndex(const int& InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
-	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int& InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
+	_NODISCARD __inline Type_Nickname& GetFriendNicknameWithIndex(const int InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
+	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
 	
@@ -162,7 +164,6 @@ public:
 	//	if (value == 1) { winCount++; }
 	//	else if (value == 2) { loseCount++; }
 	//}
-
 	// True일 경우 승리, False일 경우 패배.
 	__inline void	SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
 	__inline void   SetNickname(const Type_Nickname& InNickname)	noexcept { nickname = InNickname; }
@@ -185,38 +186,11 @@ public:
 		demandFriendContIndex = -1;
 	}
 
-	/*
-		BuyItem
+public:
+	_NODISCARD int BuyItem(const int InItemIndex);
+	_NODISCARD int BuyCharacter(const int InCharacterIndex);
 
-		인자값 : enum ITEM_INDEX
-		반환값 : -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 아이템이여서 실패, 2면 이상한값인데? 실패.
-	*/
-	_NODISCARD int BuyItem(const int InItemIndex)
-	{
-		if (InItemIndex > itemManager->GetItemCount())
-		{
-			// 그런 아이템 안팔아요.
-			return 2;
-		}
-
-		if ((itemBit & InItemIndex) == InItemIndex)
-		{
-			// 이미 구매한 아이템.
-			return 1;
-		}
-
-		if (int itemPrice = itemManager->GetItemPriceWithIndex(InItemIndex)
-			; money >= itemPrice)
-		{
-			money -= itemPrice;
-			itemBit |= InItemIndex;
-
-			return -1;
-		}
-
-		// 돈 없나벼.
-		return 0;
-	}
+	_NODISCARD int VipCodeProcess(const string& InInputtedString);
 };
 
 

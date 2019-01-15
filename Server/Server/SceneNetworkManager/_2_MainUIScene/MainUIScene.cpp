@@ -12,6 +12,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene(GameRoomManager* pInRoomData, Us
 	, NOTIFY_MAKE_FRIEND_INFO(Protocol::NOTIFY_MAKE_FRIEND_INFO)
 	, CHECK_ANSWER_MAKE_FRIEND(Protocol::CHECK_ANSWER_MAKE_FRIEND)
 	, CONST_ANSWER_BUY_ITEM(Protocol::ANSWER_BUY_ITEM)
+	, CONST_ANSWER_VIP_CODE(Protocol::ANSWER_VIP_CODE)
 	, CONST_TRUE(1), CONST_FALSE(0), CONST_2(2), CONST_3(3)
 {}
 
@@ -33,6 +34,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 		_AnswerMakeFriendProcess(pClient);
 	else if (InRecvType == DEMAND_BUY_ITEM)
 		_BuyItemProcess(pClient);
+	else if (InRecvType == DEMAND_VIP_CODE)
+		_VipCodeProcess(pClient);
 }
 
 /*
@@ -513,4 +516,26 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_BuyItemProcess(SocketInfo* pClient)
 	memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&iBuffer), sizeof(int));
 
 	pClient->dataSize = 12;
+}
+
+/*
+	_VipCodeProcess
+		- 클라이언트에서 받은 vipCode를 확인하여, vipCode 처리를 하고, 필요시, 아이템을 지급합니다.
+*/
+void SCENE_NETWORK_MANAGER::MainUiScene::_VipCodeProcess(SocketInfo* pClient)
+{
+	const int stringMemoryLength = reinterpret_cast<int&>(pClient->buf[4]);	
+
+	wstring wideStrBuffer(stringMemoryLength / 2, 0);
+	memcpy(&wideStrBuffer[0], pClient->buf + 8, stringMemoryLength);
+	std::wcout << L"요청한 VIP CODE는 ~ 입니다. : " << wideStrBuffer << std::endl;
+
+	const int typeBuffer = pClient->pUserNode->VipCodeProcess(CONVERT_UTIL::WStringToString(wideStrBuffer));
+
+	std::cout << "vip code 여부 : " << typeBuffer << std::endl;
+
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_VIP_CODE), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&typeBuffer), sizeof(int));
+
+	pClient->dataSize = 8;
 }

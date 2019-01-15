@@ -64,6 +64,10 @@ enum Protocol {
 	DEMAND_BUY_ITEM	=	215,		// 아이템 인덱스 날라옴.
 	ANSWER_BUY_ITEM =	216,		// 샀으면 트루, 못샀으면 False날라옴.
 
+		// for MainUiScene -- VipCode
+	DEMAND_VIP_CODE =	217,		// 님 이거 VIP Code 맞아요?
+	ANSWER_VIP_CODE =	218,		// 맞네 틀리네~
+
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)

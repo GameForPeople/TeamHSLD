@@ -34,6 +34,6 @@ public:
 	};
 	~ItemManager() = default;
 public:
-	__inline int GetItemCount() const noexcept { return itemCount; }
-	__inline int GetItemPriceWithIndex(const int InIndex) const noexcept { return itemPriceCont[InIndex]; };
+	_NODISCARD __inline constexpr int GetItemCount() const noexcept { return itemCount; }
+	_NODISCARD __inline constexpr int GetItemPriceWithIndex(const int InIndex) const noexcept { return itemPriceCont[InIndex]; };
 };
