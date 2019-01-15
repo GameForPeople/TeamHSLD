@@ -31,6 +31,7 @@ public class TurnSystem : MonoBehaviour
     public float rollingDiceTime = 10;
     public float setTerrainOnPlanet = 50;
     public float pickingEventCardTime = 5;
+    public float pickingEventCardLocTime = 15;
 
     private float warningTime;
     public GameObject warningPanel;
@@ -158,11 +159,6 @@ public class TurnSystem : MonoBehaviour
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     public void TurnSet()
     {
-        if (SoundManager.instance_ != null)
-            SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[0], 0.5f);
-
-        Debug.Log(currentTurn);
-
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
@@ -230,10 +226,17 @@ public class TurnSystem : MonoBehaviour
             if(enemyEventCardDefense)
             {
                 //이벤트 카드를 막고난 이후의 연출 ?
-
             }
-
         }
+
+        else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC))
+        {
+            gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+            displayTurnTimerTxt.text = (pickingEventCardLocTime - currentEnemyTurnTimer).ToString();
+            beforeFlow = FLOW.ENEMYTURN_PICKINGEVENTCARDLOC;
+            enemyCoroutine = StartCoroutine(EnemyTurnCounting());
+        }
+
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.DISPLAYANIMATION_WAITING))
         {
             beforeFlow = FLOW.DISPLAYANIMATION_WAITING;
@@ -355,6 +358,16 @@ public class TurnSystem : MonoBehaviour
                 gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
                 beforeFlow = FLOW.TO_PICKEVENTCARD;
                 displayTurnTimerTxt.text = (pickingEventCardTime - currentMyTurnTimer).ToString();
+            }
+            else if(gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGEVENTCARDLOC))
+            {
+                warningTime = pickingEventCardLocTime - 3;
+                if (currentMyTurnTimer >= pickingEventCardLocTime)
+                    gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+
+                gameObject.GetComponent<FlowSystem>().turnTimerImg.SetActive(true);
+                beforeFlow = FLOW.TO_PICKINGEVENTCARDLOC;
+                displayTurnTimerTxt.text = (pickingEventCardLocTime - currentMyTurnTimer).ToString();
             }
 
             if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_ROLLINGDICE))

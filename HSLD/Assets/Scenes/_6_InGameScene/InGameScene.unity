@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -233,6 +233,7 @@ MonoBehaviour:
   - {fileID: 1618581648}
   - {fileID: 308354441}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &5238884 stripped
@@ -280,6 +281,7 @@ MonoBehaviour:
   - {fileID: 1341906189}
   - {fileID: 1804820475}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &17053615 stripped
@@ -327,6 +329,7 @@ MonoBehaviour:
   - {fileID: 54068526}
   - {fileID: 1341906189}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &29789798 stripped
@@ -374,6 +377,7 @@ MonoBehaviour:
   - {fileID: 98057181}
   - {fileID: 940027214}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &31305738 stripped
@@ -421,6 +425,7 @@ MonoBehaviour:
   - {fileID: 976986711}
   - {fileID: 2008778987}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &35264477 stripped
@@ -468,6 +473,7 @@ MonoBehaviour:
   - {fileID: 1417611858}
   - {fileID: 1154691102}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &38060710 stripped
@@ -515,6 +521,7 @@ MonoBehaviour:
   - {fileID: 78281895}
   - {fileID: 864600778}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &50010879
@@ -637,6 +644,7 @@ MonoBehaviour:
   - {fileID: 237075393}
   - {fileID: 17053615}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &54276500 stripped
@@ -684,6 +692,7 @@ MonoBehaviour:
   - {fileID: 676650459}
   - {fileID: 1261314925}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &68865990 stripped
@@ -731,6 +740,7 @@ MonoBehaviour:
   - {fileID: 1717299218}
   - {fileID: 710214495}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &69651916 stripped
@@ -778,6 +788,7 @@ MonoBehaviour:
   - {fileID: 1263336280}
   - {fileID: 521397301}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &78281895 stripped
@@ -825,6 +836,7 @@ MonoBehaviour:
   - {fileID: 321731969}
   - {fileID: 38060710}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &80989887 stripped
@@ -872,6 +884,7 @@ MonoBehaviour:
   - {fileID: 552896767}
   - {fileID: 212851319}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &81462916 stripped
@@ -919,6 +932,7 @@ MonoBehaviour:
   - {fileID: 401093704}
   - {fileID: 912114743}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &82822055 stripped
@@ -966,6 +980,7 @@ MonoBehaviour:
   - {fileID: 401093704}
   - {fileID: 2045645539}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &83329541
@@ -1114,6 +1129,7 @@ MonoBehaviour:
   - {fileID: 1931759691}
   - {fileID: 229308353}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &92151563
@@ -1346,6 +1362,7 @@ MonoBehaviour:
   - {fileID: 1341906189}
   - {fileID: 29789798}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &105075119
@@ -1537,6 +1554,7 @@ MonoBehaviour:
   - {fileID: 1454669962}
   - {fileID: 171084210}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &113498411
@@ -1706,6 +1724,7 @@ MonoBehaviour:
   - {fileID: 82822055}
   - {fileID: 2121401002}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &119588798 stripped
@@ -1753,6 +1772,7 @@ MonoBehaviour:
   - {fileID: 1288132296}
   - {fileID: 400803864}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &123702559
@@ -1869,6 +1889,7 @@ MonoBehaviour:
   - {fileID: 1666188838}
   - {fileID: 442304538}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &131071464 stripped
@@ -1916,6 +1937,7 @@ MonoBehaviour:
   - {fileID: 1483358713}
   - {fileID: 80989887}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &136879311 stripped
@@ -1963,6 +1985,7 @@ MonoBehaviour:
   - {fileID: 820614603}
   - {fileID: 857221682}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &141128050 stripped
@@ -2010,6 +2033,7 @@ MonoBehaviour:
   - {fileID: 517522759}
   - {fileID: 1097889542}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &143664514 stripped
@@ -2057,6 +2081,7 @@ MonoBehaviour:
   - {fileID: 1479212787}
   - {fileID: 1932610389}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &151276141 stripped
@@ -2104,6 +2129,7 @@ MonoBehaviour:
   - {fileID: 1290884983}
   - {fileID: 237075393}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &153429358 stripped
@@ -2151,6 +2177,7 @@ MonoBehaviour:
   - {fileID: 1288132296}
   - {fileID: 1263336280}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &154895502 stripped
@@ -2198,6 +2225,7 @@ MonoBehaviour:
   - {fileID: 225109579}
   - {fileID: 393552564}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &161344818
@@ -2314,6 +2342,7 @@ MonoBehaviour:
   - {fileID: 241331999}
   - {fileID: 562826426}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &168106307 stripped
@@ -2361,6 +2390,7 @@ MonoBehaviour:
   - {fileID: 765737525}
   - {fileID: 801686902}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &170091625 stripped
@@ -2408,6 +2438,7 @@ MonoBehaviour:
   - {fileID: 2059590419}
   - {fileID: 554599682}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &171084210 stripped
@@ -2455,6 +2486,7 @@ MonoBehaviour:
   - {fileID: 108271741}
   - {fileID: 377410625}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &177965627 stripped
@@ -2502,6 +2534,7 @@ MonoBehaviour:
   - {fileID: 1048219039}
   - {fileID: 1186906118}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &180195419 stripped
@@ -2549,6 +2582,7 @@ MonoBehaviour:
   - {fileID: 2059590419}
   - {fileID: 1666188838}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &183157152 stripped
@@ -2596,6 +2630,7 @@ MonoBehaviour:
   - {fileID: 1239070744}
   - {fileID: 820614603}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &184317044 stripped
@@ -2643,6 +2678,7 @@ MonoBehaviour:
   - {fileID: 705472189}
   - {fileID: 1042028599}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &193711801 stripped
@@ -2690,6 +2726,7 @@ MonoBehaviour:
   - {fileID: 1445801239}
   - {fileID: 1840761793}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &201099082 stripped
@@ -2737,6 +2774,7 @@ MonoBehaviour:
   - {fileID: 1759653697}
   - {fileID: 911726643}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &202679552
@@ -2868,6 +2906,7 @@ MonoBehaviour:
   - {fileID: 1393643889}
   - {fileID: 710214495}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &209742190 stripped
@@ -2915,6 +2954,7 @@ MonoBehaviour:
   - {fileID: 909569341}
   - {fileID: 639710108}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &212851319 stripped
@@ -2962,6 +3002,7 @@ MonoBehaviour:
   - {fileID: 1215777087}
   - {fileID: 1581329931}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &224623750 stripped
@@ -3009,6 +3050,7 @@ MonoBehaviour:
   - {fileID: 1022145317}
   - {fileID: 1927571657}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &225109579 stripped
@@ -3056,6 +3098,7 @@ MonoBehaviour:
   - {fileID: 996155335}
   - {fileID: 154895502}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &229308353 stripped
@@ -3103,6 +3146,7 @@ MonoBehaviour:
   - {fileID: 1392800020}
   - {fileID: 85295933}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &231310371
@@ -3225,6 +3269,7 @@ MonoBehaviour:
   - {fileID: 1932610389}
   - {fileID: 54068526}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &237976455
@@ -3341,6 +3386,7 @@ MonoBehaviour:
   - {fileID: 448909662}
   - {fileID: 163169701}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &244988251
@@ -3374,7 +3420,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.678}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -4.49}
   m_SizeDelta: {x: 0, y: 1.02}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3457,6 +3503,7 @@ MonoBehaviour:
   - {fileID: 1809212946}
   - {fileID: 407687209}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &247661245
@@ -3609,6 +3656,7 @@ MonoBehaviour:
   - {fileID: 1218839681}
   - {fileID: 143664514}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &269784875 stripped
@@ -3656,6 +3704,7 @@ MonoBehaviour:
   - {fileID: 2059590419}
   - {fileID: 1378642440}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &274445792
@@ -3772,6 +3821,7 @@ MonoBehaviour:
   - {fileID: 1069206627}
   - {fileID: 914525503}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &305919173 stripped
@@ -3819,6 +3869,7 @@ MonoBehaviour:
   - {fileID: 1589159573}
   - {fileID: 262676126}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &308354441 stripped
@@ -3866,6 +3917,7 @@ MonoBehaviour:
   - {fileID: 3175447}
   - {fileID: 1451947889}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &310438292 stripped
@@ -3913,6 +3965,7 @@ MonoBehaviour:
   - {fileID: 1656699970}
   - {fileID: 770755763}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &318329054
@@ -4173,6 +4226,7 @@ MonoBehaviour:
   - {fileID: 78281895}
   - {fileID: 1897195109}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &326723863 stripped
@@ -4220,6 +4274,7 @@ MonoBehaviour:
   - {fileID: 1445464223}
   - {fileID: 408417171}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &334954668 stripped
@@ -4267,6 +4322,7 @@ MonoBehaviour:
   - {fileID: 1682309906}
   - {fileID: 744774717}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &336637860 stripped
@@ -4314,6 +4370,7 @@ MonoBehaviour:
   - {fileID: 1618581648}
   - {fileID: 1897195109}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &339052602 stripped
@@ -4361,6 +4418,7 @@ MonoBehaviour:
   - {fileID: 1675717126}
   - {fileID: 1649489986}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &369500355 stripped
@@ -4408,6 +4466,7 @@ MonoBehaviour:
   - {fileID: 1865527400}
   - {fileID: 1987983262}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &370807055 stripped
@@ -4455,6 +4514,7 @@ MonoBehaviour:
   - {fileID: 517522759}
   - {fileID: 883914049}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &374445970
@@ -4718,6 +4778,7 @@ MonoBehaviour:
   - {fileID: 1335827416}
   - {fileID: 171084210}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &377995504
@@ -4978,6 +5039,7 @@ MonoBehaviour:
   - {fileID: 1204631829}
   - {fileID: 700057829}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &389602587
@@ -5100,6 +5162,7 @@ MonoBehaviour:
   - {fileID: 1724664729}
   - {fileID: 1417611858}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &400803864 stripped
@@ -5147,6 +5210,7 @@ MonoBehaviour:
   - {fileID: 119588798}
   - {fileID: 960246270}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &401093704 stripped
@@ -5194,6 +5258,7 @@ MonoBehaviour:
   - {fileID: 82822055}
   - {fileID: 81462916}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &402824842 stripped
@@ -5241,6 +5306,7 @@ MonoBehaviour:
   - {fileID: 1456686515}
   - {fileID: 1342977608}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &407687209 stripped
@@ -5288,6 +5354,7 @@ MonoBehaviour:
   - {fileID: 2135420763}
   - {fileID: 1298144830}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &408417171 stripped
@@ -5335,6 +5402,7 @@ MonoBehaviour:
   - {fileID: 1434057303}
   - {fileID: 326723863}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &417514189 stripped
@@ -5382,6 +5450,7 @@ MonoBehaviour:
   - {fileID: 1865527400}
   - {fileID: 912114743}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &418698308 stripped
@@ -5429,6 +5498,7 @@ MonoBehaviour:
   - {fileID: 2122743421}
   - {fileID: 1175704379}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &441066154 stripped
@@ -5476,6 +5546,7 @@ MonoBehaviour:
   - {fileID: 1976316790}
   - {fileID: 2114854827}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &442304538 stripped
@@ -5523,6 +5594,7 @@ MonoBehaviour:
   - {fileID: 130673201}
   - {fileID: 1689437357}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &445073188
@@ -5655,6 +5727,7 @@ MonoBehaviour:
   - {fileID: 1288132296}
   - {fileID: 241331999}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &451282576 stripped
@@ -5702,6 +5775,7 @@ MonoBehaviour:
   - {fileID: 866923194}
   - {fileID: 883914049}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &453035472 stripped
@@ -5749,6 +5823,7 @@ MonoBehaviour:
   - {fileID: 744774717}
   - {fileID: 1953178002}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &455685414 stripped
@@ -5796,6 +5871,7 @@ MonoBehaviour:
   - {fileID: 177965627}
   - {fileID: 1479212787}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &469612648 stripped
@@ -5843,6 +5919,7 @@ MonoBehaviour:
   - {fileID: 1503486730}
   - {fileID: 1953921687}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &482001743 stripped
@@ -5890,6 +5967,7 @@ MonoBehaviour:
   - {fileID: 2045645539}
   - {fileID: 636920731}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &485024293 stripped
@@ -5937,6 +6015,7 @@ MonoBehaviour:
   - {fileID: 1682309906}
   - {fileID: 990093047}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &490978572 stripped
@@ -5984,6 +6063,7 @@ MonoBehaviour:
   - {fileID: 1584743552}
   - {fileID: 876933951}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &506604121
@@ -6145,6 +6225,7 @@ MonoBehaviour:
   - {fileID: 2028252334}
   - {fileID: 1494492458}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &512752836
@@ -6261,6 +6342,7 @@ MonoBehaviour:
   - {fileID: 1242337981}
   - {fileID: 1186906118}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &517522759 stripped
@@ -6308,6 +6390,7 @@ MonoBehaviour:
   - {fileID: 141128050}
   - {fileID: 370807055}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &521397301 stripped
@@ -6355,6 +6438,7 @@ MonoBehaviour:
   - {fileID: 1451947889}
   - {fileID: 1335827416}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &523081367 stripped
@@ -6402,6 +6486,7 @@ MonoBehaviour:
   - {fileID: 524108108}
   - {fileID: 1407792010}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &524108108 stripped
@@ -6449,6 +6534,7 @@ MonoBehaviour:
   - {fileID: 523081367}
   - {fileID: 1565404600}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &528286862 stripped
@@ -6496,8 +6582,131 @@ MonoBehaviour:
   - {fileID: 819413570}
   - {fileID: 539841174}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &528405819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528405820}
+  - component: {fileID: 528405823}
+  - component: {fileID: 528405822}
+  - component: {fileID: 528405821}
+  m_Layer: 5
+  m_Name: Button (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &528405820
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528405819}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390485218}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 145, y: -43}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &528405821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528405819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 528405822}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823012266}
+        m_MethodName: SelectTerrain
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &528405822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528405819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300006, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &528405823
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528405819}
+  m_CullTransparentMesh: 0
 --- !u!1 &529892250
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,6 +6874,7 @@ MonoBehaviour:
   - {fileID: 1691402369}
   - {fileID: 883914049}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &539841174 stripped
@@ -6712,6 +6922,7 @@ MonoBehaviour:
   - {fileID: 448909662}
   - {fileID: 528286862}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &540423455
@@ -6908,6 +7119,7 @@ MonoBehaviour:
   - {fileID: 1298144830}
   - {fileID: 1809212946}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &552896767 stripped
@@ -6955,6 +7167,7 @@ MonoBehaviour:
   - {fileID: 1158831593}
   - {fileID: 80989887}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &554599682 stripped
@@ -7002,6 +7215,7 @@ MonoBehaviour:
   - {fileID: 170091625}
   - {fileID: 601488987}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &561857701
@@ -7172,6 +7386,7 @@ MonoBehaviour:
   - {fileID: 1292857123}
   - {fileID: 1833062141}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &564520935 stripped
@@ -7219,6 +7434,7 @@ MonoBehaviour:
   - {fileID: 2122743421}
   - {fileID: 815214205}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &566916473 stripped
@@ -7266,6 +7482,7 @@ MonoBehaviour:
   - {fileID: 1940715308}
   - {fileID: 631769067}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &577297393 stripped
@@ -7313,6 +7530,7 @@ MonoBehaviour:
   - {fileID: 1233286846}
   - {fileID: 1281981034}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &579928386 stripped
@@ -7360,6 +7578,7 @@ MonoBehaviour:
   - {fileID: 1278295456}
   - {fileID: 1804755840}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &580781577 stripped
@@ -7407,6 +7626,7 @@ MonoBehaviour:
   - {fileID: 876933951}
   - {fileID: 453035472}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &589364665 stripped
@@ -7454,6 +7674,7 @@ MonoBehaviour:
   - {fileID: 482001743}
   - {fileID: 759865688}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &594004686
@@ -7576,6 +7797,7 @@ MonoBehaviour:
   - {fileID: 1452564279}
   - {fileID: 2088653622}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &601488987 stripped
@@ -7623,6 +7845,7 @@ MonoBehaviour:
   - {fileID: 1378642440}
   - {fileID: 1042028599}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &622994259 stripped
@@ -7670,6 +7893,7 @@ MonoBehaviour:
   - {fileID: 1410575699}
   - {fileID: 1842956326}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &631769067 stripped
@@ -7717,6 +7941,7 @@ MonoBehaviour:
   - {fileID: 770755763}
   - {fileID: 566916473}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &636210707
@@ -7808,7 +8033,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 823012266}
           m_MethodName: UseCard
-          m_Mode: 3
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7865,6 +8090,7 @@ MonoBehaviour:
   - {fileID: 1927571657}
   - {fileID: 482001743}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &637065895 stripped
@@ -7912,6 +8138,7 @@ MonoBehaviour:
   - {fileID: 909569341}
   - {fileID: 1589159573}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &639710108 stripped
@@ -7959,8 +8186,55 @@ MonoBehaviour:
   - {fileID: 305919173}
   - {fileID: 2095191245}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1001 &661211915
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 79.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813081981521384, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056014176312138, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &668090650
 GameObject:
   m_ObjectHideFlags: 0
@@ -8177,6 +8451,7 @@ MonoBehaviour:
   - {fileID: 1176474312}
   - {fileID: 2133652124}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &680473342
@@ -8299,6 +8574,7 @@ MonoBehaviour:
   - {fileID: 1003098075}
   - {fileID: 1922279662}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &700057829 stripped
@@ -8346,6 +8622,7 @@ MonoBehaviour:
   - {fileID: 1175704379}
   - {fileID: 389245239}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &705472189 stripped
@@ -8393,6 +8670,7 @@ MonoBehaviour:
   - {fileID: 1129775041}
   - {fileID: 184317044}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &710214495 stripped
@@ -8440,6 +8718,7 @@ MonoBehaviour:
   - {fileID: 68865990}
   - {fileID: 1518446044}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &714531778 stripped
@@ -8487,6 +8766,7 @@ MonoBehaviour:
   - {fileID: 539841174}
   - {fileID: 1597660255}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &719286450
@@ -8574,6 +8854,128 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6689d1c3e6fa38c40bedab9ec0c0b947, type: 2}
+--- !u!1 &723846564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 723846565}
+  - component: {fileID: 723846568}
+  - component: {fileID: 723846567}
+  - component: {fileID: 723846566}
+  m_Layer: 5
+  m_Name: Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &723846565
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723846564}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390485218}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -9, y: -43}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &723846566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723846564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 723846567}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823012266}
+        m_MethodName: SelectTerrain
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &723846567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723846564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300002, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &723846568
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 723846564}
+  m_CullTransparentMesh: 0
 --- !u!1 &736565919 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100434, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -8619,6 +9021,7 @@ MonoBehaviour:
   - {fileID: 1218839681}
   - {fileID: 5238884}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &741830028
@@ -8885,6 +9288,7 @@ MonoBehaviour:
   - {fileID: 453035472}
   - {fileID: 334954668}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &753988995 stripped
@@ -8932,6 +9336,7 @@ MonoBehaviour:
   - {fileID: 1989463809}
   - {fileID: 1080994616}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &759865688 stripped
@@ -8979,6 +9384,7 @@ MonoBehaviour:
   - {fileID: 1176474312}
   - {fileID: 589364665}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &765737525 stripped
@@ -9026,6 +9432,7 @@ MonoBehaviour:
   - {fileID: 965007035}
   - {fileID: 1479212787}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &765903032 stripped
@@ -9073,6 +9480,7 @@ MonoBehaviour:
   - {fileID: 1454669962}
   - {fileID: 1046382994}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &770755763 stripped
@@ -9120,6 +9528,7 @@ MonoBehaviour:
   - {fileID: 310438292}
   - {fileID: 976986711}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &772966611
@@ -9242,6 +9651,7 @@ MonoBehaviour:
   - {fileID: 1415961201}
   - {fileID: 1548505194}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &784154797 stripped
@@ -9289,6 +9699,7 @@ MonoBehaviour:
   - {fileID: 965007035}
   - {fileID: 1314629576}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &801686902 stripped
@@ -9336,6 +9747,7 @@ MonoBehaviour:
   - {fileID: 1314629576}
   - {fileID: 225109579}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &806044292
@@ -9451,6 +9863,7 @@ MonoBehaviour:
   - {fileID: 996261728}
   - {fileID: 990876920}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &815214205 stripped
@@ -9498,6 +9911,7 @@ MonoBehaviour:
   - {fileID: 1216192729}
   - {fileID: 564520935}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &819413570 stripped
@@ -9545,6 +9959,7 @@ MonoBehaviour:
   - {fileID: 528286862}
   - {fileID: 1865527400}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &820614603 stripped
@@ -9592,6 +10007,7 @@ MonoBehaviour:
   - {fileID: 136879311}
   - {fileID: 1989463809}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &823012255
@@ -9651,6 +10067,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1149021772}
+  - {fileID: 1186243439}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9669,7 +10086,7 @@ MonoBehaviour:
   mainTxt: {fileID: 107147629}
   timerTxt: {fileID: 50010881}
   turnSet: {fileID: 806044292}
-  dice: {fileID: 0}
+  dice: {fileID: 2039015322}
   currentTurn: 0
   matchingCompleteTime: 3
   selectOrderTime: 5
@@ -9677,6 +10094,7 @@ MonoBehaviour:
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
+  pickingEventCardLocTime: 15
   warningPanel: {fileID: 1362228162}
 --- !u!114 &823012259
 MonoBehaviour:
@@ -9829,6 +10247,134 @@ MonoBehaviour:
   eventCard: {fileID: 1475747913}
   cardName: {fileID: 680473344}
   cardImg: {fileID: 105075121}
+  selectTerrainCardObj: {fileID: 1390485217}
+--- !u!1 &849838910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1205360630499410, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 849838911}
+  - component: {fileID: 849838912}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &849838911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4623692675410972, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849838910}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186243439}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &849838912
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 82878827906136010, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849838910}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &857221682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100610, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -9874,6 +10420,7 @@ MonoBehaviour:
   - {fileID: 136879311}
   - {fileID: 1080994616}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &864161486 stripped
@@ -9921,6 +10468,7 @@ MonoBehaviour:
   - {fileID: 1099322961}
   - {fileID: 1842956326}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &864600778 stripped
@@ -9968,6 +10516,7 @@ MonoBehaviour:
   - {fileID: 1451947889}
   - {fileID: 1934944938}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &866923194 stripped
@@ -10015,6 +10564,7 @@ MonoBehaviour:
   - {fileID: 1653531691}
   - {fileID: 1840761793}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &871229243 stripped
@@ -10062,6 +10612,7 @@ MonoBehaviour:
   - {fileID: 1612747182}
   - {fileID: 1239070744}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &876933951 stripped
@@ -10109,6 +10660,7 @@ MonoBehaviour:
   - {fileID: 1999727450}
   - {fileID: 490978572}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &883398229 stripped
@@ -10156,6 +10708,7 @@ MonoBehaviour:
   - {fileID: 1393643889}
   - {fileID: 1689437357}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &883914049 stripped
@@ -10203,6 +10756,7 @@ MonoBehaviour:
   - {fileID: 370807055}
   - {fileID: 451282576}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &893787805 stripped
@@ -10250,6 +10804,7 @@ MonoBehaviour:
   - {fileID: 1434980117}
   - {fileID: 209742190}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &904318239 stripped
@@ -10297,8 +10852,136 @@ MonoBehaviour:
   - {fileID: 1392800020}
   - {fileID: 1503486730}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &905165333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1437529488536896, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905165334}
+  - component: {fileID: 905165335}
+  m_Layer: 0
+  m_Name: BGM_Sub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905165334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4775887320359684, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905165333}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186243439}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &905165335
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 82174442201123050, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905165333}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &909569341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100150, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -10344,6 +11027,7 @@ MonoBehaviour:
   - {fileID: 1675717126}
   - {fileID: 209742190}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &911726643 stripped
@@ -10391,6 +11075,7 @@ MonoBehaviour:
   - {fileID: 714531778}
   - {fileID: 201099082}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &912114743 stripped
@@ -10438,6 +11123,7 @@ MonoBehaviour:
   - {fileID: 81462916}
   - {fileID: 417514189}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &914525503 stripped
@@ -10485,6 +11171,7 @@ MonoBehaviour:
   - {fileID: 1430233578}
   - {fileID: 1389247442}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &914654594 stripped
@@ -10532,6 +11219,7 @@ MonoBehaviour:
   - {fileID: 1649489986}
   - {fileID: 1048219039}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &940027214 stripped
@@ -10579,6 +11267,7 @@ MonoBehaviour:
   - {fileID: 451282576}
   - {fileID: 29789798}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &949536575
@@ -10707,6 +11396,7 @@ MonoBehaviour:
   - {fileID: 1241291164}
   - {fileID: 308354441}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &965007035 stripped
@@ -10754,6 +11444,7 @@ MonoBehaviour:
   - {fileID: 1417626605}
   - {fileID: 784154797}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &976986711 stripped
@@ -10801,6 +11492,7 @@ MonoBehaviour:
   - {fileID: 31305738}
   - {fileID: 1953921687}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &985856290
@@ -11003,6 +11695,7 @@ MonoBehaviour:
   - {fileID: 485024293}
   - {fileID: 1154691102}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &990876920 stripped
@@ -11050,6 +11743,7 @@ MonoBehaviour:
   - {fileID: 1213065812}
   - {fileID: 814200909}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &996155335 stripped
@@ -11097,6 +11791,7 @@ MonoBehaviour:
   - {fileID: 513719430}
   - {fileID: 225109579}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &996261728 stripped
@@ -11144,6 +11839,7 @@ MonoBehaviour:
   - {fileID: 814200909}
   - {fileID: 1804755840}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &999083812 stripped
@@ -11191,6 +11887,7 @@ MonoBehaviour:
   - {fileID: 1142711213}
   - {fileID: 524108108}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1001726854
@@ -11272,6 +11969,7 @@ MonoBehaviour:
   - {fileID: 693976558}
   - {fileID: 1069206627}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1005423420
@@ -11458,6 +12156,7 @@ MonoBehaviour:
   - {fileID: 1918495570}
   - {fileID: 1396172116}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1011064339
@@ -11627,6 +12326,7 @@ MonoBehaviour:
   - {fileID: 1389247442}
   - {fileID: 552896767}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1017469028 stripped
@@ -11674,6 +12374,7 @@ MonoBehaviour:
   - {fileID: 1042028599}
   - {fileID: 1371651135}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1018967460
@@ -11796,6 +12497,7 @@ MonoBehaviour:
   - {fileID: 1048219039}
   - {fileID: 224623750}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1023298873 stripped
@@ -11843,6 +12545,7 @@ MonoBehaviour:
   - {fileID: 551994290}
   - {fileID: 1499730604}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1029591818 stripped
@@ -11890,6 +12593,7 @@ MonoBehaviour:
   - {fileID: 1454669962}
   - {fileID: 1335827416}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1033011305 stripped
@@ -11937,6 +12641,7 @@ MonoBehaviour:
   - {fileID: 1612747182}
   - {fileID: 1548505194}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1042028599 stripped
@@ -11984,6 +12689,7 @@ MonoBehaviour:
   - {fileID: 184317044}
   - {fileID: 1017469028}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1046382994 stripped
@@ -12031,6 +12737,7 @@ MonoBehaviour:
   - {fileID: 1970553916}
   - {fileID: 1430233578}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1048219039 stripped
@@ -12078,6 +12785,7 @@ MonoBehaviour:
   - {fileID: 177965627}
   - {fileID: 1022145317}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1048693602 stripped
@@ -12125,6 +12833,7 @@ MonoBehaviour:
   - {fileID: 1143189273}
   - {fileID: 1278295456}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1053455927 stripped
@@ -12172,6 +12881,7 @@ MonoBehaviour:
   - {fileID: 1858226403}
   - {fileID: 1918495570}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1055192444
@@ -12768,6 +13478,7 @@ MonoBehaviour:
   - {fileID: 1003098075}
   - {fileID: 276030393}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1080994616 stripped
@@ -12815,6 +13526,7 @@ MonoBehaviour:
   - {fileID: 857221682}
   - {fileID: 1204631829}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1097889542 stripped
@@ -12862,6 +13574,7 @@ MonoBehaviour:
   - {fileID: 141128050}
   - {fileID: 1818289660}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1099322961 stripped
@@ -12909,6 +13622,7 @@ MonoBehaviour:
   - {fileID: 864161486}
   - {fileID: 1840761793}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1108906098
@@ -13018,6 +13732,7 @@ MonoBehaviour:
   - {fileID: 1989463809}
   - {fileID: 1445464223}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1123455735
@@ -13109,6 +13824,7 @@ MonoBehaviour:
   - {fileID: 705472189}
   - {fileID: 1639980498}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1132190347 stripped
@@ -13206,6 +13922,7 @@ MonoBehaviour:
   - {fileID: 1618495978}
   - {fileID: 203382341}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1137437418 stripped
@@ -13253,6 +13970,7 @@ MonoBehaviour:
   - {fileID: 1858026425}
   - {fileID: 1239070744}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1142711213 stripped
@@ -13300,6 +14018,7 @@ MonoBehaviour:
   - {fileID: 1879379202}
   - {fileID: 2132958254}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1143189273 stripped
@@ -13347,6 +14066,7 @@ MonoBehaviour:
   - {fileID: 1048693602}
   - {fileID: 1649489986}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1149021771
@@ -13422,6 +14142,7 @@ MonoBehaviour:
   - {fileID: 990093047}
   - {fileID: 35264477}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1158397419 stripped
@@ -13469,6 +14190,7 @@ MonoBehaviour:
   - {fileID: 1456686515}
   - {fileID: 1392800020}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1158831593 stripped
@@ -13516,6 +14238,7 @@ MonoBehaviour:
   - {fileID: 552896767}
   - {fileID: 1407792010}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1159692175
@@ -13749,6 +14472,7 @@ MonoBehaviour:
   - {fileID: 418698308}
   - {fileID: 700057829}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1176474312 stripped
@@ -13796,8 +14520,76 @@ MonoBehaviour:
   - {fileID: 759865688}
   - {fileID: 676650459}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1186243438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1090685081100506, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186243439}
+  - component: {fileID: 1186243440}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186243439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4441562016575006, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186243438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1905182682}
+  - {fileID: 905165334}
+  - {fileID: 849838911}
+  m_Father: {fileID: 823012257}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1186243440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114630705065919226, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186243438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82175a985a8233b418df45caf49e4fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMSource:
+  - {fileID: 1905182683}
+  - {fileID: 905165335}
+  SFXSource: {fileID: 849838912}
+  clips:
+  - {fileID: 8300000, guid: 3ab5f268a2d25ae4ebd328a89f67c55d, type: 3}
+  - {fileID: 8300000, guid: 27400a9f87702504c8058066c4fcdcfb, type: 3}
+  - {fileID: 8300000, guid: 411266a8fa4723549a992a7e3d0cd3a8, type: 3}
+  - {fileID: 8300000, guid: dd2e9a0481eb23f4bbc1f191e5277620, type: 3}
+  - {fileID: 8300000, guid: 861ca342564a02d40a5b4da63d9c43db, type: 3}
+  - {fileID: 8300000, guid: f1688e19ee2818f47b05924c7fa62c1f, type: 3}
+  - {fileID: 8300000, guid: e8dfe56f95e56d14486a682046cec068, type: 3}
+  - {fileID: 8300000, guid: c3f66889d6eeb974d8f4827c0cbd1cad, type: 3}
+  - {fileID: 8300000, guid: c3c1b6f87f71e1548b3327bf377986ae, type: 3}
+  - {fileID: 8300000, guid: d548fd23a31a9b24bbc5eef276f7f54d, type: 3}
+  - {fileID: 8300000, guid: 35d46de5754a0f54fb8e3708777fe959, type: 3}
+  - {fileID: 8300000, guid: 3767f9309b9445b46b097f649eb0a17c, type: 3}
+  - {fileID: 8300000, guid: 88d537975945eaf4d9a57aa7c0eeb859, type: 3}
+  - {fileID: 8300000, guid: a04698f60416a2a44a0b0dd575b096ef, type: 3}
+  - {fileID: 8300000, guid: b2ad68e38b278154a8d1e06379e331ef, type: 3}
+  - {fileID: 8300000, guid: 3c1dcf711ecbf7c4dab4b706f47f67b0, type: 3}
 --- !u!1 &1186906118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100428, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -13843,6 +14635,7 @@ MonoBehaviour:
   - {fileID: 168106307}
   - {fileID: 513719430}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1194826732 stripped
@@ -13890,6 +14683,7 @@ MonoBehaviour:
   - {fileID: 814200909}
   - {fileID: 2073474912}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1204631829 stripped
@@ -13937,6 +14731,7 @@ MonoBehaviour:
   - {fileID: 389245239}
   - {fileID: 1080994616}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1209512908 stripped
@@ -13984,6 +14779,7 @@ MonoBehaviour:
   - {fileID: 1759653697}
   - {fileID: 1976316790}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1213065812 stripped
@@ -14031,6 +14827,7 @@ MonoBehaviour:
   - {fileID: 990876920}
   - {fileID: 1702758665}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1215777087 stripped
@@ -14078,6 +14875,7 @@ MonoBehaviour:
   - {fileID: 1977953338}
   - {fileID: 212851319}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1216192729 stripped
@@ -14125,6 +14923,7 @@ MonoBehaviour:
   - {fileID: 1669602914}
   - {fileID: 815214205}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1218839681 stripped
@@ -14172,6 +14971,7 @@ MonoBehaviour:
   - {fileID: 54068526}
   - {fileID: 262676126}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1233286846 stripped
@@ -14219,8 +15019,78 @@ MonoBehaviour:
   - {fileID: 577297393}
   - {fileID: 1922279662}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1234549590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234549591}
+  - component: {fileID: 1234549593}
+  - component: {fileID: 1234549592}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1234549591
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234549590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390485218}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.5, y: -25.5}
+  m_SizeDelta: {x: 1212.5, y: 660.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1234549592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234549590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1234549593
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234549590}
+  m_CullTransparentMesh: 0
 --- !u!1 &1239070744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100448, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -14266,6 +15136,7 @@ MonoBehaviour:
   - {fileID: 183157152}
   - {fileID: 1137437418}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1241291164 stripped
@@ -14313,6 +15184,7 @@ MonoBehaviour:
   - {fileID: 960246270}
   - {fileID: 1916176356}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1242337981 stripped
@@ -14360,6 +15232,7 @@ MonoBehaviour:
   - {fileID: 636920731}
   - {fileID: 513719430}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1247643233
@@ -14551,6 +15424,7 @@ MonoBehaviour:
   - {fileID: 1916176356}
   - {fileID: 1918495570}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1001 &1260333004
@@ -22584,6 +23458,7 @@ MonoBehaviour:
   - {fileID: 1684928952}
   - {fileID: 1209512908}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1263336280 stripped
@@ -22631,6 +23506,7 @@ MonoBehaviour:
   - {fileID: 1759258860}
   - {fileID: 69651916}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1265216244
@@ -22843,6 +23719,7 @@ MonoBehaviour:
   - {fileID: 579928386}
   - {fileID: 1780604838}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1281981034 stripped
@@ -22890,6 +23767,7 @@ MonoBehaviour:
   - {fileID: 1666188838}
   - {fileID: 577297393}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1282844373
@@ -23012,6 +23890,7 @@ MonoBehaviour:
   - {fileID: 119588798}
   - {fileID: 153429358}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1290884983 stripped
@@ -23059,6 +23938,7 @@ MonoBehaviour:
   - {fileID: 151276141}
   - {fileID: 1417626605}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1292857123 stripped
@@ -23106,6 +23986,7 @@ MonoBehaviour:
   - {fileID: 2033697905}
   - {fileID: 562826426}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1294829817
@@ -23222,6 +24103,7 @@ MonoBehaviour:
   - {fileID: 407687209}
   - {fileID: 2022488928}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1299518536
@@ -23374,6 +24256,7 @@ MonoBehaviour:
   - {fileID: 1724664729}
   - {fileID: 801686902}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1330806688
@@ -23543,6 +24426,7 @@ MonoBehaviour:
   - {fileID: 377410625}
   - {fileID: 1029591818}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1341906189 stripped
@@ -23590,6 +24474,7 @@ MonoBehaviour:
   - {fileID: 5238884}
   - {fileID: 98057181}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1342977608 stripped
@@ -23637,6 +24522,7 @@ MonoBehaviour:
   - {fileID: 1372942047}
   - {fileID: 2028252334}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1349182170
@@ -23936,6 +24822,7 @@ MonoBehaviour:
   - {fileID: 418698308}
   - {fileID: 1017469028}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1372360055
@@ -24052,6 +24939,7 @@ MonoBehaviour:
   - {fileID: 1524489844}
   - {fileID: 1934944938}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1374729968 stripped
@@ -24099,6 +24987,7 @@ MonoBehaviour:
   - {fileID: 940027214}
   - {fileID: 1653531691}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1378642440 stripped
@@ -24146,6 +25035,7 @@ MonoBehaviour:
   - {fileID: 601488987}
   - {fileID: 269784875}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1389247442 stripped
@@ -24193,8 +25083,47 @@ MonoBehaviour:
   - {fileID: 914525503}
   - {fileID: 1013984363}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1390485217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390485218}
+  m_Layer: 5
+  m_Name: SelectTerrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1390485218
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1390485217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1234549591}
+  - {fileID: 1796554759}
+  - {fileID: 1518194026}
+  - {fileID: 723846565}
+  - {fileID: 528405820}
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1392800020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100356, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -24240,6 +25169,7 @@ MonoBehaviour:
   - {fileID: 229308353}
   - {fileID: 1158397419}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1393643889 stripped
@@ -24287,6 +25217,7 @@ MonoBehaviour:
   - {fileID: 883398229}
   - {fileID: 203382341}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1396172116 stripped
@@ -24334,6 +25265,7 @@ MonoBehaviour:
   - {fileID: 1671755731}
   - {fileID: 1684928952}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1407792010 stripped
@@ -24381,6 +25313,7 @@ MonoBehaviour:
   - {fileID: 1158831593}
   - {fileID: 523081367}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1410575699 stripped
@@ -24428,6 +25361,7 @@ MonoBehaviour:
   - {fileID: 1298144830}
   - {fileID: 321731969}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1415961201 stripped
@@ -24475,6 +25409,7 @@ MonoBehaviour:
   - {fileID: 1434980117}
   - {fileID: 408417171}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1417611858 stripped
@@ -24522,6 +25457,7 @@ MonoBehaviour:
   - {fileID: 35264477}
   - {fileID: 393552564}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1417626605 stripped
@@ -24569,6 +25505,7 @@ MonoBehaviour:
   - {fileID: 965007035}
   - {fileID: 1290884983}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1428031916 stripped
@@ -24616,6 +25553,7 @@ MonoBehaviour:
   - {fileID: 1920964238}
   - {fileID: 1916176356}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1430233578 stripped
@@ -24663,6 +25601,7 @@ MonoBehaviour:
   - {fileID: 1003098075}
   - {fileID: 1046382994}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1434057303 stripped
@@ -24710,6 +25649,7 @@ MonoBehaviour:
   - {fileID: 893787805}
   - {fileID: 408417171}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1434980117 stripped
@@ -24757,6 +25697,7 @@ MonoBehaviour:
   - {fileID: 1580498753}
   - {fileID: 1415961201}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1438495520
@@ -24904,6 +25845,7 @@ MonoBehaviour:
   - {fileID: 326723863}
   - {fileID: 1940715308}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1445801239 stripped
@@ -24951,6 +25893,7 @@ MonoBehaviour:
   - {fileID: 1943202257}
   - {fileID: 193711801}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1451947889 stripped
@@ -24998,6 +25941,7 @@ MonoBehaviour:
   - {fileID: 521397301}
   - {fileID: 864600778}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1452564279 stripped
@@ -25045,6 +25989,7 @@ MonoBehaviour:
   - {fileID: 1480288513}
   - {fileID: 1804820475}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1454669962 stripped
@@ -25092,6 +26037,7 @@ MonoBehaviour:
   - {fileID: 108271741}
   - {fileID: 765903032}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1456686515 stripped
@@ -25139,6 +26085,7 @@ MonoBehaviour:
   - {fileID: 402824842}
   - {fileID: 1158397419}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1464578797
@@ -25402,6 +26349,7 @@ MonoBehaviour:
   - {fileID: 455685414}
   - {fileID: 143664514}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1480288513 stripped
@@ -25449,6 +26397,7 @@ MonoBehaviour:
   - {fileID: 1434057303}
   - {fileID: 2095191245}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1483358713 stripped
@@ -25496,6 +26445,7 @@ MonoBehaviour:
   - {fileID: 1389247442}
   - {fileID: 765903032}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1494492458 stripped
@@ -25543,6 +26493,7 @@ MonoBehaviour:
   - {fileID: 622994259}
   - {fileID: 510968972}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1499730604 stripped
@@ -25590,6 +26541,7 @@ MonoBehaviour:
   - {fileID: 1023298873}
   - {fileID: 1858226403}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1500401967
@@ -25751,8 +26703,131 @@ MonoBehaviour:
   - {fileID: 469612648}
   - {fileID: 904318239}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1518194025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518194026}
+  - component: {fileID: 1518194029}
+  - component: {fileID: 1518194028}
+  - component: {fileID: 1518194027}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1518194026
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518194025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390485218}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -160, y: -43}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1518194027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518194025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1518194028}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823012266}
+        m_MethodName: SelectTerrain
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1518194028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518194025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e3dadd93e8f2476449a86bf9f1e87588, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1518194029
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518194025}
+  m_CullTransparentMesh: 0
 --- !u!1 &1518446044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100592, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -25798,6 +26873,7 @@ MonoBehaviour:
   - {fileID: 710214495}
   - {fileID: 1689437357}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1521044494
@@ -25914,6 +26990,7 @@ MonoBehaviour:
   - {fileID: 78281895}
   - {fileID: 1372942047}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1547662485
@@ -26083,6 +27160,7 @@ MonoBehaviour:
   - {fileID: 183157152}
   - {fileID: 784074200}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1548865319
@@ -26199,6 +27277,7 @@ MonoBehaviour:
   - {fileID: 1931759691}
   - {fileID: 1584589151}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1572146875
@@ -26522,6 +27601,7 @@ MonoBehaviour:
   - {fileID: 1675717126}
   - {fileID: 1033011305}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1581329931 stripped
@@ -26569,6 +27649,7 @@ MonoBehaviour:
   - {fileID: 212851319}
   - {fileID: 1407792010}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1584589151 stripped
@@ -26616,6 +27697,7 @@ MonoBehaviour:
   - {fileID: 1565404600}
   - {fileID: 31305738}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1584743552 stripped
@@ -26663,6 +27745,7 @@ MonoBehaviour:
   - {fileID: 1691402369}
   - {fileID: 490978572}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1589159573 stripped
@@ -26710,6 +27793,7 @@ MonoBehaviour:
   - {fileID: 305919173}
   - {fileID: 637065895}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1597660255 stripped
@@ -26757,6 +27841,7 @@ MonoBehaviour:
   - {fileID: 1241291164}
   - {fileID: 714531778}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1600033476
@@ -26995,6 +28080,7 @@ MonoBehaviour:
   - {fileID: 517522759}
   - {fileID: 1999727450}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1612747182 stripped
@@ -27042,6 +28128,7 @@ MonoBehaviour:
   - {fileID: 871229243}
   - {fileID: 1033011305}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1618495978 stripped
@@ -27089,6 +28176,7 @@ MonoBehaviour:
   - {fileID: 1194826732}
   - {fileID: 579928386}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1618581648 stripped
@@ -27136,6 +28224,7 @@ MonoBehaviour:
   - {fileID: 336637860}
   - {fileID: 3175447}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1639980498 stripped
@@ -27183,6 +28272,7 @@ MonoBehaviour:
   - {fileID: 1129775041}
   - {fileID: 700057829}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1642138704
@@ -27321,6 +28411,7 @@ MonoBehaviour:
   - {fileID: 339052602}
   - {fileID: 1143189273}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1653396765
@@ -27437,6 +28528,7 @@ MonoBehaviour:
   - {fileID: 1953921687}
   - {fileID: 1374729968}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1656699970 stripped
@@ -27484,6 +28576,7 @@ MonoBehaviour:
   - {fileID: 2088653622}
   - {fileID: 310438292}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1661368939
@@ -27653,6 +28746,7 @@ MonoBehaviour:
   - {fileID: 1281981034}
   - {fileID: 130673201}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1669602914 stripped
@@ -27700,6 +28794,7 @@ MonoBehaviour:
   - {fileID: 1233286846}
   - {fileID: 1216192729}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1671755731 stripped
@@ -27747,6 +28842,7 @@ MonoBehaviour:
   - {fileID: 1858226403}
   - {fileID: 1396172116}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1675717126 stripped
@@ -27794,6 +28890,7 @@ MonoBehaviour:
   - {fileID: 339052602}
   - {fileID: 1580498753}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1682309906 stripped
@@ -27841,6 +28938,7 @@ MonoBehaviour:
   - {fileID: 485024293}
   - {fileID: 334954668}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1684928952 stripped
@@ -27888,6 +28986,7 @@ MonoBehaviour:
   - {fileID: 1261314925}
   - {fileID: 1396172116}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1684964638
@@ -28010,6 +29109,7 @@ MonoBehaviour:
   - {fileID: 883398229}
   - {fileID: 442304538}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1691402369 stripped
@@ -28057,6 +29157,7 @@ MonoBehaviour:
   - {fileID: 1584743552}
   - {fileID: 535453979}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1694394054
@@ -28242,6 +29343,7 @@ MonoBehaviour:
   - {fileID: 1137437418}
   - {fileID: 1213065812}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1705047646
@@ -28364,6 +29466,7 @@ MonoBehaviour:
   - {fileID: 1927571657}
   - {fileID: 1915899304}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1723470223
@@ -28486,6 +29589,7 @@ MonoBehaviour:
   - {fileID: 1314629576}
   - {fileID: 393552564}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1728010970 stripped
@@ -28533,6 +29637,7 @@ MonoBehaviour:
   - {fileID: 1023298873}
   - {fileID: 336637860}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1759034366
@@ -28655,6 +29760,7 @@ MonoBehaviour:
   - {fileID: 1263336280}
   - {fileID: 1970553916}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1759653697 stripped
@@ -28702,6 +29808,7 @@ MonoBehaviour:
   - {fileID: 201099082}
   - {fileID: 1209512908}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1771726575 stripped
@@ -28749,6 +29856,7 @@ MonoBehaviour:
   - {fileID: 131071464}
   - {fileID: 1977953338}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1780604838 stripped
@@ -28796,8 +29904,84 @@ MonoBehaviour:
   - {fileID: 1278295456}
   - {fileID: 339052602}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1796554758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796554759}
+  - component: {fileID: 1796554761}
+  - component: {fileID: 1796554760}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1796554759
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796554758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390485218}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 113}
+  m_SizeDelta: {x: 509.3, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1796554760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796554758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b1a644d563796d940a23cf15aafbc5d0, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uBC14\uAFC0 \uC9C0\uD615\uC758 \uD0C0\uC785\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694."
+--- !u!222 &1796554761
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796554758}
+  m_CullTransparentMesh: 0
 --- !u!1 &1800966433
 GameObject:
   m_ObjectHideFlags: 0
@@ -28912,6 +30096,7 @@ MonoBehaviour:
   - {fileID: 871229243}
   - {fileID: 996261728}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1804820475 stripped
@@ -28959,6 +30144,7 @@ MonoBehaviour:
   - {fileID: 1452564279}
   - {fileID: 1805881791}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1805881791 stripped
@@ -29006,6 +30192,7 @@ MonoBehaviour:
   - {fileID: 1804820475}
   - {fileID: 29789798}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1806623670
@@ -29175,6 +30362,7 @@ MonoBehaviour:
   - {fileID: 1854507475}
   - {fileID: 1903221677}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1809212946 stripped
@@ -29222,6 +30410,7 @@ MonoBehaviour:
   - {fileID: 551994290}
   - {fileID: 247549460}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1813609923
@@ -29344,6 +30533,7 @@ MonoBehaviour:
   - {fileID: 1097889542}
   - {fileID: 744774717}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1833062141 stripped
@@ -29391,6 +30581,7 @@ MonoBehaviour:
   - {fileID: 130673201}
   - {fileID: 562826426}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1833683806
@@ -29513,6 +30704,7 @@ MonoBehaviour:
   - {fileID: 1099322961}
   - {fileID: 866923194}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1842956326 stripped
@@ -29560,6 +30752,7 @@ MonoBehaviour:
   - {fileID: 864161486}
   - {fileID: 1445801239}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1853483681 stripped
@@ -29607,6 +30800,7 @@ MonoBehaviour:
   - {fileID: 2063560789}
   - {fileID: 1917340613}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1854507475 stripped
@@ -29654,6 +30848,7 @@ MonoBehaviour:
   - {fileID: 1808188071}
   - {fileID: 1906793472}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1858026425 stripped
@@ -29701,6 +30896,7 @@ MonoBehaviour:
   - {fileID: 1137437418}
   - {fileID: 136879311}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1858226403 stripped
@@ -29748,6 +30944,7 @@ MonoBehaviour:
   - {fileID: 1671755731}
   - {fileID: 1053455927}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1865527400 stripped
@@ -29795,6 +30992,7 @@ MonoBehaviour:
   - {fileID: 819413570}
   - {fileID: 417514189}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1866580831
@@ -30018,6 +31216,7 @@ RectTransform:
   - {fileID: 1362228163}
   - {fileID: 1247643234}
   - {fileID: 548267187}
+  - {fileID: 1390485218}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30071,6 +31270,7 @@ MonoBehaviour:
   - {fileID: 1940715308}
   - {fileID: 1142711213}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1897195109 stripped
@@ -30118,6 +31318,7 @@ MonoBehaviour:
   - {fileID: 336637860}
   - {fileID: 2135420763}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1903221677 stripped
@@ -30165,8 +31366,136 @@ MonoBehaviour:
   - {fileID: 1808188071}
   - {fileID: 1154691102}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &1905182681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1671305972016562, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905182682}
+  - component: {fileID: 1905182683}
+  m_Layer: 0
+  m_Name: BGM_Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1905182682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4497658702866400, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1905182681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186243439}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1905182683
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 82586110694999340, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1905182681}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b2ad68e38b278154a8d1e06379e331ef, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1906793472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100078, guid: e0e6c540bb21a994890f7a93ac229b27,
@@ -30212,6 +31541,7 @@ MonoBehaviour:
   - {fileID: 1854507475}
   - {fileID: 580781577}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1915899304 stripped
@@ -30259,6 +31589,7 @@ MonoBehaviour:
   - {fileID: 1135955283}
   - {fileID: 1717299218}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1916176356 stripped
@@ -30306,6 +31637,7 @@ MonoBehaviour:
   - {fileID: 1241291164}
   - {fileID: 1428031916}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1917340613 stripped
@@ -30353,6 +31685,7 @@ MonoBehaviour:
   - {fileID: 2033697905}
   - {fileID: 241331999}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1918495570 stripped
@@ -30400,6 +31733,7 @@ MonoBehaviour:
   - {fileID: 1249768407}
   - {fileID: 1010536049}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1920964238 stripped
@@ -30447,6 +31781,7 @@ MonoBehaviour:
   - {fileID: 1728010970}
   - {fileID: 1053455927}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1922279662 stripped
@@ -30494,6 +31829,7 @@ MonoBehaviour:
   - {fileID: 693976558}
   - {fileID: 2033697905}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1927571657 stripped
@@ -30541,6 +31877,7 @@ MonoBehaviour:
   - {fileID: 636920731}
   - {fileID: 1717299218}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1931759691 stripped
@@ -30588,6 +31925,7 @@ MonoBehaviour:
   - {fileID: 85295933}
   - {fileID: 1565404600}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1932610389 stripped
@@ -30635,6 +31973,7 @@ MonoBehaviour:
   - {fileID: 143664514}
   - {fileID: 1417626605}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1934944938 stripped
@@ -30682,6 +32021,7 @@ MonoBehaviour:
   - {fileID: 864600778}
   - {fileID: 1372942047}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1940715308 stripped
@@ -30729,6 +32069,7 @@ MonoBehaviour:
   - {fileID: 1879379202}
   - {fileID: 1445464223}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1943202257 stripped
@@ -30776,6 +32117,7 @@ MonoBehaviour:
   - {fileID: 510968972}
   - {fileID: 1445801239}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1944993362
@@ -30945,6 +32287,7 @@ MonoBehaviour:
   - {fileID: 485024293}
   - {fileID: 453035472}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1953921687 stripped
@@ -30992,6 +32335,7 @@ MonoBehaviour:
   - {fileID: 469612648}
   - {fileID: 976986711}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1960665761
@@ -31189,6 +32533,7 @@ MonoBehaviour:
   - {fileID: 1759258860}
   - {fileID: 1046382994}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1976316790 stripped
@@ -31236,6 +32581,7 @@ MonoBehaviour:
   - {fileID: 1209512908}
   - {fileID: 441066154}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1977953338 stripped
@@ -31283,6 +32629,7 @@ MonoBehaviour:
   - {fileID: 1456686515}
   - {fileID: 1771726575}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1984604338
@@ -31396,6 +32743,7 @@ MonoBehaviour:
   - {fileID: 369500355}
   - {fileID: 442304538}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1989463809 stripped
@@ -31443,6 +32791,7 @@ MonoBehaviour:
   - {fileID: 1120616346}
   - {fileID: 753988995}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &1991324174
@@ -31679,6 +33028,7 @@ MonoBehaviour:
   - {fileID: 876933951}
   - {fileID: 1606157092}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2002728627
@@ -31795,6 +33145,7 @@ MonoBehaviour:
   - {fileID: 85295933}
   - {fileID: 31305738}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2014807092
@@ -31936,6 +33287,7 @@ MonoBehaviour:
   - {fileID: 1298144830}
   - {fileID: 864161486}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2028252334 stripped
@@ -31983,6 +33335,7 @@ MonoBehaviour:
   - {fileID: 510968972}
   - {fileID: 1158397419}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2031406676
@@ -32115,6 +33468,7 @@ MonoBehaviour:
   - {fileID: 1292857123}
   - {fileID: 1917340613}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2039015322
@@ -32359,6 +33713,7 @@ MonoBehaviour:
   - {fileID: 82822055}
   - {fileID: 482001743}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2059590419 stripped
@@ -32406,6 +33761,7 @@ MonoBehaviour:
   - {fileID: 170091625}
   - {fileID: 180195419}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2063560789 stripped
@@ -32453,6 +33809,7 @@ MonoBehaviour:
   - {fileID: 693976558}
   - {fileID: 1970553916}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2072323206
@@ -32575,6 +33932,7 @@ MonoBehaviour:
   - {fileID: 1194826732}
   - {fileID: 1393643889}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2078951998
@@ -32691,6 +34049,7 @@ MonoBehaviour:
   - {fileID: 599982271}
   - {fileID: 1656699970}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2095191245 stripped
@@ -32738,6 +34097,7 @@ MonoBehaviour:
   - {fileID: 1480288513}
   - {fileID: 639710108}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2114854827 stripped
@@ -32785,6 +34145,7 @@ MonoBehaviour:
   - {fileID: 528286862}
   - {fileID: 441066154}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2121401002 stripped
@@ -32832,6 +34193,7 @@ MonoBehaviour:
   - {fileID: 2133652124}
   - {fileID: 116977033}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2122743421 stripped
@@ -32879,6 +34241,7 @@ MonoBehaviour:
   - {fileID: 418698308}
   - {fileID: 564520935}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2132958254 stripped
@@ -32926,6 +34289,7 @@ MonoBehaviour:
   - {fileID: 631769067}
   - {fileID: 1584589151}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2133652124 stripped
@@ -32973,6 +34337,7 @@ MonoBehaviour:
   - {fileID: 2121401002}
   - {fileID: 1976316790}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
 --- !u!1 &2135420763 stripped
@@ -33020,5 +34385,6 @@ MonoBehaviour:
   - {fileID: 551994290}
   - {fileID: 1897195109}
   NearMesh: []
+  isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}

@@ -898,7 +898,8 @@ CanvasRenderer:
 --- !u!1 &235089856
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1671305972016562, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -914,7 +915,8 @@ GameObject:
 --- !u!4 &235089857
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4497658702866400, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 235089856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -927,17 +929,18 @@ Transform:
 --- !u!82 &235089858
 AudioSource:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 82586110694999340, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 235089856}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3c1dcf711ecbf7c4dab4b706f47f67b0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2769,7 +2772,8 @@ CanvasRenderer:
 --- !u!1 &878060496
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1437529488536896, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -2785,7 +2789,8 @@ GameObject:
 --- !u!4 &878060497
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4775887320359684, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 878060496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -2798,17 +2803,18 @@ Transform:
 --- !u!82 &878060498
 AudioSource:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 82174442201123050, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 878060496}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a04698f60416a2a44a0b0dd575b096ef, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8258,7 +8264,8 @@ CanvasRenderer:
 --- !u!1 &2025904358
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1205360630499410, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -8274,7 +8281,8 @@ GameObject:
 --- !u!4 &2025904359
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4623692675410972, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025904358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -8287,7 +8295,8 @@ Transform:
 --- !u!82 &2025904360
 AudioSource:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 82878827906136010, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025904358}
   m_Enabled: 1
@@ -8580,7 +8589,8 @@ CanvasRenderer:
 --- !u!1 &2074033661
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1090685081100506, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -8596,7 +8606,8 @@ GameObject:
 --- !u!4 &2074033662
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4441562016575006, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074033661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -8612,7 +8623,8 @@ Transform:
 --- !u!114 &2074033663
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114630705065919226, guid: 304e2b35f037b884e92285fc45d74187,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074033661}
   m_Enabled: 1
@@ -8625,15 +8637,23 @@ MonoBehaviour:
   - {fileID: 878060498}
   SFXSource: {fileID: 2025904360}
   clips:
-  - {fileID: 8300000, guid: f6c539dced863644486e27c45b238ed3, type: 3}
-  - {fileID: 8300000, guid: d3f9670a3a75aaf418d8c1f89072c4b8, type: 3}
-  - {fileID: 8300000, guid: 786309b0c9485b44e88015e2010bd393, type: 3}
-  - {fileID: 8300000, guid: fbc571533f9428b42920960bb1c3732e, type: 3}
-  - {fileID: 8300000, guid: c713b7e5700a7404f8ac7c0c6cf5005d, type: 3}
+  - {fileID: 8300000, guid: 3ab5f268a2d25ae4ebd328a89f67c55d, type: 3}
+  - {fileID: 8300000, guid: 27400a9f87702504c8058066c4fcdcfb, type: 3}
+  - {fileID: 8300000, guid: 411266a8fa4723549a992a7e3d0cd3a8, type: 3}
+  - {fileID: 8300000, guid: dd2e9a0481eb23f4bbc1f191e5277620, type: 3}
+  - {fileID: 8300000, guid: 861ca342564a02d40a5b4da63d9c43db, type: 3}
+  - {fileID: 8300000, guid: f1688e19ee2818f47b05924c7fa62c1f, type: 3}
+  - {fileID: 8300000, guid: e8dfe56f95e56d14486a682046cec068, type: 3}
+  - {fileID: 8300000, guid: c3f66889d6eeb974d8f4827c0cbd1cad, type: 3}
   - {fileID: 8300000, guid: c3c1b6f87f71e1548b3327bf377986ae, type: 3}
-  - {fileID: 8300000, guid: ed617c8a6db25824981ce1f435e630aa, type: 3}
+  - {fileID: 8300000, guid: d548fd23a31a9b24bbc5eef276f7f54d, type: 3}
   - {fileID: 8300000, guid: 35d46de5754a0f54fb8e3708777fe959, type: 3}
-  BGMMaximumVolume: 0
+  - {fileID: 8300000, guid: 3767f9309b9445b46b097f649eb0a17c, type: 3}
+  - {fileID: 8300000, guid: 88d537975945eaf4d9a57aa7c0eeb859, type: 3}
+  - {fileID: 8300000, guid: a04698f60416a2a44a0b0dd575b096ef, type: 3}
+  - {fileID: 8300000, guid: b2ad68e38b278154a8d1e06379e331ef, type: 3}
+  - {fileID: 8300000, guid: 3c1dcf711ecbf7c4dab4b706f47f67b0, type: 3}
+  BGMMaximumVolume: 0.5
   BGMMinimumVolume: 0
 --- !u!1 &2084232097
 GameObject:

@@ -28,7 +28,7 @@ public class PCverPIcking : MonoBehaviour
     {
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
 
-        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow == FLOW.TO_PICKINGCARD)
+        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
             myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
             CameraController.ChangeableCount = ((int)(DiceSystem.getDiceNum / 10) + (int)(DiceSystem.getDiceNum % 10));
@@ -54,11 +54,42 @@ public class PCverPIcking : MonoBehaviour
 
     public void Picked(bool isMoblie)
     {
-        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC ||
-            AllMeshController.IngameManager.GetComponent<TurnSystem>().currentTurn == TURN.ENEMYTURN)
-            return;
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitObj;
+
+        //19.01.15 YSH 추가합니다..
+        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGEVENTCARDLOC))
+        {
+            if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
+            {
+                PickedMeshObj = hitObj.transform.gameObject;
+
+                switch(EventCardManager.selectedIndex)
+                {
+                    case 101:
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                            return;
+                        break;
+                    case 111:
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                            return;
+                        break;
+                    case 201:
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                            return;
+                        break;
+                    case 202:
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                            return;
+                        break;
+                }
+                
+                AllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
+            }
+        }
+
+        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC)
+            return;
 
         if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
         {

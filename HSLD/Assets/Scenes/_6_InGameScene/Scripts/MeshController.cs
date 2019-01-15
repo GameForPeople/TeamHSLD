@@ -36,8 +36,9 @@ public class MeshController : MonoBehaviour {
     public bool isMine;
     public bool isFlag;     //거점
     public int Linkednum;
-    public GameObject[] JointMesh;
+    public GameObject[] JointMesh = new GameObject[3];
     public List<GameObject> NearMesh;
+    public bool isCheck = false;
     // Use this for initialization
 
     private bool once;

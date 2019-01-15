@@ -11,11 +11,17 @@ public class EventCardManager : MonoBehaviour
     public GameObject eventCard;
     public Text cardName;
     public Image cardImg;
-    private int selectedIndex;
+    public GameObject selectTerrainCardObj;
+    static public int selectedIndex;
+    private Terrain selectedTerrain;
+
+    private GameObject connectedObj;
+
+    private List<GameObject> connectObjs = new List<GameObject>();
 
     public void EventCardInstate()
     {
-        pickedCard = eventCardInfoSet[Random.Range(0, 7)];
+        pickedCard = eventCardInfoSet[Random.Range(2, 3)];
         eventCard.SetActive(true);
 
         cardName.text = pickedCard.cardName;
@@ -35,19 +41,126 @@ public class EventCardManager : MonoBehaviour
         switch(selectedIndex)
         {
             case 101:
+                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
                 break;
             case 111:
+                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
                 break;
             case 201:
+                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
                 break;
             case 202:
+                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
                 break;
             case 301:
                 TurnSystem.enemyEventCardDefense = true;
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             case 401:
                 DiceSystem.isDiceDouble = true;
+                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
+        }
+    }
+
+    public void PickLocDone(GameObject obj, Terrain terrainType)
+    {
+        switch (selectedIndex)
+        {
+            case 101:
+                ConnectObj(obj, terrainType);
+                for (int i = 0; i < connectObjs.Count; i++)
+                    connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.NEUTRALITY;
+                connectObjs.Clear();
+                AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                break;
+            case 111:
+                ConnectObj(obj, terrainType);
+                for (int i = 0; i < connectObjs.Count; i++)
+                    connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
+                connectObjs.Clear();
+                AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                break;
+            case 201:
+                ConnectObj(obj, terrainType);
+                selectTerrainCardObj.SetActive(true);
+                AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                break;
+            case 202:
+                ConnectObj(obj, terrainType);
+                selectTerrainCardObj.SetActive(true);
+                AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                break;
+        }
+    }
+
+    private bool SearchList(GameObject obj)
+    {
+        for (int i = 0; i < connectObjs.Count; i++)
+        {
+            if (connectObjs[i].Equals(obj))
+                return true;
+        }
+        return false;
+    }
+
+    public void SelectTerrain(int type)
+    {
+        switch(type)
+        {
+            case 1:
+                selectedTerrain = Terrain.MODERATION;
+                break;
+            case 2:
+                selectedTerrain = Terrain.BARREN;
+                break;
+            case 3:
+                selectedTerrain = Terrain.COLD;
+                break;
+        }
+
+        for (int i = 0; i < connectObjs.Count; i++)
+            connectObjs[i].GetComponent<MeshController>().terrainstate = selectedTerrain;
+
+        selectTerrainCardObj.SetActive(false);
+        connectObjs.Clear();
+        AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+    }
+
+    public void CheckingMesh(GameObject obj, Terrain terrainType)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().isCheck)
+                continue;
+            else
+            {
+                if (obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(terrainType))
+                    ConnectObj(obj.GetComponent<MeshController>().JointMesh[i], terrainType);
+            }
+                
+        }
+    }
+
+    public void ConnectObj(GameObject obj, Terrain terrainType)
+    {
+        if (!SearchList(obj))
+        {
+            connectObjs.Add(obj);
+
+            for (int i = 0; i < 3; i++)
+            {
+                connectedObj = obj.GetComponent<MeshController>().JointMesh[i];
+                if (connectedObj.GetComponent<MeshController>().terrainstate.Equals(terrainType))
+                {
+                    if (!obj.GetComponent<MeshController>().isCheck)
+                        CheckingMesh(obj, terrainType);
+                    else
+                        obj.GetComponent<MeshController>().isCheck = true;
+                }
+                else
+                    continue;
+            }
         }
     }
 }

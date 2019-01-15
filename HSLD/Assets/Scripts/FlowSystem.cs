@@ -14,10 +14,14 @@ public enum FLOW
     TO_PICKINGCARD,
     TO_PICKINGLOC,
     TO_PICKEVENTCARD,
+    TO_PICKINGEVENTCARDLOC,
+    TO_PICKINGEVENTSECLECTTERRAIN,
     ENEMYTURN_ROLLINGDICE,
     ENEMYTURN_PICKINGCARD,
     ENEMYTURN_PICKINGLOC,
     ENEMYTURN_PICKEVENTCARD,
+    ENEMYTURN_PICKINGEVENTCARDLOC,
+    ENEMYTURN_PICKINGEVENTSELECTTERRAIN,
     TSETVER
 }
 
@@ -89,7 +93,7 @@ public class FlowSystem : MonoBehaviour
                     gameObject.GetComponent<TurnSystem>().TurnSet();
                 }                
                 break;
-            case FLOW.TO_PICKEVENTCARD:
+            case FLOW.TO_PICKINGEVENTCARDLOC:
                 if (GameObject.Find("GameCores") != null)
                 {
                     Debug.Log("SEND : 턴종료");
@@ -102,16 +106,6 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
-            //case FLOW.ENEMYTURN_PICKINGLOC:
-            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-            //    gameObject.GetComponent<TurnSystem>().TurnSet();
-            //    break;
-            
-            //case FLOW.ENEMYTURN_PICKEVENTCARD:
-            //    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-            //    //gameObject.GetComponent<TurnSystem>().TurnSet();
-            //    break;
-
         }
         if(animationImg)
             tmpAnimationImage.SetActive(false);
@@ -119,9 +113,7 @@ public class FlowSystem : MonoBehaviour
 
     private void Start()
     {
-        //사운드 임시
-        if (SoundManager.instance_ != null)
-            SoundManager.instance_.BGMMixing(SoundManager.instance_.clips[1], 2.0f);
+        SoundManager.instance_.BGMChange(SoundManager.instance_.clips[14]);
 
         //테스트버전
         if (currentFlow.Equals(FLOW.TSETVER))
@@ -185,8 +177,7 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
-                if (SoundManager.instance_ != null)
-                    SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[5], 1.0f);
+                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8], 1.0f);
 
                 //애니메이션 여기
                 StartCoroutine(DiceActiveOff());
@@ -229,8 +220,13 @@ public class FlowSystem : MonoBehaviour
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKEVENTCARD, 2, true));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
+            case FLOW.TO_PICKINGEVENTSECLECTTERRAIN:
+                break;
+            case FLOW.TO_PICKINGEVENTCARDLOC:
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGEVENTCARDLOC, 2, true));    // <<< 여기  2라는 숫자를 바꾸면댐
+                break;
+
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5, true));
                 break;
