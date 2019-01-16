@@ -528,7 +528,6 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_VipCodeProcess(SocketInfo* pClient)
 
 	wstring wideStrBuffer(stringMemoryLength / 2, 0);
 	memcpy(&wideStrBuffer[0], pClient->buf + 8, stringMemoryLength);
-	std::wcout << L"요청한 VIP CODE는 ~ 입니다. : " << wideStrBuffer << std::endl;
 
 	const int typeBuffer = pClient->pUserNode->VipCodeProcess(wideStrBuffer);
 

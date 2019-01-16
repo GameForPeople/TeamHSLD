@@ -229,6 +229,8 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendGameReady(SocketInfo* pClient)
 */
 void SCENE_NETWORK_MANAGER::InGameScene::SendEmoji(SocketInfo* pClient, const BYTE InByte)
 {
+	int byteToInBuffer = (static_cast<int>(InByte));
+
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_EMOJI), sizeof(int));
-	memcpy(pClient->buf, reinterpret_cast<const char*>(static_cast<int>(InByte)), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&byteToInBuffer), sizeof(int));
 }
