@@ -36,6 +36,10 @@ public class InGameSceneManager : MonoBehaviour
     static bool isfirstSend = true;
     static bool isfirstRecv = true;
 
+    // emoji 관련 변수 추가.
+    public byte sendEmoji = 0;
+    public byte recvEmoji = 0;
+
     void Start()
     {
         if (GameObject.Find("GameCores") == null)

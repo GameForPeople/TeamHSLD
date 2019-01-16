@@ -292,6 +292,14 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
                 }
 
+                else if (InMsg == PROTOCOL.NOTIFY_EMOJI)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EMOJI), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.sendEmoji), 0, NewDataSendBuffer, 4, 1);
+
+                    socket.Send(NewDataSendBuffer, 5, SocketFlags.None);
+                }
+
                 RecvProcess();
             }
             else
