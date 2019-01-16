@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  SFX Usage
@@ -54,6 +55,28 @@ public class SoundManager : MonoBehaviour
             BGMSource[0].clip = clip;
             BGMSource[0].Play();
             BGMSource[1].Stop();
+        }
+    }
+
+    /*ref BGM / SFX AudioSource*/
+    public void SoundVolumeControl(GameObject obj)
+    {
+        if(obj.transform.parent.name.Contains("BGM"))
+        {
+            for(int i =0; i<BGMSource.Length;i++)
+                BGMSource[i].volume = (int.Parse(obj.name) * 100 / (obj.transform.parent.childCount - 1)) * 0.01f;
+            for(int i =0; i< int.Parse(obj.name); i++)
+                obj.transform.parent.GetChild(i + 1).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            for(int i = int.Parse(obj.name); i< (obj.transform.parent.childCount - 1); i++)
+                obj.transform.parent.GetChild(i+ 1).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+        }
+        else
+        {
+            SFXSource.volume = (int.Parse(obj.name) * 100 / (obj.transform.parent.childCount - 1)) * 0.01f;
+            for (int i = 0; i < int.Parse(obj.name); i++)
+                obj.transform.parent.GetChild(i + 1).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            for (int i = int.Parse(obj.name); i < (obj.transform.parent.childCount - 1); i++)
+                obj.transform.parent.GetChild(i + 1).GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
     }
 }
