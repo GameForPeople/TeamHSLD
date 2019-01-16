@@ -2,7 +2,7 @@
 
 #include "../IOCPServer/SocketInfo.h"
 
-const string UserData::VIP_CODE = VIP_CODE_STRING;
+const wstring UserData::VIP_CODE = VIP_CODE_STRING;
 unique_ptr<ItemManager> UserData::itemManager = make_unique<ItemManager>();
 unique_ptr<CharacterManager> UserData::characterManager = make_unique<CharacterManager>();
 
@@ -80,7 +80,7 @@ _NODISCARD int UserData::BuyCharacter(const int InCharacterIndex)
 				  0 == VipCode이거 아님.
 				  1 == 이미 받았던 적 잇음.
 */
-_NODISCARD int UserData::VipCodeProcess(const string& InInputtedString)
+_NODISCARD int UserData::VipCodeProcess(const wstring& InInputtedString)
 {
 	if ((achievementBit & 0x1) == 0x1)
 	{

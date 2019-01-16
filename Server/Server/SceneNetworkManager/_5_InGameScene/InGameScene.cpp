@@ -119,7 +119,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameReady(SocketInfo* pClient)
 */
 void SCENE_NETWORK_MANAGER::InGameScene::RecvEmoji(SocketInfo* pClient)
 {
-	pClient->pRoomIter->SetEmoji(pClient->isHost, pClient->buf[4]);
+	pClient->pRoomIter->SetEmoji(pClient->isHost, static_cast<BYTE>(reinterpret_cast<int&>(pClient->buf[4])));
 }
 
 // send Functions
@@ -141,7 +141,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendGameState(SocketInfo* pClient)
 		;	ifBuf.first == true)
 	{
 		SendEmoji(pClient, ifBuf.second);
-		pClient->dataSize = 5;
+		pClient->dataSize = 8;
 	}
 	else
 		pClient->dataSize = 4;
@@ -230,5 +230,5 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendGameReady(SocketInfo* pClient)
 void SCENE_NETWORK_MANAGER::InGameScene::SendEmoji(SocketInfo* pClient, const BYTE InByte)
 {
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_EMOJI), sizeof(int));
-	pClient->buf[4] = InByte;
+	memcpy(pClient->buf, reinterpret_cast<const char*>(static_cast<int>(InByte)), sizeof(int));
 }

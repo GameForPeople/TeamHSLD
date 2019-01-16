@@ -9,7 +9,7 @@ struct SocketInfo;
 class UserData {
 	//	static!
 public:
-	static const string					VIP_CODE;
+	static const wstring				VIP_CODE;
 	static unique_ptr<ItemManager>		itemManager;		//Init in UserData.cpp
 	static unique_ptr<CharacterManager>	characterManager;	//Init in UserData.cpp
 private:
@@ -190,7 +190,7 @@ public:
 	_NODISCARD int BuyItem(const int InItemIndex);
 	_NODISCARD int BuyCharacter(const int InCharacterIndex);
 
-	_NODISCARD int VipCodeProcess(const string& InInputtedString);
+	_NODISCARD int VipCodeProcess(const wstring& InInputtedString);
 };
 
 

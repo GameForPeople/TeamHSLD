@@ -169,10 +169,16 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_VIP_CODE), 0, NewDataSendBuffer, 0, 4);
 
-                    string stringBuffer = GameObject.Find("GameCores").transform.Find("MainUISceneManager").GetComponent<MainUISceneManager>().inputtedVipCode;
+                    string stringBuffer = GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().inputtedVipCode;
+
+                    Debug.Log("입력된 VIP Code는 :" + stringBuffer);
+                    Debug.Log("입력된 VIP Code의 사이즈는 :" + stringBuffer.Length);
 
                     byte[] stringToByteBuffer = Encoding.Unicode.GetBytes(stringBuffer);
                     int memorySize = stringToByteBuffer.Length;
+
+                    Debug.Log("보내려는 VIP Code는 :" + stringToByteBuffer);
+                    Debug.Log("보내는 VIP Code의 사이즈는 :" + memorySize);
 
                     Buffer.BlockCopy(BitConverter.GetBytes(memorySize), 0, NewDataSendBuffer, 4, 4);
                     Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, memorySize);

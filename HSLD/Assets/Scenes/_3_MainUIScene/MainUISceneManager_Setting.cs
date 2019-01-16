@@ -113,7 +113,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
     보낸 VIPCode가 맞는지 틀린지의 결과가 전송됩니다. 이에 따라 적합한 UI를 On합니다.
     */
-    public void NetworkManager_RecvVipResult(bool isSuccessed)
+    public void NetworkManager_RecvVipResult(bool isSuccessed, bool isAlreadyVip = false)
     {
         if (isSuccessed)
         {
@@ -122,6 +122,14 @@ public partial class MainUISceneManager : MonoBehaviour
         else
         {
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").gameObject.SetActive(true);
+            if(isAlreadyVip)
+            {
+                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "이미 VIP Code 받은 거 다암ㅋ";
+            }
+            else
+            {
+                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "미안한데..VIP Code 틀렸어요...";
+            }
         }
     }
 

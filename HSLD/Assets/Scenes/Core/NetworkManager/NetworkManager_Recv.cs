@@ -310,11 +310,11 @@ public partial class NetworkManager : MonoBehaviour
             }
             else if (iBuffer == 0)
             {
-                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false);
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, false);
             }
-            else if (iBuffer != 1)
+            else if (iBuffer == 1)
             {
-                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false);
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, true);
             }
         }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
