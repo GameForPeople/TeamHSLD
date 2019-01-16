@@ -28,7 +28,7 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawSettingUI)
                 return;
 
-            GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(true);
+            //GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(true);
             isDrawSettingUI = true;
         }
         else
@@ -36,7 +36,7 @@ public partial class MainUISceneManager : MonoBehaviour
             if (!isDrawSettingUI)
                 return;
 
-            GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(false);
+            //GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(false);
             isDrawSettingUI = false;
         }
     }
