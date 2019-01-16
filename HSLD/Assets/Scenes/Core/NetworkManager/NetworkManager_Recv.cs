@@ -17,7 +17,8 @@ using System.IO;
 using UnityEngine.Networking;
 using System.Net.NetworkInformation;
 
-public partial class NetworkManager : MonoBehaviour {
+public partial class NetworkManager : MonoBehaviour
+{
     void RecvProcess()
     {
         RecvProtocolType();
@@ -303,6 +304,18 @@ public partial class NetworkManager : MonoBehaviour {
         {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
+            if (iBuffer == -1)
+            {
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(true);
+            }
+            else if (iBuffer == 0)
+            {
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, false);
+            }
+            else if (iBuffer == 1)
+            {
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, true);
+            }
         }
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{
@@ -540,7 +553,10 @@ public partial class NetworkManager : MonoBehaviour {
         {
             //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
         }
-
+        else if (recvType == (int)PROTOCOL.NOTIFY_EMOJI)
+        {
+            inGameSceneManager.NetworkManager_TurnOnEnemyEmoji(BitConverter.ToInt32(NewDataRecvBuffer, 4));
+        }
         // Network Exception
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)
         {

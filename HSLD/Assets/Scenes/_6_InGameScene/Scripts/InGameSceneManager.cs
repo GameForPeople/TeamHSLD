@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameSceneManager : MonoBehaviour
+public partial class InGameSceneManager : MonoBehaviour
 {
     public int network_recvProtocolFlag;
     public int network_sendProtocol;
@@ -40,17 +40,17 @@ public class InGameSceneManager : MonoBehaviour
     {
         if (GameObject.Find("GameCores") == null)
             return;
+
         // -----
         GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
         // -----
+        StartForEmoji();
 
         for (int i = 0; i < 12; ++i)
         {
             recvTerrainIndex[i] = 0;
             network_terrainIndex[i] = 0;
         }
-
-
 
         networkManager = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         networkManager.inGameSceneManager = GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>(); // same , return this;
@@ -150,6 +150,7 @@ public class InGameSceneManager : MonoBehaviour
     //}
 
     // 사용자가 턴을 종료하면 나의턴이 됩니다.
+
     public void RecvChangeTurn()
     {
         Debug.Log("1111");
@@ -333,7 +334,10 @@ public class InGameSceneManager : MonoBehaviour
 
             if (network_sendProtocol == (int)PROTOCOL.VOID_GAME_STATE)
             {
-                networkManager.SendData(PROTOCOL.VOID_GAME_STATE);
+                if (selectedEmojiIndex > 0)
+                    networkManager.SendData(PROTOCOL.NOTIFY_EMOJI);
+                else
+                    networkManager.SendData(PROTOCOL.VOID_GAME_STATE);
             }
             else
             {

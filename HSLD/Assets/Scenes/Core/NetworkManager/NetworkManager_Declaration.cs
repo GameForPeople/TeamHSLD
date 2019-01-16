@@ -110,8 +110,9 @@ public enum PROTOCOL : int
 
     NOTIFY_EVENTCARD_INDEX = 505, // A클라이언트가 사용한 이벤트 카드 인덱스 
 
-    NOTIFY_GAME_READY = 507	// 이거 주고 받으면 꼴토롱됨.
+    NOTIFY_GAME_READY = 507,    // 이거 주고 받으면 꼴토롱됨.
 
+    NOTIFY_EMOJI = 508	// 이모티콘 // 이모지 관련입니다.
 };
 
 public partial class NetworkManager : MonoBehaviour {

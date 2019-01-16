@@ -64,7 +64,7 @@
 #define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
 
 // FOR VIP CODE
-#define		VIP_CODE_STRING			"짜장면은 짜장짜장"
+#define		VIP_CODE_STRING			L"짜장면은 짜장짜장"
 
 using namespace std;
 

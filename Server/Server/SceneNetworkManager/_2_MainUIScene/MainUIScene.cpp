@@ -528,11 +528,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_VipCodeProcess(SocketInfo* pClient)
 
 	wstring wideStrBuffer(stringMemoryLength / 2, 0);
 	memcpy(&wideStrBuffer[0], pClient->buf + 8, stringMemoryLength);
-	std::wcout << L"요청한 VIP CODE는 ~ 입니다. : " << wideStrBuffer << std::endl;
 
-	const int typeBuffer = pClient->pUserNode->VipCodeProcess(CONVERT_UTIL::WStringToString(wideStrBuffer));
-
-	std::cout << "vip code 여부 : " << typeBuffer << std::endl;
+	const int typeBuffer = pClient->pUserNode->VipCodeProcess(wideStrBuffer);
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_VIP_CODE), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&typeBuffer), sizeof(int));
