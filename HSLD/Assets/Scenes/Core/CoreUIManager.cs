@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class CoreUIManager : MonoBehaviour
+public partial class CoreUIManager : MonoBehaviour
 {
 
     public int answerFriendInviteValue = 0; // ClickAnswerFriendInvite UI에서 Ok를 누르면 1, No를 누르면 0
@@ -13,16 +13,17 @@ public class CoreUIManager : MonoBehaviour
     public NetworkManager networkObject;
     GameObject MakeFriendUI;
     GameObject InviteFriendUI;
-    GameObject DetailUserDataUI;
+
     GameObject ResultMakeFriendUI;
 
     // Use this for initialization
     void Start()
     {
+        StartForCharacter();
+
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         MakeFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("MakeFriendUI").gameObject;
         InviteFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("InviteFriendUI").gameObject;
-        DetailUserDataUI = GameObject.Find("GameCores").transform.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("DetailUserDataUI").gameObject;
         ResultMakeFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("ResultMakeFriendUI").gameObject;
     }
 
@@ -104,21 +105,6 @@ public class CoreUIManager : MonoBehaviour
         {
             GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").
             transform.Find("CHECK_ANSWER_MAKE_FRIEND_TRUE_UI").gameObject.SetActive(false);
-        }
-    }
-
-    public void OnOffDetailUserDataUI(bool InBValue)
-    {
-        if (InBValue == true)
-        {
-            DetailUserDataUI.transform.Find("WinText").GetComponent<Text>().text = networkObject.winCount.ToString();
-            DetailUserDataUI.transform.Find("LoseText").GetComponent<Text>().text = networkObject.loseCount.ToString();
-
-            DetailUserDataUI.SetActive(true);
-        }
-        else if (InBValue == false)
-        {
-            DetailUserDataUI.SetActive(false);
         }
     }
 
