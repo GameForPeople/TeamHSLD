@@ -18,25 +18,46 @@ public class ObjectMoving : MonoBehaviour
     public int startingIndex;
     private int randomVal;
     private float time_;
+    private Terrain currentTerrain;
 
     private GameObject tmpObj;
 
     private void Start()
     {
+        switch(thisObject)
+        {
+            case MOVINGOBJECT.CHICKEN:
+                currentTerrain = Terrain.MODERATION;
+                break;
+            case MOVINGOBJECT.CLOUD:
+                currentTerrain = Terrain.MODERATION;
+                break;
+            case MOVINGOBJECT.PENGUIN:
+                currentTerrain = Terrain.COLD;
+                break;
+            case MOVINGOBJECT.SNAKE:
+                currentTerrain = Terrain.BARREN;
+                break;
+            case MOVINGOBJECT.WHALE:
+                currentTerrain = Terrain.SEA;
+                break;
+        }
         StartCoroutine(Moving(GameObject.Find(startingIndex.ToString())));
     }
 
     void AlbeToGo(GameObject obj)
     {
         int j = 0;
-        for(int i =0; i< obj.GetComponent<MeshController>().JointMesh.Length;i++)
+        for(int i =0; i<3;i++)
         {
-            if (obj.GetComponent<MeshController>().terrainstate.Equals(obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate))
+            if (obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(currentTerrain))
             {
                 ableToGoObj[j] = obj.GetComponent<MeshController>().JointMesh[i];
                 j += 1;
             }
         }
+        if (j == 0)
+            Destroy(gameObject);
     }
 
     IEnumerator Moving(GameObject startingPoint)

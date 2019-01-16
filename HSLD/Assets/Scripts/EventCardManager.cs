@@ -21,7 +21,7 @@ public class EventCardManager : MonoBehaviour
 
     public void EventCardInstate()
     {
-        pickedCard = eventCardInfoSet[Random.Range(0, 6)];
+        pickedCard = eventCardInfoSet[Random.Range(2, 3)];
         eventCard.SetActive(true);
 
         cardName.text = pickedCard.cardName;
@@ -119,8 +119,24 @@ public class EventCardManager : MonoBehaviour
                 break;
         }
 
-        for (int i = 0; i < connectObjs.Count; i++)
-            connectObjs[i].GetComponent<MeshController>().terrainstate = selectedTerrain;
+        switch(selectedTerrain)
+        {
+            case Terrain.MODERATION:
+                for (int i = 0; i < connectObjs.Count; i++)
+                    connectObjs[i].GetComponent<MeshController>().setModeration(connectObjs[i].GetComponent<MeshController>().currentIdentify);
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                break;
+            case Terrain.BARREN:
+                for (int i = 0; i < connectObjs.Count; i++)
+                    connectObjs[i].GetComponent<MeshController>().setBarren(connectObjs[i].GetComponent<MeshController>().currentIdentify);
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                break;
+            case Terrain.COLD:
+                for (int i = 0; i < connectObjs.Count; i++)
+                    connectObjs[i].GetComponent<MeshController>().setCold(connectObjs[i].GetComponent<MeshController>().currentIdentify);
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                break;
+        }
 
         selectTerrainCardObj.SetActive(false);
         connectObjs.Clear();
@@ -138,7 +154,6 @@ public class EventCardManager : MonoBehaviour
                 if (obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(terrainType))
                     ConnectObj(obj.GetComponent<MeshController>().JointMesh[i], terrainType);
             }
-                
         }
     }
 
