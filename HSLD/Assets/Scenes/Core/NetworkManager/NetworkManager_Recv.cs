@@ -555,7 +555,7 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_EMOJI)
         {
-
+            inGameSceneManager.NetworkManager_TurnOnEnemyEmoji(BitConverter.ToInt32(NewDataRecvBuffer, 4));
         }
         // Network Exception
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)

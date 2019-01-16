@@ -4142,7 +4142,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.678}
   m_AnchoredPosition: {x: 0, y: -4.49}
   m_SizeDelta: {x: 0, y: 1.02}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11494,6 +11494,8 @@ MonoBehaviour:
   isOnWaitGameReady: 0
   recvDiceValue: 0
   recvTerrainType: 0
+  sendEmoji: 0
+  recvEmoji: 0
 --- !u!4 &823012257
 Transform:
   m_ObjectHideFlags: 0
