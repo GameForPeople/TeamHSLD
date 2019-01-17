@@ -317,6 +317,26 @@ public partial class NetworkManager : MonoBehaviour
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, true);
             }
         }
+
+        else if (recvType == (int)PROTOCOL.ANSWER_BUY_CHARACTER)
+        {
+            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            // -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 캐릭터이여서 실패, 2면 이런 캐릭터 안팔아요!(네트워크 에러 가능성)
+            if(iBuffer == -1 )
+            {
+
+            }
+            else if(iBuffer == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{
         //    // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?

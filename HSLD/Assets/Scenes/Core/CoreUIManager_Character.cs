@@ -87,7 +87,7 @@ public partial class CoreUIManager : MonoBehaviour
 
     public void UI_BuyCharacter()
     {
-        networkObject.money -= 1000;
+       
 
     }
 
