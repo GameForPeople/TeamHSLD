@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public partial class CoreUIManager : MonoBehaviour
+public partial class MainUISceneManager : MonoBehaviour
 {
     public int nowCharacterIndex;
 
@@ -21,8 +21,8 @@ public partial class CoreUIManager : MonoBehaviour
         nowCharacterIndex = 0;
         selectedCharacterIndex = 0;
 
-        DetailUserDataUI = GameObject.Find("GameCores").transform.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("DetailUserDataUI").gameObject;
-        UserDataUI = GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject;
+        DetailUserDataUI = GameObject.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("DetailUserDataUI").gameObject;
+        UserDataUI = GameObject.Find("UserDataUI").gameObject;
 
         characterName[0] = "My Planet";
         characterName[1] = "승리의 아이콘";
@@ -33,6 +33,14 @@ public partial class CoreUIManager : MonoBehaviour
         characterName[6] = "불신";
         characterName[7] = "얼음신";
         characterName[8] = "나무신";
+
+        // 닉네임 설정
+        UserDataUI.transform.Find("Canvas").transform.Find("NickName_Text").gameObject.GetComponent<Text>().text
+             = networkObject.nickName.ToString();
+
+        // 돈 설정
+        UserDataUI.transform.Find("Canvas").transform.Find("Money_Text").gameObject.GetComponent<Text>().text
+             = networkObject.money.ToString();
     }
 
     /*
@@ -91,21 +99,12 @@ public partial class CoreUIManager : MonoBehaviour
 
     }
 
+
     /*
-     NetworkManager_SetUseorNotUseCharacter
-        
-        최초 네트워크 매니저에서, 보유한 캐릭터를 받아올 때. 이 함수를 호출하여,
-        Not Use (X표 UI), Use () UI를 OnOff한다.
+     UI_DetailUserDataUI
 
-        해당 UI들은 버튼 UI로 각각 출력이외에도 구매기능을 포함하고 있기 때문에, 중요.
-
-        구매후 해당 UI동기화는 구매함수에서 책임진다.
-     */
-    public void NetworkManager_SetUseorNotUseCharacter()
-    {
-
-    }
-
+        DetailUserDataUI를 OnOff하는 함수입니다.
+    */
     public void UI_DetailUserDataUI(bool InBValue)
     {
         if (InBValue == true)
@@ -121,4 +120,16 @@ public partial class CoreUIManager : MonoBehaviour
         }
     }
 
+    /*
+     SetUseorNotUseCharacter
+        
+        UI_DetailUserDataUI가 호출될 때, UseUI, NotUseUI의 Active 여부를 조절한다.
+
+        여기서 이를 판별하기 위해, NetworkManager의 CharacterBit를 사용하는데, 이 뜻은,
+        캐릭터 구매가 있을 경우, 동기화를 위해 CharacterBit를 변경하고 이 함수를 호출을 뜻함.
+     */
+    private void SetUseorNotUseCharacter()
+    {
+
+    }
 }

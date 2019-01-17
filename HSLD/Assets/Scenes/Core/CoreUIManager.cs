@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public partial class CoreUIManager : MonoBehaviour
+public class CoreUIManager : MonoBehaviour
 {
 
     public int answerFriendInviteValue = 0; // ClickAnswerFriendInvite UI에서 Ok를 누르면 1, No를 누르면 0
@@ -19,8 +19,6 @@ public partial class CoreUIManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartForCharacter();
-
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
         MakeFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("MakeFriendUI").gameObject;
         InviteFriendUI = GameObject.Find("GameCores").transform.Find("Dynamic_Canvas").transform.Find("InviteFriendUI").gameObject;

@@ -25,6 +25,7 @@ public partial class MainUISceneManager : MonoBehaviour
         StartForFriend();
         StartForSetting();
         StartForShop();
+        StartForCharacter();
     }
 
     public void UI_InGameWithServerButton()

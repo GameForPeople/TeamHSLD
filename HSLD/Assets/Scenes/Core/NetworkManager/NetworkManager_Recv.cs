@@ -225,7 +225,8 @@ public partial class NetworkManager : MonoBehaviour
 
                 Debug.Log("적 닉네임은 : " + enemyId + "이다.");
 
-                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+                // DEV_77
+                //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
                 GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
@@ -484,7 +485,8 @@ public partial class NetworkManager : MonoBehaviour
                 subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 20);
 
                 //게임시작 개굿 ( UserDataUI가 On이면 꺼줘야함)
-                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+                // DEV_77
+                //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
                 GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
