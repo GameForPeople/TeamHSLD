@@ -159,7 +159,7 @@ public partial class NetworkManager : MonoBehaviour {
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_BUY_ITEM), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
-                        GameObject.Find("GameCores").transform.Find("MainUISceneManager").GetComponent<MainUISceneManager>().itemIndex
+                        GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().itemIndex
                         ), 0, NewDataSendBuffer, 4, 4);
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
@@ -184,6 +184,16 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(stringToByteBuffer, 0, NewDataSendBuffer, 8, memorySize);
 
                     socket.Send(NewDataSendBuffer, 8 + memorySize, SocketFlags.None);
+                }
+
+                else if (InMsg == PROTOCOL.DEMAND_BUY_CHARACTER)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_BUY_CHARACTER), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(
+                        GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().selectedCharacterIndex
+                        ), 0, NewDataSendBuffer, 4, 4);
+
+                    socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)

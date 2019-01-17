@@ -71,7 +71,7 @@ public partial class NetworkManager : MonoBehaviour
             int titleBit = BitConverter.ToInt32(NewDataRecvBuffer, 20);
             Debug.Log("titleBit is --> " + titleBit);
 
-            int characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
+            characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
             Debug.Log("characterBit is --> " + characterBit);
 
             int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
@@ -321,21 +321,18 @@ public partial class NetworkManager : MonoBehaviour
 
         else if (recvType == (int)PROTOCOL.ANSWER_BUY_CHARACTER)
         {
-            int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+            int typeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            // -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 캐릭터이여서 실패, 2면 이런 캐릭터 안팔아요!(네트워크 에러 가능성)
-            if(iBuffer == -1 )
+            if(typeBuffer == -1)
             {
+                money -= 1000;
 
+                characterBit |=
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().selectedCharacterIndex;
             }
-            else if(iBuffer == 0)
-            {
 
-            }
-            else
-            {
-
-            }
+            GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
+            NetworkManager_AnswerBuyCharacter(typeBuffer);
         }
 
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
