@@ -927,7 +927,7 @@ public class DiceSystem : MonoBehaviour
             getDiceNum *= 2;
             isDiceDouble = false;
         }
-        isDouble = true;
+        //isDouble = true;
         Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
         CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
 

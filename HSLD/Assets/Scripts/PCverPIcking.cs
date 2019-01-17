@@ -325,7 +325,7 @@ public class PCverPIcking : MonoBehaviour
                 //myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(3, 6);
             }
         }
-        Debug.Log("!!!!!! -> " + tempint);
+        //Debug.Log("!!!!!! -> " + tempint);
     }
 
 }

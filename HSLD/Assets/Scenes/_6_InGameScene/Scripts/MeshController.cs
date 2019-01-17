@@ -29,6 +29,7 @@ public class MeshController : MonoBehaviour {
     public Identify currentIdentify = Identify.NEUTRALITY;
 
     public int MeshNumber;
+    private GameObject terrainObj;
     static int giveNumber;
     public Terrain terrainstate;
     public bool isAwake;
@@ -113,7 +114,7 @@ public class MeshController : MonoBehaviour {
             if (true) // isMoblie == true
             {
                 CameraController.lastmesh = MeshNumber;
-                Debug.Log("Pick : " + CameraController.lastmesh);
+                //Debug.Log("Pick : " + CameraController.lastmesh);
                 int cameraYAmount = 138;
                 Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                 StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
@@ -167,6 +168,56 @@ public class MeshController : MonoBehaviour {
 
     }
 
+    public void InstateTerrainObject(Terrain terrainstate)
+    {
+        if (terrainObj != null)
+            Destroy(terrainObj);
+
+        // 객체 추가해서 달아주자.
+        if (terrainstate == Terrain.MODERATION)
+        {
+            //20퍼센트 확률로 생기지 않음.
+            if (Random.Range(0, 100) < 80 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(11, 14)], 1.01f);
+            }
+        }
+        else if (terrainstate == Terrain.BARREN)
+        {
+            //70퍼센트 확률로 생기지 않음.
+            if (Random.Range(0, 100) < 30 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 10)], 1.01f);
+
+            }
+
+        }
+        else if (terrainstate == Terrain.COLD)
+        {
+            //40퍼센트 확률로 생기지 않음.
+            if (Random.Range(0, 100) < 60 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
+            }
+        }
+        else if (terrainstate == Terrain.SEA)
+        {
+            //90퍼센트 확률로 생기지 않음.
+            if (Random.Range(0, 100) < 10 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(17, 18)], 1.01f);
+            }
+        }
+        else if (terrainstate == Terrain.MOUNTAIN)
+        {
+            //5퍼센트 확률로 생기지 않음.
+            if (Random.Range(0, 100) < 95 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(15, 16)], 1.01f);
+            }
+        }
+    }
+
     public IEnumerator MoveUp()
     {
         while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
@@ -175,51 +226,15 @@ public class MeshController : MonoBehaviour {
 
             yield return null;
         }
-        // 객체 추가해서 달아주자.
-        if(terrainstate == Terrain.MODERATION)
-        {
-            //20퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 80 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(11, 14)], 1.01f);
-            }
-        } else if (terrainstate == Terrain.BARREN)
-        {
-            //70퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 30 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(5, 10)], 1.01f);
-            }
+        InstateTerrainObject(terrainstate);
 
-        } else if (terrainstate == Terrain.COLD)
-        {
-            //40퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 60 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(1, 4)], 1.01f);
-            }
-        } else if (terrainstate == Terrain.SEA)
-        {
-            //90퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 10 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(17, 18)], 1.01f);
-            }
-        } else if (terrainstate == Terrain.MOUNTAIN)
-        {
-            //5퍼센트 확률로 생기지 않음.
-            if (randomValue(0, 100) < 95 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[randomValue(15, 16)], 1.01f);
-            }
-        }
+
     }
 
-    public IEnumerator MoveDown()
+    public IEnumerator MoveDownCor()
     {
         while (transform.position.magnitude >= startPos.magnitude)
         {
-            Debug.Log("찍히냐?");
             transform.position = Vector3.Lerp(transform.position, startPos * 1.0f, Time.deltaTime / 5);
             // 객체가 있었다면 객체들을 지워야 함.
             Destroy(TargetObject);
@@ -230,19 +245,19 @@ public class MeshController : MonoBehaviour {
     public void EulerRotCal(GameObject targetObj, GameObject buildingObj, float offset)
     {
         TargetObject = Instantiate(buildingObj);
-
+        
         TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
         TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
         
         TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
         TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        terrainObj = TargetObject;
     }
 
     public void Picked()
     {
         if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
         {
-            Debug.Log("picked");
             GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
 
             CameraController.ChangeableCount--;
@@ -276,7 +291,7 @@ public class MeshController : MonoBehaviour {
         }
     }
 
-    private int randomValue(int min, int max)
+    private int RandomValue(int min, int max)
     {
         return Random.Range(min, max + 1);
     }

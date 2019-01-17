@@ -16,12 +16,13 @@ public class EventCardManager : MonoBehaviour
     private Terrain selectedTerrain;
 
     private GameObject connectedObj;
+    private int tmpCardIndex;
 
     private List<GameObject> connectObjs = new List<GameObject>();
 
     public void EventCardInstate()
     {
-        pickedCard = eventCardInfoSet[Random.Range(2, 3)];
+        pickedCard = eventCardInfoSet[Random.Range(0, 6)];
         eventCard.SetActive(true);
 
         cardName.text = pickedCard.cardName;
@@ -70,7 +71,13 @@ public class EventCardManager : MonoBehaviour
             case 101:
                 ConnectObj(obj, terrainType);
                 for (int i = 0; i < connectObjs.Count; i++)
-                    connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.NEUTRALITY;
+                {
+                    connectObjs[i].GetComponent<MeshController>().setDefault();
+                    connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
+                    StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
+
+                }
+                    
                 connectObjs.Clear();
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
@@ -110,12 +117,15 @@ public class EventCardManager : MonoBehaviour
         {
             case 1:
                 selectedTerrain = Terrain.MODERATION;
+                tmpCardIndex = 1;
                 break;
             case 2:
                 selectedTerrain = Terrain.BARREN;
+                tmpCardIndex = 2;
                 break;
             case 3:
                 selectedTerrain = Terrain.COLD;
+                tmpCardIndex = 3;
                 break;
         }
 
@@ -123,18 +133,30 @@ public class EventCardManager : MonoBehaviour
         {
             case Terrain.MODERATION:
                 for (int i = 0; i < connectObjs.Count; i++)
+                {
                     connectObjs[i].GetComponent<MeshController>().setModeration(connectObjs[i].GetComponent<MeshController>().currentIdentify);
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                    connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
+                }
+                    
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.BARREN:
                 for (int i = 0; i < connectObjs.Count; i++)
+                {
                     connectObjs[i].GetComponent<MeshController>().setBarren(connectObjs[i].GetComponent<MeshController>().currentIdentify);
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                    connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
+                }
+                    
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.COLD:
                 for (int i = 0; i < connectObjs.Count; i++)
+                {
                     connectObjs[i].GetComponent<MeshController>().setCold(connectObjs[i].GetComponent<MeshController>().currentIdentify);
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                    connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
+                }
+                    
+                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
         }
 

@@ -119,7 +119,7 @@ public class AllMeshController : MonoBehaviour {
         {
             if(AllContainer[i].GetComponent<MeshController>().Linkednum == Linknumber)
             {
-                StartCoroutine(AllContainer[i].GetComponent<MeshController>().MoveDown());
+                StartCoroutine(AllContainer[i].GetComponent<MeshController>().MoveDownCor());
                 AllContainer[i].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
                 AllContainer[i].GetComponent<MeshController>().GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
                 AllContainer[i].GetComponent<MeshController>().Linkednum = 0;

@@ -11337,7 +11337,7 @@ MonoBehaviour:
   currentTurn: 0
   matchingCompleteTime: 3
   selectOrderTime: 5
-  selectCardTime: 10
+  selectCardTime: 3
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -11381,7 +11381,6 @@ MonoBehaviour:
   spinCanvas: {fileID: 248390576}
   diceCanvas: {fileID: 1478671596}
   setTerrainCanvas: {fileID: 1001726854}
-  enemyImage: {fileID: 1602802863}
   turnTimerImg: {fileID: 1005423420}
   tmpAnimationImage: {fileID: 1247643233}
   missionSetParentTransform: {fileID: 96063209}

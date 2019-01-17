@@ -37,7 +37,6 @@ public class FlowSystem : MonoBehaviour
     public GameObject spinCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
-    public GameObject enemyImage;
     public GameObject turnTimerImg;
     public GameObject tmpAnimationImage;
     public Transform missionSetParentTransform;

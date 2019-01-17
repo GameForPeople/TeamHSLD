@@ -165,7 +165,6 @@ public class TurnSystem : MonoBehaviour
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
             //displayTurnTimerTxt.transform.localPosition = new Vector3(0, 265f, 0);
             //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
-            gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(false);
             gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(true);
 
             if(myCoroutine != null)
@@ -178,7 +177,6 @@ public class TurnSystem : MonoBehaviour
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             //displayTurnTimerTxt.transform.localPosition = new Vector3(550, -308, 0);
             //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(549.3f, -260.3f, 0);
-            gameObject.GetComponent<FlowSystem>().enemyImage.SetActive(true);
             gameObject.GetComponent<FlowSystem>().diceCanvas.SetActive(false);
             StartCoroutine(EndTurnAndWaiting());
         }
