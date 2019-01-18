@@ -20,8 +20,8 @@ public class RoomSceneManager : MonoBehaviour
     #region [ Release Func ]
     void Start()
     {
-        // 유저 데이터 필요 없어!
-        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+        // 유저 데이터 필요 없어! [DEV_77]
+        //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 
@@ -106,7 +106,8 @@ public class RoomSceneManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         // UseDataUI Off
-        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+        // DEV_77
+        //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
     }
 

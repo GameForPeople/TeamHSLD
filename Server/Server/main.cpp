@@ -1,7 +1,7 @@
 #include "../Server/PCH/stdafx.h"
 #include "../Server/IOCPServer/IOCPServer.h"
 
-int main(int argc, char * argv[])
+auto main(int argc, char * argv[]) -> int
 {
 	unique_ptr<IOCPServer> GameServer 
 		= make_unique<IOCPServer>

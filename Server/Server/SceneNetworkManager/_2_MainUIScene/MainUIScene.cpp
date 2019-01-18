@@ -13,6 +13,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene(GameRoomManager* pInRoomData, Us
 	, CHECK_ANSWER_MAKE_FRIEND(Protocol::CHECK_ANSWER_MAKE_FRIEND)
 	, CONST_ANSWER_BUY_ITEM(Protocol::ANSWER_BUY_ITEM)
 	, CONST_ANSWER_VIP_CODE(Protocol::ANSWER_VIP_CODE)
+	, CONST_ANSWER_BUY_CHARACTER(Protocol::ANSWER_BUY_CHARACTER)
 	, CONST_TRUE(1), CONST_FALSE(0), CONST_2(2), CONST_3(3)
 {}
 
@@ -36,6 +37,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 		_BuyItemProcess(pClient);
 	else if (InRecvType == DEMAND_VIP_CODE)
 		_VipCodeProcess(pClient);
+	else if (InRecvType == DEMAND_BUY_CHARACTER)
+		_BuyCharacterProcess(pClient);
 }
 
 /*
@@ -529,10 +532,24 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_VipCodeProcess(SocketInfo* pClient)
 	wstring wideStrBuffer(stringMemoryLength / 2, 0);
 	memcpy(&wideStrBuffer[0], pClient->buf + 8, stringMemoryLength);
 
-	const int typeBuffer = pClient->pUserNode->VipCodeProcess(wideStrBuffer);
+	const int retBuffer = pClient->pUserNode->VipCodeProcess(wideStrBuffer);
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_VIP_CODE), sizeof(int));
-	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&typeBuffer), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&retBuffer), sizeof(int));
+
+	pClient->dataSize = 8;
+}
+
+/*
+	_BuyCharacterProcess
+		- 클라이언트에서 받은 구매를 희망하는 캐릭터 인덱스를 확인하여, 처리합니다.
+*/
+void SCENE_NETWORK_MANAGER::MainUiScene::_BuyCharacterProcess(SocketInfo* pClient)
+{
+	const int retBuffer = pClient->pUserNode->BuyCharacter(reinterpret_cast<int&>(pClient->buf[4]));
+
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_BUY_CHARACTER), sizeof(int));
+	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&retBuffer), sizeof(int));
 
 	pClient->dataSize = 8;
 }

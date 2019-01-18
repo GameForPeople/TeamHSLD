@@ -25,6 +25,7 @@ public partial class MainUISceneManager : MonoBehaviour
         StartForFriend();
         StartForSetting();
         StartForShop();
+        StartForCharacter();
     }
 
     public void UI_InGameWithServerButton()
@@ -36,7 +37,7 @@ public partial class MainUISceneManager : MonoBehaviour
     #region [ Client Test Func ]
     public void UI_InGameOnlyClientButton()
     {
-        GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+        //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
     }
     #endregion

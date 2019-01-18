@@ -64,7 +64,7 @@
 #define		TITLE_PARSER			TEXT("<body>Current IP Address: ")
 
 // FOR VIP CODE
-#define		VIP_CODE_STRING			L"짜장면은 짜장짜장"
+#define		VIP_CODE_STRING			L"짜장면은 짜장짜장"	// 해당 스트링은 꼭 wstring이여야 합니다.
 
 using namespace std;
 

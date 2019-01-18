@@ -58,7 +58,11 @@ public enum PROTOCOL : int
 
     // for MainUiScene -- VipCode
     DEMAND_VIP_CODE = 217,      // 님 이거 VIP Code 맞아요?
-    ANSWER_VIP_CODE = 218,		// 맞네 틀리네~
+    ANSWER_VIP_CODE = 218,      // 맞네 틀리네~
+    
+    // for MainUiScene -- Character Buy
+    DEMAND_BUY_CHARACTER = 219,     // 이 캐릭터 살게요
+    ANSWER_BUY_CHARACTER = 220,     // 응 살수 있나 보고 살수있으면 팔아줄게
 
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
@@ -144,6 +148,7 @@ public partial class NetworkManager : MonoBehaviour {
     public int winCount = 0;
     public int loseCount = 0;
     public int money = 20190102;
+    public int characterBit = 0;
 
     // Use Main UI Scene
     public int friendNum;

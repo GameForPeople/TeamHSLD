@@ -71,7 +71,7 @@ public partial class NetworkManager : MonoBehaviour
             int titleBit = BitConverter.ToInt32(NewDataRecvBuffer, 20);
             Debug.Log("titleBit is --> " + titleBit);
 
-            int characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
+            characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
             Debug.Log("characterBit is --> " + characterBit);
 
             int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
@@ -225,7 +225,8 @@ public partial class NetworkManager : MonoBehaviour
 
                 Debug.Log("적 닉네임은 : " + enemyId + "이다.");
 
-                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+                // DEV_77
+                //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
                 GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
@@ -317,6 +318,23 @@ public partial class NetworkManager : MonoBehaviour
                 GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().NetworkManager_RecvVipResult(false, true);
             }
         }
+
+        else if (recvType == (int)PROTOCOL.ANSWER_BUY_CHARACTER)
+        {
+            int typeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            if(typeBuffer == -1)
+            {
+                money -= 1000;
+
+                characterBit |=
+                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().selectedCharacterIndex;
+            }
+
+            GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
+            NetworkManager_AnswerBuyCharacter(typeBuffer);
+        }
+
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)
         //{
         //    // 1이면 정상적으로 방삭제된 상태, 0이면 게스트 그사이접속해버렷네?
@@ -464,7 +482,8 @@ public partial class NetworkManager : MonoBehaviour
                 subMissionIndex = BitConverter.ToInt32(NewDataRecvBuffer, 20);
 
                 //게임시작 개굿 ( UserDataUI가 On이면 꺼줘야함)
-                GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
+                // DEV_77
+                //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
                 GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);

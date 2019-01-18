@@ -20,17 +20,17 @@ _NODISCARD int UserData::BuyItem(const int InItemIndex)
 		return 2;
 	}
 
-	if ((itemBit & InItemIndex) == InItemIndex)
+	if (int retItemBit = static_cast<int>(itemManager->GetItemBitWithIndex(InItemIndex))
+		; (itemBit & retItemBit) == retItemBit)
 	{
 		// 이미 구매한 아이템.
 		return 1;
 	}
-
-	if (int itemPrice = itemManager->GetItemPriceWithIndex(InItemIndex)
+	else if (int itemPrice = static_cast<int>(itemManager->GetItemPriceWithIndex(InItemIndex))
 		; money >= itemPrice)
 	{
 		money -= itemPrice;
-		itemBit |= InItemIndex;
+		itemBit |= retItemBit;
 
 		return -1;
 	}
@@ -53,17 +53,17 @@ _NODISCARD int UserData::BuyCharacter(const int InCharacterIndex)
 		return 2;
 	}
 
-	if ((characterBit & InCharacterIndex) == InCharacterIndex)
+	if (int RetCharacterBit = static_cast<int>(characterManager->GetCharacterBitWithIndex[InCharacterIndex])
+		; (characterBit & RetCharacterBit) == RetCharacterBit)
 	{
 		// 이미 구매한 아이템.
 		return 1;
 	}
-
-	if (int characterPrice = characterManager->GetCharacterPriceWithIndex(InCharacterIndex)
+	else if (int characterPrice = static_cast<int>(characterManager->GetCharacterPriceWithIndex(InCharacterIndex))
 		; money >= characterPrice)
 	{
 		money -= characterPrice;
-		characterBit |= InCharacterIndex;
+		characterBit |= RetCharacterBit;
 
 		return -1;
 	}
@@ -82,17 +82,19 @@ _NODISCARD int UserData::BuyCharacter(const int InCharacterIndex)
 */
 _NODISCARD int UserData::VipCodeProcess(const wstring& InInputtedString)
 {
-	if ((achievementBit & 0x1) == 0x1)
+	if (int compBit = static_cast<int>(characterManager->GetCharacterBitWithIndex(CharacterManager::CHARACTER_INDEX::VICTORY))
+		; (achievementBit & compBit) == compBit)
 	{
 		return 1;
 	}
 
 	if (InInputtedString.compare(VIP_CODE) == 0)
 	{
-		achievementBit |= 0x1;
-		characterBit |= 0x1;
+		// achievementBit는 지금 쫌 계륵
+		achievementBit |= static_cast<int>(characterManager->GetCharacterBitWithIndex(CharacterManager::CHARACTER_INDEX::VICTORY));
+		characterBit |= static_cast<int>(characterManager->GetCharacterBitWithIndex(CharacterManager::CHARACTER_INDEX::VICTORY));
 
-		money += 100000000;
+		money += 100000000;	//	1억....부럽다...
 
 		return -1;
 	}
