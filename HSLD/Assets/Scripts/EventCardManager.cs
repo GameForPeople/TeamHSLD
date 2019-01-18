@@ -18,13 +18,51 @@ public class EventCardManager : MonoBehaviour
     private GameObject connectedObj;
     private int tmpCardIndex;
 
+    private bool[] check = new bool[6];
+
     private List<GameObject> connectObjs = new List<GameObject>();
+
+    private void Start()
+    {
+        for (int i = 0; i < check.Length; i++)
+            check[i] = false;
+    }
+
+    public void RandomEventCardSelect(int index)
+    {
+        if (check[index])
+        {
+            RandomEventCardSelect(Random.Range(0, 6));
+            return;
+        }
+
+
+        if (!PCverPIcking.isDominatedConfirm && index == 0)
+        {
+            RandomEventCardSelect(Random.Range(0, 6));
+            return;
+        }
+
+        check[index] = true;
+        pickedCard = eventCardInfoSet[index];
+        int cnt = 0;
+        for(int i =0; i<check.Length;i++)
+        {
+            if (check[i])
+                cnt += 1;
+        }
+        if(cnt == check.Length)
+        {
+            for (int i = 0; i < check.Length; i++)
+                check[i] = false;
+        }
+    }
 
     public void EventCardInstate()
     {
-        pickedCard = eventCardInfoSet[Random.Range(0, 6)];
-        eventCard.SetActive(true);
+        RandomEventCardSelect(Random.Range(0, 6));
 
+        eventCard.SetActive(true);
         cardName.text = pickedCard.cardName;
         cardImg.sprite = pickedCard.img;
         selectedIndex = pickedCard.cardIndex;

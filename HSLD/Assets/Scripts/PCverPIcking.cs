@@ -67,11 +67,11 @@ public class PCverPIcking : MonoBehaviour
                 switch(EventCardManager.selectedIndex)
                 {
                     case 101:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))   //
                             return;
                         break;
                     case 111:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))   //
                             return;
                         break;
                     case 201:
@@ -79,7 +79,7 @@ public class PCverPIcking : MonoBehaviour
                             return;
                         break;
                     case 202:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))   //
                             return;
                         break;
                 }
