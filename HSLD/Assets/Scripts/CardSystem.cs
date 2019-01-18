@@ -70,7 +70,7 @@ public class CardSystem : MonoBehaviour
                 card = null;
                 return;
             }
-            SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[10]);
+            SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[10], 1.0f);
 
             //flow 변경
             GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);

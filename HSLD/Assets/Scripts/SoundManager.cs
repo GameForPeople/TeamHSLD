@@ -34,10 +34,13 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //효과음을 한번 출력할때 사용. - Ref(플레이할 클립)
-    public void SFXPlay(AudioClip clip)
+    //효과음을 한번 출력할때 사용. - Ref(플레이할 클립, 0 ~ 1 상수값)
+    public void SFXPlay(AudioClip clip, float constValue)
     {
+        float originVolume = SFXSource.volume;
+        SFXSource.volume *= constValue;
         SFXSource.PlayOneShot(clip);
+        SFXSource.volume = originVolume;
     }
 
     public void BGMChange(AudioClip clip)
