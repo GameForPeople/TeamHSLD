@@ -176,7 +176,7 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
-                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8], 1.0f);
+                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8]);
 
                 //애니메이션 여기
                 StartCoroutine(DiceActiveOff());
