@@ -10718,6 +10718,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100400, guid: e0e6c540bb21a994890f7a93ac229b27,
     type: 3}
   m_PrefabInternal: {fileID: 1260333004}
+--- !u!54 &784074201
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 784074200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &784074204
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15591,6 +15606,18 @@ MonoBehaviour:
   - {fileID: 1950832684761950, guid: d47111ed4c502344686679d62a8e9947, type: 2}
   - {fileID: 1147874481913928, guid: 7f3e163bc8b5b0d4dbb640f5173ccea5, type: 2}
   - {fileID: 1619096674601712, guid: 82acff35e6cac944e9f73c7ba725dcac, type: 2}
+--- !u!114 &1132190349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132190347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2156a0eaafa854b96cb8768d075283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -9.8
 --- !u!1 &1132665301
 GameObject:
   m_ObjectHideFlags: 0
@@ -25192,6 +25219,10 @@ Prefab:
     - target: {fileID: 2300538, guid: e0e6c540bb21a994890f7a93ac229b27, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100528, guid: e0e6c540bb21a994890f7a93ac229b27, type: 3}
+      propertyPath: m_TagString
+      value: Planet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e6c540bb21a994890f7a93ac229b27, type: 3}

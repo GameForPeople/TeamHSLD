@@ -72,8 +72,8 @@ public class ObjectMoving : MonoBehaviour
             switch(thisObject)
             {
                 case MOVINGOBJECT.CHICKEN:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
-                    //gameObject.transform.GetChild(0).LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.back);
+                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.forward);
+                    //gameObject.transform.GetChild(0).localEulerAngles = new Vector3(gameObject.transform.GetChild(0).localEulerAngles.x,gameObject.transform.GetChild(0).localEulerAngles.y, -gameObject.transform.GetChild(0).localEulerAngles.z);
                     time_ = 0;
                     while (true)
                     {

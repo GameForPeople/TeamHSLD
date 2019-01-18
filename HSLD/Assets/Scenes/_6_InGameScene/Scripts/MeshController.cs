@@ -265,27 +265,27 @@ public class MeshController : MonoBehaviour {
            
             if (picked.name.Equals("TerrainCardImg1"))
             {
-                Debug.Log("setModeration");
+                //Debug.Log("setModeration");
                 setModeration(Identify.ALLY);
             }
             else  if (picked.name.Equals("TerrainCardImg2"))
             {
-                Debug.Log("setBarren");
+                //Debug.Log("setBarren");
                 setBarren(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg3"))
             {
-                Debug.Log("TerrainCardImg3");
+                //Debug.Log("TerrainCardImg3");
                 setCold(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg4"))
             {
-                Debug.Log("setSea");
+                //Debug.Log("setSea");
                 setSea(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg5"))
             {
-                Debug.Log("setMountain");
+                //Debug.Log("setMountain");
                 setMountain(Identify.ALLY);
             }
         }

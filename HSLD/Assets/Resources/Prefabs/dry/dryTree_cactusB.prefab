@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4090307538387922}
   - component: {fileID: 33139768994618420}
   - component: {fileID: 23107425644075884}
+  - component: {fileID: 54065462744827120}
+  - component: {fileID: 114871581497724914}
+  - component: {fileID: 65799298500369924}
   m_Layer: 0
   m_Name: dryTree_cactusB
   m_TagString: Untagged
@@ -86,3 +89,41 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079907047529444}
   m_Mesh: {fileID: 4300000, guid: a63388386eb62634996b9821a0f7092a, type: 3}
+--- !u!54 &54065462744827120
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079907047529444}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &65799298500369924
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079907047529444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07354507, y: 0.07127914, z: 0.062139146}
+  m_Center: {x: 0.0021323208, y: -0.0073262444, z: 0.031069573}
+--- !u!114 &114871581497724914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079907047529444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
