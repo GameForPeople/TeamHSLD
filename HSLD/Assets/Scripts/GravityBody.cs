@@ -17,7 +17,7 @@ public class GravityBody : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Allow this body to be influenced by planet's gravity
+        // Allow this body to be influenced by planet's gravity 
         planet.Attract(transform);
     }
 

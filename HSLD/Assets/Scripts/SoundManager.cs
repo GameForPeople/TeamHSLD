@@ -8,7 +8,7 @@ using UnityEngine.UI;
  InGameSceneManager - SoundManager - Clips보면 모든 clip이 이 안에 들어가있는데 ,
  Index번호를 ref로 날려주면 된다.
 
-    ex)             SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[10], 1.0f);
+    ex)             SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[10]);
     이상끝.
      */
 
@@ -34,10 +34,9 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //효과음을 한번 출력할때 사용. - Ref(플레이할 클립, 출력할 사운드 크기)
-    public void SFXPlay(AudioClip clip, float volume)
+    //효과음을 한번 출력할때 사용. - Ref(플레이할 클립)
+    public void SFXPlay(AudioClip clip)
     {
-        SFXSource.volume = volume;
         SFXSource.PlayOneShot(clip);
     }
 
