@@ -22,14 +22,14 @@ public:
 	enum class CHARACTER_BIT : int
 	{
 		MY_PLANET = 0
-		, VICTORY = 0x00000001
-		, SUN = 0x00000002
-		, SOIL = 0x00000004
-		, GRASS = 0x00000008
-		, WATER = 0x00000010
-		, FIRE = 0x00000020
-		, ICE = 0x00000040
-		, TREE = 0x00000080
+		, VICTORY = 1 << 0
+		, SUN = 1 << 1
+		, SOIL = 1 << 2
+		, GRASS = 1 << 3
+		, WATER = 1 << 4
+		, FIRE = 1 << 5
+		, ICE = 1 << 6
+		, TREE = 1 << 7
 	};
 
 	enum class CHARACTER_PRICE : int
@@ -54,14 +54,14 @@ public:
 		: characterCount(7)
 	{
 		characterPriceCont.reserve(characterCount + 1);
-		characterPriceCont.emplace_back(0);	// index - 0 buffer;
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::VICTORY, CHARACTER_PRICE::VICTORY));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::SOIL, CHARACTER_PRICE::SOIL));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::GRASS, CHARACTER_PRICE::GRASS));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::WATER, CHARACTER_PRICE::WATER));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::FIRE, CHARACTER_PRICE::FIRE));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::ICE, CHARACTER_PRICE::ICE));
-		characterPriceCont.emplace_back(make_pair<CHARACTER_BIT, CHARACTER_PRICE>(CHARACTER_BIT::TREE, CHARACTER_PRICE::TREE));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::MY_PLANET, CHARACTER_PRICE::MY_PLANET));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::VICTORY, CHARACTER_PRICE::VICTORY));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::SOIL, CHARACTER_PRICE::SOIL));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::GRASS, CHARACTER_PRICE::GRASS));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::WATER, CHARACTER_PRICE::WATER));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::FIRE, CHARACTER_PRICE::FIRE));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::ICE, CHARACTER_PRICE::ICE));
+		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::TREE, CHARACTER_PRICE::TREE));
 	};
 	~CharacterManager() = default;
 public:
