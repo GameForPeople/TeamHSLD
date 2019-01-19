@@ -30,42 +30,45 @@ private:
 	vector<weak_ptr<UserData>>		friendUserDataCont;		// 친구 소켓 정보 컨테이너
 
 	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
+	int								activeCharacterIndex;	// 현재 활성화된 캐릭터의 인덱스.
 
-	// int	test[1000000]; // UserData 소멸 확인.
+	// int	test[5000000]; // UserData에서 메모리가 잘 해제되나?
 public:
 	// For rbTreeNode's nullNode or Friend Nullptr!
 	UserData() noexcept
-		:	pSocketInfo(nullptr)
-		,	id()
-		,	nickname()
-		,	winCount()
-		,	loseCount()
-		,	money()
-		,	achievementBit()
-		,	itemBit()
-		,	characterBit()
-		,	friendNicknameCont()
-		,	friendUserDataCont()
-		,	demandFriendContIndex(-1)
+		: pSocketInfo(nullptr)
+		, id()
+		, nickname()
+		, winCount()
+		, loseCount()
+		, money()
+		, achievementBit()
+		, itemBit()
+		, characterBit()
+		, friendNicknameCont()
+		, friendUserDataCont()
+		, demandFriendContIndex(-1)
+		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
 	{};
 
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney, 
-		const int InAchievementBit, const int InItemBit, const int InCharacterBit, 
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const int InActiveCharacterIndex,
 		const vector<Type_Nickname>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
-		: 	pSocketInfo(pInSocketInfo)
-		,	id(InID)
-		,	nickname(InNickname) 
-		,	winCount(InWinCount) 
-		,	loseCount(InLoseCount) 
-		,	money(InMoney)
-		,	achievementBit(InAchievementBit)
-		,	itemBit(InItemBit)
-		,	characterBit(InCharacterBit)
-		,	friendNicknameCont(InFriendStringCont)
-		,	friendUserDataCont()
-		,	demandFriendContIndex(-1)
+		: pSocketInfo(pInSocketInfo)
+		, id(InID)
+		, nickname(InNickname)
+		, winCount(InWinCount)
+		, loseCount(InLoseCount)
+		, money(InMoney)
+		, achievementBit(InAchievementBit)
+		, itemBit(InItemBit)
+		, characterBit(InCharacterBit)
+		, friendNicknameCont(InFriendStringCont)
+		, friendUserDataCont()
+		, demandFriendContIndex(-1)
+		, activeCharacterIndex(InActiveCharacterIndex)
 	{
 		//friendUserDataCont.reserve(InFriendStringCont.size()); 
 		// reserver만 하지말고, 메모리 할당 해버려야함.
@@ -81,35 +84,37 @@ public:
 	//친구가 없을 경우. default로 init함.
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney,
-		const int InAchievementBit, const int InItemBit, const int InCharacterBit)
-		:	pSocketInfo(pInSocketInfo)
-		,	id(InID)
-		,	nickname(InNickname)
-		,	winCount(InWinCount)
-		,	loseCount(InLoseCount)
-		,	money(InMoney)
-		,	achievementBit(InAchievementBit)
-		,	itemBit(InItemBit)
-		,	characterBit(InCharacterBit)
-		,	friendNicknameCont()
-		,	friendUserDataCont()
-		,	demandFriendContIndex(-1)
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const int InActiveCharacterIndex)
+		: pSocketInfo(pInSocketInfo)
+		, id(InID)
+		, nickname(InNickname)
+		, winCount(InWinCount)
+		, loseCount(InLoseCount)
+		, money(InMoney)
+		, achievementBit(InAchievementBit)
+		, itemBit(InItemBit)
+		, characterBit(InCharacterBit)
+		, friendNicknameCont()
+		, friendUserDataCont()
+		, demandFriendContIndex(-1)
+		, activeCharacterIndex(InActiveCharacterIndex)
 	{};
 
 	//회원가입처리
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID)
-		:	pSocketInfo(pInSocketInfo)
-		,	id(InID)
-		,	nickname()
-		,	winCount(0)
-		,	loseCount(0)
-		,	money(0)
-		,	achievementBit(0)
-		,	itemBit(0)
-		,	characterBit(0)
-		,	friendNicknameCont()
-		,	friendUserDataCont()
-		,	demandFriendContIndex(-1)
+		: pSocketInfo(pInSocketInfo)
+		, id(InID)
+		, nickname()
+		, winCount(0)
+		, loseCount(0)
+		, money(0)
+		, achievementBit(0)
+		, itemBit(0)
+		, characterBit(0)
+		, friendNicknameCont()
+		, friendUserDataCont()
+		, demandFriendContIndex(-1)
+		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
 	{};
 
 	//디져랏!
@@ -158,33 +163,32 @@ public:
 	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
-	
+	_NODISCARD __inline int GetActiveCharacterIndex() const noexcept { return activeCharacterIndex; }
+
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
 	//	if (value == 1) { winCount++; }
 	//	else if (value == 2) { loseCount++; }
 	//}
 	// True일 경우 승리, False일 경우 패배.
-	__inline void	SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
-	__inline void   SetNickname(const Type_Nickname& InNickname)	noexcept { nickname = InNickname; }
-	__inline void	SetMoney(const int InMoney) noexcept { money = InMoney; }
-	__inline void   SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }
-	
-	__inline int	SetInsertFriendNickname(const Type_Nickname& InFriendNickname) noexcept { 
+	__inline void SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
+	__inline void SetNickname(const Type_Nickname& InNickname)	noexcept { nickname = InNickname; }
+	__inline void SetMoney(const int InMoney) noexcept { money = InMoney; }
+	__inline void SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }
+	__inline int SetInsertFriendNickname(const Type_Nickname& InFriendNickname) noexcept { 
 		if (friendNicknameCont.size() >= 4) return -1;
 
 		friendNicknameCont.emplace_back(InFriendNickname);
 		return friendNicknameCont.size() - 1;
 	}
-	
-	__inline void	SetDemandFriendContIndex(const int InIndex) noexcept { demandFriendContIndex = InIndex; }
-
-	__inline void	SetDeleteFriendID()
+	__inline void SetDemandFriendContIndex(const int InIndex) noexcept { demandFriendContIndex = InIndex; }
+	__inline void SetDeleteFriendID()
 	{
 		//warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
 		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;
 	}
+	__inline void SetActiveCharacterIndex(const int InIndex) noexcept { activeCharacterIndex = InIndex; }
 
 public:
 	_NODISCARD int BuyItem(const int InItemIndex);

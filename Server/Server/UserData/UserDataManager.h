@@ -39,7 +39,7 @@ public:
 public:
 	// 로그인 및 회원가입 모두 여기서 처리합니다.
 	int LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
-		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<Type_Nickname>& RetFriendNicknameCont);
+		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, int& RetActiveCharacterIndex, vector<Type_Nickname>& RetFriendNicknameCont);
 
 	void LogoutProcess(shared_ptr<UserData> pUserNode);
 

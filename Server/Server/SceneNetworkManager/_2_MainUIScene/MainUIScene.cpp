@@ -14,6 +14,7 @@ SCENE_NETWORK_MANAGER::MainUiScene::MainUiScene(GameRoomManager* pInRoomData, Us
 	, CONST_ANSWER_BUY_ITEM(Protocol::ANSWER_BUY_ITEM)
 	, CONST_ANSWER_VIP_CODE(Protocol::ANSWER_VIP_CODE)
 	, CONST_ANSWER_BUY_CHARACTER(Protocol::ANSWER_BUY_CHARACTER)
+	, CONST_PERMIT_ACTIVE_CHARACTER(Protocol::PERMIT_ACTIVE_CHARACTER)
 	, CONST_TRUE(1), CONST_FALSE(0), CONST_2(2), CONST_3(3)
 {}
 
@@ -39,6 +40,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::ProcessData(const int InRecvType, Socke
 		_VipCodeProcess(pClient);
 	else if (InRecvType == DEMAND_BUY_CHARACTER)
 		_BuyCharacterProcess(pClient);
+	else if (InRecvType == CHANGE_ACTIVE_CHARACTER)
+		_ChangeActiveCharacter(pClient);
 }
 
 /*
@@ -552,4 +555,24 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_BuyCharacterProcess(SocketInfo* pClien
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&retBuffer), sizeof(int));
 
 	pClient->dataSize = 8;
+}
+
+/*
+	_ChangeActiveCharacter
+		- 현재 클라이언트의, 활성화 캐릭터 인덱스를 변경합니다.
+
+	#0. 해당 캐릭터 변경이, 유효한지 여부는 검사하지 않고, 해당 프로토콜을 항상 신뢰합니다.
+	#1. NicknameTree에서 자신의 노드를 찾아 Selected Index를 변경합니다. (for Friend)
+	#2. 당연히 자신의 UserNode의 activeCharacterIndex 또한 변경합니다.
+*/
+void SCENE_NETWORK_MANAGER::MainUiScene::_ChangeActiveCharacter(SocketInfo* pClient)
+{
+	pClient->pUserNode->SetActiveCharacterIndex(reinterpret_cast<int&>(pClient->buf[4]));
+
+	//--
+
+	//--
+
+	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_PERMIT_ACTIVE_CHARACTER), sizeof(int));
+	pClient->dataSize = 4;
 }

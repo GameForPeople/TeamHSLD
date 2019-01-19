@@ -28,6 +28,8 @@ namespace SCENE_NETWORK_MANAGER
 
 		const int CONST_ANSWER_BUY_CHARACTER;
 
+		const int CONST_PERMIT_ACTIVE_CHARACTER;
+
 		const int CONST_TRUE;
 		const int CONST_FALSE;
 		const int CONST_2;
@@ -52,5 +54,6 @@ namespace SCENE_NETWORK_MANAGER
 		void _BuyItemProcess(SocketInfo* pClient);
 		void _VipCodeProcess(SocketInfo* pClient);
 		void _BuyCharacterProcess(SocketInfo* pClient);
+		void _ChangeActiveCharacter(SocketInfo* pClient);
 	};
 }

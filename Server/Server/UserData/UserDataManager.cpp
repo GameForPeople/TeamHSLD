@@ -62,7 +62,7 @@ UserDataManager::~UserDataManager()
 }
 
 int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
-	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, vector<Type_Nickname>& RetFriendNicknameCont)
+	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, int& RetActiveCharacterIndex ,vector<Type_Nickname>& RetFriendNicknameCont)
 {
 	//RetFailReson = 0;
 	// 유저 데이터 번호
@@ -113,7 +113,8 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		>> RetMoney 
 		>> RetAchievementBit 
 		>> RetTitleBit 
-		>> RetCharacterBit 
+		>> RetCharacterBit
+		>> RetActiveCharacterIndex
 		>> friendNum;
 
 	// [DEV_66] 멀티바이트에서 유니코드 변환
@@ -134,7 +135,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	if (friendNum == 0)
 	{
 		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickname,
-			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit);
+			RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetActiveCharacterIndex);
 		
 		userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 		return 0;
@@ -157,7 +158,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 
 	// 정상적인 로그인.
 	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickname,
-		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetFriendNicknameCont);
+		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetActiveCharacterIndex, RetFriendNicknameCont);
 
 	/*pInSocketInfo->pUserNode =*/ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 	return 0;
@@ -207,6 +208,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 			<< " " << pUserNode->GetAchievementBit()
 			<< " " << pUserNode->GetItemBit()
 			<< " " << pUserNode->GetCharacterBit()
+			<< " " << pUserNode->GetActiveCharacterIndex()
 			<< " " << pUserNode->GetFriendNicknameCont().size() 
 			<< std::endl;
 

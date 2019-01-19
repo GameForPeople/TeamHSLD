@@ -72,6 +72,9 @@ enum Protocol {
 	DEMAND_BUY_CHARACTER = 219,		// 이 캐릭터 살게요
 	ANSWER_BUY_CHARACTER = 220,		// 응 살수 있나 보고 살수있으면 팔아줄게
 
+	CHANGE_ACTIVE_CHARACTER = 221,	// 나 캐릭터 이걸로 바꿀게요.
+	PERMIT_ACTIVE_CHARACTER = 222,  // OK! 알앗어. (고냥 보냄)
+
 	// for LobbyScene 구 로비 씬
 	DEMAND_MAKEROOM		=	301	,
 	PERMIT_MAKEROOM		=	302	, // 여기서, 방의 생성자를 호출하는데, 누가 먼저 턴인지, 어느 승리조건인지 결정 ( 방객체 변수로 저장)
