@@ -678,8 +678,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491339064191906}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -693,8 +693,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923847733612786}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -708,8 +708,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567518818326678}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -723,8 +723,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948018056717032}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -738,8 +738,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1758802245581090}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -753,8 +753,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740398051404442}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -768,8 +768,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680882600215288}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -783,8 +783,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155415456290562}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -898,6 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114247454744520404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -909,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114327606998850428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,6 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114351119716347070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -931,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114406433537199146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114459481589058596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,6 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114719354060478588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,6 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114904606133742966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -975,3 +982,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0

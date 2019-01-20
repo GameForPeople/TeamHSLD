@@ -599,8 +599,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079407623438284}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -614,8 +614,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465838864161396}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -629,8 +629,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986837489401776}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -644,8 +644,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815777693338988}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -659,8 +659,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533761396043040}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -674,8 +674,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009576996507204}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -689,8 +689,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320879775352994}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -792,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114064151839186358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -803,6 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114081480018802598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -814,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114339421784254772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -825,6 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114395512450929356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -836,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114572327805312272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -847,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
 --- !u!114 &114574973147215940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,3 +864,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 0
