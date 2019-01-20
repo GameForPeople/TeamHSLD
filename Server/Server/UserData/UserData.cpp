@@ -53,7 +53,7 @@ _NODISCARD int UserData::BuyCharacter(const int InCharacterIndex)
 		return 2;
 	}
 
-	if (int RetCharacterBit = static_cast<int>(characterManager->GetCharacterBitWithIndex[InCharacterIndex])
+	if (int RetCharacterBit = static_cast<int>(characterManager->GetCharacterBitWithIndex(InCharacterIndex))
 		; (characterBit & RetCharacterBit) == RetCharacterBit)
 	{
 		// 이미 구매한 아이템.

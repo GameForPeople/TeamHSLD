@@ -28,7 +28,7 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawSettingUI)
                 return;
 
-            //GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(true);
+            GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(true);
             isDrawSettingUI = true;
         }
         else
@@ -36,7 +36,7 @@ public partial class MainUISceneManager : MonoBehaviour
             if (!isDrawSettingUI)
                 return;
 
-            //GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(false);
+            GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(false);
             isDrawSettingUI = false;
         }
     }
@@ -148,5 +148,21 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").gameObject.SetActive(false);
         }
+    }
+
+    /*
+     UI_ExitGame()
+
+        설정 UI에서, 게임종료 버튼이 눌렸을 때, 게임을 고냥 종료해주는 함수.
+     */
+    public void UI_ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; //play모드를 false로.
+                                                         //#elif UNITY_WEBPLAYER
+                                                         //        Application.OpenURL("http://google.com"); //구글웹으로 전환
+#else
+                        Application.Quit(); //어플리케이션 종료
+#endif
     }
 }

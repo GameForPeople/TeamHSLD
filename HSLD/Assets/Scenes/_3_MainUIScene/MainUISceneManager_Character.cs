@@ -12,7 +12,8 @@ public partial class MainUISceneManager : MonoBehaviour
     GameObject UserDataUI;
 
     string[] characterName = new string[9];
-    bool[] enableCharacterArr = new bool [9];
+    //bool[] enableCharacterArr = new bool [9];
+    int[] characterBit = new int[9];
 
     public int selectedCharacterIndex;  // 플레이어가 선택한 캐릭터의 인덱스
 
@@ -34,8 +35,21 @@ public partial class MainUISceneManager : MonoBehaviour
         characterName[7] = "얼음신";
         characterName[8] = "나무신";
 
+        characterBit[0] = 0;
+        characterBit[1] = 1 << 0;
+        characterBit[2] = 1 << 1;
+        characterBit[3] = 1 << 2;
+        characterBit[4] = 1 << 3;
+        characterBit[5] = 1 << 4;
+        characterBit[6] = 1 << 5;
+        characterBit[7] = 1 << 6;
+        characterBit[8] = 1 << 7;
+
         RefreshUserDataUI();
         SetUseorNotUseCharacterUI();
+
+        // 저장되면 해당 인덱스 네트워크 매니저에서 받아서 체크해줘야함
+        UI_ChangeActiveCharacter(0);
     }
 
     /*
@@ -123,39 +137,62 @@ public partial class MainUISceneManager : MonoBehaviour
         // -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 캐릭터이여서 실패, 2면 이런 캐릭터 안팔아요!(네트워크 에러 가능성)
         if (InIndex == -1)
         {
+            networkObject.characterBit |= characterBit[selectedCharacterIndex];
+            networkObject.money -= 1000;
+
             // 구매한 캐릭터를 활성화 캐릭터로 변경.
             UI_ChangeActiveCharacter(selectedCharacterIndex);
             RefreshUserDataUI();
-            AnswerBuyCharacterUICoroutine(true);
+            SetUseorNotUseCharacterUI();
+
+            StartCoroutine(AnswerBuyCharacterUICoroutine(true));
         }
         else if (InIndex == 0)
         {
-            AnswerBuyCharacterUICoroutine(false);
+            StartCoroutine(AnswerBuyCharacterUICoroutine(false));
         }
         else if (InIndex == 1)
         {
-            AnswerBuyCharacterUICoroutine(false);
+            StartCoroutine(AnswerBuyCharacterUICoroutine(false));
         }
     }
 
-    private IEnumerator AnswerBuyCharacterUICoroutine(bool isSuccess)
+    /*
+    AnswerBuyCharacterUICoroutine
+
+    캐릭터 구매 성공, 혹은 실패를 받았을 때, 이를 UI를 통해 화면에 출력할 때 사용하는 함수.
+    */
+    public IEnumerator AnswerBuyCharacterUICoroutine(bool isSuccess)
     {
+        Debug.Log("DEBUG - 1");
         GameObject successOrFailUI;
 
         if (isSuccess)
         {
+            Debug.Log("DEBUG - 2");
+
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("SuccessBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
 
             successOrFailUI.transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString() ).gameObject.SetActive(true);
+
+            //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(true);
         }
         else
         {
+            Debug.Log("DEBUG - 3");
+
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("FailBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
+
+            //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(false);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        Debug.Log("DEBUG - 4");
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("DEBUG - 5");
 
         if (isSuccess)
         {
@@ -164,7 +201,7 @@ public partial class MainUISceneManager : MonoBehaviour
         }
         else
         {
-            successOrFailUI.SetActive(true);
+            successOrFailUI.SetActive(false);
         }
     }
 
@@ -198,13 +235,16 @@ public partial class MainUISceneManager : MonoBehaviour
      */
     private void SetUseorNotUseCharacterUI()
     {
-        GameObject imageCharacterSet = UserDataUI.transform.Find("Canvas").transform.Find("Image_Character_Set").gameObject;
+        GameObject imageCharacterSet = DetailUserDataUI.transform.Find("Character_Set").gameObject;
         string strBuf = "Image_";
-        int indexBuffer = 1;
+        string cstrBuf = "Image_NotUse";
 
-        if ( (networkObject.characterBit & indexBuffer) == indexBuffer)
+        for (int i = 0; i < 9; ++i)
         {
-            imageCharacterSet.transform.Find(strBuf + indexBuffer).gameObject.SetActive(true);
+            if ((networkObject.characterBit & characterBit[i]) == characterBit[i])
+            {
+                imageCharacterSet.transform.Find(strBuf + i.ToString()).transform.Find(cstrBuf).gameObject.SetActive(false);
+            }
         }
     }
 }

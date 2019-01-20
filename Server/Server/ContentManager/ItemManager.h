@@ -15,9 +15,9 @@ class ItemManager
 	enum class ITEM_BIT : int
 	{
 		ZERO_BUFFER = 0
-		, TERRAIN = 0x00000001
-		, PLANT = 0x00000002
-		, ANIMAL = 0x00000004
+		, TERRAIN = 1 << 0
+		, PLANT = 1 << 1
+		, ANIMAL = 1 << 2
 	};
 
 	enum class ITEM_PRICE : int
@@ -36,10 +36,10 @@ public:
 		: itemCount(3)
 	{
 		itemCont.reserve(itemCount + 1);
-		itemCont.emplace_back(make_pair<ITEM_BIT, ITEM_PRICE>(ITEM_BIT::ZERO_BUFFER, ITEM_PRICE::ZERO_BUFFER));	// index - 0 buffer;
-		itemCont.emplace_back(make_pair<ITEM_BIT, ITEM_PRICE>(ITEM_BIT::TERRAIN, ITEM_PRICE::TERRAIN));
-		itemCont.emplace_back(make_pair<ITEM_BIT, ITEM_PRICE>(ITEM_BIT::PLANT, ITEM_PRICE::PLANT));
-		itemCont.emplace_back(make_pair<ITEM_BIT, ITEM_PRICE>(ITEM_BIT::ANIMAL, ITEM_PRICE::ANIMAL));
+		itemCont.push_back(std::make_pair/*<ITEM_BIT, ITEM_PRICE>*/(ITEM_BIT::ZERO_BUFFER, ITEM_PRICE::ZERO_BUFFER));	// index - 0 buffer;
+		itemCont.push_back(std::make_pair/*<ITEM_BIT, ITEM_PRICE>*/(ITEM_BIT::TERRAIN, ITEM_PRICE::TERRAIN));
+		itemCont.push_back(std::make_pair/*<ITEM_BIT, ITEM_PRICE>*/(ITEM_BIT::PLANT, ITEM_PRICE::PLANT));
+		itemCont.push_back(std::make_pair/*<ITEM_BIT, ITEM_PRICE>*/(ITEM_BIT::ANIMAL, ITEM_PRICE::ANIMAL));
 	};
 	~ItemManager() = default;
 public:
