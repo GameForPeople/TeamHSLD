@@ -72,8 +72,14 @@ public class ObjectMoving : MonoBehaviour
             switch(thisObject)
             {
                 case MOVINGOBJECT.CHICKEN:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.forward);
-                    //gameObject.transform.GetChild(0).localEulerAngles = new Vector3(gameObject.transform.GetChild(0).localEulerAngles.x,gameObject.transform.GetChild(0).localEulerAngles.y, -gameObject.transform.GetChild(0).localEulerAngles.z);
+                    //Vector3 dirToTarget = (ableToGoObj[randomVal].transform.position - gameObject.transform.GetChild(0).position).normalized;
+                    //Vector3 localUp = -gameObject.transform.GetChild(0).transform.up;
+                    //gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+                    //gameObject.transform.GetChild(0).localEulerAngles = 
+                    //gameObject.transform.GetChild(0).LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.right);
+                    //float localEulerAngleZ = gameObject.transform.localEulerAngles.z;
+                    //gameObject.transform.GetChild(0).localEulerAngles = new Vector3(localEulerAngleZ);
+                    ////gameObject.transform.GetChild(0).localEulerAngles = new Vector3(gameObject.transform.GetChild(0).localEulerAngles.x,gameObject.transform.GetChild(0).localEulerAngles.y, -gameObject.transform.GetChild(0).localEulerAngles.z);
                     time_ = 0;
                     while (true)
                     {
@@ -88,8 +94,7 @@ public class ObjectMoving : MonoBehaviour
 
                     break;
                 case MOVINGOBJECT.CLOUD:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
-
+                    //gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.right);
                     time_ = 0;
                     while (true)
                     {
@@ -103,8 +108,7 @@ public class ObjectMoving : MonoBehaviour
                     StartCoroutine(Moving(ableToGoObj[randomVal]));
                     break;
                 case MOVINGOBJECT.PENGUIN:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
-
+                    //gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.right);
                     time_ = 0;
                     while (true)
                     {
@@ -118,7 +122,7 @@ public class ObjectMoving : MonoBehaviour
                     StartCoroutine(Moving(ableToGoObj[randomVal]));
                     break;
                 case MOVINGOBJECT.SNAKE:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.02f, Vector3.up);
+                    //gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.right);
                     //gameObject.transform.GetChild(0).LookAt(ableToGoObj[randomVal].transform.position * 1.02f, Vector3.back);
                     //tmpObj = Instantiate(Resources.Load("Prefabs/MovingObj/Pos")) as GameObject;
                     //tmpObj.transform.position = ableToGoObj[randomVal].transform.position * 1.05f;
@@ -161,8 +165,7 @@ public class ObjectMoving : MonoBehaviour
                     StartCoroutine(Moving(ableToGoObj[randomVal]));
                     break;
                 case MOVINGOBJECT.WHALE:
-                    gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.up);
-
+                    //gameObject.transform.LookAt(ableToGoObj[randomVal].transform.position * 1.05f, Vector3.right);
                     time_ = 0;
                     while (true)
                     {

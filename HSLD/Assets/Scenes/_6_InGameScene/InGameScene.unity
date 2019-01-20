@@ -8588,6 +8588,56 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114904112078048232, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114714488156519702, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224967202850224396, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -152.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224967202850224396, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 224967202850224396, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224967202850224396, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 50.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224666054390942888, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -152.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224666054390942888, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 224666054390942888, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224666054390942888, guid: 90ab12628479c724cbc91976dd1f7f73,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 49.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ab12628479c724cbc91976dd1f7f73, type: 2}
   m_IsPrefabAsset: 0
@@ -12159,7 +12209,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -26531,6 +26581,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1349182170}
   m_CullTransparentMesh: 0
+--- !u!1 &1350553594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1287883943517614, guid: 90ab12628479c724cbc91976dd1f7f73,
+    type: 2}
+  m_PrefabInternal: {fileID: 582698281}
+--- !u!114 &1350553598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1350553594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c9ceda477faa6469d534f9d258db41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!1 &1355522188
 GameObject:
   m_ObjectHideFlags: 0
@@ -33712,7 +33780,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2ad68e38b278154a8d1e06379e331ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -36763,6 +36831,24 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+--- !u!1 &2123320702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1770984999728976, guid: 90ab12628479c724cbc91976dd1f7f73,
+    type: 2}
+  m_PrefabInternal: {fileID: 582698281}
+--- !u!114 &2123320706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2123320702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c9ceda477faa6469d534f9d258db41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!1 &2132958254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100188, guid: e0e6c540bb21a994890f7a93ac229b27,

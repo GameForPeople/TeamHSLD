@@ -14,5 +14,6 @@ public class GravityAttractor : MonoBehaviour
         body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
         // Allign bodies up axis with the centre of planet
         body.rotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
+        //body.localEulerAngles = new Vector3(body.localEulerAngles.x, body.localEulerAngles.y, 1);
     }
 }

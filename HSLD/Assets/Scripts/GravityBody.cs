@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum OBJECT
+{
+    FIXED,
+    MOVING
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
     GravityAttractor planet;
+    public OBJECT currentObject;
 
     void Awake()
     {
@@ -25,9 +32,14 @@ public class GravityBody : MonoBehaviour
     {
         if(collision.gameObject.transform.parent.tag.Contains("Planet"))
         {
-            Destroy(gameObject.GetComponent<BoxCollider>());
-            Destroy(gameObject.GetComponent<GravityBody>());
-            Destroy(gameObject.GetComponent<Rigidbody>());
+            if (currentObject.Equals(OBJECT.FIXED))
+            {
+                Destroy(gameObject.GetComponent<BoxCollider>());
+                Destroy(gameObject.GetComponent<GravityBody>());
+                Destroy(gameObject.GetComponent<Rigidbody>());
+            }
+            else
+                return;
         }
     }
 }
