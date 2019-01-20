@@ -833,7 +833,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c1dcf711ecbf7c4dab4b706f47f67b0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2324,7 +2324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a04698f60416a2a44a0b0dd575b096ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2945,6 +2945,7 @@ MonoBehaviour:
   winCount: 0
   loseCount: 0
   money: 7777777
+  characterBit: 0
   friendNum: 0
   friendNickNameCont:
   - 
