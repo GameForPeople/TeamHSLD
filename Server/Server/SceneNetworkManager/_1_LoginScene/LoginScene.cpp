@@ -78,7 +78,6 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 	memcpy(pClient->buf + 16, reinterpret_cast<const char*>(&InAchievementBit), sizeof(int));
 	memcpy(pClient->buf + 20, reinterpret_cast<const char*>(&InTitleBit), sizeof(int));
 	memcpy(pClient->buf + 24, reinterpret_cast<const char*>(&InCharacterBit), sizeof(int));
-	memcpy(pClient->buf + 24, reinterpret_cast<const char*>(&InCharacterBit), sizeof(int));
 	memcpy(pClient->buf + 28, reinterpret_cast<const char*>(&InActiveCharacterIndex), sizeof(int));
 
 	int stringSizeBuffer = MultiByteToWideChar(CP_ACP, 0, &InNickname[0], InNickname.size(), NULL, NULL);

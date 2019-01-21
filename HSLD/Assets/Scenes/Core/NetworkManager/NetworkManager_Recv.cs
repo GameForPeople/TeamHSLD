@@ -74,8 +74,11 @@ public partial class NetworkManager : MonoBehaviour
             characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
             Debug.Log("characterBit is --> " + characterBit);
 
-            int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
-            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
+            activeCharacterIndex = BitConverter.ToInt32(NewDataRecvBuffer, 28);
+            Debug.Log("activeCharacterIndex is --> " + activeCharacterIndex);
+
+            int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 32);
+            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 36, stringSizeBuffer);
             Debug.Log("nickName is --> " + nickName);
             //
             if (money == -1)
@@ -121,7 +124,7 @@ public partial class NetworkManager : MonoBehaviour
                 //dataLocation += idSize + 8;
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
-
+                friendActiveCharacterIndex[i] = BitConverter.ToChar(NewDataRecvBuffer, dataLocation + 4);
                 friendState[i] = iBuffer;
 
                 if (iBuffer == 0)
@@ -131,7 +134,7 @@ public partial class NetworkManager : MonoBehaviour
                     Debug.Log("에혀...친구닉네임이 없어질리가 없는데 ???????????????????");
 
                     //friendState[i] = 0;
-                    dataLocation += 4;
+                    dataLocation += 5;
                     continue;
                 }
                 else
@@ -141,7 +144,7 @@ public partial class NetworkManager : MonoBehaviour
                     //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
                     friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
 
-                    dataLocation += idSize + 8;
+                    dataLocation += idSize + 9;
 
                     Debug.Log("상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
 
@@ -333,6 +336,12 @@ public partial class NetworkManager : MonoBehaviour
 
             GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
             NetworkManager_AnswerBuyCharacter(typeBuffer);
+        }
+
+        else if (recvType == (int)PROTOCOL.PERMIT_ACTIVE_CHARACTER)
+        {
+            // 여기서 원래 아무짓도 안해줘도 됌!
+            return;
         }
 
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)

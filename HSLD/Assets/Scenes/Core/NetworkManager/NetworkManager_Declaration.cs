@@ -64,6 +64,9 @@ public enum PROTOCOL : int
     DEMAND_BUY_CHARACTER = 219,     // 이 캐릭터 살게요
     ANSWER_BUY_CHARACTER = 220,     // 응 살수 있나 보고 살수있으면 팔아줄게
 
+    CHANGE_ACTIVE_CHARACTER = 221,  // 나 캐릭터 이걸로 바꿀게요.
+    PERMIT_ACTIVE_CHARACTER = 222,  // OK! 알앗어. (고냥 보냄)
+
     // 구 Lobby Protocol
     DEMAND_MAKEROOM = 301,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
     PERMIT_MAKEROOM = 302,   // 안쓰도록 변경할 예정입니다.//아니다 친구와 같이하기 기능을 위해 남겨둡니다..
@@ -149,12 +152,14 @@ public partial class NetworkManager : MonoBehaviour {
     public int loseCount = 0;
     public int money = 20190102;
     public int characterBit = 0;
+    public int activeCharacterIndex = -1;
 
     // Use Main UI Scene
     public int friendNum;
     //public string/*Builder*/[] friendIdCont = new string/*Builder*/[4];
     public string/*Builder*/[] friendNickNameCont = new string/*Builder*/[4];
     public int[] friendState = new int[4];
+    public int[] friendActiveCharacterIndex = new int[4];
 
     // Init LobbyScene
     public bool isHost = true;

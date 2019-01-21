@@ -19,7 +19,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
     private void StartForCharacter()
     {
-        nowCharacterIndex = 0;
+        nowCharacterIndex = networkObject.activeCharacterIndex;
         selectedCharacterIndex = 0;
 
         DetailUserDataUI = GameObject.Find("UserDataUI").transform.Find("Canvas_Dynamic").transform.Find("DetailUserDataUI").gameObject;
@@ -49,7 +49,7 @@ public partial class MainUISceneManager : MonoBehaviour
         SetUseorNotUseCharacterUI();
 
         // 저장되면 해당 인덱스 네트워크 매니저에서 받아서 체크해줘야함
-        UI_ChangeActiveCharacter(0);
+        UI_ChangeActiveCharacter(nowCharacterIndex);
     }
 
     /*
@@ -90,6 +90,9 @@ public partial class MainUISceneManager : MonoBehaviour
 
         // 캐릭터 인덱스 변경.
         nowCharacterIndex = InNewCharacterIndex;
+        networkObject.activeCharacterIndex = nowCharacterIndex;
+
+        networkObject.SendData(PROTOCOL.CHANGE_ACTIVE_CHARACTER);
     }
 
     /*
