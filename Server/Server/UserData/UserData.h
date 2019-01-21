@@ -30,7 +30,7 @@ private:
 	vector<weak_ptr<UserData>>		friendUserDataCont;		// 친구 소켓 정보 컨테이너
 
 	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
-	int								activeCharacterIndex;	// 현재 활성화된 캐릭터의 인덱스.
+	BYTE							activeCharacterIndex;	// 현재 활성화된 캐릭터의 인덱스.
 
 	// int	test[5000000]; // UserData에서 메모리가 잘 해제되나?
 public:
@@ -54,7 +54,7 @@ public:
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney, 
-		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const int InActiveCharacterIndex,
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const BYTE InActiveCharacterIndex,
 		const vector<Type_Nickname>& InFriendStringCont) //, const std::vector<SOCKETINFO*>& InFriendSocketInfoCont)
 		: pSocketInfo(pInSocketInfo)
 		, id(InID)
@@ -84,7 +84,7 @@ public:
 	//친구가 없을 경우. default로 init함.
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID, const Type_Nickname& InNickname,
 		const int InWinCount, const int InLoseCount, const int InMoney,
-		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const int InActiveCharacterIndex)
+		const int InAchievementBit, const int InItemBit, const int InCharacterBit, const BYTE InActiveCharacterIndex)
 		: pSocketInfo(pInSocketInfo)
 		, id(InID)
 		, nickname(InNickname)
@@ -163,7 +163,7 @@ public:
 	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
-	_NODISCARD __inline int GetActiveCharacterIndex() const noexcept { return activeCharacterIndex; }
+	_NODISCARD __inline BYTE GetActiveCharacterIndex() const noexcept { return activeCharacterIndex; }
 
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
@@ -188,7 +188,7 @@ public:
 		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
 		demandFriendContIndex = -1;
 	}
-	__inline void SetActiveCharacterIndex(const int InIndex) noexcept { activeCharacterIndex = InIndex; }
+	__inline void SetActiveCharacterIndex(const BYTE InIndex) noexcept { activeCharacterIndex = InIndex; }
 
 public:
 	_NODISCARD int BuyItem(const int InItemIndex);

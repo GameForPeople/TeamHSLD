@@ -75,6 +75,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 		Type_Nickname stringBuffer{};
 		bool isOnLogin{};
 		bool isOnMatch{};
+		BYTE characterIndex{};
 		shared_ptr<UserData> pBuffer = nullptr;
 
 		for (int i = 0; i < friendNum; ++i)
@@ -83,28 +84,32 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(i);
 
 			// 해당 아이디로 현재 상태 판정, True일경우 1, false일 경우 0
-			pBuffer = pUserData->SearchUserNodeWithNickname(stringBuffer, isOnLogin, isOnMatch);
+			pBuffer = pUserData->SearchUserNodeByNicknameWithActiveCharacterIndex(stringBuffer, isOnLogin, isOnMatch, characterIndex);
 
 			// 0일 경우, 없는 닉네임. 
 			// 1일 경우, 닉네임은 있는데 비로그인.
 			// 2일 경우, 로비.
 			// 3일 경우, 게임중.
-			pClient->dataSize += sizeof(int);	// 4 Bool Type
+			pClient->dataSize += 5;	// 4 Bool Type + 4 characterIndex;
 
 			// 0인 경우, (현재 로직상 이 조건이 트루일 수 없음)
 			if (!isOnMatch)
 			{
 				std::cout << "[Error] 이미 친구추가가 된 유저의 닉네임이 없는 닉네임으로 나옵니다. \n";
-				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - 5, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+				//memcpy(pClient->buf + pClient->dataSize - 1, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
+				pClient->buf[pClient->dataSize - 1] = characterIndex;
 				continue;
 			}
 
 			if (!isOnLogin)	// 로그인 안했을 때,
-				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - 5, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 			else if (pBuffer->GetSocketInfo()->pRoomIter == nullptr)	// 접속 후, 로비
-				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_2), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - 5, reinterpret_cast<const char*>(&CONST_2), sizeof(int));
 			else	// 접속 후, 게임중.
-				memcpy(pClient->buf + pClient->dataSize - sizeof(int), reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+				memcpy(pClient->buf + pClient->dataSize - 5, reinterpret_cast<const char*>(&CONST_3), sizeof(int));
+
+			pClient->buf[pClient->dataSize - 1] = characterIndex;
 
 			pClient->pUserNode->SetFreindUserDataWithIndex(pBuffer, i); // weak_ptr로 변환.
 
@@ -357,7 +362,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };
-	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeWithNickname(NicknameBuffer, isOnLogin, isOnMatch);
+	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeByNickname(NicknameBuffer, isOnLogin, isOnMatch);
 
 	std::cout << "[FRIEND] DEBUG 1 " << std::endl;
 	// 해당 닉네임이가 아에 없는 경우 : ANSWER_MAKE_FRIEND + 0 + 3
@@ -462,7 +467,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 	bool bIsOnMatch{ false };
 
 	shared_ptr<UserData> pBuffer =
-		pUserData->SearchUserNodeWithNickname(pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex()), bBuffer, bIsOnMatch);
+		pUserData->SearchUserNodeByNickname(pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex()), bBuffer, bIsOnMatch);
 
 	// bIsOnMatch <- 이거 그냥 어쩔수 없이 넣어주긴하는데 여기서는, 무의미하다.
 
@@ -570,7 +575,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_ChangeActiveCharacter(SocketInfo* pCli
 	pClient->pUserNode->SetActiveCharacterIndex(reinterpret_cast<int&>(pClient->buf[4]));
 
 	//--
-
+	pUserData->SetActiveCharacterIndexWithNickname(pClient->pUserNode->GetNickname(), static_cast<char>(pClient->pUserNode->GetActiveCharacterIndex()));
 	//--
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_PERMIT_ACTIVE_CHARACTER), sizeof(int));

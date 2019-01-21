@@ -11,38 +11,39 @@ UserDataManager::UserDataManager() noexcept
 
 	//[DEV_66] 0 ENGLISH, 1 KOREAN, 2 ILLEGAL
 	nicknameCont.reserve(3);
-	saveFileCont.reserve(10);
+	nicknameCont.emplace_back();
+	nicknameCont.emplace_back();
+	nicknameCont.emplace_back();
 
-	nicknameCont.emplace_back();
-	nicknameCont.emplace_back();
-	nicknameCont.emplace_back();
+	saveFileCont.reserve(10);
 
 	std::ifstream inFile(nicknameContFileName, std::ios::in);
 
 	Type_ID idBuffer;
 	Type_Nickname NicknameBuffer;
+	int activeCharacterIndexBuffer;
 
 	// IOCPServer 생성자에서 UserDataManager의 생성자가 호출되기 때문에, 닉네임Cont의 로드가 모두 끝난 후 서버가 켜지는 것이 보장됨.
 	while (!inFile.eof())
 	{
-		inFile >> idBuffer >> NicknameBuffer;
+		inFile >> idBuffer >> NicknameBuffer >> activeCharacterIndexBuffer;
 
 		// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
 		if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(NicknameBuffer.data()), 0)
 			; firstCharType == _MBC_SINGLE)
 		{
-			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Insert(NicknameBuffer, NicknameNode(idBuffer, activeCharacterIndexBuffer));
 			//std::cout << "영어입니다. \n";
 		}
 		else if (firstCharType == _MBC_LEAD)
 		{
-			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(NicknameBuffer, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Insert(NicknameBuffer, NicknameNode(idBuffer, activeCharacterIndexBuffer));
 			//std::cout << "아마 한글일껍니다. \n";
 		}
 		else  //  if (firstCharType == _MBC_ILLEGAL)
 		{
 			std::cout << "_MBC_ILLEGAL 입니다. \n";
-			nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Insert(NicknameBuffer, idBuffer);
+			nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Insert(NicknameBuffer, NicknameNode(idBuffer, activeCharacterIndexBuffer));
 		}
 	}
 
@@ -61,18 +62,23 @@ UserDataManager::~UserDataManager()
 	::DeleteCriticalSection(&csSaveNickname);
 }
 
+/*
+	LoginProcess
+     - 로그인을 시도하는 함수입니다.
+	인자로는 로그인 성공 시, 클라이언트가 필요할 수 있는 데이터를 제공하기 위해 레퍼런스 인자로 제공합니다.
+
+	return = 0 -> 정상적인 프로세싱.
+			 1, 2 -> 에러상태였으나, 기획 변경으로 인한 삭제.
+			 3 -> 이미 로그인한 상태(실제로 잘 사용되지 않음)
+*/
 int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
-	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, int& RetActiveCharacterIndex ,vector<Type_Nickname>& RetFriendNicknameCont)
+	int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, BYTE& RetActiveCharacterIndex ,vector<Type_Nickname>& RetFriendNicknameCont)
 {
-	//RetFailReson = 0;
-	// 유저 데이터 번호
 	int userDataContIndex = GetStringFirstChar(InID[0]);
 
 	bool RetBoolBuffer;
 	
-	//pInSocketInfo->pUserNode = 
-		userDataCont[userDataContIndex].Search(InID, RetBoolBuffer);
-	//pInSocketInfo->pUserNode = nullptr;	//? 이게 무슨 짓이야?
+	userDataCont[userDataContIndex].Search(InID, RetBoolBuffer);
 
 	// 이미 로그인 여부 체크.
 	if (RetBoolBuffer)
@@ -81,7 +87,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	}
 
 	// 변수선언 부
-	RetMoney = -1; // 재화가 -1일리 없음. 해당상황은, 파일 오픈 여부를 확인하기 위함.
+	RetMoney = -1; // 재화가 -1일리 없음. 해당상황은, 파일 오픈 여부를 확인하기 위해 사용됨.
 	int friendNum;			// (친구 명수버퍼)
 	Type_ID idStringBuffer;			// idBuffer
 
@@ -97,9 +103,6 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	fileNameBuffer.insert(fileNameBuffer.begin() + 15, InID.begin(), InID.end());
 	//fileNameBuffer[15] = InID[0];
 	//fileNameBuffer[16] = InID[1];
-
-	// DEV_66 닉네임 유니코드 처리
-	//string NicknameBuffer{};
 
 	// 파일 오픈
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
@@ -117,9 +120,6 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		>> RetActiveCharacterIndex
 		>> friendNum;
 
-	// [DEV_66] 멀티바이트에서 유니코드 변환
-	//RetNickname = converter.from_bytes(NicknameBuffer);
-
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
@@ -127,7 +127,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		/*pInSocketInfo->pUserNode = */ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 
 		// RetMoney가 -1일 경우, 클라언트에서 닉네임 입력 필요. (Login Scene ? // Main UI Scene ?)
-		std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
+		// std::cout << "유저 데이터 로드에 실패하여 회원가입했습니다. \n";
 		return 0;
 	}
 
@@ -149,7 +149,6 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	{
 		inFile >> idStringBuffer;
 		
-		//DEV_66 저장및 불러들이는 것은 멀티바이트로, 이걸 내부에서는 결과적으로 유니코드로, 
 		RetFriendNicknameCont.emplace_back(/*converter.from_bytes(*/idStringBuffer/*)*/);
 
 		// 친구가 로그인 중인지 아닌지의 체크가, 여기서 이루어지면 안되고, 친구 UI를 On할 경우 해야함. -> 짜피 하드에서 Load할 필요 없는 데이터임.
@@ -164,6 +163,11 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	return 0;
 }
 
+/*
+	LogoutProcess
+	 - 로그아웃을 처리하는 함수입니다.
+	 - 해당 유저 데이터를 파일로 저장합니다.
+*/
 void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 {
 	if (pUserNode->GetNickname().size() == 0)
@@ -228,53 +232,174 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 	userDataCont[GetStringFirstChar(pUserNode->GetID()[0])].DeleteWithSearch(pUserNode->GetKey());
 }
 
-shared_ptr<UserData> UserDataManager::SearchUserNode(const Type_ID& keyID, bool& RetBool)
+/*
+	SearchUserNode
+		- 유저노드를 ID를 통해 UserDataCont에서 탐색합니다.
+*/
+auto UserDataManager::SearchUserNode(const Type_ID& keyID, bool& RetBool) -> shared_ptr<UserData>
 {
 	return userDataCont[GetStringFirstChar(keyID[0])].Search(keyID, RetBool);
 }
 
-shared_ptr<UserData> UserDataManager::SearchUserNodeWithNickname(const Type_Nickname& KeyNickname, bool& RetIsOnLogin, bool& RetIsMatch)
+/*
+	SearchUserNodeByNickname
+		- 닉네임을 통해 닉네임 컨테이너에서 그 유저의 ID를 탐색하고, 해당 유저의 ID를 통하여 UserDataCont에서 탐색합니다. (SearchUserNode)
+
+*/
+shared_ptr<UserData> UserDataManager::SearchUserNodeByNickname(const Type_Nickname& KeyNickname, bool& RetIsOnLogin, bool& RetIsMatch)
 {
 	bool isReturnTrue{ false };
 	Type_ID idBuffer{};
 
-	std::cout << "[FRIEND] DEBUG 0 - 1 " << std::endl;
+	std::cout << "[FRIEND] 닉네임을 찾습니다. " << std::endl;
 
 	// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
 	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
 		; firstCharType == _MBC_SINGLE)
 	{
-		std::cout << "[FRIEND] DEBUG 0 - 2 " << std::endl;
+		std::cout << "[FRIEND] 닉네임은 MBC_Single : 영어입니다. " << std::endl;
 
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue)->SetValue().GetID();
 	}
 	else if (firstCharType == _MBC_LEAD)
 	{
-		std::cout << "[FRIEND] DEBUG 0 - 3 " << std::endl;
+		std::cout << "[FRIEND]닉네임은 MBC_LEAD(선행비트) : 한글입니다. " << std::endl;
 
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue)->SetValue().GetID();
 	}
 	else //  if (firstCharType == _MBC_ILLEGAL)
 	{
-		std::cout << "[FRIEND] DEBUG 0 - 4 " << std::endl;
+		std::cout << "[FRIEND]닉네임은 이상한 글자입니다. " << std::endl;
 
-		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue();
+		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue().GetID();
 	}
 
 	// 못찾음.
 	if (!isReturnTrue)
 	{
-		std::cout << "[FRIEND] DEBUG 0 - 5 " << std::endl;
+		std::cout << "[FRIEND] 그런 닉네임의 유저가 없어요. " << std::endl;
 
 		RetIsMatch = false;
 		RetIsOnLogin = false;
 		return CONST_NULL_USERDATA;
 	}
 
-	std::cout << "[FRIEND] DEBUG 0 - 6 " << std::endl;
+	std::cout << "[FRIEND] 해당 닉네임을 가진 유저를 닉네임 컨테이너에서 찾았습니다. UserData에서 탐색합니다. " << std::endl;
 
 	RetIsMatch = true;
 	return SearchUserNode(idBuffer, RetIsOnLogin);
+}
+
+/*
+	SearchUserNodeByNickname
+		- 닉네임을 통해 닉네임 컨테이너에서 그 유저의 ID를 탐색하고, 해당 유저의 ID를 통하여 UserDataCont에서 탐색합니다. (SearchUserNode)
+*/
+shared_ptr<UserData> UserDataManager::SearchUserNodeByNicknameWithActiveCharacterIndex(const Type_Nickname& KeyNickname, bool& RetIsOnLogin, bool& RetIsMatch, BYTE& RetActiveCharacterIndex)
+{
+	bool isReturnTrue{ false };
+	Type_ID idBuffer{};
+
+	std::cout << "[FRIEND] 닉네임을 찾습니다. " << std::endl;
+
+	// 영어일 경우, 0번 컨테이너, 한글일 경우 1번 컨테이너에 삽입함.
+	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
+		; firstCharType == _MBC_SINGLE)
+	{
+		std::cout << "[FRIEND] 닉네임은 MBC_Single : 영어입니다. " << std::endl;
+
+		auto retBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, isReturnTrue);
+		idBuffer = retBuffer->SetValue().GetID();
+		RetActiveCharacterIndex = retBuffer->SetValue().GetActiveCharacterIndex();
+	}
+	else if (firstCharType == _MBC_LEAD)
+	{
+		std::cout << "[FRIEND]닉네임은 MBC_LEAD(선행비트) : 한글입니다. " << std::endl;
+
+		auto retBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, isReturnTrue);
+		idBuffer = retBuffer->SetValue().GetID();
+		RetActiveCharacterIndex = retBuffer->SetValue().GetActiveCharacterIndex();
+	}
+	else //  if (firstCharType == _MBC_ILLEGAL)
+	{
+		std::cout << "[FRIEND]닉네임은 이상한 글자입니다. " << std::endl;
+
+		auto retBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue);
+		idBuffer = retBuffer->SetValue().GetID();
+		RetActiveCharacterIndex = retBuffer->SetValue().GetActiveCharacterIndex();
+	}
+
+	// 못찾음.
+	if (!isReturnTrue)
+	{
+		std::cout << "[FRIEND] 그런 닉네임의 유저가 없어요. " << std::endl;
+
+		RetIsMatch = false;
+		RetIsOnLogin = false;
+		return CONST_NULL_USERDATA;
+	}
+
+	std::cout << "[FRIEND] 해당 닉네임을 가진 유저를 닉네임 컨테이너에서 찾았습니다. UserData에서 탐색합니다. " << std::endl;
+
+	RetIsMatch = true;
+	return SearchUserNode(idBuffer, RetIsOnLogin);
+}
+
+
+
+/*
+	GetActiveCharacterIndexWithNickname
+	 - 닉네임을 제공받을 경우, 해당 닉네임에 대한 ActiveCharacterIndex를 제공합니다.
+
+	 Friend가 Off일 경우, 해당 친구의 일러스트를 확인하기 위해 사용됩니다.
+*/
+std::pair<char, bool> UserDataManager::GetActiveCharacterIndexWithNickname(Type_Nickname& KeyNickname)
+{
+	std::pair<char, bool> retNode = std::make_pair(0,false);
+
+	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
+		; firstCharType == _MBC_SINGLE)
+	{
+		retNode.first = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, retNode.second)->SetValue().GetActiveCharacterIndex();
+	}
+	else if (firstCharType == _MBC_LEAD)
+	{
+		retNode.first = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, retNode.second)->SetValue().GetActiveCharacterIndex();
+	}
+	else //  if (firstCharType == _MBC_ILLEGAL)
+	{
+		retNode.first = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, retNode.second)->SetValue().GetActiveCharacterIndex();
+	}
+
+	return retNode;
+}
+
+/*
+	SetActiveCharacterIndexWithNickname
+	- 닉네임과 바뀐 캐릭터 인덱스를 제공받고, 해당 닉네임에 대한 ActiveCharacterIndex를 변경합니다.
+	
+	플레이어가, 인덱스 변경 시, 호출됩니다.
+*/
+void UserDataManager::SetActiveCharacterIndexWithNickname(Type_Nickname& KeyNickname, char InNewIndex)
+{
+	bool returnPointerIsNotNull{ false };
+	CUSTOM_MAP::rbTreeNode<Type_Nickname, NicknameNode>* retNodeBuffer{ nullptr };
+
+	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(KeyNickname.data()), 0)
+		; firstCharType == _MBC_SINGLE)
+	{
+		retNodeBuffer = nicknameCont[static_cast<int>(LANGUAGE::ENGLISH)].Search(KeyNickname, returnPointerIsNotNull);
+	}
+	else if (firstCharType == _MBC_LEAD)
+	{
+		retNodeBuffer = nicknameCont[static_cast<int>(LANGUAGE::KOREAN)].Search(KeyNickname, returnPointerIsNotNull);
+	}
+	else //  if (firstCharType == _MBC_ILLEGAL)
+	{
+		retNodeBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, returnPointerIsNotNull);
+	}
+
+	if (returnPointerIsNotNull)
+		retNodeBuffer->SetValue().SetActiveCharacterIndex(InNewIndex);
 }
 
 int UserDataManager::GetStringFirstChar(const char InStringFirstChar) const noexcept
@@ -307,15 +432,15 @@ int UserDataManager::GetNicknameFirstChar(const Type_Nickname& InKeyNickname) co
 	if (int firstCharType = _mbsbtype(reinterpret_cast<const unsigned char *>(InKeyNickname.data()), 0)
 		; firstCharType == _MBC_SINGLE)
 	{
-		return 0;
+		return static_cast<int>(LANGUAGE::ENGLISH);
 	}
 	else if (firstCharType == _MBC_LEAD)
 	{
-		return 1;
+		return static_cast<int>(LANGUAGE::KOREAN);
 	}
 	else
 	{
-		return 2;
+		return static_cast<int>(LANGUAGE::OTHERS);
 	}
 }
 
@@ -325,11 +450,11 @@ bool UserDataManager::SetNewNickname(SocketInfo* pInClient, const Type_Nickname&
 	bool isOnMatch{ false };
 
 	::EnterCriticalSection(&csNicknameCont);
-	SearchUserNodeWithNickname(InNewString, isOnLogin, isOnMatch);
+	SearchUserNodeByNickname(InNewString, isOnLogin, isOnMatch);
 
 	if (!isOnMatch)
 	{
-		nicknameCont[GetNicknameFirstChar(InNewString)].Insert(InNewString, pInClient->pUserNode->GetID());
+		nicknameCont[GetNicknameFirstChar(InNewString)].Insert(InNewString, NicknameNode(pInClient->pUserNode->GetID(), 0));
 		::LeaveCriticalSection(&csNicknameCont);
 
 		SaveNicknameContProcess(pInClient->pUserNode->GetID(), InNewString);
@@ -343,6 +468,10 @@ bool UserDataManager::SetNewNickname(SocketInfo* pInClient, const Type_Nickname&
 	}
 }
 
+/*
+	SaveNicknameContProcess
+		- 신규가입자가 10명 이상일 경우, 해당 가입자들의 정보를 파일로 추가하여 저장합니다.
+*/
 void UserDataManager::SaveNicknameContProcess(const Type_ID& InID, const Type_Nickname& InNickname)
 {
 	::EnterCriticalSection(&csSaveNickname);
@@ -372,6 +501,7 @@ void UserDataManager::_SaveNicknameCont()
 		outFile
 			<< " " << iter->first
 			<< " " << iter->second
+			<< " " << 0 
 			<< std::endl;
 	}
 

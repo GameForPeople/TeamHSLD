@@ -68,6 +68,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 	const int InWinCount, const int InLoseCount, const int InMoney,
 	const int InAchievementBit, const int InTitleBit, const int InCharacterBit, const int InActiveCharacterIndex, const vector<Type_Nickname>& InFriendStringCont)
 {
+	//DEV_78 로그인 시, 동기화를 위해, 닉네임 트리와, UserNode의 ActiveCharacterIndex를 UserNode의 ActiveCharacterIndex으로 통일함.
+	pUserData->SetActiveCharacterIndexWithNickname(pClient->pUserNode->GetNickname(), static_cast<char>(pClient->pUserNode->GetActiveCharacterIndex()));
+
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&PERMIT_LOGIN), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&InWinCount), sizeof(int));
 	memcpy(pClient->buf + 8, reinterpret_cast<const char*>(&InLoseCount), sizeof(int));
