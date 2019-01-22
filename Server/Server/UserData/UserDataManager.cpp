@@ -107,6 +107,9 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	// 파일 오픈
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
 
+	// [DEV_78] int 하나 사용(파일 데이터는 int로 갖고있는게 관리하기 쉬움.
+	int activeCharacterIndexBuffer;
+
 	// 파일 데이터 로드
 	inFile 
 		>> idStringBuffer 
@@ -117,8 +120,12 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		>> RetAchievementBit 
 		>> RetTitleBit 
 		>> RetCharacterBit
-		>> RetActiveCharacterIndex
+		>> activeCharacterIndexBuffer
 		>> friendNum;
+
+	RetActiveCharacterIndex = static_cast<BYTE>(activeCharacterIndexBuffer);
+
+	std::cout << "[DEBUG] - 1" << std::endl;
 
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
@@ -131,6 +138,8 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		return 0;
 	}
 
+	std::cout << "[DEBUG] - 2" << std::endl;
+
 	//친구 없음. 정상 로그인.
 	if (friendNum == 0)
 	{
@@ -141,8 +150,13 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		return 0;
 	}
 
+	std::cout << "[DEBUG] - 3" << std::endl;
+
+	std::cout << "친구 수는 :" << friendNum << std::endl;
 	// 친구 수에 따라 벡터 reserve.
 	RetFriendNicknameCont.reserve(friendNum); // 해당 벡터 reserve.
+
+	std::cout << "[DEBUG] - 4" << std::endl;
 
 	// 친구 데이터를, 적재.
 	for (int iter = 0; iter < friendNum; ++iter) // idBuffer를 버퍼로해서 사용.
@@ -155,11 +169,14 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 		//if (userDataCont[userDataContHashValueBuffer].find(idStringBuffer) == userDataCont[userDataContHashValueBuffer].end())
 	}
 
+	std::cout << "[DEBUG] - 5" << std::endl;
+
 	// 정상적인 로그인.
 	pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID, RetNickname,
 		RetWinCount, RetLoseCount, RetMoney, RetAchievementBit, RetTitleBit, RetCharacterBit, RetActiveCharacterIndex, RetFriendNicknameCont);
 
 	/*pInSocketInfo->pUserNode =*/ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
+
 	return 0;
 }
 
@@ -212,7 +229,7 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 			<< " " << pUserNode->GetAchievementBit()
 			<< " " << pUserNode->GetItemBit()
 			<< " " << pUserNode->GetCharacterBit()
-			<< " " << pUserNode->GetActiveCharacterIndex()
+			<< " " << static_cast<int>(pUserNode->GetActiveCharacterIndex())
 			<< " " << pUserNode->GetFriendNicknameCont().size() 
 			<< std::endl;
 

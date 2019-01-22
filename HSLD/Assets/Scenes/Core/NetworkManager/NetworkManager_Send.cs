@@ -198,7 +198,7 @@ public partial class NetworkManager : MonoBehaviour {
 
                 else if (InMsg == PROTOCOL.CHANGE_ACTIVE_CHARACTER)
                 {
-                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_BUY_CHARACTER), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_ACTIVE_CHARACTER), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(
                         GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().nowCharacterIndex
                         ), 0, NewDataSendBuffer, 4, 4);

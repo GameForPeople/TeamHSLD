@@ -36,7 +36,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 	int outTitleBit{ 0 };
 	int outCharacterBit{ 0 };
 	vector<Type_Nickname> outFriendStringCont;
-	int outActiveCharacterBit{ 0 };
+	BYTE outActiveCharacterBit{ 0 };
 
 	//typeBuffer == 1 
 	//? LoginTest(pClient, InUserData, idBuffer, pwBuffer, outWinCount, outLoseCount, outMoney) 
@@ -47,8 +47,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 		; failReason)
 		__SendFailLogin(pClient, failReason);
 	else 
-		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, outActiveCharacterBit, outFriendStringCont);
-		std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" ´ÔÀÌ ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù. " << "\n";
+		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, static_cast<int>(outActiveCharacterBit), outFriendStringCont);
+	
+	std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" ´ÔÀÌ ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù. " << "\n";
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int RetFailReason)

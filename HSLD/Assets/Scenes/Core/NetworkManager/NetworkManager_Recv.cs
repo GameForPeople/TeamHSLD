@@ -326,14 +326,6 @@ public partial class NetworkManager : MonoBehaviour
         {
             int typeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            if(typeBuffer == -1)
-            {
-                money -= 1000;
-
-                characterBit |=
-                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().selectedCharacterIndex;
-            }
-
             GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
             NetworkManager_AnswerBuyCharacter(typeBuffer);
         }

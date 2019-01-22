@@ -36,20 +36,20 @@ public partial class MainUISceneManager : MonoBehaviour
         characterName[8] = "나무신";
 
         characterBit[0] = 0;
-        characterBit[1] = 1 << 0;
-        characterBit[2] = 1 << 1;
-        characterBit[3] = 1 << 2;
-        characterBit[4] = 1 << 3;
-        characterBit[5] = 1 << 4;
-        characterBit[6] = 1 << 5;
-        characterBit[7] = 1 << 6;
-        characterBit[8] = 1 << 7;
+        characterBit[1] = (1 << 0);
+        characterBit[2] = (1 << 1);
+        characterBit[3] = (1 << 2);
+        characterBit[4] = (1 << 3);
+        characterBit[5] = (1 << 4);
+        characterBit[6] = (1 << 5);
+        characterBit[7] = (1 << 6);
+        characterBit[8] = (1 << 7);
 
         RefreshUserDataUI();
         SetUseorNotUseCharacterUI();
 
         // 저장되면 해당 인덱스 네트워크 매니저에서 받아서 체크해줘야함
-        UI_ChangeActiveCharacter(nowCharacterIndex);
+        UI_ChangeActiveCharacter(nowCharacterIndex, false);
     }
 
     /*
@@ -74,9 +74,11 @@ public partial class MainUISceneManager : MonoBehaviour
         단순히 현재 장착중인 캐릭터를 로컬에서 변경합니다. (추후 네트워크 통신 필요할수도? )
         Image가 눌릴 때 실행됩니다! (NotUse일경우에는 구매 함수 활용)
     */
-    public void UI_ChangeActiveCharacter(int InNewCharacterIndex)
+    public void UI_ChangeActiveCharacter(int InNewCharacterIndex, bool InSendPacketToServer /* = false*/)
     {
         string strBuf = "Image_";
+
+        Debug.Log("[DEBUG] 현재 선택된 캐릭터 인덱스 : " + nowCharacterIndex + " 뿌시면? : " + strBuf + nowCharacterIndex.ToString());
 
         // 디테일 내부 캐릭터 변경.
         GameObject character_Set = DetailUserDataUI.transform.Find("Character_Set").gameObject;
@@ -92,7 +94,8 @@ public partial class MainUISceneManager : MonoBehaviour
         nowCharacterIndex = InNewCharacterIndex;
         networkObject.activeCharacterIndex = nowCharacterIndex;
 
-        networkObject.SendData(PROTOCOL.CHANGE_ACTIVE_CHARACTER);
+        if(InSendPacketToServer)
+            networkObject.SendData(PROTOCOL.CHANGE_ACTIVE_CHARACTER);
     }
 
     /*
@@ -128,27 +131,41 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_BuyCharacter()
     {
+        Debug.Log("Function : UI_BuyCharacter");
         networkObject.SendData(PROTOCOL.DEMAND_BUY_CHARACTER);
     }
 
+    /*
+        NetworkManager_AnswerBuyCharacter
+
+        캐릭터를 구매 요청했을 때, 
+
+        // 인자값으로 들어온 int값이, -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 캐릭터이여서 실패, 2면 이런 캐릭터 안팔아요!(네트워크 에러 가능성)
+    */
     public void NetworkManager_AnswerBuyCharacter(int InIndex)
     {
+        Debug.Log("Function : NetworkManager_AnswerBuyCharacter");
+
         UI_OffBuyCharacterUI();
 
-        Debug.Log("안녕 너의 인덱스는 몇이니?" + InIndex.ToString());
+        Debug.Log("서버로 부터 받은 값은? [ -1:성공, 0:실패(돈), 1:실패(이미소유), 2:실패(네트워크에러) ] : " + InIndex.ToString());
 
         // -1이면 성공, 0이면 돈없어서 실패, 1이면 이미 있는 캐릭터이여서 실패, 2면 이런 캐릭터 안팔아요!(네트워크 에러 가능성)
         if (InIndex == -1)
         {
+            Debug.Log("구매 전 캐릭터 비트는 : " + networkObject.characterBit.ToString());
+
             networkObject.characterBit |= characterBit[selectedCharacterIndex];
             networkObject.money -= 1000;
 
-            // 구매한 캐릭터를 활성화 캐릭터로 변경.
-            UI_ChangeActiveCharacter(selectedCharacterIndex);
-            RefreshUserDataUI();
-            SetUseorNotUseCharacterUI();
+            Debug.Log("구매 후 캐릭터 비트는 : " + networkObject.characterBit.ToString());
 
             StartCoroutine(AnswerBuyCharacterUICoroutine(true));
+
+            // 구매한 캐릭터를 활성화 캐릭터로 변경.
+            UI_ChangeActiveCharacter(selectedCharacterIndex, true);
+            RefreshUserDataUI();
+            SetUseorNotUseCharacterUI();
         }
         else if (InIndex == 0)
         {
@@ -167,13 +184,12 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public IEnumerator AnswerBuyCharacterUICoroutine(bool isSuccess)
     {
-        Debug.Log("DEBUG - 1");
+        Debug.Log("Function : AnswerBuyCharacterUICoroutine");
+
         GameObject successOrFailUI;
 
         if (isSuccess)
         {
-            Debug.Log("DEBUG - 2");
-
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("SuccessBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
 
@@ -183,19 +199,13 @@ public partial class MainUISceneManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("DEBUG - 3");
-
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("FailBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
 
             //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(false);
         }
 
-        Debug.Log("DEBUG - 4");
-
         yield return new WaitForSeconds(2.0f);
-
-        Debug.Log("DEBUG - 5");
 
         if (isSuccess)
         {
@@ -234,7 +244,7 @@ public partial class MainUISceneManager : MonoBehaviour
         UI_DetailUserDataUI가 호출될 때, UseUI, NotUseUI의 Active 여부를 조절한다.
 
         여기서 이를 판별하기 위해, NetworkManager의 CharacterBit를 사용하는데, 이 뜻은,
-        캐릭터 구매가 있을 경우, 동기화를 위해 CharacterBit를 변경하고 이 함수를 호출을 뜻함.
+        캐릭터 구매가 있을 경우, 동기화를 위해 CharacterBit를 변경하고 이 함수를 호출을해야함을 뜻함.
      */
     private void SetUseorNotUseCharacterUI()
     {
@@ -247,6 +257,10 @@ public partial class MainUISceneManager : MonoBehaviour
             if ((networkObject.characterBit & characterBit[i]) == characterBit[i])
             {
                 imageCharacterSet.transform.Find(strBuf + i.ToString()).transform.Find(cstrBuf).gameObject.SetActive(false);
+            }
+            else
+            {
+                imageCharacterSet.transform.Find(strBuf + i.ToString()).transform.Find(cstrBuf).gameObject.SetActive(true);
             }
         }
     }

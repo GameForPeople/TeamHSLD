@@ -42,7 +42,8 @@
 #include <AtlBase.h>
 #include <atlconv.h>
 
-// custom
+// for bit
+#include <bitset>
 
 // For Login
 #define		MAX_ID_LEN			30

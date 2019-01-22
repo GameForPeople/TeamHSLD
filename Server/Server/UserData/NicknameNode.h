@@ -17,6 +17,9 @@ public:
 		: id(InID), activeCharacterIndex(InCharacterIndex)
 	{};
 
+	NicknameNode() noexcept = default;
+	~NicknameNode() = default;
+
 	_NODISCARD __inline Type_ID&	GetID() noexcept { return id; };
 	_NODISCARD __inline BYTE		GetActiveCharacterIndex() noexcept { return activeCharacterIndex; };
 

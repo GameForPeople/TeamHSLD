@@ -30,7 +30,7 @@ public partial class MainUISceneManager : MonoBehaviour
     GameObject[] StateTextUI = new GameObject[4];
     GameObject[] NickNameTextUI = new GameObject[4];
     GameObject[] InviteButtonUI = new GameObject[4];
-    GameObject[] ConceptImageUI = new GameObject[4];
+    //GameObject[] ConceptImageUI = new GameObject[4];
 
     IEnumerator waitFriendJoinCoroutine;
 
@@ -51,7 +51,7 @@ public partial class MainUISceneManager : MonoBehaviour
             StateTextUI[i] = SlotUI[i].transform.Find("Text_State").gameObject;
             NickNameTextUI[i] = SlotUI[i].transform.Find("Text_Name").gameObject;
             InviteButtonUI[i] = SlotUI[i].transform.Find("Button_Invite").gameObject;
-            ConceptImageUI[i] = SlotUI[i].transform.Find("Image_Concept").gameObject;
+            //ConceptImageUI[i] = SlotUI[i].transform.Find("Image_Concept").gameObject;
         }
 
         // 친구 UI Off
