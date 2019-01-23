@@ -271,7 +271,6 @@ public partial class InGameSceneManager : MonoBehaviour
     //사용한 이벤트카드의 인덱스를 연출.
     public void RecvEventcardIndex(int InEventcardIndex)
     {
-        Debug.Log("아직까진 이벤트카드 없음.");
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
 

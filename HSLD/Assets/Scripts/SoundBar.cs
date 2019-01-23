@@ -6,24 +6,18 @@ using UnityEngine.UI;
 
 public class SoundBar : EventTrigger
 {
-
     private SoundManager soundmanager;
-
-
-    public override void OnPointerClick(PointerEventData data)
-    {
-        soundmanager.SoundVolumeControl(gameObject);
-    }
+    //public override void OnPointerClick(PointerEventData data)
+    //{
+    //    soundmanager.SoundVolumeControl(gameObject);
+    //}
 
     private void OnEnable()
     {
         soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         Time.timeScale = 0.0f;
 
-        if (gameObject.name.Contains("Text"))
-            return;
-
-        if(gameObject.transform.parent.name.Contains("BGM"))
+        if (gameObject.transform.parent.name.Contains("BGM"))
         {
             if (soundmanager.BGMSource[0].volume * 8 > int.Parse(gameObject.name) - 1)
                 gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
@@ -37,8 +31,6 @@ public class SoundBar : EventTrigger
             else
                 gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
-        
-
     }
 
     private void OnDisable()

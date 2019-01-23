@@ -219,12 +219,6 @@ public class TurnSystem : MonoBehaviour
             displayTurnTimerTxt.text = (pickingEventCardTime - currentEnemyTurnTimer).ToString();
             beforeFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
             enemyCoroutine = StartCoroutine(EnemyTurnCounting());
-
-            //서버와 송수신 필요
-            if(enemyEventCardDefense)
-            {
-                //이벤트 카드를 막고난 이후의 연출 ?
-            }
         }
 
         else if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC))
