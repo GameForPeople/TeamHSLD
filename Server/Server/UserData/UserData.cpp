@@ -62,11 +62,11 @@ _NODISCARD int UserData::BuyCharacter(const int InCharacterIndex)
 	else if (int characterPrice = static_cast<int>(characterManager->GetCharacterPriceWithIndex(InCharacterIndex))
 		; money >= characterPrice)
 	{
-		std::cout << nickname << "의 "<< InCharacterIndex <<"번 캐릭터 구매 전 비트 : " << characterBit << "("<< bitset<32>(characterBit) << ")" << std::endl;
+		std::cout << nickname << "의 "<< InCharacterIndex <<"번 캐릭터 구매 전 비트 : " << bitset<32>(characterBit) << "("<< characterBit << ")" << std::endl;
 		money -= characterPrice;
-		characterBit |= RetCharacterBit;
-
-		std::cout << nickname << "의  "<< InCharacterIndex <<"번 캐릭터 구매 후 비트 : " << characterBit << "(" << bitset<32>(characterBit) << ")" << std::endl;
+		characterBit ^= RetCharacterBit;
+		std::cout << "더해지는 RetCharacterBit는 : " << bitset<32>(RetCharacterBit)  << std::endl;
+		std::cout << nickname << "의 "<< InCharacterIndex <<"번 캐릭터 구매 후 비트 : " << bitset<32>(characterBit) << "(" << characterBit << ")" << std::endl;
 		return -1;
 	}
 

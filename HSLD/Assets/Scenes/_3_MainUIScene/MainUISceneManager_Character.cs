@@ -88,7 +88,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
         Debug.Log("[DEBUG] 현재 선택된 캐릭터 인덱스 : " + nowCharacterIndex + " 뿌시면? : " + strBuf + nowCharacterIndex.ToString());
 
-        // 디테일 내부 캐릭터 변경.
+        // 디테일 내부, 활성화 캐릭터 UI 변경.
         GameObject character_Set = DetailUserDataUI.transform.Find("Character_Set").gameObject;
         character_Set.transform.Find(strBuf + nowCharacterIndex.ToString()).transform.Find("Image_Use").gameObject.SetActive(false);
         character_Set.transform.Find(strBuf + InNewCharacterIndex.ToString()).transform.Find("Image_Use").gameObject.SetActive(true);
@@ -163,7 +163,7 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             Debug.Log("구매 전 캐릭터 비트는 : " + networkObject.characterBit.ToString());
 
-            networkObject.characterBit |= characterBit[selectedCharacterIndex];
+            networkObject.characterBit ^= characterBit[selectedCharacterIndex];
             networkObject.money -= 1000;
 
             Debug.Log("구매 후 캐릭터 비트는 : " + networkObject.characterBit.ToString());
