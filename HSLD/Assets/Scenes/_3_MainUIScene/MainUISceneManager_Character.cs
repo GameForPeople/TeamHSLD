@@ -49,7 +49,7 @@ public partial class MainUISceneManager : MonoBehaviour
         SetUseorNotUseCharacterUI();
 
         // 저장되면 해당 인덱스 네트워크 매니저에서 받아서 체크해줘야함
-        UI_ChangeActiveCharacter(nowCharacterIndex, false);
+        ChangeActiveCharacter(nowCharacterIndex, false);
     }
 
     /*
@@ -69,12 +69,20 @@ public partial class MainUISceneManager : MonoBehaviour
     }
 
     /*
-        UI_ChangeActiveCharacter
+        ChangeActiveCharacter를 UI에서 호출하기 위해 1번 래핑한 함수입니다. 항상 서버에 변경사항을 전달해야합니다.
+    */
+    public void UI_ChangeActiveCharacter(int InNewCharacterIndex)
+    {
+        ChangeActiveCharacter(InNewCharacterIndex, true);
+    }
+
+    /*
+        ChangeActiveCharacter
 
         단순히 현재 장착중인 캐릭터를 로컬에서 변경합니다. (추후 네트워크 통신 필요할수도? )
         Image가 눌릴 때 실행됩니다! (NotUse일경우에는 구매 함수 활용)
     */
-    public void UI_ChangeActiveCharacter(int InNewCharacterIndex, bool InSendPacketToServer /* = false*/)
+    public void ChangeActiveCharacter(int InNewCharacterIndex, bool InSendPacketToServer /* = false*/)
     {
         string strBuf = "Image_";
 
@@ -163,7 +171,7 @@ public partial class MainUISceneManager : MonoBehaviour
             StartCoroutine(AnswerBuyCharacterUICoroutine(true));
 
             // 구매한 캐릭터를 활성화 캐릭터로 변경.
-            UI_ChangeActiveCharacter(selectedCharacterIndex, true);
+            ChangeActiveCharacter(selectedCharacterIndex, true);
             RefreshUserDataUI();
             SetUseorNotUseCharacterUI();
         }
