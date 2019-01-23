@@ -15,12 +15,20 @@ public class DiceSystem : MonoBehaviour
     private bool raiseValue = true;
     public float constValue;
     private int characterDiceRateUp = 5;        //tmp
+    public GameObject doubleImg;
+
+    static public DiceSystem instance_;
 
     private Color initColor = Color.yellow;
     private Color desColor = Color.red;
 
     static public bool isDiceDouble = false;            //이벤트카드로 인해 주사위를 더블할때
     private float time_;
+
+    private void Start()
+    {
+        instance_ = this;
+    }
 
     public void OnTrigger()
     {
@@ -926,6 +934,7 @@ public class DiceSystem : MonoBehaviour
         {
             getDiceNum *= 2;
             isDiceDouble = false;
+            Destroy(doubleImg.GetComponent<IsDoubleImg>());
         }
         //isDouble = true;
         Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
