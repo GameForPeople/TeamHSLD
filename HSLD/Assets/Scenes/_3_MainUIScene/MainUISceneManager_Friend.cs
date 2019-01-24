@@ -219,6 +219,7 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             if(oldFriendActiveCharacterIndex[i] == -1)
             {
+                Debug.Log("networkObject.friendActiveCharacterIndex[i] : " + networkObject.friendActiveCharacterIndex[i].ToString());
                 SlotUI[i].transform.Find("Image_Character_Set").transform.Find("Image_" + networkObject.friendActiveCharacterIndex[i].ToString()).gameObject.SetActive(true);
             }
             else if(oldFriendActiveCharacterIndex[i] == networkObject.friendActiveCharacterIndex[i])

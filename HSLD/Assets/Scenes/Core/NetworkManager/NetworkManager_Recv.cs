@@ -122,10 +122,12 @@ public partial class NetworkManager : MonoBehaviour
                 //idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 4, idSize);
                 //dataLocation += idSize + 8;
+                
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
-                friendActiveCharacterIndex[i] = BitConverter.ToChar(NewDataRecvBuffer, dataLocation + 4);
                 friendState[i] = iBuffer;
+
+                friendActiveCharacterIndex[i] = (int)(NewDataRecvBuffer[dataLocation + 4]);//(int)(BitConverter.ToChar(NewDataRecvBuffer, dataLocation + 4));
 
                 if (iBuffer == 0)
                 {
@@ -139,14 +141,14 @@ public partial class NetworkManager : MonoBehaviour
                 }
                 else
                 {
-                    idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 4);
+                    idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 5);
 
                     //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
-                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 9, idSize);    //DEV_66
 
                     dataLocation += idSize + 9;
 
-                    Debug.Log("상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
+                    Debug.Log("캐릭터 :" + friendActiveCharacterIndex[i].ToString() + "상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
 
                     //조건문 전 처리.
                     //if (iBuffer == 1)

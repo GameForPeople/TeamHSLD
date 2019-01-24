@@ -90,6 +90,9 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			// 1일 경우, 닉네임은 있는데 비로그인.
 			// 2일 경우, 로비.
 			// 3일 경우, 게임중.
+
+			std::cout << "pClient->dataSize : " << pClient->dataSize << std::endl;
+
 			pClient->dataSize += 5;	// 4 Bool Type + 4 characterIndex;
 
 			// 0인 경우, (현재 로직상 이 조건이 트루일 수 없음)

@@ -1,8 +1,8 @@
  abcd GM_ABCD 0
- ahnsh GM_안승환 0
- choisl GM_최세리 0
+ ahnsh GM_안승환 6
+ choisl GM_최세리 2
  hsld GM_해솔리드 0
- sincy GM_신채연 0
+ sincy GM_신채연 1
  sinhs GM_신해솔 0
  star GM_STAR 0
  wonsy GM_원성연 0
