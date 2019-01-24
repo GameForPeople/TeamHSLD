@@ -8,11 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73fab212cef44041959afe2782ccff0, type: 3}
-  m_Name: New MissionInfo
+  m_Script: {fileID: 11500000, guid: f62be2f8d462404438bc1e847771bc44, type: 3}
+  m_Name: Loading_2
   m_EditorClassIdentifier: 
-  missionSet: 0
-  index: 0
-  text: 
-  currentCnt: 0
-  goalCnt: 0
+  index: 1
+  spr: {fileID: 21300000, guid: 597a3fe925af34e41b2bae164bae09ab, type: 3}
+  ment: 222222222222222222222222222

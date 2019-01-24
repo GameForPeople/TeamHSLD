@@ -41,6 +41,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject tmpAnimationImage;
     public Transform missionSetParentTransform;
     public GameObject missionCanvas;
+    public GameObject loadingCanvas;
 
     private float time_;
     private int randomVal;
@@ -118,6 +119,26 @@ public class FlowSystem : MonoBehaviour
         if (currentFlow.Equals(FLOW.TSETVER))
             FlowChange(currentFlow);
     }
+
+
+    IEnumerator DisplayLoadingCor()
+    {
+        loadingCanvas.SetActive(true);
+        yield return new WaitForSeconds(2f);
+
+        //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
+        if (GameObject.Find("GameCores") == null)
+        {
+            currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+            FlowChange(FLOW.READY_DONE);
+            loadingCanvas.SetActive(false);
+        }
+
+        else
+            gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+
+    }
+
     IEnumerator DiceActiveOff()
     {
         yield return new WaitForSeconds(1f);
@@ -145,17 +166,7 @@ public class FlowSystem : MonoBehaviour
 
                 //init - card Cnt Update
                 gameObject.GetComponent<CardSystem>().CardCntUpdate();
-
-                //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
-                if (GameObject.Find("GameCores") == null)
-                {
-                    currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    FlowChange(FLOW.READY_DONE);
-                }
-
-                else
-                    gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
-                    
+                StartCoroutine(DisplayLoadingCor());
                 break;
 
             case FLOW.READY_DONE:
