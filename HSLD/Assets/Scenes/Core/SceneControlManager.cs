@@ -21,7 +21,9 @@ public enum LOAD_UI_TYPE : int
 {
     FALSE = -1,
     BABY_CHICKEN = 0,
-    SKIING_PENGUIN = 1
+    SKIING_PENGUIN = 1,
+    UPDOWN_SNAKE = 2,
+    DANCING_WHALE = 3
 }
 
 public partial class SceneControlManager : MonoBehaviour

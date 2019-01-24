@@ -11,6 +11,9 @@ public partial class SceneControlManager : MonoBehaviour {
     GameObject printingTextUI;
 
     GameObject babyChickenUI;
+    GameObject skiingPenguinUI;
+    GameObject updownSnakeUI;
+    GameObject dancingWhaleUI;
 
     IEnumerator CoroutineInstance_loadUI;
     IEnumerator CoroutineInstance_SliderUI;
@@ -50,6 +53,9 @@ public partial class SceneControlManager : MonoBehaviour {
         sliderUI = loadUI.transform.Find("Slider").gameObject;
 
         babyChickenUI = loadUI.transform.Find("BabyChickenUI").gameObject;
+        skiingPenguinUI = loadUI.transform.Find("SkiingPenguinUI").gameObject;
+        updownSnakeUI = loadUI.transform.Find("UpdownSnakeUI").gameObject;
+        dancingWhaleUI = loadUI.transform.Find("DancingWhaleUI").gameObject;
     }
 
     /*
@@ -72,7 +78,11 @@ public partial class SceneControlManager : MonoBehaviour {
         if (InLoadUIIndex == LOAD_UI_TYPE.BABY_CHICKEN)
             CoroutineInstance_loadUI = ActiveBabyChicken();
         else if (InLoadUIIndex == LOAD_UI_TYPE.SKIING_PENGUIN)
-            ActiveBabyChicken();
+            CoroutineInstance_loadUI = ActiveSkiingPenguin();
+        else if (InLoadUIIndex == LOAD_UI_TYPE.UPDOWN_SNAKE)
+            CoroutineInstance_loadUI = ActiveUpdownSnake();
+        else if (InLoadUIIndex == LOAD_UI_TYPE.DANCING_WHALE)
+            CoroutineInstance_loadUI = ActiveDancingWhale();
 
         StartCoroutine(CoroutineInstance_loadUI);
 
@@ -87,12 +97,15 @@ public partial class SceneControlManager : MonoBehaviour {
         loadUI.SetActive(false);
         StopCoroutine(CoroutineInstance_loadUI);
         StopCoroutine(CoroutineInstance_SliderUI);
-        
-        // 씐 전환 이전에, 먼저 LoadingUI를 출력합니다.
+
         if (InLoadUIIndex == LOAD_UI_TYPE.BABY_CHICKEN)
-            InactiveBabyChicken();
+            babyChickenUI.SetActive(false);
         else if (InLoadUIIndex == LOAD_UI_TYPE.SKIING_PENGUIN)
-            InactiveBabyChicken();
+            skiingPenguinUI.SetActive(false);
+        else if (InLoadUIIndex == LOAD_UI_TYPE.UPDOWN_SNAKE)
+            updownSnakeUI.SetActive(false);
+        else if (InLoadUIIndex == LOAD_UI_TYPE.DANCING_WHALE)
+            dancingWhaleUI.SetActive(false);
     }
 
     private IEnumerator SliderUICoroutine(float InUIPrintTime)
@@ -128,7 +141,7 @@ public partial class SceneControlManager : MonoBehaviour {
     {
         babyChickenUI.SetActive(true);
 
-        GameObject image_babyChicken = babyChickenUI.transform.Find("Baby_Chicken").gameObject;
+        GameObject image_babyChicken = babyChickenUI.transform.Find("Image_BabyChicken").gameObject;
         Vector2 babyChickenPos = new Vector2(0.0f, 30.0f);
         image_babyChicken.transform.localPosition = babyChickenPos;
 
@@ -152,9 +165,43 @@ public partial class SceneControlManager : MonoBehaviour {
         }
     }
 
-    private void InactiveBabyChicken()
+    private IEnumerator ActiveUpdownSnake()
     {
-        babyChickenUI.SetActive(false);
+        updownSnakeUI.SetActive(true);
+
+        GameObject image_snake = updownSnakeUI.transform.Find("Image_UpdownSnake").gameObject;
+        Vector2 snakePos = new Vector2(0.0f, 25.0f);
+        image_snake.transform.localPosition = snakePos;
+
+        while (true)
+        {
+            while (snakePos.y <= 45.0f)
+            {
+                snakePos.y += 4.0f;
+                image_snake.transform.localPosition = snakePos;
+                yield return new WaitForSeconds(1.0f / 30.0f);
+            }
+
+            yield return new WaitForSeconds(0.3f);
+
+            while (snakePos.y >= 25.0f)
+            {
+                snakePos.y -= 4.0f;
+                image_snake.transform.localPosition = snakePos;
+                yield return new WaitForSeconds(1.0f / 30.0f);
+            }
+
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 
+    private IEnumerator ActiveSkiingPenguin()
+    {
+        yield return new WaitForSeconds(0.3f);
+    }
+
+    private IEnumerator ActiveDancingWhale()
+    {
+        yield return new WaitForSeconds(0.3f);
+    }
 }
