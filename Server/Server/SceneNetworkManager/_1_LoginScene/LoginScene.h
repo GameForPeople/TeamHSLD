@@ -28,8 +28,8 @@ namespace SCENE_NETWORK_MANAGER
 
 	private:
 		void _RecvDemandLogin(SocketInfo* pClient);
-		void __SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, const int RetWinCount, const int RetLoseCount, const int RetMoney,
-			const int RetAchievementBit, const int RetTitleBit, const int RetCharacterBit, const vector<Type_Nickname>& RetFriendStringCont);
+		void __SendPermitLogin(SocketInfo* pClient, const Type_Nickname& InNickname, const int InWinCount, const int InLoseCount, const int InMoney,
+			const int InAchievementBit, const int InTitleBit, const int InCharacterBit, const int InActiveCharacterIndex, const vector<Type_Nickname>& RetFriendStringCont);
 		void __SendFailLogin(SocketInfo* pClient, const int RetFailReason);
 
 	private:

@@ -1,11 +1,11 @@
- abcd GM_ABCD
- ahnsh GM_안승환
- choisl GM_최세리
- hsld GM_해솔리드
- sincy GM_신채연
- sinhs GM_신해솔
- star GM_STAR
- wonsy GM_원성연
- yookw GM_유근우
- yoosh GM_유성현
- yoosk GM_유상건
+ abcd GM_ABCD 0
+ ahnsh GM_안승환 6
+ choisl GM_최세리 2
+ hsld GM_해솔리드 0
+ sincy GM_신채연 1
+ sinhs GM_신해솔 0
+ star GM_STAR 0
+ wonsy GM_원성연 0
+ yookw GM_유근우 0
+ yoosh GM_유성현 0
+ yoosk GM_유상건 0

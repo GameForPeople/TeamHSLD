@@ -195,6 +195,16 @@ public partial class NetworkManager : MonoBehaviour {
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
+
+                else if (InMsg == PROTOCOL.CHANGE_ACTIVE_CHARACTER)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.CHANGE_ACTIVE_CHARACTER), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(
+                        GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().nowCharacterIndex
+                        ), 0, NewDataSendBuffer, 4, 4);
+
+                    socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
+                }
                 //LobbyScene - old
                 //else if (InMsg == (int)PROTOCOL.DEMAND_MAKEROOM)
                 //else if (InMsg == (int)PROTOCOL.DEMAND_JOINROOM)

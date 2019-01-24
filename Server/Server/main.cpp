@@ -8,7 +8,7 @@ auto main(int argc, char * argv[]) -> int
 		(
 			[/* void */]() noexcept(false) -> const bool
 			{
-				enum SERVER_INIT_TYPE
+				enum SERVER_INIT_TYPE : int
 				{
 					  EXTERNAL_IP = 1
 					, LOCAL_HOST = 2

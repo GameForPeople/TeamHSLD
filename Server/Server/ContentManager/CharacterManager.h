@@ -47,25 +47,26 @@ public:
 
 private:
 	const int			characterCount;
-	std::vector<std::pair<CHARACTER_BIT,  CHARACTER_PRICE>>	characterPriceCont;
+	std::vector<std::pair<CHARACTER_BIT,  CHARACTER_PRICE>>	characterCont;
 
 public:
 	CharacterManager()
-		: characterCount(7)
+		: characterCount(8)
 	{
-		characterPriceCont.reserve(characterCount + 1);
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::MY_PLANET, CHARACTER_PRICE::MY_PLANET));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::VICTORY, CHARACTER_PRICE::VICTORY));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::SOIL, CHARACTER_PRICE::SOIL));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::GRASS, CHARACTER_PRICE::GRASS));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::WATER, CHARACTER_PRICE::WATER));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::FIRE, CHARACTER_PRICE::FIRE));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::ICE, CHARACTER_PRICE::ICE));
-		characterPriceCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::TREE, CHARACTER_PRICE::TREE));
+		characterCont.reserve(characterCount + 1);
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::MY_PLANET, CHARACTER_PRICE::MY_PLANET));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::VICTORY, CHARACTER_PRICE::VICTORY));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::SUN, CHARACTER_PRICE::SUN));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::SOIL, CHARACTER_PRICE::SOIL));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::GRASS, CHARACTER_PRICE::GRASS));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::WATER, CHARACTER_PRICE::WATER));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::FIRE, CHARACTER_PRICE::FIRE));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::ICE, CHARACTER_PRICE::ICE));
+		characterCont.emplace_back(std::make_pair/*<CHARACTER_BIT, CHARACTER_PRICE>*/(CHARACTER_BIT::TREE, CHARACTER_PRICE::TREE));
 	};
 	~CharacterManager() = default;
 public:
 	_NODISCARD __inline constexpr int GetCharacterCount() const noexcept { return characterCount; }
-	_NODISCARD __inline CHARACTER_BIT GetCharacterBitWithIndex(const int InIndex) const noexcept { return characterPriceCont[InIndex].first; };
-	_NODISCARD __inline CHARACTER_PRICE GetCharacterPriceWithIndex(const int InIndex) const noexcept { return characterPriceCont[InIndex].second; };
+	_NODISCARD __inline CHARACTER_BIT GetCharacterBitWithIndex(const int InIndex) const noexcept { return characterCont[InIndex].first; };
+	_NODISCARD __inline CHARACTER_PRICE GetCharacterPriceWithIndex(const int InIndex) const noexcept { return characterCont[InIndex].second; };
 };

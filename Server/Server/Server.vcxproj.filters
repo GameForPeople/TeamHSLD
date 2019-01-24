@@ -176,6 +176,9 @@
     <ClInclude Include="ContentManager\AchievementManager.h">
       <Filter>소스 파일\ContentManager</Filter>
     </ClInclude>
+    <ClInclude Include="UserData\NicknameNode.h">
+      <Filter>소스 파일\UserData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="IOCPServer\GetServerIP.dll">

@@ -74,8 +74,11 @@ public partial class NetworkManager : MonoBehaviour
             characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
             Debug.Log("characterBit is --> " + characterBit);
 
-            int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 28);
-            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 32, stringSizeBuffer);
+            activeCharacterIndex = BitConverter.ToInt32(NewDataRecvBuffer, 28);
+            Debug.Log("activeCharacterIndex is --> " + activeCharacterIndex);
+
+            int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 32);
+            nickName = Encoding.Unicode.GetString(NewDataRecvBuffer, 36, stringSizeBuffer);
             Debug.Log("nickName is --> " + nickName);
             //
             if (money == -1)
@@ -119,10 +122,12 @@ public partial class NetworkManager : MonoBehaviour
                 //idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 4, idSize);
                 //dataLocation += idSize + 8;
+                
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
-
                 friendState[i] = iBuffer;
+
+                friendActiveCharacterIndex[i] = (int)(NewDataRecvBuffer[dataLocation + 4]);//(int)(BitConverter.ToChar(NewDataRecvBuffer, dataLocation + 4));
 
                 if (iBuffer == 0)
                 {
@@ -131,19 +136,19 @@ public partial class NetworkManager : MonoBehaviour
                     Debug.Log("에혀...친구닉네임이 없어질리가 없는데 ???????????????????");
 
                     //friendState[i] = 0;
-                    dataLocation += 4;
+                    dataLocation += 5;
                     continue;
                 }
                 else
                 {
-                    idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 4);
+                    idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation + 5);
 
                     //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
-                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 8, idSize);    //DEV_66
+                    friendNickNameCont[i] = Encoding.Unicode.GetString(NewDataRecvBuffer, dataLocation + 9, idSize);    //DEV_66
 
-                    dataLocation += idSize + 8;
+                    dataLocation += idSize + 9;
 
-                    Debug.Log("상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
+                    Debug.Log("캐릭터 :" + friendActiveCharacterIndex[i].ToString() + "상태는 : " + iBuffer + "닉네임 크기 : " + idSize + " 닉네임 : " + friendNickNameCont[i]);
 
                     //조건문 전 처리.
                     //if (iBuffer == 1)
@@ -323,16 +328,14 @@ public partial class NetworkManager : MonoBehaviour
         {
             int typeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
 
-            if(typeBuffer == -1)
-            {
-                money -= 1000;
-
-                characterBit |=
-                GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().selectedCharacterIndex;
-            }
-
             GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
             NetworkManager_AnswerBuyCharacter(typeBuffer);
+        }
+
+        else if (recvType == (int)PROTOCOL.PERMIT_ACTIVE_CHARACTER)
+        {
+            // 여기서 원래 아무짓도 안해줘도 됌!
+            return;
         }
 
         //else if (recvType == (int)PROTOCOL.ANSWER_MAKE_FRIEND)

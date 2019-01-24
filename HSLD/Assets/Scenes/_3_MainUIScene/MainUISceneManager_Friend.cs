@@ -21,6 +21,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
     GameObject FriendUIFixedCanvas;
     GameObject FriendUIDynamicCanvas;
+    int[] oldFriendActiveCharacterIndex = new int[4];
 
     string[] stateConstString = new string[4];
 
@@ -29,7 +30,7 @@ public partial class MainUISceneManager : MonoBehaviour
     GameObject[] StateTextUI = new GameObject[4];
     GameObject[] NickNameTextUI = new GameObject[4];
     GameObject[] InviteButtonUI = new GameObject[4];
-    GameObject[] ConceptImageUI = new GameObject[4];
+    //GameObject[] ConceptImageUI = new GameObject[4];
 
     IEnumerator waitFriendJoinCoroutine;
 
@@ -50,7 +51,7 @@ public partial class MainUISceneManager : MonoBehaviour
             StateTextUI[i] = SlotUI[i].transform.Find("Text_State").gameObject;
             NickNameTextUI[i] = SlotUI[i].transform.Find("Text_Name").gameObject;
             InviteButtonUI[i] = SlotUI[i].transform.Find("Button_Invite").gameObject;
-            ConceptImageUI[i] = SlotUI[i].transform.Find("Image_Concept").gameObject;
+            //ConceptImageUI[i] = SlotUI[i].transform.Find("Image_Concept").gameObject;
         }
 
         // 친구 UI Off
@@ -67,6 +68,11 @@ public partial class MainUISceneManager : MonoBehaviour
         stateConstString[1] = "미접속";
         stateConstString[2] = "로비";
         stateConstString[3] = "게임중";
+
+        oldFriendActiveCharacterIndex[0] = -1;
+        oldFriendActiveCharacterIndex[1] = -1;
+        oldFriendActiveCharacterIndex[2] = -1;
+        oldFriendActiveCharacterIndex[3] = -1;
     }
 
     #region [ Release Func ]
@@ -207,6 +213,26 @@ public partial class MainUISceneManager : MonoBehaviour
             {
                 InviteButtonUI[i].SetActive(true);
             }
+        }
+
+        for( int i = 0; i < friendNum; ++i)
+        {
+            if(oldFriendActiveCharacterIndex[i] == -1)
+            {
+                Debug.Log("networkObject.friendActiveCharacterIndex[i] : " + networkObject.friendActiveCharacterIndex[i].ToString());
+                SlotUI[i].transform.Find("Image_Character_Set").transform.Find("Image_" + networkObject.friendActiveCharacterIndex[i].ToString()).gameObject.SetActive(true);
+            }
+            else if(oldFriendActiveCharacterIndex[i] == networkObject.friendActiveCharacterIndex[i])
+            {
+                continue;
+            }
+            else
+            {
+                SlotUI[i].transform.Find("Image_Character_Set").transform.Find("Image_" + oldFriendActiveCharacterIndex[i].ToString()).gameObject.SetActive(false);
+                SlotUI[i].transform.Find("Image_Character_Set").transform.Find("Image_" + networkObject.friendActiveCharacterIndex[i].ToString()).gameObject.SetActive(true);
+            }
+
+            oldFriendActiveCharacterIndex[i] = networkObject.friendActiveCharacterIndex[i];
         }
 
         isDrawFriendUI = true;
