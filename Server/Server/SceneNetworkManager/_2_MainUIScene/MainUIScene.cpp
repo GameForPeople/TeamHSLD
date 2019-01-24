@@ -355,13 +355,9 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	wstring wideStrBuffer(iBuffer / 2, 0);	// 오버 플로우 가능성!! +1 이 필요할 까?
 	memcpy(&wideStrBuffer[0], pClient->buf + 8, iBuffer);
 
-	std::wcout << L"요청한 친구초대는 ~ 입니다. : " << wideStrBuffer << std::endl;
+	Type_Nickname NicknameBuffer = CONVERT_UTIL::WStringToString(wideStrBuffer);
 
-	iBuffer = WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, NULL, 0, NULL, NULL);
-	Type_Nickname NicknameBuffer(iBuffer, 0);
-	WideCharToMultiByte(CP_ACP, 0, &wideStrBuffer[0], -1, &NicknameBuffer[0], iBuffer, NULL, NULL);
-
-	std::cout << "요청한 친구초대는 ~ 입니다. : " << NicknameBuffer << std::endl;
+	std::cout << "요청한 친구초대는 ~ 입니다. : " << NicknameBuffer << " 사이즈는 : " << NicknameBuffer.size()<< std::endl;
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };

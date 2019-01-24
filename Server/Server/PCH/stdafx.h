@@ -77,4 +77,5 @@ using Type_ID = std::basic_string<char, char_traits<char>, allocator<char>>;		/*
 namespace CONVERT_UTIL
 {
 	_NODISCARD string WStringToString(wstring& InWstring);
+	_NODISCARD wstring StringToWString(string& InString);
 }
