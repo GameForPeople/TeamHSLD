@@ -25,6 +25,9 @@ public partial class SceneControlManager : MonoBehaviour {
             - float InUIPrintTime : 출력하기 원하는 시간.  (Default : 2.0f)
 
         #1. 사용 예는 다음과 같습니다.
+
+            - GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI();
+
             a. 임의의 로딩UI를 기본 시간(2초간) 시간만큼 출력하고자할 때 : DrawOnlyLoadUI(); 
             b. 희망하는 타입의 로딩UI를 기본 시간(2초간) 출력하고자할 때 : DrawOnlyLoadUI( LOAD_UI_TYPE.SKIING_PENGUIN );
             d. 임의의 로딩UI를 5초 간 출력하고자할 때 : DrawOnlyLoadUI( LOAD_UI_TYPE.FALSE, 5.0f );
@@ -129,8 +132,6 @@ public partial class SceneControlManager : MonoBehaviour {
         Vector2 babyChickenPos = new Vector2(0.0f, 30.0f);
         image_babyChicken.transform.localPosition = babyChickenPos;
 
-        Debug.Log("LoadUI - 0");
-
         while (true)
         {
             while (babyChickenPos.y <= 70.0f)
@@ -147,16 +148,12 @@ public partial class SceneControlManager : MonoBehaviour {
                 yield return new WaitForSeconds(1.0f / 30.0f);
             }
 
-            Debug.Log("LoadUI - 1");
-
             yield return new WaitForSeconds( 0.3f );
         }
     }
 
     private void InactiveBabyChicken()
     {
-        Debug.Log("LoadUI - 2");
-
         babyChickenUI.SetActive(false);
     }
 
