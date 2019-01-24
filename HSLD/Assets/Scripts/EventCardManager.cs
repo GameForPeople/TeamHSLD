@@ -96,6 +96,9 @@ public class EventCardManager : MonoBehaviour
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             case 401:
+                DiceSystem.instance_.gameObject.transform.parent.gameObject.SetActive(true);
+                DiceSystem.instance_.doubleImg.SetActive(true);
+                DiceSystem.instance_.doubleImg.AddComponent<IsDoubleImg>();
                 DiceSystem.isDiceDouble = true;
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;

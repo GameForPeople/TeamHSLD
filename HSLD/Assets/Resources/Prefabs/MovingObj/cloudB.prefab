@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4816246921124790}
   - component: {fileID: 33347239751085448}
   - component: {fileID: 23473537598041730}
-  - component: {fileID: 65086861589602316}
-  - component: {fileID: 54657482957024906}
-  - component: {fileID: 114065312466988346}
+  - component: {fileID: 65438004671272564}
+  - component: {fileID: 54570521407349350}
+  - component: {fileID: 114848152615510900}
   m_Layer: 0
   m_Name: cloudB
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147874481913928}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -86,22 +86,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147874481913928}
   m_Mesh: {fileID: 4300000, guid: edd830cd204275142a4235b8f0dedb27, type: 3}
---- !u!54 &54657482957024906
+--- !u!54 &54570521407349350
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147874481913928}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65086861589602316
+--- !u!65 &65438004671272564
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.62775, y: 0.5194524, z: 0.4051263}
   m_Center: {x: 0.026300192, y: -0.037550256, z: 0.043062765}
---- !u!114 &114065312466988346
+--- !u!114 &114848152615510900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: 1
