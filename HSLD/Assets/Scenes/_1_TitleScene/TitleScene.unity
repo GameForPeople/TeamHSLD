@@ -2946,6 +2946,7 @@ MonoBehaviour:
   loseCount: 0
   money: 7777777
   characterBit: 0
+  activeCharacterIndex: -1
   friendNum: 0
   friendNickNameCont:
   - 
@@ -2953,6 +2954,7 @@ MonoBehaviour:
   - 
   - 
   friendState: 00000000000000000000000000000000
+  friendActiveCharacterIndex: 00000000000000000000000000000000
   isHost: 1
   enemyId: 
   NewDataSendBuffer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -7344,7 +7346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2122751486
 Transform:
   m_ObjectHideFlags: 0
