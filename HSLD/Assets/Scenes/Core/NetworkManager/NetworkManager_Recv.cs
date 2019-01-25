@@ -234,7 +234,7 @@ public partial class NetworkManager : MonoBehaviour
                 //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
-                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
+                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true, LOAD_UI_TYPE.BABY_CHICKEN, 3.0f);
             }
             else if (inviteBuffer == 0)
             {
@@ -489,7 +489,7 @@ public partial class NetworkManager : MonoBehaviour
                 //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
 
                 //GameObject.Find("LobbySceneManager").GetComponent<LobbySceneManager>().ChangeRoomScene();
-                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);
+                GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true, LOAD_UI_TYPE.BABY_CHICKEN, 2.0f);
             }
         }
 
@@ -587,7 +587,7 @@ public partial class NetworkManager : MonoBehaviour
             //GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().BGMMaximumVolume = 0;
 
             // 씬 이동 ( 추후 상대방 탕출에 의한 승리 결과창 및, 씐 이동으로 변경 필요)
-            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true, 2);
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true, LOAD_UI_TYPE.BABY_CHICKEN, 3.0f);
             //
             //SendData((int)PROTOCOL.DOUBLECHECK_DISCONNECTED_ENEMY_CLIENT);
         }
