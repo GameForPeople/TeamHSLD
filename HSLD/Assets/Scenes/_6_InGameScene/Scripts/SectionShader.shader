@@ -3,8 +3,11 @@
 		_MainTex("Texture", 2D) = "white" {}
 		_BumpMap("Bumpmap", 2D) = "bump" {}
 		_Color("Color", Color) = (1, 1, 1, 1)
+		_Size("Size", Range(0,1)) = 0.5
+		_Thickness("Width", Range(0,1)) = 0.5
 	}
-		SubShader{
+	
+	SubShader{
 		Tags{ "RenderType" = "Opaque" }
 		Cull Off
 		CGPROGRAM
@@ -17,11 +20,13 @@
 
 	sampler2D _MainTex;
 	sampler2D _BumpMap;
+	half _Size;
+	half _Thickness;
 
 	fixed4 _Color;
 
 	void surf(Input IN, inout SurfaceOutput o) {
-		clip(frac((IN.worldPos.y + IN.worldPos.z*0.1) * 5) - 0.5);
+		clip(frac((IN.worldPos.y*_Size + IN.worldPos.z*_Size) * 5) - _Thickness);
 
 		o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
 

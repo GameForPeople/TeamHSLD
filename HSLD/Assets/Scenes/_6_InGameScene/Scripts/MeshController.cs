@@ -300,13 +300,19 @@ public class MeshController : MonoBehaviour {
     public void setModeration(Identify identify)
     {
         terrainstate = Terrain.MODERATION;
-        domMaterial = Resources.Load<Material>("M_Moderation");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
         if (identify.Equals(Identify.ALLY))
+        {
+            domMaterial = Resources.Load<Material>("M_Modaration");
             currentIdentify = Identify.ALLY;
+        }
         else if (identify.Equals(Identify.ENEMY))
+        {
+            domMaterial = Resources.Load<Material>("M_ModerationEnemy");
             currentIdentify = Identify.ENEMY;
+        }
+
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
     }
     //건조
     public void setBarren(Identify identify)
