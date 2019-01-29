@@ -72,7 +72,7 @@ public class TitleSceneManager : MonoBehaviour
     // Test Function 1128 in Dice
     public void UI_DiceTest()
     {
-        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(1, 1);
+        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(6, 6);
     }
 
     // Test For Byte Size
