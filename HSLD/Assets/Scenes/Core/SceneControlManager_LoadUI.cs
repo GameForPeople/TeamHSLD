@@ -48,7 +48,8 @@ public partial class SceneControlManager : MonoBehaviour {
     // Use this for initialization
     public void StartForLoadUI() {
         loadUI = GameObject.Find("GameCores").transform.Find("LoadUI").gameObject;
-        printingTextUI = loadUI.transform.Find("Text_Dynamic").gameObject;
+
+        printingTextUI = loadUI.transform.Find("Text_Edit").gameObject;
         sliderUI = loadUI.transform.Find("Slider").gameObject;
 
         babyChickenUI = loadUI.transform.Find("BabyChickenUI").gameObject;

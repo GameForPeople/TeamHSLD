@@ -69,6 +69,12 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE);
     }
 
+    // Test Function 1128 in Dice
+    public void UI_DiceTest()
+    {
+        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(1, 1);
+    }
+
     // Test For Byte Size
     public void UI_LOGTEST()
     {
