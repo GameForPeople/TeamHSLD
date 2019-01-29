@@ -129,14 +129,15 @@ namespace CUSTOM_SET
 
 		~rbTree<DATA, KEY_TYPE>()
 		{
-			// 다른 Node들에 대한 처리가 필요할 수 있음. 처리안하고 고냥 딤질 수 있음. 알아서 delete 해라 마.
-			if (pRoot != nullptr)
-				delete pRoot;
-			pRoot = nullptr;
+			_Clear();
 
-			if (pNullNode != nullptr)
-				delete pNullNode;
-			pNullNode = nullptr;
+			if (pNullNode == pRoot)
+			{
+				pRoot = nullptr;
+			}
+
+			delete pRoot;
+			delete pNullNode;
 		};
 
 	public:
@@ -158,6 +159,7 @@ namespace CUSTOM_SET
 		__inline rbTreeNode<DATA, KEY_TYPE>*		_GetSiblingNode(rbTreeNode<DATA, KEY_TYPE>* pInNode);
 		__inline rbTreeNode<DATA, KEY_TYPE>*		_GetUncleNode(rbTreeNode<DATA, KEY_TYPE>* pInNode);
 
+		void										_Clear();													
 		//for Debug
 	public:
 		_DEPRECATED void							PrintTree();
@@ -644,6 +646,55 @@ namespace CUSTOM_SET
 		}
 	};
 
+	/*
+		Clear();
+			- pNullNode를 제외하고, 트리에 할당된 모든 노드들을 반납합니다.
+		
+		인자 : void
+		출력 : void
+	*/
+	template <typename DATA, typename KEY_TYPE>
+	void rbTree<DATA, KEY_TYPE>::_Clear()
+	{
+		rbTreeNode<DATA, KEY_TYPE>* pTraversalNode = pRoot;
+		rbTreeNode<DATA, KEY_TYPE>* pDeletedNode = pRoot;
+
+		while (7)
+		{
+			if (pTraversalNode->left != pNullNode)
+			{
+				pTraversalNode = pTraversalNode->left;
+				continue;
+			}
+
+			if (pTraversalNode->right != pNullNode)
+			{
+				pTraversalNode = pTraversalNode->right;
+				continue;
+			}
+
+			pDeletedNode = pTraversalNode;
+
+			if (pTraversalNode->up != pNullNode)
+			{
+				if (pTraversalNode->up->left == pTraversalNode)
+					pTraversalNode->up->left = pNullNode;
+				else /* if (pTraversalNode->up->right == pTraversalNode) */
+					pTraversalNode->up->right = pNullNode;
+
+				pTraversalNode = pTraversalNode->up;
+
+				delete pDeletedNode;
+			}
+			else
+			{
+				delete pDeletedNode;
+				break;
+			}
+		}
+
+		pRoot = pNullNode;
+	};
 
 
 	// ================================== Rotate
@@ -698,8 +749,6 @@ namespace CUSTOM_SET
 		pLeftChildNode->right = pRetNode;
 		pRetNode->up = pLeftChildNode;
 	};
-
-
 
 
 	// ================================== GetNode
