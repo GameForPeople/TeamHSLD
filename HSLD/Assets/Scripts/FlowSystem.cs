@@ -41,7 +41,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject tmpAnimationImage;
     public Transform missionSetParentTransform;
     public GameObject missionCanvas;
-    public GameObject loadingCanvas;
+    public GameObject displayText;
 
     private float time_;
     private int randomVal;
@@ -82,6 +82,17 @@ public class FlowSystem : MonoBehaviour
                 }
                 else
                 {
+                    if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                    {
+                        displayText.GetComponent<DisplayText>().text = "상대 턴";
+                        displayText.SetActive(true);
+                    }
+                    else
+                    {
+                        displayText.GetComponent<DisplayText>().text = "나의 턴";
+                        displayText.SetActive(true);
+                    }
+                    yield return new WaitForSeconds(time);
                     if (GameObject.Find("GameCores") != null)
                     {
                         Debug.Log("SEND : 턴종료");
@@ -106,6 +117,9 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
+            case FLOW.READY_DONE:
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                break;
         }
         if(animationImg)
             tmpAnimationImage.SetActive(false);
@@ -123,19 +137,22 @@ public class FlowSystem : MonoBehaviour
 
     IEnumerator DisplayLoadingCor()
     {
-        loadingCanvas.SetActive(true);
-        yield return new WaitForSeconds(2f);
-
         //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
         if (GameObject.Find("GameCores") == null)
         {
             currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             FlowChange(FLOW.READY_DONE);
-            loadingCanvas.SetActive(false);
         }
 
         else
+        {
+            StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
+            yield return new WaitForSeconds(2f);
+            displayText.SetActive(true);
             gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+
+        }
+            
 
     }
 
@@ -171,7 +188,17 @@ public class FlowSystem : MonoBehaviour
 
             case FLOW.READY_DONE:
                 tmpAnimationImage.SetActive(false);
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                if(gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                {
+                    displayText.GetComponent<DisplayText>().text = "나의 턴";
+                    displayText.SetActive(true);
+                }
+                else
+                {
+                    displayText.GetComponent<DisplayText>().text = "상대 턴";
+                    displayText.SetActive(true);
+                }
+                StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 4, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.READY_WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
@@ -234,6 +261,16 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_PICKINGEVENTSECLECTTERRAIN:
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:
+                if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                {
+                    displayText.GetComponent<DisplayText>().text = "상대 턴";
+                    displayText.SetActive(true);
+                }
+                else
+                {
+                    displayText.GetComponent<DisplayText>().text = "나의 턴";
+                    displayText.SetActive(true);
+                }
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGEVENTCARDLOC, 2, true));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
 
@@ -260,6 +297,16 @@ public class FlowSystem : MonoBehaviour
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
+                if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                {
+                    displayText.GetComponent<DisplayText>().text = "상대 턴";
+                    displayText.SetActive(true);
+                }
+                else
+                {
+                    displayText.GetComponent<DisplayText>().text = "나의 턴";
+                    displayText.SetActive(true);
+                }
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
                 break;
