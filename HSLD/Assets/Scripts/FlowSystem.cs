@@ -140,6 +140,10 @@ public class FlowSystem : MonoBehaviour
         //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
         if (GameObject.Find("GameCores") == null)
         {
+            Debug.Log("11");
+            displayText.GetComponent<DisplayText>().text = "GAME START!";
+            displayText.SetActive(true);
+            yield return new WaitForSeconds(4.5f);
             currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             FlowChange(FLOW.READY_DONE);
         }
@@ -148,6 +152,9 @@ public class FlowSystem : MonoBehaviour
         {
             StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
             yield return new WaitForSeconds(2f);
+            displayText.GetComponent<DisplayText>().text = "GAME START!";
+            displayText.SetActive(true);
+            yield return new WaitForSeconds(4.5f);
             displayText.SetActive(true);
             gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
 
@@ -177,7 +184,7 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
-                tmpAnimationImage.SetActive(true);
+                //tmpAnimationImage.SetActive(true);
                 spinCanvas.SetActive(true);
                 readyCanvas.SetActive(false);
 
@@ -188,6 +195,7 @@ public class FlowSystem : MonoBehaviour
 
             case FLOW.READY_DONE:
                 tmpAnimationImage.SetActive(false);
+                Debug.Log("22");
                 if(gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
                 {
                     displayText.GetComponent<DisplayText>().text = "나의 턴";
