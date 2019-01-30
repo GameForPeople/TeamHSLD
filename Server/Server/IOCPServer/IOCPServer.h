@@ -145,4 +145,10 @@ private:
 
 	static DWORD WINAPI ManagerThread(LPVOID arg);
 	void _ManagerLoop();
+
+private:
+	void __Termination();
+
+	wstring announceString;
+	void __Announcement();
 };

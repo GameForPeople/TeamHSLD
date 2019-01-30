@@ -25,6 +25,7 @@ UDPManager::UDPManager() noexcept
 	: CONST_INVITE_FRIEND(static_cast<char>(1))
 	, CONST_DEMAND_FRIEND(static_cast<char>(2))
 	, CONST_RESULT_FRIEND(static_cast<char>(7))
+	, CONST_ANNOUNCEMENT(static_cast<char>(8))
 	, UDP_PORT(htons(SERVER_UDP_PORT))
 	, udpSocket()
 	, serverUDPAddr()
@@ -127,6 +128,30 @@ void UDPManager::_SendResultMessage()
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+	}
+}
+
+void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	shared_ptr<UserData> pUserData = pInUserData;
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = UDP_PORT;
+
+	if (int retValue
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_ANNOUNCEMENT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
 		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");

@@ -7,8 +7,9 @@
 #include "../Custom_DataStructure/Custom_Map_RedBlackTree.h"
 #include "../Custom_DataStructure/Custom_SET_RedBlackTree.h"
 
-
+//
 struct SocketInfo;
+class UDPManager;
 
 //using user_iter = map<const std::string, UserData>::iterator; // iter에서 node Pointer로 변경.
 
@@ -52,6 +53,9 @@ public:
 	_NODISCARD shared_ptr<UserData> SearchUserNodeByNicknameWithActiveCharacterIndex(const Type_Nickname& KeyNickname, bool& RetIsOnLogin, bool& RetIsMatch, BYTE& RetActiveCharacterIndex);	// 닉네임을 통해, 유저노드를 탐색합니다.
 	
 	_NODISCARD bool SetNewNickname(SocketInfo* pInClient, const Type_Nickname& InNewString);
+
+public:
+	void TraversalForAnnouncement(UDPManager* const pInUDPManager);
 
 public:
 	//DEV_78

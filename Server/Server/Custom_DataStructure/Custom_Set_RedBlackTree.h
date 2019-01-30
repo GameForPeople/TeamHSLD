@@ -2,6 +2,8 @@
 
 #include "../PCH/stdafx.h"
 
+#include "../IOCPServer/UDPManager.h"
+
 namespace CUSTOM_SET
 {
 
@@ -159,9 +161,20 @@ namespace CUSTOM_SET
 		__inline rbTreeNode<DATA, KEY_TYPE>*		_GetSiblingNode(rbTreeNode<DATA, KEY_TYPE>* pInNode);
 		__inline rbTreeNode<DATA, KEY_TYPE>*		_GetUncleNode(rbTreeNode<DATA, KEY_TYPE>* pInNode);
 
-		void										_Clear();													
-		//for Debug
-	public:
+		void										_Clear();		
+		
+	public: // for Project Function
+		void TraversalForAnnouncement(UDPManager* pInUDPManager, rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer = pRoot)
+		{
+			if (pNodeBuffer != pNullNode)
+			{
+				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->left);
+				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->right);
+				pInUDPManager->_SendAnnouncement(pNodeBuffer);
+			}
+		}
+		
+	public: //for Debug
 		_DEPRECATED void							PrintTree();
 
 	private:

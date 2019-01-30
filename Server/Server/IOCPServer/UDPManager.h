@@ -11,6 +11,7 @@ enum UDP_PROTOCOL : int
 	,	DEMAND_FRIEND = 2
 
 	,	RESULT_FRIEND =	7
+	,	ANNOUNCEMENT = 8	// 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
 };
 
 class UDPManager
@@ -19,6 +20,7 @@ class UDPManager
 	const char				CONST_DEMAND_FRIEND;
 
 	const char				CONST_RESULT_FRIEND;
+	const char				CONST_ANNOUNCEMENT;
 
 	const USHORT			UDP_PORT;
 
@@ -30,6 +32,7 @@ class UDPManager
 
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendResultMessageQueue;	// RESULT_FRIEND = 7
 
+	//std::vector<CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>>> messageQueue;
 	//CRITICAL_SECTION		csUDP;
 
 public:
@@ -79,4 +82,7 @@ public:
 	void _SendInviteMessage();
 	void _SendDemandMessage();
 	void _SendResultMessage();
+
+public:
+	void _SendAnnouncement(const shared_ptr<UserData>&);
 };

@@ -1,5 +1,6 @@
 #include "../UserData/UserDataManager.h"
 #include "../IOCPServer/SocketInfo.h"
+#include "../IOCPServer/UDPManager.h"
 
 UserDataManager::UserDataManager() noexcept
 	: nicknameContFileName("UserData/Saved/_Nickname.txt")
@@ -482,6 +483,14 @@ bool UserDataManager::SetNewNickname(SocketInfo* pInClient, const Type_Nickname&
 	{
 		::LeaveCriticalSection(&csNicknameCont);
 		return false;
+	}
+}
+
+void UserDataManager::TraversalForAnnouncement(UDPManager* const pInUDPManager)
+{
+	for (int vectorIter = 0; vectorIter < userDataCont.size(); ++vectorIter)
+	{
+		userDataCont[vectorIter].TraversalForAnnouncement(pInUDPManager);
 	}
 }
 

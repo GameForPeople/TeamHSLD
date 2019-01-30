@@ -401,8 +401,6 @@ void IOCPServer::_DestroyAndClean()
 
 	//....? 우리 열심히 일한 불쌍한 쓰레드들은 어떻게 하나,, 전능하신 운영체제께서 알아서..ㅎ 
 	// 임마 쇼하지 말고 나중에...초반에 핸들값들 다 벡터에 차곡차곡 모아서 여기서 멈추게해드려..
-
-	// UserData 변경으로, 여기서 없음.
 }
 
 
@@ -579,17 +577,44 @@ DWORD WINAPI IOCPServer::ManagerThread(LPVOID arg)
 
 void IOCPServer::_ManagerLoop()
 {
-	int managerLoopBuffer{};
+	enum /*class*/ MANAGER_COMMAND : int
+	{
+		TERMINATION = 0,
+		ANNOUNCEMENT = 1
+	};
 
-	//while (7)
-	//{
-	//	std::cout << "기능을 선택해주세요. 1) UDP Message : ";
-	//	std::cin >> managerLoopBuffer;
-	//
-	//	switch (managerLoopBuffer)
-	//	{
-	//	//case 1:
-	//	//	udpManager.UDPSend();
-	//	}
-	//}
+	int inputtedManagerCommand{};
+
+	while (7)
+	{
+		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 : ";
+		std::cin >> inputtedManagerCommand;
+	
+		switch (inputtedManagerCommand)
+		{
+		case MANAGER_COMMAND::TERMINATION:
+			__Termination();
+			break;
+		case MANAGER_COMMAND::ANNOUNCEMENT:
+			__Announcement();
+			break;
+		}
+	}
+}
+
+void IOCPServer::__Termination()
+{
+	
+}
+
+void IOCPServer::__Announcement()
+{
+	string localAnnounceString;
+
+	std::cout << "\n [ManagerCommand] 전송할 메세지를 입력해주세요. : ";
+	std::cin >> localAnnounceString;
+
+	announceString = CONVERT_UTIL::StringToWString(localAnnounceString);
+
+	pUserData->TraversalForAnnouncement(pUdpManager);
 }
