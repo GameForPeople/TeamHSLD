@@ -58,6 +58,11 @@ public partial class NetworkManager : MonoBehaviour
             Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true);
         }
+        else if (InBuffer == 8)
+        {
+            Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_ANNOUNCEMENT);
+        }
     }
 
     public void UDP_Receive()

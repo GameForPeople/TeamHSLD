@@ -19,6 +19,10 @@ using System.Net.NetworkInformation;
 
 public enum PROTOCOL : int
 {
+    // for OtherSceneFunction(TitleScene Process)
+    DEMAND_ANNOUNCEMENT = 10,   // UDP로 ANNOUNCEMENT를 받았을 때, 클라이언트가 전송함.
+    ANSWER_ANNOUNCEMENT = 11,   // ANNOUNCEMENT에 대한 데이터를 클라이언트에게 전달할 때,
+
     //for LoginScene
     DEMAND_LOGIN = 100,
     FAIL_LOGIN = 101,

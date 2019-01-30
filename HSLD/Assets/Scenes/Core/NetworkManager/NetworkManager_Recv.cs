@@ -48,8 +48,14 @@ public partial class NetworkManager : MonoBehaviour
 
     void ProcessRecvData()
     {
+        if (recvType == (int)PROTOCOL.ANSWER_ANNOUNCEMENT)
+        {
+            int stringSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().
+                NetworkManager_DrawAnnouncementUI(Encoding.Unicode.GetString(NewDataRecvBuffer, 8, stringSizeBuffer));
+        }
         //LoginScene
-        if (recvType == (int)PROTOCOL.FAIL_LOGIN)
+        else if (recvType == (int)PROTOCOL.FAIL_LOGIN)
         {
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().failReason = BitConverter.ToInt32(NewDataRecvBuffer, 4);
             GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().FailLoginProcess();

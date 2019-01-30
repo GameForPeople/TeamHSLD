@@ -36,8 +36,15 @@ public partial class NetworkManager : MonoBehaviour {
         {
             if (isOnNetwork)
             {
+
+                if (InMsg == PROTOCOL.DEMAND_ANNOUNCEMENT)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ANNOUNCEMENT), 0, NewDataSendBuffer, 0, 4);
+                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+                }
+
                 //LoginScene
-                if (InMsg == PROTOCOL.DEMAND_LOGIN)
+                else if (InMsg == PROTOCOL.DEMAND_LOGIN)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_LOGIN), 0, NewDataSendBuffer, 0, 4);
 
