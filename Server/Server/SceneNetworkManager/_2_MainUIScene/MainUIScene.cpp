@@ -91,7 +91,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInfoProcess(SocketInfo* pC
 			// 2일 경우, 로비.
 			// 3일 경우, 게임중.
 
-			std::cout << "pClient->dataSize : " << pClient->dataSize << std::endl;
+			//std::cout << "pClient->dataSize : " << pClient->dataSize << std::endl;
 
 			pClient->dataSize += 5;	// 4 Bool Type + 4 characterIndex;
 
@@ -245,7 +245,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			}
 
 			if (nicknameIndexBuffer == -1) {
-				std::cout << "[DEBUG] : 친구목록에 없는 친구에게 초대를 받음\n";
+				std::cout << "    [Friend] : 친구목록에 없는 친구에게 초대를 받음\n";
 				nicknameIndexBuffer = 0;
 			}
 
@@ -357,17 +357,16 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 
 	Type_Nickname NicknameBuffer = CONVERT_UTIL::WStringToString(wideStrBuffer);
 
-	std::cout << "요청한 친구초대는 ~ 입니다. : " << NicknameBuffer << " 사이즈는 : " << NicknameBuffer.size()<< std::endl;
+	//std::cout << "요청한 친구초대는 ~ 입니다. : " << NicknameBuffer << " 사이즈는 : " << NicknameBuffer.size()<< std::endl;
 
 	bool isOnLogin{ false };
 	bool isOnMatch{ false };
 	shared_ptr<UserData> pBuffer = pUserData->SearchUserNodeByNickname(NicknameBuffer, isOnLogin, isOnMatch);
 
-	std::cout << "[FRIEND] DEBUG 1 " << std::endl;
 	// 해당 닉네임이가 아에 없는 경우 : ANSWER_MAKE_FRIEND + 0 + 3
 	if (!isOnMatch)
 	{
-		std::cout << "[FRIEND] DEBUG 2 " << std::endl;
+		//std::cout << "[FRIEND] DEBUG 2 " << std::endl;
 
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -380,7 +379,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	// 상대방이 로그인 하지 않은 상황 : ANSWER_MAKE_FRIEND + 0 + 0 .
 	if (!isOnLogin)
 	{
-		std::cout << "[FRIEND] DEBUG 3 " << std::endl;
+		//std::cout << "[FRIEND] DEBUG 3 " << std::endl;
 
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_DEMAND_MAKE_FRIEND), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_FALSE), sizeof(int));
@@ -391,7 +390,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 	}
 
 	iBuffer = pBuffer->GetFriendNicknameContSize();
-	std::cout << "[FRIEND] DEBUG 4 " << std::endl;
+	//std::cout << "[FRIEND] DEBUG 4 " << std::endl;
 
 
 	// 상대방이 맥스 프렌드인 상황 : ANSWER_MAKE_FRIEND + 0 + 1 
@@ -431,7 +430,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 		return;
 	}
 
-	std::cout << "[FRIEND] DEBUG 5 " << std::endl;
+	//std::cout << "[FRIEND] DEBUG 5 " << std::endl;
 
 	// 상대방에게 친구 요청을 보내고, 나와 친구에 임시로 모두 저장함. : ANSWER_MAKE_FRIEND + 1
 	pBuffer->SetDemandFriendContIndex(pBuffer->SetInsertFriendNickname(pClient->pUserNode->GetNickname()));
@@ -495,7 +494,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 	// 친구 신청한 유저가 존재함. 친구 등록 최종 프로세스 시행. (친구하나 만들기도 힘들다;)
 	else
 	{
-		std::cout << " " << pBuffer->GetKey() << "님이 보낸 친구초대를 " << pClient->pUserNode->GetKey() << "님이 받았어요! \n";
+#ifdef _DEBUG_MODE_
+		std::cout << "   [Friend]" << pBuffer->GetKey() << "님이 보낸 친구초대를 " << pClient->pUserNode->GetKey() << "님이 받았어요! \n";
+#endif // _DEBUG_MODE_
+
 		pUDPManager->Push(UDP_PROTOCOL::RESULT_FRIEND, pBuffer /*pClient->pUserNode->SetValue().GetSocketInfo()*/);
 
 		pBuffer->SetDemandFriendContIndex(-1);

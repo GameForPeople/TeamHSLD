@@ -90,7 +90,9 @@ namespace NETWORK_UTIL {
 		ptr->wsabuf.buf = ptr->buf;
 		ptr->wsabuf.len = ptr->dataSize;
 
+#ifdef _DEBUG_MODE_
 		std::cout << "  DEBUG - 전송한 Protocol은 : " << reinterpret_cast<int&>(ptr->buf[0]) << "\n";
+#endif // _DEBUG_MODE_
 
 		// 받아랏!!!
 		int retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, NULL, 0, &ptr->overlapped, NULL);
@@ -199,7 +201,10 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 
 				if (!isIPSame)
 				{
-					std::cout << "PARSING_SERVER_IP_ERROR : Please Change HSLD Web Server IP \n";
+					std::cout << " ... \n";
+					std::cout << " ... \n";
+					std::cout << " ... \n";
+					std::cout << " [SERVER_ERROR] PARSING_SERVER_IP_ERROR : Parsing Fail \n";
 					throw ERROR;
 				}
 			}
@@ -427,7 +432,6 @@ void IOCPServer::_WorkerThreadFunction()
 
 	while (7)
 	{
-		//std::cout << "Wait Threa";
 #pragma region [ Wait For Thread ]
 		//비동기 입출력 기다리기
 		DWORD cbTransferred;
@@ -443,7 +447,7 @@ void IOCPServer::_WorkerThreadFunction()
 			INFINITE // 대기 시간 -> 깨울떄 까지 무한대
 		);
 #pragma endregion
-		//std::cout << "Thread Fire!!" << std::endl;
+
 #pragma region [ Get Socket and error Exception ]
 
 		// 할당받은 소켓 즉! 클라이언트 정보 얻기
@@ -484,7 +488,7 @@ void IOCPServer::_WorkerThreadFunction()
 					}
 					else
 					{
-						std::cout << " 이상해요! " << std::endl;
+						std::cout << " ??????? 이상해요! " << std::endl;
 						pClient->pRoomIter.reset();
 					}
 				}
@@ -493,7 +497,7 @@ void IOCPServer::_WorkerThreadFunction()
 			if (pClient->pUserNode != nullptr) {
 				pUserData->LogoutProcess(pClient->pUserNode);
 			}
-			//std::cout << "DEBUG - Error or Exit Client A" << std::endl;
+			
 			if (retVal == 0)
 			{
 				DWORD temp1, temp2;
@@ -530,10 +534,13 @@ void IOCPServer::_WorkerThreadFunction()
 		{
 			recvType = reinterpret_cast<int&>(pClient->buf);
 		
+#ifdef _DEBUG_MODE_
 			if(pClient->pUserNode != nullptr)
 				std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
 			else 
 				std::cout << "익명의 클라이언트에게 받은 타입은 : " << recvType << " 입니다. \n";
+#endif
+
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
@@ -621,11 +628,7 @@ void IOCPServer::__Announcement()
 	std::getline(std::cin, localAnnounceString);
 	std::rewind(stdin);
 
-	std::cout << "입력한 스트링은 : " << localAnnounceString;
-
 	pUdpManager->SetAnnounceString(CONVERT_UTIL::StringToWString(localAnnounceString));
-
-	std::wcout << L"변환된 w스트링은 : " << pUdpManager->GetAnnounceString();
 
 	pUserData->TraversalForAnnouncement(pUdpManager);
 }

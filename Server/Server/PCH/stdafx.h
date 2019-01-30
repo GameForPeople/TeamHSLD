@@ -1,5 +1,27 @@
 #pragma once
 
+// -----------------------------------
+#define _DEBUG_MODE_
+// -----------------------------------
+// 해당 Define은 개발용 로그를 출력하기 위해 선언되며, 릴리즈 시에는 꼭 Off가 필요합니다.
+// 그러나, 서버에 치명적인 오류가 발생할 시, 출력되는 로그는 항상 출력됩니다.
+/*
+	Define여부와 상관없이 출력되는 Log 목록
+		0. Server Core UI ( IP, Thread State )
+		1. Server Fatal Error
+		2. Managed Thread's Output
+		3. 존재하기 힘든 상황에 대한 로그 ( 친구 닉네임 삭제, UDP - shared_ptr 의존 등)
+
+	_DEBUG_MODE_ 의 Log 목록 ()
+		0. Login, LogOut User 
+		1. Send or Recv Data Protocol
+		2. 게임 시작 시, 방 정보 출력
+		3. 게임 종료 시, 결과 출력 (아직 미적용)
+
+
+	기타 단위 이슈 개발을 위해 존재한 Log는 삭제 혹은 주석 처리(필요 시, 테스트)를 원칙으로 합니다.
+*/
+
 #pragma comment(lib, "ws2_32")
 #pragma comment(lib, "wininet.lib")
 

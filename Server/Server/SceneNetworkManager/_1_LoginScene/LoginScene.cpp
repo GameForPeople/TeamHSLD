@@ -48,8 +48,6 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 		__SendFailLogin(pClient, failReason);
 	else 
 		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, static_cast<int>(outActiveCharacterBit), outFriendStringCont);
-	
-	std::cout << "     [UserDataManager] " << outNickname << " (" << idBuffer << ")" <<" 님이 로그인 하셨습니다. " << "\n";
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int RetFailReason)
@@ -92,6 +90,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::__SendPermitLogin(SocketInfo* pClient, c
 
 	pClient->dataSize = 36 + stringSizeBuffer;
 
+#ifdef _DEBUG_MODE_
+	std::cout << "     [UserDataManager] " << InNickname << " (" << pClient->pUserNode->GetID() << ")" << " 님이 로그인 하셨습니다. " << "\n";
+#endif
 	// 친구 관련해서는, Friend Ui On일 떄 처리하도록 수정함.
 }
 

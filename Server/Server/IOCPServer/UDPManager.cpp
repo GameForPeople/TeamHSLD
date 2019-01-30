@@ -66,7 +66,9 @@ void UDPManager::_SendInviteMessage()
 
 	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
 	{
+#ifdef _DEBUG_MODE_
 		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#endif // _DEBUG_MODE_
 		return;
 	}
 
@@ -81,7 +83,7 @@ void UDPManager::_SendInviteMessage()
 		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
 	}
 
-	std::cout << "[UDP_Manager] UDP Message "<< CONST_INVITE_FRIEND << "를 " << pUserData->GetNickname() <<"에게 전송했습니다. \n";
+	//std::cout << "[UDP_Manager] UDP Message "<< CONST_INVITE_FRIEND << "를 " << pUserData->GetNickname() <<"에게 전송했습니다. \n";
 }
 
 void UDPManager::_SendDemandMessage()
@@ -94,7 +96,9 @@ void UDPManager::_SendDemandMessage()
 
 	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
 	{
-		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#ifdef _DEBUG_MODE_
+		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#endif // DEBUG
 		return;
 	}
 
@@ -119,7 +123,9 @@ void UDPManager::_SendResultMessage()
 
 	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
 	{
-		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#ifdef _DEBUG_MODE_
+		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#endif // _DEBUG_MODE_
 		return;
 	}
 
