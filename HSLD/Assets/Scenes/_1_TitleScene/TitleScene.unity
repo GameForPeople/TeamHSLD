@@ -6665,7 +6665,7 @@ GameObject:
   - component: {fileID: 1811329265}
   - component: {fileID: 1811329264}
   m_Layer: 8
-  m_Name: DiceManager
+  m_Name: NotUse_DiceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
