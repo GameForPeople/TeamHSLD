@@ -37,7 +37,7 @@ public class CoreUIManager : MonoBehaviour
         //------------------------------------
         AnnouncementUI.SetActive(true);
         AnnouncementUI.transform.Find("Text").GetComponent<Text>().text = " ";
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         //------------------------------------
 
 
@@ -68,8 +68,10 @@ public class CoreUIManager : MonoBehaviour
 
         //------------------------------------
         AnnouncementUI.transform.Find("Text").GetComponent<Text>().text =
-            "감사합니다. ";
+            "항상 저희 게임을 사랑해주셔서 감사합니다. ";
         yield return new WaitForSeconds(2.0f);
+        AnnouncementUI.transform.Find("Text").GetComponent<Text>().text = " ";
+        yield return new WaitForSeconds(0.5f);
         AnnouncementUI.SetActive(false);
         //------------------------------------
     }

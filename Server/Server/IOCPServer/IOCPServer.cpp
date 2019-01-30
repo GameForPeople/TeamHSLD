@@ -590,10 +590,11 @@ void IOCPServer::_ManagerLoop()
 
 	while (7)
 	{
+		Sleep(1000);
 		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 : ";
-		std::rewind(stdin);
 		std::cin >> inputtedManagerCommand;
-	
+		std::rewind(stdin);
+
 		switch (inputtedManagerCommand)
 		{
 		case MANAGER_COMMAND::TERMINATION:
@@ -616,8 +617,15 @@ void IOCPServer::__Announcement()
 	string localAnnounceString;
 
 	std::cout << "\n [ManagerCommand] 전송할 메세지를 입력해주세요. : ";
-	std::cin >> localAnnounceString;
+	//localAnnounceString = std::cin.get();
+	std::getline(std::cin, localAnnounceString);
+	std::rewind(stdin);
+
+	std::cout << "입력한 스트링은 : " << localAnnounceString;
 
 	pUdpManager->SetAnnounceString(CONVERT_UTIL::StringToWString(localAnnounceString));
+
+	std::wcout << L"변환된 w스트링은 : " << pUdpManager->GetAnnounceString();
+
 	pUserData->TraversalForAnnouncement(pUdpManager);
 }
