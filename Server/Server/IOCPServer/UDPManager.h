@@ -34,6 +34,8 @@ class UDPManager
 
 	//std::vector<CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>>> messageQueue;
 	//CRITICAL_SECTION		csUDP;
+	
+	wstring announceString;
 
 public:
 	UDPManager() noexcept;
@@ -85,4 +87,6 @@ public:
 
 public:
 	void _SendAnnouncement(const shared_ptr<UserData>&);
+	_NODISCARD __inline wstring& GetAnnounceString() noexcept { return announceString; };	// 레퍼런스 보장됨.
+	__inline void SetAnnounceString(const wstring_view& InAnnounceString) noexcept { announceString = InAnnounceString; };
 };

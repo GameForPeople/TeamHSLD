@@ -205,7 +205,10 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 			}
 			else
 			{
-				std::cout << " PARSING_SERVER_IP_ERROR : Parsing Fail \n";
+				std::cout << " ... \n";
+				std::cout << " ... \n";
+				std::cout << " ... \n";
+				std::cout << " [SERVER_ERROR] PARSING_SERVER_IP_ERROR : Parsing Fail \n";
 				throw ERROR;
 			}
 
@@ -588,6 +591,7 @@ void IOCPServer::_ManagerLoop()
 	while (7)
 	{
 		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 : ";
+		std::rewind(stdin);
 		std::cin >> inputtedManagerCommand;
 	
 		switch (inputtedManagerCommand)
@@ -614,7 +618,6 @@ void IOCPServer::__Announcement()
 	std::cout << "\n [ManagerCommand] 전송할 메세지를 입력해주세요. : ";
 	std::cin >> localAnnounceString;
 
-	announceString = CONVERT_UTIL::StringToWString(localAnnounceString);
-
+	pUdpManager->SetAnnounceString(CONVERT_UTIL::StringToWString(localAnnounceString));
 	pUserData->TraversalForAnnouncement(pUdpManager);
 }

@@ -149,6 +149,5 @@ private:
 private:
 	void __Termination();
 
-	wstring announceString;
 	void __Announcement();
 };

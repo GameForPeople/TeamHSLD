@@ -2,11 +2,13 @@
 
 #include "../PCH/stdafx.h"
 
+// add Custom
 #include "../IOCPServer/UDPManager.h"
+
+class UDPManager;
 
 namespace CUSTOM_SET
 {
-
 #pragma region [ Declare rbTreeNode, rbTree ]
 
 	template < typename DATA, typename KEY_TYPE>
@@ -164,15 +166,17 @@ namespace CUSTOM_SET
 		void										_Clear();		
 		
 	public: // for Project Function
-		void TraversalForAnnouncement(UDPManager* pInUDPManager, rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer = pRoot)
+		void TraversalForAnnouncement(UDPManager* pInUDPManager, rbTreeNode<DATA, KEY_TYPE>* pNodeBuffer)
 		{
 			if (pNodeBuffer != pNullNode)
 			{
 				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->left);
 				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->right);
-				pInUDPManager->_SendAnnouncement(pNodeBuffer);
+				pInUDPManager->_SendAnnouncement(pNodeBuffer->GetData());
 			}
-		}
+		};
+
+		__inline rbTreeNode<DATA, KEY_TYPE>* GetRootNode() const { return pRoot; };
 		
 	public: //for Debug
 		_DEPRECATED void							PrintTree();

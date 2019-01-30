@@ -490,7 +490,7 @@ void UserDataManager::TraversalForAnnouncement(UDPManager* const pInUDPManager)
 {
 	for (int vectorIter = 0; vectorIter < userDataCont.size(); ++vectorIter)
 	{
-		userDataCont[vectorIter].TraversalForAnnouncement(pInUDPManager);
+		userDataCont[vectorIter].TraversalForAnnouncement(pInUDPManager, userDataCont[vectorIter].GetRootNode());
 	}
 }
 

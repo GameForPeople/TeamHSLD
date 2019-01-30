@@ -143,7 +143,6 @@ void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
 
 	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
 	{
-		//std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
 		return;
 	}
 
