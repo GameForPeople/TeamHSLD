@@ -939,7 +939,7 @@ public class DiceSystem : MonoBehaviour
         //isDouble = true;
         Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
         CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
-
+        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
         if (GameObject.Find("GameCores") != null)
             GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendDiceValue(CameraController.DiceCount);
         //flow 변경

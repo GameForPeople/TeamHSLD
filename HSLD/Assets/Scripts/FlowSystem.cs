@@ -151,12 +151,19 @@ public class FlowSystem : MonoBehaviour
         else
         {
             StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.5f);
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(2.5f);
+            if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                displayText.GetComponent<DisplayText>().text = "나의 턴";
+            else
+                displayText.GetComponent<DisplayText>().text = "상대 턴";
             displayText.SetActive(true);
-            gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+
+            //
+            FlowChange(FLOW.READY_DONE);
+            //gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
 
         }
             
@@ -195,17 +202,6 @@ public class FlowSystem : MonoBehaviour
 
             case FLOW.READY_DONE:
                 tmpAnimationImage.SetActive(false);
-                Debug.Log("22");
-                if(gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
-                {
-                    displayText.GetComponent<DisplayText>().text = "나의 턴";
-                    displayText.SetActive(true);
-                }
-                else
-                {
-                    displayText.GetComponent<DisplayText>().text = "상대 턴";
-                    displayText.SetActive(true);
-                }
                 StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 4, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.READY_WAITING:
@@ -226,7 +222,7 @@ public class FlowSystem : MonoBehaviour
 
                 //애니메이션 여기
                 StartCoroutine(DiceActiveOff());
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, true));    // <<< 여기  5라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 
             //이벤트카드가 없다면 바로 대기상태로 변경
@@ -283,6 +279,7 @@ public class FlowSystem : MonoBehaviour
                 break;
 
             case FLOW.ENEMYTURN_ROLLINGDICE:
+                //GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5, true));
                 break;
             case FLOW.ENEMYTURN_PICKINGCARD:

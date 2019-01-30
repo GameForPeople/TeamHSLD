@@ -412,5 +412,6 @@ public class TurnSystem : MonoBehaviour
     public void EnemyTurnPass()
     {
         currentTurn = TURN.MYTURN;
+
     }
 }
