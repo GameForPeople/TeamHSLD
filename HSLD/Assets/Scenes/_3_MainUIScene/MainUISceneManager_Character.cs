@@ -170,6 +170,7 @@ public partial class MainUISceneManager : MonoBehaviour
 
             StartCoroutine(AnswerBuyCharacterUICoroutine(true));
 
+            PlayParticle(1);
             // 구매한 캐릭터를 활성화 캐릭터로 변경.
             ChangeActiveCharacter(selectedCharacterIndex, true);
             RefreshUserDataUI();
