@@ -303,7 +303,7 @@ public class MeshController : MonoBehaviour {
 
         if (identify.Equals(Identify.ALLY))
         {
-            domMaterial = Resources.Load<Material>("M_Modaration");
+            domMaterial = Resources.Load<Material>("M_Moderation");
             currentIdentify = Identify.ALLY;
         }
         else if (identify.Equals(Identify.ENEMY))
