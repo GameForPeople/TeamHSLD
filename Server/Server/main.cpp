@@ -14,12 +14,18 @@ auto main(int argc, char * argv[]) -> int
 					, LOCAL_HOST = 2
 				};
 
-				int serverInitType{};
+#ifdef _DEBUG_MODE_
+				std::cout << "\n"
+					<< "   주의!! : 현재 _DEBUG_MODE_가 Define되었습니다. \n";
+				_sleep(1000);
+#endif
 				std::cout << "\n"
 					<< "   Server IP를 선택해주세요.\n"
 					<< "      1. External IP\n" 
 					<< "      2. LocalHost\n"
 					<< "                       ---> ";
+
+				int serverInitType{};
 				std::cin >> serverInitType;
 				system("cls");
 

@@ -108,14 +108,15 @@ public partial class SceneControlManager : MonoBehaviour
             InactiveLoadingUI(InLoadUIIndex);
         }
 
-        if (InNextSceneName != SCENE_NAME.INGAME_SCENE
+        // 해당 씐의 카메라를 켜줍니다.
+        if (InNextSceneName != SCENE_NAME.INGAME_SCENE 
             && InNextSceneName != SCENE_NAME.ROOM_SCENE)
         {
-            GameObject.Find("Camera_OnOff").transform.Find("UI_Camera").gameObject.SetActive(true);
+            GameObject.Find("Camera_OnOff" + ((int)InNextSceneName).ToString()).transform.Find("UI_Camera").gameObject.SetActive(true);
 
             if (InNextSceneName == SCENE_NAME.MainUI_SCENE)
             {
-                GameObject.Find("Camera_OnOff").transform.Find("FX_Camera").gameObject.SetActive(true);
+                GameObject.Find("Camera_OnOff2").transform.Find("FX_Camera").gameObject.SetActive(true);
             }
         }
     }

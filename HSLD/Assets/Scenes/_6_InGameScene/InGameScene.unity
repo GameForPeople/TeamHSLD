@@ -12341,7 +12341,7 @@ MonoBehaviour:
   timerTxt: {fileID: 50010881}
   turnSet: {fileID: 806044292}
   dice: {fileID: 2039015322}
-  currentTurn: 2
+  currentTurn: 0
   matchingCompleteTime: 3
   selectOrderTime: 5
   selectCardTime: 3

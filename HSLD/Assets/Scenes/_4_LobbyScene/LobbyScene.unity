@@ -837,7 +837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1279904229}
   m_Layer: 0
-  m_Name: Camera_OnOff
+  m_Name: Camera_OnOff3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
