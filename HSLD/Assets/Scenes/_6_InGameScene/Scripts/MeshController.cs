@@ -312,55 +312,79 @@ public class MeshController : MonoBehaviour {
             currentIdentify = Identify.ENEMY;
         }
 
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+        GetComponent<MeshRenderer>().material = domMaterial;
     }
     //건조
     public void setBarren(Identify identify)
     {
         terrainstate = Terrain.BARREN;
-        domMaterial = Resources.Load<Material>("M_Barren");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
         if (identify.Equals(Identify.ALLY))
+        {
+            domMaterial = Resources.Load<Material>("M_Barren");
             currentIdentify = Identify.ALLY;
+        }
         else if (identify.Equals(Identify.ENEMY))
+        {
+            domMaterial = Resources.Load<Material>("M_BarrenEnemy");
             currentIdentify = Identify.ENEMY;
+        }
+
+        GetComponent<MeshRenderer>().material = domMaterial;
     }
     //한랭
     public void setCold(Identify identify)
     {
         terrainstate = Terrain.COLD;
-        domMaterial = Resources.Load<Material>("M_Cold");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
         if (identify.Equals(Identify.ALLY))
+        {
+            domMaterial = Resources.Load<Material>("M_Cold");
             currentIdentify = Identify.ALLY;
+        }
         else if (identify.Equals(Identify.ENEMY))
+        {
+            domMaterial = Resources.Load<Material>("M_ColdEnemy");
             currentIdentify = Identify.ENEMY;
+        }
+
+        GetComponent<MeshRenderer>().material = domMaterial;
     }
 
     public void setSea(Identify identify)
     {
         terrainstate = Terrain.SEA;
-        domMaterial = Resources.Load<Material>("M_Sea");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
         if (identify.Equals(Identify.ALLY))
+        {
+            domMaterial = Resources.Load<Material>("M_Sea");
             currentIdentify = Identify.ALLY;
+        }
         else if (identify.Equals(Identify.ENEMY))
+        {
+            domMaterial = Resources.Load<Material>("M_SeaEnemy");
             currentIdentify = Identify.ENEMY;
+        }
+
+        GetComponent<MeshRenderer>().material = domMaterial;
     }
 
     public void setMountain(Identify identify)
     {
         terrainstate = Terrain.MOUNTAIN;
-        domMaterial = Resources.Load<Material>("M_Mountain");
-        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
 
         if (identify.Equals(Identify.ALLY))
+        {
+            domMaterial = Resources.Load<Material>("M_Mountain");
             currentIdentify = Identify.ALLY;
+        }
         else if (identify.Equals(Identify.ENEMY))
+        {
+            domMaterial = Resources.Load<Material>("M_MountainEnemy");
             currentIdentify = Identify.ENEMY;
+        }
+
+        GetComponent<MeshRenderer>().material = domMaterial;
     }
 
     public void setFlag()

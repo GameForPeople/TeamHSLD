@@ -3,8 +3,8 @@
 		_MainTex("Texture", 2D) = "white" {}
 		_BumpMap("Bumpmap", 2D) = "bump" {}
 		_Color("Color", Color) = (1, 1, 1, 1)
-		_Size("Size", Range(0,1)) = 0.5
-		_Thickness("Width", Range(0,1)) = 0.5
+		_Size("Size", Range(0,1)) = 0.05
+		_Thickness("Width", Range(0,1)) = 0.13
 	}
 	
 	SubShader{
