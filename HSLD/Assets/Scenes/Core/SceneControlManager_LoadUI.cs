@@ -202,6 +202,9 @@ public partial class SceneControlManager : MonoBehaviour {
 
     private IEnumerator ActiveDancingWhale()
     {
-        yield return new WaitForSeconds(0.3f);
+        dancingWhaleUI.SetActive(true);
+
+        // 코루틴 추상화 통일하기 위해;
+        yield return new WaitForSeconds(0.1f);
     }
 }

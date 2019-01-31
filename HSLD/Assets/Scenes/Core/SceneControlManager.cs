@@ -108,5 +108,15 @@ public partial class SceneControlManager : MonoBehaviour
             InactiveLoadingUI(InLoadUIIndex);
         }
 
+        if (InNextSceneName != SCENE_NAME.INGAME_SCENE
+            && InNextSceneName != SCENE_NAME.ROOM_SCENE)
+        {
+            GameObject.Find("Camera_OnOff").transform.Find("UI_Camera").gameObject.SetActive(true);
+
+            if (InNextSceneName == SCENE_NAME.MainUI_SCENE)
+            {
+                GameObject.Find("Camera_OnOff").transform.Find("FX_Camera").gameObject.SetActive(true);
+            }
+        }
     }
 }
