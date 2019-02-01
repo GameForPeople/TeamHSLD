@@ -42,6 +42,7 @@ public class TurnSystem : MonoBehaviour
 
     Coroutine myCoroutine;
     Coroutine enemyCoroutine;
+    Coroutine TurnPassAndDisplayTextCor;
 
     public void TurnChange(bool change)
     {
@@ -162,6 +163,7 @@ public class TurnSystem : MonoBehaviour
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
+            gameObject.GetComponent<FlowSystem>().enemyTurnPassObj.SetActive(false);
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_ROLLINGDICE;
             //displayTurnTimerTxt.transform.localPosition = new Vector3(0, 265f, 0);
             //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(503.2f, 294.3f, 0);
@@ -174,6 +176,7 @@ public class TurnSystem : MonoBehaviour
         //내턴이아닐때의 코루틴 진입
         else
         {
+            gameObject.GetComponent<FlowSystem>().enemyTurnPassObj.SetActive(true);
             gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             //displayTurnTimerTxt.transform.localPosition = new Vector3(550, -308, 0);
             //gameObject.GetComponent<FlowSystem>().turnTimerImg.transform.localPosition = new Vector3(549.3f, -260.3f, 0);
@@ -411,7 +414,22 @@ public class TurnSystem : MonoBehaviour
 
     public void EnemyTurnPass()
     {
-        currentTurn = TURN.MYTURN;
+        gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.DISPLAYANIMATION_WAITING;
 
+        if (currentTurn.Equals(TURN.MYTURN))
+            gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "상대 턴";
+        else
+            gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
+        gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+
+        if (TurnPassAndDisplayTextCor != null)
+            StopCoroutine(TurnPassAndDisplayTextCor);
+        TurnPassAndDisplayTextCor = StartCoroutine(TurnPassAndDisplayText());
+    }
+
+    IEnumerator TurnPassAndDisplayText()
+    {
+        yield return new WaitForSeconds(2.5f);
+        currentTurn = TURN.MYTURN;
     }
 }

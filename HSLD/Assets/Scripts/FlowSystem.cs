@@ -42,6 +42,7 @@ public class FlowSystem : MonoBehaviour
     public Transform missionSetParentTransform;
     public GameObject missionCanvas;
     public GameObject displayText;
+    public GameObject enemyTurnPassObj;
 
     private float time_;
     private int randomVal;
@@ -91,14 +92,13 @@ public class FlowSystem : MonoBehaviour
                     {
                         displayText.GetComponent<DisplayText>().text = "나의 턴";
                         displayText.SetActive(true);
-                    }
-                    yield return new WaitForSeconds(time);
+                    }   
+                    yield return new WaitForSeconds(2.5f);
                     if (GameObject.Find("GameCores") != null)
                     {
                         Debug.Log("SEND : 턴종료");
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
-
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
                     gameObject.GetComponent<TurnSystem>().TurnSet();
@@ -117,9 +117,9 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
-            case FLOW.READY_DONE:
-                gameObject.GetComponent<TurnSystem>().TurnSet();
-                break;
+            //case FLOW.READY_DONE:
+            //    //gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    break;
         }
         if(animationImg)
             tmpAnimationImage.SetActive(false);
@@ -140,10 +140,15 @@ public class FlowSystem : MonoBehaviour
         //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
         if (GameObject.Find("GameCores") == null)
         {
-            Debug.Log("11");
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(2.5f);
+            if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                displayText.GetComponent<DisplayText>().text = "나의 턴";
+            else
+                displayText.GetComponent<DisplayText>().text = "상대 턴";
+            displayText.SetActive(true);
+            yield return new WaitForSeconds(2.5f);
             currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             FlowChange(FLOW.READY_DONE);
         }
@@ -201,8 +206,8 @@ public class FlowSystem : MonoBehaviour
                 break;
 
             case FLOW.READY_DONE:
-                tmpAnimationImage.SetActive(false);
-                StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 4, false));    // <<< 여기  5라는 숫자를 바꾸면댐
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                //StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 2.5f, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.READY_WAITING:
                 currentFlow = FLOW.TO_ROLLINGDICE;
@@ -222,7 +227,7 @@ public class FlowSystem : MonoBehaviour
 
                 //애니메이션 여기
                 StartCoroutine(DiceActiveOff());
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 2, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 
             //이벤트카드가 없다면 바로 대기상태로 변경

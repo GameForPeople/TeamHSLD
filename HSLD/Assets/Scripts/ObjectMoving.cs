@@ -25,7 +25,7 @@ public class ObjectMoving : MonoBehaviour
 
     private GameObject tmpObj;
     private bool isFirstStart = true;
-
+    private int j = 0;
     private void OnDisable()
     {
         StopAllCoroutines();
@@ -65,8 +65,8 @@ public class ObjectMoving : MonoBehaviour
 
     void AlbeToGo(GameObject obj)
     {
-        int j = 0;
-        for(int i =0; i<3;i++)
+        j = 0;
+        for (int i =0; i<3;i++)
         {
             if (obj.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(currentTerrain))
             {
@@ -81,24 +81,26 @@ public class ObjectMoving : MonoBehaviour
     IEnumerator Moving(GameObject startingPoint)
     {
         AlbeToGo(startingPoint);
-        randomVal = Random.Range(0, 3);
+        randomVal = Random.Range(0, j);
 
         if (ableToGoObj[randomVal] == null)
             StartCoroutine(Moving(startingPoint));
         else
         {
-            dirToTarget = (gameObject.transform.GetChild(0).position - ableToGoObj[randomVal].transform.position).normalized;
-            localUp = gameObject.transform.GetChild(0).transform.up;
-            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
             time_ = 0;
-
             switch (thisObject)
             {
                 case MOVINGOBJECT.CHICKEN:
                     while (true)
                     {
-                        time_ += Time.deltaTime * 0.5f;
+                       if(time_ < 0.05f)
+                        {
+                            dirToTarget = (startingPoint.transform.position - ableToGoObj[randomVal].transform.position).normalized;
+                            localUp = gameObject.transform.GetChild(0).transform.up;
+                            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+                        }
                         gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.01f, ableToGoObj[randomVal].transform.position * 1.01f, time_);
+                        time_ += Time.deltaTime * 0.5f;
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.95f)
                             break;
@@ -110,6 +112,13 @@ public class ObjectMoving : MonoBehaviour
                 case MOVINGOBJECT.CLOUD:
                     while (true)
                     {
+                        if (time_ < 0.05f)
+                        {
+                            dirToTarget = (startingPoint.transform.position - ableToGoObj[randomVal].transform.position).normalized;
+                            localUp = gameObject.transform.GetChild(0).transform.up;
+                            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+
+                        }
                         time_ += Time.deltaTime * 0.1f;
                         gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
                         yield return new WaitForEndOfFrame();
@@ -122,6 +131,13 @@ public class ObjectMoving : MonoBehaviour
                 case MOVINGOBJECT.PENGUIN:
                     while (true)
                     {
+                        if (time_ < 0.05f)
+                        {
+                            dirToTarget = (startingPoint.transform.position - ableToGoObj[randomVal].transform.position).normalized;
+                            localUp = gameObject.transform.GetChild(0).transform.up;
+                            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+
+                        }
                         time_ += Time.deltaTime * 0.5f;
                         gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
                         yield return new WaitForEndOfFrame();
@@ -134,6 +150,13 @@ public class ObjectMoving : MonoBehaviour
                 case MOVINGOBJECT.SNAKE:
                    while (true)
                     {
+                        if (time_ < 0.05f)
+                        {
+                            dirToTarget = (startingPoint.transform.position - ableToGoObj[randomVal].transform.position).normalized;
+                            localUp = gameObject.transform.GetChild(0).transform.up;
+                            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+
+                        }
                         time_ += Time.deltaTime;
                         gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.02f, ableToGoObj[randomVal].transform.position * 1.02f, time_);
                         yield return new WaitForEndOfFrame();
@@ -171,6 +194,13 @@ public class ObjectMoving : MonoBehaviour
                 case MOVINGOBJECT.WHALE:
                     while (true)
                     {
+                        if (time_ < 0.05f)
+                        {
+                            dirToTarget = (startingPoint.transform.position - ableToGoObj[randomVal].transform.position).normalized;
+                            localUp = gameObject.transform.GetChild(0).transform.up;
+                            gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
+
+                        }
                         time_ += Time.deltaTime * 0.2f;
                         gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.01f, ableToGoObj[randomVal].transform.position * 1.01f, time_);
                         yield return new WaitForEndOfFrame();
