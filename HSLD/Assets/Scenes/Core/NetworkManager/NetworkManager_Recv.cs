@@ -579,7 +579,7 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
         {
-            //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
+            inGameSceneManager.NetworkManager_RecvEventcardIndex(BitConverter.ToInt32(NewDataRecvBuffer, 4));
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_EMOJI)
         {
