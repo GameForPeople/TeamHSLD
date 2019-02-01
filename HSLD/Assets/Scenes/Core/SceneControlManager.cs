@@ -104,20 +104,21 @@ public partial class SceneControlManager : MonoBehaviour
         {
             // Load UI를 어느정도 확인할 시간을 마련해 줍니다.
             yield return new WaitForSeconds(InUIPrintTime);
-
+        
             InactiveLoadingUI(InLoadUIIndex);
         }
+        
 
-        // 해당 씐의 카메라를 켜줍니다.
-        if (InNextSceneName != SCENE_NAME.INGAME_SCENE 
-            && InNextSceneName != SCENE_NAME.ROOM_SCENE)
-        {
-            GameObject.Find("Camera_OnOff" + ((int)InNextSceneName).ToString()).transform.Find("UI_Camera").gameObject.SetActive(true);
-
-            if (InNextSceneName == SCENE_NAME.MainUI_SCENE)
-            {
-                GameObject.Find("Camera_OnOff2").transform.Find("FX_Camera").gameObject.SetActive(true);
-            }
-        }
+        //// 해당 씐의 카메라를 켜줍니다.
+        //if (InNextSceneName != SCENE_NAME.INGAME_SCENE 
+        //    && InNextSceneName != SCENE_NAME.ROOM_SCENE)
+        //{
+        //    GameObject.Find("Camera_OnOff_" + ((int)InNextSceneName).ToString()).transform.Find("UI_Camera").gameObject.SetActive(true);
+        //
+        //    if (InNextSceneName == SCENE_NAME.MainUI_SCENE)
+        //    {
+        //        GameObject.Find("Camera_OnOff_2").transform.Find("FX_Camera").gameObject.SetActive(true);
+        //    }
+        //}
     }
 }

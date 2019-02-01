@@ -60,7 +60,7 @@ public class TitleSceneManager : MonoBehaviour
     // Not Network!
     public void UI_TestLoadUI()
     {
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE, true, LOAD_UI_TYPE.DANCING_WHALE, 2.0f);
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE, true, LOAD_UI_TYPE.DANCING_WHALE, 3.5f);
     }
 
     // Test Function 1128 in Dice

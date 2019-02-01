@@ -4147,7 +4147,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.678}
   m_AnchoredPosition: {x: 0, y: -4.489998}
   m_SizeDelta: {x: 0, y: 1.02}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12394,7 +12394,6 @@ MonoBehaviour:
   missionCanvas: {fileID: 1308696082}
   displayText: {fileID: 425643209}
   enemyTurnPassObj: {fileID: 561857701}
-  canvasSet: {fileID: 0}
 --- !u!114 &823012261
 MonoBehaviour:
   m_ObjectHideFlags: 0

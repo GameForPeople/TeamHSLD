@@ -15,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
+  - CoreUI
   - VFX
-  - 
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
   - name: UI
     uniqueID: 1049887401
     locked: 0
-  - name: VFX
+  - name: CoreUI
     uniqueID: 2663939583
+    locked: 0
+  - name: VFX
+    uniqueID: 3598924007
     locked: 0
