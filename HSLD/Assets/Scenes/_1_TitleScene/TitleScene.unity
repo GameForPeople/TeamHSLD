@@ -3163,7 +3163,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b071f69ddb7edbd4b8d7bd476cfbb63c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3202,8 +3202,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049887401
-  m_SortingLayer: 1
+  m_SortingLayerID: -1631027713
+  m_SortingLayer: 2
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 0e24c075e4c1da740bbbeb03b0c1ccc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
