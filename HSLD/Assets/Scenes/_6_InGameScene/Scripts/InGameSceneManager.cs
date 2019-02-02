@@ -18,9 +18,6 @@ public partial class InGameSceneManager : MonoBehaviour
     public int[] network_terrainIndex = new int[12];
     public int[] recvTerrainIndex = new int[12]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
 
-    // 사용된 이벤트카드의 타입(인덱스) 입니다.
-    public int network_eventCardType;
-
     // GameReady 여부에 따른 bool 변수.
     public bool isOnWaitGameReady;
 
@@ -44,7 +41,9 @@ public partial class InGameSceneManager : MonoBehaviour
         // -----
         GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
         // -----
+
         StartForEmoji();
+        StartForEvent();
 
         for (int i = 0; i < 12; ++i)
         {
@@ -123,11 +122,6 @@ public partial class InGameSceneManager : MonoBehaviour
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS;
     }
 
-    public void SendEventcardIndex(int InEventcardIndex)
-    {
-        network_eventCardType = InEventcardIndex;
-        network_sendProtocol = (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX;
-    }
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
     //public bool GetRecvData(ref int retRecvProtocol, ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
     //{
@@ -266,12 +260,6 @@ public partial class InGameSceneManager : MonoBehaviour
         AllMeshController.myPlanet.GetComponent<AllMeshController>().AllPriorSetting(); // PriorSetting
         recvTerrainType = 0;
         recvDiceValue = 0;
-    }
-
-    //사용한 이벤트카드의 인덱스를 연출.
-    public void RecvEventcardIndex(int InEventcardIndex)
-    {
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
 
     //

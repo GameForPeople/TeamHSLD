@@ -16,7 +16,7 @@ auto main(int argc, char * argv[]) -> int
 
 #ifdef _DEBUG_MODE_
 				std::cout << "\n"
-					<< "   주의!! : 현재 _DEBUG_MODE_가 Define되었습니다. \n";
+					<< "   주의 : 현재 _DEBUG_MODE_가 Define되었습니다. \n";
 				_sleep(1000);
 #endif
 				std::cout << "\n"

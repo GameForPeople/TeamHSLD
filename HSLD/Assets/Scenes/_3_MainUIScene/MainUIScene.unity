@@ -9135,7 +9135,7 @@ GameObject:
   - component: {fileID: 608749515}
   - component: {fileID: 608749517}
   - component: {fileID: 608749516}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ring1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15818,7 +15818,7 @@ GameObject:
   - component: {fileID: 712956046}
   - component: {fileID: 712956048}
   - component: {fileID: 712956047}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: glitter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21612,7 +21612,7 @@ GameObject:
   - component: {fileID: 775609858}
   - component: {fileID: 775609860}
   - component: {fileID: 775609859}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: par2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34546,13 +34546,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1351540528}
   - component: {fileID: 1351540527}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &1351540527
 Camera:
   m_ObjectHideFlags: 0
@@ -34581,7 +34581,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -34600,11 +34600,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1351540526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.86688, y: 5.04828, z: -39.44089}
+  m_LocalPosition: {x: -18.79312, y: -1.8227682, z: 10.679108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1541123765}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352033109
 GameObject:
@@ -35001,7 +35001,7 @@ GameObject:
   - component: {fileID: 1380975978}
   - component: {fileID: 1380975980}
   - component: {fileID: 1380975979}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: CharacterSuccessParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39759,27 +39759,13 @@ GameObject:
   - component: {fileID: 1385011778}
   - component: {fileID: 1385011777}
   - component: {fileID: 1385011776}
-  - component: {fileID: 1385011775}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: FX_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1385011775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1385011774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5075dd8dafac67c4e96dcaab5125563b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  successParticle: {fileID: 0}
-  failParticle: {fileID: 0}
 --- !u!114 &1385011776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39834,7 +39820,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1631027713
+  m_SortingLayerID: -696043289
   m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!224 &1385011779
@@ -41632,6 +41618,34 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521939348}
   m_CullTransparentMesh: 0
+--- !u!1 &1524479004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524479005}
+  m_Layer: 0
+  m_Name: Camera_OnOff_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524479005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524479004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.66, y: -6.871048, z: 50.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1525215768
 GameObject:
   m_ObjectHideFlags: 0
@@ -42075,36 +42089,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1539761808}
   m_CullTransparentMesh: 0
---- !u!1 &1541123764
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1541123765}
-  m_Layer: 0
-  m_Name: Camera_OnOff2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1541123765
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541123764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.66, y: -6.871048, z: 50.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1351540528}
-  - {fileID: 2066113820}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542646558
 GameObject:
   m_ObjectHideFlags: 0
@@ -44362,7 +44346,7 @@ GameObject:
   - component: {fileID: 1717322625}
   - component: {fileID: 1717322627}
   - component: {fileID: 1717322626}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: par1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52767,7 +52751,7 @@ GameObject:
   - component: {fileID: 1997631720}
   - component: {fileID: 1997631722}
   - component: {fileID: 1997631721}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ring2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58604,7 +58588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &2066113819
 Camera:
   m_ObjectHideFlags: 0
@@ -58633,7 +58617,7 @@ Camera:
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 544
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -58652,11 +58636,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2066113818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.052376, y: 0, z: -47.022587}
+  m_LocalPosition: {x: -22.607624, y: -6.871048, z: 3.097412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1541123765}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2087218971
 GameObject:
