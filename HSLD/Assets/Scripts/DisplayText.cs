@@ -10,8 +10,12 @@ public class DisplayText : MonoBehaviour
 
     private void OnEnable()
     {
-        gameObject.GetComponent<Text>().text = text;
+        gameObject.GetComponentInChildren<Text>().text = text;
         StartCoroutine(performance());
+    }
+    private void OnDisable()
+    {
+        gameObject.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(10, 100);
     }
 
     IEnumerator performance()
@@ -20,21 +24,22 @@ public class DisplayText : MonoBehaviour
         while (true)
         {
             time_ += Time.deltaTime * 5f;
+            gameObject.transform.GetChild(0).localPosition = Vector3.Lerp(new Vector3(-661.5f, 0,0), new Vector3(-5.4f, 0,0), time_);
+            gameObject.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(25, 150), new Vector2(1340, 150), time_);
             yield return new WaitForEndOfFrame();
-            gameObject.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(10, 10),new Vector2(300,200), time_);            
             if (time_ > 1.0f)
                 break;
         }
-        yield return new WaitForSeconds(2f);
         time_ = 0;
-        //while (true)
-        //{
-        //    time_ += Time.deltaTime * 0.5f;
-        //    yield return new WaitForEndOfFrame();
-        //    gameObject.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(300, 200), new Vector2(10, 10), time_);
-        //    if (time_ > 1.0f)
-        //        break;
-        //}
+        while (true)
+        {
+            time_ += Time.deltaTime * 5f;
+            yield return new WaitForEndOfFrame();
+            gameObject.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(10, 100),new Vector2(500,100), time_);            
+            if (time_ > 1.0f)
+                break;
+        }
+        yield return new WaitForSeconds(1.8f);
         gameObject.SetActive(false);
     }
 }

@@ -416,10 +416,7 @@ public class TurnSystem : MonoBehaviour
     {
         gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.DISPLAYANIMATION_WAITING;
 
-        if (currentTurn.Equals(TURN.MYTURN))
-            gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "상대 턴";
-        else
-            gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
+        gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
         gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
 
         if (TurnPassAndDisplayTextCor != null)

@@ -19,7 +19,7 @@ public class SoundSetting : MonoBehaviour
     {
         for (int i = 0; i < volume.Length; i++)
         {
-            if (handlePos.transform.position.x < volume[i].transform.position.x - 10)
+            if (handlePos.transform.localPosition.x < volume[i].transform.localPosition.x - 50)
             {
                 volume[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
             }

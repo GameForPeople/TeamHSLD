@@ -22,6 +22,9 @@ public class EventCardManager : MonoBehaviour
 
     private List<GameObject> connectObjs = new List<GameObject>();
 
+    public GameObject conditionABtn;
+    public GameObject conditionBBtn;
+
     private void Start()
     {
         for (int i = 0; i < check.Length; i++)
@@ -67,34 +70,60 @@ public class EventCardManager : MonoBehaviour
         cardImg.sprite = pickedCard.img;
         selectedIndex = pickedCard.cardIndex;
 
+        conditionABtn.SetActive(false);
+        conditionBBtn.SetActive(false);
+
+        if (pickedCard.cardIndex == 301)
+            conditionBBtn.SetActive(true);
+        else
+            conditionABtn.SetActive(true);
+
         //선택된 카드 서버로 보내기
         //pickedCard.data.cardIndex
+    }
+
+    IEnumerator UseCardCor()
+    {
+        switch (selectedIndex)
+        {
+            //지형파괴 - 타겟 : 적
+            case 101:
+                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "파괴할 상대의 구역을 선택하세요.";
+                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                break;
+            //소유권 전환 - 타겟 : 적
+            case 111:
+                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "소유권을 전환할 상대의 구역을 선택하세요.";
+                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                break;
+            //속성변경 - 타겟 : 나
+            case 201:
+                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 나의 구역을 선택하세요.";
+                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                break;
+                //속성변경 - 타겟 : 적
+            case 202:
+                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 상대의 구역을 선택하세요.";
+                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                break;
+        }
+        yield return new WaitForSeconds(2.5f);
+        gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
     }
 
     //사용 할 경우
     public void UseCard()
     {
         eventCard.SetActive(false);
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKEVENTCARD);
 
-        switch(selectedIndex)
+        switch (selectedIndex)
         {
-            case 101:
-                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
-                break;
-            case 111:
-                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
-                break;
-            case 201:
-                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
-                break;
-            case 202:
-                gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
-                break;
+            //특수카드 방어
             case 301:
                 TurnSystem.enemyEventCardDefense = true;
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
+            //주사위 두배
             case 401:
                 DiceSystem.instance_.gameObject.transform.parent.gameObject.SetActive(true);
                 DiceSystem.instance_.doubleImg.SetActive(true);
@@ -102,7 +131,15 @@ public class EventCardManager : MonoBehaviour
                 DiceSystem.isDiceDouble = true;
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
+            default:
+                StartCoroutine(UseCardCor());
+                break;
         }
+    }
+
+    public void DontUseCard()
+    {
+        eventCard.SetActive(false);
     }
 
     public void PickLocDone(GameObject obj, Terrain terrainType)
