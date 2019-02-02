@@ -11209,7 +11209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &744488205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12394,7 +12394,6 @@ MonoBehaviour:
   missionCanvas: {fileID: 1308696082}
   displayText: {fileID: 425643209}
   enemyTurnPassObj: {fileID: 561857701}
-  canvasSet: {fileID: 0}
 --- !u!114 &823012261
 MonoBehaviour:
   m_ObjectHideFlags: 0
