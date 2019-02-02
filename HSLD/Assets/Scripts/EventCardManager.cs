@@ -25,6 +25,8 @@ public class EventCardManager : MonoBehaviour
     public GameObject conditionABtn;
     public GameObject conditionBBtn;
 
+    private Material[] material;
+
     private void Start()
     {
         for (int i = 0; i < check.Length; i++)
@@ -63,7 +65,7 @@ public class EventCardManager : MonoBehaviour
 
     public void EventCardInstate()
     {
-        RandomEventCardSelect(Random.Range(0, 6));
+        RandomEventCardSelect(Random.Range(2, 3));
 
         eventCard.SetActive(true);
         cardName.text = pickedCard.cardName;
@@ -88,21 +90,61 @@ public class EventCardManager : MonoBehaviour
         {
             //지형파괴 - 타겟 : 적
             case 101:
+                for(int i =0; i<GameObject.FindWithTag("Planet").transform.childCount;i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        material[0] = Resources.Load<Material>("M_Cannot");
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                    }
+                }
                 gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "파괴할 상대의 구역을 선택하세요.";
                 gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
                 break;
             //소유권 전환 - 타겟 : 적
             case 111:
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        material[0] = Resources.Load<Material>("M_Cannot");
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                    }
+                }
                 gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "소유권을 전환할 상대의 구역을 선택하세요.";
                 gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
                 break;
             //속성변경 - 타겟 : 나
             case 201:
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        material[0] = Resources.Load<Material>("M_Cannot");
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                    }
+                }
                 gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 나의 구역을 선택하세요.";
                 gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
                 break;
                 //속성변경 - 타겟 : 적
             case 202:
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        material[0] = Resources.Load<Material>("M_Cannot");
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                    }
+                }
                 gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 상대의 구역을 선택하세요.";
                 gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
                 break;
@@ -136,7 +178,7 @@ public class EventCardManager : MonoBehaviour
                 break;
         }
     }
-
+    
     public void DontUseCard()
     {
         eventCard.SetActive(false);
@@ -153,11 +195,17 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().setDefault();
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
                     StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
-
                 }
-                    
                 connectObjs.Clear();
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                    }
+                }
+
                 break;
             case 111:
                 ConnectObj(obj, terrainType);
@@ -165,16 +213,37 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
                 connectObjs.Clear();
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                    }
+                }
                 break;
             case 201:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                    }
+                }
                 break;
             case 202:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                {
+                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    {
+                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                    }
+                }
                 break;
         }
     }

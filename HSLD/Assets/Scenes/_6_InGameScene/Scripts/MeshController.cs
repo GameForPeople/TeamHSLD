@@ -48,8 +48,14 @@ public class MeshController : MonoBehaviour {
     public bool isLandingSign;
     public GameObject TargetObject;
 
+    public GameObject linePrefab;
+    private GameObject lineObj;
+
     const float initSize = 1.02f;
     const float landingSize = 1.05f;
+
+    private Material[] material;
+    private Material beforeMat;
 
     void Start () {
         if (isFlag == true)
@@ -77,6 +83,23 @@ public class MeshController : MonoBehaviour {
         transform.position *= initSize; // 초기 테두리 사이즈
         startPos = transform.position;
         destinationPos = transform.position * landingSize; // Landing 사이즈
+    }
+
+    public void SavedBeforeMat()
+    {
+        beforeMat = gameObject.GetComponent<MeshRenderer>().materials[0];
+    }
+
+    public void ReturnMat()
+    {
+        if (beforeMat == null)
+            return;
+
+        material = gameObject.GetComponent<MeshRenderer>().materials;
+        material[0] = beforeMat;
+        gameObject.GetComponent<MeshRenderer>().materials = material;
+
+        beforeMat = null;
     }
 
     // Update is called once per frame
@@ -168,6 +191,23 @@ public class MeshController : MonoBehaviour {
 
     }
 
+    public void LineInstate()
+    {
+        if (priorState.Equals(Terrain.FLAG))
+            return;
+
+        for(int i =0; i<JointMesh.Length;i++)
+        {
+            if (!JointMesh[i].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+            {
+                lineObj = Instantiate(linePrefab);
+                lineObj.transform.parent = gameObject.transform;
+                lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
+                lineObj.transform.rotation = Quaternion.FromToRotation(gameObject.transform.up, (gameObject.transform.localPosition - JointMesh[i].transform.localPosition).normalized);
+            }
+        }
+    }
+
     public void InstateTerrainObject(Terrain terrainstate)
     {
         if (terrainObj != null)
@@ -220,6 +260,7 @@ public class MeshController : MonoBehaviour {
 
     public IEnumerator MoveUp()
     {
+        LineInstate();
         while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
         {
             transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime/2.0f);
@@ -227,8 +268,7 @@ public class MeshController : MonoBehaviour {
             yield return null;
         }
         InstateTerrainObject(terrainstate);
-
-
+        
     }
 
     public IEnumerator MoveDownCor()

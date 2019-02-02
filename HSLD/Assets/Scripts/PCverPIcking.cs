@@ -85,6 +85,7 @@ public class PCverPIcking : MonoBehaviour
                 }
                 
                 AllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
+
             }
         }
 

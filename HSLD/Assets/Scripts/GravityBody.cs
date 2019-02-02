@@ -30,6 +30,9 @@ public class GravityBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.transform.parent == null)
+            return;
+
         if(collision.gameObject.transform.parent.tag.Contains("Planet"))
         {
             if (currentObject.Equals(OBJECT.FIXED))
