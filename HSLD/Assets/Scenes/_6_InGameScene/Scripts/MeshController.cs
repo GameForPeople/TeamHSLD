@@ -200,10 +200,12 @@ public class MeshController : MonoBehaviour {
         {
             if (!JointMesh[i].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
             {
-                lineObj = Instantiate(linePrefab);
-                lineObj.transform.parent = gameObject.transform;
-                lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
-                lineObj.transform.rotation = Quaternion.FromToRotation(gameObject.transform.up, (gameObject.transform.localPosition - JointMesh[i].transform.localPosition).normalized);
+                //lineObj = Instantiate(linePrefab);
+                //lineObj.transform.parent = gameObject.transform;
+                //lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
+                //lineObj.transform.LookAt(JointMesh[i].transform);
+                //lineObj.transform.GetChild(0).transform.localEulerAngles = new Vector3(lineObj.transform.GetChild(0).transform.localEulerAngles.x, lineObj.transform.GetChild(0).transform.localEulerAngles.y, 0);
+                //lineObj.transform.rotation = Quaternion.FromToRotation(gameObject.transform.forward, (gameObject.transform.localPosition - JointMesh[i].transform.localPosition).normalized);
             }
         }
     }
