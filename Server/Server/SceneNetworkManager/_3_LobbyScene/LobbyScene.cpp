@@ -35,8 +35,9 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int InRecvType, Socket
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 {
 	// 랜덤매칭에서, userIter까지 다 넣음.
+
+	// Create Room
 	if (pRoomData->RandomMatchingProcess(pClient->pUserNode))
-		// Create Room
 	{
 		 pClient->isHost = true;
 
@@ -52,8 +53,8 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 
 		pClient->dataSize = 20;
 	}
-	else
 		// Join Room
+	else
 	{
 		 pClient->isHost = false;
 
