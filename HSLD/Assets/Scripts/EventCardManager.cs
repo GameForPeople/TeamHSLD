@@ -164,6 +164,12 @@ public class EventCardManager : MonoBehaviour
         {
             //특수카드 방어
             case 301:
+                if (MissionManager.selectedIndex == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                {
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                }
+                    
                 TurnSystem.enemyEventCardDefense = true;
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;

@@ -16,7 +16,7 @@ public class MissionInfo : ScriptableObject
     public int currentCnt;
     public int goalCnt;
 
-    private void Awake()
+    public void ResetCurrentCnt()
     {
         currentCnt = 0;
     }

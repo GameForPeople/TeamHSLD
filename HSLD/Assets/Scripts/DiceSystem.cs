@@ -930,19 +930,31 @@ public class DiceSystem : MonoBehaviour
                 break;
         }
 
+        CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
+
         if (isDiceDouble)
         {
-            getDiceNum *= 2;
-            isDiceDouble = false;
+            CameraController.DiceCount *= 2;
             Destroy(doubleImg.GetComponent<IsDoubleImg>());
         }
-        //getDiceNum = 11;
+
         //isDouble = true;
-        Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
-        CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
+        //Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
+
+        if (MissionManager.selectedIndex == 1 && CameraController.DiceCount == 7 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].goalCnt)
+        {
+            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt += 1;
+            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+        }
+
+
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
         if (GameObject.Find("GameCores") != null)
+        {
             GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendDiceValue(CameraController.DiceCount);
+            isDiceDouble = false;
+        }
+            
         //flow 변경
         GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
     }

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Name: Sub_4
   m_EditorClassIdentifier: 
   missionSet: 1
-  index: 203
-  text: "\uBE44\uC625 \uC9C0\uD615\uC73C\uB85C \uD55C\uBC88\uC5D0 9\uCE78 \uC774\uC0C1
-    \uD55C\uBC88\uC5D0 \uCC3D\uC870\uD558\uAE30"
+  index: 211
+  text: "\uB204\uC801 - \uD55C\uB7AD \uC9C0\uD615 \uCD1D 30\uCE78 \uC124\uCE58"
   currentCnt: 0
-  goalCnt: 1
+  goalCnt: 30

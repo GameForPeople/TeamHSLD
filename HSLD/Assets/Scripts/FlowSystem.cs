@@ -236,28 +236,112 @@ public class FlowSystem : MonoBehaviour
                 
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
+
+                Debug.Log("카드 인덱스 : " + gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
+
                 switch (gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
                     //비옥 - 병아리
                     case 1:
+                        //미션 - 101
+                        if (MissionManager.selectedIndex == 0 )
+                        {
+                            for(int i =0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //건조 - 뱀
                     case 2:
+                        //미션 - 103
+                        if (MissionManager.selectedIndex == 2)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 210
+                        if (MissionManager.selectedIndex == 0 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //한랭 - 펭귄
                     case 3:
+                        //미션 - 102
+                        if (MissionManager.selectedIndex == 1)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 200
+                        if (MissionManager.selectedIndex == 0 && CameraController.DiceCount > 6 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 211
+                        if (MissionManager.selectedIndex == 0)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         randomVal = Random.Range(1, 4);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //바다 - 고래
                     case 4:
+                        //미션 - 201
+                        if (MissionManager.selectedIndex == 0)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         randomVal = Random.Range(4, 6);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //산 - 구름
                     case 5:
+                        //미션 - 201
+                        if (MissionManager.selectedIndex == 0)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         randomVal = Random.Range(7, 9);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
