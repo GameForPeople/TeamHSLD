@@ -33,7 +33,21 @@ public partial class InGameSceneManager : MonoBehaviour {
         network_eventCardType = InEventcardIndex;
 
         //-- 성현이형 받은 이벤트 카드의 인덱스를 처리해주는 함수가 여기! 필요합니다.
-
+        switch(InEventcardIndex)
+        {
+            case 101:
+                break;
+            case 111:
+                break;
+            case 201:
+                break;
+            case 202:
+                break;
+            case 301:
+                break;
+            case 401:
+                break;
+        }
         //--
 
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);

@@ -18,7 +18,7 @@ public partial class SceneControlManager : MonoBehaviour {
     IEnumerator CoroutineInstance_loadUI;
     IEnumerator CoroutineInstance_SliderUI;
 
-
+    public string[] loadingEditTextSet = new string[9];
     /*
      DrawOnlyLoadUI
         UI기획안에 따라, 씐 전환없이 LoadUI의 출력이 요구되므로, 관련 기능의 함수를 제공합니다.
@@ -73,6 +73,10 @@ public partial class SceneControlManager : MonoBehaviour {
         {
             InLoadUIIndex = (LOAD_UI_TYPE)((int)Random.Range(0, 1));
         }
+
+        //YSH. 190203추가합니다.
+        loadUI.transform.GetChild(2).GetComponent<Text>().text = loadingEditTextSet[Random.Range(0, loadingEditTextSet.Length)];
+
 
         // 씐 전환 이전에, 먼저 LoadingUI를 출력합니다.
         if (InLoadUIIndex == LOAD_UI_TYPE.BABY_CHICKEN)

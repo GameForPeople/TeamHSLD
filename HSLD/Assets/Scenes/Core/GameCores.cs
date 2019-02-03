@@ -12,4 +12,4 @@ public class GameCores : MonoBehaviour {
     //void Start()
     //{
     //}
-}
+}   

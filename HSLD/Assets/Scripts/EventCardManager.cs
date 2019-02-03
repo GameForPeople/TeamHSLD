@@ -157,6 +157,8 @@ public class EventCardManager : MonoBehaviour
     public void UseCard()
     {
         eventCard.SetActive(false);
+        if(GameObject.Find("NetworkManager") != null)
+            GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
 
         switch (selectedIndex)
         {
