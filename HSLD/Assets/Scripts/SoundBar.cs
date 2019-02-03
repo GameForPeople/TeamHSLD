@@ -15,7 +15,7 @@ public class SoundBar : EventTrigger
     private void OnEnable()
     {
         soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-        Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
 
         if (gameObject.transform.parent.name.Contains("BGM"))
         {
@@ -35,7 +35,7 @@ public class SoundBar : EventTrigger
 
     private void OnDisable()
     {
-        Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
     }
 
 }
