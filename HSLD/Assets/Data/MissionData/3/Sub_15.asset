@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionSet: 1
   index: 420
-  text: "\uD55C \uAC00\uC9C0 \uC18D\uC131 \uC9C0\uD615 \uCE74\uB4DC \uC804\uBD80 \uC18C\uC9C4"
+  text: "\uD55C \uAC00\uC9C0 \uC77C\uBC18 \uC9C0\uD615 \uCE74\uB4DC \uC804\uBD80 \uC18C\uC9C4"
   currentCnt: 0
   goalCnt: 1

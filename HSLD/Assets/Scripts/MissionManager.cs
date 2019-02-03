@@ -52,7 +52,7 @@ public class MissionManager : MonoBehaviour
     {
         missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
         selectedIndex = UnityEngine.Random.Range(0, missionSet.Length);
-        selectedIndex = 0;
+        //selectedIndex = 0;
         RndMissionSet(selectedIndex);
     }
 
