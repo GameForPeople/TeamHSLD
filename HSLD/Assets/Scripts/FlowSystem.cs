@@ -237,8 +237,9 @@ public class FlowSystem : MonoBehaviour
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
 
-                Debug.Log("카드 인덱스 : " + gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
-
+                //Debug.Log("카드 인덱스 : " + gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
+                //Debug.Log(gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt);
+                
                 switch (gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
                     //비옥 - 병아리
@@ -254,6 +255,40 @@ public class FlowSystem : MonoBehaviour
                             }
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
                         }
+
+                        //미션 - 411
+                        if (MissionManager.selectedIndex == 0)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 500
+                        if (MissionManager.selectedIndex == 3 && CameraController.DiceCount > 6 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 420
+                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 510
+                        if (MissionManager.selectedIndex == 3 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //건조 - 뱀
@@ -276,6 +311,40 @@ public class FlowSystem : MonoBehaviour
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt += 1;
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
                         }
+
+                        //미션 - 400
+                        if (MissionManager.selectedIndex == 2 && CameraController.DiceCount > 6 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[0].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 511
+                        if (MissionManager.selectedIndex == 3)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].mainMission.currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[3].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 420
+                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 510
+                        if (MissionManager.selectedIndex == 3 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //한랭 - 펭귄
@@ -310,6 +379,21 @@ public class FlowSystem : MonoBehaviour
                             }
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
                         }
+
+                        //미션 - 420
+                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 510
+                        if (MissionManager.selectedIndex == 3 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[2].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
                         randomVal = Random.Range(1, 4);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
@@ -326,6 +410,25 @@ public class FlowSystem : MonoBehaviour
                             }
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
                         }
+
+                        //미션 - 501
+                        if (MissionManager.selectedIndex == 3)
+                        {
+                            for (int i = 0; i < CameraController.DiceCount; i++)
+                            {
+                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt += 1;
+                                if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
+                                    break;
+                            }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 520
+                        if (MissionManager.selectedIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
                         randomVal = Random.Range(4, 6);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
@@ -340,6 +443,20 @@ public class FlowSystem : MonoBehaviour
                                 if (GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt >= GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
                                     break;
                             }
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 401
+                        if (MissionManager.selectedIndex == 2 && CameraController.DiceCount > 6 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].currentCnt += 1;
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
+                        }
+
+                        //미션 - 520
+                        if (MissionManager.selectedIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
+                        {
+                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
                         }
                         randomVal = Random.Range(7, 9);
