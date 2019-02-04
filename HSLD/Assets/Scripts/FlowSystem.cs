@@ -163,7 +163,12 @@ public class FlowSystem : MonoBehaviour
         else
         {
             StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
+            //GameObject temporaryLocalCameraObject = GameObject.Find("Main Camera");
+            //temporaryLocalCameraObject.SetActive(false);
+
             yield return new WaitForSeconds(1.9f);  // LoadUI보다 0.1초 짧게 설정해야함. -> 최악 2.1초 비동기화
+            //temporaryLocalCameraObject.SetActive(true);
+
             gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
 
             while (!gameObject.GetComponent<InGameSceneManager>().isOnWaitGameReady)

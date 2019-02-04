@@ -66,8 +66,6 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvDiceValue(SocketInfo* pClient)
 	//InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_DICE_VALUE);
 	pClient->pRoomIter->SetDataBuffer(pClient->isHost, pClient->buf + 4, sizeof(int));
 	pClient->pRoomIter->SetDataProtocol(pClient->isHost, NOTIFY_DICE_VALUE);
-
-	std::cout << "임시 : 주사위값을 받았습니다. \n";
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::RecvTerrainType(SocketInfo* pClient)
@@ -166,8 +164,6 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendDiceValue(SocketInfo* pClient)
 	pClient->pRoomIter->SetDataProtocol(!(pClient->isHost), VOID_GAME_STATE);
 
 	pClient->dataSize = 8;
-
-	std::cout << "임시 : 주사위값을 가져갔습니다. \n";
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendTerrainType(SocketInfo* pClient)
