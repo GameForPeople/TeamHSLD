@@ -52,7 +52,7 @@ public class MissionManager : MonoBehaviour
     {
         missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
         selectedIndex = UnityEngine.Random.Range(0, missionSet.Length);
-        //selectedIndex = 0;
+        //selectedIndex = 1;
         RndMissionSet(selectedIndex);
     }
 
@@ -116,4 +116,25 @@ public class MissionManager : MonoBehaviour
             readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text += "( " + missionSet[selectedIndex].subMission[i - 1].currentCnt + " / " + missionSet[selectedIndex].subMission[i - 1].goalCnt + " )";
         }
     }
+
+    public void MainMissionCounting(int val)
+    {
+        if (missionSet[selectedIndex].mainMission.currentCnt + val > missionSet[selectedIndex].mainMission.goalCnt)
+            missionSet[selectedIndex].mainMission.currentCnt = missionSet[selectedIndex].mainMission.goalCnt;
+        else
+            missionSet[selectedIndex].mainMission.currentCnt += val;
+
+        ResetMissionDisplay();
+    }
+
+    public void SubMissionCounting(int val, int index)
+    {
+        if (missionSet[selectedIndex].subMission[index].currentCnt + val > missionSet[selectedIndex].subMission[index].goalCnt)
+            missionSet[selectedIndex].subMission[index].currentCnt = missionSet[selectedIndex].subMission[index].goalCnt;
+        else
+            missionSet[selectedIndex].subMission[index].currentCnt += val;
+
+        ResetMissionDisplay();
+    }
+
 }

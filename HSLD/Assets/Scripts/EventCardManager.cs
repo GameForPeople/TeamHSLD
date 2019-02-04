@@ -164,12 +164,11 @@ public class EventCardManager : MonoBehaviour
         {
             //특수카드 방어
             case 301:
-                if (MissionManager.selectedIndex == 1 && GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt < GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].goalCnt)
-                {
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[4].currentCnt += 1;
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().ResetMissionDisplay();
-                }
-                    
+
+                //미션 - 330
+                if (MissionManager.selectedIndex == 1)
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+
                 TurnSystem.enemyEventCardDefense = true;
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
@@ -196,6 +195,7 @@ public class EventCardManager : MonoBehaviour
     {
         switch (selectedIndex)
         {
+            //지형파괴 - 타겟 : 적
             case 101:
                 ConnectObj(obj, terrainType);
                 for (int i = 0; i < connectObjs.Count; i++)
@@ -204,6 +204,7 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
                     StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
                 }
+
                 connectObjs.Clear();
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
@@ -215,10 +216,24 @@ public class EventCardManager : MonoBehaviour
                 }
 
                 break;
+                //소유권전환 - 타겟 : 적
             case 111:
                 ConnectObj(obj, terrainType);
                 for (int i = 0; i < connectObjs.Count; i++)
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
+
+                //미션 - 103
+                if (MissionManager.selectedIndex == 2 && terrainType == Terrain.BARREN)
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
+
+                //미션 - 102
+                if (MissionManager.selectedIndex == 1 && terrainType == Terrain.COLD)
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
+
+                //미션 - 101
+                if (MissionManager.selectedIndex == 0 && terrainType == Terrain.MODERATION)
+                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
+
                 connectObjs.Clear();
                 AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
@@ -229,6 +244,7 @@ public class EventCardManager : MonoBehaviour
                     }
                 }
                 break;
+                //속성변경 - 타겟 : 나
             case 201:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
@@ -241,6 +257,7 @@ public class EventCardManager : MonoBehaviour
                     }
                 }
                 break;
+                //속성변경 - 타겟 : 적
             case 202:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
@@ -284,7 +301,7 @@ public class EventCardManager : MonoBehaviour
                 break;
         }
 
-        switch(selectedTerrain)
+        switch (selectedTerrain)
         {
             case Terrain.MODERATION:
                 for (int i = 0; i < connectObjs.Count; i++)

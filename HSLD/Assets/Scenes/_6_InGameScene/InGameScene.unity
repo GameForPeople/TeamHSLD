@@ -22516,7 +22516,7 @@ MonoBehaviour:
   currentTurn: 0
   matchingCompleteTime: 3
   selectOrderTime: 5
-  selectCardTime: 3
+  selectCardTime: 30
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
