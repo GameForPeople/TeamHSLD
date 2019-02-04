@@ -290,10 +290,10 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
-                    Debug.Log(" " + inGameSceneManager.network_changeTerrainCount + " 이 주사위 값, 적재해야하는 인덱스의 크기입니다.");
+                    Debug.Log(" " + InGameSceneManager.diceValue_per_loop + " 이 주사위 값, 적재해야하는 인덱스의 크기입니다.");
 
                     int iBuffer;
-                    for (int i = 0; i < inGameSceneManager.network_changeTerrainCount; i++)
+                    for (int i = 0; i <InGameSceneManager.diceValue_per_loop ; i++)
                     {
                         iBuffer = inGameSceneManager.network_terrainIndex[i];
                         Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, NewDataSendBuffer, (8 + 4 * i), 4);

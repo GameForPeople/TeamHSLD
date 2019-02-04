@@ -35,7 +35,7 @@ public partial class InGameSceneManager : MonoBehaviour
 
 
     //YSH 190204
-    public int diceValue_per_loop;
+    static public int diceValue_per_loop;
 
     void Start()
     {
