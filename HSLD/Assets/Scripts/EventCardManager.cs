@@ -166,7 +166,7 @@ public class EventCardManager : MonoBehaviour
             case 301:
 
                 //미션 - 330
-                if (MissionManager.selectedIndex == 1)
+                if (MissionManager.selectedSubMissionIndex == 1)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                 TurnSystem.enemyEventCardDefense = true;
@@ -223,15 +223,15 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
 
                 //미션 - 103
-                if (MissionManager.selectedIndex == 2 && terrainType == Terrain.BARREN)
+                if (MissionManager.selectedMainMissionIndex == 2 && terrainType == Terrain.BARREN)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 //미션 - 102
-                if (MissionManager.selectedIndex == 1 && terrainType == Terrain.COLD)
+                if (MissionManager.selectedMainMissionIndex == 1 && terrainType == Terrain.COLD)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 //미션 - 101
-                if (MissionManager.selectedIndex == 0 && terrainType == Terrain.MODERATION)
+                if (MissionManager.selectedMainMissionIndex == 0 && terrainType == Terrain.MODERATION)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 connectObjs.Clear();

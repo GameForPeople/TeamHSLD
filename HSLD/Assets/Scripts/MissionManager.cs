@@ -28,18 +28,24 @@ public class MissionManager : MonoBehaviour
     private float time_ = 0;
 
     private GameObject missionCanvas;
-    static public int selectedIndex;
+    static public int selectedMainMissionIndex;
+    static public int selectedSubMissionIndex;
 
     //중복되지않게 메인미션 / 서브미션 부여
-    private void RndMissionSet(int index)
+    private void RndMainMissionSet(int index)
     {
         //init
         missionSet[index].mainMission.ResetCurrentCnt();
-        for (int i = 0; i < missionSet[index].subMission.Length; i++)
-            missionSet[index].subMission[i].ResetCurrentCnt();
-
         readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[index].mainMission.text;
         readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[index].mainMission.currentCnt + " / " + missionSet[index].mainMission.goalCnt + " )";
+
+        
+    }
+
+    private void RndSubMissionSet(int index)
+    {
+        for (int i = 0; i < missionSet[index].subMission.Length; i++)
+            missionSet[index].subMission[i].ResetCurrentCnt();
 
         for (int i = 0; i < 5; i++)
         {
@@ -50,10 +56,22 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
+        // 서버에서 가져오기
+        if (GameObject.Find("GameCores") != null)
+        {
+            selectedMainMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerMissionIndex;
+            selectedSubMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().subMissionIndex;
+        }
+        else
+        {
+            selectedMainMissionIndex = UnityEngine.Random.Range(0, missionSet.Length);
+            selectedSubMissionIndex = UnityEngine.Random.Range(0, missionSet.Length);
+
+        }
+
         missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
-        selectedIndex = UnityEngine.Random.Range(0, missionSet.Length);
-        //selectedIndex = 1;
-        RndMissionSet(selectedIndex);
+        RndMainMissionSet(selectedMainMissionIndex);
+        RndSubMissionSet(selectedSubMissionIndex);
     }
 
     public void OnClick()
@@ -107,32 +125,32 @@ public class MissionManager : MonoBehaviour
 
     public void ResetMissionDisplay()
     {
-        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[selectedIndex].mainMission.text;
-        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[selectedIndex].mainMission.currentCnt + " / " + missionSet[selectedIndex].mainMission.goalCnt + " )";
+        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[selectedMainMissionIndex].mainMission.text;
+        readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[selectedMainMissionIndex].mainMission.currentCnt + " / " + missionSet[selectedMainMissionIndex].mainMission.goalCnt + " )";
 
         for (int i =1; i<6;i++)
         {
-            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text = missionSet[selectedIndex].subMission[i-1].text;
-            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text += "( " + missionSet[selectedIndex].subMission[i - 1].currentCnt + " / " + missionSet[selectedIndex].subMission[i - 1].goalCnt + " )";
+            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text = missionSet[selectedSubMissionIndex].subMission[i-1].text;
+            readyDisplaySubMissionObj.transform.GetChild(i - 1).GetComponent<Text>().text += "( " + missionSet[selectedSubMissionIndex].subMission[i - 1].currentCnt + " / " + missionSet[selectedMainMissionIndex].subMission[i - 1].goalCnt + " )";
         }
     }
 
     public void MainMissionCounting(int val)
     {
-        if (missionSet[selectedIndex].mainMission.currentCnt + val > missionSet[selectedIndex].mainMission.goalCnt)
-            missionSet[selectedIndex].mainMission.currentCnt = missionSet[selectedIndex].mainMission.goalCnt;
+        if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val > missionSet[selectedMainMissionIndex].mainMission.goalCnt)
+            missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
         else
-            missionSet[selectedIndex].mainMission.currentCnt += val;
+            missionSet[selectedMainMissionIndex].mainMission.currentCnt += val;
 
         ResetMissionDisplay();
     }
 
     public void SubMissionCounting(int val, int index)
     {
-        if (missionSet[selectedIndex].subMission[index].currentCnt + val > missionSet[selectedIndex].subMission[index].goalCnt)
-            missionSet[selectedIndex].subMission[index].currentCnt = missionSet[selectedIndex].subMission[index].goalCnt;
+        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val > missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
         else
-            missionSet[selectedIndex].subMission[index].currentCnt += val;
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
 
         ResetMissionDisplay();
     }

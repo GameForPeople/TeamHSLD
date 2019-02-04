@@ -942,7 +942,7 @@ public class DiceSystem : MonoBehaviour
         //Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
 
         // 미션 - 300
-        if (MissionManager.selectedIndex == 1 && CameraController.DiceCount == 7)
+        if (MissionManager.selectedSubMissionIndex == 1 && CameraController.DiceCount == 7)
             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
 
 
