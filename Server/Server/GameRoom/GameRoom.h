@@ -33,9 +33,9 @@ struct RoomDynamicData
 	// DEV_66 작업 중 추가, 친구 초대로 인한 게임일 경우를 위해 사용하며, 해당을 False로 Guest가 바꿀 경우, 초대를 거절한 상황임.
 	bool friendInviteBuffer;	// 1바이트이며 동적으로 사용하기 때문에, 친구방 아닐 경우에도 뭐 큰 상관없이 사용할 수 있을 듯.
 
-	RoomDynamicData(const Type_Nickname& InHostNickName)
+	RoomDynamicData(const Type_Nickname& InHostNickName, const int InHostCharacterIndex) noexcept
 		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
-		, hostCharacterIndex(1), guestCharacterIndex(1)
+		, hostCharacterIndex(InHostCharacterIndex), guestCharacterIndex(0)
 		, isHostFirst(rand() % 2)
 		, friendInviteBuffer(true)
 		, hostNickname(InHostNickName)
@@ -43,6 +43,8 @@ struct RoomDynamicData
 		//, userReadyCount(0)
 		//, hostUserReady(false), guestUserReady(false)
 	{}
+
+	~RoomDynamicData() = default;
 };
 
 class GameRoom {
@@ -113,19 +115,22 @@ public:
 		return;
 	}
 
-	//DEV_66 닉네임이, 다이나믹 데이터에 추가되면서, Iter대신, 닉네임만 요청하는 내용이 적용.
+	//DEV_66 닉네임이, 다이나믹 데이터에 추가되면서, Iter대신, 닉네임만 요청하는 내용이 적용
+	//DEV_80
 	__inline void GetRoomGameDataWithNickname(const bool InIsHost, int& retIsHostFirst, int& retPlayerMissionIndex,
-		int& retEnemyMissionIndex, int& retSubMissionIndex, Type_Nickname& retEnemyNickname)
+		int& retEnemyMissionIndex, int& retSubMissionIndex, int& retEnemyCharacterIndex, Type_Nickname& retEnemyNickname)
 	{
 		GetRoomGameData(InIsHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex);
 
 		if (InIsHost)
 		{
 			retEnemyNickname = roomDynamicData->guestNickname;
+			retEnemyCharacterIndex = roomDynamicData->guestCharacterIndex;
 		}
 		else
 		{
 			retEnemyNickname = roomDynamicData->hostNickname;
+			retEnemyCharacterIndex = roomDynamicData->hostCharacterIndex;
 		}
 		return;
 	}

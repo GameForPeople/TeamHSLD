@@ -221,16 +221,17 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 			memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&CONST_TRUE), sizeof(int));
 
 			// 방 데이터 및 상대편 닉네임 정보 얻기 --> 이거도 당연히 그 전에 알아야하는 거 아닌가? 그렇게 하자.
-			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+			int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retCharacterIndex;
 			Type_Nickname retNickname;
 
-			pClient->pRoomIter->GetRoomGameDataWithNickname(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retNickname);
+			pClient->pRoomIter->GetRoomGameDataWithNickname(pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retCharacterIndex, retNickname);
 
 			// 방 다이나믹 데이터 전송
 			memcpy(pClient->buf + 8, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
 			memcpy(pClient->buf + 12, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
 			memcpy(pClient->buf + 16, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 			memcpy(pClient->buf + 20, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
+			memcpy(pClient->buf + 24, reinterpret_cast<char*>(&retCharacterIndex), sizeof(int));
 
 			auto friendCont = pClient->pUserNode->GetFriendNicknameCont();
 			
@@ -249,9 +250,9 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerFriendInviteProcess(SocketInfo* 
 				nicknameIndexBuffer = 0;
 			}
 
-			memcpy(pClient->buf + 24, reinterpret_cast<char*>(&nicknameIndexBuffer), sizeof(int));
+			memcpy(pClient->buf + 28, reinterpret_cast<char*>(&nicknameIndexBuffer), sizeof(int));
 
-			pClient->dataSize = 28;
+			pClient->dataSize = 32;
 		}
 	}
 	else

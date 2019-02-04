@@ -58,27 +58,28 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 	{
 		 pClient->isHost = false;
 
-		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex;
+		int retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retEnemyCharacterIndex;
 		Type_Nickname stringBuffer;
 
-		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, stringBuffer);
+		pClient->pRoomIter->GetRoomGameDataWithNickname( pClient->isHost, retIsHostFirst, retPlayerMissionIndex, retEnemyMissionIndex, retSubMissionIndex, retEnemyCharacterIndex, stringBuffer);
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_JOIN_RANDOM), sizeof(int));
 		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&retIsHostFirst), sizeof(int));
 		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&retPlayerMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 12, reinterpret_cast<char*>(&retEnemyMissionIndex), sizeof(int));
 		memcpy( pClient->buf + 16, reinterpret_cast<char*>(&retSubMissionIndex), sizeof(int));
-		
+		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&retEnemyCharacterIndex), sizeof(int));
+
 		int stringSizeBuffer = MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), NULL, NULL);
 		wstring uniStrBuffer(stringSizeBuffer, 0);
 		MultiByteToWideChar(CP_ACP, 0, &stringBuffer[0], stringBuffer.size(), &uniStrBuffer[0], stringSizeBuffer);
 		
 		stringSizeBuffer = uniStrBuffer.size() * 2;
 
-		memcpy( pClient->buf + 20, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
-		memcpy( pClient->buf + 24, uniStrBuffer.data(), stringSizeBuffer);
+		memcpy( pClient->buf + 24, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
+		memcpy( pClient->buf + 28, uniStrBuffer.data(), stringSizeBuffer);
 
-		pClient->dataSize = 28 + stringSizeBuffer;
+		pClient->dataSize = 32 + stringSizeBuffer;
 	}
 }
 
@@ -95,11 +96,13 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_JOIN), sizeof(int));
 		
+		int retEnemyCharacterIndex = pClient->pRoomIter->GetEnemyCharacterIndex(pClient->isHost);
 		
-		memcpy( pClient->buf + 4, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
-		memcpy( pClient->buf + 8, uniStrBuffer.data(), stringSizeBuffer);
+		memcpy(pClient->buf + 4, reinterpret_cast<char*>(&retEnemyCharacterIndex), sizeof(int));
+		memcpy( pClient->buf + 8, reinterpret_cast<char*>(&stringSizeBuffer), sizeof(int));
+		memcpy( pClient->buf + 12, uniStrBuffer.data(), stringSizeBuffer);
 
-		pClient->dataSize = 8 + stringSizeBuffer;
+		pClient->dataSize = 12 + stringSizeBuffer;
 	}
 	else
 	{
@@ -124,7 +127,6 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandExitRandom(SocketInfo* pClient)
 		_DemandGuestJoin(pClient);
 	}
 }
-
 
 /*
 	_DemandFriendJoin
