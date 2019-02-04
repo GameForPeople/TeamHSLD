@@ -49,6 +49,7 @@ public class FlowSystem : MonoBehaviour
 
     private int maximumCnt = 0;
     private int[] currentCnt = new int[3];
+
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
     {
@@ -162,7 +163,14 @@ public class FlowSystem : MonoBehaviour
         else
         {
             StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(1.9f);  // LoadUI보다 0.1초 짧게 설정해야함. -> 최악 2.1초 비동기화
+            gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+
+            while (!gameObject.GetComponent<InGameSceneManager>().isOnWaitGameReady)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
             yield return new WaitForSeconds(2.5f);
@@ -174,11 +182,7 @@ public class FlowSystem : MonoBehaviour
 
             //
             FlowChange(FLOW.READY_DONE);
-            //gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
-
         }
-            
-
     }
 
     IEnumerator DiceActiveOff()

@@ -286,7 +286,9 @@ public partial class InGameSceneManager : MonoBehaviour
         //}
 
         StartCoroutine(CoroutineHandle_Play);
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
+
+        // 이거 FlowSystem 종속으로 변환시킴.
+        //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
     }
 
     IEnumerator WaitCoroutine()
