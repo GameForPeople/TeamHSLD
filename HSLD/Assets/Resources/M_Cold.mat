@@ -82,7 +82,7 @@ Material:
     m_Colors:
     - _AreaColor: {r: 0.9528302, g: 0, b: 0, a: 1}
     - _Center: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.7137255, g: 0.7960785, b: 0.8078432, a: 1}
+    - _Color: {r: 0.8352942, g: 0.8941177, b: 0.9058824, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SnowColor: {r: 0.7137255, g: 0.79607844, b: 0.80784315, a: 1}

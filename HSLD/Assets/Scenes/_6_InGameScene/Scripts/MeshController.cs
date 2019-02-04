@@ -49,6 +49,7 @@ public class MeshController : MonoBehaviour {
     public GameObject TargetObject;
 
     public GameObject linePrefab;
+    private List<GameObject> lineList = new List<GameObject>();
     private GameObject lineObj;
 
     const float initSize = 1.02f;
@@ -196,16 +197,16 @@ public class MeshController : MonoBehaviour {
         if (priorState.Equals(Terrain.FLAG))
             return;
 
-        for(int i =0; i<JointMesh.Length;i++)
-        {
+        for (int i = 0; i < JointMesh.Length; i++)
+        {                
             if (!JointMesh[i].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
             {
-                //lineObj = Instantiate(linePrefab);
-                //lineObj.transform.parent = gameObject.transform;
-                //lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
-                //lineObj.transform.LookAt(JointMesh[i].transform);
-                //lineObj.transform.GetChild(0).transform.localEulerAngles = new Vector3(lineObj.transform.GetChild(0).transform.localEulerAngles.x, lineObj.transform.GetChild(0).transform.localEulerAngles.y, 0);
-                //lineObj.transform.rotation = Quaternion.FromToRotation(gameObject.transform.forward, (gameObject.transform.localPosition - JointMesh[i].transform.localPosition).normalized);
+                lineObj = Instantiate(linePrefab);
+                lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
+                lineObj.transform.GetChild(0).rotation = Quaternion.FromToRotation(lineObj.transform.GetChild(0).transform.up, (gameObject.transform.position - JointMesh[i].transform.position).normalized) * lineObj.transform.GetChild(0).rotation;
+                lineObj.transform.parent = gameObject.transform;
+                lineList.Add(lineObj);
+                lineObj.SetActive(false);
             }
         }
     }
@@ -262,7 +263,7 @@ public class MeshController : MonoBehaviour {
 
     public IEnumerator MoveUp()
     {
-        LineInstate();
+        //LineInstate();
         while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
         {
             transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime/2.0f);
@@ -270,7 +271,13 @@ public class MeshController : MonoBehaviour {
             yield return null;
         }
         InstateTerrainObject(terrainstate);
-        
+
+        //for (int i = 0; i < lineList.Count; i++)
+        //{
+        //    lineList[i].SetActive(true);
+        //    lineList[i].transform.GetChild(0).rotation = Quaternion.FromToRotation(lineList[i].transform.GetChild(0).transform.up, (gameObject.transform.position - JointMesh[i].transform.position).normalized) * lineList[i].transform.GetChild(0).rotation;
+        //}
+
     }
 
     public IEnumerator MoveDownCor()

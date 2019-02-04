@@ -69,6 +69,7 @@ public class SetTurn : MonoBehaviour
             obj.transform.eulerAngles = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0, 180, 0), time_);
             if (time_ > 0.5f)
             {
+                obj.transform.localScale = new Vector3(-1, 1, 1);
                 obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().mainTxt.text = "";
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.transform.localPosition = new Vector3(0, 261, 0);
