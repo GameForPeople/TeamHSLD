@@ -272,6 +272,8 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_DICE_VALUE), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
+                    Debug.Log("보낸 diceValueForLoop 값은 : " + inGameSceneManager.diceValueForLoop);
+
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 else if (InMsg == PROTOCOL.NOTIFY_TERRAIN_TYPE)
@@ -290,15 +292,15 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_TERRAIN_INDEXS), 0, NewDataSendBuffer, 0, 4);
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
-                    Debug.Log(" " + InGameSceneManager.diceValue_per_loop + " 이 주사위 값, 적재해야하는 인덱스의 크기입니다.");
-
                     int iBuffer;
-                    for (int i = 0; i <InGameSceneManager.diceValue_per_loop ; i++)
+                    for (int i = 0; i < inGameSceneManager.diceValueForLoop ; i++)
                     {
                         iBuffer = inGameSceneManager.network_terrainIndex[i];
                         Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, NewDataSendBuffer, (8 + 4 * i), 4);
                         Debug.Log(" " + i + " 번 까지는 정상적으로 적재했습니다. 값 " + BitConverter.ToInt32(NewDataSendBuffer, (8 + 4 * i)));
                     }
+
+                    Debug.Log("보낸 diceValueForLoop 값은 : " + inGameSceneManager.diceValueForLoop);
 
                     //Debug.Log(" 전송하는 메모리의 크기는 ==> " + (8 + 4 * inGameSceneManager.network_changeTerrainCount) + " == " + BitConverter.ToInt32(NewDataSendBuffer, 4));
 

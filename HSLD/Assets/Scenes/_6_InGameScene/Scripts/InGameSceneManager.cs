@@ -35,7 +35,7 @@ public partial class InGameSceneManager : MonoBehaviour
 
 
     //YSH 190204
-    static public int diceValue_per_loop;
+    public int diceValueForLoop;
 
     void Start()
     {
@@ -94,7 +94,11 @@ public partial class InGameSceneManager : MonoBehaviour
         network_changeTerrainCount = InDiceValue;
 
         //YSH 190204
-        diceValue_per_loop = (InDiceValue & 10) + (InDiceValue / 10);
+        diceValueForLoop = (InDiceValue & 10) + (InDiceValue / 10);
+        Debug.Log("(InDiceValue & 10) : " + (InDiceValue & 10) + "(InDiceValue / 10)" + (InDiceValue / 10));
+
+        GameObject.Find("Canvas_Debug").transform.Find("Text").GetComponent<Text>().text = "주사위값은 " + network_changeTerrainCount.ToString();
+
         if (isfirstSend)
         {
             //network_changeTerrainCount++;
@@ -119,7 +123,8 @@ public partial class InGameSceneManager : MonoBehaviour
         //Debug.Log("!network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
         //Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
         //Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
-        for ( int i = 0; i < diceValue_per_loop; ++i)
+
+        for ( int i = 0; i < diceValueForLoop; ++i)
         {
             network_terrainIndex[i] = InTerrainIndex[i];
             Debug.Log("InTerrainIndex 의 인덱스 " + i + " 값은 : " + InTerrainIndex[i] + "입니다. ");
@@ -162,11 +167,13 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvDiceValue(int InDiceValue)
     {
         Debug.Log("주사위 값을 받았습니다. 해당 값은 : " + InDiceValue.ToString());
+        GameObject.Find("Canvas_Debug").transform.Find("Text").GetComponent<Text>().text = "주사위값은 " + InDiceValue.ToString();
+
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
         recvDiceValue = InDiceValue;
 
         //YSH 190204
-        diceValue_per_loop = (InDiceValue & 10) + (InDiceValue / 10);
+        diceValueForLoop = (InDiceValue & 10) + (InDiceValue / 10);
 
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(InDiceValue / 10, InDiceValue % 10);
         //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
@@ -212,14 +219,14 @@ public partial class InGameSceneManager : MonoBehaviour
         //    Debug.Log("recvDiceValue : " + recvDiceValue);
         //    isfirstRecv = false;
         //}
-        for (int i =0; i< diceValue_per_loop; i++)
+        for (int i =0; i< diceValueForLoop; i++)
         {
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]] == null)
             {
                 Debug.Log("벗어나자.;;");
                 break;
             }
-            Debug.Log("recvDiceValue??" + diceValue_per_loop);
+            Debug.Log("recvDiceValue??" + diceValueForLoop);
             Debug.Log("이름이뭐니??" + gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlag)
             {
@@ -271,7 +278,6 @@ public partial class InGameSceneManager : MonoBehaviour
         Camera.main.GetComponent<PCverPIcking>().FlagSetting();
         AllMeshController.myPlanet.GetComponent<AllMeshController>().AllPriorSetting(); // PriorSetting
         recvTerrainType = 0;
-        diceValue_per_loop = 0;
     }
 
     //
