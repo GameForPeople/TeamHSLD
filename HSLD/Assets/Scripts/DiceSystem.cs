@@ -951,7 +951,7 @@ public class DiceSystem : MonoBehaviour
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
         if (GameObject.Find("GameCores") != null)
         {
-            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendDiceValue(CameraController.DiceCount);
+            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendDiceValue(getDiceNum);
             isDiceDouble = false;
         }
             

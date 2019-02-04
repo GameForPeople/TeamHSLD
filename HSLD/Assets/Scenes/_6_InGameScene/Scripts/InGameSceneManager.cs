@@ -87,6 +87,7 @@ public partial class InGameSceneManager : MonoBehaviour
 
     public void SendDiceValue(int InDiceValue)
     {
+        Debug.Log("1111");
         network_changeTerrainCount = InDiceValue;
         if (isfirstSend)
         {
@@ -147,7 +148,6 @@ public partial class InGameSceneManager : MonoBehaviour
 
     public void RecvChangeTurn()
     {
-        Debug.Log("1111");
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
     }
@@ -155,9 +155,10 @@ public partial class InGameSceneManager : MonoBehaviour
     // 상대방이 굴린 주사위 눈금을 연출
     public void RecvDiceValue(int InDiceValue)
     {
+        Debug.Log("2222");
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
         recvDiceValue = InDiceValue;
-
+        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(InDiceValue / 10, InDiceValue % 10);
         //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
         //gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ recvDiceValue.ToString() + " !!!", 5f);   //ref - 2f 수정.
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_ROLLINGDICE);

@@ -86,7 +86,7 @@ public:
 	void _SendResultMessage();
 
 public:
-	void _SendAnnouncement(const shared_ptr<UserData>&);
+	void _SendAnnouncement(const shared_ptr<UserData>& InSafeUserDataPtr);
 	_NODISCARD __inline wstring& GetAnnounceString() noexcept { return announceString; };	// 레퍼런스 보장됨.
 	__inline void SetAnnounceString(const wstring_view& InAnnounceString) noexcept { announceString = InAnnounceString; };
 };

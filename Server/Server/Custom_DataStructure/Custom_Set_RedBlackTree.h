@@ -172,7 +172,7 @@ namespace CUSTOM_SET
 			{
 				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->left);
 				TraversalForAnnouncement(pInUDPManager, pNodeBuffer->right);
-				pInUDPManager->_SendAnnouncement(pNodeBuffer->GetData());
+				//pInUDPManager->_SendAnnouncement(pNodeBuffer->GetData());
 			}
 		};
 

@@ -60,8 +60,8 @@
 #include <codecvt>
 #include <mbstring.h>
 #include <Mbctype.h>
-#include <AtlBase.h>
-#include <atlconv.h>
+// include <AtlBase.h>
+// include <atlconv.h>
 
 // for bit
 #include <bitset>
