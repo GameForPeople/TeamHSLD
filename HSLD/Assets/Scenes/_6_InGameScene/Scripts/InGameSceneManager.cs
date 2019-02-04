@@ -94,8 +94,8 @@ public partial class InGameSceneManager : MonoBehaviour
         network_changeTerrainCount = InDiceValue;
 
         //YSH 190204
-        diceValueForLoop = (InDiceValue & 10) + (InDiceValue / 10);
-        Debug.Log("(InDiceValue & 10) : " + (InDiceValue & 10) + "(InDiceValue / 10)" + (InDiceValue / 10));
+        diceValueForLoop = (InDiceValue % 10) + (InDiceValue / 10);
+        Debug.Log("(InDiceValue % 10) : " + (InDiceValue % 10) + "(InDiceValue / 10)" + (InDiceValue / 10));
 
         GameObject.Find("Canvas_Debug").transform.Find("Text").GetComponent<Text>().text = "주사위값은 " + network_changeTerrainCount.ToString();
 
@@ -173,7 +173,7 @@ public partial class InGameSceneManager : MonoBehaviour
         recvDiceValue = InDiceValue;
 
         //YSH 190204
-        diceValueForLoop = (InDiceValue & 10) + (InDiceValue / 10);
+        diceValueForLoop = (InDiceValue % 10) + (InDiceValue / 10);
 
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(InDiceValue / 10, InDiceValue % 10);
         //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
