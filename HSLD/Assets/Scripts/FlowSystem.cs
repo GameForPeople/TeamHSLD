@@ -23,7 +23,6 @@ public enum FLOW
     ENEMYTURN_PICKEVENTCARD,
     ENEMYTURN_PICKINGEVENTCARDLOC,
     ENEMYTURN_PICKINGEVENTSELECTTERRAIN,
-    TSETVER
 }
 
 
@@ -87,6 +86,7 @@ public class FlowSystem : MonoBehaviour
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
                     gameObject.GetComponent<EventCardManager>().EventCardInstate();
+
                 }
                 else
                 {
@@ -149,12 +149,6 @@ public class FlowSystem : MonoBehaviour
             matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
             matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
         }
-
-            //테스트버전
-            if (currentFlow.Equals(FLOW.TSETVER))
-            FlowChange(currentFlow);
-
-        
     }
 
 
@@ -244,13 +238,13 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
             case FLOW.TO_PICKINGCARD:
-                GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
+                //GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
                 setTerrainCanvas.SetActive(true);
-                if (GameObject.Find("GameCores") != null)
-                {
-                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
-                    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
-                }
+                //if (GameObject.Find("GameCores") != null)
+                //{
+                //    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
+                //    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+                //}
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
@@ -264,7 +258,6 @@ public class FlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
-                
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
 
@@ -441,7 +434,7 @@ public class FlowSystem : MonoBehaviour
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                 }
-                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();                
+                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
@@ -498,13 +491,6 @@ public class FlowSystem : MonoBehaviour
                 }
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
-                break;
-            case FLOW.TSETVER:
-                GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-                cardSetCanvas.SetActive(false);
-                readyCanvas.SetActive(false);
-                spinCanvas.SetActive(true);
-                currentFlow = FLOW.TO_PICKINGLOC;
                 break;
         }
     }

@@ -43,6 +43,7 @@ public class PCverPIcking : MonoBehaviour
             if (CameraController.Once == true) // 내 턴에서 넘어갈 때 한번만
             {
                 TurnChangeLogic();
+                Debug.Log("한번만 ?");
             }
         }
 
@@ -204,9 +205,6 @@ public class PCverPIcking : MonoBehaviour
     public void TurnChangeLogic()
     {
         int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
-
-        
-
         AllMeshController.giveLinkNum++;
         //Debug.Log("내 턴에서 넘어갈 때 한번만");
         for (int i = 0; i < Length; i++) // 링크드넘버 세팅

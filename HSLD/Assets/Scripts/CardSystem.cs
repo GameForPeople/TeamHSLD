@@ -60,8 +60,11 @@ public class CardSystem : MonoBehaviour
             pickedCard = card;
             //여기에다가
             CardPosInit();
-
-            pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
+            if (GameObject.Find("GameCores") != null)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainType(card.GetComponent<CardData>().data.cardIndex);
+            }
+                pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
             pickedCard.GetComponent<Image>().color = new Color(1, 1, 1, 1.0f);
 
             //카드 갯수가 0개있으면, 뽑을수 없음.

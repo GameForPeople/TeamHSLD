@@ -22679,10 +22679,10 @@ MonoBehaviour:
   displayText: {fileID: 2010562271}
   enemyTurnPassObj: {fileID: 561857701}
   charSprSet:
-  - {fileID: 21300000, guid: fd81e9f40743d1844b334eda24ebdde7, type: 3}
-  - {fileID: 21300006, guid: 9294fa1c61ae6ff47b000bd4428a5570, type: 3}
-  - {fileID: 21300038, guid: 6e9d14d439c98494e97902dcefdbbe25, type: 3}
-  - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
+  - {fileID: 21300000, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  - {fileID: 21300006, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  - {fileID: 21300010, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  - {fileID: 21300014, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
   - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
   - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
   - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}

@@ -110,9 +110,8 @@ public partial class InGameSceneManager : MonoBehaviour
     {
         //network_changeTerrainCount = InDiceValue;
         //Debug.Log("!network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
-        Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
-        Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
-
+        //Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
+        //Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
         for ( int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; ++i)
         {
             network_terrainIndex[i] = InTerrainIndex[i];
@@ -184,6 +183,7 @@ public partial class InGameSceneManager : MonoBehaviour
     //ref으로 index만 받자 !
     public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
+        Debug.Log("상대지형선택끝남");
         if (recvTerrainType == 0)
         {
             Debug.Log("에러 : 1");
