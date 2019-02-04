@@ -23,6 +23,7 @@ public partial class MainUISceneManager : MonoBehaviour
         //     = networkObject.nickName.ToString();
 
         characterSuccessParticle = GameObject.Find("FX_Canvas").transform.Find("CharacterSuccessParticle").GetComponent<ParticleSystem>();
+        characterSuccessParticle.Stop();
     }
 
     public void PlayParticle(int InParticleIndex)

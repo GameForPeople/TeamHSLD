@@ -97,6 +97,7 @@ public partial class InGameSceneManager : MonoBehaviour
         }
         network_sendProtocol = (int)PROTOCOL.NOTIFY_DICE_VALUE;
         //Debug.Log("주사위 보내는 값 : " + network_changeTerrainCount);
+        Debug.Log("주사위 값을 보냅니다. 해당 값은 : " + InDiceValue.ToString());
     }
 
     public void SendTerrainType(int InTerrainType)
@@ -155,7 +156,7 @@ public partial class InGameSceneManager : MonoBehaviour
     // 상대방이 굴린 주사위 눈금을 연출
     public void RecvDiceValue(int InDiceValue)
     {
-        Debug.Log("2222");
+        Debug.Log("주사위 값을 받았습니다. 해당 값은 : " + InDiceValue.ToString());
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
         recvDiceValue = InDiceValue;
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(InDiceValue / 10, InDiceValue % 10);
@@ -296,6 +297,8 @@ public partial class InGameSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
 
+            Debug.Log("Send - Wait");
+
             // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
             while (networkManager.networkSyncLock == true)
             {
@@ -312,6 +315,8 @@ public partial class InGameSceneManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1.0f);
+
+            Debug.Log("Send - InGame");
 
             // 네트워크 순서를 무너뜨리지 않는 상태에서, SendExitMatching을 전송해야함.
             while (networkManager.networkSyncLock == true)

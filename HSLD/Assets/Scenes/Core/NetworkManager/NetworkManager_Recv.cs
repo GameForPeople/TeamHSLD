@@ -535,7 +535,9 @@ public partial class NetworkManager : MonoBehaviour
             if (!inGameSceneManager.isOnWaitGameReady)
             {
                 inGameSceneManager.StartInGameCoroutine();
+                Debug.Log(" (int)PROTOCOL.VOID_GAME_STATE 이 불림. ");
             }
+            Debug.Log(" (int)PROTOCOL.VOID_GAME_STATE 이 불렸는 가? ");
             //return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
