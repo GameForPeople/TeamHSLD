@@ -107,20 +107,28 @@ public class CameraController : MonoBehaviour
                     myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
                 }
 
+
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
-                    PrevPoint = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
+                    PrevPoint += (Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) * Time.deltaTime * Time.deltaTime;
+                    Debug.Log(PrevPoint);
+                    
+                    //Vector3 position = MyPlanet.position - (rotation * Vector3.forward * fdistance);
 
+                    mainCamera.transform.localRotation = Quaternion.Euler((Input.GetTouch(0).position.y - PrevPoint.y), (Input.GetTouch(0).position.x - PrevPoint.x), 0);
+
+                    /*
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                        (Input.GetTouch(0).position.y - PrevPoint.y) * RotationSensitivity);
+                        (Input.GetTouch(0).position.y - PrevPoint.y) );
 
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
                         (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
-
-                    PrevPoint = Input.GetTouch(0).position;
+                    */
+                    //PrevPoint = Input.GetTouch(0).position;
                 }
-                mainCamera.transform.LookAt(MyPlanet);
             }
+            mainCamera.transform.localPosition = MyPlanet.position - (mainCamera.transform.rotation * Vector3.forward * fdistance);
+            mainCamera.transform.LookAt(MyPlanet);
         }
 
         if (Input.touchCount == 1 && CameraController.offset < 0.5)
