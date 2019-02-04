@@ -15,8 +15,8 @@ public partial class InGameSceneManager : MonoBehaviour
     public int network_changeTerrainCount;
 
     // 바뀌어진 테라리언들의 인덱스가 들어있는 컨테이너 입니다.
-    public int[] network_terrainIndex = new int[13];
-    public int[] recvTerrainIndex = new int[13]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
+    public int[] network_terrainIndex = new int[14];
+    public int[] recvTerrainIndex = new int[14]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
 
     // GameReady 여부에 따른 bool 변수.
     public bool isOnWaitGameReady;
@@ -87,11 +87,10 @@ public partial class InGameSceneManager : MonoBehaviour
 
     public void SendDiceValue(int InDiceValue)
     {
-        Debug.Log("1111");
         network_changeTerrainCount = InDiceValue;
         if (isfirstSend)
         {
-            network_changeTerrainCount++;
+            //network_changeTerrainCount++;
             Debug.Log("network_changeTerrainCount : " + network_changeTerrainCount);
             isfirstSend = false;
         }
