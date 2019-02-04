@@ -29,7 +29,9 @@ public class RoomSceneManager : MonoBehaviour
         //GameObject.Find("RoomIndex_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().roomIndex.ToString();
 
         // 자기 자신의 아이디 노출
-        GameObject.Find("PlayerID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().nickName;
+
+        // DEV_85
+        //GameObject.Find("PlayerID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().nickName;
 
         // 나중에 계급이나 랭크, 캐릭터 이미지 같은것도 추가되면 여기서 해야처리해야할 듯
 
@@ -41,16 +43,24 @@ public class RoomSceneManager : MonoBehaviour
         //else
         //{
 
+        // DEV_85
+
         // 상대방 닉네임 노출
-        GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
-        Debug.Log("적 닉네임 한번 찍어봅시다. " + networkObject.GetComponent<NetworkManager>().enemyId);
+
+        //GameObject.Find("EnemyID_TEXT").GetComponent<Text>().text = networkObject.GetComponent<NetworkManager>().enemyId;
+        //Debug.Log("적 닉네임 한번 찍어봅시다. " + networkObject.GetComponent<NetworkManager>().enemyId);
 
         //DEV_66
         //GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "캐릭터를 선택하세요.";
-        GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
 
-        WaitGameCoroutine = WaitGame();
-        StartCoroutine(WaitGameCoroutine);
+        // DEV_85
+
+        //GameObject.Find("NotifyText_TEXT").GetComponent<Text>().text = "게임을 시작합니다.";
+       // WaitGameCoroutine = WaitGame();
+       // StartCoroutine(WaitGameCoroutine);
+      
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+
         //}
     }
 

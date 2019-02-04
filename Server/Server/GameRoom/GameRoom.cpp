@@ -3,7 +3,7 @@
 GameRoom::GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
 	:	roomState(ROOM_STATE::ROOM_STATE_SOLO)
 	//,	left(InLeft), right(InRight)
-	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname()))
+	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname(), static_cast<int>(InHostUserIter->GetActiveCharacterIndex())))
 	,	isFriendMode(InIsFriendMode)
 	,	dataProtocol()
 	,	dataBuffer()
@@ -30,6 +30,7 @@ void GameRoom::JoinRoom(const shared_ptr<UserData> InGuestUserIter)
 	dataProtocol[1] = NOTIFY_GAME_READY;
 
 	roomDynamicData->guestNickname = InGuestUserIter->GetNickname();
+	roomDynamicData->guestCharacterIndex = InGuestUserIter->GetActiveCharacterIndex();
 
 	// 방 정보 바꾸는게 제일 마지막에 되어야 함.
 	roomState = ROOM_STATE::ROOM_STATE_PLAY;
