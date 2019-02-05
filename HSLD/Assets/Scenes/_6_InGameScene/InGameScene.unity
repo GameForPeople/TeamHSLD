@@ -22778,7 +22778,7 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 2039015322}
   currentTurn: 0
-  matchingCompleteTime: 3
+  matchingCompleteTime: 6
   selectOrderTime: 5
   selectCardTime: 30
   rollingDiceTime: 10
@@ -22825,7 +22825,6 @@ MonoBehaviour:
   diceCanvas: {fileID: 1478671596}
   setTerrainCanvas: {fileID: 1001726854}
   turnTimerImg: {fileID: 1005423420}
-  tmpAnimationImage: {fileID: 1247643233}
   missionSetParentTransform: {fileID: 96063209}
   missionCanvas: {fileID: 1308696082}
   displayText: {fileID: 2010562271}

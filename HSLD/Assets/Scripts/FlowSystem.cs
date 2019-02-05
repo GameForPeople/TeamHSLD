@@ -40,7 +40,6 @@ public class FlowSystem : MonoBehaviour
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
     public GameObject turnTimerImg;
-    public GameObject tmpAnimationImage;
     public Transform missionSetParentTransform;
     public GameObject missionCanvas;
     public GameObject displayText;
@@ -56,10 +55,8 @@ public class FlowSystem : MonoBehaviour
     public Sprite[] charSprSet = new Sprite[8];
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
-    IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
+    IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
-        if(animationImg)
-            tmpAnimationImage.SetActive(true);
         currentFlow = FLOW.DISPLAYANIMATION_WAITING;
         time_ = 0;
         while (true)
@@ -127,12 +124,30 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
                 break;
+            case FLOW.ENEMYTURN_PICKINGLOC:
+                //상대방이 이벤트카드를 뽑았다. - 더블일경우
+                if ((GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().recvDiceValue % 10) == (GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().recvDiceValue / 10))
+                    currentFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
+                else
+                {
+                    displayText.GetComponent<DisplayText>().text = "나의 턴";
+                    displayText.SetActive(true);
+                    yield return new WaitForSeconds(2.5f);
+
+                    currentFlow = FLOW.TO_ROLLINGDICE;
+                    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                    gameObject.GetComponent<TurnSystem>().TurnSet();
+                }
+                break;
+            case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:          
+                currentFlow = FLOW.TO_ROLLINGDICE;
+                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                gameObject.GetComponent<TurnSystem>().TurnSet();
+                break;
             //case FLOW.READY_DONE:
             //    //gameObject.GetComponent<TurnSystem>().TurnSet();
             //    break;
         }
-        if(animationImg)
-            tmpAnimationImage.SetActive(false);
     }
 
     private void Start()
@@ -198,7 +213,7 @@ public class FlowSystem : MonoBehaviour
                 displayText.GetComponent<DisplayText>().text = "상대 턴";
             displayText.SetActive(true);
 
-            //
+            yield return new WaitForSeconds(2.5f);
             FlowChange(FLOW.READY_DONE);
         }
     }
@@ -232,7 +247,6 @@ public class FlowSystem : MonoBehaviour
                 gameObject.GetComponent<CardSystem>().CardCntUpdate();
                 StartCoroutine(DisplayLoadingCor());
                 break;
-
             case FLOW.READY_DONE:
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 2.5f, false));    // <<< 여기  5라는 숫자를 바꾸면댐
@@ -255,7 +269,7 @@ public class FlowSystem : MonoBehaviour
 
                 //애니메이션 여기
                 StartCoroutine(DiceActiveOff());
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 2, false));    // <<< 여기  5라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_ROLLINGDICE, 2));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
 
             //이벤트카드가 없다면 바로 대기상태로 변경
@@ -438,7 +452,7 @@ public class FlowSystem : MonoBehaviour
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
                 break;
@@ -455,21 +469,24 @@ public class FlowSystem : MonoBehaviour
                     displayText.GetComponent<DisplayText>().text = "나의 턴";
                     displayText.SetActive(true);
                 }
-                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGEVENTCARDLOC, 2, true));    // <<< 여기  2라는 숫자를 바꾸면댐
+                StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGEVENTCARDLOC, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
 
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 //GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5, true));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_ROLLINGDICE, 5));
                 break;
             case FLOW.ENEMYTURN_PICKINGCARD:
                 currentFlow = FLOW.ENEMYTURN_PICKINGLOC;
                 break;
             //거점을 정복했는지 여부에따라서 분기
             case FLOW.ENEMYTURN_PICKINGLOC:
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
-                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 5, false));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 0f));
+                break;
+            case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
+                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
+                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 2.5f));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
                 //if (/*상대방카드 index = 101, 111,202 && TurnSystem.enemyEventCardDefense*/)
@@ -480,18 +497,6 @@ public class FlowSystem : MonoBehaviour
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
                 gameObject.GetComponent<TurnSystem>().TurnSet();
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
-                break;
-            case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
-                if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
-                {
-                    displayText.GetComponent<DisplayText>().text = "상대 턴";
-                    displayText.SetActive(true);
-                }
-                else
-                {
-                    displayText.GetComponent<DisplayText>().text = "나의 턴";
-                    displayText.SetActive(true);
-                }
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
                 break;

@@ -65,10 +65,8 @@ public class TurnSystem : MonoBehaviour
     IEnumerator DisplayTextMessageCor(string value, float time)
     {
         displayTurnTimerTxt.text = value;
-        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().tmpAnimationImage.SetActive(true);
         yield return new WaitForSeconds(time);
         displayTurnTimerTxt.text = "";
-        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().tmpAnimationImage.SetActive(false);
     }
 
     IEnumerator ReadySetOrderTimer()
