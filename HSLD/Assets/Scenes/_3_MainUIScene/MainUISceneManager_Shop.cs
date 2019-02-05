@@ -23,6 +23,8 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawShopUI)
                 return;
 
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").gameObject.SetActive(true);
             isDrawShopUI = true;
         }
@@ -30,6 +32,8 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             if (!isDrawShopUI)
                 return;
+
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
 
             GameObject.Find("Shop_UI").transform.Find("OnOff").gameObject.SetActive(false);
             isDrawShopUI = false;
@@ -90,6 +94,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_OffNotifyUI()
     {
+        soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
         GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").gameObject.SetActive(false);
     }
 }

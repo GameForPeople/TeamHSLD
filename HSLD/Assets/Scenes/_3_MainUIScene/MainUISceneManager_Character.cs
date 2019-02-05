@@ -73,6 +73,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_ChangeActiveCharacter(int InNewCharacterIndex)
     {
+        soundManager.SFXPlay(soundManager.clips[1], 1.0f);
+
         ChangeActiveCharacter(InNewCharacterIndex, true);
     }
 
@@ -113,6 +115,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_OnBuyCharacterUI(int InNewCharacterIndex)
     {
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
         selectedCharacterIndex = InNewCharacterIndex;
 
         GameObject buyCharacterUI = UserDataUI.transform.Find("Canvas_Dynamic").transform.Find("BuyCharacterUI").gameObject;
@@ -126,6 +130,8 @@ public partial class MainUISceneManager : MonoBehaviour
 
     public void UI_OffBuyCharacterUI()
     {
+        soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
         GameObject buyCharacterUI = UserDataUI.transform.Find("Canvas_Dynamic").transform.Find("BuyCharacterUI").gameObject;
 
         buyCharacterUI.transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString()).gameObject.SetActive(false);
@@ -236,6 +242,8 @@ public partial class MainUISceneManager : MonoBehaviour
     {
         if (InBValue == true)
         {
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
             DetailUserDataUI.transform.Find("WinText").GetComponent<Text>().text = networkObject.winCount.ToString();
             DetailUserDataUI.transform.Find("LoseText").GetComponent<Text>().text = networkObject.loseCount.ToString();
 
@@ -243,6 +251,8 @@ public partial class MainUISceneManager : MonoBehaviour
         }
         else if (InBValue == false)
         {
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
             DetailUserDataUI.SetActive(false);
         }
     }
