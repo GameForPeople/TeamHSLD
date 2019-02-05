@@ -134,6 +134,10 @@ public partial class InGameSceneManager : MonoBehaviour
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS;
     }
 
+    public void SendGameEnd()
+    {
+        network_sendProtocol = (int)PROTOCOL.NOTIFY_GAME_END;
+    }
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
     //public bool GetRecvData(ref int retRecvProtocol, ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
     //{
@@ -280,6 +284,18 @@ public partial class InGameSceneManager : MonoBehaviour
         recvTerrainType = 0;
     }
 
+    // 마 졋나 이겻나
+    public void RecvGameEnd(bool InIsWin)
+    {
+        if(InIsWin)
+        {
+            gameObject.GetComponent<FlowSystem>().GameOver(true, 0);
+        }
+        else
+        {
+            gameObject.GetComponent<FlowSystem>().GameOver(false, 0);
+        }
+    }
     //
     // 대기 상태를 시작할 때, 클라이언트에서 호출
     public void StartWaitCoroutine()

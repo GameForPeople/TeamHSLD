@@ -129,7 +129,10 @@ enum Protocol {
 	
 	NOTIFY_GAME_READY = 507,	// 이거 주고 받으면 꼴토롱됨. ? 근데 왜 있지 이거 기억이 안나네;;
 
-	NOTIFY_EMOJI = 508	// 이모티콘 // 이모지 관련입니다.
+	NOTIFY_EMOJI = 508,	// 이모티콘 // 이모지 관련입니다.
+
+	NOTIFY_GAME_END = 509,	// 게임 끝났어요
+	NOTIFY_GAME_BUFFER = 510	// 해당 게임은 끝난 게임입니다.
 };
 
 enum class SCENE_NAME {

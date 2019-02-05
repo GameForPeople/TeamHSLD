@@ -20,6 +20,9 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	RecvFunctions[6] = &InGameScene::RecvNetworkExecption;
 	RecvFunctions[7] = &InGameScene::RecvGameReady;
 	RecvFunctions[8] = &InGameScene::RecvEmoji;
+	RecvFunctions[9] = &InGameScene::RecvGameEnd;
+	RecvFunctions[10] = nullptr; //&InGameScene::RecvGameBuffer; // 호출될일 없음
+
 
 	SendFunctions[0] = &InGameScene::SendGameState;
 	SendFunctions[1] = &InGameScene::SendChangeTurn;
@@ -30,6 +33,8 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	SendFunctions[6] = &InGameScene::SendNetworkExecption;
 	SendFunctions[7] = &InGameScene::SendGameReady;
 	SendFunctions[8] = nullptr; //&InGameScene::SendEmoji;
+	SendFunctions[9] = &InGameScene::SendGameEnd;
+	SendFunctions[10] = &InGameScene::SendGameBuffer;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int InRecvType, SocketInfo* pClient)
@@ -121,6 +126,26 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvEmoji(SocketInfo* pClient)
 {
 	pClient->pRoomIter->SetEmoji(pClient->isHost, static_cast<BYTE>(reinterpret_cast<int&>(pClient->buf[4])));
 }
+
+/*
+	RecvGameEnd
+
+	- 게임이 끝났어! 내가 이겼어!를 받음
+*/
+void SCENE_NETWORK_MANAGER::InGameScene::RecvGameEnd(SocketInfo* pClient)
+{
+	pClient->pRoomIter->SetDataProtocol(pClient->isHost, NOTIFY_GAME_END);
+
+	// 내가 받아서 보낼거를 NOTIFY_GAME_BUFFER
+	pClient->pRoomIter->SetDataProtocol(!pClient->isHost, NOTIFY_GAME_BUFFER);
+
+	// 이방 이제 끝! 안녕! -> Send Game Buffer에서 해당 로직 처리함.
+	// pClient->pRoomIter.reset();
+
+	// 나는 이겼엉! -> 축하해!
+	pClient->pUserNode->SetGameResult(true);
+}
+
 
 // send Functions
 
@@ -233,4 +258,36 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendEmoji(SocketInfo* pClient, const BY
 
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CONST_ANSWER_EMOJI), sizeof(int));
 	memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&byteToInBuffer), sizeof(int));
+}
+
+/*
+	SendGameEnd
+
+	- 마! 니 졋어 임마! 제가 이겻대!
+*/
+void SCENE_NETWORK_MANAGER::InGameScene::SendGameEnd(SocketInfo* pClient)
+{
+	// 이방 이제 끝! 안녕!
+	pClient->pRoomIter.reset();
+
+	// 나는 져버렸어 ㅠ
+	pClient->pUserNode->SetGameResult(false);	
+
+	// 데이터 사이즈는 4
+	pClient->dataSize = 4;
+}
+
+/*
+SendGameBuffer
+
+- 승자가 GameEnd를 보내고, 바로 RoomIter 를 reset해줄 경우, 바로 다음 sendProcess에서 nullptr에러가 뜨기 때문에,
+	이와 같이 GameVBuffer에 걸리게하고, 여기서 방을 삭제해주고 처리함.
+*/
+void SCENE_NETWORK_MANAGER::InGameScene::SendGameBuffer(SocketInfo* pClient)
+{
+	// 이방 이제 끝! 안녕!
+	pClient->pRoomIter.reset();
+
+	// 데이터 사이즈는 4
+	pClient->dataSize = 4;
 }

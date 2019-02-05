@@ -202,7 +202,8 @@ public:
 
 	__inline void SetDataProtocol(const bool InIsHost, const int InNewDataProtocol) noexcept
 	{
-		dataProtocol[!InIsHost] = InNewDataProtocol;
+		if(dataProtocol[!InIsHost] != Protocol::NOTIFY_GAME_BUFFER)
+			dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 
 public:

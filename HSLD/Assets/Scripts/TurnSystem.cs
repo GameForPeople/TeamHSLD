@@ -167,6 +167,7 @@ public class TurnSystem : MonoBehaviour
         if(myTerrainGain >= 200)
         {
             //서버에 승리 전송
+            gameObject.GetComponent<InGameSceneManager>().SendGameEnd();
         }
 
         //내턴일때의 코루틴 진입

@@ -128,7 +128,7 @@ public partial class NetworkManager : MonoBehaviour
                 //idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 4, idSize);
                 //dataLocation += idSize + 8;
-                
+
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 friendState[i] = iBuffer;
@@ -591,6 +591,14 @@ public partial class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.NOTIFY_EMOJI)
         {
             inGameSceneManager.NetworkManager_TurnOnEnemyEmoji(BitConverter.ToInt32(NewDataRecvBuffer, 4));
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_GAME_END)
+        {
+            inGameSceneManager.RecvGameEnd(false);
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_GAME_BUFFER)
+        {
+            inGameSceneManager.RecvGameEnd(true);
         }
         // Network Exception
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)

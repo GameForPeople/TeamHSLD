@@ -337,6 +337,13 @@ public partial class NetworkManager : MonoBehaviour {
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
 
+                else if (InMsg == PROTOCOL.NOTIFY_GAME_END)
+                {
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_GAME_END), 0, NewDataSendBuffer, 0, 4);
+
+                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+                }
+
                 RecvProcess();
             }
             else
