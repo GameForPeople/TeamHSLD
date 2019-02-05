@@ -19,6 +19,9 @@ bool GameRoomManager::RandomMatchingProcess(const shared_ptr<UserData>& pInUser)
 	EnterCriticalSection(&csRoom);
 	//----------------------------
 
+	// 있는 없든, 항상 리셋 ( 호스트와 게스트가 동일한 경우 방지
+	pInUser->GetSocketInfo()->pRoomIter.reset();
+
 	if (pWaitRoom.expired()) // Create!
 	{
 		_CreateRoom(pInUser);

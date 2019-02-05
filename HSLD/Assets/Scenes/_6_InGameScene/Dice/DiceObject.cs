@@ -108,8 +108,9 @@ public class DiceObject : MonoBehaviour
         while (loopCount < 90)
         {
             RollingDiceWithLoopCount(loopCount);
-            ++loopCount;
-            yield return new WaitForSeconds(1.0f / 200.0f);
+            loopCount += 3; // 나중에 최적화 하기. 1로 바꾸고 30까지;;
+            //yield return new WaitForSeconds(1.0f / 200.0f);
+            yield return new WaitForFixedUpdate();
         }
         yield return new WaitForSeconds(1.5f);
         EndDice();
