@@ -10,6 +10,8 @@ public class DiceObject : MonoBehaviour
     private GameObject diceB_Position;
     private GameObject diceB_Rotation;
 
+    private SoundManager soundManager;
+
     private bool isOnRoll;      // 지금 구르는 중인 가?
 
     private Vector3 endPosition;    // 끝나고 카메라 밖으로 치움.
@@ -40,6 +42,8 @@ public class DiceObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        soundManager = GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>();
+
         diceA_Position = GameObject.Find("DiceManager").transform.Find("diceA").gameObject;
         diceA_Rotation = GameObject.Find("DiceManager").transform.Find("diceA").
             transform.Find("dice").gameObject;
@@ -99,6 +103,7 @@ public class DiceObject : MonoBehaviour
 
         DiceSetting(InDiceAIndex, InDiceBIndex);
 
+        soundManager.SFXPlay(soundManager.clips[8], 1.0f);  // 나중에 최적화작업 끝나고, 소리 싱크 적용하기.
         int loopCount = 0;
         while (loopCount < 90)
         {
