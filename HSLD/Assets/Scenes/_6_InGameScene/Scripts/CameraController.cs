@@ -23,7 +23,10 @@ public class CameraController : MonoBehaviour
     public static bool Once;
     public static bool TurnChange;
     public static int lastmesh;
-    
+
+    private float HorizontalValue;
+    private float VerticalVelue;
+
     void Start()
     {
         myTransform = GetComponent<Transform>();
@@ -34,18 +37,39 @@ public class CameraController : MonoBehaviour
 
     public void TurnVertical(bool isUp)
     {
-        if(isUp)
-            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, 20);
+        Vector3 normalDirection = myTransform.position - MyPlanet.position;
+        float fdistance = normalDirection.magnitude;
+
+        VerticalVelue += 15;
+        if (isUp)
+        {
+            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
+            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+        }
         else
-            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.down, 20);
+        {
+            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x - VerticalVelue, 0);
+            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+        }
     }
 
     public void TurnHorizontal(bool isRight)
     {
-        if(isRight)
-            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.right, 20);
+        Vector3 normalDirection = myTransform.position - MyPlanet.position;
+        float fdistance = normalDirection.magnitude;
+
+        HorizontalValue += 15;
+
+        if (isRight)
+        {
+            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y - HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
+            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+        }
         else
-            mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.left, 20);
+        {
+            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
+            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+        }
     }
 
     public IEnumerator movePosition(Vector3 end)
