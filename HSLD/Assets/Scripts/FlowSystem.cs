@@ -486,7 +486,7 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
                 gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
                 gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
-                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 2.5f));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC, 2.5f));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
                 //if (/*상대방카드 index = 101, 111,202 && TurnSystem.enemyEventCardDefense*/)
@@ -494,8 +494,6 @@ public class FlowSystem : MonoBehaviour
                 //    //상대 턴 종료.
                 //    //애니메이션 후, 내턴 시작
                 //}
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
