@@ -110,12 +110,14 @@ public class CameraController : MonoBehaviour
 
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
-                    PrevPoint += (Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) * Time.deltaTime * Time.deltaTime;
-                    Debug.Log(PrevPoint);
-                    
+                    PrevPoint += (Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) * Time.deltaTime / 10000;
+                    //Debug.Log(PrevPoint);
+
                     //Vector3 position = MyPlanet.position - (rotation * Vector3.forward * fdistance);
 
-                    mainCamera.transform.localRotation = Quaternion.Euler((Input.GetTouch(0).position.y - PrevPoint.y), (Input.GetTouch(0).position.x - PrevPoint.x), 0);
+                    myTransform.localRotation = Quaternion.Euler((Input.GetTouch(0).position.y - PrevPoint.y), 
+                        (Input.GetTouch(0).position.x - PrevPoint.x), 0);
+                    myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
 
                     /*
                     mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
@@ -127,8 +129,8 @@ public class CameraController : MonoBehaviour
                     //PrevPoint = Input.GetTouch(0).position;
                 }
             }
-            mainCamera.transform.localPosition = MyPlanet.position - (mainCamera.transform.rotation * Vector3.forward * fdistance);
-            mainCamera.transform.LookAt(MyPlanet);
+            //PrevPoint.Set(0, 0);
+            myTransform.LookAt(MyPlanet);
         }
 
         if (Input.touchCount == 1 && CameraController.offset < 0.5)
