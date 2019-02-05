@@ -30,6 +30,8 @@ public class MissionManager : MonoBehaviour
     private GameObject missionCanvas;
     static public int selectedMainMissionIndex;
     static public int selectedSubMissionIndex;
+    private bool[] missionCompleteBoolean = new bool[5]; 
+    static public int missionComplete = 0;
 
     //중복되지않게 메인미션 / 서브미션 부여
     private void RndMainMissionSet(int index)
@@ -38,8 +40,6 @@ public class MissionManager : MonoBehaviour
         missionSet[index].mainMission.ResetCurrentCnt();
         readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[index].mainMission.text;
         readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text += "( " + missionSet[index].mainMission.currentCnt + " / " + missionSet[index].mainMission.goalCnt + " )";
-
-        
     }
 
     private void RndSubMissionSet(int index)
@@ -68,6 +68,9 @@ public class MissionManager : MonoBehaviour
             selectedSubMissionIndex = UnityEngine.Random.Range(0, missionSet.Length);
 
         }
+
+        for (int i = 0; i < missionCompleteBoolean.Length; i++)
+            missionCompleteBoolean[i] = false;
 
         missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
         RndMainMissionSet(selectedMainMissionIndex);
@@ -137,7 +140,7 @@ public class MissionManager : MonoBehaviour
 
     public void MainMissionCounting(int val)
     {
-        if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val > missionSet[selectedMainMissionIndex].mainMission.goalCnt)
+        if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
         else
             missionSet[selectedMainMissionIndex].mainMission.currentCnt += val;
@@ -147,12 +150,21 @@ public class MissionManager : MonoBehaviour
 
     public void SubMissionCounting(int val, int index)
     {
-        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val > missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        {
+            if (!missionCompleteBoolean[index])
+            {
+                missionComplete += 1;
+                missionCompleteBoolean[index] = true;
+            }
+
             missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+        }
+            
         else
             missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
 
         ResetMissionDisplay();
     }
-
+    
 }

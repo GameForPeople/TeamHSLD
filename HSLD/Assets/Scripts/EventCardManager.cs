@@ -75,10 +75,12 @@ public class EventCardManager : MonoBehaviour
         conditionABtn.SetActive(false);
         conditionBBtn.SetActive(false);
 
-        if (pickedCard.cardIndex == 301)
-            conditionBBtn.SetActive(true);
-        else
-            conditionABtn.SetActive(true);
+        conditionABtn.SetActive(true);
+
+        //if (pickedCard.cardIndex == 301)
+        //    conditionBBtn.SetActive(true);
+        //else
+        //    conditionABtn.SetActive(true);
 
         //선택된 카드 서버로 보내기
         //pickedCard.data.cardIndex
@@ -169,7 +171,9 @@ public class EventCardManager : MonoBehaviour
                 if (MissionManager.selectedSubMissionIndex == 1)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
-                TurnSystem.enemyEventCardDefense = true;
+                //TurnSystem.enemyEventCardDefense = true;
+                //나중에 서버랑 맞춰보기
+
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             //주사위 두배
@@ -189,6 +193,11 @@ public class EventCardManager : MonoBehaviour
     public void DontUseCard()
     {
         eventCard.SetActive(false);
+
+        if (GameObject.Find("NetworkManager") != null)
+            GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
+
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
 
     public void PickLocDone(GameObject obj, Terrain terrainType)

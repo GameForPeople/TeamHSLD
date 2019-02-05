@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum FLOW
 {
@@ -23,6 +24,7 @@ public enum FLOW
     ENEMYTURN_PICKEVENTCARD,
     ENEMYTURN_PICKINGEVENTCARDLOC,
     ENEMYTURN_PICKINGEVENTSELECTTERRAIN,
+    RESULT
 }
 
 
@@ -43,6 +45,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject missionCanvas;
     public GameObject displayText;
     public GameObject enemyTurnPassObj;
+    public GameObject resultUICanvas;
 
     private float time_;
     private int randomVal;
@@ -492,6 +495,80 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
                 break;
+            case FLOW.RESULT:
+                break;
         }
+    }
+
+    /* Index - 어떻게 승리 / 패배 했는지 조건
+        1 - 행성점유율로 승리/패배
+        2 - 메인 미션 클리어로 인한 승리/패배
+        3 - 공통 미션 클리어로 인한 승리/패배
+         */
+    public void GameOver(bool isWin, int index)
+    {
+        resultUICanvas.SetActive(true);
+        if(isWin)
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "WIN";
+        else
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "LOSE";
+
+        switch(index)
+        {
+            case 0:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "행성 점유 클리어";
+                break;
+            case 1:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "메인 미션 클리어";
+                break;
+            case 2:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "공통 미션 클리어";
+                break;
+        }
+        //서버에서 데이터 가져오기
+        if (GameObject.Find("GameCores") != null)
+        {
+            //Info
+            resultUICanvas.transform.GetChild(1).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            resultUICanvas.transform.GetChild(2).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+
+            resultUICanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
+            resultUICanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
+
+            //terrainGain
+
+            int enemyTerrainGain = 0;
+            int allyTerrainGain = 0;
+
+            for (int i =0; i< GameObject.FindWithTag("Planet").transform.childCount; i++)
+            {
+                if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    allyTerrainGain += 1;
+                else if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    enemyTerrainGain += 1;
+            }
+
+            resultUICanvas.transform.GetChild(3).GetComponentInChildren<Text>().text = allyTerrainGain.ToString();
+            resultUICanvas.transform.GetChild(4).GetComponentInChildren<Text>().text = enemyTerrainGain.ToString();
+
+            //MainMission
+            resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.text +"\n";
+            resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text += "(" + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.currentCnt +" / " + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.goalCnt + ")";
+
+            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.text + "\n";
+            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text += "(" + "0" + " / " + gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.goalCnt + ")";
+
+            //subMission
+            resultUICanvas.transform.GetChild(7).GetComponentInChildren<Text>().text = "(" + MissionManager.missionComplete + " / " + "5 )";
+            resultUICanvas.transform.GetChild(8).GetComponentInChildren<Text>().text = "(" + "0" + " / " + "5 )";
+        }
+
+        StartCoroutine(GameOverCor());
+    }
+
+    IEnumerator GameOverCor()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainUIScene");
     }
 }
