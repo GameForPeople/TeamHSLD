@@ -22,6 +22,8 @@ class UserDataManager {
 		,	OTHERS	=	2
 	};
 
+	atomic<int>			userNum;
+
 	string				nicknameContFileName;
 
 	std::vector<CUSTOM_SET::rbTree<shared_ptr<UserData>, Type_ID>>	userDataCont;
@@ -38,6 +40,8 @@ class UserDataManager {
 public:
 	UserDataManager() noexcept; // = delete;
 	~UserDataManager(); // = delete;
+	
+	_NODISCARD _inline int GetUserNum() const noexcept { return userNum; }
 
 public:
 	// 로그인 및 회원가입 모두 여기서 처리합니다.

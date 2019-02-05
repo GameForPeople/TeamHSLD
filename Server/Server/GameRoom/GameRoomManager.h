@@ -34,6 +34,7 @@ private:
 public:
 	bool HostCancelWaiting(SocketInfo* pClient);
 	
+	_NODISCARD _inline int GetRoomNum() const noexcept { return roomNum; }
 public:
 	_DEPRECATED void DEBUG_PRINT_WAIT_EMPTY( /*int InValue */) const
 	{

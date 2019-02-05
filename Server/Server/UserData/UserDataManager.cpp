@@ -4,6 +4,7 @@
 
 UserDataManager::UserDataManager() noexcept
 	: nicknameContFileName("UserData/Saved/_Nickname.txt")
+	, userNum(0)
 {
 	userDataCont.reserve(37); // A ~ Z : 26 , 0 ~ 9 : 10 , . : 1 -> 36
 
@@ -86,6 +87,9 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	{
 		return 3; 
 	}
+
+	// 유저 수 증가
+	++userNum;
 
 	// 변수선언 부
 	RetMoney = -1; // 재화가 -1일리 없음. 해당상황은, 파일 오픈 여부를 확인하기 위해 사용됨.
@@ -188,6 +192,8 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 */
 void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 {
+	userNum--;
+
 	if (pUserNode->GetNickname().size() == 0)
 	{
 		// 야 이거는 닉네임 없는거야 저장하지 마 

@@ -159,7 +159,7 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 
 	printf("\n■■■■■■■■■■■■■■■■■■■■■■■■■\n");
 	printf("■ IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("■                                ver 2.3 181126\n");
+	printf("■                                ver 2.5 190205\n");
 	printf("■\n");
 
 	if (InIsTrueLoadExternalIP) {
@@ -535,10 +535,13 @@ void IOCPServer::_WorkerThreadFunction()
 			recvType = reinterpret_cast<int&>(pClient->buf);
 		
 #ifdef _DEBUG_MODE_
-			if(pClient->pUserNode != nullptr)
-				std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
-			else 
-				std::cout << "익명의 클라이언트에게 받은 타입은 : " << recvType << " 입니다. \n";
+			if (recvType != Protocol::VOID_GAME_STATE)
+			{
+				if (pClient->pUserNode != nullptr)
+					std::cout << pClient->pUserNode->GetID() << " 에게 받은 타입은 : " << recvType << " 입니다. \n";
+				else
+					std::cout << "익명의 클라이언트에게 받은 타입은 : " << recvType << " 입니다. \n";
+			}
 #endif
 
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
@@ -589,8 +592,9 @@ void IOCPServer::_ManagerLoop()
 {
 	enum /*class*/ MANAGER_COMMAND : int
 	{
-		TERMINATION = 0,
-		ANNOUNCEMENT = 1
+		TERMINATION		= 0,
+		ANNOUNCEMENT	= 1,
+		STATUS			= 2
 	};
 
 	int inputtedManagerCommand{};
@@ -598,7 +602,7 @@ void IOCPServer::_ManagerLoop()
 	while (7)
 	{
 		Sleep(1000);
-		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 : ";
+		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 2) 접속현황 : ";
 		std::cin >> inputtedManagerCommand;
 		std::rewind(stdin);
 
@@ -610,13 +614,16 @@ void IOCPServer::_ManagerLoop()
 		case MANAGER_COMMAND::ANNOUNCEMENT:
 			__Announcement();
 			break;
+		case MANAGER_COMMAND::STATUS:
+			__Status();
+			break;
 		}
 	}
 }
 
 void IOCPServer::__Termination()
 {
-	
+	std::cout << "\n [ManagerCommand] 아직 지원되지 않는 기능입니다. \n";
 }
 
 void IOCPServer::__Announcement()
@@ -631,4 +638,9 @@ void IOCPServer::__Announcement()
 	pUdpManager->SetAnnounceString(CONVERT_UTIL::StringToWString(localAnnounceString));
 
 	pUserData->TraversalForAnnouncement(pUdpManager);
+}
+
+void IOCPServer::__Status()
+{
+	std::cout << "\n [ManagerCommand] 접속 유저 수 : " << pUserData->GetUserNum() << ", 생성된 방 개수 : "<< pRoomData->GetRoomNum() << "\n";
 }

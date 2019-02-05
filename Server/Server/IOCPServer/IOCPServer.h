@@ -148,6 +148,6 @@ private:
 
 private:
 	void __Termination();
-
 	void __Announcement();
+	void __Status();
 };
