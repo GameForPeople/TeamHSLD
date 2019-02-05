@@ -164,7 +164,7 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvChangeTurn()
     {
         //상대방의 이벤트카드 갯수의 여부에따라 분기
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
     }
 
     // 상대방이 굴린 주사위 눈금을 연출

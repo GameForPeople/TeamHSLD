@@ -259,6 +259,12 @@ public class MeshController : MonoBehaviour {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(15, 16)], 1.01f);
             }
         }
+        else if(terrainstate.Equals(Terrain.DEFAULT))
+        {
+            material = gameObject.GetComponent<MeshRenderer>().materials;
+            material[0] = Resources.Load<Material>("M_Default");
+            gameObject.GetComponent<MeshRenderer>().materials = material;
+        }
     }
 
     public IEnumerator MoveUp()
