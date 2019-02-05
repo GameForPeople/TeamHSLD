@@ -65,7 +65,7 @@ public class EventCardManager : MonoBehaviour
 
     public void EventCardInstate()
     {
-        RandomEventCardSelect(Random.Range(2, 3));
+        RandomEventCardSelect(Random.Range(0, 6));
 
         eventCard.SetActive(true);
         cardName.text = pickedCard.cardName;
@@ -75,10 +75,12 @@ public class EventCardManager : MonoBehaviour
         conditionABtn.SetActive(false);
         conditionBBtn.SetActive(false);
 
-        if (pickedCard.cardIndex == 301)
-            conditionBBtn.SetActive(true);
-        else
-            conditionABtn.SetActive(true);
+        conditionABtn.SetActive(true);
+
+        //if (pickedCard.cardIndex == 301)
+        //    conditionBBtn.SetActive(true);
+        //else
+        //    conditionABtn.SetActive(true);
 
         //선택된 카드 서버로 보내기
         //pickedCard.data.cardIndex
@@ -166,10 +168,12 @@ public class EventCardManager : MonoBehaviour
             case 301:
 
                 //미션 - 330
-                if (MissionManager.selectedIndex == 1)
+                if (MissionManager.selectedSubMissionIndex == 1)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
-                TurnSystem.enemyEventCardDefense = true;
+                //TurnSystem.enemyEventCardDefense = true;
+                //나중에 서버랑 맞춰보기
+
                 gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             //주사위 두배
@@ -189,6 +193,11 @@ public class EventCardManager : MonoBehaviour
     public void DontUseCard()
     {
         eventCard.SetActive(false);
+
+        if (GameObject.Find("NetworkManager") != null)
+            GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
+
+        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
 
     public void PickLocDone(GameObject obj, Terrain terrainType)
@@ -223,15 +232,15 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
 
                 //미션 - 103
-                if (MissionManager.selectedIndex == 2 && terrainType == Terrain.BARREN)
+                if (MissionManager.selectedMainMissionIndex == 2 && terrainType == Terrain.BARREN)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 //미션 - 102
-                if (MissionManager.selectedIndex == 1 && terrainType == Terrain.COLD)
+                if (MissionManager.selectedMainMissionIndex == 1 && terrainType == Terrain.COLD)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 //미션 - 101
-                if (MissionManager.selectedIndex == 0 && terrainType == Terrain.MODERATION)
+                if (MissionManager.selectedMainMissionIndex == 0 && terrainType == Terrain.MODERATION)
                     GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
 
                 connectObjs.Clear();

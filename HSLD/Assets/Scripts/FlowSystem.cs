@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum FLOW
 {
@@ -22,7 +24,7 @@ public enum FLOW
     ENEMYTURN_PICKEVENTCARD,
     ENEMYTURN_PICKINGEVENTCARDLOC,
     ENEMYTURN_PICKINGEVENTSELECTTERRAIN,
-    TSETVER
+    RESULT
 }
 
 
@@ -43,12 +45,16 @@ public class FlowSystem : MonoBehaviour
     public GameObject missionCanvas;
     public GameObject displayText;
     public GameObject enemyTurnPassObj;
+    public GameObject resultUICanvas;
 
     private float time_;
     private int randomVal;
 
     private int maximumCnt = 0;
     private int[] currentCnt = new int[3];
+
+    public Sprite[] charSprSet = new Sprite[8];
+
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time, bool animationImg)
     {
@@ -83,6 +89,7 @@ public class FlowSystem : MonoBehaviour
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
                     gameObject.GetComponent<EventCardManager>().EventCardInstate();
+
                 }
                 else
                 {
@@ -135,9 +142,16 @@ public class FlowSystem : MonoBehaviour
         for (int i = 0; i < currentCnt.Length; i++)
             currentCnt[i] = 0;
 
-        //테스트버전
-        if (currentFlow.Equals(FLOW.TSETVER))
-            FlowChange(currentFlow);
+        //서버에서 데이터 가져오기
+        if (GameObject.Find("GameCores") != null)
+        {
+            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
+            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
+            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+        }
     }
 
 
@@ -162,7 +176,19 @@ public class FlowSystem : MonoBehaviour
         else
         {
             StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
-            yield return new WaitForSeconds(2.5f);
+            //GameObject temporaryLocalCameraObject = GameObject.Find("Main Camera");
+            //temporaryLocalCameraObject.SetActive(false);
+
+            yield return new WaitForSeconds(1.9f);  // LoadUI보다 0.1초 짧게 설정해야함. -> 최악 2.1초 비동기화
+            //temporaryLocalCameraObject.SetActive(true);
+
+            gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
+
+            while (!gameObject.GetComponent<InGameSceneManager>().isOnWaitGameReady)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
             yield return new WaitForSeconds(2.5f);
@@ -174,11 +200,7 @@ public class FlowSystem : MonoBehaviour
 
             //
             FlowChange(FLOW.READY_DONE);
-            //gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
-
         }
-            
-
     }
 
     IEnumerator DiceActiveOff()
@@ -219,13 +241,13 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
             case FLOW.TO_PICKINGCARD:
-                GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
+                //GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
                 setTerrainCanvas.SetActive(true);
-                if (GameObject.Find("GameCores") != null)
-                {
-                    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
-                    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
-                }
+                //if (GameObject.Find("GameCores") != null)
+                //{
+                //    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
+                //    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
+                //}
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
@@ -239,7 +261,6 @@ public class FlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
-                
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
 
@@ -251,31 +272,31 @@ public class FlowSystem : MonoBehaviour
                     //비옥 - 병아리
                     case 1:
                         //미션 - 101
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedMainMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
 
                         //미션 - 411
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedSubMissionIndex == 0)
                                 GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
 
                         //미션 - 500
-                        if (MissionManager.selectedIndex == 3 && CameraController.DiceCount > 6)
+                        if (MissionManager.selectedSubMissionIndex == 3 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
 
                         //미션 - 420
-                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         //미션 - 510
-                        if (MissionManager.selectedIndex == 3 )
+                        if (MissionManager.selectedSubMissionIndex == 3 )
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
 
                         //미션 - 301
-                        if (MissionManager.selectedIndex == 1)
+                        if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[0] += CameraController.DiceCount;
-                            if (currentCnt[0] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
-                                currentCnt[0] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt;
+                            if (currentCnt[0] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[0] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
                             maximumCnt = 0;
 
@@ -294,35 +315,35 @@ public class FlowSystem : MonoBehaviour
                     //건조 - 뱀
                     case 2:
                         //미션 - 103
-                        if (MissionManager.selectedIndex == 2)
+                        if (MissionManager.selectedMainMissionIndex == 2)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
 
                         //미션 - 210
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedSubMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
 
                         //미션 - 400
-                        if (MissionManager.selectedIndex == 2 && CameraController.DiceCount > 6)
+                        if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
 
                         //미션 - 511
-                        if (MissionManager.selectedIndex == 3)
+                        if (MissionManager.selectedSubMissionIndex == 3)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
 
                         //미션 - 420
-                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         //미션 - 510
-                        if (MissionManager.selectedIndex == 3)
+                        if (MissionManager.selectedSubMissionIndex == 3)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
 
                         //미션 - 301
-                        if (MissionManager.selectedIndex == 1)
+                        if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[1] += CameraController.DiceCount;
-                            if (currentCnt[1] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
-                                currentCnt[1] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt;
+                            if (currentCnt[1] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[1] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
                             maximumCnt = 0;
 
                             for (int i = 0; i < currentCnt.Length; i++)
@@ -340,31 +361,31 @@ public class FlowSystem : MonoBehaviour
                     //한랭 - 펭귄
                     case 3:
                         //미션 - 102
-                        if (MissionManager.selectedIndex == 1)
+                        if (MissionManager.selectedMainMissionIndex == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
 
                         //미션 - 200
-                        if (MissionManager.selectedIndex == 0 && CameraController.DiceCount > 6)
+                        if (MissionManager.selectedSubMissionIndex == 0 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
 
                         //미션 - 211
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedSubMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
 
                         //미션 - 420
-                        if (MissionManager.selectedIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         //미션 - 510
-                        if (MissionManager.selectedIndex == 3)
+                        if (MissionManager.selectedSubMissionIndex == 3)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
 
                         //미션 - 301
-                        if (MissionManager.selectedIndex == 1)
+                        if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[2] += CameraController.DiceCount;
-                            if (currentCnt[2] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt)
-                                currentCnt[2] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedIndex].subMission[1].goalCnt;
+                            if (currentCnt[2] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[2] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
                             maximumCnt = 0;
 
@@ -384,15 +405,15 @@ public class FlowSystem : MonoBehaviour
                     //바다 - 고래
                     case 4:
                         //미션 - 201
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedSubMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
 
                         //미션 - 501
-                        if (MissionManager.selectedIndex == 3)
+                        if (MissionManager.selectedSubMissionIndex == 3)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 1);
 
                         //미션 - 520
-                        if (MissionManager.selectedIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                        if (MissionManager.selectedSubMissionIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(4, 6);
@@ -401,22 +422,22 @@ public class FlowSystem : MonoBehaviour
                     //산 - 구름
                     case 5:
                         //미션 - 201
-                        if (MissionManager.selectedIndex == 0)
+                        if (MissionManager.selectedSubMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
 
                         //미션 - 401
-                        if (MissionManager.selectedIndex == 2 && CameraController.DiceCount > 6)
+                        if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
 
                         //미션 - 520
-                        if (MissionManager.selectedIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                        if (MissionManager.selectedSubMissionIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(7, 9);
                         gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                 }
-                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();                
+                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:
@@ -474,13 +495,80 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
                 break;
-            case FLOW.TSETVER:
-                GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-                cardSetCanvas.SetActive(false);
-                readyCanvas.SetActive(false);
-                spinCanvas.SetActive(true);
-                currentFlow = FLOW.TO_PICKINGLOC;
+            case FLOW.RESULT:
                 break;
         }
+    }
+
+    /* Index - 어떻게 승리 / 패배 했는지 조건
+        1 - 행성점유율로 승리/패배
+        2 - 메인 미션 클리어로 인한 승리/패배
+        3 - 공통 미션 클리어로 인한 승리/패배
+         */
+    public void GameOver(bool isWin, int index)
+    {
+        resultUICanvas.SetActive(true);
+        if(isWin)
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "WIN";
+        else
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "LOSE";
+
+        switch(index)
+        {
+            case 0:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "행성 점유 클리어";
+                break;
+            case 1:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "메인 미션 클리어";
+                break;
+            case 2:
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "공통 미션 클리어";
+                break;
+        }
+        //서버에서 데이터 가져오기
+        if (GameObject.Find("GameCores") != null)
+        {
+            //Info
+            resultUICanvas.transform.GetChild(1).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            resultUICanvas.transform.GetChild(2).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+
+            resultUICanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
+            resultUICanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
+
+            //terrainGain
+
+            int enemyTerrainGain = 0;
+            int allyTerrainGain = 0;
+
+            for (int i =0; i< GameObject.FindWithTag("Planet").transform.childCount; i++)
+            {
+                if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    allyTerrainGain += 1;
+                else if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    enemyTerrainGain += 1;
+            }
+
+            resultUICanvas.transform.GetChild(3).GetComponentInChildren<Text>().text = allyTerrainGain.ToString();
+            resultUICanvas.transform.GetChild(4).GetComponentInChildren<Text>().text = enemyTerrainGain.ToString();
+
+            //MainMission
+            resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.text +"\n";
+            resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text += "(" + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.currentCnt +" / " + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.goalCnt + ")";
+
+            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.text + "\n";
+            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text += "(" + "0" + " / " + gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.goalCnt + ")";
+
+            //subMission
+            resultUICanvas.transform.GetChild(7).GetComponentInChildren<Text>().text = "(" + MissionManager.missionComplete + " / " + "5 )";
+            resultUICanvas.transform.GetChild(8).GetComponentInChildren<Text>().text = "(" + "0" + " / " + "5 )";
+        }
+
+        StartCoroutine(GameOverCor());
+    }
+
+    IEnumerator GameOverCor()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainUIScene");
     }
 }

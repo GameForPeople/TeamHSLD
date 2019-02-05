@@ -15,8 +15,8 @@ public partial class InGameSceneManager : MonoBehaviour
     public int network_changeTerrainCount;
 
     // 바뀌어진 테라리언들의 인덱스가 들어있는 컨테이너 입니다.
-    public int[] network_terrainIndex = new int[13];
-    public int[] recvTerrainIndex = new int[13]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
+    public int[] network_terrainIndex = new int[14];
+    public int[] recvTerrainIndex = new int[14]; // 여기는 받는 부분, 계속 쓸꺼, 자꾸만들면 손해여요.
 
     // GameReady 여부에 따른 bool 변수.
     public bool isOnWaitGameReady;
@@ -32,6 +32,10 @@ public partial class InGameSceneManager : MonoBehaviour
 
     static bool isfirstSend = true;
     static bool isfirstRecv = true;
+
+
+    //YSH 190204
+    public int diceValueForLoop;
 
     void Start()
     {
@@ -87,11 +91,17 @@ public partial class InGameSceneManager : MonoBehaviour
 
     public void SendDiceValue(int InDiceValue)
     {
-        Debug.Log("1111");
         network_changeTerrainCount = InDiceValue;
+
+        //YSH 190204
+        diceValueForLoop = (InDiceValue % 10) + (InDiceValue / 10);
+        Debug.Log("(InDiceValue % 10) : " + (InDiceValue % 10) + "(InDiceValue / 10)" + (InDiceValue / 10));
+
+        GameObject.Find("Canvas_Debug").transform.Find("Text").GetComponent<Text>().text = "주사위값은 " + network_changeTerrainCount.ToString();
+
         if (isfirstSend)
         {
-            network_changeTerrainCount++;
+            //network_changeTerrainCount++;
             Debug.Log("network_changeTerrainCount : " + network_changeTerrainCount);
             isfirstSend = false;
         }
@@ -111,10 +121,10 @@ public partial class InGameSceneManager : MonoBehaviour
     {
         //network_changeTerrainCount = InDiceValue;
         //Debug.Log("!network_changeTerrainCount 의 값은 : " + AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count + "입니다. ");
-        Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
-        Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
+        //Debug.Log("!InTerrainIndex.Length 의 값은 : " + InTerrainIndex.Length + "입니다. ");
+        //Debug.Log("!network_terrainIndex.Length 의 값은 : " + network_terrainIndex.Length + "입니다. ");
 
-        for ( int i = 0; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer.Count; ++i)
+        for ( int i = 0; i < diceValueForLoop; ++i)
         {
             network_terrainIndex[i] = InTerrainIndex[i];
             Debug.Log("InTerrainIndex 의 인덱스 " + i + " 값은 : " + InTerrainIndex[i] + "입니다. ");
@@ -124,6 +134,10 @@ public partial class InGameSceneManager : MonoBehaviour
         network_sendProtocol = (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS;
     }
 
+    public void SendGameEnd()
+    {
+        network_sendProtocol = (int)PROTOCOL.NOTIFY_GAME_END;
+    }
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
     //public bool GetRecvData(ref int retRecvProtocol, ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
     //{
@@ -157,8 +171,14 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvDiceValue(int InDiceValue)
     {
         Debug.Log("주사위 값을 받았습니다. 해당 값은 : " + InDiceValue.ToString());
+        GameObject.Find("Canvas_Debug").transform.Find("Text").GetComponent<Text>().text = "주사위값은 " + InDiceValue.ToString();
+
         // 다이스 주사위 굴리는연출 / 결과 dsipaly        
         recvDiceValue = InDiceValue;
+
+        //YSH 190204
+        diceValueForLoop = (InDiceValue % 10) + (InDiceValue / 10);
+
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(InDiceValue / 10, InDiceValue % 10);
         //Debug.Log("주사위 왜 안뜨는거야 도대체 !! : "+recvDiceValue.ToString());
         //gameObject.GetComponent<TurnSystem>().DisplayTextMessage("상대의 주사위 눈금: "+ recvDiceValue.ToString() + " !!!", 5f);   //ref - 2f 수정.
@@ -185,6 +205,7 @@ public partial class InGameSceneManager : MonoBehaviour
     //ref으로 index만 받자 !
     public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
+        Debug.Log("상대지형선택끝남");
         if (recvTerrainType == 0)
         {
             Debug.Log("에러 : 1");
@@ -202,14 +223,14 @@ public partial class InGameSceneManager : MonoBehaviour
         //    Debug.Log("recvDiceValue : " + recvDiceValue);
         //    isfirstRecv = false;
         //}
-        for (int i =0; i< recvDiceValue; i++)
+        for (int i =0; i< diceValueForLoop; i++)
         {
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]] == null)
             {
                 Debug.Log("벗어나자.;;");
                 break;
             }
-            Debug.Log("recvDiceValue??" + recvDiceValue);
+            Debug.Log("recvDiceValue??" + diceValueForLoop);
             Debug.Log("이름이뭐니??" + gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlag)
             {
@@ -261,9 +282,20 @@ public partial class InGameSceneManager : MonoBehaviour
         Camera.main.GetComponent<PCverPIcking>().FlagSetting();
         AllMeshController.myPlanet.GetComponent<AllMeshController>().AllPriorSetting(); // PriorSetting
         recvTerrainType = 0;
-        recvDiceValue = 0;
     }
 
+    // 마 졋나 이겻나
+    public void RecvGameEnd(bool InIsWin)
+    {
+        if(InIsWin)
+        {
+            gameObject.GetComponent<FlowSystem>().GameOver(true, 0);
+        }
+        else
+        {
+            gameObject.GetComponent<FlowSystem>().GameOver(false, 0);
+        }
+    }
     //
     // 대기 상태를 시작할 때, 클라이언트에서 호출
     public void StartWaitCoroutine()
@@ -286,7 +318,9 @@ public partial class InGameSceneManager : MonoBehaviour
         //}
 
         StartCoroutine(CoroutineHandle_Play);
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
+
+        // 이거 FlowSystem 종속으로 변환시킴.
+        //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.READY_DONE);
     }
 
     IEnumerator WaitCoroutine()

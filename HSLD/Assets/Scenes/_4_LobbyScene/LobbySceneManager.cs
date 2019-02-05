@@ -74,6 +74,9 @@ public class LobbySceneManager : MonoBehaviour {
         //StopCoroutine(CoroutineInstance_Network); -> 이건 종료시켜주지 않아도 되는지에 대한 여부 판단 필요 ( 동기화는 항상 되는가? )
 
         GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
+
+        GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().SFXPlay(GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().clips[1], 1.0f);
+
         GameObject.Find("GameCores").transform.Find("SceneControlManager").
         GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
     }
@@ -82,6 +85,8 @@ public class LobbySceneManager : MonoBehaviour {
     {
         StopCoroutine(CoroutineInstance_Network);
         StopCoroutine(CoroutineInstance_CountTime);
+
+        GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().SFXPlay(GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().clips[5], 1.0f);
 
         GameObject.Find("OnOff_UI").transform.Find("OnOff_All").gameObject.SetActive(false);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.ROOM_SCENE, true);

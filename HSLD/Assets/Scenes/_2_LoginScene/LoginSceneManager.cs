@@ -108,6 +108,8 @@ public class LoginSceneManager : MonoBehaviour {
     // From Network Recv -> if (recvType == (int)PROTOCOL.PERMIT_LOGIN)
     public void PermitLoginProcess()
     {
+        GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().SFXPlay(GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().clips[0], 1.0f);
+
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
         //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
 

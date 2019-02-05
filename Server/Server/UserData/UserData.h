@@ -171,7 +171,7 @@ public:
 	//	else if (value == 2) { loseCount++; }
 	//}
 	// True老 版快 铰府, False老 版快 菩硅.
-	__inline void SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) ++winCount; 	else ++loseCount; }
+	__inline void SetGameResult(const bool InWinOrLose)	noexcept { if (InWinOrLose) { ++winCount; money += 1000; } else ++loseCount; }
 	__inline void SetNickname(const Type_Nickname& InNickname)	noexcept { nickname = InNickname; }
 	__inline void SetMoney(const int InMoney) noexcept { money = InMoney; }
 	__inline void SetFreindUserDataWithIndex(const shared_ptr<UserData>& InSocketInfo, const int InIndex) noexcept { friendUserDataCont[InIndex] = InSocketInfo; }

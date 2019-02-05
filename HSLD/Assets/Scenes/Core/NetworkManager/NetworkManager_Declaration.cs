@@ -123,7 +123,10 @@ public enum PROTOCOL : int
 
     NOTIFY_GAME_READY = 507,    // 이거 주고 받으면 꼴토롱됨.
 
-    NOTIFY_EMOJI = 508	// 이모티콘 // 이모지 관련입니다.
+    NOTIFY_EMOJI = 508,	// 이모티콘 // 이모지 관련입니다.
+
+    NOTIFY_GAME_END = 509,	// 게임 끝났어요
+    NOTIFY_GAME_BUFFER = 510 // 게임 승자 버퍼 처리
 };
 
 public partial class NetworkManager : MonoBehaviour {

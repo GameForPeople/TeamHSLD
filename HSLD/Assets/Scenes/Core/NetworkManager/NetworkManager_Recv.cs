@@ -128,7 +128,7 @@ public partial class NetworkManager : MonoBehaviour
                 //idSize = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 //friendNickNameCont[i] = Encoding.Default.GetString(NewDataRecvBuffer, dataLocation + 4, idSize);
                 //dataLocation += idSize + 8;
-                
+
 
                 iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, dataLocation);
                 friendState[i] = iBuffer;
@@ -537,7 +537,7 @@ public partial class NetworkManager : MonoBehaviour
                 inGameSceneManager.StartInGameCoroutine();
                 Debug.Log(" (int)PROTOCOL.VOID_GAME_STATE 이 불림. ");
             }
-            Debug.Log(" (int)PROTOCOL.VOID_GAME_STATE 이 불렸는 가? ");
+            //Debug.Log(" (int)PROTOCOL.VOID_GAME_STATE 이 불렸는 가? ");
             //return; //recvProtocolFlag 안쓸것 같긴 한데, 할튼 일단 꺼졍.
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
@@ -553,7 +553,9 @@ public partial class NetworkManager : MonoBehaviour
             // {
             //     inGameSceneManager.network_terrainIndex[i] = BitConverter.ToInt32(DataRecvBuffer, 12 + 4 * i);
             // }
+
             inGameSceneManager.RecvDiceValue(BitConverter.ToInt32(NewDataRecvBuffer, 4));
+            Debug.Log("받은 diceValueForLoop 값은 : " + inGameSceneManager.diceValueForLoop);
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE)
         {
@@ -573,12 +575,13 @@ public partial class NetworkManager : MonoBehaviour
             int arrSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
             Debug.Log(" 총 받아야하는 배열의 크기는 " + arrSizeBuffer + "입니다");
 
-            for (int i = 0; i < arrSizeBuffer; i++)
+            for (int i = 0; i < inGameSceneManager.diceValueForLoop; i++)
             {
                 Debug.Log(" " + i + " 번 까지는 정상적으로 넣었습니다. " + (8 + (4 * i)) + "의 부터 형변환 한 값 ::" + BitConverter.ToInt32(NewDataRecvBuffer, (8 + (4 * i))));
                 inGameSceneManager.recvTerrainIndex[i] = BitConverter.ToInt32(NewDataRecvBuffer, (8 + (4 * i)));
             }
 
+            Debug.Log("받은 diceValueForLoop 값은 : " + inGameSceneManager.diceValueForLoop);
             inGameSceneManager.RecvTerrainIndex();
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX)
@@ -588,6 +591,14 @@ public partial class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.NOTIFY_EMOJI)
         {
             inGameSceneManager.NetworkManager_TurnOnEnemyEmoji(BitConverter.ToInt32(NewDataRecvBuffer, 4));
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_GAME_END)
+        {
+            inGameSceneManager.RecvGameEnd(false);
+        }
+        else if (recvType == (int)PROTOCOL.NOTIFY_GAME_BUFFER)
+        {
+            inGameSceneManager.RecvGameEnd(true);
         }
         // Network Exception
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)

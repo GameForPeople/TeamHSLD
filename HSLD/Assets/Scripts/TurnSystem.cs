@@ -54,9 +54,6 @@ public class TurnSystem : MonoBehaviour
 
     private void Start()
     {
-        if (gameObject.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TSETVER))
-            return;
-
         StartCoroutine(ReadyMatchingComplete());
     }
 
@@ -160,6 +157,19 @@ public class TurnSystem : MonoBehaviour
     //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
     public void TurnSet()
     {
+        //승리 / 패배조건 - 지형 200개 조건 체크
+
+        int myTerrainGain = 0;
+        for(int i =0; i< GameObject.FindWithTag("Planet").transform.childCount;i++)
+            if(GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                myTerrainGain += 1;
+
+        if(myTerrainGain >= 200)
+        {
+            //서버에 승리 전송
+            gameObject.GetComponent<InGameSceneManager>().SendGameEnd();
+        }
+
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {

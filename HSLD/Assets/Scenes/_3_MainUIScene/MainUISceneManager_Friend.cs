@@ -98,6 +98,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     private void OffFriendUI()
     {
+        soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
         for (int i = 0; i < 4; ++i)
         {
             InviteButtonUI[i].SetActive(false);
@@ -117,6 +119,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_MakeFriendButton()
     {
+        soundManager.SFXPlay(soundManager.clips[0], 1.0f);
+
         if (friendNum >= 4)
         {
             // 내 친구수가 4명 이상이야 안되 저리가.
@@ -172,6 +176,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_InviteButton(int InIndex)
     {
+        soundManager.SFXPlay(soundManager.clips[0], 1.0f);
+
         // 보낼때 몇번 인덱스를 보낼 껀지 위하여 사용함.
         invitedFriendIndex = InIndex;
 
@@ -191,6 +197,8 @@ public partial class MainUISceneManager : MonoBehaviour
     public void OnFriendUI_NetworkManager(int InFriendNum)
     {
         friendNum = InFriendNum;
+
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
 
         GameObject.Find("Friend_UI").transform.Find("OnOff").gameObject.SetActive(true);
 
@@ -324,6 +332,8 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(true);
             isDrawFriendInviteWait = true;
+
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
         }
     }
 
@@ -383,6 +393,8 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             FriendUIDynamicCanvas.transform.Find("OnFriendWaitUI").gameObject.SetActive(false);
             isDrawFriendInviteWait = false;
+
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
         }
     }
 
@@ -397,6 +409,8 @@ public partial class MainUISceneManager : MonoBehaviour
 
     public void OnFriendBadStateUI_NetworkManager(int InCase)
     {
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
         if (InCase == 1)
         {
             // 친구가 게임 초대를 받을 수 없는 상태입니다.
@@ -410,6 +424,8 @@ public partial class MainUISceneManager : MonoBehaviour
     public void OffUI_CHECK_DEMAND_MAKE_FRIEND(int InUIIndex)
     {
         //Click
+        soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
 
         if (InUIIndex == -1)
         {

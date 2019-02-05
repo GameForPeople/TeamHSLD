@@ -28,6 +28,8 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawSettingUI)
                 return;
 
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
             GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(true);
             isDrawSettingUI = true;
         }
@@ -35,6 +37,8 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             if (!isDrawSettingUI)
                 return;
+
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
 
             GameObject.Find("Setting_UI").transform.Find("OnOff").gameObject.SetActive(false);
             isDrawSettingUI = false;
@@ -49,6 +53,8 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawVipUI)
                 return;
 
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").gameObject.SetActive(true);
             isDrawVipUI = true;
         }
@@ -56,6 +62,8 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             if (!isDrawVipUI)
                 return;
+
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
 
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").gameObject.SetActive(false);
             isDrawVipUI = false;
@@ -69,6 +77,8 @@ public partial class MainUISceneManager : MonoBehaviour
             if (isDrawCreditUI)
                 return;
 
+            soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
             GameObject.Find("Setting_UI").transform.Find("Credit_OnOff").gameObject.SetActive(true);
             isDrawCreditUI = true;
         }
@@ -77,6 +87,8 @@ public partial class MainUISceneManager : MonoBehaviour
             if (!isDrawCreditUI)
                 return;
 
+            soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
             GameObject.Find("Setting_UI").transform.Find("Credit_OnOff").gameObject.SetActive(false);
             isDrawCreditUI = false;
         }
@@ -84,11 +96,13 @@ public partial class MainUISceneManager : MonoBehaviour
 
     public void UI_OpenFaceBook()
     {
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
         Application.OpenURL("https://www.facebook.com/bridge1000/");
     }
 
     public void UI_OpenGitHub()
     {
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
         Application.OpenURL("https://github.com/GameForPeople/TeamHSLD");
     }
 
@@ -100,6 +114,7 @@ public partial class MainUISceneManager : MonoBehaviour
      */
     public void UI_SendVipCode()
     {
+
         inputtedVipCode = GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("Image").transform.Find("InputField").transform.Find("Text").
                 gameObject.GetComponent<Text>().text;
 
@@ -115,8 +130,11 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void NetworkManager_RecvVipResult(bool isSuccessed, bool isAlreadyVip = false)
     {
+        soundManager.SFXPlay(soundManager.clips[2], 1.0f);
+
         if (isSuccessed)
         {
+
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("Yes_onoff").gameObject.SetActive(true);
         }
         else
@@ -140,6 +158,8 @@ public partial class MainUISceneManager : MonoBehaviour
     */
     public void UI_OffYesOrNoOnOffUI(bool isYesOnOffUI)
     {
+        soundManager.SFXPlay(soundManager.clips[3], 1.0f);
+
         if (isYesOnOffUI)
         {
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("Yes_onoff").gameObject.SetActive(false);
@@ -157,6 +177,8 @@ public partial class MainUISceneManager : MonoBehaviour
      */
     public void UI_ExitGame()
     {
+        soundManager.SFXPlay(soundManager.clips[0], 1.0f);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; //play모드를 false로.
                                                          //#elif UNITY_WEBPLAYER

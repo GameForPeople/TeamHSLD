@@ -4,6 +4,9 @@
 #include "../Protocol/CommunicationProtocol.h"
 #include "../UserData/UserDataManager.h"
 
+#define MAX_MAIN_MISSION 4
+#define MAX_SUB_MISSION 4
+
 enum class ROOM_STATE {
 	//ROOM_STATE_VOID,	// 할당만 되어있고, 방 없어..! DEV_55
 	ROOM_STATE_SOLO,	// 방에 한명이 대기중인 상태
@@ -34,7 +37,7 @@ struct RoomDynamicData
 	bool friendInviteBuffer;	// 1바이트이며 동적으로 사용하기 때문에, 친구방 아닐 경우에도 뭐 큰 상관없이 사용할 수 있을 듯.
 
 	RoomDynamicData(const Type_Nickname& InHostNickName, const int InHostCharacterIndex) noexcept
-		: hostMissionIndex(rand() % 5), guestMissionIndex(rand() % 5), subMissionIndex(rand() % 5)
+		: hostMissionIndex(rand() % MAX_MAIN_MISSION), guestMissionIndex(rand() % MAX_MAIN_MISSION), subMissionIndex(rand() % MAX_SUB_MISSION)
 		, hostCharacterIndex(InHostCharacterIndex), guestCharacterIndex(0)
 		, isHostFirst(rand() % 2)
 		, friendInviteBuffer(true)
@@ -42,7 +45,12 @@ struct RoomDynamicData
 		, guestNickname()
 		//, userReadyCount(0)
 		//, hostUserReady(false), guestUserReady(false)
-	{}
+	{
+		while (hostMissionIndex == guestMissionIndex)
+		{
+			guestMissionIndex = rand() % MAX_MAIN_MISSION;
+		}
+	}
 
 	~RoomDynamicData() = default;
 };
@@ -194,7 +202,8 @@ public:
 
 	__inline void SetDataProtocol(const bool InIsHost, const int InNewDataProtocol) noexcept
 	{
-		dataProtocol[!InIsHost] = InNewDataProtocol;
+		//if(dataProtocol[!InIsHost] != Protocol::NOTIFY_GAME_BUFFER)
+			dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 
 public:
