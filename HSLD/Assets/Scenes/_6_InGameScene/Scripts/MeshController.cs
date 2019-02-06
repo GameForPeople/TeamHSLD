@@ -53,11 +53,6 @@ public class MeshController : MonoBehaviour {
     const float initSize = 1.02f;   // Mesh가 초기에 올라가 있는 정도
     const float landingSize = 1.05f;// Mesh가 올라가는 정도
 
-    public GameObject linePrefab;
-    private List<GameObject> lineList = new List<GameObject>();
-    private GameObject lineObj;
-
-
     private Material[] material;
     private Material beforeMat;
 
@@ -199,19 +194,6 @@ public class MeshController : MonoBehaviour {
     {
         if (priorState.Equals(Terrain.FLAG))
             return;
-
-        for (int i = 0; i < JointMesh.Length; i++)
-        {                
-            if (!JointMesh[i].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
-            {
-                lineObj = Instantiate(linePrefab);
-                lineObj.transform.position = (gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f;
-                lineObj.transform.GetChild(0).rotation = Quaternion.FromToRotation(lineObj.transform.GetChild(0).transform.up, (gameObject.transform.position - JointMesh[i].transform.position).normalized) * lineObj.transform.GetChild(0).rotation;
-                lineObj.transform.parent = gameObject.transform;
-                lineList.Add(lineObj);
-                lineObj.SetActive(false);
-            }
-        }
     }
 
     public void InstateTerrainObject(Terrain terrainstate)
@@ -272,7 +254,7 @@ public class MeshController : MonoBehaviour {
 
     public IEnumerator MoveUp()
     {
-        //LineInstate();
+        LineInstate();
         while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
         {
             transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime/2.0f);
