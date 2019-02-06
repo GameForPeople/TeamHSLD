@@ -77,7 +77,7 @@ public partial class SceneControlManager : MonoBehaviour {
         // Default 값일 경우, 랜덤으로 UI를 선택합니다.
         if(InLoadUIIndex == LOAD_UI_TYPE.FALSE)
         {
-            InLoadUIIndex = (LOAD_UI_TYPE)((int)Random.Range(0, 5));
+            InLoadUIIndex = (LOAD_UI_TYPE)((int)Random.Range(0, 4));
         }
 
         //YSH. 190203추가합니다.

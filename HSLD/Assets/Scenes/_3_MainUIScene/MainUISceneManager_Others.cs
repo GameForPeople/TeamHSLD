@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public partial class MainUISceneManager : MonoBehaviour
 {
     private ParticleSystem characterSuccessParticle;
-
+    private ParticleSystem characterFailParticle;
+    
     // Use this for initialization
     void StartForOthers()
     {
@@ -24,12 +25,17 @@ public partial class MainUISceneManager : MonoBehaviour
 
         characterSuccessParticle = GameObject.Find("FX_Canvas").transform.Find("CharacterSuccessParticle").GetComponent<ParticleSystem>();
         characterSuccessParticle.Stop();
+
+        characterFailParticle = GameObject.Find("FX_Canvas").transform.Find("CharacterFailParticle").GetComponent<ParticleSystem>();
+        characterFailParticle.Stop();
     }
 
     public void PlayParticle(int InParticleIndex)
     {
         if(InParticleIndex == 1)
             StartCoroutine(PlayCharacterSuccessParticleCoroutine());
+        else if (InParticleIndex == 2)
+            StartCoroutine(PlayCharacterFailParticleCoroutine());
     }
 
     IEnumerator PlayCharacterSuccessParticleCoroutine()
@@ -38,4 +44,9 @@ public partial class MainUISceneManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
     }
 
+    IEnumerator PlayCharacterFailParticleCoroutine()
+    {
+        characterFailParticle.Play();
+        yield return new WaitForSeconds(1.0f);
+    }
 }

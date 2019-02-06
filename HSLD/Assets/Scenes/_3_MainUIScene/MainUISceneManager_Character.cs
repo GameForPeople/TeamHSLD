@@ -176,7 +176,6 @@ public partial class MainUISceneManager : MonoBehaviour
 
             StartCoroutine(AnswerBuyCharacterUICoroutine(true));
 
-            PlayParticle(1);
             // 구매한 캐릭터를 활성화 캐릭터로 변경.
             ChangeActiveCharacter(selectedCharacterIndex, true);
             RefreshUserDataUI();
@@ -205,18 +204,36 @@ public partial class MainUISceneManager : MonoBehaviour
 
         if (isSuccess)
         {
+            PlayParticle(1);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("SuccessBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
-
-            successOrFailUI.transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString() ).gameObject.SetActive(true);
 
             //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(true);
         }
         else
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             successOrFailUI = UserDataUI.transform.Find("Canvas_Popup").transform.Find("FailBuyCharacterUI").gameObject;
             successOrFailUI.SetActive(true);
+            //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(false);
+        }
 
+        yield return new WaitForSeconds(1.0f);
+
+        if (isSuccess)
+        {
+            successOrFailUI.transform.Find("OnOff").gameObject.SetActive(true);
+            successOrFailUI.transform.Find("OnOff").transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString() ).gameObject.SetActive(true);
+
+            //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(true);
+        }
+        else
+        {
+            successOrFailUI.transform.Find("OnOff").gameObject.SetActive(true);
             //GameObject.Find("FX_Canvas").GetComponent<MainUISceneFXManager>().RenderSuccessOrFailParticle(false);
         }
 
@@ -224,11 +241,13 @@ public partial class MainUISceneManager : MonoBehaviour
 
         if (isSuccess)
         {
-            successOrFailUI.transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString()).gameObject.SetActive(false);
+            successOrFailUI.transform.Find("OnOff").Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString()).gameObject.SetActive(false);
+            successOrFailUI.transform.Find("OnOff").gameObject.SetActive(false);
             successOrFailUI.SetActive(false);
         }
         else
         {
+            successOrFailUI.transform.Find("OnOff").gameObject.SetActive(false);
             successOrFailUI.SetActive(false);
         }
     }
