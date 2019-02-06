@@ -569,7 +569,7 @@ public class DiceSystem : MonoBehaviour
                         else if (rndTmpValue == 3)
                             getDiceNum = 63;
                     }
-                }
+                } 
 
                 else
                 {

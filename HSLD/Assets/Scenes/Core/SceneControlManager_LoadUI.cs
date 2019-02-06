@@ -19,6 +19,9 @@ public partial class SceneControlManager : MonoBehaviour {
     IEnumerator CoroutineInstance_SliderUI;
 
     public string[] loadingEditTextSet = new string[9];
+
+    private int skiingPenguinIndex;
+    private int dancingWhaleIndex;
     /*
      DrawOnlyLoadUI
         UI기획안에 따라, 씐 전환없이 LoadUI의 출력이 요구되므로, 관련 기능의 함수를 제공합니다.
@@ -56,6 +59,9 @@ public partial class SceneControlManager : MonoBehaviour {
         skiingPenguinUI = loadUI.transform.Find("SkiingPenguinUI").gameObject;
         updownSnakeUI = loadUI.transform.Find("UpdownSnakeUI").gameObject;
         dancingWhaleUI = loadUI.transform.Find("DancingWhaleUI").gameObject;
+
+        skiingPenguinIndex = 0;
+        dancingWhaleIndex = 0;
     }
 
     /*
@@ -82,11 +88,17 @@ public partial class SceneControlManager : MonoBehaviour {
         if (InLoadUIIndex == LOAD_UI_TYPE.BABY_CHICKEN)
             CoroutineInstance_loadUI = ActiveBabyChicken();
         else if (InLoadUIIndex == LOAD_UI_TYPE.SKIING_PENGUIN)
+        {
+            skiingPenguinIndex = 0;
             CoroutineInstance_loadUI = ActiveSkiingPenguin();
+        }
         else if (InLoadUIIndex == LOAD_UI_TYPE.UPDOWN_SNAKE)
             CoroutineInstance_loadUI = ActiveUpdownSnake();
         else if (InLoadUIIndex == LOAD_UI_TYPE.DANCING_WHALE)
+        {
+            dancingWhaleIndex = 0;
             CoroutineInstance_loadUI = ActiveDancingWhale();
+        }
 
         StartCoroutine(CoroutineInstance_loadUI);
 
@@ -105,11 +117,17 @@ public partial class SceneControlManager : MonoBehaviour {
         if (InLoadUIIndex == LOAD_UI_TYPE.BABY_CHICKEN)
             babyChickenUI.SetActive(false);
         else if (InLoadUIIndex == LOAD_UI_TYPE.SKIING_PENGUIN)
+        {
             skiingPenguinUI.SetActive(false);
+            skiingPenguinUI.transform.Find("Image (" + skiingPenguinIndex.ToString() + ")").gameObject.SetActive(false);
+        }
         else if (InLoadUIIndex == LOAD_UI_TYPE.UPDOWN_SNAKE)
             updownSnakeUI.SetActive(false);
         else if (InLoadUIIndex == LOAD_UI_TYPE.DANCING_WHALE)
+        {
             dancingWhaleUI.SetActive(false);
+            dancingWhaleUI.transform.Find("Image (" + dancingWhaleIndex.ToString() + ")").gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator SliderUICoroutine(float InUIPrintTime)
@@ -201,14 +219,47 @@ public partial class SceneControlManager : MonoBehaviour {
 
     private IEnumerator ActiveSkiingPenguin()
     {
-        yield return new WaitForSeconds(0.3f);
+        skiingPenguinUI.SetActive(true);
+
+        while(true)
+        {
+            skiingPenguinUI.transform.Find("Image (" + skiingPenguinIndex.ToString() + ")").gameObject.SetActive(false);
+
+            ++skiingPenguinIndex;
+
+            if(skiingPenguinIndex > 35)
+            {
+                skiingPenguinIndex = 0;
+            }
+
+            skiingPenguinUI.transform.Find("Image (" + skiingPenguinIndex.ToString() + ")").gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(0.03f);
+            //yield return new WaitForFixedUpdate();
+            //yield return new WaitForEndOfFrame();
+        }
     }
 
     private IEnumerator ActiveDancingWhale()
     {
         dancingWhaleUI.SetActive(true);
 
-        // 코루틴 추상화 통일하기 위해;
-        yield return new WaitForSeconds(0.1f);
+        while (true)
+        {
+            dancingWhaleUI.transform.Find("Image (" + dancingWhaleIndex.ToString() + ")").gameObject.SetActive(false);
+
+            ++dancingWhaleIndex;
+
+            if (dancingWhaleIndex > 30)
+            {
+                dancingWhaleIndex = 0;
+            }
+
+            dancingWhaleUI.transform.Find("Image (" + dancingWhaleIndex.ToString() + ")").gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(0.03f);
+            //yield return new WaitForFixedUpdate();
+            //yield return new WaitForEndOfFrame();
+        }
     }
 }

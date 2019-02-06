@@ -33242,6 +33242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkObject: {fileID: 0}
+  soundManager: {fileID: 0}
   nowCharacterIndex: 0
   selectedCharacterIndex: 0
   isDrawFriendUI: 0
