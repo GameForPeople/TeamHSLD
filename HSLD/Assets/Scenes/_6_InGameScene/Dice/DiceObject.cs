@@ -42,7 +42,10 @@ public class DiceObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        soundManager = GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>();
+        if (GameObject.Find("GameCores") != null)
+            soundManager = GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>();
+        else
+            soundManager = GameObject.FindWithTag("GameManager").transform.Find("SoundManager").GetComponent<SoundManager>();
 
         diceA_Position = GameObject.Find("DiceManager").transform.Find("diceA").gameObject;
         diceA_Rotation = GameObject.Find("DiceManager").transform.Find("diceA").

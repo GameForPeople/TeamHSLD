@@ -54,6 +54,9 @@ public class FlowSystem : MonoBehaviour
 
     public Sprite[] charSprSet = new Sprite[8];
 
+    public GameObject linePrefab;
+    private GameObject lineObj;
+
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
@@ -80,6 +83,12 @@ public class FlowSystem : MonoBehaviour
                 gameObject.GetComponent<CardSystem>().CardCntUpdate();
                 gameObject.GetComponent<CardSystem>().pickedCard = null;
                 gameObject.GetComponent<CardSystem>().CardPosInit();
+
+                lineObj = Instantiate(linePrefab);
+                lineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
+                lineObj.GetComponent<LineRenderer>().positionCount = MeshController.linePosList.Count;
+                for (int i =0; i < MeshController.linePosList.Count; i++)
+                    lineObj.GetComponent<LineRenderer>().SetPosition(i, MeshController.linePosList[i]);
 
                 //이벤트카드로 갈지 말지 분기
                 if(DiceSystem.isDouble /*|| 서브미션 달성시*/)
