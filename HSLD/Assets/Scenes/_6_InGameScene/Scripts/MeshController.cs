@@ -53,8 +53,6 @@ public class MeshController : MonoBehaviour {
     const float initSize = 1.02f;   // Mesh가 초기에 올라가 있는 정도
     const float landingSize = 1.05f;// Mesh가 올라가는 정도
 
-    static public List<Vector3> linePosList = new List<Vector3>();
-
     private Material[] material;
     private Material beforeMat;
 
@@ -196,10 +194,6 @@ public class MeshController : MonoBehaviour {
     {
         if (priorState.Equals(Terrain.FLAG))
             return;
-
-        for (int i = 0; i < JointMesh.Length; i++)              
-            if (!JointMesh[i].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
-                linePosList.Add((gameObject.transform.localPosition + JointMesh[i].transform.position) * 0.5f);            
     }
 
     public void InstateTerrainObject(Terrain terrainstate)
