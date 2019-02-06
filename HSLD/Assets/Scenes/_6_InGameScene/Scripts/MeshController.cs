@@ -23,37 +23,40 @@ public enum Identify
 
 public class MeshController : MonoBehaviour {
     private int dominator;
-    private Material domMaterial;
-    public Material priorMaterial;
-    public Terrain priorState;
+    private Material domMaterial;   // Mesh의 Material
+    public Material priorMaterial;  // Mesh가 이전에 갖고 있는 Material정보
+    public Terrain priorState;      // Mesh가 이전에 갖고 있던 State정보
     public Identify currentIdentify = Identify.NEUTRALITY;
 
-    public int MeshNumber;
-    private GameObject terrainObj;
-    static int giveNumber;
-    public Terrain terrainstate;
-    public bool isAwake;
-    public bool isFixed;
-    public bool isMine;
-    public bool isFlag;     //거점
-    public int Linkednum;
-    public GameObject[] JointMesh = new GameObject[3];
-    public List<GameObject> NearMesh;
+    public int MeshNumber;          // Mesh번호 매기기 (1~320)
+    static int giveNumber;          // Mesh번호 매기기를 위한 static값
+    public int LinkedNumber;        // Linkednum이 같다면 같은 state로 붙어있는 Mesh들
+
+    private GameObject terrainObj;  // Terrain이 갖는 오브젝트
+    public Terrain terrainstate;    // Mesh의 터레인 상태
+    public bool isAwake;            // Click 된 후 알고리즘 작동
+    public bool isFixed;            // 턴이 종료되어 해당 Mesh의 변화가 확정됨
+    public bool isMine;             // 턴이 종료되어 내 Mesh인 것이 확정됨
+    public bool isFlag;             // 거점
+
+    public GameObject[] JointMesh = new GameObject[3];  // 근처 3가지 Mesh
+    public List<GameObject> NearMesh;                   // 근처 9가지 Mesh
     public bool isCheck = false;
     // Use this for initialization
 
-    private bool once;
-    private Vector3 startPos;
-    private Vector3 destinationPos;
-    public bool isLandingSign;
-    public GameObject TargetObject;
+    private bool once;              // Mesh관리 할 때 임의로 사용한 변수
+    private Vector3 startPos;       // Camera이동의 시작 
+    private Vector3 destinationPos; // Camera이동의 끝
+    public bool isLandingSign;      // true로 바꾸면 Mesh가 올라감
+    public GameObject TargetObject; // Mesh가 사라질 때 Mesh의 Object를 지우려는 변수
+
+    const float initSize = 1.02f;   // Mesh가 초기에 올라가 있는 정도
+    const float landingSize = 1.05f;// Mesh가 올라가는 정도
 
     public GameObject linePrefab;
     private List<GameObject> lineList = new List<GameObject>();
     private GameObject lineObj;
 
-    const float initSize = 1.02f;
-    const float landingSize = 1.05f;
 
     private Material[] material;
     private Material beforeMat;
@@ -79,7 +82,7 @@ public class MeshController : MonoBehaviour {
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
-        Linkednum = 0;
+        LinkedNumber = 0;
 
         transform.position *= initSize; // 초기 테두리 사이즈
         startPos = transform.position;

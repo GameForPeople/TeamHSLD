@@ -210,7 +210,7 @@ public class PCverPIcking : MonoBehaviour
         for (int i = 0; i < Length; i++) // 링크드넘버 세팅
         {
             GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
-            FindObject.GetComponent<MeshController>().Linkednum = AllMeshController.giveLinkNum;
+            FindObject.GetComponent<MeshController>().LinkedNumber = AllMeshController.giveLinkNum;
         }
 
         for (int i = 0; i < Length; i++)

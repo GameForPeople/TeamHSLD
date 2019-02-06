@@ -95,17 +95,17 @@ public class AllMeshController : MonoBehaviour {
             // 타입이 같은 JointMesh를 만났어!
             if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate == type)
             {
-                if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().Linkednum !=
-                    CheckMesh.GetComponent<MeshController>().Linkednum) // 컨테이너에 들어있는 애가 아닐 때만 
+                if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().LinkedNumber !=
+                    CheckMesh.GetComponent<MeshController>().LinkedNumber) // 컨테이너에 들어있는 애가 아닐 때만 
                 {
-                    keepLinknum = CheckMesh.GetComponent<MeshController>().Linkednum;
-                    int ChangingLinkedNum = CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().Linkednum;
+                    keepLinknum = CheckMesh.GetComponent<MeshController>().LinkedNumber;
+                    int ChangingLinkedNum = CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().LinkedNumber;
                     for (int j = 1; j < AllContainer.Length; j++)
                     {
-                        if (AllContainer[j].GetComponent<MeshController>().Linkednum == ChangingLinkedNum)
+                        if (AllContainer[j].GetComponent<MeshController>().LinkedNumber == ChangingLinkedNum)
                         {
                             //Debug.Log(AllContainer[j].GetComponent<MeshController>().Linkednum + "[만나쓰]-->" + keepLinknum);
-                            AllContainer[j].GetComponent<MeshController>().Linkednum = keepLinknum;
+                            AllContainer[j].GetComponent<MeshController>().LinkedNumber = keepLinknum;
                         }
                     }
                 }
@@ -117,12 +117,12 @@ public class AllMeshController : MonoBehaviour {
     {
         for(int i = 1; i< AllContainer.Length; i++)
         {
-            if(AllContainer[i].GetComponent<MeshController>().Linkednum == Linknumber)
+            if(AllContainer[i].GetComponent<MeshController>().LinkedNumber == Linknumber)
             {
                 StartCoroutine(AllContainer[i].GetComponent<MeshController>().MoveDownCor());
                 AllContainer[i].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
                 AllContainer[i].GetComponent<MeshController>().GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
-                AllContainer[i].GetComponent<MeshController>().Linkednum = 0;
+                AllContainer[i].GetComponent<MeshController>().LinkedNumber = 0;
                 AllContainer[i].GetComponent<MeshController>().isFixed = false;
                 AllContainer[i].GetComponent<MeshController>().isMine = false;
             }
