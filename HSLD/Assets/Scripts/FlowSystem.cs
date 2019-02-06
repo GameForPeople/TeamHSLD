@@ -86,24 +86,24 @@ public class FlowSystem : MonoBehaviour
                 gameObject.GetComponent<CardSystem>().CardPosInit();
 
                 //line 
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY) && !GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
-                        {
-                            linePosList.Add(GameObject.FindWithTag("Planet").transform.GetChild(i).transform.position/* + JointMesh[i].transform.position) * 0.5f*/);
-                            break;
-                        }
-                    }
-                }
+                //for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                //{
+                //    for (int j = 0; j < 3; j++)
+                //    {
+                //        if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY) && !GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
+                //        {
+                //            linePosList.Add(GameObject.FindWithTag("Planet").transform.GetChild(i).transform.position/* + JointMesh[i].transform.position) * 0.5f*/);
+                //            break;
+                //        }
+                //    }
+                //}
 
-                lineObj = Instantiate(linePrefab);
-                lineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
-                lineObj.GetComponent<LineRenderer>().positionCount = linePosList.Count;
+                //lineObj = Instantiate(linePrefab);
+                //lineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
+                //lineObj.GetComponent<LineRenderer>().positionCount = linePosList.Count;
 
-                for (int i =0; i < linePosList.Count; i++)
-                    lineObj.GetComponent<LineRenderer>().SetPosition(i, linePosList[i]);
+                //for (int i =0; i < linePosList.Count; i++)
+                //    lineObj.GetComponent<LineRenderer>().SetPosition(i, linePosList[i]);
 
                 //이벤트카드로 갈지 말지 분기
                 if(DiceSystem.isDouble /*|| 서브미션 달성시*/)
