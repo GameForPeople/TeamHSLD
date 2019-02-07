@@ -30,7 +30,7 @@ _NODISCARD int UserData::BuyItem(const int InItemIndex)
 		; money >= itemPrice)
 	{
 		money -= itemPrice;
-		itemBit |= retItemBit;
+		itemBit ^= retItemBit;
 
 		return -1;
 	}

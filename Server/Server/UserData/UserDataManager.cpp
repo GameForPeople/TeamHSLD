@@ -5,6 +5,7 @@
 UserDataManager::UserDataManager() noexcept
 	: nicknameContFileName("UserData/Saved/_Nickname.txt")
 	, userNum(0)
+	, outFile(nicknameContFileName, std::ios::app)
 {
 	userDataCont.reserve(37); // A ~ Z : 26 , 0 ~ 9 : 10 , . : 1 -> 36
 
@@ -17,7 +18,7 @@ UserDataManager::UserDataManager() noexcept
 	nicknameCont.emplace_back();
 	nicknameCont.emplace_back();
 
-	saveFileCont.reserve(10);
+	//saveFileCont.reserve(10);
 
 	std::ifstream inFile(nicknameContFileName, std::ios::in);
 
@@ -51,14 +52,17 @@ UserDataManager::UserDataManager() noexcept
 
 	::InitializeCriticalSection(&csNicknameCont);
 	::InitializeCriticalSection(&csSaveNickname);
+
+	// 파일 포인터 개행.
+	//outFile << std::endl;
 }
 
 UserDataManager::~UserDataManager()
 {
-	if (saveFileCont.size())
-	{
-		_SaveNicknameCont();
-	}
+	//if (saveFileCont.size())
+	//{
+	//	_SaveNicknameCont();
+	//}
 
 	::DeleteCriticalSection(&csNicknameCont);
 	::DeleteCriticalSection(&csSaveNickname);
@@ -113,7 +117,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	std::ifstream inFile(fileNameBuffer, std::ios::in);
 
 	// [DEV_78] int 하나 사용(파일 데이터는 int로 갖고있는게 관리하기 쉬움.
-	int activeCharacterIndexBuffer;
+	int activeCharacterIndexBuffer{};
 
 	// 파일 데이터 로드
 	inFile 
@@ -135,7 +139,7 @@ int UserDataManager::LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID
 	// 해당 파일이 없을 경우 리턴.
 	if (RetMoney == -1)
 	{
-		pInSocketInfo->pUserNode = make_shared<UserData>();
+		pInSocketInfo->pUserNode = make_shared<UserData>(pInSocketInfo, InID);
 		/*pInSocketInfo->pUserNode = */ userDataCont[userDataContIndex].Insert(pInSocketInfo->pUserNode);
 
 		// RetMoney가 -1일 경우, 클라언트에서 닉네임 입력 필요. (Login Scene ? // Main UI Scene ?)
@@ -369,7 +373,6 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeByNicknameWithActiveCharacte
 }
 
 
-
 /*
 	GetActiveCharacterIndexWithNickname
 	 - 닉네임을 제공받을 경우, 해당 닉네임에 대한 ActiveCharacterIndex를 제공합니다.
@@ -502,42 +505,53 @@ void UserDataManager::TraversalForAnnouncement(UDPManager* const pInUDPManager)
 
 /*
 	SaveNicknameContProcess
-		- 신규가입자가 10명 이상일 경우, 해당 가입자들의 정보를 파일로 추가하여 저장합니다.
+		- 신규가입자를 항상 적재합니다.
 */
 void UserDataManager::SaveNicknameContProcess(const Type_ID& InID, const Type_Nickname& InNickname)
 {
 	::EnterCriticalSection(&csSaveNickname);
-	saveFileCont.emplace_back(make_pair(InID, InNickname));
+	//saveFileCont.emplace_back(make_pair(InID, InNickname));
 
-	if (saveFileCont.size() < 10)
-	{
-		::LeaveCriticalSection(&csSaveNickname);
-		return;
-	}
-	else
-	{
-		_SaveNicknameCont();
-		::LeaveCriticalSection(&csSaveNickname);
-		return;
-	}
+	outFile
+		<< " " << InID
+		<< " " << InNickname
+		<< " " << 0
+		<< std::endl;
+
+#ifdef _DEBUG_MODE_
+
+#endif
+
+	::LeaveCriticalSection(&csSaveNickname);
+	//if (saveFileCont.size() < 10)
+	//{
+	//	::LeaveCriticalSection(&csSaveNickname);
+	//	return;
+	//}
+	//else
+	//{
+	//	_SaveNicknameCont();
+	//	::LeaveCriticalSection(&csSaveNickname);
+	//	return;
+	//}
 }
 
-void UserDataManager::_SaveNicknameCont()
-{
-	std::ofstream outFile(nicknameContFileName, std::ios::app);
-
-	for (auto iter = saveFileCont.begin()
-		; iter != saveFileCont.end()
-		; ++iter)
-	{
-		outFile
-			<< " " << iter->first
-			<< " " << iter->second
-			<< " " << 0 
-			<< std::endl;
-	}
-
-	saveFileCont.clear();
-	saveFileCont.reserve(10);
-}
+//void UserDataManager::_SaveNicknameCont()
+//{
+//	std::ofstream outFile(nicknameContFileName, std::ios::app);
+//
+//	for (auto iter = saveFileCont.begin()
+//		; iter != saveFileCont.end()
+//		; ++iter)
+//	{
+//		outFile
+//			<< " " << iter->first
+//			<< " " << iter->second
+//			<< " " << 0 
+//			<< std::endl;
+//	}
+//
+//	saveFileCont.clear();
+//	saveFileCont.reserve(10);
+//}
 

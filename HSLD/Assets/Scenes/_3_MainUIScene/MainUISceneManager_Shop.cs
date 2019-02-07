@@ -49,7 +49,7 @@ public partial class MainUISceneManager : MonoBehaviour
     public void UI_BuyItem(int InIndex)
     {
         itemIndex = InIndex;
-        networkObject.SendData(PROTOCOL.DEMAND_MAKE_FRIEND);
+        networkObject.SendData(PROTOCOL.DEMAND_BUY_ITEM);
     }
 
     /*

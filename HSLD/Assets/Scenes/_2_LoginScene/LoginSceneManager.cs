@@ -75,7 +75,7 @@ public class LoginSceneManager : MonoBehaviour {
             //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             // 글자수 제한, 4 이상, 10 이하일 떄만 트루
-            if (nickNameBuffer.Length < 4) { Debug.Log("4글자 미만은 닉네임 안돼요"); return; }
+            if (nickNameBuffer.Length < 3) { Debug.Log("3글자 미만은 닉네임 안돼요"); return; }
             if (nickNameBuffer.Length > 10) { Debug.Log("10글자 이상은 닉네임 안돼요"); return; }
 
             // 한글 닉네임 지원에 따른 주석처리...!

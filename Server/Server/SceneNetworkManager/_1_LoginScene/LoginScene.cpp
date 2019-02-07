@@ -47,7 +47,9 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvDemandLogin(SocketInfo* pClient)
 		; failReason)
 		__SendFailLogin(pClient, failReason);
 	else 
+	{
 		__SendPermitLogin(pClient, outNickname, outWinCount, outLoseCount, outMoney, outAchievementBit, outTitleBit, outCharacterBit, static_cast<int>(outActiveCharacterBit), outFriendStringCont);
+	}
 }
 
 void SCENE_NETWORK_MANAGER::LoginScene::__SendFailLogin(SocketInfo* pClient, const int RetFailReason)
@@ -107,10 +109,7 @@ void SCENE_NETWORK_MANAGER::LoginScene::_RecvChangeNickname(SocketInfo* pClient)
 	std::wstring wstrBuf(nicknameSizeBuf * 0.5, 0);
 	memcpy(&wstrBuf[0], &pClient->buf[8], nicknameSizeBuf);
 
-	// UTF-16 -> MBCS
-	nicknameSizeBuf = WideCharToMultiByte(CP_ACP, 0, &wstrBuf[0], -1, NULL, 0, NULL, NULL);
-	Type_Nickname nicknameBuf(nicknameSizeBuf, 0);
-	WideCharToMultiByte(CP_ACP, 0, &wstrBuf[0], -1, &nicknameBuf[0], nicknameSizeBuf, NULL, NULL);
+	Type_Nickname nicknameBuf = CONVERT_UTIL::WStringToString(wstrBuf);
 
 	if (pUserData->SetNewNickname(pClient, nicknameBuf))
 	{

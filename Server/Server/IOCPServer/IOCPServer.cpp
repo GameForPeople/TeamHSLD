@@ -5,6 +5,10 @@
 
 #pragma warning (disable: 4278)
 
+#ifdef _DEBUG_MODE_
+	// #define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인.
+#endif
+
 // Server's global Function
 namespace NETWORK_UTIL {
 	_NORETURN void ERROR_QUIT(const char *msg)
@@ -90,7 +94,7 @@ namespace NETWORK_UTIL {
 		ptr->wsabuf.buf = ptr->buf;
 		ptr->wsabuf.len = ptr->dataSize;
 
-#ifdef _DEBUG_MODE_
+#ifdef _NETWORK_DEBUG_LOG_
 		std::cout << "  DEBUG - 전송한 Protocol은 : " << reinterpret_cast<int&>(ptr->buf[0]) << "\n";
 #endif // _DEBUG_MODE_
 
@@ -534,7 +538,7 @@ void IOCPServer::_WorkerThreadFunction()
 		{
 			recvType = reinterpret_cast<int&>(pClient->buf);
 		
-#ifdef _DEBUG_MODE_
+#ifdef _NETWORK_DEBUG_LOG_
 			if (recvType != Protocol::VOID_GAME_STATE)
 			{
 				if (pClient->pUserNode != nullptr)

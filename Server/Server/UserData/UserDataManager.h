@@ -35,8 +35,8 @@ class UserDataManager {
 	CRITICAL_SECTION	csNicknameCont;
 	CRITICAL_SECTION	csSaveNickname;
 
-	std::vector<std::pair<Type_ID, Type_Nickname>> saveFileCont;
-
+	//std::vector<std::pair<Type_ID, Type_Nickname>> saveFileCont;
+	std::ofstream		outFile;
 public:
 	UserDataManager() noexcept; // = delete;
 	~UserDataManager(); // = delete;
@@ -44,7 +44,6 @@ public:
 	_NODISCARD _inline int GetUserNum() const noexcept { return userNum; }
 
 public:
-	// 로그인 및 회원가입 모두 여기서 처리합니다.
 	int LoginProcess(SocketInfo* pInSocketInfo, const Type_ID& InID, Type_Nickname& RetNickname, int& RetWinCount, int& RetLoseCount, int& RetMoney,
 		int& RetAchievementBit, int& RetTitleBit, int& RetCharacterBit, BYTE& RetActiveCharacterIndex, vector<Type_Nickname>& RetFriendNicknameCont);
 
@@ -74,7 +73,7 @@ private:
 	_NODISCARD int GetNicknameFirstChar(const Type_Nickname& InKeyNickname) const noexcept;
 
 	void SaveNicknameContProcess(const Type_ID& InID, const Type_Nickname& InNickname);
-	void _SaveNicknameCont();
+	//void _SaveNicknameCont();
 public:
 	__inline void SetGameResult(const shared_ptr<UserData>& InUserData, const bool InWinOrLose) noexcept { InUserData->SetGameResult(InWinOrLose); }
 };
