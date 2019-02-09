@@ -6,8 +6,15 @@ using LitJson;
 
 public class LoadJsonData : MonoBehaviour {
     public List<MeshInfo> settingMesh = new List<MeshInfo>();
-    
+    public int MeshNumber;          // Mesh번호 매기기 (1~320)
+    static int giveFirstNumber;          // Mesh번호 매기기를 위한 static값
+
+
     void Start () {
+        MeshNumber = giveFirstNumber;
+        name = giveFirstNumber.ToString();
+        giveFirstNumber++;
+
         LoadMeshData();
     }
 	
@@ -20,16 +27,18 @@ public class LoadJsonData : MonoBehaviour {
     {
         Debug.Log("LoadJsonData");
 
-        if(File.Exists(Application.dataPath+ "/Resources/Data/MeshInfoData.json"))
+        if (File.Exists(Application.dataPath + "/Resources/Data/MeshInfoData.json"))
         {
             string jsonStr = File.ReadAllText(Application.dataPath + "/Resources/Data/MeshInfoData.json");
 
-            Debug.Log(jsonStr);
+            //Debug.Log(jsonStr);
             JsonData MeshData = JsonMapper.ToObject(jsonStr);
 
-            for(int i = 0; i < 320; i++)
+            Debug.Log(MeshData[MeshNumber]["meshID"].ToString() + "," + MeshData[MeshNumber]["meshState"].ToString());
+
+            if (MeshData[MeshNumber]["meshState"].ToString() == "MODERATION")
             {
-                Debug.Log(MeshData[i]["meshID"].ToString() + "," + MeshData[i]["meshState"].ToString());
+                GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Moderation");
             }
         }
         else
