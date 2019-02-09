@@ -9,8 +9,11 @@ public class TitleSceneManager : MonoBehaviour
 {
     #region [ Release Func ]
 
+    GameObject waitParsingUI;
+
     void Start()
     {
+        waitParsingUI = GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject;
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ParsingServerIP();
     }
 
@@ -24,7 +27,13 @@ public class TitleSceneManager : MonoBehaviour
 
     public void UI_OnOff_WaitParsingUI(bool InIsActive)
     {
-        GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject.SetActive(InIsActive);
+        waitParsingUI.SetActive(InIsActive);
+    }
+
+    public void NetworkManager_DrawIPAndState(string inIpString, string inNotifyString)
+    {
+        waitParsingUI.transform.Find("Text_IP").GetComponent<Text>().text = inIpString;
+        waitParsingUI.transform.Find("Text_Notify").GetComponent<Text>().text = inNotifyString;
     }
 
     #endregion
