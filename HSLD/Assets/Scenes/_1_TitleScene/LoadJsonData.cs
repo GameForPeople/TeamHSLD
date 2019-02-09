@@ -36,15 +36,50 @@ public class LoadJsonData : MonoBehaviour {
 
             Debug.Log(MeshData[MeshNumber]["meshID"].ToString() + "," + MeshData[MeshNumber]["meshState"].ToString());
 
-            if (MeshData[MeshNumber]["meshState"].ToString() == "MODERATION")
+            SetMaterial(MeshData[MeshNumber]["meshState"].ToString()); // Material 세팅
+            if(MeshData[MeshNumber]["meshObj"].ToString() != null) // Object 세팅
             {
-                GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Moderation");
+                SetObject(MeshData[MeshNumber]["meshState"].ToString());
             }
+            // MoveObject 세팅
         }
         else
         {
             Debug.Log("non data");
         }
+    }
+
+    private void SetMaterial(string material)
+    {
+        if (material == "DEFAULT")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Default");
+        }
+        if (material == "MODERATION")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Moderation");
+        }
+        else if (material == "BARREN")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_BARREN");
+        }
+        else if (material == "COLD")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_COLD");
+        }
+        else if (material == "SEA")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Sea");
+        }
+        else if (material == "MOUNTAIN")
+        {
+            GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_Mountain");
+        }
+    }
+
+    private void SetObject(string material)
+    {
+
     }
     
 }
