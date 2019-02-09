@@ -61,7 +61,8 @@ public partial class NetworkManager : MonoBehaviour {
 
     IEnumerator ParsingServerIPCoroutine()
     {
-        GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>().UI_OnOff_WaitParsingUI(true);
+        TitleSceneManager titleSceneManager = GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>();
+        titleSceneManager.UI_OnOff_WaitParsingUI(true);
 
         UnityWebRequest www = UnityWebRequest.Get("http://koreagamemaker.wixsite.com/hsld-server"); // 나중에 GitPage로 바꾸기.
         yield return www.SendWebRequest();
@@ -78,13 +79,13 @@ public partial class NetworkManager : MonoBehaviour {
 
             iP_ADDRESS = www.downloadHandler.text.Substring(index1, index2 - index1);
             // Or retrieve results as binary data
-            Debug.Log("Server의 IP는 : " + iP_ADDRESS);
+            //Debug.Log("Server의 IP는 : " + iP_ADDRESS);
 
             int index3 = www.downloadHandler.text.IndexOf("Ver : ", index2);
 
             string parsingClientVerStringBuffer = www.downloadHandler.text.Substring(index3 + 6, 6);
 
-            Debug.Log("최신 Client의 Ver는 : " + parsingClientVerStringBuffer + " 입니다. 현재 클라이언트 버전은 : " + CLIENT_VERSION + " 입니다.");
+            //Debug.Log("최신 Client의 Ver는 : " + parsingClientVerStringBuffer + " 입니다. 현재 클라이언트 버전은 : " + CLIENT_VERSION + " 입니다.");
 
             int index4 = www.downloadHandler.text.IndexOf("NotifyNum : ", index3) + 12;
 
@@ -92,18 +93,22 @@ public partial class NetworkManager : MonoBehaviour {
 
             if (notifyNumString.Equals("0"))
             {
-                Debug.Log("NotifyNum은 0으로 서버는 정상적으로 작동하는 중입니다.");
+                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 0 ( 현재 서버는 Dev 버전으로 동작중입니다. ) ");
+                //Debug.Log("NotifyNum은 0으로 서버는 정상적으로 작동하는 중입니다.");
             }
             else if (notifyNumString.Equals("1"))
             {
-                Debug.Log("NotifyNum은 1로 현재 서버는 작동하지 않습니다.");
+                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 1 ( 현재 서버는 Live 버전으로 정상 동작중입니다. )");
+                //Debug.Log("NotifyNum은 1로 현재 서버는 작동하지 않습니다.");
             }
             else if (notifyNumString.Equals("2"))
             {
-                Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
+                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 2 ( 현재 서버는 점검 중입니다. ) ");
+                //Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
             }
 
-            GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>().UI_OnOff_WaitParsingUI(false);
+            yield return new WaitForSeconds(2.0f);
+            titleSceneManager.UI_OnOff_WaitParsingUI(false);
         }
     }
 }
