@@ -18,7 +18,7 @@ public class AllMeshController : MonoBehaviour {
     public GameObject[] MovingObj;
     static public AllMeshController instance_;
     static public int giveLinkNum = 0;
-
+    
     // Use this for initialization
     void Start () {
         once = false;
@@ -37,7 +37,7 @@ public class AllMeshController : MonoBehaviour {
         if (once == false)
         {
             MakeAllContainer();
-            
+            //GetComponent<SaveJsonData>().SaveMeshData();
             once = true;
         }
     }
@@ -54,6 +54,7 @@ public class AllMeshController : MonoBehaviour {
                 AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.03f);
             }
         }
+
     }
 
     public void SearchALL()

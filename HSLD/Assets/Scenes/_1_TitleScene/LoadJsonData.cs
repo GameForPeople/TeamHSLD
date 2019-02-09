@@ -27,9 +27,9 @@ public class LoadJsonData : MonoBehaviour {
             Debug.Log(jsonStr);
             JsonData MeshData = JsonMapper.ToObject(jsonStr);
 
-            for(int i = 1; i < 321; i++)
+            for(int i = 0; i < 320; i++)
             {
-
+                Debug.Log(MeshData[i]["meshID"].ToString() + "," + MeshData[i]["meshState"].ToString());
             }
         }
         else
@@ -37,4 +37,5 @@ public class LoadJsonData : MonoBehaviour {
             Debug.Log("non data");
         }
     }
+    
 }

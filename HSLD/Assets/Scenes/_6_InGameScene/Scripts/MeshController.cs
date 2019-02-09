@@ -44,7 +44,7 @@ public class MeshController : MonoBehaviour {
     public bool isCheck = false;
     // Use this for initialization
 
-    private bool once;              // Mesh관리 할 때 임의로 사용한 변수
+    private bool temp;              // Mesh관리 할 때 임의로 사용한 변수
     private Vector3 startPos;       // Camera이동의 시작 
     private Vector3 destinationPos; // Camera이동의 끝
     public bool isLandingSign;      // true로 바꾸면 Mesh가 올라감
@@ -73,7 +73,7 @@ public class MeshController : MonoBehaviour {
         isFixed = false;
         isMine = false;
         isLandingSign = false;
-        once = false;
+        temp = false;
         giveNumber++;
         MeshNumber = giveNumber;
         name = giveNumber.ToString();
@@ -108,7 +108,7 @@ public class MeshController : MonoBehaviour {
             StartCoroutine(MoveUp());
             isLandingSign = false;
         }
-        if (isFlag && once == false && AllMeshController.once)
+        if (isFlag && temp == false && AllMeshController.once)
         {
             for(int i = 1; i< AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
             {
@@ -128,7 +128,7 @@ public class MeshController : MonoBehaviour {
             } // Flagable이면 주변 매쉬 받아와
 
 
-            once = true;
+            temp = true;
         }
 
         if (isAwake)

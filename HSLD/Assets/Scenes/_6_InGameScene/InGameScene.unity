@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30880,6 +30880,7 @@ GameObject:
   - component: {fileID: 1275639254}
   - component: {fileID: 1132190348}
   - component: {fileID: 1132190349}
+  - component: {fileID: 1132190350}
   m_Layer: 0
   m_Name: Sphere_320Objects_40X
   m_TagString: Planet
@@ -30944,6 +30945,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
+--- !u!114 &1132190350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132190347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c13692727265a0449a9e991e0c0b848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1132665301
 GameObject:
   m_ObjectHideFlags: 0

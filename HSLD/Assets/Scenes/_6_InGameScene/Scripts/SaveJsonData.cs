@@ -19,25 +19,20 @@ public class MeshInfo
 public class SaveJsonData : MonoBehaviour {
 
     public List<MeshInfo> meshInfoList = new List<MeshInfo>();
-
-	// Use this for initialization
-	void Start () {
-        SaveMeshData();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    
     public void SaveMeshData()
     {
         Debug.Log("SaveJsonData");
 
         for(int i = 1; i < 321; i++)
         {
+            Debug.Log(i);
+        
             meshInfoList.Add(new MeshInfo(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().name
                 , AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().terrainstate.ToString()));
+        
+            Debug.Log(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().name);
+            Debug.Log(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().terrainstate.ToString());
         }
 
         JsonData infoJson = JsonMapper.ToJson(meshInfoList);
