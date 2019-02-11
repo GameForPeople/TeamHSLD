@@ -180,7 +180,7 @@ public class EventCardManager : MonoBehaviour
 
                 //미션 - 330
                 if (MissionManager.selectedSubMissionIndex == 1)
-                    missionManager.SubMissionCounting(1, 4);
+                    missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                 //TurnSystem.enemyEventCardDefense = true;
                 //나중에 서버랑 맞춰보기
@@ -241,18 +241,6 @@ public class EventCardManager : MonoBehaviour
                 ConnectObj(obj, terrainType);
                 for (int i = 0; i < connectObjs.Count; i++)
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
-
-                //미션 - 103
-                if (MissionManager.selectedMainMissionIndex == 2 && terrainType == Terrain.BARREN)
-                    missionManager.MainMissionCounting(connectObjs.Count);
-
-                //미션 - 102
-                if (MissionManager.selectedMainMissionIndex == 1 && terrainType == Terrain.COLD)
-                    missionManager.MainMissionCounting(connectObjs.Count);
-
-                //미션 - 101
-                if (MissionManager.selectedMainMissionIndex == 0 && terrainType == Terrain.MODERATION)
-                    missionManager.MainMissionCounting(connectObjs.Count);
 
                 connectObjs.Clear();
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);

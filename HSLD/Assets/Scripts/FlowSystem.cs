@@ -65,6 +65,7 @@ public class FlowSystem : MonoBehaviour
     private MissionManager missionManager;
     private BuildOnPlanet buildOnPlanet;
     private Transform planetTrans;
+    private TerrainGainCounting terrainGainCounting;
 
     private void Start()
     {
@@ -90,6 +91,7 @@ public class FlowSystem : MonoBehaviour
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
         planetTrans = GameObject.FindWithTag("Planet").transform;
+        terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
     }
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
@@ -318,15 +320,15 @@ public class FlowSystem : MonoBehaviour
                     case 1:
                         //미션 - 500
                         if (MissionManager.selectedSubMissionIndex == 3 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4);
+                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            missionManager.SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -344,7 +346,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if(currentCnt[0] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -353,19 +355,19 @@ public class FlowSystem : MonoBehaviour
                     case 2:
                         //미션 - 210
                         if (MissionManager.selectedSubMissionIndex == 0)
-                            missionManager.SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 400
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4);
+                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            missionManager.SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -382,7 +384,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[1] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -391,15 +393,15 @@ public class FlowSystem : MonoBehaviour
                     case 3:
                         //미션 - 200
                         if (MissionManager.selectedSubMissionIndex == 0 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4);
+                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            missionManager.SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -417,7 +419,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[2] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
                         }
 
                         randomVal = Random.Range(1, 4);
@@ -427,7 +429,7 @@ public class FlowSystem : MonoBehaviour
                     case 4:
                         //미션 - 520
                         if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4);
+                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         randomVal = Random.Range(4, 6);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -436,11 +438,11 @@ public class FlowSystem : MonoBehaviour
                     case 5:
                         //미션 - 401
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 1);
+                            missionManager.SubMissionCounting(1, 1, Identify.ALLY);
 
                         //미션 - 520
                         if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4);
+                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         randomVal = Random.Range(7, 9);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -533,32 +535,21 @@ public class FlowSystem : MonoBehaviour
             resultUICanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
             resultUICanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
 
-            //terrainGain
 
-            int enemyTerrainGain = 0;
-            int allyTerrainGain = 0;
-
-            for (int i =0; i< planetTrans.childCount; i++)
-            {
-                if (planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
-                    allyTerrainGain += 1;
-                else if (planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
-                    enemyTerrainGain += 1;
-            }
-
-            resultUICanvas.transform.GetChild(3).GetComponentInChildren<Text>().text = allyTerrainGain.ToString();
-            resultUICanvas.transform.GetChild(4).GetComponentInChildren<Text>().text = enemyTerrainGain.ToString();
+            //지형갯수
+            resultUICanvas.transform.GetChild(3).GetComponentInChildren<Text>().text = terrainGainCounting.TerrainCounting(Identify.ALLY).ToString();
+            resultUICanvas.transform.GetChild(4).GetComponentInChildren<Text>().text = terrainGainCounting.TerrainCounting(Identify.ENEMY).ToString();
 
             //MainMission
             resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.text +"\n";
             resultUICanvas.transform.GetChild(5).GetComponentInChildren<Text>().text += "(" + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.currentCnt +" / " + gameObject.GetComponent<MissionManager>().missionSet[MissionManager.selectedMainMissionIndex].mainMission.goalCnt + ")";
 
             resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text = gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.text + "\n";
-            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text += "(" + "0" + " / " + gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.goalCnt + ")";
+            resultUICanvas.transform.GetChild(6).GetComponentInChildren<Text>().text += "(" + gameObject.GetComponent<MissionManager>().EnemyMainMissionCounting() + " / " + gameObject.GetComponent<MissionManager>().missionSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex].mainMission.goalCnt + ")";
 
             //subMission
             resultUICanvas.transform.GetChild(7).GetComponentInChildren<Text>().text = "(" + MissionManager.missionComplete + " / " + "5 )";
-            resultUICanvas.transform.GetChild(8).GetComponentInChildren<Text>().text = "(" + "0" + " / " + "5 )";
+            resultUICanvas.transform.GetChild(8).GetComponentInChildren<Text>().text = "(" + MissionManager.enemyMissionComplete + " / " + "5 )";
         }
 
         StartCoroutine(GameOverCor());

@@ -32,6 +32,12 @@ public class MissionManager : MonoBehaviour
     static public int selectedSubMissionIndex;
     private bool[] missionCompleteBoolean = new bool[5]; 
     static public int missionComplete = 0;
+    static public int enemyMissionComplete = 0;
+
+    private bool[] missionCompleteEnemyBoolean = new bool[5];
+    private int[] missionEnemyCurrentCnt = new int[5];
+
+    private NetworkManager networkManager;
 
     //중복되지않게 메인미션 / 서브미션 부여
     private void RndMainMissionSet(int index)
@@ -61,12 +67,16 @@ public class MissionManager : MonoBehaviour
         {
             selectedMainMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerMissionIndex;
             selectedSubMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().subMissionIndex;
+
+            for (int i = 0; i < missionEnemyCurrentCnt.Length; i++)
+                missionEnemyCurrentCnt[i] = 0;
+            for (int i = 0; i < missionCompleteEnemyBoolean.Length; i++)
+                missionCompleteEnemyBoolean[i] = false;
         }
         else
         {
             selectedMainMissionIndex = UnityEngine.Random.Range(0, missionSet.Length);
             selectedSubMissionIndex = UnityEngine.Random.Range(0, missionSet.Length);
-
         }
 
         for (int i = 0; i < missionCompleteBoolean.Length; i++)
@@ -142,6 +152,7 @@ public class MissionManager : MonoBehaviour
     //한 턴 카운팅할때 사용
     public void MainMissionCounting(int val)
     {
+
         if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
         else
@@ -151,23 +162,42 @@ public class MissionManager : MonoBehaviour
     }
 
     //한 턴 카운팅할때 사용
-    public void SubMissionCounting(int val, int index)
+    public void SubMissionCounting(int val, int index, Identify identify)
     {
-        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        if(identify.Equals(Identify.ALLY))
         {
-            if (!missionCompleteBoolean[index])
+            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
             {
-                missionComplete += 1;
-                missionCompleteBoolean[index] = true;
+                if (!missionCompleteBoolean[index])
+                {
+                    missionComplete += 1;
+                    missionCompleteBoolean[index] = true;
+                }
+
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
             }
 
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
-        }
-            
-        else
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
+            else
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
 
-        ResetMissionDisplay();
+            ResetMissionDisplay();
+        }
+        else if (identify.Equals(Identify.ENEMY))
+        {
+            if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+            {
+                if (!missionCompleteEnemyBoolean[index])
+                {
+                    enemyMissionComplete += 1;
+                    missionCompleteEnemyBoolean[index] = true;
+                }
+
+                missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+            }
+
+            else
+                missionEnemyCurrentCnt[index] += val;
+        }
     }
 
     //누적카운팅할때 사용
@@ -182,23 +212,59 @@ public class MissionManager : MonoBehaviour
     }
 
     //누적카운팅할때 사용
-    public void SubMissionContinuedCounting(int val, int index)
+    public void SubMissionContinuedCounting(int val, int index, Identify identify)
     {
-        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        if (identify.Equals(Identify.ALLY))
         {
-            if (!missionCompleteBoolean[index])
+            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
             {
-                missionComplete += 1;
-                missionCompleteBoolean[index] = true;
+                if (!missionCompleteBoolean[index])
+                {
+                    missionComplete += 1;
+                    missionCompleteBoolean[index] = true;
+                }
+
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
             }
 
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+            else
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
+
+            ResetMissionDisplay();
         }
+        else if (identify.Equals(Identify.ENEMY))
+        {
+            if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+            {
+                if (!missionCompleteEnemyBoolean[index])
+                {
+                    enemyMissionComplete += 1;
+                    missionCompleteEnemyBoolean[index] = true;
+                }
 
-        else
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
+                missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+            }
 
-        ResetMissionDisplay();
+            else
+                missionEnemyCurrentCnt[index] = val;
+        }
     }
+    public int EnemyMainMissionCounting()
+    {
+        int cnt = 0;
 
+        //메인미션 101번, 비옥지형 100칸이상 설치
+        if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex == 0)
+            cnt = gameObject.GetComponent<TerrainGainCounting>().ModerationCounting(Identify.ENEMY);
+
+        //메인미션 102번, 한랭지형 100칸이상 설치
+        if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex == 1)
+            cnt = gameObject.GetComponent<TerrainGainCounting>().ColdCounting(Identify.ENEMY);
+
+        //메인미션 103번, 척박지형 100칸이상 설치
+        if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyMissionIndex == 2)
+            cnt = gameObject.GetComponent<TerrainGainCounting>().BarrenCounting(Identify.ENEMY);
+
+        return cnt;
+    }
 }
