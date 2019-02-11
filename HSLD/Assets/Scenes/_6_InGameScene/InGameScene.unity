@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22589,6 +22589,7 @@ GameObject:
   - component: {fileID: 823012264}
   - component: {fileID: 823012265}
   - component: {fileID: 823012266}
+  - component: {fileID: 823012267}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -22833,6 +22834,17 @@ MonoBehaviour:
   selectTerrainCardObj: {fileID: 1390485217}
   conditionABtn: {fileID: 1753012408}
   conditionBBtn: {fileID: 1062270084}
+--- !u!114 &823012267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478f4199924da73418c60546bf847a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &849838910
 GameObject:
   m_ObjectHideFlags: 0
