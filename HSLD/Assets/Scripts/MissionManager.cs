@@ -126,6 +126,7 @@ public class MissionManager : MonoBehaviour
         isTrigger = false;
     }
 
+    
     public void ResetMissionDisplay()
     {
         readyDisplayMainMissionObj.transform.GetChild(0).GetComponent<Text>().text = missionSet[selectedMainMissionIndex].mainMission.text;
@@ -138,6 +139,7 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    //한 턴 카운팅할때 사용
     public void MainMissionCounting(int val)
     {
         if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
@@ -148,6 +150,7 @@ public class MissionManager : MonoBehaviour
         ResetMissionDisplay();
     }
 
+    //한 턴 카운팅할때 사용
     public void SubMissionCounting(int val, int index)
     {
         if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
@@ -166,5 +169,36 @@ public class MissionManager : MonoBehaviour
 
         ResetMissionDisplay();
     }
-    
+
+    //누적카운팅할때 사용
+    public void MainMissionContinuedCounting(int val)
+    {
+        if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
+            missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
+        else
+            missionSet[selectedMainMissionIndex].mainMission.currentCnt = val;
+
+        ResetMissionDisplay();
+    }
+
+    //누적카운팅할때 사용
+    public void SubMissionContinuedCounting(int val, int index)
+    {
+        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        {
+            if (!missionCompleteBoolean[index])
+            {
+                missionComplete += 1;
+                missionCompleteBoolean[index] = true;
+            }
+
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+        }
+
+        else
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
+
+        ResetMissionDisplay();
+    }
+
 }

@@ -309,14 +309,6 @@ public class FlowSystem : MonoBehaviour
                 {
                     //비옥 - 병아리
                     case 1:
-                        //미션 - 101
-                        if (MissionManager.selectedMainMissionIndex == 0)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
-
-                        //미션 - 411
-                        if (MissionManager.selectedSubMissionIndex == 0)
-                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
-
                         //미션 - 500
                         if (MissionManager.selectedSubMissionIndex == 3 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
@@ -326,7 +318,7 @@ public class FlowSystem : MonoBehaviour
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
 
                         //미션 - 510
-                        if (MissionManager.selectedSubMissionIndex == 3 )
+                        if (MissionManager.selectedSubMissionIndex == 3)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
 
                         //미션 - 301
@@ -352,10 +344,6 @@ public class FlowSystem : MonoBehaviour
                         break;
                     //건조 - 뱀
                     case 2:
-                        //미션 - 103
-                        if (MissionManager.selectedMainMissionIndex == 2)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
-
                         //미션 - 210
                         if (MissionManager.selectedSubMissionIndex == 0)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
@@ -363,10 +351,6 @@ public class FlowSystem : MonoBehaviour
                         //미션 - 400
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
-
-                        //미션 - 511
-                        if (MissionManager.selectedSubMissionIndex == 3)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
@@ -398,17 +382,9 @@ public class FlowSystem : MonoBehaviour
                         break;
                     //한랭 - 펭귄
                     case 3:
-                        //미션 - 102
-                        if (MissionManager.selectedMainMissionIndex == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(CameraController.DiceCount);
-
                         //미션 - 200
                         if (MissionManager.selectedSubMissionIndex == 0 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
-
-                        //미션 - 211
-                        if (MissionManager.selectedSubMissionIndex == 0)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 3);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
@@ -442,14 +418,6 @@ public class FlowSystem : MonoBehaviour
                         break;
                     //바다 - 고래
                     case 4:
-                        //미션 - 201
-                        if (MissionManager.selectedSubMissionIndex == 0)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
-
-                        //미션 - 501
-                        if (MissionManager.selectedSubMissionIndex == 3)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(CameraController.DiceCount, 1);
-
                         //미션 - 520
                         if (MissionManager.selectedSubMissionIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
@@ -459,10 +427,6 @@ public class FlowSystem : MonoBehaviour
                         break;
                     //산 - 구름
                     case 5:
-                        //미션 - 201
-                        if (MissionManager.selectedSubMissionIndex == 0)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
-
                         //미션 - 401
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
                             GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);

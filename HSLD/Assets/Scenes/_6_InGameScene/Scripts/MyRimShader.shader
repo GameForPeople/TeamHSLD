@@ -23,7 +23,7 @@
 
 	void surf(Input IN, inout SurfaceOutput o) {
 		half4 c = tex2D(_MainTex, IN.uv_MainTex);
-
+		
 		o.Albedo = c.rgb * _Color;
 		float3 normal = normalize(IN.worldNormal);
 		float3 dir = normalize(IN.viewDir);
