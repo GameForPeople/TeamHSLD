@@ -58,6 +58,40 @@ public class FlowSystem : MonoBehaviour
     private GameObject lineObj;
     private List<Vector3> linePosList = new List<Vector3>();
 
+    //최적화 스크립트
+    private CardSystem cardSystem;
+    private EventCardManager eventCardManager;
+    private TurnSystem turnSystem;
+    private MissionManager missionManager;
+    private BuildOnPlanet buildOnPlanet;
+    private Transform planetTrans;
+
+    private void Start()
+    {
+        SoundManager.instance_.BGMChange(SoundManager.instance_.clips[14]);
+
+        for (int i = 0; i < currentCnt.Length; i++)
+            currentCnt[i] = 0;
+
+        //서버에서 데이터 가져오기
+        if (GameObject.Find("GameCores") != null)
+        {
+            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
+            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
+            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
+            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
+        }
+
+        cardSystem = gameObject.GetComponent<CardSystem>();
+        eventCardManager = gameObject.GetComponent<EventCardManager>();
+        turnSystem = gameObject.GetComponent<TurnSystem>();
+        missionManager = gameObject.GetComponent<MissionManager>();
+        buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
+        planetTrans = GameObject.FindWithTag("Planet").transform;
+    }
+
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
     IEnumerator DisplayEventWaitingTime(FLOW beforeFlow, float time)
     {
@@ -80,10 +114,10 @@ public class FlowSystem : MonoBehaviour
                 TurnSystem.isSetTerrainDone = false;
                 
                 //init
-                gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
-                gameObject.GetComponent<CardSystem>().CardCntUpdate();
-                gameObject.GetComponent<CardSystem>().pickedCard = null;
-                gameObject.GetComponent<CardSystem>().CardPosInit();
+                cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
+                cardSystem.CardCntUpdate();
+                cardSystem.pickedCard = null;
+                cardSystem.CardPosInit();
 
                 //line 
                 //for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
@@ -109,21 +143,14 @@ public class FlowSystem : MonoBehaviour
                 if(DiceSystem.isDouble /*|| 서브미션 달성시*/)
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
-                    gameObject.GetComponent<EventCardManager>().EventCardInstate();
+                    eventCardManager.EventCardInstate();
 
                 }
                 else
                 {
-                    if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
-                    {
-                        displayText.GetComponent<DisplayText>().text = "상대 턴";
-                        displayText.SetActive(true);
-                    }
-                    else
-                    {
-                        displayText.GetComponent<DisplayText>().text = "나의 턴";
-                        displayText.SetActive(true);
-                    }   
+                    displayText.GetComponent<DisplayText>().text = "나의 턴";
+                    displayText.SetActive(true);
+
                     yield return new WaitForSeconds(2.5f);
                     if (GameObject.Find("GameCores") != null)
                     {
@@ -131,8 +158,8 @@ public class FlowSystem : MonoBehaviour
                         gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                     }
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
-                    gameObject.GetComponent<TurnSystem>().TurnSet();
+                    turnSystem.currentTurn = TURN.ENEMYTURN;
+                    turnSystem.TurnSet();
                 }                
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:
@@ -142,8 +169,8 @@ public class FlowSystem : MonoBehaviour
                     gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
                 }
                 currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                turnSystem.currentTurn = TURN.ENEMYTURN;
+                turnSystem.TurnSet();
                 break;
             case FLOW.ENEMYTURN_ROLLINGDICE:
                 currentFlow = FLOW.ENEMYTURN_PICKINGCARD;
@@ -159,40 +186,20 @@ public class FlowSystem : MonoBehaviour
                     yield return new WaitForSeconds(2.5f);
 
                     currentFlow = FLOW.TO_ROLLINGDICE;
-                    gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                    gameObject.GetComponent<TurnSystem>().TurnSet();
+                    turnSystem.currentTurn = TURN.MYTURN;
+                    turnSystem.TurnSet();
                 }
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:          
                 currentFlow = FLOW.TO_ROLLINGDICE;
-                gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                turnSystem.currentTurn = TURN.MYTURN;
+                turnSystem.TurnSet();
                 break;
             //case FLOW.READY_DONE:
-            //    //gameObject.GetComponent<TurnSystem>().TurnSet();
+            //    //turnSystem.TurnSet();
             //    break;
         }
     }
-
-    private void Start()
-    {
-        SoundManager.instance_.BGMChange(SoundManager.instance_.clips[14]);
-
-        for (int i = 0; i < currentCnt.Length; i++)
-            currentCnt[i] = 0;
-
-        //서버에서 데이터 가져오기
-        if (GameObject.Find("GameCores") != null)
-        {
-            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
-            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
-            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
-            matchingCompleteCanvas.transform.GetChild(2).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyId;
-            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerCharacterIndex];
-            matchingCompleteCanvas.transform.parent.parent.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = charSprSet[GameObject.Find("NetworkManager").GetComponent<NetworkManager>().enemyCharacterIndex];
-        }
-    }
-
 
     IEnumerator DisplayLoadingCor()
     {
@@ -202,7 +209,7 @@ public class FlowSystem : MonoBehaviour
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
             yield return new WaitForSeconds(2.5f);
-            if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+            if (turnSystem.currentTurn.Equals(TURN.MYTURN))
                 displayText.GetComponent<DisplayText>().text = "나의 턴";
             else
                 displayText.GetComponent<DisplayText>().text = "상대 턴";
@@ -231,7 +238,7 @@ public class FlowSystem : MonoBehaviour
             displayText.GetComponent<DisplayText>().text = "GAME START!";
             displayText.SetActive(true);
             yield return new WaitForSeconds(2.5f);
-            if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+            if (turnSystem.currentTurn.Equals(TURN.MYTURN))
                 displayText.GetComponent<DisplayText>().text = "나의 턴";
             else
                 displayText.GetComponent<DisplayText>().text = "상대 턴";
@@ -268,11 +275,11 @@ public class FlowSystem : MonoBehaviour
                 readyCanvas.SetActive(false);
 
                 //init - card Cnt Update
-                gameObject.GetComponent<CardSystem>().CardCntUpdate();
+                cardSystem.CardCntUpdate();
                 StartCoroutine(DisplayLoadingCor());
                 break;
             case FLOW.READY_DONE:
-                gameObject.GetComponent<TurnSystem>().TurnSet();
+                turnSystem.TurnSet();
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 2.5f, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.READY_WAITING:
@@ -302,31 +309,31 @@ public class FlowSystem : MonoBehaviour
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
 
-                //Debug.Log("카드 인덱스 : " + gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
-                //Debug.Log(gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt);
+                //Debug.Log("카드 인덱스 : " + cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
+                //Debug.Log(cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt);
                 
-                switch (gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
+                switch (cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
                     //비옥 - 병아리
                     case 1:
                         //미션 - 500
                         if (MissionManager.selectedSubMissionIndex == 3 && CameraController.DiceCount > 6)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
-                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                        if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[0] += CameraController.DiceCount;
-                            if (currentCnt[0] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                                currentCnt[0] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                            if (currentCnt[0] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[0] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
                             maximumCnt = 0;
 
@@ -337,35 +344,35 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if(currentCnt[0] == maximumCnt)
-                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //건조 - 뱀
                     case 2:
                         //미션 - 210
                         if (MissionManager.selectedSubMissionIndex == 0)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 400
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
-                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                        if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[1] += CameraController.DiceCount;
-                            if (currentCnt[1] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                                currentCnt[1] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                            if (currentCnt[1] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[1] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
                             maximumCnt = 0;
 
                             for (int i = 0; i < currentCnt.Length; i++)
@@ -375,31 +382,31 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[1] == maximumCnt)
-                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //한랭 - 펭귄
                     case 3:
                         //미션 - 200
                         if (MissionManager.selectedSubMissionIndex == 0 && CameraController.DiceCount > 6)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
-                        if (MissionManager.selectedSubMissionIndex == 2 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                        if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 510
                         if (MissionManager.selectedSubMissionIndex == 3)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 2);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
                         {
                             currentCnt[2] += CameraController.DiceCount;
-                            if (currentCnt[2] > GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                                currentCnt[2] = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                            if (currentCnt[2] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                                currentCnt[2] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
                             maximumCnt = 0;
 
@@ -410,33 +417,33 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[2] == maximumCnt)
-                                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(maximumCnt, 1);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
                         randomVal = Random.Range(1, 4);
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //바다 - 고래
                     case 4:
                         //미션 - 520
-                        if (MissionManager.selectedSubMissionIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                        if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                            missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(4, 6);
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                     //산 - 구름
                     case 5:
                         //미션 - 401
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 1);
+                            missionManager.SubMissionCounting(1, 1);
 
                         //미션 - 520
-                        if (MissionManager.selectedSubMissionIndex == 3 && gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                        if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                            missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(7, 9);
-                        gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], gameObject.GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
@@ -447,7 +454,7 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_PICKINGEVENTSECLECTTERRAIN:
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:
-                if (gameObject.GetComponent<TurnSystem>().currentTurn.Equals(TURN.MYTURN))
+                if (turnSystem.currentTurn.Equals(TURN.MYTURN))
                 {
                     displayText.GetComponent<DisplayText>().text = "상대 턴";
                     displayText.SetActive(true);
@@ -472,8 +479,8 @@ public class FlowSystem : MonoBehaviour
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 0f));
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
-                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "나의 턴";
-                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                displayText.GetComponent<DisplayText>().text = "나의 턴";
+                displayText.SetActive(true);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC, 2.5f));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
@@ -531,11 +538,11 @@ public class FlowSystem : MonoBehaviour
             int enemyTerrainGain = 0;
             int allyTerrainGain = 0;
 
-            for (int i =0; i< GameObject.FindWithTag("Planet").transform.childCount; i++)
+            for (int i =0; i< planetTrans.childCount; i++)
             {
-                if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                if (planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
                     allyTerrainGain += 1;
-                else if (GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                else if (planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     enemyTerrainGain += 1;
             }
 

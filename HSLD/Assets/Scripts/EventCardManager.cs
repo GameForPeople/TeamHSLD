@@ -27,6 +27,7 @@ public class EventCardManager : MonoBehaviour
 
     private Material[] material;
 
+    //최적화 스크립트
     private FlowSystem flowsystem;
     private Transform planetTrans;
     private MissionManager missionManager;
