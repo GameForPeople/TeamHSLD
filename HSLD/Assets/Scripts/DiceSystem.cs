@@ -25,14 +25,19 @@ public class DiceSystem : MonoBehaviour
     static public bool isDiceDouble = false;            //이벤트카드로 인해 주사위를 더블할때
     private float time_;
 
+    private FlowSystem flowSystem;
+    private MissionManager missionManager;
+
     private void Start()
     {
         instance_ = this;
+        flowSystem = GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>();
+        missionManager = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>();
     }
 
     public void OnTrigger()
     {
-        if (!GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
         //init
@@ -43,7 +48,7 @@ public class DiceSystem : MonoBehaviour
     }
     public void OffTrigger()
     {
-        if (!GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
         isTriggerEnter = false;
@@ -944,7 +949,7 @@ public class DiceSystem : MonoBehaviour
 
         // 미션 - 300
         if (MissionManager.selectedSubMissionIndex == 1 && CameraController.DiceCount == 7)
-            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
+            missionManager.SubMissionCounting(1, 0);
 
 
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
@@ -955,7 +960,7 @@ public class DiceSystem : MonoBehaviour
         }
             
         //flow 변경
-        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
+        flowSystem.FlowChange(FLOW.TO_ROLLINGDICE);
     }
 
     //슬라이드 값 설정
@@ -979,7 +984,7 @@ public class DiceSystem : MonoBehaviour
 
     private void Update()
     {
-        if (isTriggerEnter && GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (isTriggerEnter && flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
             time_ += Time.deltaTime;
             if (time_ > 6f)

@@ -7,6 +7,7 @@ public class TerrainGainCounting : MonoBehaviour
     int terrainGain = 0;
     int enemyTerrainGain = 0;
 
+    //최적화 스크립트
     private Transform planetTrans;
     private MissionManager missionmanager;
 

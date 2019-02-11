@@ -24,6 +24,13 @@ public class CardSystem : MonoBehaviour
 
     public GameObject[] cardSet = new GameObject[5];
 
+    private FlowSystem flowSystem;
+
+    private void Start()
+    {
+        flowSystem = GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>();
+    }
+
     public void CardCntUpdate()
     {
         for (int i = 0; i < cardSet.Length; i++)
@@ -45,14 +52,14 @@ public class CardSystem : MonoBehaviour
         if (!isTriggerDone)
             return;
 
-        if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
         // 카드를 picking 해야할때를 제외하고는 줌인 / 아웃
         //if (cardSet[0].GetComponent<CardData>().data.currentZoom.Equals(ZOOMSTATE.OUT))
         //{
         //pick
-        if (GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGCARD) || GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
+        if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD) || flowSystem.currentFlow.Equals(FLOW.TO_PICKINGLOC))
         {
             
             //init - 지형설치 카드도 초기화할것.
@@ -76,7 +83,7 @@ public class CardSystem : MonoBehaviour
             SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[10], 1.0f);
 
             //flow 변경
-            GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGCARD);
+            flowSystem.FlowChange(FLOW.TO_PICKINGCARD);
         }
         ////줌아웃
         //else
