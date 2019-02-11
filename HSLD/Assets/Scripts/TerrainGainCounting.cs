@@ -124,6 +124,10 @@ public class TerrainGainCounting : MonoBehaviour
         if (MissionManager.selectedSubMissionIndex == 2)
             missionmanager.SubMissionContinuedCounting(ModerationCounting(Identify.ALLY), 3, Identify.ALLY);
 
+        //서브미션 420번, 한랭지형 30칸이상 설치
+        if (MissionManager.selectedSubMissionIndex == 2)
+            missionmanager.SubMissionContinuedCounting(ColdCounting(Identify.ALLY), 4, Identify.ALLY);
+
         //서브미션 501번, 바다지형 15칸이상 설치
         if (MissionManager.selectedSubMissionIndex == 3)
             missionmanager.SubMissionContinuedCounting(SeaCounting(Identify.ALLY), 1, Identify.ALLY);
@@ -131,6 +135,10 @@ public class TerrainGainCounting : MonoBehaviour
         //서브미션 511번, 척박지형 20칸이상 설치
         if (MissionManager.selectedSubMissionIndex == 3)
             missionmanager.SubMissionContinuedCounting(BarrenCounting(Identify.ALLY), 3, Identify.ALLY);
+
+        //서브미션 520번, 산지형 30칸이상 설치
+        if (MissionManager.selectedSubMissionIndex == 3)
+            missionmanager.SubMissionContinuedCounting(MountainCounting(Identify.ALLY), 4, Identify.ALLY);
 
         //네트워크상태일때
         if (GameObject.Find("GameCores") != null)
@@ -148,6 +156,10 @@ public class TerrainGainCounting : MonoBehaviour
         if (MissionManager.selectedSubMissionIndex == 2)
             missionmanager.SubMissionContinuedCounting(ModerationCounting(Identify.ENEMY), 3, Identify.ENEMY);
 
+        //서브미션 420번, 한랭지형 30칸이상 설치
+        if (MissionManager.selectedSubMissionIndex == 2)
+            missionmanager.SubMissionContinuedCounting(ColdCounting(Identify.ENEMY), 4, Identify.ENEMY);
+
         //서브미션 501번, 바다지형 15칸이상 설치
         if (MissionManager.selectedSubMissionIndex == 3)
             missionmanager.SubMissionContinuedCounting(SeaCounting(Identify.ENEMY), 1, Identify.ENEMY);
@@ -155,5 +167,9 @@ public class TerrainGainCounting : MonoBehaviour
         //서브미션 511번, 척박지형 20칸이상 설치
         if (MissionManager.selectedSubMissionIndex == 3)
             missionmanager.SubMissionContinuedCounting(BarrenCounting(Identify.ENEMY), 3, Identify.ENEMY);
+
+        //서브미션 520번, 산지형 30칸이상 설치
+        if (MissionManager.selectedSubMissionIndex == 3)
+            missionmanager.SubMissionContinuedCounting(MountainCounting(Identify.ENEMY), 4, Identify.ENEMY);
     }
 }
