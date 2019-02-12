@@ -62,7 +62,7 @@ public partial class NetworkManager : MonoBehaviour {
     IEnumerator ParsingServerIPCoroutine()
     {
         TitleSceneManager titleSceneManager = GameObject.Find("TitleSceneManager").GetComponent<TitleSceneManager>();
-        titleSceneManager.UI_OnOff_WaitParsingUI(true);
+        //titleSceneManager.UI_OnOff_WaitParsingUI(true);
 
         UnityWebRequest www = UnityWebRequest.Get("http://koreagamemaker.wixsite.com/hsld-server"); // 나중에 GitPage로 바꾸기.
         yield return www.SendWebRequest();
@@ -93,22 +93,26 @@ public partial class NetworkManager : MonoBehaviour {
 
             if (notifyNumString.Equals("0"))
             {
+                titleSceneManager.parsingServerCommand = 0;
                 titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 0 ( 현재 서버는 Dev 버전으로 동작중입니다. ) ");
                 //Debug.Log("NotifyNum은 0으로 서버는 정상적으로 작동하는 중입니다.");
             }
             else if (notifyNumString.Equals("1"))
             {
+                titleSceneManager.parsingServerCommand = 1;
                 titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 1 ( 현재 서버는 Live 버전으로 정상 동작중입니다. )");
                 //Debug.Log("NotifyNum은 1로 현재 서버는 작동하지 않습니다.");
             }
             else if (notifyNumString.Equals("2"))
             {
+                titleSceneManager.parsingServerCommand = 2;
                 titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 2 ( 현재 서버는 점검 중입니다. ) ");
                 //Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
             }
 
-            yield return new WaitForSeconds(2.0f);
-            titleSceneManager.UI_OnOff_WaitParsingUI(false);
+            // TitleSceneManager에서 해당 로직 처리함.
+            //yield return new WaitForSeconds(2.0f);
+            //titleSceneManager.UI_OnOff_WaitParsingUI(false);
         }
     }
 }

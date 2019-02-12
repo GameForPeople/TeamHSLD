@@ -16,17 +16,17 @@ public class AppQuitManager : MonoBehaviour {
         quitUI[0].SetActive(false);
     }
 
-    public void Quit(bool isDrawExitUI = false, int ExitType = 0)
+    public void Quit(bool isDrawExitUI = false, int ExitType = 0, int ExitTime = 5)
     {
         if(isDrawExitUI)
         {
-            quitTimeCount = 5;
+            quitTimeCount = ExitTime;
 
             if (ExitType == 1)
                 quitUI[0].SetActive(true);
 
         }
-        else quitTimeCount = 0;
+        else quitTimeCount = ExitTime;
 
         StartCoroutine("GameExitCoroutine");
     }
@@ -35,7 +35,6 @@ public class AppQuitManager : MonoBehaviour {
     {
         while (true)
         {
-
             quitTimeCount--;
 
             if (quitTimeCount <= 0)
@@ -49,7 +48,6 @@ public class AppQuitManager : MonoBehaviour {
 #endif
             }
             yield return new WaitForSeconds(1.0f);
-
         }
     }
 }

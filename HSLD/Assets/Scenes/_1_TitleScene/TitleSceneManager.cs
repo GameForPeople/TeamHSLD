@@ -10,11 +10,96 @@ public class TitleSceneManager : MonoBehaviour
     #region [ Release Func ]
 
     GameObject waitParsingUI;
+    public int parsingServerCommand;
 
     void Start()
     {
         waitParsingUI = GameObject.Find("Canvas").transform.Find("Image_WaitParsingUI").gameObject;
+
+        parsingServerCommand = -1;
+
+        StartCoroutine(HandleTitleSceneLogic());
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ParsingServerIP();
+    }
+
+    /*
+     * 1. 검은 화면 투명 - 불투명하게 하기
+     * 2. ControlNextLogic 함수 호출.
+     */
+    private IEnumerator HandleTitleSceneLogic()
+    {
+        GameObject titleBlackUI = GameObject.Find("Overlay_Canvas").transform.Find("Image_Black").gameObject;
+
+        // 검은 화면 투명하게 하기
+        float blackUIAlphaValue = 1.0f;
+        int loopCount = 0;
+
+        while(loopCount < 20)
+        {
+            blackUIAlphaValue -= 0.05f;
+            titleBlackUI.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, blackUIAlphaValue);
+            ++loopCount;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        // 검은 화면 안보이는 상황에서 1초 대기
+        titleBlackUI.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        yield return new WaitForSeconds(1.0f);
+
+        // 검은 화면 불투명하게 하기
+        blackUIAlphaValue = 0.0f;
+        loopCount = 0;
+
+        while (loopCount < 20)
+        {
+            blackUIAlphaValue += 0.05f;
+            titleBlackUI.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, blackUIAlphaValue);
+            ++loopCount;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        // 아직 파싱 server IP 상태일 경우, 대기해줌.
+        while (parsingServerCommand == -1)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // 다음 로직 제어.
+        ControlNextLogic();
+    }
+
+    private void ControlNextLogic()
+    {
+        // 현재 테스트 모드이면 테스트 관련 기능 버튼을 키고, 
+        if (parsingServerCommand == 0)
+        {
+            GameObject.Find("Overlay_Canvas").gameObject.SetActive(false);
+            StartCoroutine(DrawParsingUI());
+        }
+        // 정상 라이브 모드이면 바로 로그인 씐으로 이동해주고
+        else if (parsingServerCommand == 1)
+        {
+            UI_StartWithServer();
+        }
+        // 서버 닫힌 상태면 관련 UI출력해주고 종료.
+        else if (parsingServerCommand == 2)
+        {
+            DrawExitUI();
+            GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(false, 0, 5);
+        }
+    }
+
+    private IEnumerator DrawParsingUI()
+    {
+        UI_OnOff_WaitParsingUI(true);
+        yield return new WaitForSeconds(3.0f);
+        UI_OnOff_WaitParsingUI(false);
+    }
+
+    private void DrawExitUI()
+    {
+        GameObject.Find("Overlay_Canvas").transform.Find("OnOff").gameObject.SetActive(true);
     }
 
     // 실제 상용화 시, 생성자에서 해당 함수 호출이 필요합니다.
