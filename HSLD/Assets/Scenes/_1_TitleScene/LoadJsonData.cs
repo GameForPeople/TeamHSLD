@@ -39,6 +39,7 @@ public class LoadJsonData : MonoBehaviour {
             SetMaterial(MeshData[MeshNumber]["meshState"].ToString()); // Material 세팅
             if(MeshData[MeshNumber]["meshObj"].ToString() != null) // Object 세팅
             {
+                Debug.Log("Setting");
                 SetObject(MeshData[MeshNumber]["meshState"].ToString());
             }
             // MoveObject 세팅
@@ -79,7 +80,31 @@ public class LoadJsonData : MonoBehaviour {
 
     private void SetObject(string material)
     {
-
+        if (material == "DEFAULT")
+        {
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
+        }
+        if (material == "MODERATION")
+        {
+            Debug.Log("Moderation");
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
+        }
+        else if (material == "BARREN")
+        {
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
+        }
+        else if (material == "COLD")
+        {
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
+        }
+        else if (material == "SEA")
+        {
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.SEA);
+        }
+        else if (material == "MOUNTAIN")
+        {
+            gameObject.GetComponent<MeshController>().InstateTerrainObject(Terrain.MOUNTAIN);
+        }
     }
     
 }
