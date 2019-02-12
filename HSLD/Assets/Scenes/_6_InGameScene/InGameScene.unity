@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9880,6 +9880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdd9057a0ab79943ae3b3bd30f47387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  A_RotationVectors: {x: 11, y: 11, z: 11}
+  B_RotationVectors: {x: 11, y: 11, z: 11}
 --- !u!1 &369500355
 GameObject:
   m_ObjectHideFlags: 0
@@ -23826,7 +23828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceSlider: {fileID: 202679554}
   pointer: {fileID: 1441384404}
-  constValue: 5
+  constValue: 3
   doubleImg: {fileID: 498101227}
 --- !u!1 &876933951
 GameObject:
