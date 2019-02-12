@@ -37,10 +37,21 @@ public partial class InGameSceneManager : MonoBehaviour
     //YSH 190204
     public int diceValueForLoop;
 
+    //최적화 스크립트
+    private MissionManager missionManager;
+
+    private int maximumCnt = 0;
+    private int[] currentCnt = new int[3];
+
+
     void Start()
     {
         if (GameObject.Find("GameCores") == null)
             return;
+
+        missionManager = gameObject.GetComponent<MissionManager>();
+        for (int i = 0; i < currentCnt.Length; i++)
+            currentCnt[i] = 0;
 
         // -----
         GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
@@ -205,18 +216,7 @@ public partial class InGameSceneManager : MonoBehaviour
     //ref으로 index만 받자 !
     public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
-        Debug.Log("상대지형선택끝남");
-        if (recvTerrainType == 0)
-        {
-            Debug.Log("에러 : 1");
-            return;
-        }
-
-        if(recvTerrainType == 0)
-        {
-            Debug.Log("에러 : 2");
-            return;
-        }
+        //Debug.Log("상대지형선택끝남");
         //if (isfirstRecv)
         //{
         //    recvDiceValue++;
@@ -242,43 +242,145 @@ public partial class InGameSceneManager : MonoBehaviour
                 continue;
             }
 
-            if (recvTerrainType == 1)
+            switch(recvTerrainType)
             {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration(Identify.ENEMY);
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-            }
-            else if (recvTerrainType == 2)
-            {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(Identify.ENEMY); // setModeration() -> setBarren()
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-            }
-            else if (recvTerrainType == 3)
-            {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold(Identify.ENEMY);
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-            }
-            else if (recvTerrainType == 4)
-            {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea(Identify.ENEMY);
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-            }
-            else if (recvTerrainType == 5)
-            {
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain(Identify.ENEMY);
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-            }
-            else
-            {
-                Debug.Log("에러 : 3");
+                case 1:
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setModeration(Identify.ENEMY);
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+
+                    //미션 - 500
+                    if (MissionManager.selectedSubMissionIndex == 3 && diceValueForLoop > 6)
+                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+
+                    ////미션 - 420
+                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+
+                    //미션 - 510
+                    if (MissionManager.selectedSubMissionIndex == 3)
+                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+
+                    //미션 - 301
+                    if (MissionManager.selectedSubMissionIndex == 1)
+                    {
+                        currentCnt[0] += CameraController.DiceCount;
+                        if (currentCnt[0] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                            currentCnt[0] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+
+                        maximumCnt = 0;
+
+                        for (int j = 0; j < currentCnt.Length; j++)
+                            if (maximumCnt < currentCnt[j])
+                                maximumCnt = currentCnt[j];
+                            else
+                                continue;
+
+                        if (currentCnt[0] == maximumCnt)
+                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    }
+
+
+                    break;
+                case 2:
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setBarren(Identify.ENEMY); // setModeration() -> setBarren()
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+
+                    //미션 - 210
+                    if (MissionManager.selectedSubMissionIndex == 0)
+                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+
+                    //미션 - 400
+                    if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
+                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+
+                    ////미션 - 420
+                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+
+                    //미션 - 510
+                    if (MissionManager.selectedSubMissionIndex == 3)
+                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+
+                    //미션 - 301
+                    if (MissionManager.selectedSubMissionIndex == 1)
+                    {
+                        currentCnt[1] += CameraController.DiceCount;
+                        if (currentCnt[1] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                            currentCnt[1] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                        maximumCnt = 0;
+
+                        for (int j = 0; j < currentCnt.Length; i++)
+                            if (maximumCnt < currentCnt[j])
+                                maximumCnt = currentCnt[j];
+                            else
+                                continue;
+
+                        if (currentCnt[1] == maximumCnt)
+                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    }
+                    break;
+                case 3:
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold(Identify.ENEMY);
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+
+                    //미션 - 200
+                    if (MissionManager.selectedSubMissionIndex == 0 && diceValueForLoop > 6)
+                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+
+                    ////미션 - 420
+                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+
+                    //미션 - 510
+                    if (MissionManager.selectedSubMissionIndex == 3)
+                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+
+                    //미션 - 301
+                    if (MissionManager.selectedSubMissionIndex == 1)
+                    {
+                        currentCnt[2] += CameraController.DiceCount;
+                        if (currentCnt[2] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                            currentCnt[2] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+
+                        maximumCnt = 0;
+
+                        for (int j = 0; j < currentCnt.Length; j++)
+                            if (maximumCnt < currentCnt[j])
+                                maximumCnt = currentCnt[j];
+                            else
+                                continue;
+
+                        if (currentCnt[2] == maximumCnt)
+                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    }
+                    break;
+                case 4:
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea(Identify.ENEMY);
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+
+                    ////미션 - 520
+                    //if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+                    break;
+                case 5:
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setMountain(Identify.ENEMY);
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
+                    gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
+
+                    //미션 - 401
+                    if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
+                        missionManager.SubMissionCounting(1, 1, Identify.ENEMY);
+
+                    ////미션 - 520
+                    //if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+                    break;
             }
         }
-
-        //gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGLOC);
         Camera.main.GetComponent<PCverPIcking>().FlagSetting();
         AllMeshController.myPlanet.GetComponent<AllMeshController>().AllPriorSetting(); // PriorSetting
         recvTerrainType = 0;

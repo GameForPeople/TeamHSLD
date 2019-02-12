@@ -27,10 +27,21 @@ public class EventCardManager : MonoBehaviour
 
     private Material[] material;
 
+    //최적화 스크립트
+    private FlowSystem flowsystem;
+    private Transform planetTrans;
+    private MissionManager missionManager;
+    private BuildOnPlanet buildOnPlanet;
+
     private void Start()
     {
         for (int i = 0; i < check.Length; i++)
             check[i] = false;
+
+        flowsystem = gameObject.GetComponent<FlowSystem>();
+        planetTrans = GameObject.FindWithTag("Planet").transform;
+        missionManager = gameObject.GetComponent<MissionManager>();
+        buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
     }
 
     public void RandomEventCardSelect(int index)
@@ -92,67 +103,67 @@ public class EventCardManager : MonoBehaviour
         {
             //지형파괴 - 타겟 : 적
             case 101:
-                for(int i =0; i<GameObject.FindWithTag("Planet").transform.childCount;i++)
+                for(int i =0; i<planetTrans.childCount;i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
-                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        planetTrans.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials;
                         material[0] = Resources.Load<Material>("M_Cannot");
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                        planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials = material;
                     }
                 }
-                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "파괴할 상대의 구역을 선택하세요.";
-                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                flowsystem.displayText.GetComponent<DisplayText>().text = "파괴할 상대의 구역을 선택하세요.";
+                flowsystem.displayText.SetActive(true);
                 break;
             //소유권 전환 - 타겟 : 적
             case 111:
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
-                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        planetTrans.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials;
                         material[0] = Resources.Load<Material>("M_Cannot");
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                        planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials = material;
                     }
                 }
-                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "소유권을 전환할 상대의 구역을 선택하세요.";
-                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                flowsystem.displayText.GetComponent<DisplayText>().text = "소유권을 전환할 상대의 구역을 선택하세요.";
+                flowsystem.displayText.SetActive(true);
                 break;
             //속성변경 - 타겟 : 나
             case 201:
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
-                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        planetTrans.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials;
                         material[0] = Resources.Load<Material>("M_Cannot");
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                        planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials = material;
                     }
                 }
-                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 나의 구역을 선택하세요.";
-                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                flowsystem.displayText.GetComponent<DisplayText>().text = "속성 변경 할 나의 구역을 선택하세요.";
+                flowsystem.displayText.SetActive(true);
                 break;
                 //속성변경 - 타겟 : 적
             case 202:
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
-                        material = GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials;
+                        planetTrans.GetChild(i).GetComponent<MeshController>().SavedBeforeMat();
+                        material = planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials;
                         material[0] = Resources.Load<Material>("M_Cannot");
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().materials = material;
+                        planetTrans.GetChild(i).GetComponent<MeshRenderer>().materials = material;
                     }
                 }
-                gameObject.GetComponent<FlowSystem>().displayText.GetComponent<DisplayText>().text = "속성 변경 할 상대의 구역을 선택하세요.";
-                gameObject.GetComponent<FlowSystem>().displayText.SetActive(true);
+                flowsystem.displayText.GetComponent<DisplayText>().text = "속성 변경 할 상대의 구역을 선택하세요.";
+                flowsystem.displayText.SetActive(true);
                 break;
         }
         yield return new WaitForSeconds(2.5f);
-        gameObject.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
+        flowsystem.currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
     }
 
     //사용 할 경우
@@ -169,12 +180,12 @@ public class EventCardManager : MonoBehaviour
 
                 //미션 - 330
                 if (MissionManager.selectedSubMissionIndex == 1)
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 4);
+                    missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                 //TurnSystem.enemyEventCardDefense = true;
                 //나중에 서버랑 맞춰보기
 
-                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             //주사위 두배
             case 401:
@@ -182,7 +193,7 @@ public class EventCardManager : MonoBehaviour
                 DiceSystem.instance_.doubleImg.SetActive(true);
                 DiceSystem.instance_.doubleImg.AddComponent<IsDoubleImg>();
                 DiceSystem.isDiceDouble = true;
-                gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             default:
                 StartCoroutine(UseCardCor());
@@ -197,7 +208,7 @@ public class EventCardManager : MonoBehaviour
         if (GameObject.Find("NetworkManager") != null)
             GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
 
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+        flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
 
     public void PickLocDone(GameObject obj, Terrain terrainType)
@@ -215,12 +226,12 @@ public class EventCardManager : MonoBehaviour
                 }
 
                 connectObjs.Clear();
-                AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                        planetTrans.GetChild(i).GetComponent<MeshController>().ReturnMat();
                     }
                 }
 
@@ -231,25 +242,13 @@ public class EventCardManager : MonoBehaviour
                 for (int i = 0; i < connectObjs.Count; i++)
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
 
-                //미션 - 103
-                if (MissionManager.selectedMainMissionIndex == 2 && terrainType == Terrain.BARREN)
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
-
-                //미션 - 102
-                if (MissionManager.selectedMainMissionIndex == 1 && terrainType == Terrain.COLD)
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
-
-                //미션 - 101
-                if (MissionManager.selectedMainMissionIndex == 0 && terrainType == Terrain.MODERATION)
-                    GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().MainMissionCounting(connectObjs.Count);
-
                 connectObjs.Clear();
-                AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                        planetTrans.GetChild(i).GetComponent<MeshController>().ReturnMat();
                     }
                 }
                 break;
@@ -257,12 +256,12 @@ public class EventCardManager : MonoBehaviour
             case 201:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
-                AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                flowsystem.currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                        planetTrans.GetChild(i).GetComponent<MeshController>().ReturnMat();
                     }
                 }
                 break;
@@ -270,12 +269,12 @@ public class EventCardManager : MonoBehaviour
             case 202:
                 ConnectObj(obj, terrainType);
                 selectTerrainCardObj.SetActive(true);
-                AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
-                for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
+                flowsystem.currentFlow = FLOW.TO_PICKINGEVENTSECLECTTERRAIN;
+                for (int i = 0; i < planetTrans.childCount; i++)
                 {
-                    if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
+                    if (!planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))
                     {
-                        GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().ReturnMat();
+                        planetTrans.GetChild(i).GetComponent<MeshController>().ReturnMat();
                     }
                 }
                 break;
@@ -319,7 +318,7 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
                 }
                     
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
+                buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.BARREN:
                 for (int i = 0; i < connectObjs.Count; i++)
@@ -328,7 +327,7 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
                 }
                     
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
+                buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.COLD:
                 for (int i = 0; i < connectObjs.Count; i++)
@@ -337,13 +336,13 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
                 }
                     
-                gameObject.GetComponent<BuildOnPlanet>().EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
+                buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
         }
 
         selectTerrainCardObj.SetActive(false);
         connectObjs.Clear();
-        AllMeshController.IngameManager.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+        flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
 
     public void CheckingMesh(GameObject obj, Terrain terrainType)

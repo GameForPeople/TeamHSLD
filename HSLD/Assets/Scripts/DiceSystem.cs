@@ -7,6 +7,7 @@ public class DiceSystem : MonoBehaviour
 {
     public Slider diceSlider;
     public static int getDiceNum;
+    public GameObject pointer;
     private int diceValue;
     static public bool isDouble;                //주사위가 더블이 나왔을때
     private int rndTmpValue;
@@ -25,14 +26,19 @@ public class DiceSystem : MonoBehaviour
     static public bool isDiceDouble = false;            //이벤트카드로 인해 주사위를 더블할때
     private float time_;
 
+    private FlowSystem flowSystem;
+    private MissionManager missionManager;
+
     private void Start()
     {
         instance_ = this;
+        flowSystem = GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>();
+        missionManager = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>();
     }
 
     public void OnTrigger()
     {
-        if (!GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
         //init
@@ -43,24 +49,24 @@ public class DiceSystem : MonoBehaviour
     }
     public void OffTrigger()
     {
-        if (!GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
         isTriggerEnter = false;
         //0123
-        if ((int)gaze < 4)
+        if ((int)(gaze*10) < 4)
             RollingDice(1);
 
         //456
-        else if ((int)gaze > 3 && (int)gaze < 7)
+        else if ((int)(gaze * 10) > 3 && (int)gaze < 7)
             RollingDice(2);
 
         //78
-        else if ((int)gaze > 6 && (int)gaze < 9)
+        else if ((int)(gaze * 10) > 6 && (int)gaze < 9)
             RollingDice(3);
 
         //9
-        else if ((int)gaze > 8)
+        else if ((int)(gaze * 10) > 8)
             RollingDice(4);
     }
 
@@ -73,6 +79,7 @@ public class DiceSystem : MonoBehaviour
     //슬라이드 값을 바탕으로 다이스 눈 설정.
     public void RollingDice(int index)
     {
+        
         switch(index)
         {
             case 1:
@@ -944,7 +951,7 @@ public class DiceSystem : MonoBehaviour
 
         // 미션 - 300
         if (MissionManager.selectedSubMissionIndex == 1 && CameraController.DiceCount == 7)
-            GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().SubMissionCounting(1, 0);
+            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
 
 
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
@@ -955,7 +962,7 @@ public class DiceSystem : MonoBehaviour
         }
             
         //flow 변경
-        GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().FlowChange(FLOW.TO_ROLLINGDICE);
+        flowSystem.FlowChange(FLOW.TO_ROLLINGDICE);
     }
 
     //슬라이드 값 설정
@@ -973,13 +980,14 @@ public class DiceSystem : MonoBehaviour
             gaze -= (Time.deltaTime * constValue);
 
         diceSlider.value = gaze;
+        pointer.transform.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 92), new Vector3(0, 0, -95), gaze);
         //gameObject.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
-        diceSlider.fillRect.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
+        //diceSlider.fillRect.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
     }
 
     private void Update()
     {
-        if (isTriggerEnter && GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_ROLLINGDICE))
+        if (isTriggerEnter && flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
         {
             time_ += Time.deltaTime;
             if (time_ > 6f)
