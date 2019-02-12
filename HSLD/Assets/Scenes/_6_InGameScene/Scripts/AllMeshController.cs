@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllMeshController : MonoBehaviour {
+public class AllMeshController : MonoBehaviour
+{
 
-    const int MaxMesh = 321;
     public static bool once;
 
     public static GameObject IngameManager;
@@ -23,10 +23,10 @@ public class AllMeshController : MonoBehaviour {
     void Start () {
         once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
-        myPlanet = GameObject.Find("Sphere_320Objects_40X");
+        myPlanet = GameObject.FindWithTag("Planet");
         //PickContainer = new int[12];
         PickContainer = new List<int>();
-        AllContainer = new GameObject[MaxMesh];
+        AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
         if(instance_ == null)
             instance_ = this;
     }
@@ -44,7 +44,7 @@ public class AllMeshController : MonoBehaviour {
 
     public void MakeAllContainer()
     {
-        for (int i = 1; i < MaxMesh; i++)
+        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
         {
             AllContainer[i] = GameObject.Find(i.ToString());
             if (AllContainer[i].GetComponent<MeshController>().isFlag) // 해당 메시가 Flagable이라면?
@@ -59,7 +59,7 @@ public class AllMeshController : MonoBehaviour {
 
     public void SearchALL()
     {
-        for (int i = 1; i <= MaxMesh - 1; i++)
+        for (int i = 1; i <= GameObject.FindWithTag("Planet").transform.childCount; i++)
         {
             if (AllContainer[i].GetComponent<MeshController>().isFixed == true)
             {
@@ -173,7 +173,7 @@ public class AllMeshController : MonoBehaviour {
 
     public void AllPriorSetting()
     {
-        for (int i = 1; i < MaxMesh; i++)
+        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
         {
             AllContainer[i].GetComponent<MeshController>().priorMaterial = AllContainer[i].GetComponent<MeshRenderer>().material;
             AllContainer[i].GetComponent<MeshController>().priorState = AllContainer[i].GetComponent<MeshController>().priorState;

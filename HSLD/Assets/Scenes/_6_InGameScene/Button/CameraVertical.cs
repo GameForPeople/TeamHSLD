@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class CameraVertical : MonoBehaviour {
     public Camera mainCamera;
-    public GameObject MyPlanet;
-    public Transform MyPlanet_Pos;
+    private GameObject MyPlanet;
     public float RotationSensitivity;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        MyPlanet = GameObject.FindWithTag("Planet");
         //MyPlanet = GameObject.Find("Sphere_320Objects_40X");
         //mainCamera = Camera.main;
     }

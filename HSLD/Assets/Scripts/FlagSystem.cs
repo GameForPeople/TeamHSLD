@@ -6,10 +6,11 @@ public class FlagSystem : MonoBehaviour
 {
     public CameraVertical cameravertical;
     public CameraHorizontal camerahorizontal;
-    public GameObject myPlanet;
+    [HideInInspector] public GameObject myPlanet;
 
     private void Start()
     {
+        myPlanet = GameObject.FindWithTag("Planet");
         SpinRandom();
     }
 

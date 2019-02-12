@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_6_InGameScene/InGameScene.unity
     guid: 114fbbeb5fed8bc44ae861983dd621d6
+  - enabled: 1
+    path: Assets/Scenes/_7_InGameSmallVerScene/InGameSmallVerSceneunity.unity
+    guid: d573ebdcfbbd4db489b26f1922a8787c
   m_configObjects: {}

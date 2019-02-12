@@ -5,7 +5,7 @@ using UnityEngine;
 public class PCverPIcking : MonoBehaviour
 {
     public Camera mainCamera;
-    public GameObject myPlanet;
+    private GameObject myPlanet;
     private GameObject PickedMeshObj;
     public static bool isDominatedCheck; // 턴이 넘어가지 않아 아직 미정인 상태
     public static bool isDominatedConfirm; // 턴이 넘어가서 확정된 상태
@@ -19,7 +19,7 @@ public class PCverPIcking : MonoBehaviour
 
     private void Start()
     {
-        myPlanet = GameObject.Find("Sphere_320Objects_40X");
+        myPlanet = GameObject.FindWithTag("Planet");
         isDominatedCheck = false;
         isDominatedConfirm = false;
     }

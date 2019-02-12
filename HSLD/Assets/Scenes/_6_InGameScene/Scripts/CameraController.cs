@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform MyPlanet;
+    private Transform MyPlanet;
     public Camera mainCamera;
     private Vector2 rotateAmount;
 
@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        MyPlanet = GameObject.FindWithTag("Planet").transform;
         myTransform = GetComponent<Transform>();
         myTurn = true;
         Once = true;
