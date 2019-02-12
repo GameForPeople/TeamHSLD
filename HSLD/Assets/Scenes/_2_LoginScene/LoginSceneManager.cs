@@ -27,6 +27,8 @@ public class LoginSceneManager : MonoBehaviour {
         {
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
         }
+
+        StartCoroutine(LoginSceneAnimation());
     }
 
     public void UI_SignInButton()
@@ -119,7 +121,49 @@ public class LoginSceneManager : MonoBehaviour {
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
     }
 
+    IEnumerator LoginSceneAnimation()
+    {
+        GameObject Canvas2D = GameObject.Find("Canvas_2D").gameObject;
+
+        GameObject Image_Black = Canvas2D.transform.Find("Image_Black").gameObject;
+
+        int loopCount = 0;
+        float sizeCount = 0.0f;
+
+        while(loopCount < 30)
+        {
+            sizeCount += 0.03f;
+            Image_Black.transform.localScale = new Vector3(1.0f, sizeCount, 1.0f);
+
+            ++loopCount;
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject Image_Logo = Canvas2D.transform.Find("Image_Logo").gameObject;
+
+        loopCount = 0;
+        sizeCount = 0.0f;
+
+        while (loopCount < 30)
+        {
+            sizeCount += 0.03f;
+            Image_Logo.transform.localScale = new Vector3(1.0f, sizeCount, 1.0f);
+
+            ++loopCount;
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        Canvas2D.transform.Find("InputField_ID").gameObject.SetActive(true);
+        Canvas2D.transform.Find("SignIn_Button").gameObject.SetActive(true);
+        Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
+        Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+    }
     #endregion
+
 
     #region [ Old Func ]
 
