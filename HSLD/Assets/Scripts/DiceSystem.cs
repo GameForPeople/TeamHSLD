@@ -7,6 +7,7 @@ public class DiceSystem : MonoBehaviour
 {
     public Slider diceSlider;
     public static int getDiceNum;
+    public GameObject pointer;
     private int diceValue;
     static public bool isDouble;                //주사위가 더블이 나왔을때
     private int rndTmpValue;
@@ -53,19 +54,19 @@ public class DiceSystem : MonoBehaviour
 
         isTriggerEnter = false;
         //0123
-        if ((int)gaze < 4)
+        if ((int)(gaze*10) < 4)
             RollingDice(1);
 
         //456
-        else if ((int)gaze > 3 && (int)gaze < 7)
+        else if ((int)(gaze * 10) > 3 && (int)gaze < 7)
             RollingDice(2);
 
         //78
-        else if ((int)gaze > 6 && (int)gaze < 9)
+        else if ((int)(gaze * 10) > 6 && (int)gaze < 9)
             RollingDice(3);
 
         //9
-        else if ((int)gaze > 8)
+        else if ((int)(gaze * 10) > 8)
             RollingDice(4);
     }
 
@@ -78,6 +79,7 @@ public class DiceSystem : MonoBehaviour
     //슬라이드 값을 바탕으로 다이스 눈 설정.
     public void RollingDice(int index)
     {
+        
         switch(index)
         {
             case 1:
@@ -978,8 +980,9 @@ public class DiceSystem : MonoBehaviour
             gaze -= (Time.deltaTime * constValue);
 
         diceSlider.value = gaze;
+        pointer.transform.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 92), new Vector3(0, 0, -95), gaze);
         //gameObject.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
-        diceSlider.fillRect.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
+        //diceSlider.fillRect.GetComponent<Image>().color = Color.Lerp(initColor, desColor, gaze);
     }
 
     private void Update()
