@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
         myTurn = true;
         Once = true;
         TurnChange = true;
+        mainCamera.farClipPlane = 150;
     }
 
     public void TurnVertical(bool isUp)
@@ -137,6 +138,8 @@ public class CameraController : MonoBehaviour
                     priorPosition = myTransform.position;
                     myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
                 }
+
+                mainCamera.farClipPlane = fdistance;
             }
         }
 

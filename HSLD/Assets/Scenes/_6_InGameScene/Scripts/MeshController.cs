@@ -262,13 +262,6 @@ public class MeshController : MonoBehaviour {
             yield return null;
         }
         InstateTerrainObject(terrainstate);
-
-        //for (int i = 0; i < lineList.Count; i++)
-        //{
-        //    lineList[i].SetActive(true);
-        //    lineList[i].transform.GetChild(0).rotation = Quaternion.FromToRotation(lineList[i].transform.GetChild(0).transform.up, (gameObject.transform.position - JointMesh[i].transform.position).normalized) * lineList[i].transform.GetChild(0).rotation;
-        //}
-
     }
 
     public IEnumerator MoveDownCor()
@@ -305,27 +298,22 @@ public class MeshController : MonoBehaviour {
            
             if (picked.name.Equals("TerrainCardImg1"))
             {
-                //Debug.Log("setModeration");
                 setModeration(Identify.ALLY);
             }
             else  if (picked.name.Equals("TerrainCardImg2"))
             {
-                //Debug.Log("setBarren");
                 setBarren(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg3"))
             {
-                //Debug.Log("TerrainCardImg3");
                 setCold(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg4"))
             {
-                //Debug.Log("setSea");
                 setSea(Identify.ALLY);
             }
             else if (picked.name.Equals("TerrainCardImg5"))
             {
-                //Debug.Log("setMountain");
                 setMountain(Identify.ALLY);
             }
         }

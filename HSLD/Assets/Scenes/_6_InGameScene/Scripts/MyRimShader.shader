@@ -6,6 +6,8 @@
 	}
 	SubShader{
 	Tags{ "RenderType" = "Transparent" "Queue" = "Transparent" }
+	Cull Back
+	ZWrite On
 
 	CGPROGRAM
 	#pragma surface surf Lambert alpha
