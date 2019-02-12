@@ -93,7 +93,7 @@ public class TitleSceneManager : MonoBehaviour
     private IEnumerator DrawParsingUI()
     {
         UI_OnOff_WaitParsingUI(true);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(0.1f);
         UI_OnOff_WaitParsingUI(false);
     }
 
@@ -166,7 +166,10 @@ public class TitleSceneManager : MonoBehaviour
     // Test Function 1128 in Dice
     public void UI_DiceTest()
     {
-        GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(6, 6);
+        int value = Random.Range(1, 7);
+
+        Debug.Log("주사위 값은 :" + value);
+        GameObject.Find("_DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(value, value);
     }
 
     // Test For Byte Size
