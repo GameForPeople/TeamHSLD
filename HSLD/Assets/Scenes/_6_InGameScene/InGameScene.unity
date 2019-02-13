@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9379,8 +9379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
-  MyPlanet: {fileID: 1132190347}
-  MyPlanet_Pos: {fileID: 1275639254}
   RotationSensitivity: 10
 --- !u!114 &318329057
 MonoBehaviour:
@@ -10808,7 +10806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed86296dd86ded4fbe6cb0715d7c17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyPlanet: {fileID: 1275639254}
   mainCamera: {fileID: 374445972}
   orthoZoomSpeed: 0.04
   minDistance: 150
@@ -10845,7 +10842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
-  myPlanet: {fileID: 0}
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
@@ -19579,7 +19575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
-  MyPlanet: {fileID: 1132190347}
   MyPlanet_Pos: {fileID: 1275639254}
   RotationSensitivity: 10
 --- !u!114 &668513553
@@ -31584,7 +31579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
-  MyPlanet: {fileID: 1132190347}
   MyPlanet_Pos: {fileID: 1275639254}
   RotationSensitivity: 10
 --- !u!114 &1055431471
@@ -50040,8 +50034,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
-  MyPlanet: {fileID: 1132190347}
-  MyPlanet_Pos: {fileID: 1275639254}
   RotationSensitivity: 10
 --- !u!114 &1694394057
 MonoBehaviour:
