@@ -135,6 +135,9 @@ public partial class NetworkManager : MonoBehaviour {
     ////////////////////////////////
 
     public string iP_ADDRESS;
+
+    public string AWS_PUBLIC_IP = "13.209.70.221";
+
     private const int SERVER_PORT = 9000;
     private const string CLIENT_VERSION = "181023";
 

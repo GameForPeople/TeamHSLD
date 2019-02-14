@@ -70,6 +70,7 @@
 #define		MAX_ID_LEN			30
 #define		BUF_SIZE			100
 
+#define		AWS_PUBLIC_IP		"13.209.70.221"
 #define		SERVER_PORT			9000
 #define		SERVER_UDP_PORT		9001
 

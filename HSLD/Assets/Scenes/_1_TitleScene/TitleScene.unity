@@ -7301,7 +7301,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272330223}
-        m_MethodName: UI_TestLoadUI
+        m_MethodName: UI_ChangeServerIPToAWSPublicIP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10931,6 +10931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnNetwork: 0
   iP_ADDRESS: 
+  AWS_PUBLIC_IP: 13.209.70.221
   networkSyncLock: 0
   recvType: 0
   sendType: 0
@@ -20260,7 +20261,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Test LoadUI
+  m_Text: Test AWS SERVER
 --- !u!222 &2055823957
 CanvasRenderer:
   m_ObjectHideFlags: 0

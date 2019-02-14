@@ -155,7 +155,7 @@ void IOCPServer::_GetExternalIP(char *ip)
 	}
 }
 
-void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
+void IOCPServer::_PrintServerInfoUI(const SERVER_INIT_TYPE InIsTrueLoadExternalIP)
 {
 	char* retIPChar;
 	retIPChar = new char[20]; // IPv4가 20 char보다 클일 죽어도 없음.
@@ -166,7 +166,7 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 	printf("■                                ver 2.5 190205\n");
 	printf("■\n");
 
-	if (InIsTrueLoadExternalIP) {
+	if (InIsTrueLoadExternalIP == SERVER_INIT_TYPE::EXTERNAL_IP) {
 		printf("■    IP Address : ExternalIP(%s) \n", retIPChar);
 
 		// For Test! Extern IP == HSLD WebServer IP
@@ -224,8 +224,13 @@ void IOCPServer::_PrintServerInfoUI(const bool& InIsTrueLoadExternalIP)
 			//delete networkInterFace;
 		}();
 	}
-	else {
+	else if (InIsTrueLoadExternalIP == SERVER_INIT_TYPE::LOCAL_HOST) 
+	{
 		printf("■    IP Address : LocalHost(127.0.0.1) \n");
+	}
+	else if (InIsTrueLoadExternalIP == SERVER_INIT_TYPE::PUBLIC_IP)
+	{
+		printf("■    IP Address : AWS Public(13.209.70.221) \n");
 	}
 
 	printf("■    Server Port : %d \n", SERVER_PORT);
@@ -606,7 +611,7 @@ void IOCPServer::_ManagerLoop()
 	while (7)
 	{
 		Sleep(1000);
-		std::cout << "\n [ManagerCommand] 0) 종료 1) 전체공지 2) 접속현황 : ";
+		std::cout << "\n [ManagerCommand] 0) Terminate 1) Announcement 2) Server Status : ";
 		std::cin >> inputtedManagerCommand;
 		std::rewind(stdin);
 

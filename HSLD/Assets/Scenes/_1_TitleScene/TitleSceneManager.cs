@@ -110,6 +110,13 @@ public class TitleSceneManager : MonoBehaviour
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
     }
 
+    public void UI_ChangeServerIPToAWSPublicIP()
+    {
+        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().iP_ADDRESS = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().AWS_PUBLIC_IP;
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork = true;
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
+    }
+
     public void UI_OnOff_WaitParsingUI(bool InIsActive)
     {
         waitParsingUI.SetActive(InIsActive);

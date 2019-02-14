@@ -1,4 +1,4 @@
-﻿#define UDP
+﻿//#define UDP
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,6 +78,7 @@ public partial class NetworkManager : MonoBehaviour {
             int index2 = www.downloadHandler.text.IndexOf(".HSLD", index1);
 
             iP_ADDRESS = www.downloadHandler.text.Substring(index1, index2 - index1);
+
             // Or retrieve results as binary data
             //Debug.Log("Server의 IP는 : " + iP_ADDRESS);
 

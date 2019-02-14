@@ -37,6 +37,14 @@ PauseThreadList
 */
 
 class IOCPServer {
+public:
+	enum class SERVER_INIT_TYPE : int
+	{
+		EXTERNAL_IP = 1
+		, LOCAL_HOST = 2
+		, PUBLIC_IP = 3
+	};
+
 private:
 	WSADATA				wsa;
 	HANDLE				hIOCP;
@@ -55,16 +63,16 @@ private:
 	std::vector<unique_ptr<SCENE_NETWORK_MANAGER::BaseScene>> sceneNetworkManagerCont;
 
 public:
-	IOCPServer(bool InIsTrueLoadExternIP) 
-		:	wsa()
-		,	hIOCP()
-		,	listenSocket()
-		,	serverAddr()
-		,	pUserData(new UserDataManager())
-		,	pRoomData(new GameRoomManager())
-		,	pUdpManager(new UDPManager())
+	IOCPServer(const SERVER_INIT_TYPE InServerInitType)
+		: wsa()
+		, hIOCP()
+		, listenSocket()
+		, serverAddr()
+		, pUserData(new UserDataManager())
+		, pRoomData(new GameRoomManager())
+		, pUdpManager(new UDPManager())
 	{
-		Init(InIsTrueLoadExternIP);
+		Init(InServerInitType);
 	}
 
 	~IOCPServer()
@@ -85,7 +93,7 @@ public:
 	
 public:
 	// Init Server
-	void Init(bool InIsTrueLoadExternalIP)
+	void Init(const SERVER_INIT_TYPE InIsTrueLoadExternalIP)
 	{
 		_wsetlocale(LC_ALL, L"Korean");
 
@@ -114,7 +122,7 @@ private:
 	//Init
 	void _GetExternalIP(char *ip);
 
-	void _PrintServerInfoUI(const bool& InIsTrueLoadExternalIP = true);	// 서버 관리자에게 필요한 UI를 띄어줍니다.
+	void _PrintServerInfoUI(const SERVER_INIT_TYPE InIsTrueLoadExternalIP);	// 서버 관리자에게 필요한 UI를 띄어줍니다.
 	
 	//void LoadUserData();
 	
