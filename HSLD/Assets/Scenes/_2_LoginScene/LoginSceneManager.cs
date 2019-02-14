@@ -40,6 +40,26 @@ public class LoginSceneManager : MonoBehaviour {
         //PWStringBuffer = GameObject.Find("InputField_PW").transform.Find("Text").gameObject.GetComponent<Text>().text;
         //PWBuffer = Int32.Parse(PWStringBuffer);
 
+        //아이디 글자 수 검사
+        if(IDBuffer.Length > 19)
+        {
+            Debug.Log("아이디 길이가 20 이상입니다. : " + IDBuffer.Length /*+ "PW : " + PWBuffer*/);
+            return;
+        }
+
+        bool isInputtedIdIsRightFormat = false;
+
+        // 아이디 무결성 검사.
+        for (int i = 0; i < IDBuffer.Length; ++i)
+        {
+            if ('0' < IDBuffer[i] && '9' < IDBuffer[i]) continue;
+            else if (IDBuffer[i] >= 'A' && IDBuffer[i] <= 'Z') continue;
+            else if (IDBuffer[i] >= 'a' && IDBuffer[i] <= 'z') continue;
+
+            isInputtedIdIsRightFormat = true;
+            break;
+        }
+
         Debug.Log("로그인을 시도합니다. ID : " + IDBuffer /*+ "PW : " + PWBuffer*/);
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
@@ -163,7 +183,6 @@ public class LoginSceneManager : MonoBehaviour {
         Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
     }
     #endregion
-
 
     #region [ Old Func ]
 
