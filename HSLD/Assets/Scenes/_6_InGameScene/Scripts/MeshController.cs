@@ -105,7 +105,8 @@ public class MeshController : MonoBehaviour {
     void Update () {
         if (isLandingSign == true)
         {
-            StartCoroutine(MoveUp());
+            InstateTerrainObject(terrainstate);
+            //StartCoroutine(MoveUp());
             isLandingSign = false;
         }
         if (isFlag && temp == false && AllMeshController.once)
@@ -261,7 +262,6 @@ public class MeshController : MonoBehaviour {
 
             yield return null;
         }
-        InstateTerrainObject(terrainstate);
     }
 
     public IEnumerator MoveDownCor()
