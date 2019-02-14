@@ -222,7 +222,7 @@ public class EventCardManager : MonoBehaviour
                 {
                     connectObjs[i].GetComponent<MeshController>().setDefault();
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
-                    StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
+                    //StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
                 }
 
                 connectObjs.Clear();
