@@ -70,10 +70,11 @@ public class SetTurn : MonoBehaviour
             if (time_ > 0.5f)
             {
                 obj.transform.localScale = new Vector3(-1, 1, 1);
-                obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
+                
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().mainTxt.text = "";
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.transform.localPosition = new Vector3(0, 261, 0);
                 GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().timerTxt.text = val;
+                obj.transform.GetChild(0).GetComponent<Image>().sprite = order;
             }
 
             yield return new WaitForEndOfFrame();

@@ -57,6 +57,7 @@ public class MeshController : MonoBehaviour {
     private Material beforeMat;
 
     static public int tmpDevCnt = 0;
+    static public bool isMakeIsland = false;
 
     void Start () {
         if (isFlag == true)
@@ -193,12 +194,6 @@ public class MeshController : MonoBehaviour {
 
     }
 
-    public void LineInstate()
-    {
-        if (priorState.Equals(Terrain.FLAG))
-            return;
-    }
-
     public void InstateTerrainObject(Terrain terrainstate)
     {
         if (terrainObj != null)
@@ -207,8 +202,10 @@ public class MeshController : MonoBehaviour {
         // 객체 추가해서 달아주자.
         if (terrainstate == Terrain.MODERATION)
         {
-            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[11 + tmpDevCnt], 1.01f);
-            //tmpDevCnt += 1;
+            //움직이는 오브젝트가 나올때에는 생성 x
+            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                return;
+
             //20퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 80 || isFlag)
             {
@@ -217,45 +214,73 @@ public class MeshController : MonoBehaviour {
         }
         else if (terrainstate == Terrain.BARREN)
         {
-            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[5 + tmpDevCnt], 1.01f);
-            //tmpDevCnt += 1;
-            ////70퍼센트 확률로 생기지 않음.
+            //움직이는 오브젝트가 나올때에는 생성 x
+            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                return;
+
+            //70퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 30 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
-
             }
-
         }
+        
         else if (terrainstate == Terrain.COLD)
         {
-            //40퍼센트 확률로 생기지 않음.
-            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[1 + tmpDevCnt], 1.01f);
-            //tmpDevCnt += 1;
+            //움직이는 오브젝트가 나올때에는 생성 x
+            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                return;
+
+            //40퍼센트 확률로 생기지 않음
             if (Random.Range(0, 100) < 60 || isFlag)
             {
                 EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
             }
+                
         }
         else if (terrainstate == Terrain.SEA)
         {
-            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[17 + tmpDevCnt], 1.01f);
-            //tmpDevCnt += 1;
-            //90퍼센트 확률로 생기지 않음.
-            if (Random.Range(0, 100) < 10 || isFlag)
+            int totalSum = 0;
+            for (int i = 0; i < JointMesh.Length; i++)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(17, 18)], 1.01f);
+                if (JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(Terrain.SEA))
+                    totalSum += 1;
+            }
+
+            if (totalSum == 3 && !isMakeIsland)
+            {
+                isMakeIsland = true;
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[18], 1.01f);
+                return;
+            }
+
+            //움직이는 오브젝트가 나올때에는 생성 x
+            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                return;
+
+            //90퍼센트 확률로 생기지 않음.
+            else if (Random.Range(0, 100) < 10 || isFlag)
+            {
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[17], 1.01f);
             }
         }
         else if (terrainstate == Terrain.MOUNTAIN)
         {
-            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[15 + tmpDevCnt], 1.01f);
-            //tmpDevCnt += 1;
             //5퍼센트 확률로 생기지 않음.
-            if (Random.Range(0, 100) < 95 || isFlag)
+            for (int i = 0; i < JointMesh.Length; i++)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(19, 20)], 1.01f);
+                if (JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(Terrain.MOUNTAIN))
+                {
+                    TargetObject = Instantiate(AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[19]);
+
+                    TargetObject.transform.position = ((gameObject.transform.position + JointMesh[i].transform.position) * 0.5f) * 1.01f;
+                    TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+                    TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+                    TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, Random.Range(0, 360));
+                }
             }
+            EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[20], 1.01f);
         }
         else if(terrainstate.Equals(Terrain.DEFAULT))
         {
@@ -267,7 +292,6 @@ public class MeshController : MonoBehaviour {
 
     public IEnumerator MoveUp()
     {
-        LineInstate();
         while (transform.position.magnitude <= destinationPos.magnitude - 0.6f)
         {
             transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime/2.0f);
@@ -287,6 +311,8 @@ public class MeshController : MonoBehaviour {
         }
     }
 
+    //재귀함수, 가장 아래에있는
+
     public void EulerRotCal(GameObject targetObj, GameObject buildingObj, float offset)
     {
         TargetObject = Instantiate(buildingObj);
@@ -295,7 +321,14 @@ public class MeshController : MonoBehaviour {
         TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
         
         TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
-        TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        
+        if(TargetObject.transform.childCount == 0)
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, Random.Range(0,360));
+        else
+        {
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+            TargetObject.transform.GetChild(0).transform.localEulerAngles = new Vector3(TargetObject.transform.GetChild(0).transform.localEulerAngles.x, TargetObject.transform.GetChild(0).transform.localEulerAngles.y, Random.Range(0, 360));
+        }
         terrainObj = TargetObject;
     }
 

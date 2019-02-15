@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4859298914811016}
   - component: {fileID: 33505642840449414}
   - component: {fileID: 23978277362078666}
+  - component: {fileID: 54108953611959688}
+  - component: {fileID: 114944606528275994}
+  - component: {fileID: 65114025965059904}
   m_Layer: 0
   m_Name: seaBig_islandB
   m_TagString: Untagged
@@ -115,3 +118,42 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153917326689476}
   m_Mesh: {fileID: 4300000, guid: 3a98eca3626ca6a428760ccfc427756a, type: 3}
+--- !u!54 &54108953611959688
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153917326689476}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &65114025965059904
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153917326689476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35513726, y: 0.36280146, z: 0.23079796}
+  m_Center: {x: -0.008619898, y: -0.015558284, z: 0.10480011}
+--- !u!114 &114944606528275994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153917326689476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e255922a51dc7429b2d37859c2629b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentObject: 0

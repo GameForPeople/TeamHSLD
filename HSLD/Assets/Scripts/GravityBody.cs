@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public enum OBJECT
 {
@@ -12,20 +14,26 @@ public class GravityBody : MonoBehaviour
 {
     GravityAttractor planet;
     public OBJECT currentObject;
+    private float time_ = 0;
 
-    void Awake()
+    void Start()
     {
-        planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
+        planet = GameObject.FindWithTag("Planet").GetComponent<GravityAttractor>();
 
         // Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        // Allow this body to be influenced by planet's gravity 
         planet.Attract(transform);
+        if (currentObject.Equals(OBJECT.FIXED))
+        {
+            time_ += Time.deltaTime;
+            if (time_ > 2.0f)
+                Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +41,7 @@ public class GravityBody : MonoBehaviour
         if (collision.gameObject.transform.parent == null)
             return;
 
-        if(collision.gameObject.transform.parent.tag.Contains("Planet"))
+        if (collision.gameObject.transform.parent.tag.Contains("Planet"))
         {
             if (currentObject.Equals(OBJECT.FIXED))
             {
@@ -41,8 +49,11 @@ public class GravityBody : MonoBehaviour
                 Destroy(gameObject.GetComponent<GravityBody>());
                 Destroy(gameObject.GetComponent<Rigidbody>());
             }
-            else
-                return;
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }

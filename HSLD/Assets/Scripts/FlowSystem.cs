@@ -67,6 +67,8 @@ public class FlowSystem : MonoBehaviour
     private Transform planetTrans;
     private TerrainGainCounting terrainGainCounting;
 
+    static public string finalTerrainName;
+
     private void Start()
     {
         SoundManager.instance_.BGMChange(SoundManager.instance_.clips[14]);
@@ -298,6 +300,7 @@ public class FlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
+                turnSystem.warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, 0);
                 SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8], 1.0f);
 
                 //애니메이션 여기
@@ -310,10 +313,11 @@ public class FlowSystem : MonoBehaviour
                 //애니메이션 여기
                 setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
+                MeshController.isMakeIsland = false;
 
                 //Debug.Log("카드 인덱스 : " + cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
                 //Debug.Log(cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt);
-                
+
                 switch (cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
                     //비옥 - 병아리
@@ -349,7 +353,8 @@ public class FlowSystem : MonoBehaviour
                                 missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
                         }
 
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //건조 - 뱀
                     case 2:
@@ -387,7 +392,8 @@ public class FlowSystem : MonoBehaviour
                                 missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
                         }
 
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //한랭 - 펭귄
                     case 3:
@@ -423,7 +429,8 @@ public class FlowSystem : MonoBehaviour
                         }
 
                         randomVal = Random.Range(1, 4);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //바다 - 고래
                     case 4:
@@ -432,7 +439,8 @@ public class FlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         randomVal = Random.Range(4, 6);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //산 - 구름
                     case 5:
@@ -445,7 +453,8 @@ public class FlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
                         randomVal = Random.Range(7, 9);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[1].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();

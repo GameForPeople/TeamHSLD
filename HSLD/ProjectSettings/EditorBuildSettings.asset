@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/_6_InGameScene/InGameScene.unity
     guid: 114fbbeb5fed8bc44ae861983dd621d6
   - enabled: 1
-    path: Assets/Scenes/_7_InGameSmallVerScene/InGameSmallVerSceneunity.unity
+    path: Assets/Scenes/_7_CasualGameScene/CasualGameScene.unity
     guid: d573ebdcfbbd4db489b26f1922a8787c
+  - enabled: 1
+    path: Assets/Scenes/_8_TutorialScene/TutorialScene.unity
+    guid: cfc1f123950a7754fbe98159d96b6109
   m_configObjects: {}
