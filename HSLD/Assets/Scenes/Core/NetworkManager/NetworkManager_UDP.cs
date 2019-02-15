@@ -67,7 +67,8 @@ public partial class NetworkManager : MonoBehaviour
 
     public void UDP_Receive()
     {
-        e = new IPEndPoint(IPAddress.Any /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ /*System.Net.IPAddress.Parse("127.0.0.1"),*/ /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9001);
+        Debug.Log("ipAddr : " + ipAddr.GetAddressBytes().ToString());
+        e = new IPEndPoint(/*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ System.Net.IPAddress.Parse("127.0.0.1") /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9002);
         u = new UdpClient(e);
 
         s = new UDP_StateObject()

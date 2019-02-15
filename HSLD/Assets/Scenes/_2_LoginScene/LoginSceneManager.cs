@@ -168,7 +168,7 @@ public class LoginSceneManager : MonoBehaviour {
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         GameObject Image_Logo = Canvas2D.transform.Find("Image_Logo").gameObject;
 
@@ -178,13 +178,13 @@ public class LoginSceneManager : MonoBehaviour {
         while (loopCount < 30)
         {
             sizeCount += 0.03f;
-            Image_Logo.transform.localScale = new Vector3(1.0f, sizeCount, 1.0f);
+            Image_Logo.transform.localScale = new Vector3(sizeCount, sizeCount, 1.0f);
 
             ++loopCount;
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         Canvas2D.transform.Find("InputField_ID").gameObject.SetActive(true);
         Canvas2D.transform.Find("SignIn_Button").gameObject.SetActive(true);

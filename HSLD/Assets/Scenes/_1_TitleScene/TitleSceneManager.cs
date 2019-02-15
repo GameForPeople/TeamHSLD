@@ -93,7 +93,7 @@ public class TitleSceneManager : MonoBehaviour
     private IEnumerator DrawParsingUI()
     {
         UI_OnOff_WaitParsingUI(true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(2.0f);
         UI_OnOff_WaitParsingUI(false);
     }
 

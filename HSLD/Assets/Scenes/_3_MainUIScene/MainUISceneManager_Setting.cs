@@ -134,19 +134,24 @@ public partial class MainUISceneManager : MonoBehaviour
 
         if (isSuccessed)
         {
+            PlayParticle(1);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
 
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("Yes_onoff").gameObject.SetActive(true);
         }
         else
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").gameObject.SetActive(true);
             if(isAlreadyVip)
             {
-                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "이미 VIP Code 받은 거 다암ㅋ";
+                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "이미 VIP Code를 받은 계정입니다.";
             }
             else
             {
-                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "미안한데..VIP Code 틀렸어요...";
+                GameObject.Find("Setting_UI").transform.Find("VIP_OnOff").transform.Find("No_onoff").transform.Find("Text_Output").GetComponent<Text>().text = "Vip Code를 다시 확인해주세요.";
             }
         }
     }
