@@ -37,11 +37,11 @@ public class LoadJsonData : MonoBehaviour {
             Debug.Log(MeshData[MeshNumber]["meshID"].ToString() + "," + MeshData[MeshNumber]["meshState"].ToString());
 
             SetMaterial(MeshData[MeshNumber]["meshState"].ToString()); // Material 세팅
-            if(MeshData[MeshNumber]["meshObj"].ToString() != null) // Object 세팅
-            {
-                Debug.Log("Setting");
-                SetObject(MeshData[MeshNumber]["meshState"].ToString());
-            }
+            //if(MeshData[MeshNumber]["meshObj"].ToString() != null) // Object 세팅
+            //{
+            //    Debug.Log("Setting");
+            //    SetObject(MeshData[MeshNumber]["meshState"].ToString());
+            //}
             // MoveObject 세팅
         }
         else
