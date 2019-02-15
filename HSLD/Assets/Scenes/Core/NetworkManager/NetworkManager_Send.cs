@@ -220,7 +220,9 @@ public partial class NetworkManager : MonoBehaviour {
                 else if (InMsg == PROTOCOL.DEMAND_RANDOM_MATCH)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_RANDOM_MATCH), 0, NewDataSendBuffer, 0, 4);
-                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+                    Buffer.BlockCopy(BitConverter.GetBytes(isClassicMode), 0, NewDataSendBuffer, 4, 1);
+
+                    socket.Send(NewDataSendBuffer, 5, SocketFlags.None);
                 }
                 else if (InMsg == PROTOCOL.DEMAND_GUEST_JOIN)
                 {

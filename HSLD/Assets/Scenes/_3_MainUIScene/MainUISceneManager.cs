@@ -30,19 +30,25 @@ public partial class MainUISceneManager : MonoBehaviour
         StartForCharacter();
     }
 
-    public void UI_InGameWithServerButton()
+    public void UI_InGameWithServerButton(bool inIsClassicMode)
     {
+        networkObject.isClassicMode = inIsClassicMode;
+
         soundManager.SFXPlay(soundManager.clips[0], 1.0f);
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOBBY_SCENE);
     }
     #endregion
 
     #region [ Client Test Func ]
-    public void UI_InGameOnlyClientButton()
+    public void UI_InGameOnlyClientButton(bool inIsClassicMode)
     {
         soundManager.SFXPlay(soundManager.clips[0], 1.0f);
         //GameObject.Find("GameCores").transform.Find("UserDataUI").gameObject.SetActive(false);
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+
+        if(inIsClassicMode)
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+        else
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_CASUAL_SCENE);
     }
     #endregion
 

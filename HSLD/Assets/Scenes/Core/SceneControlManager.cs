@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 // Enum 의 순서는, 유니티 씐 빌드와 일치시켜줘야합니다.
-// 해당 작업을 하지 않을 경우, 문제가 발생할 수 있습니다.
+// 해당 사항에 문제가 있을 경우가 문제가 발생할 수 있습니다.
 
 public enum SCENE_NAME //: string
 {
@@ -14,7 +14,9 @@ public enum SCENE_NAME //: string
     MainUI_SCENE = 2,       // 게임 메인 UI 씐
     LOBBY_SCENE = 3,    // 이거 쫌 그래 사실 별로야
     ROOM_SCENE = 4,     // 방으로 연결
-    INGAME_SCENE = 5	// 얍얍얍 인게임 얍얍얍
+    INGAME_SCENE = 5,	// 얍얍얍 인게임 얍얍얍
+    INGAME_CASUAL_SCENE = 6,
+    TUTORIAL_SCENE = 7
 };
 
 public enum LOAD_UI_TYPE : int
@@ -107,7 +109,6 @@ public partial class SceneControlManager : MonoBehaviour
         
             InactiveLoadingUI(InLoadUIIndex);
         }
-        
 
         //// 해당 씐의 카메라를 켜줍니다.
         //if (InNextSceneName != SCENE_NAME.INGAME_SCENE 

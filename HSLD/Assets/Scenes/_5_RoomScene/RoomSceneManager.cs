@@ -59,8 +59,10 @@ public class RoomSceneManager : MonoBehaviour
        // WaitGameCoroutine = WaitGame();
        // StartCoroutine(WaitGameCoroutine);
       
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
-
+        if(networkObject.isClassicMode)
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_SCENE);
+        else
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.INGAME_CASUAL_SCENE);
         //}
     }
 
