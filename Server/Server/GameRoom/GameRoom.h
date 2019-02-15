@@ -72,6 +72,7 @@ private:
 	// 데이터 담아두는 곳.
 	char dataBuffer[2][100];
 
+	bool isClassicMode;
 	bool isFriendMode;
 	
 	BYTE emojiBuffer[2];
@@ -80,7 +81,7 @@ private:
 	//BaseStruct* oldguestDataBuffer;
 
 public:
-	GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode = false );
+	GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsClassicMode , bool InIsFriendMode );
 	
 	GameRoom() = delete;
 	~GameRoom();
@@ -153,6 +154,7 @@ public:
 	}
 	_NODISCARD	__inline bool				GetDynamicFriendInviteBuffer() const { return roomDynamicData->friendInviteBuffer; }
 	_NODISCARD	__inline bool				GetIsFriendMode() const noexcept { return isFriendMode; }
+	_NODISCARD	__inline bool				GetIsClassicMode() const noexcept { return isClassicMode; }
 	_NODISCARD	__inline int				GetEnemyCharacterIndex(const bool& InIsHost)
 	{
 		if (InIsHost)

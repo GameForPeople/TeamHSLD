@@ -11,7 +11,8 @@ class GameRoomManager {
 	//CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> waitRoomCont;
 	//CUSTOM_LIST::CustomList<GameRoom, shared_ptr<UserData>> playRoomCont;
 
-	weak_ptr<GameRoom>		pWaitRoom;
+	weak_ptr<GameRoom>		pWaitClassicModeRoom;
+	weak_ptr<GameRoom>		pWaitCasualModeRoom;
 	
 	atomic<int>				roomNum;
 	
@@ -24,11 +25,11 @@ public:
 public:
 	// RandomMatchingProcess, _CreateRoom, _JoinRoom에서 &를 사용해도, 레퍼런스 카운터 1이하로 안떨어질 듯.
 
-	_DEPRECATED bool RandomMatchingProcess(const shared_ptr<UserData>& pInUser); 	// True = Create , False = Join
+	_NODISCARD bool RandomMatchingProcess(const shared_ptr<UserData>& pInUser, const bool isClientDemandClassicMode); 	// True = Create , False = Join
 
 private:
-	void _CreateRoom(const shared_ptr<UserData>& pClient);
-	void _JoinRoom(const shared_ptr<UserData>& pClient);
+	void _CreateRoom(const shared_ptr<UserData>& pClient, const bool isClientDemandClassicMode);
+	void _JoinRoom(const shared_ptr<UserData>& pClient, const bool isClientDemandClassicMode);
 	void _DestroyRoom(SocketInfo* pClient);
 	
 public:
@@ -38,7 +39,7 @@ public:
 public:
 	_DEPRECATED void DEBUG_PRINT_WAIT_EMPTY( /*int InValue */) const
 	{
-		if(pWaitRoom.expired() == true)
+		if(pWaitClassicModeRoom.expired() == true)
 			std::cout << "현재 게임 대기중인 유저가 없습니다. \n";
 		else
 			std::cout << "현재 게임을 위해 대기중인 유저가 있습니다. \n";

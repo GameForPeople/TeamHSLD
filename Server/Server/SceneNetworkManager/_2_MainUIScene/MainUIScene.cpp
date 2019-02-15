@@ -151,7 +151,7 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandFriendInviteProcess(SocketInfo* 
 		if (pBuffer->GetSocketInfo()->pRoomIter == nullptr)
 		{
 			// 방 생성 필요
-			pClient->pRoomIter = make_shared<GameRoom>(pClient->pUserNode, true);
+			pClient->pRoomIter = make_shared<GameRoom>(pClient->pUserNode, true, true);
 
 			// 친구 방과 친구의 소켓주소구조체도 등록.	// 이 때 nullptr이 아닐경우 문제가 될 요지가 충분함.! 동기화 처리!필요!
 			pBuffer->GetSocketInfo()->pRoomIter = pClient->pRoomIter;

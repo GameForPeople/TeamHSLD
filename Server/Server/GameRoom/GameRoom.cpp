@@ -1,9 +1,13 @@
 #include "../GameRoom/GameRoom.h"
 
-GameRoom::GameRoom(const shared_ptr<UserData> InHostUserIter, /*GameRoom* InLeft, GameRoom* InRight,*/ bool InIsFriendMode)
+GameRoom::GameRoom(const shared_ptr<UserData> InHostUserIter, 
+	/*GameRoom* InLeft, GameRoom* InRight,*/ 
+	bool InIsClassicMode,
+	bool InIsFriendMode)
 	:	roomState(ROOM_STATE::ROOM_STATE_SOLO)
 	//,	left(InLeft), right(InRight)
 	,	roomDynamicData(make_shared<RoomDynamicData>(InHostUserIter->GetNickname(), static_cast<int>(InHostUserIter->GetActiveCharacterIndex())))
+	,	isClassicMode(InIsClassicMode)
 	,	isFriendMode(InIsFriendMode)
 	,	dataProtocol()
 	,	dataBuffer()

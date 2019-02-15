@@ -35,9 +35,10 @@ void SCENE_NETWORK_MANAGER::LobbyScene::ProcessData(const int InRecvType, Socket
 void SCENE_NETWORK_MANAGER::LobbyScene::_DemandRandomMatch(SocketInfo* pClient)
 {
 	// 랜덤매칭에서, userIter까지 다 넣음.
+	const bool isClientDemandClassicMode = pClient->buf[4];
 
 	// Create Room
-	if (pRoomData->RandomMatchingProcess(pClient->pUserNode))
+	if (pRoomData->RandomMatchingProcess(pClient->pUserNode, isClientDemandClassicMode))
 	{
 		 pClient->isHost = true;
 
@@ -107,7 +108,6 @@ void SCENE_NETWORK_MANAGER::LobbyScene::_DemandGuestJoin(SocketInfo* pClient)
 	else
 	{
 		memcpy( pClient->buf, reinterpret_cast<const char*>(&PERMIT_GUEST_NOT_JOIN), sizeof(int));
-
 		pClient->dataSize = 4;
 	}
 }
