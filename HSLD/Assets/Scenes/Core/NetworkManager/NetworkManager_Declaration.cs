@@ -134,6 +134,14 @@ public partial class NetworkManager : MonoBehaviour {
     public bool isOnNetwork = false;
     ////////////////////////////////
 
+    //--    클래식 모드인지, 캐주얼 모드인지 체크하는 변수.
+    public bool isClassicMode = true;
+    //--
+
+    //--    튜토리얼 전용 변수 - 처음 로그인한(회원가입한) 유저인지 아닌지 체크하는 변수.
+    public bool isFirstLogin = false;
+    //--
+
     public string iP_ADDRESS;
 
     public string AWS_PUBLIC_IP = "13.125.73.63";
@@ -152,6 +160,7 @@ public partial class NetworkManager : MonoBehaviour {
     //Client Data
 
     #region [ In Scene's variable]
+
 
     // Init Login Scene
     public string ID = "TEST_해솔리드";

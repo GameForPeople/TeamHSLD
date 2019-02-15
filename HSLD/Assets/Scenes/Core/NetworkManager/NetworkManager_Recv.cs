@@ -95,6 +95,8 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.PERMIT_NICKNAME)
         {
+            isFirstLogin = true;
+
             if (BitConverter.ToBoolean(NewDataRecvBuffer, 4))
                 GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
             else
