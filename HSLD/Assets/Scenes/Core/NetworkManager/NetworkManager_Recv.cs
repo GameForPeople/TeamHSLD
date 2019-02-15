@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using System;
 using System.Text;
@@ -97,7 +98,7 @@ public partial class NetworkManager : MonoBehaviour
             if (BitConverter.ToBoolean(NewDataRecvBuffer, 4))
                 GameObject.Find("LoginSceneManager").GetComponent<LoginSceneManager>().PermitLoginProcess();
             else
-                Debug.Log("실패했습니다.");
+                GameObject.Find("SignUp_UI").transform.Find("Text_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "이미 사용중인 닉네임입니다.";
         }
 
         //MainUIScene

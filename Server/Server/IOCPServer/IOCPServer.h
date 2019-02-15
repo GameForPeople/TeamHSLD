@@ -95,6 +95,9 @@ public:
 	// Init Server
 	void Init(const SERVER_INIT_TYPE InIsTrueLoadExternalIP)
 	{
+		// 윈도우 서버 OS 대응.
+		setlocale(LC_ALL, "Korean");
+
 		_wsetlocale(LC_ALL, L"Korean");
 
 		_PrintServerInfoUI(InIsTrueLoadExternalIP);

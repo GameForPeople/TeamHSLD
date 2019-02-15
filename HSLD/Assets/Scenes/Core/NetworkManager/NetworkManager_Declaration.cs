@@ -136,13 +136,13 @@ public partial class NetworkManager : MonoBehaviour {
 
     public string iP_ADDRESS;
 
-    public string AWS_PUBLIC_IP = "13.209.70.221";
+    public string AWS_PUBLIC_IP = "13.125.73.63";
 
     private const int SERVER_PORT = 9000;
     private const string CLIENT_VERSION = "181023";
 
     //public Thread thread;
-    public Socket socket;
+    public Socket socket = null;
 
     public bool networkSyncLock = false;    // 임시적으로 네트워크 데이터 통신에 대한 중첩적인 함수를 제어합니다.
 
@@ -200,7 +200,10 @@ public partial class NetworkManager : MonoBehaviour {
 
     void OnDestroy()
     {
-        socket.Close();
-        socket = null;
+        if (socket != null)
+        {
+            socket.Close();
+            socket = null;
+        }
     }
 }
