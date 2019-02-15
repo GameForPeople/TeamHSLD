@@ -8614,7 +8614,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300032, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70e6831365553284ca79f27ab0945b1b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24252,8 +24252,8 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 1
-  selectOrderTime: 1
+  matchingCompleteTime: 5
+  selectOrderTime: 10
   selectCardTime: 5
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
