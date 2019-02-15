@@ -113,6 +113,9 @@ public class TitleSceneManager : MonoBehaviour
     public void UI_ChangeServerIPToAWSPublicIP()
     {
         GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().iP_ADDRESS = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().AWS_PUBLIC_IP;
+
+        Debug.Log("AWS_PUBLIC_IP는 : " + GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().iP_ADDRESS + "입니다.");
+
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().isOnNetwork = true;
         GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.LOGIN_SCENE);
     }
