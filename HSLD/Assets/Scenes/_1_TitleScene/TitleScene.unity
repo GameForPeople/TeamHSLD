@@ -10931,7 +10931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnNetwork: 0
   iP_ADDRESS: 
-  AWS_PUBLIC_IP: 13.209.70.221
+  AWS_PUBLIC_IP: 13.125.73.63
   networkSyncLock: 0
   recvType: 0
   sendType: 0

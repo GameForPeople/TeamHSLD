@@ -51,10 +51,10 @@ public partial class SceneControlManager : MonoBehaviour
     //    StartCoroutine(ChangeSceneCoroutine(InSceneName));
     //}
 
-    public void StartNetworkFunction()
-    {
-        gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
-    }
+    //public void StartNetworkFunction()
+    //{
+    //    gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
+    //}
 
     /*
         ChangeScene

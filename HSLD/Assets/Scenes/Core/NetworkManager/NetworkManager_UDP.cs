@@ -67,7 +67,7 @@ public partial class NetworkManager : MonoBehaviour
 
     public void UDP_Receive()
     {
-        e = new IPEndPoint(/*IPAddress.Any*/ ipAddr, 9001);
+        e = new IPEndPoint(IPAddress.Any /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ /*System.Net.IPAddress.Parse("127.0.0.1"),*/ /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9001);
         u = new UdpClient(e);
 
         s = new UDP_StateObject()
@@ -83,8 +83,6 @@ public partial class NetworkManager : MonoBehaviour
     {
         while (true)
         {
-            //Debug.Log("생성한 UDP 포트는 : " + s.e.ToString());
-
             u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
 
             while (!messageReceived)

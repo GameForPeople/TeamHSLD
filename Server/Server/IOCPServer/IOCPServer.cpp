@@ -233,7 +233,8 @@ void IOCPServer::_PrintServerInfoUI(const SERVER_INIT_TYPE InIsTrueLoadExternalI
 		printf("¡á    IP Address : AWS Public(13.209.70.221) \n");
 	}
 
-	printf("¡á    Server Port : %d \n", SERVER_PORT);
+	printf("¡á    Server TCP Port : %d \n", SERVER_PORT);
+	printf("¡á    Server UDP Port : %d \n", SERVER_UDP_PORT);
 	printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á\n\n");
 
 	delete[]retIPChar;

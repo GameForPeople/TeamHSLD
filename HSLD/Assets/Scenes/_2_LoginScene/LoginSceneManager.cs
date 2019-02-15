@@ -27,7 +27,6 @@ public class LoginSceneManager : MonoBehaviour {
         {
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().StartNetworkFunction();
         }
-
         StartCoroutine(LoginSceneAnimation());
     }
 
@@ -40,10 +39,12 @@ public class LoginSceneManager : MonoBehaviour {
         //PWStringBuffer = GameObject.Find("InputField_PW").transform.Find("Text").gameObject.GetComponent<Text>().text;
         //PWBuffer = Int32.Parse(PWStringBuffer);
 
+
         //아이디 글자 수 검사
-        if(IDBuffer.Length > 19)
+        if(IDBuffer.Length > 20 || IDBuffer.Length < 3)
         {
             Debug.Log("아이디 길이가 20 이상입니다. : " + IDBuffer.Length /*+ "PW : " + PWBuffer*/);
+            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 20자 미만, 3자 이상이여야 합니다.";
             return;
         }
 
@@ -60,6 +61,12 @@ public class LoginSceneManager : MonoBehaviour {
             break;
         }
 
+        if(isInputtedIdIsRightFormat)
+        {
+            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 영어와 숫자로만 이루어져야합니다.";
+            return;
+        }
+        
         Debug.Log("로그인을 시도합니다. ID : " + IDBuffer /*+ "PW : " + PWBuffer*/);
 
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
@@ -96,9 +103,11 @@ public class LoginSceneManager : MonoBehaviour {
 
             //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
-            // 글자수 제한, 4 이상, 10 이하일 떄만 트루
-            if (nickNameBuffer.Length < 3) { Debug.Log("3글자 미만은 닉네임 안돼요"); return; }
-            if (nickNameBuffer.Length > 10) { Debug.Log("10글자 이상은 닉네임 안돼요"); return; }
+            // 글자수 제한, 3 이상, 10 이하일 떄만 트루
+            if (nickNameBuffer.Length < 3 || nickNameBuffer.Length > 10) {
+                GameObject.Find("SignUp_UI").transform.Find("Text_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "닉네임은 3글자에서 10글자로 정해주세요.";
+                return;
+            }
 
             // 한글 닉네임 지원에 따른 주석처리...!
             //bool nickNameTest = false;
