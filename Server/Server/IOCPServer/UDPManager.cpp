@@ -26,7 +26,7 @@ UDPManager::UDPManager() noexcept
 	, CONST_DEMAND_FRIEND(static_cast<char>(2))
 	, CONST_RESULT_FRIEND(static_cast<char>(7))
 	, CONST_ANNOUNCEMENT(static_cast<char>(8))
-	, UDP_PORT(htons(SERVER_UDP_PORT))
+	, UDP_PORT(htons(CLIENT_UDP_PORT))
 	, udpSocket()
 	, serverUDPAddr()
 	//, csUDP()
@@ -153,6 +153,8 @@ void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
 	}
 
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	std::cout << " 받는 계정의 IP는 : " << inet_ntoa(clientAddr.sin_addr);
+
 	clientAddr.sin_port = UDP_PORT;
 
 	if (int retValue

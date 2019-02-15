@@ -163,7 +163,7 @@ void IOCPServer::_PrintServerInfoUI(const SERVER_INIT_TYPE InIsTrueLoadExternalI
 
 	printf("\n¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á\n");
 	printf("¡á IOCP Server  - Team HSLD My Planet Server    \n");
-	printf("¡á                                ver 2.5 190205\n");
+	printf("¡á                                ver 2.6 190215\n");
 	printf("¡á\n");
 
 	if (InIsTrueLoadExternalIP == SERVER_INIT_TYPE::EXTERNAL_IP) {
@@ -230,11 +230,11 @@ void IOCPServer::_PrintServerInfoUI(const SERVER_INIT_TYPE InIsTrueLoadExternalI
 	}
 	else if (InIsTrueLoadExternalIP == SERVER_INIT_TYPE::PUBLIC_IP)
 	{
-		printf("¡á    IP Address : AWS Public(13.209.70.221) \n");
+		printf("¡á    IP Address : AWS Public(13.125.73.63) \n");
 	}
 
-	printf("¡á    Server TCP Port : %d \n", SERVER_PORT);
-	printf("¡á    Server UDP Port : %d \n", SERVER_UDP_PORT);
+	printf("¡á    TCP Port : %d \n", SERVER_PORT);
+	printf("¡á    UDP Port : %d \n", SERVER_UDP_PORT);
 	printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á\n\n");
 
 	delete[]retIPChar;
@@ -626,6 +626,10 @@ void IOCPServer::_ManagerLoop()
 			break;
 		case MANAGER_COMMAND::STATUS:
 			__Status();
+			break;
+		default:
+			std::rewind(stdin);
+			inputtedManagerCommand = -1;
 			break;
 		}
 	}

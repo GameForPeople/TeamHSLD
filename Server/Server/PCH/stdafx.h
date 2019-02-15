@@ -73,6 +73,8 @@
 #define		AWS_PUBLIC_IP		"13.125.73.63"
 #define		SERVER_PORT			9000
 #define		SERVER_UDP_PORT		9001
+#define		CLIENT_UDP_PORT		9002
+
 
 #define		_NORETURN			[[noreturn]]
 #define		_NODISCARD			[[nodiscard]]
