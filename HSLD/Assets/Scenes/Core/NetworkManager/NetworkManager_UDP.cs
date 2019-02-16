@@ -36,6 +36,17 @@ public partial class NetworkManager : MonoBehaviour
 
     public static bool messageReceived = false;
 
+    enum UDP_PROTOCOL : int
+    {
+            INVITE_FRIEND = 1
+        , DEMAND_FRIEND = 2
+
+        , RESULT_FRIEND = 7
+        , ANNOUNCEMENT = 8  // 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
+
+        , SEND_PORT = 9
+        , CONFIRM_PORT = 10
+    };
 
     public static void ProcessRecvUDPData(int InBuffer)
     {
@@ -63,13 +74,16 @@ public partial class NetworkManager : MonoBehaviour
             Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_ANNOUNCEMENT);
         }
+        else if (InBuffer == (int)UDP_PROTOCOL.CONFIRM_PORT)
+        {
+            GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isServerRecvMyPort = true;
+        }
     }
 
     public IEnumerator UDP_Receive()
     {
         //Debug.Log("ipAddr : " + ipAddr.GetAddressBytes().ToString());
         //IPHostEntry IPHost = Dns.GetHostEntry(Dns.GetHostName());// Dns.GetHostByName(Dns.GetHostName());
-
 
         // for External Ip Receive
         UnityWebRequest www = UnityWebRequest.Get("http://checkip.dyndns.org/"); // 나중에 GitPage로 바꾸기.
@@ -82,13 +96,6 @@ public partial class NetworkManager : MonoBehaviour
 
         Debug.Log("나의 외부 IP는 :" + external_IP.ToString());
 
-        // for Hole Punching
-        Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
-
-        using (UdpClient c = new UdpClient(9002))
-            c.Send(Encoding.ASCII.GetBytes("A"), 1, iP_ADDRESS, 9001);
-
-
         e = new IPEndPoint(/*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ System.Net.IPAddress.Parse(external_IP) /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9002);
         u = new UdpClient(e);
 
@@ -98,7 +105,39 @@ public partial class NetworkManager : MonoBehaviour
             u = u
         };
 
+    }
+    public void StartUDPCoroutine()
+    {
+        self.StartCoroutine(self.SendPortToServerCoroutine());
         self.StartCoroutine(self.UdpCoroutine());
+    }
+
+    public IEnumerator SendPortToServerCoroutine()
+    {
+        // for Hole Punching
+        Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
+
+        using (UdpClient c = new UdpClient(9002))
+        {
+            byte[] sendByte = new byte[50];
+
+            byte[] idByte = Encoding.ASCII.GetBytes(ID);
+            int idByteSize = idByte.Length;
+
+            sendByte[0] = (byte)((UDP_PROTOCOL.SEND_PORT)); // UDP_PROTOCOL::SEND_PORT
+            sendByte[1] = (byte)(idByteSize);
+
+            for(int i = 0; i < idByteSize; ++i)
+            {
+                sendByte[2 + i] = idByte[i];
+            }
+
+            while (!isServerRecvMyPort)
+            {
+                c.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
+                yield return new WaitForSeconds(1.0f);
+            }
+        }
     }
 
     public IEnumerator UdpCoroutine(/*IPAddress InIPAddress*/)

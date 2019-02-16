@@ -12,6 +12,9 @@ enum UDP_PROTOCOL : int
 
 	,	RESULT_FRIEND =	7
 	,	ANNOUNCEMENT = 8	// 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
+
+	,	SEND_PORT = 9
+	,	CONFIRM_PORT = 10
 };
 
 class UDPManager
