@@ -4,6 +4,7 @@
 #include "../Custom_DataStructure/Custom_Node_Queue.h"
 
 class UserData;
+class UserDataManager;
 
 enum UDP_PROTOCOL : int
 {
@@ -15,6 +16,8 @@ enum UDP_PROTOCOL : int
 
 	,	SEND_PORT = 9
 	,	CONFIRM_PORT = 10
+
+	,	DUMMY_FOR_STUN = 11
 };
 
 class UDPManager
@@ -24,6 +27,7 @@ class UDPManager
 
 	const char				CONST_RESULT_FRIEND;
 	const char				CONST_ANNOUNCEMENT;
+	const char				CONST_CONFIRM_PORT;
 
 	const USHORT			UDP_PORT;
 
@@ -103,6 +107,7 @@ public:
 	void _SendDemandMessage();
 	void _SendResultMessage();
 	void _SendConfirmMessage();
+
 public:
 	void _SendAnnouncement(const shared_ptr<UserData>& InSafeUserDataPtr);
 	_NODISCARD __inline wstring& GetAnnounceString() noexcept { return announceString; };	// 레퍼런스 보장됨.

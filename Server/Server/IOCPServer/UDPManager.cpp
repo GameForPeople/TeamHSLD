@@ -1,6 +1,10 @@
 #include "../IOCPServer/UDPManager.h"
 #include "../IOCPServer/SocketInfo.h"
 
+#include "../UserData/UserData.h"
+#include "../UserData/UserDataManager.h"
+
+
 namespace UDP_UTIL {
 	void ERROR_QUIT(char *msg)
 	{
@@ -22,10 +26,11 @@ namespace UDP_UTIL {
 };
 
 UDPManager::UDPManager() noexcept
-	: CONST_INVITE_FRIEND(static_cast<char>(1))
-	, CONST_DEMAND_FRIEND(static_cast<char>(2))
-	, CONST_RESULT_FRIEND(static_cast<char>(7))
-	, CONST_ANNOUNCEMENT(static_cast<char>(8))
+	: CONST_INVITE_FRIEND(static_cast<char>(UDP_PROTOCOL::INVITE_FRIEND))
+	, CONST_DEMAND_FRIEND(static_cast<char>(UDP_PROTOCOL::DEMAND_FRIEND))
+	, CONST_RESULT_FRIEND(static_cast<char>(UDP_PROTOCOL::RESULT_FRIEND))
+	, CONST_ANNOUNCEMENT(static_cast<char>(UDP_PROTOCOL::ANNOUNCEMENT))
+	, CONST_CONFIRM_PORT(static_cast<char>(UDP_PROTOCOL::CONFIRM_PORT))
 	, UDP_PORT(htons(CLIENT_UDP_PORT))
 	, udpSocket()
 	, serverUDPAddr()
@@ -68,29 +73,53 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 	if (recvBuffer[0] == UDP_PROTOCOL::SEND_PORT)
 	{
 		int idLength = recvBuffer[1];
-		Type_ID idString('0', idLength);
 
-		// 이거 굳이 이따구로 해야하나..효율 오반뎅...ㅎㅎ
-		for (int i = 0; i < idLength; ++i)
+		if (idLength < 20)
 		{
-			idString[i] = recvBuffer[2 + i];
-		}
+			recvBuffer[2 + idLength] = '\0';
+			Type_ID idString(recvBuffer + 2);
 
-		bool isLogin(false);
-		if (auto pUserNode = InUserDataManager->SearchUserNode(idString, isLogin)
-			; isLogin == true)
-		{
-			pUserNode->SetUdpPortNumber(/*ntohs*/(clientAddr.sin_port));
-			
-			// UDP 메세지 적재.
-			Push(UDP_PROTOCOL::CONFIRM_PORT, pUserNode);
+			//std::cout << "UDP로 받은 메세지는 : " << idString << std::endl;
+
+			bool isLogin(false);
+
+			if (auto pUserNode = InUserDataManager->SearchUserNode(idString, isLogin)
+				; isLogin == true)
+			{
+				pUserNode->SetUdpPortNumber(ntohs(clientAddr.sin_port));
+
+				//std::cout << "받은 ip 주소는 : " << inet_ntoa(clientAddr.sin_addr) << std::endl;
+				//std::cout << "받은 포트 번호 는 : " << ntohs(clientAddr.sin_port) << std::endl;
+
+				// UDP 메세지 적재.
+				//Push(UDP_PROTOCOL::CONFIRM_PORT, pUserNode);
+
+				if (int retValue
+					= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_CONFIRM_PORT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+					; retValue == SOCKET_ERROR)
+				{
+					UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+				}
+			}
+			else
+			{
+#ifdef _DEBUG_MODE_
+				std::cout << "[UDP_Manager] 해당 유저가 나갔다면 OK, 안나갔다면...? ㅎ 에러야.... \n";
+				// UDP Packet이 손실돼 아이디가 이상해졌다면?? <- 사실 그럴 수 없음.
+#endif // _DEBUG_MODE_
+			}
 		}
-		else
+		else 
 		{
-			std::cout << "Error, 해당 유저가 나갔거나, 안나갔다면 작동 이상. \n";
+#ifdef _DEBUG_MODE_
+			std::cout << "[UDP_Manager] 아이디 Size가 20글자를 넘을리가 없어요.... UDP Packet이 나쁜놈들에게 당했습니다.";
+#endif // _DEBUG_MODE_
 		}
 	}
-	else 
+	else if (recvBuffer[0] == UDP_PROTOCOL::DUMMY_FOR_STUN)
+	{
+		// Recv Only!
+	}
 }
 
 void UDPManager::_SendInviteMessage()
@@ -112,7 +141,7 @@ void UDPManager::_SendInviteMessage()
 	}
 
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
-	clientAddr.sin_port = UDP_PORT;
+	clientAddr.sin_port = pUserData->GetUdpPortNumber();
 
 	//reinterpret_cast<const char*>(&CONST_INVITE_FRIEND)
 	if (int retValue
@@ -142,7 +171,7 @@ void UDPManager::_SendDemandMessage()
 	}
 
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
-	clientAddr.sin_port = UDP_PORT;
+	clientAddr.sin_port = pUserData->GetUdpPortNumber();
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_DEMAND_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
@@ -169,10 +198,39 @@ void UDPManager::_SendResultMessage()
 	}
 
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
-	clientAddr.sin_port = UDP_PORT;
+	clientAddr.sin_port = pUserData->GetUdpPortNumber();
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+	}
+}
+
+void UDPManager::_SendConfirmMessage()
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	shared_ptr<UserData> pUserData = confirmPortMessageQueue.Pop().lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+#ifdef _DEBUG_MODE_
+		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#endif // _DEBUG_MODE_
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = /*htons*/(pUserData->GetUdpPortNumber());
+
+	std::cout << "보내는 ip 주소는 : " << inet_ntoa(clientAddr.sin_addr) << std::endl;
+	std::cout << "보내는 포트 번호 는 : " << htons(clientAddr.sin_port) << std::endl;
+
+	if (int retValue
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_CONFIRM_PORT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
 		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
@@ -192,9 +250,10 @@ void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
 	}
 
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
-	std::cout << " 받는 계정의 IP는 : " << inet_ntoa(clientAddr.sin_addr);
+	
+	//std::cout << " 받는 계정의 IP는 : " << inet_ntoa(clientAddr.sin_addr);
 
-	clientAddr.sin_port = UDP_PORT;
+	clientAddr.sin_port = htons(pUserData->GetUdpPortNumber());
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_ANNOUNCEMENT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))

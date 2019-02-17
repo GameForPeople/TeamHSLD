@@ -50,12 +50,14 @@ public partial class NetworkManager : MonoBehaviour
 
     public static void ProcessRecvUDPData(int InBuffer)
     {
-        if (InBuffer == 1)
+        Debug.Log("받은 인트는 무엇입니까 ? : " + InBuffer.ToString());
+
+        if (InBuffer == (int)UDP_PROTOCOL.INVITE_FRIEND)
         {
             Debug.Log("UDP Message : 게임 초대를 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_INVITE_FRIEND_UDP();
         }
-        else if (InBuffer == 2)
+        else if (InBuffer == (int)UDP_PROTOCOL.DEMAND_FRIEND)
         {
             Debug.Log("UDP Message : 친구 추가 요청을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_MAKE_FRIEND_INFO);
@@ -64,12 +66,12 @@ public partial class NetworkManager : MonoBehaviour
         {
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>();
         }
-        else if (InBuffer == 7)
+        else if (InBuffer == (int)UDP_PROTOCOL.RESULT_FRIEND)
         {
             Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true);
         }
-        else if (InBuffer == 8)
+        else if (InBuffer == (int)UDP_PROTOCOL.ANNOUNCEMENT)
         {
             Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
             GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().SendData(PROTOCOL.DEMAND_ANNOUNCEMENT);
@@ -86,17 +88,31 @@ public partial class NetworkManager : MonoBehaviour
         //IPHostEntry IPHost = Dns.GetHostEntry(Dns.GetHostName());// Dns.GetHostByName(Dns.GetHostName());
 
         // for External Ip Receive
-        UnityWebRequest www = UnityWebRequest.Get("http://checkip.dyndns.org/"); // 나중에 GitPage로 바꾸기.
-        yield return www.SendWebRequest();
+        //UnityWebRequest www = UnityWebRequest.Get("http://checkip.dyndns.org/"); // 나중에 GitPage로 바꾸기.
+        //yield return www.SendWebRequest();
+        //
+        //int index1 = www.downloadHandler.text.IndexOf("Current IP Address: ") + 20;
+        //int index2 = www.downloadHandler.text.IndexOf("<", index1);
+        //
+        //string external_IP = www.downloadHandler.text.Substring(index1, index2 - index1);
+        //Debug.Log("나의 외부 IP는 :" + external_IP.ToString());
 
-        int index1 = www.downloadHandler.text.IndexOf("Current IP Address: ") + 20;
-        int index2 = www.downloadHandler.text.IndexOf("<", index1);
+        // for Local Ip Receive
+        string localIP = "";
+        IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                localIP = ip.ToString();
+                break;
+            }
+        }
+        yield return new WaitForSeconds(0.1f);
 
-        string external_IP = www.downloadHandler.text.Substring(index1, index2 - index1);
+        Debug.Log("나의 내부 IP는 :" + localIP.ToString());
 
-        Debug.Log("나의 외부 IP는 :" + external_IP.ToString());
-
-        e = new IPEndPoint(/*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ System.Net.IPAddress.Parse(external_IP) /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9002);
+        e = new IPEndPoint( /*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/  /*System.Net.IPAddress.Parse("127.0.0.1")*/ /*System.Net.IPAddress.Parse(localIP)*/ System.Net.IPAddress.Parse("0.0.0.0"), 9002);
         u = new UdpClient(e);
 
         s = new UDP_StateObject()
@@ -104,7 +120,6 @@ public partial class NetworkManager : MonoBehaviour
             e = e,
             u = u
         };
-
     }
     public void StartUDPCoroutine()
     {
@@ -117,9 +132,10 @@ public partial class NetworkManager : MonoBehaviour
         // for Hole Punching
         Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
 
-        using (UdpClient c = new UdpClient(9002))
-        {
+        //using (u)
+        //{
             byte[] sendByte = new byte[50];
+            System.Array.Clear(sendByte, 0, 50);
 
             byte[] idByte = Encoding.ASCII.GetBytes(ID);
             int idByteSize = idByte.Length;
@@ -134,10 +150,13 @@ public partial class NetworkManager : MonoBehaviour
 
             while (!isServerRecvMyPort)
             {
-                c.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
+                u.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
+
+                Debug.Log("홀펀칭 매신저 사이즈는 :" + (idByteSize + 2).ToString());
+
                 yield return new WaitForSeconds(1.0f);
             }
-        }
+        //}
     }
 
     public IEnumerator UdpCoroutine(/*IPAddress InIPAddress*/)
@@ -149,10 +168,11 @@ public partial class NetworkManager : MonoBehaviour
             while (!messageReceived)
             {
                 yield return new WaitForSeconds(1.0f);
-                //Debug.Log("대기");
+                Debug.Log(" UDP Message 대기중....");
             }
 
             Debug.Log(" UDP Message를 받았습니다. : " + (int)(receiveData[0] ));
+
             if (self)
                 ProcessRecvUDPData((int)(receiveData[0]));
 
