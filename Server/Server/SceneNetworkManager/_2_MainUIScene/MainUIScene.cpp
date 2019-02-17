@@ -349,6 +349,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DelayFriendInviteProcess(SocketInfo* p
 */
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pClient)
 {
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 DemandMakeFriendProcess가 호출되었습니다. \n";
+
 	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);	// 버퍼 사이즈
 	//pClient->buf[8 + iBuffer] = '\0';// wchar는 \0도 두개...
 	//pClient->buf[9 + iBuffer] = '\0';// wchar는 \0도 두개...
@@ -445,10 +447,14 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendProcess(SocketInfo* pC
 
 	//std::cout << "상대방에게 친구 요청을 보냄 : ANSWER_MAKE_FRIEND + 1 \n";
 	pClient->dataSize = 8;
+
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 DemandMakeFriendProcess가 리턴되었습니다. \n";
 }
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo* pClient)
 {
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 _DemandMakeFriendInfoProcess가 호출되었습니다. \n";
+
 	Type_Nickname stringBuffer = pClient->pUserNode->GetFriendNicknameWithIndex(pClient->pUserNode->GetDemandFriendContIndex());
 	int stringSize = stringBuffer.size(); //DEV_66
 
@@ -457,10 +463,14 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo
 	memcpy(pClient->buf + 8, stringBuffer.data(), stringSize);
 
 	pClient->dataSize = 8 + stringSize;
+
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 _DemandMakeFriendInfoProcess가 리턴되었습니다. \n";
 }
 
 void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pClient)
 {
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 _AnswerMakeFriendProcess가 호출되었습니다. \n";
+
 	int iBuffer = reinterpret_cast<int&>(pClient->buf[4]);
 	bool bBuffer{ false };
 	bool bIsOnMatch{ false };
@@ -509,6 +519,8 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_AnswerMakeFriendProcess(SocketInfo* pC
 	memcpy(pClient->buf, reinterpret_cast<const char*>(&CHECK_ANSWER_MAKE_FRIEND), sizeof(int));
 
 	pClient->dataSize = 8;
+
+	std::cout << pClient->pUserNode->GetNickname() << "에 의해 _AnswerMakeFriendProcess가 리턴되었습니다. \n";
 }
 
 /*

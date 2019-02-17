@@ -65,10 +65,31 @@ public partial class NetworkManager : MonoBehaviour
         }
     }
 
-    public void UDP_Receive()
+    public IEnumerator UDP_Receive()
     {
-        Debug.Log("ipAddr : " + ipAddr.GetAddressBytes().ToString());
-        e = new IPEndPoint(/*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ System.Net.IPAddress.Parse("127.0.0.1") /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9002);
+        //Debug.Log("ipAddr : " + ipAddr.GetAddressBytes().ToString());
+        //IPHostEntry IPHost = Dns.GetHostEntry(Dns.GetHostName());// Dns.GetHostByName(Dns.GetHostName());
+
+
+        // for External Ip Receive
+        UnityWebRequest www = UnityWebRequest.Get("http://checkip.dyndns.org/"); // 나중에 GitPage로 바꾸기.
+        yield return www.SendWebRequest();
+
+        int index1 = www.downloadHandler.text.IndexOf("Current IP Address: ") + 20;
+        int index2 = www.downloadHandler.text.IndexOf("<", index1);
+
+        string external_IP = www.downloadHandler.text.Substring(index1, index2 - index1);
+
+        Debug.Log("나의 외부 IP는 :" + external_IP.ToString());
+
+        // for Hole Punching
+        Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
+
+        using (UdpClient c = new UdpClient(9002))
+            c.Send(Encoding.ASCII.GetBytes("A"), 1, iP_ADDRESS, 9001);
+
+
+        e = new IPEndPoint(/*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/ System.Net.IPAddress.Parse(external_IP) /*System.Net.IPAddress.Parse(AWS_PUBLIC_IP)*/, 9002);
         u = new UdpClient(e);
 
         s = new UDP_StateObject()

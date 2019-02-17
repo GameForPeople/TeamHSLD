@@ -49,7 +49,7 @@ public partial class NetworkManager : MonoBehaviour {
 
         self = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
 #if UDP
-        UDP_Receive();
+        StartCoroutine(UDP_Receive());
 #endif
 
         Debug.Log("Connect가 정상적으로 완료됐습니다!");
