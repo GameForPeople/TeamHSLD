@@ -54,6 +54,45 @@ void UDPManager::_CreateUDPSocket()
 		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
+void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
+{
+	// 어쩔수 없이, 함수 내부에서, 계속 생성하도록 합니다...
+
+	SOCKADDR_IN clientAddr;
+	char recvBuffer[50];
+	int addrlen(sizeof(clientAddr));
+
+	int retVal = recvfrom(udpSocket, recvBuffer, 50, 0, (SOCKADDR *)&clientAddr, &addrlen);
+	if (retVal == SOCKET_ERROR) std::cout << "[UDPManager] UDP_Receive에서 Error가 발생했습니다. \n";
+	
+	if (recvBuffer[0] == UDP_PROTOCOL::SEND_PORT)
+	{
+		int idLength = recvBuffer[1];
+		Type_ID idString('0', idLength);
+
+		// 이거 굳이 이따구로 해야하나..효율 오반뎅...ㅎㅎ
+		for (int i = 0; i < idLength; ++i)
+		{
+			idString[i] = recvBuffer[2 + i];
+		}
+
+		bool isLogin(false);
+		if (auto pUserNode = InUserDataManager->SearchUserNode(idString, isLogin)
+			; isLogin == true)
+		{
+			pUserNode->SetUdpPortNumber(/*ntohs*/(clientAddr.sin_port));
+			
+			// UDP 메세지 적재.
+			Push(UDP_PROTOCOL::CONFIRM_PORT, pUserNode);
+		}
+		else
+		{
+			std::cout << "Error, 해당 유저가 나갔거나, 안나갔다면 작동 이상. \n";
+		}
+	}
+	else 
+}
+
 void UDPManager::_SendInviteMessage()
 {
 	SOCKADDR_IN clientAddr;
