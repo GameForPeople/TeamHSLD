@@ -53,7 +53,6 @@ public class TurnSystem : MonoBehaviour
         flowSystem = gameObject.GetComponent<FlowSystem>();
         setTurn = gameObject.GetComponent<SetTurn>();
         StartCoroutine(ReadyMatchingComplete());
-        
     }
 
     public void TurnChange(bool change)
@@ -181,7 +180,6 @@ public class TurnSystem : MonoBehaviour
             flowSystem.diceCanvas.SetActive(false);
             StartCoroutine(EndTurnAndWaiting());
         }
-            
     }
 
     IEnumerator EnemyTurnCounting()

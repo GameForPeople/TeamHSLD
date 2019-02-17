@@ -99,7 +99,7 @@ public class ObjectMoving : MonoBehaviour
                             localUp = gameObject.transform.GetChild(0).transform.up;
                             gameObject.transform.GetChild(0).rotation = Quaternion.FromToRotation(localUp, dirToTarget) * gameObject.transform.GetChild(0).rotation;
                         }
-                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.01f, ableToGoObj[randomVal].transform.position * 1.01f, time_);
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                         time_ += Time.deltaTime * 0.5f;
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.95f)
@@ -120,7 +120,7 @@ public class ObjectMoving : MonoBehaviour
 
                         }
                         time_ += Time.deltaTime * 0.1f;
-                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.95f)
                             break;
@@ -139,7 +139,7 @@ public class ObjectMoving : MonoBehaviour
 
                         }
                         time_ += Time.deltaTime * 0.5f;
-                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.05f, ableToGoObj[randomVal].transform.position * 1.05f, time_);
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.95f)
                             break;
@@ -158,7 +158,7 @@ public class ObjectMoving : MonoBehaviour
 
                         }
                         time_ += Time.deltaTime;
-                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.02f, ableToGoObj[randomVal].transform.position * 1.02f, time_);
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.98f)
                             break;
@@ -202,7 +202,7 @@ public class ObjectMoving : MonoBehaviour
 
                         }
                         time_ += Time.deltaTime * 0.2f;
-                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position * 1.01f, ableToGoObj[randomVal].transform.position * 1.01f, time_);
+                        gameObject.transform.position = Vector3.Lerp(startingPoint.transform.position, ableToGoObj[randomVal].transform.position, time_);
                         yield return new WaitForEndOfFrame();
                         if (time_ > 0.95f)
                             break;
