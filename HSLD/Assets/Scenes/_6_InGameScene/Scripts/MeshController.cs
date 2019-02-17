@@ -49,6 +49,7 @@ public class MeshController : MonoBehaviour {
     private Vector3 destinationPos; // Camera이동의 끝
     public bool isLandingSign;      // true로 바꾸면 Mesh가 올라감
     public GameObject TargetObject; // Mesh가 사라질 때 Mesh의 Object를 지우려는 변수
+    public GameObject EffectObject; // Mesh가 사라질 때 Mesh의 Effect를 지우려는 변수
 
     const float initSize = 1.02f;   // Mesh가 초기에 올라가 있는 정도
     const float landingSize = 1.05f;// Mesh가 올라가는 정도
@@ -330,6 +331,34 @@ public class MeshController : MonoBehaviour {
             TargetObject.transform.GetChild(0).transform.localEulerAngles = new Vector3(TargetObject.transform.GetChild(0).transform.localEulerAngles.x, TargetObject.transform.GetChild(0).transform.localEulerAngles.y, Random.Range(0, 360));
         }
         terrainObj = TargetObject;
+    }
+
+    public void EulerRotCalEffect(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        EffectObject = Instantiate(buildingObj);
+
+        EffectObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        EffectObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+        EffectObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+
+        if (EffectObject.transform.childCount == 0)
+            EffectObject.transform.eulerAngles = new Vector3(EffectObject.transform.eulerAngles.x - 90, EffectObject.transform.eulerAngles.y, Random.Range(0, 360));
+        else
+        {
+            EffectObject.transform.eulerAngles = new Vector3(EffectObject.transform.eulerAngles.x - 90, EffectObject.transform.eulerAngles.y, EffectObject.transform.eulerAngles.z);
+            EffectObject.transform.GetChild(0).transform.localEulerAngles = new Vector3(EffectObject.transform.GetChild(0).transform.localEulerAngles.x, EffectObject.transform.GetChild(0).transform.localEulerAngles.y, Random.Range(0, 360));
+        }
+        terrainObj = EffectObject;
+
+        StartCoroutine(deleteEffect(4.0f));
+    }
+
+    public IEnumerator deleteEffect(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Destroy(EffectObject);
     }
 
     public void Picked()

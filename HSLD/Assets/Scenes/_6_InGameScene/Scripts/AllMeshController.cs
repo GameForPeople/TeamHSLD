@@ -16,6 +16,7 @@ public class AllMeshController : MonoBehaviour
     public GameObject[] AllContainer;
     public GameObject[] buildingObj;
     public GameObject[] MovingObj;
+    public GameObject[] EffectObj;
     static public AllMeshController instance_;
     static public int giveLinkNum = 0;
     

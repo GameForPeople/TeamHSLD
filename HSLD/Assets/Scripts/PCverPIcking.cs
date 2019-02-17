@@ -242,6 +242,14 @@ public class PCverPIcking : MonoBehaviour
 
         }
 
+        // 거점등록이 확정됐으면 effect추가
+        if(isDominatedConfirm == true)
+        {
+            GameObject flagObj = myPlanet.GetComponent<AllMeshController>().myFlag;
+            GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
+            flagObj.GetComponent<MeshController>().EulerRotCalEffect(flagObj, effectObj, 1.01f);
+        }
+
         FlagSetting(); // Flag검사 
         myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
         CameraController.Once = false;
