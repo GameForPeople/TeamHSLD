@@ -7191,6 +7191,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114059946434615762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7220,6 +7221,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114089283962738536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7249,6 +7251,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114112863438730918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7278,6 +7281,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114146296660255914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7307,6 +7311,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114159628000994294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7336,6 +7341,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114161030985998968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7365,6 +7371,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114161489852292174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7394,6 +7401,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114165387092816498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7423,6 +7431,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114167186664065750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7452,6 +7461,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114167192350896996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7481,6 +7491,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114185249197959034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7510,6 +7521,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114191673010780398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7539,6 +7551,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114195621602136402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7568,6 +7581,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114205534778155322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7597,6 +7611,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114246787145032074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7626,6 +7641,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114247175780391896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7655,6 +7671,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114257123358484170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7684,6 +7701,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114257492710685094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7713,6 +7731,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114281417902342882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7742,6 +7761,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114292086270429484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7771,6 +7791,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114292262243664372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7800,6 +7821,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114307057166064562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7829,6 +7851,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114308079582054036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7858,6 +7881,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114313305863743004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7887,6 +7911,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114356741486849486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7916,6 +7941,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114360852883399218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7945,6 +7971,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114374805237949716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7974,6 +8001,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114376046083432374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8003,6 +8031,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114407713761925734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8032,6 +8061,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114419433200996330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8061,6 +8091,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114424272269223390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8090,6 +8121,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114439540676209608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8119,6 +8151,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114448076438467130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8148,6 +8181,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114462332727961882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8177,6 +8211,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114472955629575512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8206,6 +8241,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114490621254727874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8235,6 +8271,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114499976100564808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8264,6 +8301,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114502397743711664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8293,6 +8331,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114536736568225448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8322,6 +8361,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114562512120313600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8351,6 +8391,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114567047116228964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8380,6 +8421,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114567206740333472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8409,6 +8451,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114571835404486418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8438,6 +8481,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114587352351269354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8467,6 +8511,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114589349966802336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8496,6 +8541,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114606082373908746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8537,6 +8583,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114631535352705330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8566,6 +8613,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114644472375756250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8595,6 +8643,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114652519588923754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8624,6 +8673,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114667416852206548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8653,6 +8703,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114689353259167614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8682,6 +8733,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114699382503213502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8722,6 +8774,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114708886320979012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8751,6 +8804,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114719107068246700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8780,6 +8834,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114723089622143090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8809,6 +8864,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114725451606783994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8838,6 +8894,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114727735095008594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8867,6 +8924,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114738891285854084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8896,6 +8954,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114738982839762220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8925,6 +8984,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114780568266710716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8954,6 +9014,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114802705635733358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8983,6 +9044,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114802810730051226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9012,6 +9074,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114806825525599280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9041,6 +9104,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114808981944314052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9070,6 +9134,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114812694990826234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9099,6 +9164,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114819851900170780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9128,6 +9194,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114836884679400754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9157,6 +9224,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114861173935318808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9186,6 +9254,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114862509883570970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9219,7 +9288,7 @@ MonoBehaviour:
   - {fileID: 1667839985554530, guid: e9794e2f0ba6cdb4d818481f1553b5cc, type: 2}
   - {fileID: 1920668943445974, guid: d299107d47e9ccd43a123e9406121128, type: 2}
   - {fileID: 1399865818169992, guid: 20b971cafed5b5b43b0930082f66479e, type: 2}
-  - {fileID: 0}
+  - {fileID: 1955826314950324, guid: 343d010ae8055af45ab7eb545e7d72f6, type: 2}
   - {fileID: 1641192163470570, guid: e41ce1dd4c524ee4a8e31de84bc1034e, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
@@ -9231,6 +9300,7 @@ MonoBehaviour:
   - {fileID: 1950832684761950, guid: d47111ed4c502344686679d62a8e9947, type: 2}
   - {fileID: 1147874481913928, guid: 7f3e163bc8b5b0d4dbb640f5173ccea5, type: 2}
   - {fileID: 1619096674601712, guid: 82acff35e6cac944e9f73c7ba725dcac, type: 2}
+  EffectObj: []
 --- !u!114 &114864924351734594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9260,6 +9330,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114870247975778428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9289,6 +9360,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114874156521702362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9318,6 +9390,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114903414267290562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9347,6 +9420,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114909765555773026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9376,6 +9450,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114951980156258908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9405,6 +9480,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114976464318569332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9434,6 +9510,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114982866370534790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9463,6 +9540,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114988210090326266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9492,6 +9570,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114991359512797902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9521,6 +9600,7 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
 --- !u!114 &114993579270134530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9550,3 +9630,4 @@ MonoBehaviour:
   isCheck: 0
   isLandingSign: 0
   TargetObject: {fileID: 0}
+  EffectObject: {fileID: 0}
