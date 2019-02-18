@@ -27,6 +27,9 @@ public class CameraController : MonoBehaviour
     private float HorizontalValue;
     private float VerticalVelue;
 
+    // 임시
+    public float speed;
+
     void Start()
     {
         MyPlanet = GameObject.FindWithTag("Planet").transform;
@@ -41,20 +44,20 @@ public class CameraController : MonoBehaviour
     {
         Vector3 normalDirection = myTransform.position - MyPlanet.position;
         float fdistance = normalDirection.magnitude;
-
-        //Debug.Log("VerticalVelue : " + VerticalVelue);
-
+        
         if (isUp)
         {
-            VerticalVelue += 15;
-            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
-            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+            rotateAmount.x += 15;
+
+            myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+            myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
         }
         else
         {
-            VerticalVelue -= 15;
-            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
-            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+            rotateAmount.x -= 15;
+
+            myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+            myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
         }
     }
 
@@ -62,20 +65,20 @@ public class CameraController : MonoBehaviour
     {
         Vector3 normalDirection = myTransform.position - MyPlanet.position;
         float fdistance = normalDirection.magnitude;
-
-        //Debug.Log("HorizontalValue : " + HorizontalValue);
-
+        
         if (isRight)
         {
-            HorizontalValue -= 15;
-            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
-            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+            rotateAmount.y += 15;
+
+            myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+            myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
         }
         else
         {
-            HorizontalValue += 15;
-            myTransform.localRotation = Quaternion.Euler(myTransform.localRotation.y + HorizontalValue, myTransform.localRotation.x + VerticalVelue, 0);
-            myTransform.localPosition = MyPlanet.transform.position - (myTransform.rotation * Vector3.forward * fdistance);
+            rotateAmount.y -= 15;
+
+            myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+            myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
         }
     }
 
@@ -110,6 +113,12 @@ public class CameraController : MonoBehaviour
         // 카메라의 기본 회전
         if (mainCamera)
         {
+            //input += new Vector2(Input.GetAxis("Mouse X") * speed, Input.GetAxis("Mouse Y") * speed);
+            //Debug.Log(input);
+
+            //transform.localRotation = Quaternion.Euler(input.y, input.x, 0);
+            //transform.localPosition = MyPlanet.position - (gameObject.transform.localRotation * Vector3.forward * fdistance);
+
             if (offset > 0)
             {
                 offset -= 3.0f * Time.deltaTime;
@@ -153,12 +162,10 @@ public class CameraController : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                rotateAmount += (Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) * Time.deltaTime / 10000;
+                rotateAmount.x += Input.GetTouch(0).deltaPosition.x * speed;
+                rotateAmount.y += Input.GetTouch(0).deltaPosition.y * speed;
 
-                //Vector3 position = MyPlanet.position - (rotation * Vector3.forward * fdistance);
-                
-                myTransform.localRotation = Quaternion.Euler((Input.GetTouch(0).position.y - rotateAmount.y),
-                    (Input.GetTouch(0).position.x - rotateAmount.x), 0);
+                myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
                 myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
                 
                 /*

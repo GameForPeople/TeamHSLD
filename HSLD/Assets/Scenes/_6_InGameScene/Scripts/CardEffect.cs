@@ -28,9 +28,9 @@ public class CardEffect : MonoBehaviour {
     {
         while (rotateAmount.x < 365.0f)
         {
-            //Debug.Log(rotateAmount.x);
+            Debug.Log(rotateAmount.x);
             rotateAmount += new Vector2(Time.deltaTime, 0) * speed;
-            cardObj.transform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+            cardObj.transform.localRotation = Quaternion.Euler(rotateAmount.y,rotateAmount.x, 0);
 
             cardObj.transform.localPosition = gameObject.transform.position 
                 - (cardObj.transform.rotation * Vector3.forward * 50);
