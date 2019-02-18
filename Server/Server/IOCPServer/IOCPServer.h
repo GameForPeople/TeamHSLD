@@ -53,7 +53,9 @@ private:
 	SOCKADDR_IN			serverAddr;
 
 	HANDLE				hManagerThread;
-	HANDLE				hUDPThread;
+	HANDLE				hUDPSendThread;
+	HANDLE				hUDPRecvThread;
+
 
 	// Only Use 
 	UserDataManager*	pUserData;
@@ -151,8 +153,10 @@ private:
 	static DWORD WINAPI WorkerThread(LPVOID arg);
 	void _WorkerThreadFunction();
 
-	static DWORD WINAPI UDPThread(LPVOID arg);
-	void _UDPThreadFunction();
+	static DWORD WINAPI UDPSendThread(LPVOID arg);
+	void _UDPSendThreadFunction();
+	static DWORD WINAPI UDPRecvThread(LPVOID arg);
+	void _UDPRecvThreadFunction();
 
 	static DWORD WINAPI ManagerThread(LPVOID arg);
 	void _ManagerLoop();

@@ -142,6 +142,10 @@ public partial class NetworkManager : MonoBehaviour {
     public bool isFirstLogin = false;
     //--
 
+    //--   UDP 홀펀칭이 된 클라이언트인지 아닌지 여부.
+    public bool isServerRecvMyPort = false;
+    //--
+
     public string iP_ADDRESS;
 
     public string AWS_PUBLIC_IP = "13.125.73.63";

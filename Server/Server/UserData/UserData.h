@@ -32,6 +32,7 @@ private:
 	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
 	BYTE							activeCharacterIndex;	// 현재 활성화된 캐릭터의 인덱스.
 
+	u_short							udpPortNumber;
 	// int	test[5000000]; // UserData에서 메모리가 잘 해제되나?
 public:
 	// For rbTreeNode's nullNode or Friend Nullptr!
@@ -49,6 +50,7 @@ public:
 		, friendUserDataCont()
 		, demandFriendContIndex(-1)
 		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
+		, udpPortNumber(0)
 	{};
 
 	// 친구가 있을 경우. friendSocketInfoCont는, 플레이어가 친구 관련 UI를 요청할 경우에만 체크합니다. (최적화 및, DB 미필요 데이터)
@@ -69,6 +71,7 @@ public:
 		, friendUserDataCont()
 		, demandFriendContIndex(-1)
 		, activeCharacterIndex(InActiveCharacterIndex)
+		, udpPortNumber(0)
 	{
 		//friendUserDataCont.reserve(InFriendStringCont.size()); 
 		// reserver만 하지말고, 메모리 할당 해버려야함.
@@ -98,6 +101,7 @@ public:
 		, friendUserDataCont()
 		, demandFriendContIndex(-1)
 		, activeCharacterIndex(InActiveCharacterIndex)
+		, udpPortNumber(0)
 	{};
 
 	//회원가입처리
@@ -115,6 +119,7 @@ public:
 		, friendUserDataCont()
 		, demandFriendContIndex(-1)
 		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
+		, udpPortNumber(0)
 	{};
 
 	//디져랏!
@@ -164,6 +169,7 @@ public:
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
 	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
 	_NODISCARD __inline BYTE GetActiveCharacterIndex() const noexcept { return activeCharacterIndex; }
+	_NODISCARD __inline u_short	GetUdpPortNumber() const noexcept { return udpPortNumber; }
 
 	// 애는 왜 중복...?
 	//__inline void	SetWinOrLose(const int& value) {
@@ -189,6 +195,7 @@ public:
 		demandFriendContIndex = -1;
 	}
 	__inline void SetActiveCharacterIndex(const BYTE InIndex) noexcept { activeCharacterIndex = InIndex; }
+	__inline void SetUdpPortNumber(const u_short InUdpPortNumber) noexcept { udpPortNumber = InUdpPortNumber; }
 
 public:
 	_NODISCARD int BuyItem(const int InItemIndex);

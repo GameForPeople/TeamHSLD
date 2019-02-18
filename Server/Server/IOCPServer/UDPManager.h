@@ -4,6 +4,7 @@
 #include "../Custom_DataStructure/Custom_Node_Queue.h"
 
 class UserData;
+class UserDataManager;
 
 enum UDP_PROTOCOL : int
 {
@@ -12,6 +13,11 @@ enum UDP_PROTOCOL : int
 
 	,	RESULT_FRIEND =	7
 	,	ANNOUNCEMENT = 8	// 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
+
+	,	SEND_PORT = 9
+	,	CONFIRM_PORT = 10
+
+	,	DUMMY_FOR_STUN = 11
 };
 
 class UDPManager
@@ -21,6 +27,7 @@ class UDPManager
 
 	const char				CONST_RESULT_FRIEND;
 	const char				CONST_ANNOUNCEMENT;
+	const char				CONST_CONFIRM_PORT;
 
 	const USHORT			UDP_PORT;
 
@@ -32,6 +39,7 @@ class UDPManager
 
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendResultMessageQueue;	// RESULT_FRIEND = 7
 
+	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> confirmPortMessageQueue; // CONFIRM_PORT = 10
 	//std::vector<CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>>> messageQueue;
 	//CRITICAL_SECTION		csUDP;
 	
@@ -56,25 +64,39 @@ public:
 		case UDP_PROTOCOL::RESULT_FRIEND:	
 			friendResultMessageQueue.Push(pInUserData);
 			break;
+		case UDP_PROTOCOL::CONFIRM_PORT:
+			confirmPortMessageQueue.Push(pInUserData);
+			break;
 		}
 	}
 
 	// UDP SEND 내부에서 while(7)문을 돌면서 검사할건지, Thread에서 주도적으로 할건지 정해야함
 	__inline void UDPSend()
 	{
-		if (!friendInviteMessageQueue.IsEmpty())
+		while (7)
 		{
-			_SendInviteMessage();
-		}
-		else if (!friendDemandMessageQueue.IsEmpty())
-		{
-			_SendDemandMessage();
-		}
-		else if (!friendResultMessageQueue.IsEmpty())
-		{
-			_SendResultMessage();
+			if (!friendInviteMessageQueue.IsEmpty())
+			{
+				_SendInviteMessage();
+			}
+			else if (!friendDemandMessageQueue.IsEmpty())
+			{
+				_SendDemandMessage();
+			}
+			else if (!friendResultMessageQueue.IsEmpty())
+			{
+				_SendResultMessage();
+			}
+			else if (!confirmPortMessageQueue.IsEmpty())
+			{
+				_SendConfirmMessage();
+			}
+
+			Sleep(1000);
 		}
 	}
+
+	void UDPRecv(UserDataManager* InUserDataManager);
 
 public:
 	void _CreateUDPSocket();
@@ -84,6 +106,7 @@ public:
 	void _SendInviteMessage();
 	void _SendDemandMessage();
 	void _SendResultMessage();
+	void _SendConfirmMessage();
 
 public:
 	void _SendAnnouncement(const shared_ptr<UserData>& InSafeUserDataPtr);

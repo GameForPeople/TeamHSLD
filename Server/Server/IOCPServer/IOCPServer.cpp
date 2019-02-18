@@ -406,7 +406,8 @@ void IOCPServer::_RunOtherThread()
 	//CloseHandle(hSaveUserDataThread);
 	std::cout << "     [UserData_Manager] Run Manager Thread! " << "\n";
 
-	hUDPThread = CreateThread(NULL, 0, UDPThread, (LPVOID)this, 0, NULL);
+	hUDPRecvThread = CreateThread(NULL, 0, UDPRecvThread, (LPVOID)this, 0, NULL);
+	hUDPSendThread = CreateThread(NULL, 0, UDPSendThread, (LPVOID)this, 0, NULL);
 	std::cout << "     [UDP_Manager] Run UDP Manager Thread! " << "\n";
 }
 
@@ -573,20 +574,32 @@ void IOCPServer::_WorkerThreadFunction()
 	}
 }
 
-DWORD WINAPI IOCPServer::UDPThread(LPVOID arg)
+DWORD WINAPI IOCPServer::UDPSendThread(LPVOID arg)
 {
 	IOCPServer* server = static_cast<IOCPServer*>(arg);
-	server->_UDPThreadFunction();
+	server->_UDPSendThreadFunction();
 
 	return 0;
 };
 
-void IOCPServer::_UDPThreadFunction()
+void IOCPServer::_UDPSendThreadFunction()
+{
+	pUdpManager->UDPSend();	// 내부에서 while문 돌면서, Sleep도 처리.
+}
+
+DWORD WINAPI IOCPServer::UDPRecvThread(LPVOID arg)
+{
+	IOCPServer* server = static_cast<IOCPServer*>(arg);
+	server->_UDPRecvThreadFunction();
+
+	return 0;
+};
+
+void IOCPServer::_UDPRecvThreadFunction()
 {
 	while (7)
 	{
-		pUdpManager->UDPSend();
-		Sleep(1000);
+		pUdpManager->UDPRecv(/*this->*/pUserData);
 	}
 }
 
