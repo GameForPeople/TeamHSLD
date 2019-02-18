@@ -10872,7 +10872,7 @@ MonoBehaviour:
   maxDistance: 80
   RotationSensitivity: 0.1
   myTurn: 0
-  speed: 5
+  speed: 0.5
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
