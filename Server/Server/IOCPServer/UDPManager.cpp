@@ -68,7 +68,12 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 	int addrlen(sizeof(clientAddr));
 
 	int retVal = recvfrom(udpSocket, recvBuffer, 50, 0, (SOCKADDR *)&clientAddr, &addrlen);
-	if (retVal == SOCKET_ERROR) std::cout << "[UDPManager] UDP_Receive에서 Error가 발생했습니다. \n";
+	if (retVal == SOCKET_ERROR)
+	{
+#ifdef _DEBUG_MODE_
+		std::cout << "[UDPManager] UDP_Receive에서 Error가 발생했습니다. \n";
+#endif
+	}
 	
 	if (recvBuffer[0] == UDP_PROTOCOL::SEND_PORT)
 	{
@@ -86,7 +91,7 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 			if (auto pUserNode = InUserDataManager->SearchUserNode(idString, isLogin)
 				; isLogin == true)
 			{
-				pUserNode->SetUdpPortNumber(ntohs(clientAddr.sin_port));
+				pUserNode->SetUdpPortNumber(/*ntohs*/(clientAddr.sin_port));
 
 				//std::cout << "받은 ip 주소는 : " << inet_ntoa(clientAddr.sin_addr) << std::endl;
 				//std::cout << "받은 포트 번호 는 : " << ntohs(clientAddr.sin_port) << std::endl;
@@ -253,7 +258,7 @@ void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
 	
 	//std::cout << " 받는 계정의 IP는 : " << inet_ntoa(clientAddr.sin_addr);
 
-	clientAddr.sin_port = htons(pUserData->GetUdpPortNumber());
+	clientAddr.sin_port = /*htons*/(pUserData->GetUdpPortNumber());
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_ANNOUNCEMENT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))

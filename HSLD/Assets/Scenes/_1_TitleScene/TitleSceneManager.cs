@@ -77,10 +77,10 @@ public class TitleSceneManager : MonoBehaviour
             GameObject.Find("Overlay_Canvas").gameObject.SetActive(false);
             StartCoroutine(DrawParsingUI());
         }
-        // 정상 라이브 모드이면 바로 로그인 씐으로 이동해주고
+        // 정상 라이브 모드이면 바로 로그인 씐으로 이동해주고(AWS가 기본)
         else if (parsingServerCommand == 1)
         {
-            UI_StartWithServer();
+            UI_ChangeServerIPToAWSPublicIP();
         }
         // 서버 닫힌 상태면 관련 UI출력해주고 종료.
         else if (parsingServerCommand == 2)

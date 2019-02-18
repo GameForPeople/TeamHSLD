@@ -108,7 +108,7 @@ public partial class NetworkManager : MonoBehaviour
                 break;
             }
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
 
         Debug.Log("나의 내부 IP는 :" + localIP.ToString());
 
@@ -130,7 +130,7 @@ public partial class NetworkManager : MonoBehaviour
     public IEnumerator SendPortToServerCoroutine()
     {
         // for Hole Punching
-        Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
+        //Debug.Log("홀펀칭 서버 어드레스는 :" + iP_ADDRESS);
 
         //using (u)
         //{
@@ -152,7 +152,7 @@ public partial class NetworkManager : MonoBehaviour
             {
                 u.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
 
-                Debug.Log("홀펀칭 매신저 사이즈는 :" + (idByteSize + 2).ToString());
+                //Debug.Log("홀펀칭 매신저 사이즈는 :" + (idByteSize + 2).ToString());
 
                 yield return new WaitForSeconds(1.0f);
             }
@@ -168,10 +168,10 @@ public partial class NetworkManager : MonoBehaviour
             while (!messageReceived)
             {
                 yield return new WaitForSeconds(1.0f);
-                Debug.Log(" UDP Message 대기중....");
+                //Debug.Log(" UDP Message 대기중....");
             }
 
-            Debug.Log(" UDP Message를 받았습니다. : " + (int)(receiveData[0] ));
+            //Debug.Log(" UDP Message를 받았습니다. : " + (int)(receiveData[0] ));
 
             if (self)
                 ProcessRecvUDPData((int)(receiveData[0]));
