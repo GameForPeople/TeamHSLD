@@ -11,7 +11,7 @@ public class CardEffect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //setCard(cardObject[0], testMesh.transform);
+        setCard(cardObject[0], testMesh.transform);
     }
 
     public void setCard(GameObject cardObj, Transform transform)
@@ -26,11 +26,11 @@ public class CardEffect : MonoBehaviour {
 
     public IEnumerator movingCard(GameObject cardObj)
     {
-        while (rotateAmount.x < 500.0f)
+        while (rotateAmount.x < 365.0f)
         {
+            //Debug.Log(rotateAmount.x);
             rotateAmount += new Vector2(Time.deltaTime, 0) * speed;
-            cardObj.transform.localRotation = Quaternion.Euler(rotateAmount.y,
-                    rotateAmount.x, 0);
+            cardObj.transform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
 
             cardObj.transform.localPosition = gameObject.transform.position 
                 - (cardObj.transform.rotation * Vector3.forward * 50);

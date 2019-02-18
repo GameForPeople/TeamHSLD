@@ -33390,7 +33390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardObject:
-  - {fileID: 1430203538077520, guid: 081e368f7671bd84d9d7960c10978b1e, type: 2}
+  - {fileID: 1198684204867282, guid: 560a837a84d537a4f8eb6618c93b33dc, type: 2}
+  EffectObject: {fileID: 0}
+  testMesh: {fileID: 759865688}
 --- !u!1 &1132665301
 GameObject:
   m_ObjectHideFlags: 0

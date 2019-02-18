@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33903029189704356}
   - component: {fileID: 23683266836763508}
   m_Layer: 0
-  m_Name: whale
+  m_Name: testObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1198684204867282}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -50.7, z: 27.8}
+  m_LocalRotation: {x: 0.17227195, y: 0.17227195, z: -0.030614898, w: 0.9693851}
+  m_LocalPosition: {x: -16.172379, y: 17.227196, z: -44.064476}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}

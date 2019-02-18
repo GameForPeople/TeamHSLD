@@ -335,6 +335,8 @@ public class MeshController : MonoBehaviour {
 
     public void EulerRotCalEffect(GameObject targetObj, GameObject buildingObj, float offset)
     {
+        Camera.main.GetComponent<CameraShake>().ShakeOnce();
+
         EffectObject = Instantiate(buildingObj);
 
         EffectObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
@@ -351,7 +353,7 @@ public class MeshController : MonoBehaviour {
         }
         terrainObj = EffectObject;
 
-        StartCoroutine(deleteEffect(4.0f));
+        StartCoroutine(deleteEffect(3.0f));
     }
 
     public IEnumerator deleteEffect(float time)
