@@ -21,6 +21,7 @@ public partial class MainUISceneManager : MonoBehaviour
         soundManager = GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>();
 
         networkObject = GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>();
+        networkObject.StartUDPCoroutine();
 
         //
         StartForOthers();

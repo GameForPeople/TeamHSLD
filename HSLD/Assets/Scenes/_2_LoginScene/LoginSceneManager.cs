@@ -159,25 +159,25 @@ public class LoginSceneManager : MonoBehaviour {
         int loopCount = 0;
         float sizeCount = 0.0f;
 
-        while(loopCount < 30)
+        while(loopCount < 25)
         {
-            sizeCount += 0.03f;
+            sizeCount += 0.04f;
             Image_Black.transform.localScale = new Vector3(1.0f, sizeCount, 1.0f);
 
             ++loopCount;
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(0.2f);
+        //yield return new WaitForSeconds(0.2f);
 
         GameObject Image_Logo = Canvas2D.transform.Find("Image_Logo").gameObject;
 
         loopCount = 0;
         sizeCount = 0.0f;
 
-        while (loopCount < 30)
+        while (loopCount < 20)
         {
-            sizeCount += 0.03f;
+            sizeCount += 0.05f;
             Image_Logo.transform.localScale = new Vector3(sizeCount, sizeCount, 1.0f);
 
             ++loopCount;
@@ -231,18 +231,22 @@ public class LoginSceneManager : MonoBehaviour {
         // 나중에는 관련 UI를 띄어주고, 코루틴으로 해당 UI날리기 --> 다만 이 작업 중에, 씐 날릴 경우, 코루틴이 None에 접근하는 문제점이 발생할 수 있음!! 이거 어떻게 예외 처리해?? 몰랗ㅎㅎㅎ
         if(failReason == 1)
         {
+            // 구글 로그인 유사 시스템 적용 후. 해당 로그 발생하지 않음.
             Debug.Log("동일한 아이디가 존재하지 않습니다.");
         }
         else if (failReason == 2)
         {
+            // 구글 로그인 유사 시스템 적용 후, 해당 로그 발생하지 않음.
             Debug.Log("해당 아이디는 다른 비밀번호를 사용합니다.");
         }
         else if (failReason == 3)
         {
             Debug.Log("이미 로그인 중인 계정입니다.");
+            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "이미 로그인 중인 계정입니다.";
         }
         else if (failReason == 4)
         {
+            // 구글 로그인 유사 시스템 적용 후, 해당 로그 발생하지 않음.
             Debug.Log("이미 존재하는 아이디로 회원가입이 불가능합니다.");
         }
     }
