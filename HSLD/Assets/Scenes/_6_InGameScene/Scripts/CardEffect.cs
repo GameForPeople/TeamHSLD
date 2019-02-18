@@ -8,10 +8,22 @@ public class CardEffect : MonoBehaviour {
     public GameObject testMesh;
     Vector2 rotateAmount;
     float speed = 100;
+    float test = 0;
 
     // Use this for initialization
     void Start () {
         setCard(cardObject[0], testMesh.transform);
+    }
+
+    private void Update()
+    {
+        test++;
+        if (test == 1000)
+        {
+            StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(testMesh.transform.position));
+            StartCoroutine(movingCard(EffectObject));
+        }
+        
     }
 
     public void setCard(GameObject cardObj, Transform transform)
@@ -21,20 +33,15 @@ public class CardEffect : MonoBehaviour {
         
         EffectObject = Instantiate(cardObj, firstPosition, firstQuaternion);
 
-        StartCoroutine(movingCard(EffectObject));
     }
 
     public IEnumerator movingCard(GameObject cardObj)
     {
         while (rotateAmount.x < 365.0f)
         {
-            Debug.Log(rotateAmount.x);
-            rotateAmount += new Vector2(Time.deltaTime, 0) * speed;
-            cardObj.transform.localRotation = Quaternion.Euler(rotateAmount.y,rotateAmount.x, 0);
-
-            cardObj.transform.localPosition = gameObject.transform.position 
-                - (cardObj.transform.rotation * Vector3.forward * 50);
-
+            Vector3 rotate = Vector3.Cross((testMesh.transform.position).normalized, testMesh.transform.right).normalized;
+            
+            cardObj.transform.RotateAround(gameObject.transform.position, rotate * 120, speed * Time.deltaTime);
             yield return null;
         }
     }

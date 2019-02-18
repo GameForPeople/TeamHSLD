@@ -102,6 +102,22 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public IEnumerator movePositionEffect(Vector3 end)
+    {
+        int cameraYAmount = 138;
+        Vector3 destinationPos = end.normalized * cameraYAmount;
+        while (true)
+        {
+            if (Mathf.Abs((transform.position - destinationPos).magnitude) < 1.5f) yield break; // 보간 제한
+
+
+            transform.position = Vector3.Lerp(transform.position, destinationPos, Time.deltaTime * 2.5f);
+
+            Camera.main.transform.LookAt(MyPlanet);
+            yield return null;
+        }
+    }
+
     void Update()
     {
         Vector3 normalDirection = myTransform.position - MyPlanet.position;

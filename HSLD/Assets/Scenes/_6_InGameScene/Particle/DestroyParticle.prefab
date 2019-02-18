@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772166726560096}
   m_Layer: 0
-  m_Name: BuildingParticle
+  m_Name: DestroyParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
