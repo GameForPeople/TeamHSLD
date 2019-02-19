@@ -205,10 +205,10 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 	else
 	{
 		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함 // 이거 잘못하면 간다 간다 훅간다!
-		if (pUserNode->GetDemandFriendContIndex() != -1)
-		{
+		//if (pUserNode->GetDemandFriendContIndex() != -1)
+		//{
 			pUserNode->SetDeleteFriendID();
-		}
+		//}
 
 		// 파일명 제작
 		string fileNameBuffer = "UserData/Saved/.txt";
@@ -297,8 +297,9 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeByNickname(const Type_Nickna
 	}
 	else //  if (firstCharType == _MBC_ILLEGAL)
 	{
+#ifdef _DEBUG_MODE_
 		std::cout << "[FRIEND]닉네임은 이상한 글자입니다. " << std::endl;
-
+#endif
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue().GetID();
 	}
 

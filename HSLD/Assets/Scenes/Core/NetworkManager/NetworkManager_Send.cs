@@ -36,7 +36,6 @@ public partial class NetworkManager : MonoBehaviour {
         {
             if (isOnNetwork)
             {
-
                 if (InMsg == PROTOCOL.DEMAND_ANNOUNCEMENT)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.DEMAND_ANNOUNCEMENT), 0, NewDataSendBuffer, 0, 4);
@@ -295,7 +294,7 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_changeTerrainCount), 0, NewDataSendBuffer, 4, 4);
 
                     int iBuffer;
-                    for (int i = 0; i < inGameSceneManager.diceValueForLoop ; i++)
+                    for (int i = 0; i < inGameSceneManager.diceValueForLoop; i++)
                     {
                         iBuffer = inGameSceneManager.network_terrainIndex[i];
                         Buffer.BlockCopy(BitConverter.GetBytes(iBuffer), 0, NewDataSendBuffer, (8 + 4 * i), 4);
@@ -348,11 +347,39 @@ public partial class NetworkManager : MonoBehaviour {
 
                 else if (InMsg == PROTOCOL.NOTIFY_EVENT_BUFFER)
                 {
-                    switch(inGameSceneManager.network_sendEventCardType)
+                    switch (inGameSceneManager.network_sendEventCardType)
                     {
+                        case 101:
+                            // 선택한 상대 지형
+                            break;
 
+                        case 111:
+                            // 선택한 상대 지형
+                            break;
+
+                        case 201:
+                            // 내 지형 인덱스 및 변경하는 속성
+                            break;
+
+                        case 202:
+                            // 상대 지형 인덱스 및 변경하는 속성
+                            break;
+
+                        case 301:
+                            // 사용할 건지, 안할건지 여부 전송.
+                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_IsUsedDefenceCard), 0, NewDataSendBuffer, 5, 1);
+                            break;
+
+                        case 401:
+                            // 추가적인 정보 필요 없음.
+                            break;
                     }
+
+                    Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENT_BUFFER), 0, NewDataSendBuffer, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_sendEventCardType), 0, NewDataSendBuffer, 4, 4);
+
                 }
+
 
                 RecvProcess();
             }

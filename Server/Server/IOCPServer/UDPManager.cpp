@@ -4,9 +4,8 @@
 #include "../UserData/UserData.h"
 #include "../UserData/UserDataManager.h"
 
-
 namespace UDP_UTIL {
-	void ERROR_QUIT(char *msg)
+	_NORETURN void ERROR_QUIT(char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -23,12 +22,30 @@ namespace UDP_UTIL {
 		LocalFree(lpMsgBuf);
 		exit(1);
 	};
+
+	/*_NORETURN*/ void ERROR_DISPLAY(const char *msg)
+	{
+		LPVOID lpMsgBuf;
+		FormatMessage(
+			FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+			NULL,
+			WSAGetLastError(),
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+			(LPTSTR)&lpMsgBuf,
+			0,
+			NULL
+		);
+
+		printf(" [%s]  %s", msg, (LPTSTR)&lpMsgBuf);
+		LocalFree(lpMsgBuf);
+	};
 };
 
 UDPManager::UDPManager() noexcept
 	: CONST_INVITE_FRIEND(static_cast<char>(UDP_PROTOCOL::INVITE_FRIEND))
 	, CONST_DEMAND_FRIEND(static_cast<char>(UDP_PROTOCOL::DEMAND_FRIEND))
-	, CONST_RESULT_FRIEND(static_cast<char>(UDP_PROTOCOL::RESULT_FRIEND))
+	, CONST_RESULT_TRUE_FRIEND(static_cast<char>(UDP_PROTOCOL::RESULT_TRUE_FRIEND))
+	, CONST_RESULT_FAIL_FRIEND(static_cast<char>(UDP_PROTOCOL::RESULT_FAIL_FRIEND))
 	, CONST_ANNOUNCEMENT(static_cast<char>(UDP_PROTOCOL::ANNOUNCEMENT))
 	, CONST_CONFIRM_PORT(static_cast<char>(UDP_PROTOCOL::CONFIRM_PORT))
 	, UDP_PORT(htons(CLIENT_UDP_PORT))
@@ -54,15 +71,13 @@ void UDPManager::_CreateUDPSocket()
 	serverUDPAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serverUDPAddr.sin_port = htons(SERVER_UDP_PORT);
 
-	if (int retval = ::bind(udpSocket, (SOCKADDR *)&serverUDPAddr, sizeof(serverUDPAddr));
-	retval == SOCKET_ERROR)
-		UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
+	if (int retval = ::bind(udpSocket, (SOCKADDR *)&serverUDPAddr, sizeof(serverUDPAddr))
+		;	retval == SOCKET_ERROR) UDP_UTIL::ERROR_QUIT((char *)"UDP_bind()");
 }
 
 void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 {
 	// 어쩔수 없이, 함수 내부에서, 계속 생성하도록 합니다...
-
 	SOCKADDR_IN clientAddr;
 	char recvBuffer[50];
 	int addrlen(sizeof(clientAddr));
@@ -103,7 +118,9 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 					= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_CONFIRM_PORT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 					; retValue == SOCKET_ERROR)
 				{
-					UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+					UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 				}
 			}
 			else
@@ -127,7 +144,7 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 	}
 }
 
-void UDPManager::_SendInviteMessage()
+void UDPManager::_SendFriendInviteMessage()
 {
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
@@ -153,13 +170,15 @@ void UDPManager::_SendInviteMessage()
 		= sendto(udpSocket, &CONST_INVITE_FRIEND, 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
-		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 	}
 
 	//std::cout << "[UDP_Manager] UDP Message "<< CONST_INVITE_FRIEND << "를 " << pUserData->GetNickname() <<"에게 전송했습니다. \n";
 }
 
-void UDPManager::_SendDemandMessage()
+void UDPManager::_SendFriendDemandMessage()
 {
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
@@ -182,17 +201,19 @@ void UDPManager::_SendDemandMessage()
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_DEMAND_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
-		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 	}
 }
 
-void UDPManager::_SendResultMessage()
+void UDPManager::_SendFriendTrueResultMessage()
 {
 	SOCKADDR_IN clientAddr;
 	int addrLength = sizeof(clientAddr);
 
 	//weak_ptr<UserData> pNodeBuffer = friendResultMessageQueue.Pop();
-	shared_ptr<UserData> pUserData = friendResultMessageQueue.Pop().lock();
+	shared_ptr<UserData> pUserData = friendTrueResultMessageQueue.Pop().lock();
 
 	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
 	{
@@ -206,10 +227,41 @@ void UDPManager::_SendResultMessage()
 	clientAddr.sin_port = pUserData->GetUdpPortNumber();
 
 	if (int retValue
-		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_TRUE_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
-		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
+	}
+}
+
+void UDPManager::_SendFriendFailResultMessage()
+{
+	SOCKADDR_IN clientAddr;
+	int addrLength = sizeof(clientAddr);
+
+	//weak_ptr<UserData> pNodeBuffer = friendResultMessageQueue.Pop();
+	shared_ptr<UserData> pUserData = friendFailResultMessageQueue.Pop().lock();
+
+	if (pUserData == nullptr) // 댕글링 포인터 제어. 이미 딤진 소켓.
+	{
+#ifdef _DEBUG_MODE_
+		std::cout << "[UDP_Manager] 이미 로그아웃한 계정입니다.\n";
+#endif // _DEBUG_MODE_
+		return;
+	}
+
+	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
+	clientAddr.sin_port = pUserData->GetUdpPortNumber();
+
+	if (int retValue
+		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_RESULT_FAIL_FRIEND), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
+		; retValue == SOCKET_ERROR)
+	{
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 	}
 }
 
@@ -231,14 +283,16 @@ void UDPManager::_SendConfirmMessage()
 	getpeername(pUserData->GetSocketInfo()->sock, reinterpret_cast<SOCKADDR *>(&clientAddr), &addrLength);
 	clientAddr.sin_port = /*htons*/(pUserData->GetUdpPortNumber());
 
-	std::cout << "보내는 ip 주소는 : " << inet_ntoa(clientAddr.sin_addr) << std::endl;
-	std::cout << "보내는 포트 번호 는 : " << htons(clientAddr.sin_port) << std::endl;
+	//std::cout << "보내는 ip 주소는 : " << inet_ntoa(clientAddr.sin_addr) << std::endl;
+	//std::cout << "보내는 포트 번호 는 : " << htons(clientAddr.sin_port) << std::endl;
 
 	if (int retValue
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_CONFIRM_PORT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
-		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 	}
 }
 
@@ -264,7 +318,9 @@ void UDPManager::_SendAnnouncement(const shared_ptr<UserData>& pInUserData)
 		= sendto(udpSocket, reinterpret_cast<const char*>(&CONST_ANNOUNCEMENT), 1, 0, reinterpret_cast<SOCKADDR*>(&clientAddr), sizeof(clientAddr))
 		; retValue == SOCKET_ERROR)
 	{
-		UDP_UTIL::ERROR_QUIT((char*)"UDP_SEND_ERROR()");
+#ifdef _DEBUG_MODE_
+		UDP_UTIL::ERROR_DISPLAY((char*)"UDP_SEND_ERROR()");
+#endif
 	}
 }
 

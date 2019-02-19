@@ -35,12 +35,13 @@ public partial class InGameSceneManager : MonoBehaviour {
         network_sendProtocol = (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX;
     }
 
+    public bool NetworkManager_IsUsedDefenceCard;
     /*
      * SendEventBuffer
      * 
      *  - 해당 카드에 대한, 추가적인 정보를 전송할 때 사용합니다.
      */
-    public void SendEventBuffer()
+    public void SendEventBuffer(bool InIsUsedDefenceCard)
     {
         switch (network_sendEventCardType)
         {
@@ -62,6 +63,7 @@ public partial class InGameSceneManager : MonoBehaviour {
 
             case 301:
                 // 사용할 건지, 안할건지 여부 전송.
+                NetworkManager_IsUsedDefenceCard = InIsUsedDefenceCard;
                 break;
 
             case 401:
