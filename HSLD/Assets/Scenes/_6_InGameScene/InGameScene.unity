@@ -24343,7 +24343,8 @@ MonoBehaviour:
   diceValueForLoop: 0
   isDrawEmojiSelectUI: 0
   selectedEmojiIndex: 0
-  network_eventCardType: 0
+  network_sendEventCardType: 0
+  network_recvEventCardType: 0
 --- !u!4 &823012257
 Transform:
   m_ObjectHideFlags: 0
