@@ -126,7 +126,9 @@ public enum PROTOCOL : int
     NOTIFY_EMOJI = 508,	// 이모티콘 // 이모지 관련입니다.
 
     NOTIFY_GAME_END = 509,	// 게임 끝났어요
-    NOTIFY_GAME_BUFFER = 510 // 게임 승자 버퍼 처리
+    NOTIFY_GAME_BUFFER = 510, // 게임 승자 버퍼 처리
+
+    NOTIFY_EVENT_BUFFER = 511   // 이벤트 카드 전부 처리.
 };
 
 public partial class NetworkManager : MonoBehaviour {

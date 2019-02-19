@@ -72,7 +72,6 @@ public partial class InGameSceneManager : MonoBehaviour
         network_recvProtocolFlag = 0;
         network_terrainType = 0;
         network_changeTerrainCount = 0;
-        network_eventCardType = 0;
         network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE;
 
         CoroutineHandle_Wait = WaitCoroutine();

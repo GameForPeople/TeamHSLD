@@ -10930,6 +10930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOnNetwork: 0
+  isClassicMode: 1
+  isFirstLogin: 0
+  isServerRecvMyPort: 0
   iP_ADDRESS: 
   AWS_PUBLIC_IP: 13.125.73.63
   networkSyncLock: 0
@@ -12131,7 +12134,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7ac2e3bc43c54f94296d0afa52c004c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e2cbfd9b7852ee40a3692ef06d8a438, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

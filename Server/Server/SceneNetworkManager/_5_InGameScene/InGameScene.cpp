@@ -22,6 +22,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	RecvFunctions[8] = &InGameScene::RecvEmoji;
 	RecvFunctions[9] = &InGameScene::RecvGameEnd;
 	RecvFunctions[10] = nullptr; //&InGameScene::RecvGameBuffer; // 호출될일 없음
+	RecvFunctions[11] = &InGameScene::RecvEventBuffer;
 
 
 	SendFunctions[0] = &InGameScene::SendGameState;
@@ -35,6 +36,7 @@ SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, Us
 	SendFunctions[8] = nullptr; //&InGameScene::SendEmoji;
 	SendFunctions[9] = &InGameScene::SendGameEnd;
 	SendFunctions[10] = &InGameScene::SendGameBuffer;
+	SendFunctions[11] = &InGameScene::SendEventBuffer;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessData(const int InRecvType, SocketInfo* pClient)
@@ -147,6 +149,12 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameEnd(SocketInfo* pClient)
 }
 
 
+void SCENE_NETWORK_MANAGER::InGameScene::RecvEventBuffer(SocketInfo* pClient)
+{
+	pClient->pRoomIter->SetDataBuffer(pClient->isHost, pClient->buf + 4, 92);
+	pClient->pRoomIter->SetDataProtocol(pClient->isHost, Protocol::NOTIFY_EVENT_CARD);
+}
+
 // send Functions
 
 void SCENE_NETWORK_MANAGER::InGameScene::ProcessSend(const int InSendType, SocketInfo* pClient)
@@ -210,7 +218,7 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendTerrainIndexs(SocketInfo* pClient)
 	pClient->pRoomIter->GetDataBuffer(pClient->isHost, pClient->buf + 4, 76);
 	pClient->pRoomIter->SetDataProtocol(!(pClient->isHost), VOID_GAME_STATE);
 
-	pClient->dataSize = 76;
+	pClient->dataSize = 80;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendEventcardIndex(SocketInfo* pClient)
@@ -290,4 +298,13 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendGameBuffer(SocketInfo* pClient)
 
 	// 데이터 사이즈는 4
 	pClient->dataSize = 4;
+}
+
+
+void SCENE_NETWORK_MANAGER::InGameScene::SendEventBuffer(SocketInfo* pClient)
+{
+	pClient->pRoomIter->GetDataBuffer(pClient->isHost, pClient->buf + 4, 92);
+	pClient->pRoomIter->SetDataProtocol(!(pClient->isHost), VOID_GAME_STATE);
+
+	pClient->dataSize = 96;
 }
