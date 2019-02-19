@@ -30,8 +30,8 @@ namespace SCENE_NETWORK_MANAGER
 		void ProcessSend(const int InSendType, SocketInfo* pClient);
 
 	private:
-		void(InGameScene::*RecvFunctions[11])(SocketInfo* pClient);
-		void(InGameScene::*SendFunctions[11])(SocketInfo* pClient);
+		void(InGameScene::*RecvFunctions[12])(SocketInfo* pClient);
+		void(InGameScene::*SendFunctions[12])(SocketInfo* pClient);
 
 		//std::vector<std::function<void(SocketInfo*)>>recvFunctions;
 		//std::vector<std::function<void(SocketInfo*)>>sendFunctions;
@@ -46,6 +46,7 @@ namespace SCENE_NETWORK_MANAGER
 		void RecvGameReady(SocketInfo* pClient);
 		void RecvEmoji(SocketInfo* pClient);
 		void RecvGameEnd(SocketInfo* pClient);
+		void RecvEventBuffer(SocketInfo* pClient);
 
 		void SendGameState(SocketInfo* pClient);
 		void SendChangeTurn(SocketInfo* pClient);
@@ -56,6 +57,7 @@ namespace SCENE_NETWORK_MANAGER
 		void SendNetworkExecption(SocketInfo* pClient);
 		void SendGameReady(SocketInfo* pClient);
 		void SendGameEnd(SocketInfo* pClient);
+		void SendEventBuffer(SocketInfo* pClient);
 
 	private:
 		void SendEmoji(SocketInfo* pClient, const BYTE InByte);

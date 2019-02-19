@@ -603,6 +603,12 @@ public partial class NetworkManager : MonoBehaviour
         {
             inGameSceneManager.RecvGameEnd(true);
         }
+        else if (recvType == (int)PROTOCOL.NOTIFY_EVENT_BUFFER)
+        {
+            int notifyEventCase = BitConverter.ToInt32(NewDataRecvBuffer, 4);
+
+            inGameSceneManager.NetworkManager_RecvEventBuffer(notifyEventCase);
+        }
         // Network Exception
         else if (recvType == (int)PROTOCOL.DISCONNECTED_ENEMY_CLIENT)
         {

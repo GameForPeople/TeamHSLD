@@ -312,7 +312,7 @@ public partial class NetworkManager : MonoBehaviour {
                 else if (InMsg == PROTOCOL.NOTIFY_EVENTCARD_INDEX)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_EVENTCARD_INDEX), 0, NewDataSendBuffer, 0, 4);
-                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_eventCardType), 0, NewDataSendBuffer, 4, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.network_sendEventCardType), 0, NewDataSendBuffer, 4, 4);
 
                     socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
@@ -344,6 +344,14 @@ public partial class NetworkManager : MonoBehaviour {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_GAME_END), 0, NewDataSendBuffer, 0, 4);
 
                     socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+                }
+
+                else if (InMsg == PROTOCOL.NOTIFY_EVENT_BUFFER)
+                {
+                    switch(inGameSceneManager.network_sendEventCardType)
+                    {
+
+                    }
                 }
 
                 RecvProcess();
