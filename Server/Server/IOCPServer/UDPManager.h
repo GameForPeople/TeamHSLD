@@ -11,7 +11,9 @@ enum UDP_PROTOCOL : int
 		INVITE_FRIEND = 1
 	,	DEMAND_FRIEND = 2
 
-	,	RESULT_FRIEND =	7
+	,	RESULT_TRUE_FRIEND = 6
+	,   RESULT_FAIL_FRIEND = 7
+
 	,	ANNOUNCEMENT = 8	// 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
 
 	,	SEND_PORT = 9
@@ -20,12 +22,15 @@ enum UDP_PROTOCOL : int
 	,	DUMMY_FOR_STUN = 11
 };
 
+// UDP Manager 구조의 변경이 필요함...
 class UDPManager
 {
 	const char				CONST_INVITE_FRIEND;
 	const char				CONST_DEMAND_FRIEND;
 
-	const char				CONST_RESULT_FRIEND;
+	const char				CONST_RESULT_TRUE_FRIEND;
+	const char				CONST_RESULT_FAIL_FRIEND;
+
 	const char				CONST_ANNOUNCEMENT;
 	const char				CONST_CONFIRM_PORT;
 
@@ -37,7 +42,8 @@ class UDPManager
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendInviteMessageQueue;	// INVITE_FRIEND = 1
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendDemandMessageQueue; // DEMAND_FRIEND = 2
 
-	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendResultMessageQueue;	// RESULT_FRIEND = 7
+	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendTrueResultMessageQueue;	// RESULT_FRIEND = 6
+	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> friendFailResultMessageQueue;	// RESULT_FRIEND = 6
 
 	CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>> confirmPortMessageQueue; // CONFIRM_PORT = 10
 	//std::vector<CUSTOM_QUEUE::CustomQueue<weak_ptr<UserData>>> messageQueue;
@@ -61,8 +67,11 @@ public:
 		case UDP_PROTOCOL::DEMAND_FRIEND:
 			friendDemandMessageQueue.Push(pInUserData);
 			break;
-		case UDP_PROTOCOL::RESULT_FRIEND:	
-			friendResultMessageQueue.Push(pInUserData);
+		case UDP_PROTOCOL::RESULT_TRUE_FRIEND:
+			friendTrueResultMessageQueue.Push(pInUserData);
+			break;
+		case UDP_PROTOCOL::RESULT_FAIL_FRIEND:
+			friendFailResultMessageQueue.Push(pInUserData);
 			break;
 		case UDP_PROTOCOL::CONFIRM_PORT:
 			confirmPortMessageQueue.Push(pInUserData);
@@ -77,15 +86,20 @@ public:
 		{
 			if (!friendInviteMessageQueue.IsEmpty())
 			{
-				_SendInviteMessage();
+				_SendFriendInviteMessage();
 			}
 			else if (!friendDemandMessageQueue.IsEmpty())
 			{
-				_SendDemandMessage();
+				_SendFriendDemandMessage();
 			}
-			else if (!friendResultMessageQueue.IsEmpty())
+			
+			else if (!friendTrueResultMessageQueue.IsEmpty())
 			{
-				_SendResultMessage();
+				_SendFriendTrueResultMessage();
+			}
+			else if (!friendFailResultMessageQueue.IsEmpty())
+			{
+				_SendFriendFailResultMessage();
 			}
 			else if (!confirmPortMessageQueue.IsEmpty())
 			{
@@ -103,9 +117,10 @@ public:
 
 public:
 	//void _SendMessage(const char InChar);
-	void _SendInviteMessage();
-	void _SendDemandMessage();
-	void _SendResultMessage();
+	void _SendFriendInviteMessage();
+	void _SendFriendDemandMessage();
+	void _SendFriendTrueResultMessage();
+	void _SendFriendFailResultMessage();
 	void _SendConfirmMessage();
 
 public:
