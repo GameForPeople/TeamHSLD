@@ -10872,7 +10872,7 @@ MonoBehaviour:
   maxDistance: 80
   RotationSensitivity: 0.1
   myTurn: 0
-  speed: 0.5
+  speed: 0.2
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
@@ -24378,9 +24378,9 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 5
+  matchingCompleteTime: 1
   selectOrderTime: 10
-  selectCardTime: 5
+  selectCardTime: 1
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -33353,6 +33353,8 @@ MonoBehaviour:
   - {fileID: 1619096674601712, guid: 82acff35e6cac944e9f73c7ba725dcac, type: 2}
   EffectObj:
   - {fileID: 1227396713657094, guid: ace923dde1c98c64a8b5135db4ec734e, type: 2}
+  - {fileID: 1164248426620632, guid: 3338269c5a41cf84e91fbd4e41f8641b, type: 2}
+  - {fileID: 1705894352393592, guid: 562e799cca49ef74eb74a5302f81f71a, type: 2}
 --- !u!114 &1132190349
 MonoBehaviour:
   m_ObjectHideFlags: 0

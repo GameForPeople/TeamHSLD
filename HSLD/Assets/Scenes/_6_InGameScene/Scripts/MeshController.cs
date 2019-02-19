@@ -335,8 +335,6 @@ public class MeshController : MonoBehaviour {
 
     public void EulerRotCalEffect(GameObject targetObj, GameObject buildingObj, float offset)
     {
-        Camera.main.GetComponent<CameraShake>().ShakeOnce();
-
         EffectObject = Instantiate(buildingObj);
 
         EffectObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;

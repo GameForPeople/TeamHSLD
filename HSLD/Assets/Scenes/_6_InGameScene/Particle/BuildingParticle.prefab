@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4960961145462386}
   m_Layer: 0
-  m_Name: BuildingParticle(Clone)
+  m_Name: BuildingParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

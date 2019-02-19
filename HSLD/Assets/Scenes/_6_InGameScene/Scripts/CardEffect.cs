@@ -11,10 +11,11 @@ public class CardEffect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //setCard(cardObject[0], testMesh.transform);
+        //EventCardDeleteMesh(cardObject[0], testMesh.transform);
+        EventCardInMesh(cardObject[0], testMesh.transform);
     }
 
-    public void setCard(GameObject cardObj, Transform transform)
+    public void EventCardDeleteMesh(GameObject cardObj, Transform transform)
     {
         Vector3 firstPosition = new Vector3(testMesh.transform.position.x, testMesh.transform.position.y - 30000, testMesh.transform.position.z);
         Vector3 secondPosition = testMesh.transform.position;
@@ -24,28 +25,76 @@ public class CardEffect : MonoBehaviour {
         effectCard = Instantiate(cardObj, firstPosition, firstQuaternion);
 
         StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(testMesh.transform.position));
-        StartCoroutine(moveUpCard(effectCard, firstPosition, secondPosition));
+        StartCoroutine(MoveUpCard(effectCard, firstPosition, secondPosition));
     }
 
-    public IEnumerator moveRotateCard(GameObject cardObj)
+    public void EventCardInMesh(GameObject cardObj, Transform transform)
     {
-        while (rotateAmount.x < 365.0f)
-        {
-            Vector3 rotate = Vector3.Cross((testMesh.transform.position).normalized, testMesh.transform.right).normalized;
-            
-            cardObj.transform.RotateAround(gameObject.transform.position, rotate * 120, speed * Time.deltaTime);
-            yield return null;
-        }
+        Vector3 firstPosition = new Vector3(testMesh.transform.position.x, testMesh.transform.position.y - 30000, testMesh.transform.position.z);
+        Vector3 secondPosition = testMesh.transform.position;
+
+        Quaternion firstQuaternion = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+
+        effectCard = Instantiate(cardObj, firstPosition, firstQuaternion);
+
+        StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(testMesh.transform.position));
+        StartCoroutine(MoveUpNoRotate(effectCard, firstPosition, secondPosition));
     }
 
-    public IEnumerator moveUpCard(GameObject cardObj, Vector3 start, Vector3 end)
+    public IEnumerator MoveUpCard(GameObject cardObj, Vector3 start, Vector3 end)
     {
-        while (effectCard.transform.position.y < end.y -5)
+        while (effectCard.transform.position.y < end.y - 5)
         {
             effectCard.transform.position = Vector3.Lerp(effectCard.transform.position, end, Time.deltaTime);
             yield return null;
         }
 
-        StartCoroutine(moveRotateCard(effectCard));
+        StartCoroutine(MoveRotateCard(effectCard));
+    }
+
+    public IEnumerator MoveRotateCard(GameObject cardObj)
+    {
+        Vector2 minScale = new Vector2(10, 10);
+        float amount = 0;
+        while (amount < 360.0f)
+        {
+            Vector3 rotate = Vector3.Cross((testMesh.transform.position).normalized, testMesh.transform.right).normalized;
+            cardObj.transform.RotateAround(gameObject.transform.position, rotate * 120, speed * Time.deltaTime);
+
+            cardObj.transform.localScale = Vector2.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
+            Debug.Log(cardObj.transform.localScale);
+
+            amount += speed * Time.deltaTime;
+            yield return null;
+        }
+        StartCoroutine(MoveInMesh(effectCard, 1));
+    }
+
+    public IEnumerator MoveUpNoRotate(GameObject cardObj, Vector3 start, Vector3 end)
+    {
+        while (effectCard.transform.position.y < end.y - 5)
+        {
+            effectCard.transform.position = Vector3.Lerp(effectCard.transform.position, end, Time.deltaTime);
+            yield return null;
+        }
+        StartCoroutine(MoveInMesh(effectCard, 2));
+    }
+
+    public IEnumerator MoveInMesh(GameObject cardObj, int num)
+    {
+        Vector2 minScale = new Vector2(1, 1);
+        Vector2 maxScale = new Vector2(10, 10);
+        while (effectCard.transform.localScale.x > minScale.x + 1)
+        {
+            cardObj.transform.localScale = Vector2.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
+            yield return null;
+        }
+        if (num == 1)
+        {
+            Camera.main.GetComponent<CameraShake>().ShakeOnce();
+        }
+        GameObject effectObj = gameObject.GetComponent<AllMeshController>().EffectObj[num];
+        testMesh.GetComponent<MeshController>().EulerRotCalEffect(testMesh, effectObj, 1.01f);
+        Destroy(effectCard);
     }
 }

@@ -247,6 +247,7 @@ public class PCverPIcking : MonoBehaviour
         {
             GameObject flagObj = myPlanet.GetComponent<AllMeshController>().myFlag;
             GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
+            Camera.main.GetComponent<CameraShake>().ShakeOnce();
             flagObj.GetComponent<MeshController>().EulerRotCalEffect(flagObj, effectObj, 1.01f);
         }
 
