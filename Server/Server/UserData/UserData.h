@@ -28,8 +28,10 @@ private:
 
 	vector<std::string>				friendNicknameCont;		// 친구 닉네임 컨테이너
 	vector<weak_ptr<UserData>>		friendUserDataCont;		// 친구 소켓 정보 컨테이너
+	
+	//int							demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼. -> 삭제
+	weak_ptr<UserData>				temporaryFriendUserData;	// 친구 만들 때 사용할 버퍼.
 
-	int								demandFriendContIndex;	// 친구 추가 시, 사용될 인덱스 버퍼.
 	BYTE							activeCharacterIndex;	// 현재 활성화된 캐릭터의 인덱스.
 
 	u_short							udpPortNumber;
@@ -48,7 +50,8 @@ public:
 		, characterBit()
 		, friendNicknameCont()
 		, friendUserDataCont()
-		, demandFriendContIndex(-1)
+		//, demandFriendContIndex(-1)
+		, temporaryFriendUserData()
 		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
 		, udpPortNumber(0)
 	{};
@@ -69,7 +72,8 @@ public:
 		, characterBit(InCharacterBit)
 		, friendNicknameCont(InFriendStringCont)
 		, friendUserDataCont()
-		, demandFriendContIndex(-1)
+		//, demandFriendContIndex(-1)
+		, temporaryFriendUserData()
 		, activeCharacterIndex(InActiveCharacterIndex)
 		, udpPortNumber(0)
 	{
@@ -77,10 +81,12 @@ public:
 		// reserver만 하지말고, 메모리 할당 해버려야함.
 		// 그 이유는, 클라이언트에서 친구정보를 요청할 떄, 
 		// emplace를 하지않고(할당하지 않고), 해당 인덱스로 set하기 때문에 오버플로우 에러가 발생함.
+		temporaryFriendUserData.reset();
 
-		friendUserDataCont.reserve(InFriendStringCont.size());
-		
-		for (int i = 0; i < InFriendStringCont.size(); ++i)
+		//std::cout << " InFriendStringCont 의 사이즈는 : " << InFriendStringCont.size() << "입니다.";
+
+		friendUserDataCont.reserve( 4 /*InFriendStringCont.size()*/);
+		for (int i = 0; i < 4; ++i)
 			friendUserDataCont.emplace_back();	//dummy -> nullptr넣으면 컴파일 에러남( 생성 불가), 어짜피 거의 무조건 사영될 메모리임....미리쓴다고 생각하자..힘내자...
 	};
 
@@ -99,10 +105,17 @@ public:
 		, characterBit(InCharacterBit)
 		, friendNicknameCont()
 		, friendUserDataCont()
-		, demandFriendContIndex(-1)
+		//, demandFriendContIndex(-1)
+		, temporaryFriendUserData()
 		, activeCharacterIndex(InActiveCharacterIndex)
 		, udpPortNumber(0)
-	{};
+	{
+		temporaryFriendUserData.reset();
+
+		friendUserDataCont.reserve(4);
+		for (int i = 0; i < 4; ++i)
+			friendUserDataCont.emplace_back();	//dummy -> nullptr넣으면 컴파일 에러남( 생성 불가), 어짜피 거의 무조건 사영될 메모리임....미리쓴다고 생각하자..힘내자...
+	};
 
 	//회원가입처리
 	UserData(SocketInfo* pInSocketInfo, const Type_ID& InID)
@@ -117,15 +130,24 @@ public:
 		, characterBit(0)
 		, friendNicknameCont()
 		, friendUserDataCont()
-		, demandFriendContIndex(-1)
+		//, demandFriendContIndex(-1)
+		, temporaryFriendUserData()
 		, activeCharacterIndex(CharacterManager::CHARACTER_INDEX::MY_PLANET)
 		, udpPortNumber(0)
-	{};
+	{
+		temporaryFriendUserData.reset();
+
+		friendUserDataCont.reserve(4);
+		for (int i = 0; i < 4; ++i)
+			friendUserDataCont.emplace_back();	//dummy -> nullptr넣으면 컴파일 에러남( 생성 불가), 어짜피 거의 무조건 사영될 메모리임....미리쓴다고 생각하자..힘내자...
+	};
 
 	//디져랏!
 	~UserData() 
 	{
 		pSocketInfo = nullptr;
+
+		temporaryFriendUserData.reset();
 
 		for (auto iter = friendUserDataCont.begin(); iter != friendUserDataCont.end(); ++iter)
 		{
@@ -167,7 +189,8 @@ public:
 	_NODISCARD __inline Type_Nickname& GetFriendNicknameWithIndex(const int InIndex ) /*const*/ noexcept { return friendNicknameCont[InIndex]; }
 	_NODISCARD __inline weak_ptr<UserData>/*&*/ GetFriendUserDataWithIndex( const int InIndex ) /*const*/ noexcept { return friendUserDataCont[InIndex]; }
 	_NODISCARD __inline int	GetFriendNicknameContSize() const noexcept { return friendNicknameCont.size(); }
-	_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
+	//_NODISCARD __inline int	GetDemandFriendContIndex() const noexcept { return demandFriendContIndex; }
+	_NODISCARD __inline weak_ptr<UserData> GetTemporaryFriendUserData() const noexcept { return temporaryFriendUserData; }
 	_NODISCARD __inline BYTE GetActiveCharacterIndex() const noexcept { return activeCharacterIndex; }
 	_NODISCARD __inline u_short	GetUdpPortNumber() const noexcept { return udpPortNumber; }
 
@@ -187,16 +210,25 @@ public:
 		friendNicknameCont.emplace_back(InFriendNickname);
 		return friendNicknameCont.size() - 1;
 	}
-	__inline void SetDemandFriendContIndex(const int InIndex) noexcept { demandFriendContIndex = InIndex; }
-	__inline void SetDeleteFriendID()
+	//__inline void SetDemandFriendContIndex(const int InIndex) noexcept { demandFriendContIndex = InIndex; }
+	__inline void SetTemporaryFriendUserData(const shared_ptr<UserData>& InSocketInfo) noexcept { temporaryFriendUserData = InSocketInfo; }
+	
+	__inline void SetDeleteFriendID() noexcept
 	{
 		//warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
-		friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
-		demandFriendContIndex = -1;
+		//friendNicknameCont.erase(friendNicknameCont.begin() + demandFriendContIndex);
+		//demandFriendContIndex = -1;
+		temporaryFriendUserData.reset();
 	}
+	
 	__inline void SetActiveCharacterIndex(const BYTE InIndex) noexcept { activeCharacterIndex = InIndex; }
 	__inline void SetUdpPortNumber(const u_short InUdpPortNumber) noexcept { udpPortNumber = InUdpPortNumber; }
 
+public:
+	__inline void AddFriendNickname(const Type_Nickname& InNewFriendNickname)
+	{
+		friendNicknameCont.emplace_back(InNewFriendNickname);
+	}
 public:
 	_NODISCARD int BuyItem(const int InItemIndex);
 	_NODISCARD int BuyCharacter(const int InCharacterIndex);

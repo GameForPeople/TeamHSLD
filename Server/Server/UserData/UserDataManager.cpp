@@ -205,10 +205,10 @@ void UserDataManager::LogoutProcess(shared_ptr<UserData> pUserNode)
 	else
 	{
 		// 친구 기능중 이였으면, 친구 마지막 데이터 삭제함 // 이거 잘못하면 간다 간다 훅간다!
-		if (pUserNode->GetDemandFriendContIndex() != -1)
-		{
+		//if (pUserNode->GetDemandFriendContIndex() != -1)
+		//{
 			pUserNode->SetDeleteFriendID();
-		}
+		//}
 
 		// 파일명 제작
 		string fileNameBuffer = "UserData/Saved/.txt";

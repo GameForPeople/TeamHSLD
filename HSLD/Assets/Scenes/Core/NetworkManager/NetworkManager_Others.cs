@@ -78,6 +78,8 @@ public partial class NetworkManager : MonoBehaviour {
             int index1 = www.downloadHandler.text.IndexOf("Server IP : ") + 12;
             int index2 = www.downloadHandler.text.IndexOf(".HSLD", index1);
 
+            Debug.Log("index1 : " + index1 + " index2 : " + index2 + " 입니다.");
+
             iP_ADDRESS = www.downloadHandler.text.Substring(index1, index2 - index1);
 
             // Or retrieve results as binary data

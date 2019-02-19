@@ -157,15 +157,29 @@ public class CoreUIManager : MonoBehaviour
         }
     }
 
-    public void OnOffResultMakeFriendUI(bool InBValue)
+    public void OnOffResultMakeFriendUI(bool InBValue, bool isMakeFriendTrue)
     {
         if (InBValue == true)
         {
             ResultMakeFriendUI.SetActive(true);
+
+            if(isMakeFriendTrue)
+            {
+                ResultMakeFriendUI.transform.Find("Text_text").GetComponent<Text>().text = "상대방이 친구 추가를 받았습니다.";
+            }
+            else
+            {
+                ResultMakeFriendUI.transform.Find("Text_text").GetComponent<Text>().text = "상대방이 친구 추가를 거절했습니다.";
+            }
         }
         else if (InBValue == false)
         {
             ResultMakeFriendUI.SetActive(false);
         }
+    }
+
+    public void UI_OffResultMakeFriendUI()
+    {
+        ResultMakeFriendUI.SetActive(false);
     }
 }

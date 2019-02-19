@@ -2509,7 +2509,7 @@ GameObject:
   - component: {fileID: 292489198}
   - component: {fileID: 292489197}
   m_Layer: 8
-  m_Name: NameUiText (1)
+  m_Name: Text_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2530,8 +2530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 25}
-  m_SizeDelta: {x: 585.2, y: 167.1}
+  m_AnchoredPosition: {x: 6.8, y: 4.1}
+  m_SizeDelta: {x: 833.1, y: 212.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292489197
 MonoBehaviour:
@@ -2565,7 +2565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE5C\uCD94 \uBCF4\uB0B8\uAC70 \uBC1B\uC74C."
+  m_Text: "\uC0C1\uB300\uBC29\uC774 \uCE5C\uAD6C \uCD94\uAC00\uB97C \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
 --- !u!222 &292489198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11199,7 +11199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uC81C\uBD80\uD130 \uB108\uB294 \uC544\uC2F8\uAC00 \uC544\uB2C8\uB2E4."
+  m_Text: "[\uCE5C\uAD6CUI]"
 --- !u!222 &1157694775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15650,8 +15650,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1183125662}
-        m_MethodName: OnOffResultMakeFriendUI
-        m_Mode: 6
+        m_MethodName: UI_OffResultMakeFriendUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

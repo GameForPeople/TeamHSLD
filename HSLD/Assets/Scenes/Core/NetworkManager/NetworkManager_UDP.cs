@@ -38,14 +38,18 @@ public partial class NetworkManager : MonoBehaviour
 
     enum UDP_PROTOCOL : int
     {
-            INVITE_FRIEND = 1
+          INVITE_FRIEND = 1
         , DEMAND_FRIEND = 2
 
-        , RESULT_FRIEND = 7
+        , RESULT_TRUE_FRIEND = 6
+        , RESULT_FAIL_FRIEND = 7
+
         , ANNOUNCEMENT = 8  // 해당 사항은, 전체 유저에게 전송해야하므로, 큐형식이 아닌, 다르게 구현.
 
         , SEND_PORT = 9
         , CONFIRM_PORT = 10
+
+        , DUMMY_FOR_STUN = 11
     };
 
     public static void ProcessRecvUDPData(int InBuffer)
@@ -66,10 +70,15 @@ public partial class NetworkManager : MonoBehaviour
         {
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>();
         }
-        else if (InBuffer == (int)UDP_PROTOCOL.RESULT_FRIEND)
+        else if (InBuffer == (int)UDP_PROTOCOL.RESULT_FAIL_FRIEND)
         {
-            Debug.Log("UDP Message : 친구 추가 요청에 대한 답변을 받았습니다. ");
-            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true);
+            Debug.Log("UDP Message : 친구 추가 요청에 대한 나쁜 답변을 받았습니다. ");
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true, false);
+        }
+        else if (InBuffer == (int)UDP_PROTOCOL.RESULT_TRUE_FRIEND)
+        {
+            Debug.Log("UDP Message : 친구 추가 요청에 대한 좋은 답변을 받았습니다. ");
+            GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnOffResultMakeFriendUI(true, true);
         }
         else if (InBuffer == (int)UDP_PROTOCOL.ANNOUNCEMENT)
         {
