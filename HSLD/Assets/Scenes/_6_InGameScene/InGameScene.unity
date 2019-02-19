@@ -24378,9 +24378,9 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 1
+  matchingCompleteTime: 5
   selectOrderTime: 10
-  selectCardTime: 1
+  selectCardTime: 5
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
