@@ -297,8 +297,9 @@ public partial class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.NOTIFY_MAKE_FRIEND_INFO)
         {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
-            string nickNameBuffer = Encoding.Default.GetString(NewDataRecvBuffer, 8, iBuffer);
+            string nickNameBuffer = Encoding.Unicode.GetString(NewDataRecvBuffer, 8, iBuffer);
 
+            Debug.Log("받은 닉네임은 : " + nickNameBuffer);
             GameObject.Find("GameCores").transform.Find("CoreUIManager").GetComponent<CoreUIManager>().OnUI_DEMAND_FRIEND_UDP(nickNameBuffer);
         }
         else if (recvType == (int)PROTOCOL.CHECK_ANSWER_MAKE_FRIEND)

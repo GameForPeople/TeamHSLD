@@ -492,6 +492,10 @@ void SCENE_NETWORK_MANAGER::MainUiScene::_DemandMakeFriendInfoProcess(SocketInfo
 		std::wstring stringBuffer = CONVERT_UTIL::StringToWString(pRetNode->GetNickname());
 		int stringSize = stringBuffer.size() * 2; 
 
+		std::cout << "친구추가를 요청한 닉네임은 string : " << pRetNode->GetNickname() << std::endl;
+		std::wcout << "친구추가를 요청한 닉네임은 wstring : " << stringBuffer << std::endl;
+		std::cout << "친구추가를 요청한 닉네임의 사이즈는 : " << stringSize << std::endl;
+
 		memcpy(pClient->buf, reinterpret_cast<const char*>(&NOTIFY_MAKE_FRIEND_INFO), sizeof(int));
 		memcpy(pClient->buf + 4, reinterpret_cast<const char*>(&stringSize), sizeof(int));
 		memcpy(pClient->buf + 8, stringBuffer.data(), stringSize);

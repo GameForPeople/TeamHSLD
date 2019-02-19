@@ -90,7 +90,7 @@ public class LoginSceneManager : MonoBehaviour {
     public void UI_OnOff_NewNicknameUI(bool InIsActive = true)
     {
         //GameObject.Find("SignUp_UI").transform.Find("OnOff_All").gameObject.SetActive(true);
-        GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").gameObject.SetActive(InIsActive);
+        GameObject.Find("Canvas_2D").transform.Find("SignUp_UI").gameObject.SetActive(InIsActive);
 
         //GameObject.Find("OnOff_UI").gameObject.SetActive(true);
     }
