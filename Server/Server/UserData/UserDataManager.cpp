@@ -297,8 +297,9 @@ shared_ptr<UserData> UserDataManager::SearchUserNodeByNickname(const Type_Nickna
 	}
 	else //  if (firstCharType == _MBC_ILLEGAL)
 	{
+#ifdef _DEBUG_MODE_
 		std::cout << "[FRIEND]닉네임은 이상한 글자입니다. " << std::endl;
-
+#endif
 		idBuffer = nicknameCont[static_cast<int>(LANGUAGE::OTHERS)].Search(KeyNickname, isReturnTrue)->SetValue().GetID();
 	}
 

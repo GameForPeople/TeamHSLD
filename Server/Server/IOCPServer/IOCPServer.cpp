@@ -6,7 +6,7 @@
 #pragma warning (disable: 4278)
 
 #ifdef _DEBUG_MODE_
-	// #define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인.
+	// #define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인용.
 #endif
 
 // Server's global Function
@@ -29,7 +29,7 @@ namespace NETWORK_UTIL {
 		exit(1);
 	};
 
-	_NORETURN void ERROR_DISPLAY(const char *msg)
+	/*_NORETURN*/ void ERROR_DISPLAY(const char *msg)
 	{
 		LPVOID lpMsgBuf;
 		FormatMessage(
@@ -45,44 +45,6 @@ namespace NETWORK_UTIL {
 		printf(" [%s]  %s", msg, (LPTSTR)&lpMsgBuf);
 		LocalFree(lpMsgBuf);
 	};
-
-	//bool SendProcess(SOCKETINFO* ptr, const int InDataSize, const int InNowProtocol, const Protocol InNextProtocol = END_SEND, const bool InIsRecvTrue = true)
-	//{
-	//	memcpy(ptr->buf, (char*)&InNowProtocol, sizeof(int));
-	//
-	//	// 프로토콜만 보낼때를 제외하고!
-	//	if (InDataSize > sizeof(int) && ptr->dataBuffer != nullptr)
-	//	{
-	//		memcpy(ptr->buf + 4, (char*)ptr->dataBuffer, InDataSize - sizeof(int));
-	//		ZeroMemory(&ptr->overlapped, sizeof(ptr->overlapped));
-	//
-	//		// 잘가랏 고생했다
-	//		if (ptr->dataBuffer != nullptr)
-	//			delete (ptr->dataBuffer);
-	//	}
-	//
-	//	ptr->dataSize = InDataSize;
-	//
-	//	// 데이터 바인드
-	//	ptr->wsabuf.buf = ptr->buf;
-	//	ptr->wsabuf.len = ptr->dataSize;
-	//
-	//	// 다음 Thread의 처리를 위한 정보 저장
-	//	ptr->bufferProtocol = InNextProtocol;
-	//	ptr->isRecvTrue = InIsRecvTrue;
-	//
-	//	// 받아랏!!!
-	//	int retVal = WSASend(ptr->sock, &ptr->wsabuf, 1, NULL, 0, &ptr->overlapped, NULL);
-	//
-	//	if (retVal == SOCKET_ERROR)
-	//	{
-	//		if (WSAGetLastError() != WSA_IO_PENDING)
-	//		{
-	//			ERROR_DISPLAY((char *)"WSASend()");
-	//		}
-	//		return true;
-	//	}
-	//}
 
 	bool SendProcess(SocketInfo* ptr)
 	{
@@ -471,7 +433,7 @@ void IOCPServer::_WorkerThreadFunction()
 		ERROR_CLIENT_DISCONNECT:
 		if (retVal == 0 || cbTransferred == 0)
 		{
-#ifdef _DEBUG
+#ifdef _DEBUG_MODE_
 			if(pClient != nullptr && pClient->pUserNode != nullptr)
 				std::cout << "     [UserDataManager] 클라이언트 종료 혹은 연결 끊김 Id = " << pClient->pUserNode->GetKey() << std::endl;
 			//printf("[TCP 서버] 클라이언트 종료 : IP 주소 =%s, 포트 번호 =%d\n",
@@ -509,12 +471,15 @@ void IOCPServer::_WorkerThreadFunction()
 				pUserData->LogoutProcess(pClient->pUserNode);
 			}
 			
+#ifdef _DEBUG_MODE_
 			if (retVal == 0)
 			{
 				DWORD temp1, temp2;
 				WSAGetOverlappedResult(pClient->sock, &pClient->overlapped, &temp1, FALSE, &temp2);
 				NETWORK_UTIL::ERROR_DISPLAY(TEXT("WSAGetOverlappedResult()"));
 			}
+#endif
+
 			closesocket(pClient->sock);
 
 			delete pClient;
