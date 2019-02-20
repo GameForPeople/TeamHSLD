@@ -195,6 +195,10 @@ public class FlowSystem : MonoBehaviour
                     turnSystem.TurnSet();
                 }
                 break;
+
+            case FLOW.ENEMYTURN_PICKEVENTCARD:
+                eventCardManager.EnemyEventCardOff();
+                break;
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:          
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 turnSystem.currentTurn = TURN.MYTURN;
@@ -493,12 +497,7 @@ public class FlowSystem : MonoBehaviour
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC, 2.5f));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
-                //if (/*상대방카드 index = 101, 111,202 && TurnSystem.enemyEventCardDefense*/)
-                //{
-                //    //상대 턴 종료.
-                //    //애니메이션 후, 내턴 시작
-                //}
-                //StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2, true));
+                StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKEVENTCARD, 2));
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTSELECTTERRAIN:
                 break;

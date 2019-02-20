@@ -44,6 +44,23 @@ public class EventCardManager : MonoBehaviour
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
     }
 
+    public void InstateEnemyEventCard(int index)
+    {
+        eventCard.SetActive(true);
+        pickedCard = eventCardInfoSet[index];
+
+        cardName.text = pickedCard.cardName;
+        cardImg.sprite = pickedCard.img;
+        selectedIndex = pickedCard.cardIndex;
+
+        conditionABtn.SetActive(false);
+        conditionBBtn.SetActive(false);
+    }
+    public void EnemyEventCardOff()
+    {
+        eventCard.SetActive(false);
+    }
+
     public void RandomEventCardSelect(int index)
     {
         if (check[index])
@@ -86,15 +103,26 @@ public class EventCardManager : MonoBehaviour
         conditionABtn.SetActive(false);
         conditionBBtn.SetActive(false);
 
-        conditionABtn.SetActive(true);
-
-        //if (pickedCard.cardIndex == 301)
-        //    conditionBBtn.SetActive(true);
-        //else
-        //    conditionABtn.SetActive(true);
+        if (pickedCard.cardIndex == 301)
+            conditionBBtn.SetActive(true);
+        else
+            conditionABtn.SetActive(true);
 
         //선택된 카드 서버로 보내기
-        //pickedCard.data.cardIndex
+        if (GameObject.Find("NetworkManager") != null)
+            GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventcardIndex(pickedCard.cardIndex);
+    }
+
+    //서버에서 전달받은거 변경.
+    public void MeshInfoUpdate(int terrainIndex, int cardIndex)
+    {
+        for (int i = 0; i < planetTrans.childCount; i++)
+        {
+            if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
+            {
+                
+            }
+        }
     }
 
     IEnumerator UseCardCor()
@@ -170,8 +198,6 @@ public class EventCardManager : MonoBehaviour
     public void UseCard()
     {
         eventCard.SetActive(false);
-        if(GameObject.Find("NetworkManager") != null)
-            GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
        
         switch (selectedIndex)
         {
@@ -182,8 +208,9 @@ public class EventCardManager : MonoBehaviour
                 if (MissionManager.selectedSubMissionIndex == 1)
                     missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
-                //TurnSystem.enemyEventCardDefense = true;
-                //나중에 서버랑 맞춰보기
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(true, -1, -1);
 
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
@@ -193,6 +220,11 @@ public class EventCardManager : MonoBehaviour
                 DiceSystem.instance_.doubleImg.SetActive(true);
                 DiceSystem.instance_.doubleImg.AddComponent<IsDoubleImg>();
                 DiceSystem.isDiceDouble = true;
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, -1, -1);
+
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
             default:
@@ -205,12 +237,13 @@ public class EventCardManager : MonoBehaviour
     {
         eventCard.SetActive(false);
 
+        //서버로 데이터 전송
         if (GameObject.Find("NetworkManager") != null)
-            GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
+            GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, -1, -1);
 
         flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
-
+    
     public void PickLocDone(GameObject obj, Terrain terrainType)
     {
         switch (selectedIndex)
@@ -223,6 +256,10 @@ public class EventCardManager : MonoBehaviour
                     connectObjs[i].GetComponent<MeshController>().setDefault();
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
                     //StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
+
+                    //서버로 데이터 전송
+                    if (GameObject.Find("NetworkManager") != null)
+                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, -1);
                 }
 
                 connectObjs.Clear();
@@ -235,12 +272,22 @@ public class EventCardManager : MonoBehaviour
                     }
                 }
 
+               
+
                 break;
                 //소유권전환 - 타겟 : 적
             case 111:
                 ConnectObj(obj, terrainType);
                 for (int i = 0; i < connectObjs.Count; i++)
+                {
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
+                    //메쉬 메테리얼도 바꿔줘야함
+
+                    //서버로 데이터 전송
+                    if (GameObject.Find("NetworkManager") != null)
+                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, -1);
+                }
+                    
 
                 connectObjs.Clear();
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
@@ -316,6 +363,10 @@ public class EventCardManager : MonoBehaviour
                 {
                     connectObjs[i].GetComponent<MeshController>().setModeration(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
+
+                    //서버로 데이터 전송
+                    if (GameObject.Find("NetworkManager") != null)
+                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
                 }
                     
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
@@ -325,6 +376,10 @@ public class EventCardManager : MonoBehaviour
                 {
                     connectObjs[i].GetComponent<MeshController>().setBarren(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
+
+                    //서버로 데이터 전송
+                    if (GameObject.Find("NetworkManager") != null)
+                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
                 }
                     
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
@@ -334,6 +389,10 @@ public class EventCardManager : MonoBehaviour
                 {
                     connectObjs[i].GetComponent<MeshController>().setCold(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
+
+                    //서버로 데이터 전송
+                    if (GameObject.Find("NetworkManager") != null)
+                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
                 }
                     
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);

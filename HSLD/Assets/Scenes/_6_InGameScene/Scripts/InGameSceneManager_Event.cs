@@ -36,29 +36,37 @@ public partial class InGameSceneManager : MonoBehaviour {
     }
 
     public bool NetworkManager_IsUsedDefenceCard;
+    public int NetworkManager_TerrainIndex;
+    public int NetworkManager_CardIndex;
     /*
      * SendEventBuffer
      * 
      *  - 해당 카드에 대한, 추가적인 정보를 전송할 때 사용합니다.
      */
-    public void SendEventBuffer(bool InIsUsedDefenceCard)
+    public void SendEventBuffer(bool InIsUsedDefenceCard, int indexRefA, int indexRefB)
     {
         switch (network_sendEventCardType)
         {
             case 101:
                 // 선택한 상대 지형
+                NetworkManager_TerrainIndex = indexRefA;
                 break;
 
             case 111:
                 // 선택한 상대 지형
+                NetworkManager_TerrainIndex = indexRefA;
                 break;
 
             case 201:
                 // 내 지형 인덱스 및 변경하는 속성
+                NetworkManager_TerrainIndex = indexRefA;
+                NetworkManager_CardIndex = indexRefB;
                 break;
 
             case 202:
                 // 상대 지형 인덱스 및 변경하는 속성
+                NetworkManager_TerrainIndex = indexRefA;
+                NetworkManager_CardIndex = indexRefB;
                 break;
 
             case 301:
@@ -83,21 +91,10 @@ public partial class InGameSceneManager : MonoBehaviour {
         network_recvEventCardType = InEventcardIndex;
 
         //-- 받은 이벤트 카드의 인덱스가 무엇인지 확인하는 함수입니다.
-        switch(network_recvEventCardType)
-        {
-            case 101:
-                break;
-            case 111:
-                break;
-            case 201:
-                break;
-            case 202:
-                break;
-            case 301:
-                break;
-            case 401:
-                break;
-        }
+
+        //액티브가 On됫다가 2초후에 Off됨.
+        GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().InstateEnemyEventCard(network_recvEventCardType);
+
         //--
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
@@ -106,22 +103,28 @@ public partial class InGameSceneManager : MonoBehaviour {
     {
         switch (inNotifyEventCase)
         {
+            //지형_파괴 
             case 101:
                 break;
 
+            //소유권_전환
             case 111:
                 break;
 
+            //내_지형_속성_변경
             case 201:
                 break;
 
+            //상대_지형_속성_변경
             case 202:
                 break;
 
+            //특수_카드_방어
             case 301:
             // True면 사용, False면 사용하지 않음.
                 break;
 
+            //주사위_두배
             case 401:
             // 불리지 않음.
                 break;
