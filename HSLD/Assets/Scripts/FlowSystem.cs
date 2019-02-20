@@ -145,7 +145,7 @@ public class FlowSystem : MonoBehaviour
                 //    lineObj.GetComponent<LineRenderer>().SetPosition(i, linePosList[i]);
 
                 //이벤트카드로 갈지 말지 분기
-                if(DiceSystem.isDouble /*|| 서브미션 달성시*/)
+                if(DiceSystem.isDouble /*|| 서브미션 달성시*/ && PCverPIcking.isDominatedConfirm)
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
                     eventCardManager.EventCardInstate();
@@ -154,7 +154,7 @@ public class FlowSystem : MonoBehaviour
                 else
                 {
                     displayTextImg.SetActive(true);
-                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
+                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
 
                     yield return new WaitForSeconds(2.5f);
                     if (GameObject.Find("GameCores") != null)

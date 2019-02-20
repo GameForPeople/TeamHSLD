@@ -109,10 +109,10 @@ public class PCverPIcking : MonoBehaviour
             //    return;
             //}
 
-            if (PickedMeshObj.GetComponent<MeshController>() == null)
-            {
-                PickedMeshObj.AddComponent<MeshController>();
-            }
+            //if (PickedMeshObj.GetComponent<MeshController>() == null)
+            //{
+            //    PickedMeshObj.AddComponent<MeshController>();
+            //}
 
             if (!PickedMeshObj.GetComponent<MeshController>().isFixed && !PickedMeshObj.GetComponent<MeshController>().isAwake)
             {
