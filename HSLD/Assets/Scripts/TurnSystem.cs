@@ -411,9 +411,8 @@ public class TurnSystem : MonoBehaviour
     public void EnemyTurnPass()
     {
         flowSystem.currentFlow = FLOW.DISPLAYANIMATION_WAITING;
-
-        flowSystem.displayText.GetComponent<DisplayText>().text = "나의 턴";
-        flowSystem.displayText.SetActive(true);
+        flowSystem.displayTextImg.SetActive(true);
+        flowSystem.displayTextImg.GetComponent<DisplayTextImg>().Performance(flowSystem.displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
 
         if (TurnPassAndDisplayTextCor != null)
             StopCoroutine(TurnPassAndDisplayTextCor);

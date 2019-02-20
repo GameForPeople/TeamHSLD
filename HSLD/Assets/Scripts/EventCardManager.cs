@@ -172,7 +172,7 @@ public class EventCardManager : MonoBehaviour
         eventCard.SetActive(false);
         if(GameObject.Find("NetworkManager") != null)
             GameObject.Find("NetworkManager").GetComponent<NetworkManager>().inGameSceneManager.GetComponent<InGameSceneManager>().SendEventcardIndex(selectedIndex);
-
+       
         switch (selectedIndex)
         {
             //특수카드 방어

@@ -43,6 +43,7 @@ public class FlowSystem : MonoBehaviour
     public Transform missionSetParentTransform;
     public GameObject missionCanvas;
     public GameObject displayText;
+    public GameObject displayTextImg;
     public GameObject enemyTurnPassObj;
     public GameObject resultUICanvas;
 
@@ -152,8 +153,8 @@ public class FlowSystem : MonoBehaviour
                 }
                 else
                 {
-                    displayText.GetComponent<DisplayText>().text = "나의 턴";
-                    displayText.SetActive(true);
+                    displayTextImg.SetActive(true);
+                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
 
                     yield return new WaitForSeconds(2.5f);
                     if (GameObject.Find("GameCores") != null)
@@ -185,8 +186,8 @@ public class FlowSystem : MonoBehaviour
                     currentFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
                 else
                 {
-                    displayText.GetComponent<DisplayText>().text = "나의 턴";
-                    displayText.SetActive(true);
+                    displayTextImg.SetActive(true);
+                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
                     yield return new WaitForSeconds(2.5f);
 
                     currentFlow = FLOW.TO_ROLLINGDICE;
@@ -210,14 +211,15 @@ public class FlowSystem : MonoBehaviour
         //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
         if (GameObject.Find("GameCores") == null)
         {
-            displayText.GetComponent<DisplayText>().text = "GAME START!";
-            displayText.SetActive(true);
+            displayTextImg.SetActive(true);
+            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[0]);
             yield return new WaitForSeconds(2.5f);
+
+            displayTextImg.SetActive(true);
             if (turnSystem.currentTurn.Equals(TURN.MYTURN))
-                displayText.GetComponent<DisplayText>().text = "나의 턴";
+                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
             else
-                displayText.GetComponent<DisplayText>().text = "상대 턴";
-            displayText.SetActive(true);
+                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
             yield return new WaitForSeconds(2.5f);
             currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             FlowChange(FLOW.READY_DONE);
@@ -239,14 +241,15 @@ public class FlowSystem : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
 
-            displayText.GetComponent<DisplayText>().text = "GAME START!";
-            displayText.SetActive(true);
+            displayTextImg.SetActive(true);
+            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[0]);
             yield return new WaitForSeconds(2.5f);
+
+            displayTextImg.SetActive(true);
             if (turnSystem.currentTurn.Equals(TURN.MYTURN))
-                displayText.GetComponent<DisplayText>().text = "나의 턴";
+                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
             else
-                displayText.GetComponent<DisplayText>().text = "상대 턴";
-            displayText.SetActive(true);
+                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
 
             yield return new WaitForSeconds(2.5f);
             FlowChange(FLOW.READY_DONE);
@@ -465,16 +468,11 @@ public class FlowSystem : MonoBehaviour
             case FLOW.TO_PICKINGEVENTSECLECTTERRAIN:
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:
+                displayTextImg.SetActive(true);
                 if (turnSystem.currentTurn.Equals(TURN.MYTURN))
-                {
-                    displayText.GetComponent<DisplayText>().text = "상대 턴";
-                    displayText.SetActive(true);
-                }
+                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
                 else
-                {
-                    displayText.GetComponent<DisplayText>().text = "나의 턴";
-                    displayText.SetActive(true);
-                }
+                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGEVENTCARDLOC, 2));    // <<< 여기  2라는 숫자를 바꾸면댐
                 break;
 
@@ -490,8 +488,8 @@ public class FlowSystem : MonoBehaviour
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGLOC, 0f));
                 break;
             case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
-                displayText.GetComponent<DisplayText>().text = "나의 턴";
-                displayText.SetActive(true);
+                displayTextImg.SetActive(true);
+                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
                 StartCoroutine(DisplayEventWaitingTime(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC, 2.5f));
                 break;
             case FLOW.ENEMYTURN_PICKEVENTCARD:
