@@ -24346,6 +24346,8 @@ MonoBehaviour:
   network_sendEventCardType: 0
   network_recvEventCardType: 0
   NetworkManager_IsUsedDefenceCard: 0
+  NetworkManager_TerrainIndex: 0
+  NetworkManager_CardIndex: 0
 --- !u!4 &823012257
 Transform:
   m_ObjectHideFlags: 0
