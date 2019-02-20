@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
+
 public partial class InGameSceneManager : MonoBehaviour {
 
     //public enum EVENT_TYPE : int
@@ -18,10 +21,20 @@ public partial class InGameSceneManager : MonoBehaviour {
     public int network_sendEventCardType;
     public int network_recvEventCardType;
 
+    // event card type 관련 함수를 받았을 때, 함수 인터페이스를 일치하기 위해, 의미없이 전달할 때 사용하는 변수들 입니다.
+    // 오직 인자 전달용입니다.
+    /* readonly */ private int tempTerrainIndex;
+    /* readonly */ private int tempCardIndex;
+    /* readonly */ private bool tempIsDefense;
+
     // Use this for initialization
     private void StartForEvent () {
         network_sendEventCardType = -1;
         network_recvEventCardType = -1;
+
+        tempTerrainIndex = -1;
+        tempCardIndex = -1;
+        tempIsDefense = true;
     }
 
     /*
@@ -99,39 +112,46 @@ public partial class InGameSceneManager : MonoBehaviour {
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
 
+
+    //서버에서 전달받은거 변경.
+    //public void MeshInfoUpdate(int eventIndex, int terrainIndex, int cardIndex, bool isDefense)
+
     public void NetworkManager_RecvEventBuffer(int inNotifyEventCase)
     {
         switch (inNotifyEventCase)
         {
-            //지형_파괴 
-            case 101:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
+            case 101:   //지형_파괴 
+            case 111:   //소유권_전환
+                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+                    inNotifyEventCase,
+                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8),
+                    tempCardIndex,
+                    tempIsDefense
+                );
                 break;
 
-            //소유권_전환
-            case 111:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
-                break;
-
-            //내_지형_속성_변경
-            case 201:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
-                break;
-
-            //상대_지형_속성_변경
-            case 202:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
+            case 201:   //내_지형_속성_변경
+            case 202:   //상대_지형_속성_변경
+                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+                    inNotifyEventCase,
+                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8),
+                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 12),
+                    tempIsDefense
+                );
                 break;
 
             //특수_카드_방어
             case 301:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, true);
-                // True면 사용, False면 사용하지 않음.
+                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+                    inNotifyEventCase,
+                    tempTerrainIndex,
+                    tempCardIndex,
+                    BitConverter.ToBoolean(networkManager.NewDataRecvBuffer, 8)
+                );
                 break;
 
             //주사위_두배
             case 401:
-                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,, false);
                 // 불리지 않음.
                 break;
         }
