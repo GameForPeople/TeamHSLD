@@ -13,6 +13,7 @@ public class EventCardManager : MonoBehaviour
     public Image cardImg;
     public GameObject selectTerrainCardObj;
     static public int selectedIndex;
+    static public bool isDefenseCardGet = false;
     private Terrain selectedTerrain;
 
     private GameObject connectedObj;
@@ -91,6 +92,19 @@ public class EventCardManager : MonoBehaviour
         }
     }
 
+    public void DefenseCard()
+    {
+        pickedCard = eventCardInfoSet[4];
+
+        eventCard.SetActive(true);
+        cardName.text = pickedCard.cardName;
+        cardImg.sprite = pickedCard.img;
+        selectedIndex = pickedCard.cardIndex;
+
+        conditionABtn.SetActive(false);
+        conditionBBtn.SetActive(true);
+    }
+
     public void EventCardInstate()
     {
         RandomEventCardSelect(Random.Range(0, 6));
@@ -100,13 +114,8 @@ public class EventCardManager : MonoBehaviour
         cardImg.sprite = pickedCard.img;
         selectedIndex = pickedCard.cardIndex;
 
-        conditionABtn.SetActive(false);
         conditionBBtn.SetActive(false);
-
-        if (pickedCard.cardIndex == 301)
-            conditionBBtn.SetActive(true);
-        else
-            conditionABtn.SetActive(true);
+        conditionABtn.SetActive(true);
 
         //선택된 카드 서버로 보내기
         if (GameObject.Find("NetworkManager") != null)
@@ -114,15 +123,92 @@ public class EventCardManager : MonoBehaviour
     }
 
     //서버에서 전달받은거 변경.
-    public void MeshInfoUpdate(int terrainIndex, int cardIndex)
+    public void MeshInfoUpdate(int eventIndex, int terrainIndex, int cardIndex, bool isDefense)
     {
-        for (int i = 0; i < planetTrans.childCount; i++)
+        switch(eventIndex)
         {
-            if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
-            {
-                
-            }
+            //지형_파괴 
+            case 101:
+                for (int i = 0; i < planetTrans.childCount; i++)
+                {
+                    if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
+                    {
+                        planetTrans.GetChild(i).GetComponent<MeshController>().setDefault();
+                        planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
+                        break;
+                    }
+                }
+                break;
+
+            //소유권_전환
+            case 111:
+                for (int i = 0; i < planetTrans.childCount; i++)
+                {
+                    if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
+                    {
+                        connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ENEMY;
+                        //메테리얼도 바꿔야함
+                        break;
+                    }
+                }
+                break;
+
+            //내_지형_속성_변경
+            case 201:
+                for (int i = 0; i < planetTrans.childCount; i++)
+                {
+                    if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
+                    {
+                        planetTrans.GetChild(i).GetComponent<MeshController>().setBarren(planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify);
+                        if(cardIndex == 1)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
+                        else if(cardIndex == 2)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
+                        else if(cardIndex == 3)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
+
+                        //buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
+                        break;
+                    }
+                }
+                break;
+
+            //상대_지형_속성_변경
+            case 202:
+                for (int i = 0; i < planetTrans.childCount; i++)
+                {
+                    if (planetTrans.GetChild(i).GetComponent<MeshController>().MeshNumber == terrainIndex)
+                    {
+                        planetTrans.GetChild(i).GetComponent<MeshController>().setBarren(planetTrans.GetChild(i).GetComponent<MeshController>().currentIdentify);
+                        if (cardIndex == 1)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
+                        else if (cardIndex == 2)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
+                        else if (cardIndex == 3)
+                            planetTrans.GetChild(i).GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
+
+                        //buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
+                        break;
+                    }
+                }
+                break;
+
+            //특수_카드_방어
+            case 301:
+                // True면 사용, False면 사용하지 않음.
+                if(isDefense)
+                {
+                    flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                }
+                    
+                break;
+
+            //주사위_두배
+            case 401:
+                // 불리지 않음.
+                break;
         }
+        
     }
 
     IEnumerator UseCardCor()
@@ -194,6 +280,18 @@ public class EventCardManager : MonoBehaviour
         flowsystem.currentFlow = FLOW.TO_PICKINGEVENTCARDLOC;
     }
 
+    //방어카드는 지금쓰는게아니라 소지하고있어야함.
+    public void GetCard()
+    {
+        if (selectedIndex == 301)
+        {
+            isDefenseCardGet = true;
+            flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+        }
+        else
+            UseCard();
+    }
+
     //사용 할 경우
     public void UseCard()
     {
@@ -203,7 +301,7 @@ public class EventCardManager : MonoBehaviour
         {
             //특수카드 방어
             case 301:
-
+                isDefenseCardGet = false;
                 //미션 - 330
                 if (MissionManager.selectedSubMissionIndex == 1)
                     missionManager.SubMissionCounting(1, 4, Identify.ALLY);
@@ -212,7 +310,7 @@ public class EventCardManager : MonoBehaviour
                 if (GameObject.Find("NetworkManager") != null)
                     GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(true, -1, -1);
 
-                flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
+                flowsystem.FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
                 break;
             //주사위 두배
             case 401:

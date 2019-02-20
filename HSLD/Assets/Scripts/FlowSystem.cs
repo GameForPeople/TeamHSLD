@@ -183,7 +183,9 @@ public class FlowSystem : MonoBehaviour
             case FLOW.ENEMYTURN_PICKINGLOC:
                 //상대방이 이벤트카드를 뽑았다. - 더블일경우
                 if ((GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().recvDiceValue % 10) == (GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().recvDiceValue / 10))
+                {
                     currentFlow = FLOW.ENEMYTURN_PICKEVENTCARD;
+                }
                 else
                 {
                     displayTextImg.SetActive(true);
@@ -198,8 +200,9 @@ public class FlowSystem : MonoBehaviour
 
             case FLOW.ENEMYTURN_PICKEVENTCARD:
                 eventCardManager.EnemyEventCardOff();
+                eventCardManager.DefenseCard();
                 break;
-            case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:          
+            case FLOW.ENEMYTURN_PICKINGEVENTCARDLOC:
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 turnSystem.currentTurn = TURN.MYTURN;
                 turnSystem.TurnSet();

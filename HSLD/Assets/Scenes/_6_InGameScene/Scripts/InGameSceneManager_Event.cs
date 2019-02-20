@@ -94,7 +94,7 @@ public partial class InGameSceneManager : MonoBehaviour {
 
         //액티브가 On됫다가 2초후에 Off됨.
         GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().InstateEnemyEventCard(network_recvEventCardType);
-
+        
         //--
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKEVENTCARD);
     }
@@ -105,28 +105,34 @@ public partial class InGameSceneManager : MonoBehaviour {
         {
             //지형_파괴 
             case 101:
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
                 break;
 
             //소유권_전환
             case 111:
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
                 break;
 
             //내_지형_속성_변경
             case 201:
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
                 break;
 
             //상대_지형_속성_변경
             case 202:
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, false);
                 break;
 
             //특수_카드_방어
             case 301:
-            // True면 사용, False면 사용하지 않음.
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,,, true);
+                // True면 사용, False면 사용하지 않음.
                 break;
 
             //주사위_두배
             case 401:
-            // 불리지 않음.
+                //GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(inNotifyEventCase,, false);
+                // 불리지 않음.
                 break;
         }
     }
