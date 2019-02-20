@@ -9,6 +9,8 @@
 SCENE_NETWORK_MANAGER::InGameScene::InGameScene(GameRoomManager* pInRoomData, UserDataManager* pInUserData, UDPManager* pInUDPManager) 
 	: BaseScene(pInRoomData, pInUserData, pInUDPManager)
 	, CONST_ANSWER_EMOJI(Protocol::NOTIFY_EMOJI)
+	, RecvFunctions()
+	, SendFunctions()
 {
 	//functionPointers.emplace_back(FunctionPointer(DemandGameState));
 	RecvFunctions[0] = &InGameScene::RecvGameState;

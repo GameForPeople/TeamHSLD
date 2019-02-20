@@ -82,8 +82,8 @@ void UDPManager::UDPRecv(UserDataManager* InUserDataManager)
 	char recvBuffer[50];
 	int addrlen(sizeof(clientAddr));
 
-	int retVal = recvfrom(udpSocket, recvBuffer, 50, 0, (SOCKADDR *)&clientAddr, &addrlen);
-	if (retVal == SOCKET_ERROR)
+	if (int retVal = recvfrom(udpSocket, recvBuffer, 50, 0, (SOCKADDR *)&clientAddr, &addrlen)
+		;	retVal == SOCKET_ERROR)
 	{
 #ifdef _DEBUG_MODE_
 		std::cout << "[UDPManager] UDP_Receive에서 Error가 발생했습니다. \n";

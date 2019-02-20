@@ -73,6 +73,9 @@ public:
 		, pUserData(new UserDataManager())
 		, pRoomData(new GameRoomManager())
 		, pUdpManager(new UDPManager())
+		, hManagerThread()
+		, hUDPSendThread()
+		, hUDPRecvThread()
 	{
 		Init(InServerInitType);
 	}

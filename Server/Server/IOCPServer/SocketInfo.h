@@ -48,6 +48,7 @@ public:
 		,	wsabuf()
 		,	sock()
 		,	buf()
+		,	dataSize()
 		//,	isInRoom(false)
 		,	isHost(false)
 		//,	dataSize() 

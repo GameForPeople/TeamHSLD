@@ -9,8 +9,7 @@ auto main(int argc, char * argv[]) -> int
 			[/* void */]() noexcept(false) -> const IOCPServer::SERVER_INIT_TYPE
 			{
 #ifdef _DEBUG_MODE_
-				std::cout << "\n"
-					<< "   Caution! : the current '_DEBUG_MODE_' has been Defined \n";
+				std::cout << "\n   Caution! : the current '_DEBUG_MODE_' has been Defined \n";
 				Sleep(1000);
 #endif
 				std::cout << "\n"
