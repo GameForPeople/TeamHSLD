@@ -352,30 +352,35 @@ public partial class NetworkManager : MonoBehaviour {
 
                     switch (inGameSceneManager.network_sendEventCardType)
                     {
-                        case 101:    // [[fallthrough]]
+                        case 101:    // 선택한 상대 지형 // [[fallthrough]]
                         case 111:
-                            // 선택한 상대 지형
-                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndex), 0, NewDataSendBuffer, 8, 4);
-                            socket.Send(NewDataSendBuffer, 12, SocketFlags.None);
+                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndexNumber), 0, NewDataSendBuffer, 8, 4);
+
+                            for( int i = 0; i < inGameSceneManager.NetworkManager_TerrainIndexNumber; ++i)
+                                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndexArr[i]), 0, NewDataSendBuffer, 12 + (4 * i), 4);
+
+                            socket.Send(NewDataSendBuffer, 12 + (inGameSceneManager.NetworkManager_TerrainIndexNumber * 4), SocketFlags.None);
                             break;
 
-                        case 201:    // [[fallthrough]]
-                        case 202:
-                            // 내 지형 인덱스 및 변경하는 속성
-                            // 상대 지형 인덱스 및 변경하는 속성
-                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndex), 0, NewDataSendBuffer, 8, 4);
-                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_CardIndex), 0, NewDataSendBuffer, 12, 4);
-                            socket.Send(NewDataSendBuffer, 16, SocketFlags.None);
+                        case 201:    // 내 지형 인덱스 및 변경하는 속성  // [[fallthrough]]
+                        case 202:   // 상대 지형 인덱스 및 변경하는 속성
+                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_CardIndex), 0, NewDataSendBuffer, 8, 4);
+                            Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndexNumber), 0, NewDataSendBuffer, 12, 4);
+
+                            for (int i = 0; i < inGameSceneManager.NetworkManager_TerrainIndexNumber; ++i)
+                                Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_TerrainIndexArr[i]), 0, NewDataSendBuffer, 16 + (4 * i), 4);
+
+                            socket.Send(NewDataSendBuffer, 16 + (inGameSceneManager.NetworkManager_TerrainIndexNumber * 4), SocketFlags.None);
                             break;
 
-                        case 301:
-                            // 사용할 건지, 안할건지 여부 전송.
+                        case 301:   // 사용할 건지, 안할건지 여부 전송.
                             Buffer.BlockCopy(BitConverter.GetBytes(inGameSceneManager.NetworkManager_IsUsedDefenceCard), 0, NewDataSendBuffer, 8, 1);
                             socket.Send(NewDataSendBuffer, 9, SocketFlags.None);
                             break;
 
                         case 401:
                             // 추가적인 정보 필요 없음.
+                            socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                             break;
                     }
                 }
