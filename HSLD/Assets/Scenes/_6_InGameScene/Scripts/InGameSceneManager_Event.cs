@@ -49,14 +49,14 @@ public partial class InGameSceneManager : MonoBehaviour {
     }
 
     public bool NetworkManager_IsUsedDefenceCard;
-    public int NetworkManager_TerrainIndex;
+    public int[] NetworkManager_TerrainIndex;
     public int NetworkManager_CardIndex;
     /*
      * SendEventBuffer
      * 
      *  - 해당 카드에 대한, 추가적인 정보를 전송할 때 사용합니다.
      */
-    public void SendEventBuffer(bool InIsUsedDefenceCard, int indexRefA, int indexRefB)
+    public void SendEventBuffer(bool InIsUsedDefenceCard, int[] indexRefA, int indexRefB)
     {
         switch (network_sendEventCardType)
         {
