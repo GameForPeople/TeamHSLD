@@ -65,7 +65,9 @@ void SCENE_NETWORK_MANAGER::InGameScene::RecvGameState(SocketInfo* pClient)
 
 void SCENE_NETWORK_MANAGER::InGameScene::RecvChangeTurn(SocketInfo* pClient)
 {
-	//InRoomData.SetDataProtocol(ptr->roomIndex, ptr->isHost, NOTIFY_CHANGE_TURN);
+	// 190222 - ChangeTurn 시에, 미션을 깻는 지 여부 전송.
+
+	pClient->pRoomIter->SetDataBuffer(pClient->isHost, pClient->buf + 4, sizeof(int));
 	pClient->pRoomIter->SetDataProtocol(pClient->isHost, NOTIFY_CHANGE_TURN);
 }
 
@@ -186,8 +188,9 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendChangeTurn(SocketInfo* pClient)
 {
 	//InRoomData.SetDataProtocol(ptr->roomIndex, !(ptr->isHost), VOID_GAME_STATE);
 
+	pClient->pRoomIter->GetDataBuffer(pClient->isHost, pClient->buf + 4, sizeof(int));
 	pClient->pRoomIter->SetDataProtocol(!(pClient->isHost), VOID_GAME_STATE);
-	pClient->dataSize = 4;
+	pClient->dataSize = 8;
 }
 
 void SCENE_NETWORK_MANAGER::InGameScene::SendDiceValue(SocketInfo* pClient)
