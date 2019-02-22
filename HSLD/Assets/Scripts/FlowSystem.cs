@@ -340,8 +340,8 @@ public class FlowSystem : MonoBehaviour
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
-                        //미션 - 510
-                        if (MissionManager.selectedSubMissionIndex == 3)
+                        //미션 - 310
+                        if (MissionManager.selectedSubMissionIndex == 1)
                             missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301
@@ -380,8 +380,8 @@ public class FlowSystem : MonoBehaviour
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
-                        //미션 - 510
-                        if (MissionManager.selectedSubMissionIndex == 3)
+                        //미션 - 310
+                        if (MissionManager.selectedSubMissionIndex == 1)
                             missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301
@@ -415,8 +415,8 @@ public class FlowSystem : MonoBehaviour
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
                             missionManager.SubMissionCounting(1, 4, Identify.ALLY);
 
-                        //미션 - 510
-                        if (MissionManager.selectedSubMissionIndex == 3)
+                        //미션 - 310
+                        if (MissionManager.selectedSubMissionIndex == 1)
                             missionManager.SubMissionCounting(1, 2, Identify.ALLY);
 
                         //미션 - 301

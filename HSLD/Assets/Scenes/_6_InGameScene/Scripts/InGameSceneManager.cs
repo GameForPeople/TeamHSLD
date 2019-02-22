@@ -33,6 +33,7 @@ public partial class InGameSceneManager : MonoBehaviour
     static bool isfirstSend = true;
     static bool isfirstRecv = true;
 
+    public int network_completedSubMissionIndex;
 
     //YSH 190204
     public int diceValueForLoop;
@@ -73,6 +74,7 @@ public partial class InGameSceneManager : MonoBehaviour
         network_terrainType = 0;
         network_changeTerrainCount = 0;
         network_sendProtocol = (int)PROTOCOL.VOID_GAME_STATE;
+        network_completedSubMissionIndex = -1;
 
         CoroutineHandle_Wait = WaitCoroutine();
         CoroutineHandle_Play = InGameNetworkCoroutine();
@@ -94,8 +96,9 @@ public partial class InGameSceneManager : MonoBehaviour
     //    //networkManager.SendData(InMsg);
     //}
 
-    public void SendChangeTurn()
+    public void SendChangeTurn(int CompletedSubMissionIndex = -1)
     {
+        network_completedSubMissionIndex = CompletedSubMissionIndex;
         network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
     }
 
@@ -170,9 +173,9 @@ public partial class InGameSceneManager : MonoBehaviour
     //}
 
     // 사용자가 턴을 종료하면 나의턴이 됩니다.
-
-    public void RecvChangeTurn()
+    public void RecvChangeTurn(int InCompletedSubMissionIndex)
     {
+        network_completedSubMissionIndex = InCompletedSubMissionIndex;
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
     }

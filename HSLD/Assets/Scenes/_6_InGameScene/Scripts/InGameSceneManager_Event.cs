@@ -27,6 +27,12 @@ public partial class InGameSceneManager : MonoBehaviour {
     /* readonly */ private int tempCardIndex;
     /* readonly */ private bool tempIsDefense;
 
+    public bool NetworkManager_IsUsedDefenceCard;
+    public int NetworkManager_CardIndex;
+
+    public int NetworkManager_TerrainIndexNumber;
+    public int[] NetworkManager_TerrainIndexArr;
+
     // Use this for initialization
     private void StartForEvent () {
         network_sendEventCardType = -1;
@@ -35,6 +41,11 @@ public partial class InGameSceneManager : MonoBehaviour {
         tempTerrainIndex = -1;
         tempCardIndex = -1;
         tempIsDefense = true;
+
+        NetworkManager_IsUsedDefenceCard = false;
+        NetworkManager_CardIndex = -1;
+
+        NetworkManager_TerrainIndexNumber = -1;
     }
 
     /*
@@ -48,47 +59,34 @@ public partial class InGameSceneManager : MonoBehaviour {
         network_sendProtocol = (int)PROTOCOL.NOTIFY_EVENTCARD_INDEX;
     }
 
-    public bool NetworkManager_IsUsedDefenceCard;
-    public int NetworkManager_TerrainIndex;
-    public int NetworkManager_CardIndex;
     /*
      * SendEventBuffer
      * 
      *  - 해당 카드에 대한, 추가적인 정보를 전송할 때 사용합니다.
      */
-    public void SendEventBuffer(bool InIsUsedDefenceCard, int indexRefA, int indexRefB)
+    public void SendEventBuffer(bool InIsUsedDefenceCard, int[] indexRefA, int indexRefB)
     {
         switch (network_sendEventCardType)
         {
-            case 101:
-                // 선택한 상대 지형
-                NetworkManager_TerrainIndex = indexRefA;
+            case 101:   // 선택한 상대 지형
+            case 111:    // 선택한 상대 지형
+                NetworkManager_TerrainIndexArr = indexRefA;
+                NetworkManager_TerrainIndexNumber = NetworkManager_TerrainIndexArr.Length;
                 break;
 
-            case 111:
-                // 선택한 상대 지형
-                NetworkManager_TerrainIndex = indexRefA;
-                break;
+            case 201:   // 내 지형 인덱스 및 변경하는 속성
+            case 202:   // 상대 지형 인덱스 및 변경하는 속성
+                NetworkManager_TerrainIndexArr = indexRefA;
+                NetworkManager_TerrainIndexNumber = NetworkManager_TerrainIndexArr.Length;
 
-            case 201:
-                // 내 지형 인덱스 및 변경하는 속성
-                NetworkManager_TerrainIndex = indexRefA;
                 NetworkManager_CardIndex = indexRefB;
                 break;
 
-            case 202:
-                // 상대 지형 인덱스 및 변경하는 속성
-                NetworkManager_TerrainIndex = indexRefA;
-                NetworkManager_CardIndex = indexRefB;
-                break;
-
-            case 301:
-                // 사용할 건지, 안할건지 여부 전송.
+            case 301:   // 사용할 건지, 안할건지 여부 전송.
                 NetworkManager_IsUsedDefenceCard = InIsUsedDefenceCard;
                 break;
 
-            case 401:
-                // 추가적인 정보 필요 없음.
+            case 401:   // 추가적인 정보 필요 없음.
                 break;
         }
         network_sendProtocol = (int)PROTOCOL.NOTIFY_EVENT_BUFFER;
@@ -122,38 +120,79 @@ public partial class InGameSceneManager : MonoBehaviour {
         {
             case 101:   //지형_파괴 
             case 111:   //소유권_전환
-                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
-                    inNotifyEventCase,
-                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8),
-                    tempCardIndex,
-                    tempIsDefense
-                );
-                break;
+                {
+                    NetworkManager_TerrainIndexNumber = BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8); // 이거 추후 수정 필요.
+
+                    for (int i = 0; i < NetworkManager_TerrainIndexNumber; ++i)
+                    {
+                        NetworkManager_TerrainIndexArr[i] = BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 12 + (4 * i));
+                    }
+
+                    StartCoroutine(EVENT_101_111_Coroutine(inNotifyEventCase));
+                    break;
+                }
 
             case 201:   //내_지형_속성_변경
             case 202:   //상대_지형_속성_변경
-                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
-                    inNotifyEventCase,
-                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8),
-                    BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 12),
-                    tempIsDefense
-                );
-                break;
+                {
+                    NetworkManager_CardIndex = BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 8);   // 이거 추후 수정 필요.
+                    NetworkManager_TerrainIndexNumber = BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 12);  // 이거 추후 수정 필요.
+
+                    for (int i = 0; i < NetworkManager_TerrainIndexNumber; ++i)
+                    {
+                        NetworkManager_TerrainIndexArr[i] = BitConverter.ToInt32(networkManager.NewDataRecvBuffer, 16 + (4 * i));
+                    }
+
+                    StartCoroutine(EVENT_201_202_Coroutine(inNotifyEventCase));
+                    break;
+                }
 
             //특수_카드_방어
             case 301:
-                GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
-                    inNotifyEventCase,
-                    tempTerrainIndex,
-                    tempCardIndex,
-                    BitConverter.ToBoolean(networkManager.NewDataRecvBuffer, 8)
-                );
-                break;
+                {
+                    GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+                        inNotifyEventCase,
+                        tempTerrainIndex,
+                        tempCardIndex,
+                        BitConverter.ToBoolean(networkManager.NewDataRecvBuffer, 8)
+                    );
+                    break;
+                }
 
             //주사위_두배
             case 401:
                 // 불리지 않음.
                 break;
+        }
+    }
+
+    private IEnumerator EVENT_101_111_Coroutine(int inEventType)
+    {
+        for (int i = 0; i < NetworkManager_TerrainIndexNumber; ++i)
+        {
+            GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+            inEventType,
+            NetworkManager_TerrainIndexArr[i],
+            tempCardIndex,
+            tempIsDefense
+            );
+
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    private IEnumerator EVENT_201_202_Coroutine(int inEventType)
+    {
+        for (int i = 0; i < NetworkManager_TerrainIndexNumber; ++i)
+        {
+            GameObject.FindWithTag("GameManager").GetComponent<EventCardManager>().MeshInfoUpdate(
+            inEventType,
+            NetworkManager_TerrainIndexArr[i],
+            NetworkManager_CardIndex,
+            tempIsDefense
+            );
+
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

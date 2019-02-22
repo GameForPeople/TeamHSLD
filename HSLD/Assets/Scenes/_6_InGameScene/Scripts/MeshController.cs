@@ -60,6 +60,8 @@ public class MeshController : MonoBehaviour {
     static public int tmpDevCnt = 0;
     static public bool isMakeIsland = false;
 
+    private MissionManager missionmanager;
+
     void Start () {
         if (isFlag == true)
         {
@@ -70,6 +72,7 @@ public class MeshController : MonoBehaviour {
         {
             terrainstate = Terrain.DEFAULT;
         }
+        missionmanager = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>();
         domMaterial = Resources.Load<Material>("M_Cold");
         priorMaterial = gameObject.GetComponent<Renderer>().material;
         priorState = gameObject.GetComponent<MeshController>().terrainstate;
@@ -369,12 +372,34 @@ public class MeshController : MonoBehaviour {
 
             CameraController.ChangeableCount--;
 
-           
+            if (currentIdentify.Equals(Identify.ENEMY))
+            {
+                //메인미션 110번, 상성지형 상대지형 50칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 3)
+                    missionmanager.MainMissionContinuedCounting(1);
+
+                //서브미션 220번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 0)
+                    missionmanager.SubMissionContinuedCounting(1, 4, Identify.ALLY);
+
+                //서브미션 320번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 1)
+                    missionmanager.SubMissionContinuedCounting(1, 3, Identify.ALLY);
+
+                //서브미션 410번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 2)
+                    missionmanager.SubMissionContinuedCounting(1, 2, Identify.ALLY);
+
+                //서브미션 510번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 3)
+                    missionmanager.SubMissionContinuedCounting(1, 2, Identify.ALLY);
+            }
+
             if (picked.name.Equals("TerrainCardImg1"))
             {
                 setModeration(Identify.ALLY);
             }
-            else  if (picked.name.Equals("TerrainCardImg2"))
+            else if (picked.name.Equals("TerrainCardImg2"))
             {
                 setBarren(Identify.ALLY);
             }

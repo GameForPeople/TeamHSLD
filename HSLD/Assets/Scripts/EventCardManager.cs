@@ -34,6 +34,8 @@ public class EventCardManager : MonoBehaviour
     private MissionManager missionManager;
     private BuildOnPlanet buildOnPlanet;
 
+    int[] toServerIntArray;
+
     private void Start()
     {
         for (int i = 0; i < check.Length; i++)
@@ -308,7 +310,7 @@ public class EventCardManager : MonoBehaviour
 
                 //서버로 데이터 전송
                 if (GameObject.Find("NetworkManager") != null)
-                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(true, -1, -1);
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(true, null, -1);
 
                 flowsystem.FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
                 break;
@@ -321,7 +323,7 @@ public class EventCardManager : MonoBehaviour
 
                 //서버로 데이터 전송
                 if (GameObject.Find("NetworkManager") != null)
-                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, -1, -1);
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, null, -1);
 
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
                 break;
@@ -337,7 +339,7 @@ public class EventCardManager : MonoBehaviour
 
         //서버로 데이터 전송
         if (GameObject.Find("NetworkManager") != null)
-            GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, -1, -1);
+            GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, null, -1);
 
         flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
     }
@@ -349,16 +351,19 @@ public class EventCardManager : MonoBehaviour
             //지형파괴 - 타겟 : 적
             case 101:
                 ConnectObj(obj, terrainType);
+                int[] toServerIntArray = new int[connectObjs.Count];
                 for (int i = 0; i < connectObjs.Count; i++)
                 {
                     connectObjs[i].GetComponent<MeshController>().setDefault();
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.DEFAULT);
                     //StartCoroutine(connectObjs[i].GetComponent<MeshController>().MoveDownCor());
 
-                    //서버로 데이터 전송
-                    if (GameObject.Find("NetworkManager") != null)
-                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, -1);
+                    toServerIntArray[i] = connectObjs[i].GetComponent<MeshController>().MeshNumber;
                 }
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, toServerIntArray, -1);
 
                 connectObjs.Clear();
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
@@ -376,16 +381,19 @@ public class EventCardManager : MonoBehaviour
                 //소유권전환 - 타겟 : 적
             case 111:
                 ConnectObj(obj, terrainType);
+                toServerIntArray = new int[connectObjs.Count];
+
                 for (int i = 0; i < connectObjs.Count; i++)
                 {
                     connectObjs[i].GetComponent<MeshController>().currentIdentify = Identify.ALLY;
                     //메쉬 메테리얼도 바꿔줘야함
 
-                    //서버로 데이터 전송
-                    if (GameObject.Find("NetworkManager") != null)
-                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, -1);
+                    toServerIntArray[i] = connectObjs[i].GetComponent<MeshController>().MeshNumber;
                 }
-                    
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, toServerIntArray, -1);
 
                 connectObjs.Clear();
                 flowsystem.FlowChange(FLOW.TO_PICKINGEVENTCARDLOC);
@@ -457,42 +465,52 @@ public class EventCardManager : MonoBehaviour
         switch (selectedTerrain)
         {
             case Terrain.MODERATION:
+                toServerIntArray = new int[connectObjs.Count];
                 for (int i = 0; i < connectObjs.Count; i++)
                 {
                     connectObjs[i].GetComponent<MeshController>().setModeration(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.MODERATION);
 
-                    //서버로 데이터 전송
-                    if (GameObject.Find("NetworkManager") != null)
-                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
+                    toServerIntArray[i] = connectObjs[i].GetComponent<MeshController>().MeshNumber;
                 }
-                    
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, toServerIntArray, tmpCardIndex);
+
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[0], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.BARREN:
+                toServerIntArray = new int[connectObjs.Count];
                 for (int i = 0; i < connectObjs.Count; i++)
                 {
                     connectObjs[i].GetComponent<MeshController>().setBarren(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.BARREN);
 
-                    //서버로 데이터 전송
-                    if (GameObject.Find("NetworkManager") != null)
-                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
+                    toServerIntArray[i] = connectObjs[i].GetComponent<MeshController>().MeshNumber;
+
                 }
-                    
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, toServerIntArray, tmpCardIndex);
+
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[6], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
             case Terrain.COLD:
+                toServerIntArray = new int[connectObjs.Count];
                 for (int i = 0; i < connectObjs.Count; i++)
                 {
                     connectObjs[i].GetComponent<MeshController>().setCold(connectObjs[i].GetComponent<MeshController>().currentIdentify);
                     connectObjs[i].GetComponent<MeshController>().InstateTerrainObject(Terrain.COLD);
 
-                    //서버로 데이터 전송
-                    if (GameObject.Find("NetworkManager") != null)
-                        GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, connectObjs[i].GetComponent<MeshController>().MeshNumber, tmpCardIndex);
+                    toServerIntArray[i] = connectObjs[i].GetComponent<MeshController>().MeshNumber;
                 }
-                    
+
+                //서버로 데이터 전송
+                if (GameObject.Find("NetworkManager") != null)
+                    GameObject.Find("InGameSceneManager").GetComponent<InGameSceneManager>().SendEventBuffer(false, toServerIntArray, tmpCardIndex);
+
                 buildOnPlanet.EulerRotCal(connectObjs[0], AllMeshController.instance_.MovingObj[Random.Range(1,4)], 1.03f, int.Parse(connectObjs[0].name), tmpCardIndex);
                 break;
         }
