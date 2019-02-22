@@ -44,7 +44,6 @@ public partial class InGameSceneManager : MonoBehaviour
     private int maximumCnt = 0;
     private int[] currentCnt = new int[3];
 
-
     void Start()
     {
         if (GameObject.Find("GameCores") == null)
@@ -78,6 +77,12 @@ public partial class InGameSceneManager : MonoBehaviour
 
         CoroutineHandle_Wait = WaitCoroutine();
         CoroutineHandle_Play = InGameNetworkCoroutine();
+
+        //for(int i = 0; i < 5; ++i)
+        //{
+        //    completedSubMissionArr[i] = false;
+        //}
+
         //StartCoroutine("InGameNetworkCoroutine");
     }
 
@@ -96,9 +101,49 @@ public partial class InGameSceneManager : MonoBehaviour
     //    //networkManager.SendData(InMsg);
     //}
 
-    public void SendChangeTurn(int CompletedSubMissionIndex = -1)
+    private int ConvertFromBoolArrToInt(bool[] InCompletedSubMissionArr)
     {
-        network_completedSubMissionIndex = CompletedSubMissionIndex;
+        //bool[] tempBoolArr = new bool[5];
+        //for(int i = 0; i < 5; ++i) { tempBoolArr[i] = false; };
+        //if (InIndex1 != -1) { tempBoolArr[InIndex1] = true; }
+        //if (InIndex2 != -1) { tempBoolArr[InIndex2] = true; }
+        //if (InIndex3 != -1) { tempBoolArr[InIndex3] = true; }
+        //if (InIndex4 != -1) { tempBoolArr[InIndex4] = true; }
+        //if (InIndex5 != -1) { tempBoolArr[InIndex5] = true; }
+
+        int retIndex = 0;
+
+        for(int i = 0; i < 5; ++i)
+        {
+            int tempAddValue = 1;
+
+            if(InCompletedSubMissionArr[i] == true)
+            {
+                retIndex += tempAddValue;
+            }
+
+            tempAddValue *= 10;
+        }
+
+        return retIndex;    
+    }
+
+    private bool[] ConvertFromIntToBoolArr(int InRecvedCompletedSubMissionValue)
+    {
+        bool[] retBoolArr = new bool[5];
+
+        if ((InRecvedCompletedSubMissionValue /**/) % 10 == 1) { retBoolArr[0] = true; } //else { retBoolArr[0] = false; }
+        if ((InRecvedCompletedSubMissionValue / 10) % 10 == 1) { retBoolArr[1] = true; } //else { retBoolArr[1] = false; }
+        if ((InRecvedCompletedSubMissionValue / 100) % 10 == 1) { retBoolArr[2] = true; } //else { retBoolArr[2] = false; }
+        if ((InRecvedCompletedSubMissionValue / 1000) % 10 == 1) { retBoolArr[3] = true; } //else { retBoolArr[3] = false; }
+        if ((InRecvedCompletedSubMissionValue / 10000) % 10 == 1) { retBoolArr[4] = true; } //else { retBoolArr[4] = false; }
+
+        return retBoolArr;
+    }
+
+    public void SendChangeTurn(bool[] InCompletedSubMissionArr)
+    {
+        network_completedSubMissionIndex = ConvertFromBoolArrToInt(InCompletedSubMissionArr);
         network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
     }
 
@@ -151,6 +196,7 @@ public partial class InGameSceneManager : MonoBehaviour
     {
         network_sendProtocol = (int)PROTOCOL.NOTIFY_GAME_END;
     }
+    
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
     //public bool GetRecvData(ref int retRecvProtocol, ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
     //{
@@ -176,6 +222,9 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvChangeTurn(int InCompletedSubMissionIndex)
     {
         network_completedSubMissionIndex = InCompletedSubMissionIndex;
+        
+        /* 여기서 리턴 값 받아가세요! = */ ConvertFromIntToBoolArr(InCompletedSubMissionIndex);
+        
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
     }
