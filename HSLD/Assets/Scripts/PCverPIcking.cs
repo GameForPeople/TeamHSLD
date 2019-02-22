@@ -13,6 +13,7 @@ public class PCverPIcking : MonoBehaviour
     public CameraShake cameraShake;
     public float duration;
     public float magnitude;
+    private bool once;
 
     public GameObject AllyLinePrefab;
     private GameObject AllyLineObj;
@@ -243,12 +244,13 @@ public class PCverPIcking : MonoBehaviour
         }
 
         // 거점등록이 확정됐으면 effect추가
-        if(isDominatedConfirm == true)
+        if (isDominatedConfirm == true && once == false)
         {
             GameObject flagObj = myPlanet.GetComponent<AllMeshController>().myFlag;
             GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
             flagObj.GetComponent<MeshController>().EulerRotCalEffect(flagObj, effectObj, 1.01f);
+            once = true;
         }
 
         FlagSetting(); // Flag검사 
