@@ -266,7 +266,12 @@ public partial class NetworkManager : MonoBehaviour {
                 else if (InMsg == PROTOCOL.NOTIFY_CHANGE_TURN)
                 {
                     Buffer.BlockCopy(BitConverter.GetBytes((int)PROTOCOL.NOTIFY_CHANGE_TURN), 0, NewDataSendBuffer, 0, 4);
-                    socket.Send(NewDataSendBuffer, 4, SocketFlags.None);
+
+                    Buffer.BlockCopy(
+                        BitConverter.GetBytes(inGameSceneManager.network_completedSubMissionIndex),
+                        0, NewDataSendBuffer, 4, 4);
+
+                    socket.Send(NewDataSendBuffer, 8, SocketFlags.None);
                 }
                 else if (InMsg == PROTOCOL.NOTIFY_DICE_VALUE)
                 {

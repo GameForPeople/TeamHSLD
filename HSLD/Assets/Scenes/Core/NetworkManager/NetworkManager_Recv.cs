@@ -546,7 +546,7 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_CHANGE_TURN)
         {
-            inGameSceneManager.RecvChangeTurn();
+            inGameSceneManager.RecvChangeTurn(BitConverter.ToInt32(NewDataRecvBuffer, 4));
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_DICE_VALUE)
         {
