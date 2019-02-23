@@ -163,6 +163,8 @@ public class MeshController : MonoBehaviour {
             }
             else
             {
+                MissionCounting(false);
+
                 GetComponent<MeshRenderer>().material = priorMaterial;
                 terrainstate = priorState;
                 for (int i = 0; i < 3; i++)
@@ -364,14 +366,12 @@ public class MeshController : MonoBehaviour {
         Destroy(EffectObject);
     }
 
-    public void Picked()
+    public void MissionCounting(bool bVal)
     {
-        if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
+        if (isFlag == true) return;
+        if (bVal)
         {
-            GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
-
-            CameraController.ChangeableCount--;
-
+            Debug.Log("++");
             if (currentIdentify.Equals(Identify.ENEMY))
             {
                 //메인미션 110번, 상성지형 상대지형 50칸이상 점령
@@ -394,6 +394,44 @@ public class MeshController : MonoBehaviour {
                 if (MissionManager.selectedSubMissionIndex == 3)
                     missionmanager.SubMissionContinuedCounting(1, 2, Identify.ALLY);
             }
+        }
+        else
+        {
+            Debug.Log("--");
+            if (currentIdentify.Equals(Identify.ENEMY))
+            {
+                //메인미션 110번, 상성지형 상대지형 50칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 3)
+                    missionmanager.MainMissionContinuedCounting(-1);
+
+                //서브미션 220번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 0)
+                    missionmanager.SubMissionContinuedCounting(-1, 4, Identify.ALLY);
+
+                //서브미션 320번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 1)
+                    missionmanager.SubMissionContinuedCounting(-1, 3, Identify.ALLY);
+
+                //서브미션 410번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 2)
+                    missionmanager.SubMissionContinuedCounting(-1, 2, Identify.ALLY);
+
+                //서브미션 510번, 상성지형 상대지형 30칸이상 점령
+                if (MissionManager.selectedSubMissionIndex == 3)
+                    missionmanager.SubMissionContinuedCounting(-1, 2, Identify.ALLY);
+            }
+        }
+    }
+
+    public void Picked()
+    {
+        if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
+        {
+            GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
+
+            CameraController.ChangeableCount--;
+
+            MissionCounting(true);
 
             if (picked.name.Equals("TerrainCardImg1"))
             {

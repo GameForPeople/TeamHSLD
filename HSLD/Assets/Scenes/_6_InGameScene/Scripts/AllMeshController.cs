@@ -143,6 +143,7 @@ public class AllMeshController : MonoBehaviour
         {
             GameObject target = GameObject.Find(PickContainer[i].ToString());
             Debug.Log("delete : " + target.name);
+            target.GetComponent<MeshController>().MissionCounting(false);
             Camera.main.GetComponent<PCverPIcking>().DeleteAble(target);
             target.GetComponent<Renderer>().material = target.GetComponent<MeshController>().priorMaterial;
             target.GetComponent<MeshController>().terrainstate = target.GetComponent<MeshController>().priorState;

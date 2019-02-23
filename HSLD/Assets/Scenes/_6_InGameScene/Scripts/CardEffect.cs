@@ -62,7 +62,6 @@ public class CardEffect : MonoBehaviour {
             cardObj.transform.RotateAround(gameObject.transform.position, rotate * 120, speed * Time.deltaTime);
 
             cardObj.transform.localScale = Vector2.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
-            Debug.Log(cardObj.transform.localScale);
 
             amount += speed * Time.deltaTime;
             yield return null;
