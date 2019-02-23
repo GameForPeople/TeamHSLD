@@ -302,7 +302,7 @@ public class TurnSystem : MonoBehaviour
                     if (GameObject.Find("GameCores") != null)
                     {
                         Debug.Log("SEND : 턴종료");
-                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
                     }
                     
                     displayTurnTimerTxt.text = "";
@@ -326,7 +326,7 @@ public class TurnSystem : MonoBehaviour
                     if (GameObject.Find("GameCores") != null)
                     {
                         Debug.Log("SEND : 턴종료");
-                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
                     }
                     
                     displayTurnTimerTxt.text = "";

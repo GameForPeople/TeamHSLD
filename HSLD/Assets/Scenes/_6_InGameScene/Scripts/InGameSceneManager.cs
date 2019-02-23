@@ -44,7 +44,6 @@ public partial class InGameSceneManager : MonoBehaviour
     private int maximumCnt = 0;
     private int[] currentCnt = new int[3];
 
-
     void Start()
     {
         if (GameObject.Find("GameCores") == null)
@@ -78,6 +77,12 @@ public partial class InGameSceneManager : MonoBehaviour
 
         CoroutineHandle_Wait = WaitCoroutine();
         CoroutineHandle_Play = InGameNetworkCoroutine();
+
+        //for(int i = 0; i < 5; ++i)
+        //{
+        //    completedSubMissionArr[i] = false;
+        //}
+
         //StartCoroutine("InGameNetworkCoroutine");
     }
 
@@ -96,9 +101,51 @@ public partial class InGameSceneManager : MonoBehaviour
     //    //networkManager.SendData(InMsg);
     //}
 
-    public void SendChangeTurn(int CompletedSubMissionIndex = -1)
+    private int ConvertFromBoolArrToInt(bool[] InCompletedSubMissionArr)
     {
-        network_completedSubMissionIndex = CompletedSubMissionIndex;
+        //bool[] tempBoolArr = new bool[5];
+        //for(int i = 0; i < 5; ++i) { tempBoolArr[i] = false; };
+        //if (InIndex1 != -1) { tempBoolArr[InIndex1] = true; }
+        //if (InIndex2 != -1) { tempBoolArr[InIndex2] = true; }
+        //if (InIndex3 != -1) { tempBoolArr[InIndex3] = true; }
+        //if (InIndex4 != -1) { tempBoolArr[InIndex4] = true; }
+        //if (InIndex5 != -1) { tempBoolArr[InIndex5] = true; }
+
+        int retIndex = 0;
+
+        for(int i = 0; i < 5; ++i)
+        {
+            int tempAddValue = 1;
+
+            if(InCompletedSubMissionArr[i] == true)
+            {
+                retIndex += tempAddValue;
+            }
+
+            tempAddValue *= 10;
+        }
+
+        return retIndex;    
+    }
+
+    private bool[] ConvertFromIntToBoolArr(int InRecvedCompletedSubMissionValue)
+    {
+        bool[] retBoolArr = new bool[5];
+        int completeCnt = 0;
+        MissionManager.enemyMissionComplete = 0;
+        if ((InRecvedCompletedSubMissionValue /**/) % 10 == 1) { retBoolArr[0] = true; completeCnt += 1; } //else { retBoolArr[0] = false; }
+        if ((InRecvedCompletedSubMissionValue / 10) % 10 == 1) { retBoolArr[1] = true; completeCnt += 1; } //else { retBoolArr[1] = false; }
+        if ((InRecvedCompletedSubMissionValue / 100) % 10 == 1) { retBoolArr[2] = true; completeCnt += 1; } //else { retBoolArr[2] = false; }
+        if ((InRecvedCompletedSubMissionValue / 1000) % 10 == 1) { retBoolArr[3] = true; completeCnt += 1; } //else { retBoolArr[3] = false; }
+        if ((InRecvedCompletedSubMissionValue / 10000) % 10 == 1) { retBoolArr[4] = true; completeCnt += 1; } //else { retBoolArr[4] = false; }
+
+        MissionManager.enemyMissionComplete += completeCnt;
+        return retBoolArr;
+    }
+
+    public void SendChangeTurn(bool[] InCompletedSubMissionArr)
+    {
+        network_completedSubMissionIndex = ConvertFromBoolArrToInt(InCompletedSubMissionArr);
         network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
     }
 
@@ -151,6 +198,7 @@ public partial class InGameSceneManager : MonoBehaviour
     {
         network_sendProtocol = (int)PROTOCOL.NOTIFY_GAME_END;
     }
+    
     // 동기화가 된다는 가능성이 어느정도 되는가, 네트워크 지연에 따른 데이터 삭제시는 어쩔것인가. -> 몰러
     //public bool GetRecvData(ref int retRecvProtocol, ref int retTerrainType, ref int retChangeTerrainCount, ref int[] retTerrainIndex, ref int retEventCardType)
     //{
@@ -176,6 +224,18 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvChangeTurn(int InCompletedSubMissionIndex)
     {
         network_completedSubMissionIndex = InCompletedSubMissionIndex;
+        
+        /* 여기서 리턴 값 받아가세요! = */ 
+        //ConvertFromIntToBoolArr(InCompletedSubMissionIndex);        
+        for(int i =0; i< ConvertFromIntToBoolArr(InCompletedSubMissionIndex).Length; i++)
+        {
+            if (ConvertFromIntToBoolArr(InCompletedSubMissionIndex)[i])
+            {
+                MissionManager.enemyMissionCompleteBoolean[i] = ConvertFromIntToBoolArr(InCompletedSubMissionIndex)[i];
+                GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().readyDisplaySubMissionObj.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
     }
@@ -251,36 +311,36 @@ public partial class InGameSceneManager : MonoBehaviour
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
 
-                    //미션 - 500
-                    if (MissionManager.selectedSubMissionIndex == 3 && diceValueForLoop > 6)
-                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+                    ////미션 - 500
+                    //if (MissionManager.selectedSubMissionIndex == 3 && diceValueForLoop > 6)
+                    //    missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
 
-                    ////미션 - 420
-                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+                    //////미션 - 420
+                    ////if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    ////    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
 
-                    //미션 - 510
-                    if (MissionManager.selectedSubMissionIndex == 3)
-                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+                    ////미션 - 510
+                    //if (MissionManager.selectedSubMissionIndex == 3)
+                    //    missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
 
-                    //미션 - 301
-                    if (MissionManager.selectedSubMissionIndex == 1)
-                    {
-                        currentCnt[0] += CameraController.DiceCount;
-                        if (currentCnt[0] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                            currentCnt[0] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                    ////미션 - 301
+                    //if (MissionManager.selectedSubMissionIndex == 1)
+                    //{
+                    //    currentCnt[0] += CameraController.DiceCount;
+                    //    if (currentCnt[0] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                    //        currentCnt[0] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
-                        maximumCnt = 0;
+                    //    maximumCnt = 0;
 
-                        for (int j = 0; j < currentCnt.Length; j++)
-                            if (maximumCnt < currentCnt[j])
-                                maximumCnt = currentCnt[j];
-                            else
-                                continue;
+                    //    for (int j = 0; j < currentCnt.Length; j++)
+                    //        if (maximumCnt < currentCnt[j])
+                    //            maximumCnt = currentCnt[j];
+                    //        else
+                    //            continue;
 
-                        if (currentCnt[0] == maximumCnt)
-                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
-                    }
+                    //    if (currentCnt[0] == maximumCnt)
+                    //        missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    //}
 
 
                     break;
@@ -289,75 +349,75 @@ public partial class InGameSceneManager : MonoBehaviour
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
 
-                    //미션 - 210
-                    if (MissionManager.selectedSubMissionIndex == 0)
-                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+                    ////미션 - 210
+                    //if (MissionManager.selectedSubMissionIndex == 0)
+                    //    missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
 
-                    //미션 - 400
-                    if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
-                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+                    ////미션 - 400
+                    //if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
+                    //    missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
 
-                    ////미션 - 420
-                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+                    //////미션 - 420
+                    ////if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    ////    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
 
-                    //미션 - 510
-                    if (MissionManager.selectedSubMissionIndex == 3)
-                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+                    ////미션 - 510
+                    //if (MissionManager.selectedSubMissionIndex == 3)
+                    //    missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
 
-                    //미션 - 301
-                    if (MissionManager.selectedSubMissionIndex == 1)
-                    {
-                        currentCnt[1] += CameraController.DiceCount;
-                        if (currentCnt[1] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                            currentCnt[1] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
-                        maximumCnt = 0;
+                    ////미션 - 301
+                    //if (MissionManager.selectedSubMissionIndex == 1)
+                    //{
+                    //    currentCnt[1] += CameraController.DiceCount;
+                    //    if (currentCnt[1] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                    //        currentCnt[1] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                    //    maximumCnt = 0;
 
-                        for (int j = 0; j < currentCnt.Length; i++)
-                            if (maximumCnt < currentCnt[j])
-                                maximumCnt = currentCnt[j];
-                            else
-                                continue;
+                    //    for (int j = 0; j < currentCnt.Length; i++)
+                    //        if (maximumCnt < currentCnt[j])
+                    //            maximumCnt = currentCnt[j];
+                    //        else
+                    //            continue;
 
-                        if (currentCnt[1] == maximumCnt)
-                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
-                    }
+                    //    if (currentCnt[1] == maximumCnt)
+                    //        missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    //}
                     break;
                 case 3:
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setCold(Identify.ENEMY);
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
 
-                    //미션 - 200
-                    if (MissionManager.selectedSubMissionIndex == 0 && diceValueForLoop > 6)
-                        missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
+                    ////미션 - 200
+                    //if (MissionManager.selectedSubMissionIndex == 0 && diceValueForLoop > 6)
+                    //    missionManager.SubMissionCounting(1, 0, Identify.ENEMY);
 
-                    ////미션 - 420
-                    //if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                    //    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
+                    //////미션 - 420
+                    ////if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
+                    ////    missionManager.SubMissionCounting(1, 4, Identify.ENEMY);
 
-                    //미션 - 510
-                    if (MissionManager.selectedSubMissionIndex == 3)
-                        missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
+                    ////미션 - 510
+                    //if (MissionManager.selectedSubMissionIndex == 3)
+                    //    missionManager.SubMissionCounting(1, 2, Identify.ENEMY);
 
-                    //미션 - 301
-                    if (MissionManager.selectedSubMissionIndex == 1)
-                    {
-                        currentCnt[2] += CameraController.DiceCount;
-                        if (currentCnt[2] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
-                            currentCnt[2] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
+                    ////미션 - 301
+                    //if (MissionManager.selectedSubMissionIndex == 1)
+                    //{
+                    //    currentCnt[2] += CameraController.DiceCount;
+                    //    if (currentCnt[2] > missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt)
+                    //        currentCnt[2] = missionManager.missionSet[MissionManager.selectedSubMissionIndex].subMission[1].goalCnt;
 
-                        maximumCnt = 0;
+                    //    maximumCnt = 0;
 
-                        for (int j = 0; j < currentCnt.Length; j++)
-                            if (maximumCnt < currentCnt[j])
-                                maximumCnt = currentCnt[j];
-                            else
-                                continue;
+                    //    for (int j = 0; j < currentCnt.Length; j++)
+                    //        if (maximumCnt < currentCnt[j])
+                    //            maximumCnt = currentCnt[j];
+                    //        else
+                    //            continue;
 
-                        if (currentCnt[2] == maximumCnt)
-                            missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
-                    }
+                    //    if (currentCnt[2] == maximumCnt)
+                    //        missionManager.SubMissionCounting(maximumCnt, 1, Identify.ENEMY);
+                    //}
                     break;
                 case 4:
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setSea(Identify.ENEMY);
@@ -373,9 +433,9 @@ public partial class InGameSceneManager : MonoBehaviour
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
                     gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
 
-                    //미션 - 401
-                    if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
-                        missionManager.SubMissionCounting(1, 1, Identify.ENEMY);
+                    ////미션 - 401
+                    //if (MissionManager.selectedSubMissionIndex == 2 && diceValueForLoop > 6)
+                    //    missionManager.SubMissionCounting(1, 1, Identify.ENEMY);
 
                     ////미션 - 520
                     //if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)

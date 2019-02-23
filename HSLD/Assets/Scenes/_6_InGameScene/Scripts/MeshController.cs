@@ -380,19 +380,19 @@ public class MeshController : MonoBehaviour {
 
                 //서브미션 220번, 상성지형 상대지형 30칸이상 점령
                 if (MissionManager.selectedSubMissionIndex == 0)
-                    missionmanager.SubMissionContinuedCounting(1, 4, Identify.ALLY);
+                    missionmanager.SubMissionContinuedCounting(1, 4);
 
                 //서브미션 320번, 상성지형 상대지형 30칸이상 점령
                 if (MissionManager.selectedSubMissionIndex == 1)
-                    missionmanager.SubMissionContinuedCounting(1, 3, Identify.ALLY);
+                    missionmanager.SubMissionContinuedCounting(1, 3);
 
                 //서브미션 410번, 상성지형 상대지형 30칸이상 점령
                 if (MissionManager.selectedSubMissionIndex == 2)
-                    missionmanager.SubMissionContinuedCounting(1, 2, Identify.ALLY);
+                    missionmanager.SubMissionContinuedCounting(1, 2);
 
                 //서브미션 510번, 상성지형 상대지형 30칸이상 점령
                 if (MissionManager.selectedSubMissionIndex == 3)
-                    missionmanager.SubMissionContinuedCounting(1, 2, Identify.ALLY);
+                    missionmanager.SubMissionContinuedCounting(1, 2);
             }
         }
         else

@@ -30,12 +30,10 @@ public class MissionManager : MonoBehaviour
     private GameObject missionCanvas;
     static public int selectedMainMissionIndex;
     static public int selectedSubMissionIndex;
-    private bool[] missionCompleteBoolean = new bool[5]; 
+    static public bool[] missionCompleteBoolean = new bool[5];
+    static public bool[] enemyMissionCompleteBoolean = new bool[5];
     static public int missionComplete = 0;
     static public int enemyMissionComplete = 0;
-
-    private bool[] missionCompleteEnemyBoolean = new bool[5];
-    private int[] missionEnemyCurrentCnt = new int[5];
 
     private NetworkManager networkManager;
 
@@ -67,11 +65,6 @@ public class MissionManager : MonoBehaviour
         {
             selectedMainMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().playerMissionIndex;
             selectedSubMissionIndex = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().subMissionIndex;
-
-            for (int i = 0; i < missionEnemyCurrentCnt.Length; i++)
-                missionEnemyCurrentCnt[i] = 0;
-            for (int i = 0; i < missionCompleteEnemyBoolean.Length; i++)
-                missionCompleteEnemyBoolean[i] = false;
         }
         else
         {
@@ -81,6 +74,10 @@ public class MissionManager : MonoBehaviour
 
         for (int i = 0; i < missionCompleteBoolean.Length; i++)
             missionCompleteBoolean[i] = false;
+        for (int i = 0; i < enemyMissionCompleteBoolean.Length; i++)
+            enemyMissionCompleteBoolean[i] = false;
+        for(int i =0; i < 5 ;i++)
+            readyDisplaySubMissionObj.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
 
         missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
         RndMainMissionSet(selectedMainMissionIndex);
@@ -152,7 +149,6 @@ public class MissionManager : MonoBehaviour
     //한 턴 카운팅할때 사용
     public void MainMissionCounting(int val)
     {
-
         if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
         else
@@ -162,42 +158,46 @@ public class MissionManager : MonoBehaviour
     }
 
     //한 턴 카운팅할때 사용
-    public void SubMissionCounting(int val, int index, Identify identify)
+    public void SubMissionCounting(int val, int index)
     {
-        if(identify.Equals(Identify.ALLY))
-        {
+        if (enemyMissionCompleteBoolean[index])
+            return;
+
             if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
-            {
-                if (!missionCompleteBoolean[index])
-                {
-                    missionComplete += 1;
-                    missionCompleteBoolean[index] = true;
-                }
-
-                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
-            }
-
-            else
-                missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
-
-            ResetMissionDisplay();
-        }
-        else if (identify.Equals(Identify.ENEMY))
         {
-            if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+            if (!missionCompleteBoolean[index])
             {
-                if (!missionCompleteEnemyBoolean[index])
-                {
-                    enemyMissionComplete += 1;
-                    missionCompleteEnemyBoolean[index] = true;
-                }
-
-                missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+                missionComplete += 1;
+                missionCompleteBoolean[index] = true;
             }
 
-            else
-                missionEnemyCurrentCnt[index] += val;
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
         }
+
+        else
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
+
+        ResetMissionDisplay();
+        //if (identify.Equals(Identify.ALLY))
+        //{
+            
+        //}
+        //else if (identify.Equals(Identify.ENEMY))
+        //{
+        //    if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        //    {
+        //        if (!missionCompleteEnemyBoolean[index])
+        //        {
+        //            enemyMissionComplete += 1;
+        //            missionCompleteEnemyBoolean[index] = true;
+        //        }
+
+        //        missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+        //    }
+
+        //    else
+        //        missionEnemyCurrentCnt[index] += val;
+        //}
     }
 
     //누적카운팅할때 사용
@@ -212,42 +212,47 @@ public class MissionManager : MonoBehaviour
     }
 
     //누적카운팅할때 사용
-    public void SubMissionContinuedCounting(int val, int index, Identify identify)
+    public void SubMissionContinuedCounting(int val, int index)
     {
-        if (identify.Equals(Identify.ALLY))
-        {
-            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
-            {
-                if (!missionCompleteBoolean[index])
-                {
-                    missionComplete += 1;
-                    missionCompleteBoolean[index] = true;
-                }
+        if (enemyMissionCompleteBoolean[index])
+            return;
 
-                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        {
+            if (!missionCompleteBoolean[index])
+            {
+                missionComplete += 1;
+                missionCompleteBoolean[index] = true;
             }
 
-            else
-                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
-
-            ResetMissionDisplay();
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
         }
-        else if (identify.Equals(Identify.ENEMY))
-        {
-            if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
-            {
-                if (!missionCompleteEnemyBoolean[index])
-                {
-                    enemyMissionComplete += 1;
-                    missionCompleteEnemyBoolean[index] = true;
-                }
 
-                missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
-            }
+        else
+            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
 
-            else
-                missionEnemyCurrentCnt[index] = val;
-        }
+        ResetMissionDisplay();
+
+        //if (identify.Equals(Identify.ALLY))
+        //{
+            
+        //}
+        //else if (identify.Equals(Identify.ENEMY))
+        //{
+        //    if (missionEnemyCurrentCnt[index] + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        //    {
+        //        if (!missionCompleteEnemyBoolean[index])
+        //        {
+        //            enemyMissionComplete += 1;
+        //            missionCompleteEnemyBoolean[index] = true;
+        //        }
+
+        //        missionEnemyCurrentCnt[index] = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+        //    }
+
+        //    else
+        //        missionEnemyCurrentCnt[index] = val;
+        //}
     }
     public int EnemyMainMissionCounting()
     {

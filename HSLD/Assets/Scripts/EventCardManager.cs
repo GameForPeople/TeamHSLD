@@ -306,7 +306,7 @@ public class EventCardManager : MonoBehaviour
                 isDefenseCardGet = false;
                 //미션 - 330
                 if (MissionManager.selectedSubMissionIndex == 1)
-                    missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                    missionManager.SubMissionCounting(1, 4);
 
                 //서버로 데이터 전송
                 if (GameObject.Find("NetworkManager") != null)

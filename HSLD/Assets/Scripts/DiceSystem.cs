@@ -952,7 +952,7 @@ public class DiceSystem : MonoBehaviour
 
         // 미션 - 300
         if (MissionManager.selectedSubMissionIndex == 1 && CameraController.DiceCount == 7)
-            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
+            missionManager.SubMissionCounting(1, 0);
 
 
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
