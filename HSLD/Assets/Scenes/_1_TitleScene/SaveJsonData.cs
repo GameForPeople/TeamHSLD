@@ -28,9 +28,10 @@ public class SaveJsonData : MonoBehaviour {
 
         for(int i = 1; i < 321; i++)
         {
-            meshInfoList.Add(new MeshInfo(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().name
-                , AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().terrainstate.ToString()
-                , AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().TargetObject));
+            meshInfoList.Add(new MeshInfo(
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().name, 
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().terrainstate.ToString(), 
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().TargetObject));
         }
 
         JsonData infoJson = JsonMapper.ToJson(meshInfoList);

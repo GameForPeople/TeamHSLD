@@ -134,6 +134,8 @@ public class AllMeshController : MonoBehaviour
     {
         if (!isEmpty())
         {
+            Debug.Log("Print!!");
+            GetComponent<SaveJsonData>().SaveMeshData();
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
         }
         int Length = PickContainer.Count;

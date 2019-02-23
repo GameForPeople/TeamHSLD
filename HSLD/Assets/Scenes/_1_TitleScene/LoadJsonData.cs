@@ -11,10 +11,7 @@ public class LoadJsonData : MonoBehaviour {
 
 
     void Start () {
-        MeshNumber = giveFirstNumber;
-        name = giveFirstNumber.ToString();
-        giveFirstNumber++;
-
+        MeshNumber = System.Convert.ToInt32(name) - 1;
         LoadMeshData();
     }
 	
@@ -25,7 +22,7 @@ public class LoadJsonData : MonoBehaviour {
     
     public void LoadMeshData()
     {
-        Debug.Log("LoadJsonData");
+        //Debug.Log("LoadJsonData");
 
         if (File.Exists(Application.dataPath + "/Resources/Data/MeshInfoData.json"))
         {
@@ -34,6 +31,7 @@ public class LoadJsonData : MonoBehaviour {
             //Debug.Log(jsonStr);
             JsonData MeshData = JsonMapper.ToObject(jsonStr);
 
+            // 1~320
             Debug.Log(MeshData[MeshNumber]["meshID"].ToString() + "," + MeshData[MeshNumber]["meshState"].ToString());
 
             SetMaterial(MeshData[MeshNumber]["meshState"].ToString()); // Material 세팅

@@ -11,7 +11,7 @@ public class CardEffect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        EventCardDeleteMesh(cardObject[0], testMesh.transform);
+        //EventCardDeleteMesh(cardObject[0], testMesh.transform);
         //EventCardInMesh(cardObject[0], testMesh.transform);
     }
 
