@@ -32,7 +32,7 @@ public class MeshController : MonoBehaviour {
     static int giveNumber;          // Mesh번호 매기기를 위한 static값
     public int LinkedNumber;        // Linkednum이 같다면 같은 state로 붙어있는 Mesh들
 
-    private GameObject terrainObj;  // Terrain이 갖는 오브젝트
+    public GameObject terrainObj;  // Terrain이 갖는 오브젝트
     public Terrain terrainstate;    // Mesh의 터레인 상태
     public bool isAwake;            // Click 된 후 알고리즘 작동
     public bool isFixed;            // 턴이 종료되어 해당 Mesh의 변화가 확정됨
@@ -202,7 +202,7 @@ public class MeshController : MonoBehaviour {
 
     public void InstateTerrainObject(Terrain terrainstate)
     {
-        if (terrainObj != null)
+        if (terrainObj != null && isFlag == false)
             Destroy(terrainObj);
 
         // 객체 추가해서 달아주자.

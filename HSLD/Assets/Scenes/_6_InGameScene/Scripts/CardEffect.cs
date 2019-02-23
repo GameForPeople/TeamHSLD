@@ -54,14 +54,14 @@ public class CardEffect : MonoBehaviour {
 
     public IEnumerator MoveRotateCard(GameObject cardObj)
     {
-        Vector2 minScale = new Vector2(10, 10);
+        Vector3 minScale = new Vector3(8, 8, 8);
         float amount = 0;
         while (amount < 360.0f)
         {
             Vector3 rotate = Vector3.Cross((testMesh.transform.position).normalized, testMesh.transform.right).normalized;
             cardObj.transform.RotateAround(gameObject.transform.position, rotate * 120, speed * Time.deltaTime);
 
-            cardObj.transform.localScale = Vector2.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
+            cardObj.transform.localScale = Vector3.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
 
             amount += speed * Time.deltaTime;
             yield return null;
@@ -81,11 +81,10 @@ public class CardEffect : MonoBehaviour {
 
     public IEnumerator MoveInMesh(GameObject cardObj, int num)
     {
-        Vector2 minScale = new Vector2(1, 1);
-        Vector2 maxScale = new Vector2(10, 10);
+        Vector3 minScale = new Vector2(1, 1);
         while (effectCard.transform.localScale.x > minScale.x + 1)
         {
-            cardObj.transform.localScale = Vector2.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
+            cardObj.transform.localScale = Vector3.Lerp(effectCard.transform.localScale, minScale, Time.deltaTime);
             yield return null;
         }
         if (num == 1)

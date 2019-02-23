@@ -97,19 +97,7 @@ public class PCverPIcking : MonoBehaviour
         if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
         {
             PickedMeshObj = hitObj.transform.gameObject;
-
-            //// CameraShake Test Code
-            //if (Input.GetMouseButton(1))
-            //{
-            //    if (!CameraShake.isCameraShake)
-            //    {
-            //        StartCoroutine(cameraShake.Shake(duration, magnitude, PickedMeshObj.GetComponent<MeshController>().Linkednum));
-            //        // Linkednum != 0 && isMine == false 일 때 이벤트 카드
-            //    }
-            //    CameraController.offset = 2;
-            //    return;
-            //}
-
+            
             //if (PickedMeshObj.GetComponent<MeshController>() == null)
             //{
             //    PickedMeshObj.AddComponent<MeshController>();
@@ -317,7 +305,6 @@ public class PCverPIcking : MonoBehaviour
                 //myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(3, 6);
             }
         }
-        //Debug.Log("!!!!!! -> " + tempint);
     }
 
 }
