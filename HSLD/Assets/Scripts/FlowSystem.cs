@@ -160,7 +160,7 @@ public class FlowSystem : MonoBehaviour
                     if (GameObject.Find("GameCores") != null)
                     {
                         Debug.Log("SEND : 턴종료");
-                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
                     }
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     turnSystem.currentTurn = TURN.ENEMYTURN;
@@ -171,7 +171,7 @@ public class FlowSystem : MonoBehaviour
                 if (GameObject.Find("GameCores") != null)
                 {
                     Debug.Log("SEND : 턴종료");
-                    gameObject.GetComponent<InGameSceneManager>().SendChangeTurn();
+                    gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
                 }
                 currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                 turnSystem.currentTurn = TURN.ENEMYTURN;
@@ -334,15 +334,15 @@ public class FlowSystem : MonoBehaviour
                     case 1:
                         //미션 - 500
                         if (MissionManager.selectedSubMissionIndex == 3 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 310
                         if (MissionManager.selectedSubMissionIndex == 1)
-                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -360,7 +360,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if(currentCnt[0] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -370,19 +370,19 @@ public class FlowSystem : MonoBehaviour
                     case 2:
                         //미션 - 210
                         if (MissionManager.selectedSubMissionIndex == 0)
-                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 400
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 310
                         if (MissionManager.selectedSubMissionIndex == 1)
-                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -399,7 +399,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[1] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -409,15 +409,15 @@ public class FlowSystem : MonoBehaviour
                     case 3:
                         //미션 - 200
                         if (MissionManager.selectedSubMissionIndex == 0 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 0, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 0);
 
                         //미션 - 420
                         if (MissionManager.selectedSubMissionIndex == 2 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 4);
 
                         //미션 - 310
                         if (MissionManager.selectedSubMissionIndex == 1)
-                            missionManager.SubMissionCounting(1, 2, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 2);
 
                         //미션 - 301
                         if (MissionManager.selectedSubMissionIndex == 1)
@@ -435,7 +435,7 @@ public class FlowSystem : MonoBehaviour
                                     continue;
 
                             if (currentCnt[2] == maximumCnt)
-                                missionManager.SubMissionCounting(maximumCnt, 1, Identify.ALLY);
+                                missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
                         randomVal = Random.Range(1, 4);
@@ -446,7 +446,7 @@ public class FlowSystem : MonoBehaviour
                     case 4:
                         //미션 - 520
                         if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(4, 6);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
@@ -456,11 +456,11 @@ public class FlowSystem : MonoBehaviour
                     case 5:
                         //미션 - 401
                         if (MissionManager.selectedSubMissionIndex == 2 && CameraController.DiceCount > 6)
-                            missionManager.SubMissionCounting(1, 1, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 1);
 
                         //미션 - 520
                         if (MissionManager.selectedSubMissionIndex == 3 && cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt == 1)
-                            missionManager.SubMissionCounting(1, 4, Identify.ALLY);
+                            missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(7, 9);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
