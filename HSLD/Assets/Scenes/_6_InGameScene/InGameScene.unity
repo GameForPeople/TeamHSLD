@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6976,6 +6976,52 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+--- !u!1001 &209878306
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -37.352158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.0630245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 28.963566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.40557975
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.579228
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.40557975
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.579228
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415722354375960, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912237196377314, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+      propertyPath: m_Name
+      value: Cube 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &212851319
 GameObject:
   m_ObjectHideFlags: 0
@@ -24726,9 +24772,9 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 5
+  matchingCompleteTime: 0
   selectOrderTime: 10
-  selectCardTime: 5
+  selectCardTime: 0
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -33875,7 +33921,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardObject:
-  - {fileID: 1198684204867282, guid: 560a837a84d537a4f8eb6618c93b33dc, type: 2}
+  - {fileID: 1304036366484954, guid: 956c1d4de3ae01b4ebb0e5e2661561e5, type: 2}
+  - {fileID: 1555655045565836, guid: 9240d29abd5c0504e9a3922df8bfc100, type: 2}
+  - {fileID: 1065576002411974, guid: ec86a31933fef3c48a9f498f030e79a5, type: 2}
+  - {fileID: 1954600158339170, guid: 027eeaa47b624c1458ed85071a484949, type: 2}
+  - {fileID: 1120509511102134, guid: cf60164473cae7143bf3e625883d18e8, type: 2}
+  - {fileID: 1912237196377314, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
   effectCard: {fileID: 0}
   testMesh: {fileID: 1029591818}
 --- !u!1 &1132665301
