@@ -165,20 +165,28 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(READY_SELECTCARD_Cor());
                 break;
             case TUTORIAL.INGAME_ROLLINGDICE:
+                currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINCARD:
+                currentTutorial = TUTORIAL.INGAME_SELECTTERRAINCARD;
                 break;
             case TUTORIAL.INGAME_SELECTFLAG:
+                currentTutorial = TUTORIAL.INGAME_SELECTFLAG;
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINLOC:
+                currentTutorial = TUTORIAL.INGAME_SELECTTERRAINLOC;
                 break;
             case TUTORIAL.INGAME_ATTACK:
+                currentTutorial = TUTORIAL.INGAME_ATTACK;
                 break;
             case TUTORIAL.INGAME_GETEVENTCARD:
+                currentTutorial = TUTORIAL.INGAME_GETEVENTCARD;
                 break;
             case TUTORIAL.INGAME_USEEVENTCARD:
+                currentTutorial = TUTORIAL.INGAME_USEEVENTCARD;
                 break;
             case TUTORIAL.ENDGAME_CONDITIONTOWIN:
+                currentTutorial = TUTORIAL.ENDGAME_CONDITIONTOWIN;
                 break;
         }
     }
