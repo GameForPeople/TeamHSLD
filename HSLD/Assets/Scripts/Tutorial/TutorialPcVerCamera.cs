@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PCverPIcking : MonoBehaviour
+public class TutorialPcVerCamera : MonoBehaviour
 {
+
     public Camera mainCamera;
     private GameObject myPlanet;
     private GameObject PickedMeshObj;
@@ -15,7 +16,7 @@ public class PCverPIcking : MonoBehaviour
     public float magnitude;
     private bool once;
 
-    private FlowSystem flowSystem;
+    private TutorialFlowSystem flowSystem;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class PCverPIcking : MonoBehaviour
         isDominatedCheck = false;
         isDominatedConfirm = false;
 
-        flowSystem = GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>();
+        flowSystem = GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>();
     }
 
     private void Update()
@@ -61,13 +62,13 @@ public class PCverPIcking : MonoBehaviour
         RaycastHit hitObj;
 
         //19.01.15 YSH 추가합니다..
-        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGEVENTCARDLOC))
+        if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGEVENTCARDLOC))
         {
             if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
             {
                 PickedMeshObj = hitObj.transform.gameObject;
 
-                switch(EventCardManager.selectedIndex)
+                switch (EventCardManager.selectedIndex)
                 {
                     case 101:
                         if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))   //To enemy
@@ -86,19 +87,19 @@ public class PCverPIcking : MonoBehaviour
                             return;
                         break;
                 }
-                
+
                 AllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
 
             }
         }
 
-        if (AllMeshController.IngameManager.GetComponent<FlowSystem>().currentFlow != FLOW.TO_PICKINGLOC)
+        if (flowSystem.currentFlow != FLOW.TO_PICKINGLOC)
             return;
 
         if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
         {
             PickedMeshObj = hitObj.transform.gameObject;
-            
+
             //if (PickedMeshObj.GetComponent<MeshController>() == null)
             //{
             //    PickedMeshObj.AddComponent<MeshController>();
@@ -124,7 +125,8 @@ public class PCverPIcking : MonoBehaviour
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {
-                            if (myPlanet.GetComponent<AllMeshController>().myFlag != null) {
+                            if (myPlanet.GetComponent<AllMeshController>().myFlag != null)
+                            {
                                 for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
                                 {
                                     if (myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[i] == PickedMeshObj)
@@ -307,5 +309,4 @@ public class PCverPIcking : MonoBehaviour
             }
         }
     }
-
 }
