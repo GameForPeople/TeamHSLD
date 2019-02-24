@@ -14,7 +14,7 @@ MonoBehaviour:
   currentCard: 0
   cardIndex: 401
   cardName: "[\uBC84\uD504] \uC8FC\uC0AC\uC704 \uB450 \uBC30 !!"
-  img: {fileID: 21300010, guid: 0154f933b9973ed4ea0de490f499affa, type: 3}
+  img: {fileID: 21300000, guid: 88828f55640ac5642aa0787dc3849a17, type: 3}
   currentCnt: 0
   maximumCnt: 0
-  minumumCnt: 0
+  minimumCnt: 0

@@ -79,7 +79,11 @@ public class MissionManager : MonoBehaviour
         for(int i =0; i < 5 ;i++)
             readyDisplaySubMissionObj.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
 
-        missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
+        if(gameObject.GetComponent<FlowSystem>() != null)
+            missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
+        else
+            missionCanvas = gameObject.GetComponent<TutorialFlowSystem>().missionSetParentTransform.gameObject;
+
         RndMainMissionSet(selectedMainMissionIndex);
         RndSubMissionSet(selectedSubMissionIndex);
     }
@@ -160,22 +164,22 @@ public class MissionManager : MonoBehaviour
     //한 턴 카운팅할때 사용
     public void SubMissionCounting(int val, int index)
     {
-        if (enemyMissionCompleteBoolean[index])
-            return;
-
-            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        if (!enemyMissionCompleteBoolean[index])
         {
-            if (!missionCompleteBoolean[index])
+            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
             {
-                missionComplete += 1;
-                missionCompleteBoolean[index] = true;
+                if (!missionCompleteBoolean[index])
+                {
+                    missionComplete += 1;
+                    missionCompleteBoolean[index] = true;
+                }
+
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
             }
 
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+            else
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
         }
-
-        else
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt += val;
 
         ResetMissionDisplay();
         //if (identify.Equals(Identify.ALLY))
@@ -214,22 +218,22 @@ public class MissionManager : MonoBehaviour
     //누적카운팅할때 사용
     public void SubMissionContinuedCounting(int val, int index)
     {
-        if (enemyMissionCompleteBoolean[index])
-            return;
-
-        if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
+        if (!enemyMissionCompleteBoolean[index])
         {
-            if (!missionCompleteBoolean[index])
+            if (missionSet[selectedSubMissionIndex].subMission[index].currentCnt + val >= missionSet[selectedSubMissionIndex].subMission[index].goalCnt)
             {
-                missionComplete += 1;
-                missionCompleteBoolean[index] = true;
+                if (!missionCompleteBoolean[index])
+                {
+                    missionComplete += 1;
+                    missionCompleteBoolean[index] = true;
+                }
+
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
             }
 
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;
+            else
+                missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
         }
-
-        else
-            missionSet[selectedSubMissionIndex].subMission[index].currentCnt = val;
 
         ResetMissionDisplay();
 
