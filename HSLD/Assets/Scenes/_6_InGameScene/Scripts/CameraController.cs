@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        MyPlanet = GameObject.FindWithTag("Planet").transform;
+        MyPlanet = GameObject.FindWithTag("InGamePlanet").transform;
         myTransform = GetComponent<Transform>();
         myTurn = true;
         Once = true;

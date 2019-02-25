@@ -13,7 +13,7 @@ public class TerrainGainCounting : MonoBehaviour
 
     private void Start()
     {
-        planetTrans = GameObject.FindWithTag("Planet").transform;
+        planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
         missionmanager = gameObject.GetComponent<MissionManager>();
     }
 

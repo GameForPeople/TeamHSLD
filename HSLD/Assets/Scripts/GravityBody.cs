@@ -18,7 +18,7 @@ public class GravityBody : MonoBehaviour
 
     void Start()
     {
-        planet = GameObject.FindWithTag("Planet").GetComponent<GravityAttractor>();
+        planet = GameObject.FindWithTag("InGamePlanet").GetComponent<GravityAttractor>();
 
         // Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
         GetComponent<Rigidbody>().useGravity = false;
@@ -41,7 +41,7 @@ public class GravityBody : MonoBehaviour
         if (collision.gameObject.transform.parent == null)
             return;
 
-        if (collision.gameObject.transform.parent.tag.Contains("Planet"))
+        if (collision.gameObject.transform.parent.tag.Contains("InGamePlanet"))
         {
             if (currentObject.Equals(OBJECT.FIXED))
             {

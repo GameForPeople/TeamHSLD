@@ -42,7 +42,7 @@ public class EventCardManager : MonoBehaviour
             check[i] = false;
 
         flowsystem = gameObject.GetComponent<FlowSystem>();
-        planetTrans = GameObject.FindWithTag("Planet").transform;
+        planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
     }

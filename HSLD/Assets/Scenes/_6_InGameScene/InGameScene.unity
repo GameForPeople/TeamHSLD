@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10948,9 +10948,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
+  myPlanet: {fileID: 0}
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  enemyFlag: {fileID: 0}
+  myFlag: {fileID: 0}
 --- !u!114 &374445978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33861,7 +33864,7 @@ GameObject:
   - component: {fileID: 1132190351}
   m_Layer: 0
   m_Name: Sphere_320Objects_40X
-  m_TagString: Planet
+  m_TagString: InGamePlanet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33905,6 +33908,11 @@ MonoBehaviour:
   - {fileID: 1294241127086302, guid: 7ecac2e136a55ae41a68ac77bad0ab4d, type: 2}
   - {fileID: 1995373763876344, guid: 30e50d5e693873b49b1006ed161c12db, type: 2}
   - {fileID: 100000, guid: 75cd3ca8cb85ff44689e0e18c0fd3078, type: 3}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
   - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}

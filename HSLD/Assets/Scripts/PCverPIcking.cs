@@ -5,7 +5,7 @@ using UnityEngine;
 public class PCverPIcking : MonoBehaviour
 {
     public Camera mainCamera;
-    private GameObject myPlanet;
+    public GameObject myPlanet;
     private GameObject PickedMeshObj;
     public static bool isDominatedCheck; // 턴이 넘어가지 않아 아직 미정인 상태
     public static bool isDominatedConfirm; // 턴이 넘어가서 확정된 상태
@@ -21,21 +21,21 @@ public class PCverPIcking : MonoBehaviour
     public GameObject enemyFlag;
     public GameObject myFlag;
 
+    private GameObject networkSystem;
     private FlowSystem flowSystem;
 
     private void Start()
     {
-        myPlanet = GameObject.FindWithTag("Planet");
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
         isDominatedCheck = false;
         isDominatedConfirm = false;
 
+        networkSystem = GameObject.Find("NetworkManager");
         flowSystem = GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>();
     }
 
     private void Update()
     {
-        int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
-
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
             myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
@@ -319,7 +319,7 @@ public class PCverPIcking : MonoBehaviour
                     tempint++;
                 }
 
-                if (tempint == 2)
+                if (tempint == 1)
                 {
                     for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
                     {
@@ -330,11 +330,14 @@ public class PCverPIcking : MonoBehaviour
                             Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
 
+
+                        } else
+                        {
                             if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ENEMY)
                             {
                                 enemyFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
                             }
-                            else if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ALLY)
+                            else
                             {
                                 myFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
                             }
@@ -348,23 +351,23 @@ public class PCverPIcking : MonoBehaviour
         {
             int detectedCount = 0;
             //EnemyFlag
-            if (!bDominateEnemyFlag)
-            {
-                for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
-                {
-                    if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
-                    {
-                        detectedCount++;
-                    }
-                    if (detectedCount == 12)
-                    {
-                        GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
+            //if (!bDominateEnemyFlag)
+            //{
+            //    for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+            //    {
+            //        if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
+            //        {
+            //            detectedCount++;
+            //        }
+            //        if (detectedCount == 12)
+            //        {
+            //            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
 
-                        enemyFlag.GetComponent<MeshController>().EulerRotCal(buildingObj, enemyFlag, 1.0f);
-                        bDominateEnemyFlag = true;
-                    }
-                }
-            }
+            //            enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
+            //            bDominateEnemyFlag = true;
+            //        }
+            //    }
+            //}
 
             detectedCount = 0;
             // MyFlag
@@ -378,13 +381,35 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
+                        if(networkSystem.GetComponent<NetworkManager>().characterBit == 0)
+                        {
+                            Debug.Log("0");
+                        } else if (networkSystem.GetComponent<NetworkManager>().characterBit == 1)
+                        {
+                            Debug.Log("1");
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 2)
+                        {
+                            Debug.Log("2");
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 3)
+                        {
+                            Debug.Log("3");
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 4)
+                        {
+                            Debug.Log("4");
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 5)
+                        {
+                            Debug.Log("5");
+                        }
                         GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
 
                         Destroy(myFlag.GetComponent<MeshController>().TargetObject);
-                        myFlag.GetComponent<MeshController>().EulerRotCal(buildingObj, myFlag, 1.0f);
+                        myFlag.GetComponent<MeshController>().EulerRotCal(myFlag, buildingObj, 1.0f);
                         bDominateMyFlag = true;
                     }
-                    Debug.Log(detectedCount);
                 }
             }
         }
