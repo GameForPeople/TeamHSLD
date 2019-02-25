@@ -118,6 +118,7 @@ public class EditMesh : MonoBehaviour {
         GameObject meshObj = GameObject.Find(meshNum.ToString());
         if (material == "DEFAULT")
         {
+            Destroy(meshObj.GetComponent<MeshControllerTitle>().MyObject);
         }
         if (material == "MODERATION")
         {
@@ -146,6 +147,7 @@ public class EditMesh : MonoBehaviour {
         GameObject meshObj = GameObject.Find(meshNum.ToString());
         if (material == "DEFAULT")
         {
+            Destroy(meshObj.GetComponent<MeshControllerTitle>().MyObject);
         }
         if (material == "MODERATION")
         {
