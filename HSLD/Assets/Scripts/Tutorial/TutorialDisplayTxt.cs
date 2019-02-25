@@ -47,6 +47,15 @@ public class TutorialDisplayTxt : MonoBehaviour
             case TUTORIAL.INGAME_TURNEND:
                 StartCoroutine(performance2(delayTime));
                 break;
+            case TUTORIAL.INGAME_ENEMYTURN_TURNEND:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_BEFOREATTACK:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_ATTACK:
+                StartCoroutine(performance2(delayTime));
+                break;
         }
 
     }

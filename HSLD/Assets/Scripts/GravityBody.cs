@@ -18,7 +18,14 @@ public class GravityBody : MonoBehaviour
 
     void Start()
     {
-        planet = GameObject.FindWithTag("InGamePlanet").GetComponent<GravityAttractor>();
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+        {
+            planet = GameObject.FindWithTag("InGamePlanet").GetComponent<GravityAttractor>();
+        }
+        else
+        {
+            planet = GameObject.FindWithTag("Planet").GetComponent<GravityAttractor>();
+        }
 
         // Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
         GetComponent<Rigidbody>().useGravity = false;
@@ -50,10 +57,14 @@ public class GravityBody : MonoBehaviour
                 Destroy(gameObject.GetComponent<Rigidbody>());
             }
         }
-        else
+        else if(collision.gameObject.transform.parent.tag.Contains("Planet"))
         {
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            if (currentObject.Equals(OBJECT.FIXED))
+            {
+                Destroy(gameObject.GetComponent<BoxCollider>());
+                Destroy(gameObject.GetComponent<GravityBody>());
+                Destroy(gameObject.GetComponent<Rigidbody>());
+            }
         }
     }
 }

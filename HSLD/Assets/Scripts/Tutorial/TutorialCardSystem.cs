@@ -46,16 +46,22 @@ public class TutorialCardSystem : MonoBehaviour
         if (!isTriggerDone)
             return;
 
-        if(card.GetComponent<CardData>().data.cardIndex != 1 && TutorialManager.index != 6)
-            return;
-
-        if (card.GetComponent<CardData>().data.cardIndex == 1 && TutorialManager.index == 6)
+        if (card.GetComponent<CardData>().data.cardIndex == 1 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_SELECTTERRAINCARD))
         {
             gameObject.GetComponent<TutorialManager>().pointOff();
             gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTFLAG);
         }
-            
-
+        else if (card.GetComponent<CardData>().data.cardIndex == 3 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE_2))
+        {
+            gameObject.GetComponent<TutorialManager>().pointOff();
+            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINLOC_2);
+        }
+        else if(card.GetComponent<CardData>().data.cardIndex == 3 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_BEFOREATTACK))
+        {
+            gameObject.GetComponent<TutorialManager>().pointOff();
+            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_ATTACK);
+        }
+        
         if (flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 

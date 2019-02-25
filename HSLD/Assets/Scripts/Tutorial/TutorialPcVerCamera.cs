@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TutorialPcVerCamera : MonoBehaviour
 {
-
     public Camera mainCamera;
     private GameObject myPlanet;
     private GameObject PickedMeshObj;
@@ -18,9 +17,10 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private TutorialFlowSystem flowSystem;
 
-    private void Start()
+    private void Awake()
     {
-        myPlanet = GameObject.FindWithTag("InGamePlanet");
+        myPlanet = GameObject.FindWithTag("Planet");
+
         isDominatedCheck = false;
         isDominatedConfirm = false;
 
@@ -29,6 +29,8 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(GameObject.FindWithTag("Planet").GetComponent<TutorialAllMeshController>());
+
         int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
 
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
@@ -265,6 +267,12 @@ public class TutorialPcVerCamera : MonoBehaviour
                 {
                     CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
                     CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
+
+                    if (CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender != null)
+                    {
+                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender;
+                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = null;
+                    }
                 }
             }
         }

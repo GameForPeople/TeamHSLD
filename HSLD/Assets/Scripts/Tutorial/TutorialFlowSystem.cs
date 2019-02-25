@@ -53,14 +53,14 @@ public class TutorialFlowSystem : MonoBehaviour
         turnSystem = gameObject.GetComponent<TutorialTurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
-        planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
+        planetTrans = GameObject.FindWithTag("Planet").transform;
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
 
-        gameObject.GetComponent<TutorialManager>().currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
-        currentFlow = FLOW.READY_SETCARD;
-        turnSystem.currentTurn = TURN.MYTURN;
-        TutorialTurnSystem.startTurn = TURN.MYTURN;
-        FlowChange(FLOW.READY_SETCARD);
+        //gameObject.GetComponent<TutorialManager>().currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
+        //currentFlow = FLOW.READY_SETCARD;
+        //turnSystem.currentTurn = TURN.MYTURN;
+        //TutorialTurnSystem.startTurn = TURN.MYTURN;
+        //FlowChange(FLOW.READY_SETCARD);
     }
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
@@ -81,7 +81,8 @@ public class TutorialFlowSystem : MonoBehaviour
             case FLOW.TO_ROLLINGDICE:
                 currentFlow = FLOW.TO_PICKINGCARD;
                 diceCntingUI.SetActive(true);
-                gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINCARD);
+                if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE))
+                    gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINCARD);
                 break;
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
@@ -303,8 +304,8 @@ public class TutorialFlowSystem : MonoBehaviour
                                 missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[6], 1.03f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //한랭 - 펭귄
                     case 3:
@@ -340,8 +341,8 @@ public class TutorialFlowSystem : MonoBehaviour
                         }
 
                         randomVal = Random.Range(1, 4);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 1.03f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //바다 - 고래
                     case 4:
@@ -350,8 +351,8 @@ public class TutorialFlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(4, 6);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 5f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //산 - 구름
                     case 5:
@@ -364,8 +365,8 @@ public class TutorialFlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(7, 9);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 15f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                 }
                 Camera.main.GetComponent<TutorialPcVerCamera>().TurnChangeLogic();
