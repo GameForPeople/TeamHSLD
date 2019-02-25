@@ -6,7 +6,7 @@
 #pragma warning (disable: 4278)
 
 #ifdef _DEBUG_MODE_
-	// #define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인용.
+	#define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인용.
 #endif
 
 // Server's global Function
