@@ -197,9 +197,8 @@ public class MeshController : MonoBehaviour {
         }
 
         // 턴이 종료됐어 이번에 점령이 확정 됐다면 isFixed 를 true로 바꿔줘
-
     }
-
+    
     public void InstateTerrainObject(Terrain terrainstate)
     {
         if (terrainObj != null && isFlag == false)
@@ -334,6 +333,24 @@ public class MeshController : MonoBehaviour {
         {
             TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
             TargetObject.transform.GetChild(0).transform.localEulerAngles = new Vector3(TargetObject.transform.GetChild(0).transform.localEulerAngles.x, TargetObject.transform.GetChild(0).transform.localEulerAngles.y, Random.Range(0, 360));
+        }
+        terrainObj = TargetObject;
+    }
+
+    public void EulerRotCalAltar(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        TargetObject = Instantiate(buildingObj);
+
+        TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+        TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+
+        if (TargetObject.transform.childCount == 0)
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        else
+        {
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
         }
         terrainObj = TargetObject;
     }
@@ -550,9 +567,19 @@ public class MeshController : MonoBehaviour {
         GetComponent<MeshRenderer>().material = domMaterial;
     }
 
-    public void setFlag()
+    public void setFlag(Identify identify)
     {
         terrainstate = Terrain.FLAG;
+
+        if (identify.Equals(Identify.ALLY))
+        {
+            currentIdentify = Identify.ALLY;
+        }
+        else
+        {
+            currentIdentify = Identify.ENEMY;
+        }
+
         domMaterial = Resources.Load<Material>("M_FlagAble");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
     }

@@ -13,7 +13,13 @@ public class PCverPIcking : MonoBehaviour
     public CameraShake cameraShake;
     public float duration;
     public float magnitude;
-    private bool once;
+    private bool bDomination;
+
+    private bool bSelectionFlag;
+    private bool bDominateMyFlag;
+    private bool bDominateEnemyFlag;
+    public GameObject enemyFlag;
+    public GameObject myFlag;
 
     private FlowSystem flowSystem;
 
@@ -121,6 +127,8 @@ public class PCverPIcking : MonoBehaviour
                             PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                             myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                             myPlanet.GetComponent<AllMeshController>().myFlag = PickedMeshObj;
+
+
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {
@@ -233,7 +241,7 @@ public class PCverPIcking : MonoBehaviour
         }
 
         // 거점등록이 확정됐으면 effect추가
-        if (isDominatedConfirm == true && once == false)
+        if (isDominatedConfirm == true && bDomination == false)
         {
             GameObject flagMesh = myPlanet.GetComponent<AllMeshController>().myFlag;
             GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
@@ -242,7 +250,7 @@ public class PCverPIcking : MonoBehaviour
             Destroy(flagMesh.GetComponent<MeshController>().TargetObject);
             flagMesh.GetComponent<MeshController>().EulerRotCal(flagMesh, buildingObj, 1.01f);
             flagMesh.GetComponent<MeshController>().EulerRotCalEffect(flagMesh, effectObj, 1.01f);
-            once = true;
+            bDomination = true;
         }
 
         FlagSetting(); // Flag검사 
@@ -280,35 +288,105 @@ public class PCverPIcking : MonoBehaviour
         }
     }
 
+    // Setting의 역할을 바꿔줘야 함!
+    // 전제1 : 플레이어는 처음 하나의 Flag를 선택할 수 밖에 없다 -> 한턴이 돌면 Flag는 정해지게 됨.
+    // 정해지면?
+    // 1. 선택받지 못받은 애들 
+    //      - flag들은 모두 정리해야 함.
+    // 2. 선택받은 애들
+    //      - 선택받은 애들은 Alter_B로 바꿔줘야 함.
+    //      - 선택받은 애들은 추후 점령 됐는지 확인할 수 있어야 함.
+    // 3. 점령이 됐다면
+    //      - Alter_C로 바꿔줘야 함 (캐릭터bit에 따라서 색상변경)
+    //      - 점령 두 곳이 다 됐으면 더이상 이 로직은 무의미
     public void FlagSetting()
     {
-        // 이미 다 획득한 상황에 대한 값이 있고 return시켜. [낭비]
-
         int tempint = 0;
 
-        //깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
-        for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
+        if (bDominateEnemyFlag == true && bDominateMyFlag == true) return; // 더이상 무의미한 로직이 됨
+
+        if (!bSelectionFlag)
         {
-            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+            for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
             {
-                tempint++;
-            }
-
-            if (tempint == 2)
-            {
-                for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
                 {
-                    if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
-                    {
-                        myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
-                        Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
-                        myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+                    GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[21];
+                    GameObject meshObj = myPlanet.GetComponent<AllMeshController>().FlagContainer[i];
 
+                    Destroy(meshObj.GetComponent<MeshController>().TargetObject);
+                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.0f);
+                    tempint++;
+                }
+
+                if (tempint == 2)
+                {
+                    for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                    {
+                        if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
+                        {
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
+                            Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+
+                            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ENEMY)
+                            {
+                                enemyFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                            }
+                            else if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ALLY)
+                            {
+                                myFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                            }
+                        }
+                    }
+                    bSelectionFlag = true;
+                }
+            }
+        }
+        else // Flag가 결정된 후
+        {
+            int detectedCount = 0;
+            //EnemyFlag
+            if (!bDominateEnemyFlag)
+            {
+                for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+                {
+                    if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
+                    {
+                        detectedCount++;
+                    }
+                    if (detectedCount == 12)
+                    {
+                        GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
+
+                        enemyFlag.GetComponent<MeshController>().EulerRotCal(buildingObj, enemyFlag, 1.0f);
+                        bDominateEnemyFlag = true;
                     }
                 }
-                //myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(3, 6);
+            }
+
+            detectedCount = 0;
+            // MyFlag
+            if (!bDominateMyFlag)
+            {
+                for (int i = 0; i < myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+                {
+                    if (myFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
+                    {
+                        detectedCount++;
+                    }
+                    if (detectedCount == 12)
+                    {
+                        GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
+
+                        Destroy(myFlag.GetComponent<MeshController>().TargetObject);
+                        myFlag.GetComponent<MeshController>().EulerRotCal(buildingObj, myFlag, 1.0f);
+                        bDominateMyFlag = true;
+                    }
+                    Debug.Log(detectedCount);
+                }
             }
         }
     }
-
 }
