@@ -524,7 +524,7 @@ void IOCPServer::_WorkerThreadFunction()
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			if (recvType > 0 && recvType < 600)
+			if (recvType > Protocol::START_RECV && recvType < Protocol::NOTIFY_EVENT_CARD)
 			{
 				sceneNetworkManagerCont[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient);
 

@@ -76,6 +76,7 @@ private:
 	bool isFriendMode;
 	
 	BYTE emojiBuffer[2];
+
 	// 안쓰기로 결정..
 	//BaseStruct* oldhostDataBuffer;
 	//BaseStruct* oldguestDataBuffer;
