@@ -494,6 +494,24 @@ public class MeshController : MonoBehaviour {
         terrainObj = TargetObject;
     }
 
+    public void EulerRotCalAltar_A(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        TargetObject = Instantiate(buildingObj);
+
+        TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+        TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+
+        if (TargetObject.transform.childCount == 0)
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        else
+        {
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        }
+        terrainObj = TargetObject;
+    }
+
     public void EulerRotCalEffect(GameObject targetObj, GameObject buildingObj, float offset)
     {
         EffectObject = Instantiate(buildingObj);
