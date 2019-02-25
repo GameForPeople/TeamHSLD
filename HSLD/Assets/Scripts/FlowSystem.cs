@@ -46,6 +46,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject displayTextImg;
     public GameObject enemyTurnPassObj;
     public GameObject resultUICanvas;
+    public GameObject diceCntingUI;
 
     private float time_;
     private int randomVal;
@@ -114,8 +115,10 @@ public class FlowSystem : MonoBehaviour
         {
             case FLOW.TO_ROLLINGDICE:
                 currentFlow = FLOW.TO_PICKINGCARD;
+                diceCntingUI.SetActive(true);
                 break;
             case FLOW.TO_PICKINGLOC:
+                diceCntingUI.SetActive(false);
                 TurnSystem.isSetTerrainDone = false;
                 
                 //init
@@ -276,6 +279,7 @@ public class FlowSystem : MonoBehaviour
                 matchingCompleteCanvas.SetActive(false);
                 turnSetCanvas.SetActive(true);
                 currentFlow = FLOW.READY_TURNORDER;
+                diceCntingUI.SetActive(false);
                 break;
             case FLOW.READY_TURNORDER:
                 turnSetCanvas.SetActive(false);
@@ -301,7 +305,6 @@ public class FlowSystem : MonoBehaviour
                 break;
             case FLOW.TO_PICKINGCARD:
                 //GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-                setTerrainCanvas.SetActive(true);
                 //if (GameObject.Find("GameCores") != null)
                 //{
                 //    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 

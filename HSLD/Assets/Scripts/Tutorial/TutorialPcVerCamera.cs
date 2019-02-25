@@ -29,14 +29,12 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Update()
     {
-        int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
+        int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
 
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
-            myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
-            CameraController.ChangeableCount = ((int)(DiceSystem.getDiceNum / 10) + (int)(DiceSystem.getDiceNum % 10));
-
-            //Debug.Log("ChangeableCount : " + CameraController.ChangeableCount);
+            myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Clear();
+            CameraController.ChangeableCount = CameraController.DiceCount;
 
         } // 카드 피킹할 때 주사위 값 받아오기
 
@@ -88,7 +86,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                         break;
                 }
 
-                AllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
+                TutorialAllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
 
             }
         }
@@ -107,32 +105,32 @@ public class TutorialPcVerCamera : MonoBehaviour
 
             if (!PickedMeshObj.GetComponent<MeshController>().isFixed && !PickedMeshObj.GetComponent<MeshController>().isAwake)
             {
-                if (myPlanet.GetComponent<AllMeshController>().isEmpty()) // 턴 시작후 첫번째 로직
+                if (myPlanet.GetComponent<TutorialAllMeshController>().isEmpty()) // 턴 시작후 첫번째 로직
                 {
                     //점령이 끝난 뒤 첫턴 로직 (다른 곳도 선택할 수 있도록)
                     if (isDominatedConfirm == true)
                     {
                         PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                        myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                        myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                     }
                     else // 점령전 (내 Flag와 내 flagable만 선택할 수 있어야 함.)
                     {
-                        if (myPlanet.GetComponent<AllMeshController>().myFlag == null && PickedMeshObj.GetComponent<MeshController>().isFlag == true) // Flag하나만 선택할 수 있어야 해.
+                        if (myPlanet.GetComponent<TutorialAllMeshController>().myFlag == null && PickedMeshObj.GetComponent<MeshController>().isFlag == true) // Flag하나만 선택할 수 있어야 해.
                         {
                             PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                            myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
-                            myPlanet.GetComponent<AllMeshController>().myFlag = PickedMeshObj;
+                            myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                            myPlanet.GetComponent<TutorialAllMeshController>().myFlag = PickedMeshObj;
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {
-                            if (myPlanet.GetComponent<AllMeshController>().myFlag != null)
+                            if (myPlanet.GetComponent<TutorialAllMeshController>().myFlag != null)
                             {
-                                for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+                                for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
                                 {
-                                    if (myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[i] == PickedMeshObj)
+                                    if (myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[i] == PickedMeshObj)
                                     {
                                         PickedMeshObj.GetComponent<MeshController>().isAwake = true;
-                                        myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                        myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                     }
                                 }
                             }
@@ -146,16 +144,16 @@ public class TutorialPcVerCamera : MonoBehaviour
                         return;
 
                     // 제거 부분
-                    if (myPlanet.GetComponent<AllMeshController>().PickContainer.Contains(PickedMeshObj.GetComponent<MeshController>().MeshNumber))
+                    if (myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Contains(PickedMeshObj.GetComponent<MeshController>().MeshNumber))
                     {
                         // 다시 누른 거
-                        if (myPlanet.GetComponent<AllMeshController>().PickContainer[0] == PickedMeshObj.GetComponent<MeshController>().MeshNumber ||
-                            myPlanet.GetComponent<AllMeshController>().PickContainer[myPlanet.GetComponent<AllMeshController>().PickContainer.Count - 1]
+                        if (myPlanet.GetComponent<TutorialAllMeshController>().PickContainer[0] == PickedMeshObj.GetComponent<MeshController>().MeshNumber ||
+                            myPlanet.GetComponent<TutorialAllMeshController>().PickContainer[myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count - 1]
                             == PickedMeshObj.GetComponent<MeshController>().MeshNumber) // 첫 값 혹은 마지막 값이야
                         {
                             if (CameraController.ChangeableCount < CameraController.DiceCount + 1)
                             {
-                                myPlanet.GetComponent<AllMeshController>().PickContainer.Remove(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Remove(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                 PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                             }
                         }
@@ -169,11 +167,11 @@ public class TutorialPcVerCamera : MonoBehaviour
                             // 0번의 Joint에 있는 애면 0번으로 들어가!
                             for (int i = 0; i < 3; i++)
                             {
-                                if (GameObject.Find(myPlanet.GetComponent<AllMeshController>().PickContainer[0].ToString()).GetComponent<MeshController>().JointMesh[i].name
+                                if (GameObject.Find(myPlanet.GetComponent<TutorialAllMeshController>().PickContainer[0].ToString()).GetComponent<MeshController>().JointMesh[i].name
                                     == PickedMeshObj.GetComponent<MeshController>().MeshNumber.ToString())
                                 {
                                     //Debug.Log("앞 쪽 꼬리에 들어갑니다.");
-                                    myPlanet.GetComponent<AllMeshController>().PickContainer.Insert(0, PickedMeshObj.GetComponent<MeshController>().MeshNumber);
+                                    myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Insert(0, PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                                     PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                                     temp = true;
                                     break;
@@ -181,7 +179,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                             }
                             if (temp == false) // 0번에 있는 애가 아니면 그냥 뒤에 붙어
                             {
-                                myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber); // 값을 추가
+                                myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber); // 값을 추가
                                 PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                             }
                         }
@@ -196,39 +194,32 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     public void TurnChangeLogic()
     {
-        int Length = myPlanet.GetComponent<AllMeshController>().PickContainer.Count;
-        AllMeshController.giveLinkNum++;
+        int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
+        TutorialAllMeshController.giveLinkNum++;
         //Debug.Log("내 턴에서 넘어갈 때 한번만");
         for (int i = 0; i < Length; i++) // 링크드넘버 세팅
         {
-            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
-            FindObject.GetComponent<MeshController>().LinkedNumber = AllMeshController.giveLinkNum;
+            GameObject FindObject = GameObject.Find(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().PickContainer[i].ToString());
+            FindObject.GetComponent<MeshController>().LinkedNumber = TutorialAllMeshController.giveLinkNum;
         }
 
         for (int i = 0; i < Length; i++)
         {
-            GameObject FindObject = GameObject.Find(AllMeshController.myPlanet.GetComponent<AllMeshController>().PickContainer[i].ToString());
+            GameObject FindObject = GameObject.Find(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().PickContainer[i].ToString());
 
             if (isDominatedCheck == true)
             {
                 isDominatedConfirm = true;
-                Debug.Log("거점 등록");
             }
             //able 모두 삭제
             DeleteAble(FindObject);
-
-            if (GameObject.Find("GameCores") != null)
-            {
-                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainIndex(myPlanet.GetComponent<AllMeshController>().PickContainer.ToArray());
-                Debug.Log("SEND : 행성 픽킹로케이션");
-            }
 
             FindObject.GetComponent<MeshController>().isFixed = true;
             FindObject.GetComponent<MeshController>().isMine = true; // 내가 픽했던 메시들 fixed로 고정
             FindObject.GetComponent<MeshController>().isLandingSign = true;
 
             /////// Event 카드를 위한 매시 묶기
-            myPlanet.GetComponent<AllMeshController>().ArrangeLinkedMesh(
+            myPlanet.GetComponent<TutorialAllMeshController>().ArrangeLinkedMesh(
                 FindObject.GetComponent<MeshController>().name,
                 FindObject.GetComponent<MeshController>().terrainstate);
 
@@ -237,15 +228,15 @@ public class TutorialPcVerCamera : MonoBehaviour
         // 거점등록이 확정됐으면 effect추가
         if (isDominatedConfirm == true && once == false)
         {
-            GameObject flagObj = myPlanet.GetComponent<AllMeshController>().myFlag;
-            GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
+            GameObject flagObj = myPlanet.GetComponent<TutorialAllMeshController>().myFlag;
+            GameObject effectObj = myPlanet.GetComponent<TutorialAllMeshController>().EffectObj[0];
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
             flagObj.GetComponent<MeshController>().EulerRotCalEffect(flagObj, effectObj, 1.01f);
             once = true;
         }
 
         FlagSetting(); // Flag검사 
-        myPlanet.GetComponent<AllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
+        myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Clear(); // 컨테이너는 초기화
         CameraController.Once = false;
     }
     public void DeleteAble(GameObject CheckObject)
@@ -259,10 +250,10 @@ public class TutorialPcVerCamera : MonoBehaviour
             {
                 if (isDominatedCheck == false)
                 {
-                    for (int k = 0; k < myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; k++)
+                    for (int k = 0; k < myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; k++)
                     {
-                        if (myPlanet.GetComponent<AllMeshController>().myFlag ||
-                            myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[k] == CheckObject)
+                        if (myPlanet.GetComponent<TutorialAllMeshController>().myFlag ||
+                            myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[k] == CheckObject)
                         {
                             CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
                             temp = true;
@@ -286,26 +277,25 @@ public class TutorialPcVerCamera : MonoBehaviour
         int tempint = 0;
 
         //깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
-        for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
+        for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; i++)
         {
-            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+            if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
             {
                 tempint++;
             }
 
             if (tempint == 2)
             {
-                for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                for (int j = 0; j < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; j++)
                 {
-                    if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
+                    if (!myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
                     {
-                        myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
-                        Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
-                        myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+                        myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
+                        Destroy(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                        myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
 
                     }
                 }
-                //myPlanet.GetComponent<AllMeshController>().FlagContainer.RemoveRange(3, 6);
             }
         }
     }

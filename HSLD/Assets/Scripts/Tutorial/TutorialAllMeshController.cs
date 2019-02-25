@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllMeshController : MonoBehaviour
+public class TutorialAllMeshController : MonoBehaviour
 {
-
     public static bool once;
 
-    public static GameObject IngameManager;
     public static GameObject myPlanet;
     //public int[] PickContainer;
     public List<int> PickContainer;
@@ -17,17 +15,18 @@ public class AllMeshController : MonoBehaviour
     public GameObject[] buildingObj;
     public GameObject[] MovingObj;
     public GameObject[] EffectObj;
-    static public AllMeshController instance_;
+    static public TutorialAllMeshController instance_;
     static public int giveLinkNum = 0;
-    
+    public static GameObject IngameManager;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
         myPlanet = GameObject.FindWithTag("Planet");
         PickContainer = new List<int>();
         AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
-        if(instance_ == null)
+        if (instance_ == null)
             instance_ = this;
     }
 
@@ -51,7 +50,7 @@ public class AllMeshController : MonoBehaviour
             {
                 FlagContainer.Add(AllContainer[i]);
                 AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.00f);
+                AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.03f);
             }
         }
 
@@ -76,9 +75,9 @@ public class AllMeshController : MonoBehaviour
 
     public bool isEmpty()
     {
-        for(int i = 0; i< PickContainer.Count; i++)
+        for (int i = 0; i < PickContainer.Count; i++)
         {
-            if(PickContainer[i] != 0)
+            if (PickContainer[i] != 0)
             {
                 return false;
             }
@@ -91,7 +90,7 @@ public class AllMeshController : MonoBehaviour
         GameObject CheckMesh = GameObject.Find(meshnum.ToString());
         int keepLinknum = 0;
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             // 타입이 같은 JointMesh를 만났어!
             if (CheckMesh.GetComponent<MeshController>().JointMesh[i].GetComponent<MeshController>().terrainstate == type)
@@ -116,9 +115,9 @@ public class AllMeshController : MonoBehaviour
 
     public void InitLinkedMesh(int Linknumber) // 해당
     {
-        for(int i = 1; i< AllContainer.Length; i++)
+        for (int i = 1; i < AllContainer.Length; i++)
         {
-            if(AllContainer[i].GetComponent<MeshController>().LinkedNumber == Linknumber)
+            if (AllContainer[i].GetComponent<MeshController>().LinkedNumber == Linknumber)
             {
                 StartCoroutine(AllContainer[i].GetComponent<MeshController>().MoveDownCor());
                 AllContainer[i].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
@@ -135,7 +134,7 @@ public class AllMeshController : MonoBehaviour
         if (!isEmpty())
         {
             Debug.Log("Print!!");
-            //GetComponent<SaveJsonData>().SaveMeshData();
+            GetComponent<SaveJsonData>().SaveMeshData();
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
         }
         int Length = PickContainer.Count;
@@ -145,7 +144,7 @@ public class AllMeshController : MonoBehaviour
             GameObject target = GameObject.Find(PickContainer[i].ToString());
             Debug.Log("delete : " + target.name);
             target.GetComponent<MeshController>().MissionCounting(false);
-            Camera.main.GetComponent<PCverPIcking>().DeleteAble(target);
+            Camera.main.GetComponent<TutorialPcVerCamera>().DeleteAble(target);
             target.GetComponent<Renderer>().material = target.GetComponent<MeshController>().priorMaterial;
             target.GetComponent<MeshController>().terrainstate = target.GetComponent<MeshController>().priorState;
             if (target == myFlag)
@@ -162,13 +161,13 @@ public class AllMeshController : MonoBehaviour
             temp = false;
         }
         PickContainer.Clear();
-        CameraController.ChangeableCount += Length; 
+        CameraController.ChangeableCount += Length;
 
     }
 
     public void NearMeshSetting()
     {
-        for(int i = 0; i< myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+        for (int i = 0; i < myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
         {
             myFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().setDefault();
         }
@@ -204,7 +203,7 @@ public class AllMeshController : MonoBehaviour
                 GameObject FirstObject = GameObject.Find(PickContainer[0].ToString());
 
                 // 1.거점 주변 세팅
-                if (PCverPIcking.isDominatedConfirm == false)
+                if (TutorialPcVerCamera.isDominatedConfirm == false)
                 {
                     int DomCount = 0;
                     for (int k = 0; k < myFlag.GetComponent<MeshController>().NearMesh.Count; k++)
@@ -221,19 +220,19 @@ public class AllMeshController : MonoBehaviour
                     }
                     if (DomCount == myFlag.GetComponent<MeshController>().NearMesh.Count) // 거점 획득
                     {
-                        PCverPIcking.isDominatedCheck = true;
-                        GameObject.FindWithTag("GameManager").GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+                        TutorialPcVerCamera.isDominatedCheck = true;
+                        GameObject.FindWithTag("GameManager").GetComponent<TutorialTurnSystem>().currentTurn = TURN.MYTURN;
                     }
                     else
                     {
-                        PCverPIcking.isDominatedCheck = false;
+                        TutorialPcVerCamera.isDominatedCheck = false;
                     }
                 }
 
                 // 2.Able에 대한 세팅해줘
                 for (int j = 0; j < 3; j++)
                 {
-                    if (PCverPIcking.isDominatedCheck == false) // 거점 획득 전
+                    if (TutorialPcVerCamera.isDominatedCheck == false) // 거점 획득 전
                     {
                         if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate == Terrain.DEFAULT) // able일 때 default로 바꿔줘
                         {
@@ -267,7 +266,7 @@ public class AllMeshController : MonoBehaviour
                         //내가 선택한  지형카드가 '비옥'이고, jointMesh가 '한랭'이고, 소유자가 Enemy면 able로 변경한다. 
                         //내가 선택한  지형카드가 '척박'이고, jointMesh가 '비옥'이고, 소유자가 Enemy면 able로 변경한다.
                         //내가 선택한  지형카드가 '한랭'이고, jointMesh가 '척박'이고, 소유자가 Enemy면 able로 변경한다.
-                        switch (GameObject.FindWithTag("GameManager").GetComponent<CardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
+                        switch (GameObject.FindWithTag("GameManager").GetComponent<TutorialCardSystem>().pickedCard.GetComponent<CardData>().data.cardIndex)
                         {
                             //비옥
                             case 1:

@@ -13,6 +13,9 @@ public enum TUTORIAL
     INGAME_SELECTFLAG,          //거점 정하기
     INGAME_SELECTTERRAINLOC,    //지형 설치하기
 
+    INGAME_SELECTLOCDONE,       //지형설치완료
+    INGAME_TURNEND,             //턴을 종료하고, 상대턴으로 변경
+
     INGAME_ATTACK,              //공격/방어하기
     INGAME_GETEVENTCARD,        //이벤트카드 얻기
     INGAME_USEEVENTCARD,        //이벤트카드 사용하기
@@ -28,6 +31,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject pointObj1;
     public GameObject pointObj2;
     public GameObject pointObj3;
+    public GameObject pointObj4;
 
     static public int index = 0;
 
@@ -135,12 +139,173 @@ public class TutorialManager : MonoBehaviour
         pointObj3.transform.localPosition = pos;
         //Debug.Log(index);
         index += 1;
-
     }
+
+    public void PointArrowMove(Vector3 pos)
+    {
+        pointObj4.SetActive(true);
+        pointObj4.transform.localPosition = pos;
+        index += 1;
+    }
+
     public void pointOff()
     {
+        pointObj1.SetActive(false);
+        pointObj2.SetActive(false);
         pointObj3.SetActive(false);
+        pointObj4.SetActive(false);
         index = 0;
+    }
+
+    IEnumerator INGAME_ROLLINGDICE_Cor()
+    {
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "게임이 시작되었습니다!";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "제일 먼저 주사위를 굴려줍니다.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "게이지가 꽉 찰수록 높은 숫자가 나올 확률이 높아집니다.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(1);
+        pointObj3.SetActive(true);
+        pointObj3.transform.localPosition = new Vector3(484, -194, 0);
+        pointObj3.transform.localScale = new Vector3(3.84f, 3.84f, 3.84f);
+        yield return new WaitForSeconds(1.5f);
+        index = 5;
+    }
+
+    IEnumerator INGAME_SELECTTERRAINCARD_Cor()
+    {
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "그 다음, 나의 덱에서 설치하고 싶은 지형을 고르세요.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        pointObj3.SetActive(true);
+        pointObj3.transform.localPosition = new Vector3(-193, -304, 0);
+        pointObj3.transform.localScale = new Vector3(1.23f, 1.23f, 1.23f);
+        yield return new WaitForSeconds(2.5f);
+        index = 6;
+    }
+
+    IEnumerator INGAME_SELECTFLAG_Cor()
+    {
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "첫 턴에서는 가장 먼저 '거점'을 점령해야 합니다.";
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "거점은 총 4곳에 위치해 있습니다.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "그럼, 가장 가까운 거점에서 시작해볼까요 ?";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        
+        index = 7;
+    }
+
+    IEnumerator INGAME_SELECTTERRAINLOC_Cor()
+    {
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "거점을 정했다면, 거점 주위에 지형을 생성시켜서";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "거점을 완벽하게 점령해보세요.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+
+        index = 8;
+        PointArrowMove(new Vector3(0, 0, 0));
+    }
+
+    IEnumerator INGAME_SELECTLOCDONE_Cor()
+    {
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "거점을 완벽하게 점령했습니다!";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "거점을 완벽하게 점령한 다음부터";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "다른 곳도 점령할 수 있습니다.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+    }
+
+    IEnumerator INGAME_TURNEND_Cor()
+    {
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "상대 턴일 때에는 상대방의 주사위 숫자와";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
+        displayTextObj.GetComponent<TutorialDisplayTxt>().sizeX = 1420;
+        displayTextObj.GetComponent<TutorialDisplayTxt>().text = "지형 설치를 볼 수 있습니다.";
+        displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
+        displayTextObj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
     }
 
     public void DoingTutorial(TUTORIAL tutorial)
@@ -166,15 +331,32 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TUTORIAL.INGAME_ROLLINGDICE:
                 currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
+                StartCoroutine(INGAME_ROLLINGDICE_Cor());
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINCARD:
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
+                StartCoroutine(INGAME_SELECTTERRAINCARD_Cor());
                 currentTutorial = TUTORIAL.INGAME_SELECTTERRAINCARD;
                 break;
             case TUTORIAL.INGAME_SELECTFLAG:
+                StartCoroutine(INGAME_SELECTFLAG_Cor());
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_SELECTFLAG;
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINLOC:
+                StartCoroutine(INGAME_SELECTTERRAINLOC_Cor());
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_SELECTTERRAINLOC;
+                break;
+            case TUTORIAL.INGAME_SELECTLOCDONE:
+                StartCoroutine(INGAME_SELECTLOCDONE_Cor());
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
+                currentTutorial = TUTORIAL.INGAME_SELECTLOCDONE;
+                break;
+            case TUTORIAL.INGAME_TURNEND:
+                displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
+                currentTutorial = TUTORIAL.INGAME_TURNEND;
                 break;
             case TUTORIAL.INGAME_ATTACK:
                 currentTutorial = TUTORIAL.INGAME_ATTACK;
@@ -189,10 +371,5 @@ public class TutorialManager : MonoBehaviour
                 currentTutorial = TUTORIAL.ENDGAME_CONDITIONTOWIN;
                 break;
         }
-    }
-
-    private void Update()
-    {
-
     }
 }
