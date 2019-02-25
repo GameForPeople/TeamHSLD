@@ -51,7 +51,7 @@ public class AllMeshController : MonoBehaviour
             {
                 FlagContainer.Add(AllContainer[i]);
                 AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.03f);
+                AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.00f);
             }
         }
 

@@ -33803,7 +33803,7 @@ MonoBehaviour:
   myFlag: {fileID: 0}
   AllContainer: []
   buildingObj:
-  - {fileID: 1573716042918264, guid: bc133df8dba2a5843be61bb6a8cd3365, type: 2}
+  - {fileID: 100000, guid: 75cd3ca8cb85ff44689e0e18c0fd3078, type: 3}
   - {fileID: 1217086889136866, guid: 270aa3bbb5506044688e75e9d23fcf47, type: 2}
   - {fileID: 1028260716320506, guid: d17b54d6098494f43a2fe2b3f750d3bc, type: 2}
   - {fileID: 1288764197653044, guid: a5262ed52ae3ca24c954f4109bc176fb, type: 2}
