@@ -31,7 +31,7 @@ public class TutorialTurnSystem : MonoBehaviour
     //최적화 스크립트
     private TutorialFlowSystem flowSystem;
     private SetTurn setTurn;
-    private CardSystem cardsystem;
+    private TutorialCardSystem cardsystem;
 
     static public TURN startTurn;
     private int initTurnCnt = 20;
@@ -42,9 +42,9 @@ public class TutorialTurnSystem : MonoBehaviour
     {
         flowSystem = gameObject.GetComponent<TutorialFlowSystem>();
         setTurn = gameObject.GetComponent<SetTurn>();
-        cardsystem = gameObject.GetComponent<CardSystem>();
+        cardsystem = gameObject.GetComponent<TutorialCardSystem>();
 
-        //StartCoroutine(ReadyMatchingComplete());
+        StartCoroutine(ReadyMatchingComplete());
     }
 
     public void TurnSet()

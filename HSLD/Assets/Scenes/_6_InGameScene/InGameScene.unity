@@ -308,6 +308,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1618581648}
@@ -317,6 +318,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &5238884
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +435,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1341906189}
@@ -442,6 +445,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &5495562
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +714,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1584743552}
   - {fileID: 54068526}
@@ -719,6 +724,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &29789798
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +841,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 98057181}
@@ -844,6 +851,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &31305738
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +968,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1584589151}
   - {fileID: 976986711}
@@ -969,6 +978,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &35264477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1095,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1684928952}
   - {fileID: 1417611858}
@@ -1094,6 +1105,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &38060710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1222,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618581648}
   - {fileID: 78281895}
@@ -1219,6 +1232,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &50010879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1428,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1218839681}
   - {fileID: 237075393}
@@ -1423,6 +1438,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &54276500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1555,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1417611858}
   - {fileID: 676650459}
@@ -1548,6 +1565,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &68865990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1682,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2045645539}
   - {fileID: 1717299218}
@@ -1673,6 +1692,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &69651916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1809,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1263336280}
@@ -1798,6 +1819,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &78281895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1936,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 321731969}
@@ -1923,6 +1946,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &80989887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,6 +2063,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 552896767}
@@ -2048,6 +2073,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &81369757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2311,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 401093704}
@@ -2294,6 +2321,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &82822055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2438,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 401093704}
@@ -2419,6 +2448,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &83329541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2671,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 1931759691}
@@ -2650,6 +2681,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &92151563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2943,7 @@ RectTransform:
   m_Children:
   - {fileID: 1438495521}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3034,6 +3066,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 1341906189}
@@ -3043,6 +3076,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &105075119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,6 +3417,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1454669962}
@@ -3392,6 +3427,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &113498411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3671,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 759865688}
   - {fileID: 82822055}
@@ -3644,6 +3681,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &119588798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,6 +3798,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 1288132296}
@@ -3769,6 +3808,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &123702559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,6 +3998,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1666188838}
@@ -3967,6 +4008,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &131071464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4083,6 +4125,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1483358713}
@@ -4092,6 +4135,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &135914806
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,6 +4380,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 820614603}
@@ -4345,6 +4390,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &141128050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,6 +4507,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 517522759}
@@ -4470,6 +4517,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &143664514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,6 +4634,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 262676126}
   - {fileID: 1479212787}
@@ -4595,6 +4644,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &151276141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4761,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 490978572}
   - {fileID: 1290884983}
@@ -4720,6 +4771,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &152030919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,6 +4961,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 1288132296}
@@ -4918,6 +4971,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &154895502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,6 +5088,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1176474312}
   - {fileID: 225109579}
@@ -5043,6 +5098,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &163169701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5215,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 819413570}
   - {fileID: 241331999}
@@ -5168,6 +5225,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &168106307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5284,6 +5342,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1186906118}
   - {fileID: 765737525}
@@ -5293,6 +5352,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &170091625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,6 +5469,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 2059590419}
@@ -5418,6 +5479,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &171084210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5534,6 +5596,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 108271741}
@@ -5543,6 +5606,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &173414264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,6 +5868,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 1048219039}
@@ -5813,6 +5878,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &180195419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,6 +5995,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 883398229}
   - {fileID: 2059590419}
@@ -5938,6 +6005,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &183157152
 GameObject:
   m_ObjectHideFlags: 0
@@ -6054,6 +6122,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1548505194}
   - {fileID: 1239070744}
@@ -6063,6 +6132,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &184317044
 GameObject:
   m_ObjectHideFlags: 0
@@ -6179,6 +6249,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1213065812}
   - {fileID: 705472189}
@@ -6188,6 +6259,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &186817321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,6 +6504,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 469612648}
   - {fileID: 1445801239}
@@ -6441,6 +6514,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &196536636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,6 +6704,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 1759653697}
@@ -6639,6 +6714,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &203382341
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6831,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1393643889}
@@ -6764,6 +6841,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &209742190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6880,6 +6958,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 909569341}
@@ -6889,6 +6968,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &212851319
 GameObject:
   m_ObjectHideFlags: 0
@@ -7005,6 +7085,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 80989887}
   - {fileID: 1215777087}
@@ -7014,6 +7095,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &224623750
 GameObject:
   m_ObjectHideFlags: 0
@@ -7130,6 +7212,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1143189273}
   - {fileID: 1022145317}
@@ -7139,6 +7222,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &225109579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7255,6 +7339,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 801686902}
   - {fileID: 996155335}
@@ -7264,6 +7349,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &229308353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,6 +7466,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1392800020}
@@ -7389,6 +7476,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &231310371
 GameObject:
   m_ObjectHideFlags: 0
@@ -7712,6 +7800,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1932610389}
@@ -7721,6 +7810,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &237976455
 GameObject:
   m_ObjectHideFlags: 0
@@ -7910,6 +8000,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1917340613}
   - {fileID: 448909662}
@@ -7919,6 +8010,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &241489238
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,6 +8288,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1097889542}
   - {fileID: 1809212946}
@@ -8205,6 +8298,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &247661245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8308,7 +8402,7 @@ RectTransform:
   - {fileID: 1661368940}
   - {fileID: 561857702}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8504,6 +8598,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 305919173}
   - {fileID: 1218839681}
@@ -8513,6 +8608,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &269784875
 GameObject:
   m_ObjectHideFlags: 0
@@ -8629,6 +8725,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 577297393}
   - {fileID: 2059590419}
@@ -8638,6 +8735,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &274445792
 GameObject:
   m_ObjectHideFlags: 0
@@ -8669,7 +8767,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8881,6 +8979,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 564520935}
   - {fileID: 1069206627}
@@ -8890,6 +8989,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &305919173
 GameObject:
   m_ObjectHideFlags: 0
@@ -9006,6 +9106,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 639710108}
   - {fileID: 1589159573}
@@ -9015,6 +9116,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &306090405
 GameObject:
   m_ObjectHideFlags: 0
@@ -9210,6 +9312,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 960246270}
   - {fileID: 3175447}
@@ -9219,6 +9322,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &310438292
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,6 +9439,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 1656699970}
@@ -9344,6 +9449,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &311221070
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,6 +9915,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 78281895}
@@ -9818,6 +9925,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &326723863
 GameObject:
   m_ObjectHideFlags: 0
@@ -9934,6 +10042,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1445464223}
@@ -9943,6 +10052,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &330766428
 GameObject:
   m_ObjectHideFlags: 0
@@ -10095,6 +10205,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1809212946}
   - {fileID: 1682309906}
@@ -10104,6 +10215,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &336637860
 GameObject:
   m_ObjectHideFlags: 0
@@ -10220,6 +10332,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 1618581648}
@@ -10229,6 +10342,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &339052602
 GameObject:
   m_ObjectHideFlags: 0
@@ -10345,6 +10459,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 1675717126}
@@ -10354,6 +10469,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &351781108
 GameObject:
   m_ObjectHideFlags: 0
@@ -10678,6 +10794,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1865527400}
@@ -10687,6 +10804,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &370807055
 GameObject:
   m_ObjectHideFlags: 0
@@ -10803,6 +10921,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1099322961}
   - {fileID: 517522759}
@@ -10812,6 +10931,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &374445970
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,6 +11275,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1934944938}
   - {fileID: 1335827416}
@@ -11164,6 +11285,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &377995504
 GameObject:
   m_ObjectHideFlags: 0
@@ -11505,6 +11627,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 523081367}
   - {fileID: 1204631829}
@@ -11514,6 +11637,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &389602587
 GameObject:
   m_ObjectHideFlags: 0
@@ -11710,6 +11834,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 1724664729}
@@ -11719,6 +11844,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &400803864
 GameObject:
   m_ObjectHideFlags: 0
@@ -11835,6 +11961,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 119588798}
@@ -11844,6 +11971,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &401093704
 GameObject:
   m_ObjectHideFlags: 0
@@ -11960,6 +12088,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 82822055}
@@ -11969,6 +12098,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &402824842
 GameObject:
   m_ObjectHideFlags: 0
@@ -12085,6 +12215,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 171084210}
   - {fileID: 1456686515}
@@ -12094,6 +12225,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &404901220
 GameObject:
   m_ObjectHideFlags: 0
@@ -12368,6 +12500,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 2135420763}
@@ -12377,6 +12510,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &408417171
 GameObject:
   m_ObjectHideFlags: 0
@@ -12493,6 +12627,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1415961201}
   - {fileID: 1434057303}
@@ -12502,6 +12637,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &415034630
 GameObject:
   m_ObjectHideFlags: 0
@@ -12697,6 +12833,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 441066154}
   - {fileID: 1865527400}
@@ -12706,6 +12843,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &418698308
 GameObject:
   m_ObjectHideFlags: 0
@@ -12822,6 +12960,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 2122743421}
@@ -12831,6 +12970,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &441066154
 GameObject:
   m_ObjectHideFlags: 0
@@ -12947,6 +13087,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 417514189}
   - {fileID: 1976316790}
@@ -12956,6 +13097,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &442304538
 GameObject:
   m_ObjectHideFlags: 0
@@ -13072,6 +13214,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 130673201}
@@ -13081,6 +13224,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &445073188
 GameObject:
   m_ObjectHideFlags: 0
@@ -13447,6 +13591,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 539841174}
   - {fileID: 1288132296}
@@ -13456,6 +13601,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &451282576
 GameObject:
   m_ObjectHideFlags: 0
@@ -13572,6 +13718,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 940027214}
   - {fileID: 866923194}
@@ -13581,6 +13728,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &453035472
 GameObject:
   m_ObjectHideFlags: 0
@@ -13697,6 +13845,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 744774717}
@@ -13706,6 +13855,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &453744704
 GameObject:
   m_ObjectHideFlags: 0
@@ -13980,6 +14130,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1589159573}
   - {fileID: 177965627}
@@ -13989,6 +14140,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &463179515
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,6 +14415,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1503486730}
@@ -14272,6 +14425,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &475385084
 GameObject:
   m_ObjectHideFlags: 0
@@ -14461,6 +14615,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 2045645539}
@@ -14470,6 +14625,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &485024293
 GameObject:
   m_ObjectHideFlags: 0
@@ -14586,6 +14742,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1682309906}
@@ -14595,6 +14752,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &490978572
 GameObject:
   m_ObjectHideFlags: 0
@@ -14711,6 +14869,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1584743552}
@@ -14720,6 +14879,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &491445048
 GameObject:
   m_ObjectHideFlags: 0
@@ -15294,6 +15454,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 2028252334}
@@ -15303,6 +15464,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &512752836
 GameObject:
   m_ObjectHideFlags: 0
@@ -15492,6 +15654,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 1242337981}
@@ -15501,6 +15664,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &517522759
 GameObject:
   m_ObjectHideFlags: 0
@@ -15617,6 +15781,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 141128050}
@@ -15626,6 +15791,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &521397301
 GameObject:
   m_ObjectHideFlags: 0
@@ -15742,6 +15908,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 1451947889}
@@ -15751,6 +15918,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &522991760
 GameObject:
   m_ObjectHideFlags: 0
@@ -15941,6 +16109,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 389245239}
   - {fileID: 524108108}
@@ -15950,6 +16119,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &524108108
 GameObject:
   m_ObjectHideFlags: 0
@@ -16066,6 +16236,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 523081367}
@@ -16075,6 +16246,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &528286862
 GameObject:
   m_ObjectHideFlags: 0
@@ -16191,6 +16363,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 819413570}
@@ -16200,6 +16373,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &528405819
 GameObject:
   m_ObjectHideFlags: 0
@@ -16642,6 +16816,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 98057181}
   - {fileID: 1691402369}
@@ -16651,6 +16826,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &539841174
 GameObject:
   m_ObjectHideFlags: 0
@@ -16767,6 +16943,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 714531778}
   - {fileID: 448909662}
@@ -16776,6 +16953,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &540423455
 GameObject:
   m_ObjectHideFlags: 0
@@ -17012,6 +17190,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2135420763}
   - {fileID: 1298144830}
@@ -17021,6 +17200,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &552896767
 GameObject:
   m_ObjectHideFlags: 0
@@ -17137,6 +17317,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 1158831593}
@@ -17146,6 +17327,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &554599682
 GameObject:
   m_ObjectHideFlags: 0
@@ -17262,6 +17444,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 990876920}
   - {fileID: 170091625}
@@ -17271,6 +17454,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &561857701
 GameObject:
   m_ObjectHideFlags: 0
@@ -17515,6 +17699,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 1292857123}
@@ -17524,6 +17709,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &564511805
 GameObject:
   m_ObjectHideFlags: 0
@@ -17713,6 +17899,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 2122743421}
@@ -17722,6 +17909,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &566916473
 GameObject:
   m_ObjectHideFlags: 0
@@ -17838,6 +18026,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2088653622}
   - {fileID: 1940715308}
@@ -17847,6 +18036,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &577297393
 GameObject:
   m_ObjectHideFlags: 0
@@ -17963,6 +18153,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 1233286846}
@@ -17972,6 +18163,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &579820883
 GameObject:
   m_ObjectHideFlags: 0
@@ -18216,6 +18408,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 1278295456}
@@ -18225,6 +18418,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &580292742
 GameObject:
   m_ObjectHideFlags: 0
@@ -18468,6 +18662,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 876933951}
@@ -18477,6 +18672,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!224 &582698282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18622,6 +18818,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 482001743}
@@ -18631,6 +18828,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &591679228
 GameObject:
   m_ObjectHideFlags: 0
@@ -18820,6 +19018,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 326723863}
   - {fileID: 1452564279}
@@ -18829,6 +19028,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &601488987
 GameObject:
   m_ObjectHideFlags: 0
@@ -18945,6 +19145,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1378642440}
@@ -18954,6 +19155,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &605721457
 GameObject:
   m_ObjectHideFlags: 0
@@ -19222,6 +19424,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 1410575699}
@@ -19231,6 +19434,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &631769067
 GameObject:
   m_ObjectHideFlags: 0
@@ -19347,6 +19551,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 770755763}
@@ -19356,6 +19561,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &636210707
 GameObject:
   m_ObjectHideFlags: 0
@@ -19578,6 +19784,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1927571657}
@@ -19587,6 +19794,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &637065895
 GameObject:
   m_ObjectHideFlags: 0
@@ -19703,6 +19911,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 909569341}
@@ -19712,6 +19921,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!224 &638105740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19911,6 +20121,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 209742190}
   - {fileID: 305919173}
@@ -19920,6 +20131,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &650414772
 GameObject:
   m_ObjectHideFlags: 0
@@ -20579,6 +20791,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1176474312}
@@ -20588,6 +20801,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &680473342
 GameObject:
   m_ObjectHideFlags: 0
@@ -20820,6 +21034,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1003098075}
@@ -20829,6 +21044,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &697412103
 GameObject:
   m_ObjectHideFlags: 0
@@ -21018,6 +21234,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 1175704379}
@@ -21027,6 +21244,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &705472189
 GameObject:
   m_ObjectHideFlags: 0
@@ -21143,6 +21361,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 1129775041}
@@ -21152,6 +21371,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &706940023
 GameObject:
   m_ObjectHideFlags: 0
@@ -21355,6 +21575,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 203382341}
   - {fileID: 68865990}
@@ -21364,6 +21585,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &714531778
 GameObject:
   m_ObjectHideFlags: 0
@@ -21480,6 +21702,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 539841174}
@@ -21489,6 +21712,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &715480585
 GameObject:
   m_ObjectHideFlags: 0
@@ -21968,6 +22192,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2095191245}
   - {fileID: 1218839681}
@@ -21977,6 +22202,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &739364404
 GameObject:
   m_ObjectHideFlags: 0
@@ -22219,7 +22445,7 @@ RectTransform:
   - {fileID: 50010880}
   - {fileID: 668090651}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22378,6 +22604,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 453035472}
@@ -22387,6 +22614,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &746545286
 GameObject:
   m_ObjectHideFlags: 0
@@ -22609,6 +22837,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1879379202}
   - {fileID: 1989463809}
@@ -22618,6 +22847,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &756631295
 GameObject:
   m_ObjectHideFlags: 0
@@ -22807,6 +23037,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 1176474312}
@@ -22816,6 +23047,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &760842544
 GameObject:
   m_ObjectHideFlags: 0
@@ -22969,6 +23201,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 965007035}
@@ -22978,6 +23211,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &765903032
 GameObject:
   m_ObjectHideFlags: 0
@@ -23094,6 +23328,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 1454669962}
@@ -23103,6 +23338,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &768407526
 GameObject:
   m_ObjectHideFlags: 0
@@ -23419,6 +23655,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 631769067}
   - {fileID: 310438292}
@@ -23428,6 +23665,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &772966611
 GameObject:
   m_ObjectHideFlags: 0
@@ -23705,6 +23943,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 1415961201}
@@ -23714,6 +23953,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!4 &784074206
 Transform:
   m_ObjectHideFlags: 0
@@ -23844,6 +24084,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1854507475}
   - {fileID: 965007035}
@@ -23853,6 +24094,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &797107355
 GameObject:
   m_ObjectHideFlags: 0
@@ -24115,6 +24357,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 1314629576}
@@ -24124,6 +24367,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &806044292
 GameObject:
   m_ObjectHideFlags: 0
@@ -24311,6 +24555,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1194826732}
   - {fileID: 996261728}
@@ -24320,6 +24565,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &815214205
 GameObject:
   m_ObjectHideFlags: 0
@@ -24436,6 +24682,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1017469028}
   - {fileID: 1216192729}
@@ -24445,6 +24692,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &819413570
 GameObject:
   m_ObjectHideFlags: 0
@@ -24561,6 +24809,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 528286862}
@@ -24570,6 +24819,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &819472094
 GameObject:
   m_ObjectHideFlags: 0
@@ -24759,6 +25009,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 183157152}
   - {fileID: 136879311}
@@ -24768,6 +25019,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &823012255
 GameObject:
   m_ObjectHideFlags: 0
@@ -24788,6 +25040,7 @@ GameObject:
   - component: {fileID: 823012265}
   - component: {fileID: 823012266}
   - component: {fileID: 823012267}
+  - component: {fileID: 823012268}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -25063,6 +25316,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478f4199924da73418c60546bf847a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &823012268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35410c7d1fe9feb459faa680b79555d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &849838910
@@ -25344,6 +25608,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 136879311}
@@ -25353,6 +25618,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &864161486
 GameObject:
   m_ObjectHideFlags: 0
@@ -25469,6 +25735,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 1099322961}
@@ -25478,6 +25745,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &864600778
 GameObject:
   m_ObjectHideFlags: 0
@@ -25594,6 +25862,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 1451947889}
@@ -25603,6 +25872,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &866923194
 GameObject:
   m_ObjectHideFlags: 0
@@ -25719,6 +25989,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 451282576}
   - {fileID: 1653531691}
@@ -25728,6 +25999,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &871229243
 GameObject:
   m_ObjectHideFlags: 0
@@ -25844,6 +26116,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1804755840}
   - {fileID: 1612747182}
@@ -25853,6 +26126,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &874707690
 GameObject:
   m_ObjectHideFlags: 0
@@ -25883,7 +26157,7 @@ RectTransform:
   - {fileID: 522991761}
   - {fileID: 445075901}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26006,6 +26280,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 1999727450}
@@ -26015,6 +26290,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &881085737
 GameObject:
   m_ObjectHideFlags: 0
@@ -26204,6 +26480,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1393643889}
@@ -26213,6 +26490,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &883914049
 GameObject:
   m_ObjectHideFlags: 0
@@ -26329,6 +26607,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 370807055}
@@ -26338,6 +26617,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &892598407
 GameObject:
   m_ObjectHideFlags: 0
@@ -26533,6 +26813,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1434057303}
   - {fileID: 1434980117}
@@ -26542,6 +26823,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &904318239
 GameObject:
   m_ObjectHideFlags: 0
@@ -26658,6 +26940,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 1392800020}
@@ -26667,6 +26950,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &905165333
 GameObject:
   m_ObjectHideFlags: 0
@@ -26910,6 +27194,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1675717126}
@@ -26919,6 +27204,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &911726643
 GameObject:
   m_ObjectHideFlags: 0
@@ -27035,6 +27321,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 714531778}
@@ -27044,6 +27331,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &912114743
 GameObject:
   m_ObjectHideFlags: 0
@@ -27160,6 +27448,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2121401002}
   - {fileID: 81462916}
@@ -27169,6 +27458,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &914525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -27285,6 +27575,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 1430233578}
@@ -27294,6 +27585,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &914654594
 GameObject:
   m_ObjectHideFlags: 0
@@ -27410,6 +27702,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1649489986}
@@ -27419,6 +27712,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &922749775
 GameObject:
   m_ObjectHideFlags: 0
@@ -27760,6 +28054,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 451282576}
@@ -27769,6 +28064,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &951168820
 GameObject:
   m_ObjectHideFlags: 0
@@ -28049,6 +28345,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1241291164}
@@ -28058,6 +28355,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &964173628
 GameObject:
   m_ObjectHideFlags: 0
@@ -28247,6 +28545,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 1417626605}
@@ -28256,6 +28555,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &973403877
 GameObject:
   m_ObjectHideFlags: 0
@@ -28445,6 +28745,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 770755763}
   - {fileID: 31305738}
@@ -28454,6 +28755,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &981164121
 GameObject:
   m_ObjectHideFlags: 0
@@ -28924,6 +29226,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1671755731}
   - {fileID: 485024293}
@@ -28933,6 +29236,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &990876920
 GameObject:
   m_ObjectHideFlags: 0
@@ -29049,6 +29353,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1213065812}
@@ -29058,6 +29363,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &992578107
 GameObject:
   m_ObjectHideFlags: 0
@@ -29247,6 +29553,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 513719430}
@@ -29256,6 +29563,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &996261728
 GameObject:
   m_ObjectHideFlags: 0
@@ -29372,6 +29680,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 814200909}
@@ -29381,6 +29690,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &997379571
 GameObject:
   m_ObjectHideFlags: 0
@@ -29658,6 +29968,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1204631829}
   - {fileID: 1142711213}
@@ -29667,6 +29978,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1001726854
 GameObject:
   m_ObjectHideFlags: 0
@@ -29696,7 +30008,7 @@ RectTransform:
   m_Children:
   - {fileID: 1547662486}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29819,6 +30131,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1430233578}
   - {fileID: 693976558}
@@ -29828,6 +30141,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1004194514
 GameObject:
   m_ObjectHideFlags: 0
@@ -30255,6 +30569,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1759653697}
   - {fileID: 1918495570}
@@ -30264,6 +30579,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1011064339
 GameObject:
   m_ObjectHideFlags: 0
@@ -30507,6 +30823,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2122743421}
   - {fileID: 1389247442}
@@ -30516,6 +30833,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1014945745
 GameObject:
   m_ObjectHideFlags: 0
@@ -30705,6 +31023,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 815214205}
   - {fileID: 1042028599}
@@ -30714,6 +31033,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1018967460
 GameObject:
   m_ObjectHideFlags: 0
@@ -30909,6 +31229,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1048219039}
@@ -30918,6 +31239,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1023298873
 GameObject:
   m_ObjectHideFlags: 0
@@ -31034,6 +31356,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 551994290}
@@ -31043,6 +31366,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1027381518
 GameObject:
   m_ObjectHideFlags: 0
@@ -31360,6 +31684,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1759258860}
   - {fileID: 1454669962}
@@ -31369,6 +31694,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1033011305
 GameObject:
   m_ObjectHideFlags: 0
@@ -31485,6 +31811,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1580498753}
   - {fileID: 1612747182}
@@ -31494,6 +31821,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1042028599
 GameObject:
   m_ObjectHideFlags: 0
@@ -31610,6 +31938,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 601488987}
   - {fileID: 184317044}
@@ -31619,6 +31948,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1046382994
 GameObject:
   m_ObjectHideFlags: 0
@@ -31735,6 +32065,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765903032}
   - {fileID: 1970553916}
@@ -31744,6 +32075,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1048219039
 GameObject:
   m_ObjectHideFlags: 0
@@ -31860,6 +32192,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 177965627}
@@ -31869,6 +32202,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1048693602
 GameObject:
   m_ObjectHideFlags: 0
@@ -31985,6 +32319,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1143189273}
@@ -31994,6 +32329,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1053455927
 GameObject:
   m_ObjectHideFlags: 0
@@ -32110,6 +32446,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1858226403}
@@ -32119,6 +32456,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1055192444
 GameObject:
   m_ObjectHideFlags: 0
@@ -32956,6 +33294,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 1003098075}
@@ -32965,6 +33304,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1080994616
 GameObject:
   m_ObjectHideFlags: 0
@@ -33081,6 +33421,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 857221682}
@@ -33090,6 +33431,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1081861456
 GameObject:
   m_ObjectHideFlags: 0
@@ -33312,6 +33654,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 141128050}
@@ -33321,6 +33664,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1099322961
 GameObject:
   m_ObjectHideFlags: 0
@@ -33437,6 +33781,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 370807055}
   - {fileID: 864161486}
@@ -33446,6 +33791,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1104375996
 GameObject:
   m_ObjectHideFlags: 0
@@ -33549,6 +33895,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115817450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1247127985548760, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485629878}
+  - component: {fileID: 1115817452}
+  - component: {fileID: 1115817451}
+  m_Layer: 5
+  m_Name: AttackImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1115817451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114033972131778692, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8853583a10d76b141aac3fb5c1497da3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1115817452
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222716898402780896, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_CullTransparentMesh: 0
 --- !u!1 &1120616346
 GameObject:
   m_ObjectHideFlags: 0
@@ -33665,6 +34065,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1989463809}
@@ -33674,6 +34075,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1123455735
 GameObject:
   m_ObjectHideFlags: 0
@@ -33837,6 +34239,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 705472189}
@@ -33846,6 +34249,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1132190347
 GameObject:
   m_ObjectHideFlags: 0
@@ -34116,7 +34520,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1132671606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012268}
+        m_MethodName: TutorialGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1132671606
@@ -34271,6 +34686,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1618495978}
@@ -34280,6 +34696,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1137437418
 GameObject:
   m_ObjectHideFlags: 0
@@ -34396,6 +34813,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 1858026425}
@@ -34405,6 +34823,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1142711213
 GameObject:
   m_ObjectHideFlags: 0
@@ -34521,6 +34940,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 1879379202}
@@ -34530,6 +34950,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1143189273
 GameObject:
   m_ObjectHideFlags: 0
@@ -34646,6 +35067,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 1048693602}
@@ -34655,6 +35077,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1149021771
 GameObject:
   m_ObjectHideFlags: 0
@@ -34801,6 +35224,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 990093047}
@@ -34810,6 +35234,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1158397419
 GameObject:
   m_ObjectHideFlags: 0
@@ -34926,6 +35351,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2028252334}
   - {fileID: 1456686515}
@@ -34935,6 +35361,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1158831593
 GameObject:
   m_ObjectHideFlags: 0
@@ -35051,6 +35478,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1175704379}
   - {fileID: 552896767}
@@ -35060,6 +35488,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1159692175
 GameObject:
   m_ObjectHideFlags: 0
@@ -35373,6 +35802,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1158831593}
   - {fileID: 418698308}
@@ -35382,6 +35812,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1176474312
 GameObject:
   m_ObjectHideFlags: 0
@@ -35498,6 +35929,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 759865688}
@@ -35507,6 +35939,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1185564571
 GameObject:
   m_ObjectHideFlags: 0
@@ -35763,6 +36196,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 177965627}
   - {fileID: 168106307}
@@ -35772,6 +36206,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1189995291
 GameObject:
   m_ObjectHideFlags: 0
@@ -35924,6 +36359,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 814200909}
@@ -35933,6 +36369,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1204631829
 GameObject:
   m_ObjectHideFlags: 0
@@ -36049,6 +36486,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 389245239}
@@ -36058,6 +36496,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1209512908
 GameObject:
   m_ObjectHideFlags: 0
@@ -36174,6 +36613,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1261314925}
   - {fileID: 1759653697}
@@ -36183,6 +36623,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1213065812
 GameObject:
   m_ObjectHideFlags: 0
@@ -36299,6 +36740,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 184317044}
   - {fileID: 990876920}
@@ -36308,6 +36750,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1215777087
 GameObject:
   m_ObjectHideFlags: 0
@@ -36424,6 +36867,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 229308353}
   - {fileID: 1977953338}
@@ -36433,6 +36877,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1216192729
 GameObject:
   m_ObjectHideFlags: 0
@@ -36549,6 +36994,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1378642440}
   - {fileID: 1669602914}
@@ -36558,6 +37004,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1218839681
 GameObject:
   m_ObjectHideFlags: 0
@@ -36674,6 +37121,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 54068526}
@@ -36683,6 +37131,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1226316258
 GameObject:
   m_ObjectHideFlags: 0
@@ -37111,6 +37560,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 577297393}
@@ -37120,6 +37570,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1234549590
 GameObject:
   m_ObjectHideFlags: 0
@@ -37467,6 +37918,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 871229243}
   - {fileID: 183157152}
@@ -37476,6 +37928,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1241291164
 GameObject:
   m_ObjectHideFlags: 0
@@ -37592,6 +38045,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 960246270}
@@ -37601,6 +38055,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1242337981
 GameObject:
   m_ObjectHideFlags: 0
@@ -37717,6 +38172,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1022145317}
   - {fileID: 636920731}
@@ -37726,6 +38182,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1247643233
 GameObject:
   m_ObjectHideFlags: 0
@@ -37756,7 +38213,7 @@ RectTransform:
   m_LocalScale: {x: 3.2595868, y: 3.2595868, z: 3.2595868}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -37994,6 +38451,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 1916176356}
@@ -38003,6 +38461,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1261314925
 GameObject:
   m_ObjectHideFlags: 0
@@ -38119,6 +38578,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1684928952}
@@ -38128,6 +38588,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1263336280
 GameObject:
   m_ObjectHideFlags: 0
@@ -38244,6 +38705,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 1759258860}
@@ -38253,6 +38715,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1265216244
 GameObject:
   m_ObjectHideFlags: 0
@@ -38872,6 +39335,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 579928386}
@@ -38881,6 +39345,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1281981034
 GameObject:
   m_ObjectHideFlags: 0
@@ -38997,6 +39462,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1292857123}
   - {fileID: 1666188838}
@@ -39006,6 +39472,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1282844373
 GameObject:
   m_ObjectHideFlags: 0
@@ -39201,6 +39668,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 448909662}
   - {fileID: 119588798}
@@ -39210,6 +39678,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1290884983
 GameObject:
   m_ObjectHideFlags: 0
@@ -39326,6 +39795,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 151276141}
@@ -39335,6 +39805,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1292857123
 GameObject:
   m_ObjectHideFlags: 0
@@ -39451,6 +39922,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1281981034}
   - {fileID: 2033697905}
@@ -39460,6 +39932,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1294829817
 GameObject:
   m_ObjectHideFlags: 0
@@ -39649,6 +40122,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 407687209}
@@ -39658,6 +40132,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1299518536
 GameObject:
   m_ObjectHideFlags: 0
@@ -39884,6 +40359,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1724664729}
@@ -39893,6 +40369,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1329321123
 GameObject:
   m_ObjectHideFlags: 0
@@ -40264,6 +40741,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 521397301}
   - {fileID: 377410625}
@@ -40273,6 +40751,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1341906189
 GameObject:
   m_ObjectHideFlags: 0
@@ -40389,6 +40868,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 5238884}
@@ -40398,6 +40878,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1342977608
 GameObject:
   m_ObjectHideFlags: 0
@@ -40514,6 +40995,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 1372942047}
@@ -40523,6 +41005,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1347287445
 GameObject:
   m_ObjectHideFlags: 0
@@ -40825,7 +41308,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -41145,6 +41628,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1129775041}
   - {fileID: 418698308}
@@ -41154,6 +41638,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1372360055
 GameObject:
   m_ObjectHideFlags: 0
@@ -41343,6 +41828,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 1524489844}
@@ -41352,6 +41838,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1373928499
 GameObject:
   m_ObjectHideFlags: 0
@@ -41541,6 +42028,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 310438292}
   - {fileID: 940027214}
@@ -41550,6 +42038,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1378642440
 GameObject:
   m_ObjectHideFlags: 0
@@ -41666,6 +42155,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1216192729}
   - {fileID: 601488987}
@@ -41675,6 +42165,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1381000079
 GameObject:
   m_ObjectHideFlags: 0
@@ -41822,6 +42313,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 914525503}
@@ -41831,6 +42323,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1390485217
 GameObject:
   m_ObjectHideFlags: 0
@@ -41864,7 +42357,7 @@ RectTransform:
   - {fileID: 723846565}
   - {fileID: 528405820}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -41987,6 +42480,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 229308353}
@@ -41996,6 +42490,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1393643889
 GameObject:
   m_ObjectHideFlags: 0
@@ -42112,6 +42607,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 883398229}
@@ -42121,6 +42617,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1396172116
 GameObject:
   m_ObjectHideFlags: 0
@@ -42237,6 +42734,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 1671755731}
@@ -42246,6 +42744,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1407792010
 GameObject:
   m_ObjectHideFlags: 0
@@ -42362,6 +42861,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 1158831593}
@@ -42371,6 +42871,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1410575699
 GameObject:
   m_ObjectHideFlags: 0
@@ -42487,6 +42988,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 1298144830}
@@ -42496,6 +42998,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1413049239
 GameObject:
   m_ObjectHideFlags: 0
@@ -42660,6 +43163,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1434980117}
@@ -42669,6 +43173,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1417611858
 GameObject:
   m_ObjectHideFlags: 0
@@ -42785,6 +43290,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 35264477}
@@ -42794,6 +43300,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1417626605
 GameObject:
   m_ObjectHideFlags: 0
@@ -42910,6 +43417,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1932610389}
   - {fileID: 965007035}
@@ -42919,6 +43427,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1428031916
 GameObject:
   m_ObjectHideFlags: 0
@@ -43035,6 +43544,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 3175447}
   - {fileID: 1920964238}
@@ -43044,6 +43554,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1430233578
 GameObject:
   m_ObjectHideFlags: 0
@@ -43160,6 +43671,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914525503}
   - {fileID: 1003098075}
@@ -43169,6 +43681,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1434057303
 GameObject:
   m_ObjectHideFlags: 0
@@ -43285,6 +43798,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1480288513}
   - {fileID: 893787805}
@@ -43294,6 +43808,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1434980117
 GameObject:
   m_ObjectHideFlags: 0
@@ -43410,6 +43925,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 1580498753}
@@ -43419,6 +43935,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1435120585
 GameObject:
   m_ObjectHideFlags: 0
@@ -43764,6 +44281,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 326723863}
@@ -43773,6 +44291,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1445801239
 GameObject:
   m_ObjectHideFlags: 0
@@ -43889,6 +44408,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1842956326}
   - {fileID: 1943202257}
@@ -43898,6 +44418,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1451947889
 GameObject:
   m_ObjectHideFlags: 0
@@ -44014,6 +44535,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 308354441}
   - {fileID: 521397301}
@@ -44023,6 +44545,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1452564279
 GameObject:
   m_ObjectHideFlags: 0
@@ -44139,6 +44662,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1480288513}
@@ -44148,6 +44672,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1454669962
 GameObject:
   m_ObjectHideFlags: 0
@@ -44264,6 +44789,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 108271741}
@@ -44273,6 +44799,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1456686515
 GameObject:
   m_ObjectHideFlags: 0
@@ -44389,6 +44916,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1977953338}
   - {fileID: 402824842}
@@ -44398,6 +44926,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1458234770
 GameObject:
   m_ObjectHideFlags: 0
@@ -44845,6 +45374,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 455685414}
@@ -44854,6 +45384,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1479797730
 GameObject:
   m_ObjectHideFlags: 0
@@ -45079,6 +45610,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1452564279}
   - {fileID: 1434057303}
@@ -45088,6 +45620,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1481850350
 GameObject:
   m_ObjectHideFlags: 0
@@ -45328,6 +45861,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 1389247442}
@@ -45337,6 +45871,26 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!224 &1485629878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -560.9, y: 19}
+  m_SizeDelta: {x: 101, y: 98}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1494492458
 GameObject:
   m_ObjectHideFlags: 0
@@ -45453,6 +46007,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 622994259}
@@ -45462,6 +46017,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1499730604
 GameObject:
   m_ObjectHideFlags: 0
@@ -45578,6 +46134,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1682309906}
   - {fileID: 1023298873}
@@ -45587,6 +46144,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1500401967
 GameObject:
   m_ObjectHideFlags: 0
@@ -45823,6 +46381,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 469612648}
@@ -45832,6 +46391,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1513205005
 GameObject:
   m_ObjectHideFlags: 0
@@ -46112,6 +46672,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 401093704}
   - {fileID: 710214495}
@@ -46121,6 +46682,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1521044494
 GameObject:
   m_ObjectHideFlags: 0
@@ -46310,6 +46872,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 78281895}
@@ -46319,6 +46882,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1535208288
 GameObject:
   m_ObjectHideFlags: 0
@@ -46752,6 +47316,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1033011305}
   - {fileID: 183157152}
@@ -46761,6 +47326,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1548865319
 GameObject:
   m_ObjectHideFlags: 0
@@ -46950,6 +47516,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 524108108}
   - {fileID: 1931759691}
@@ -46959,6 +47526,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1572146875
 GameObject:
   m_ObjectHideFlags: 0
@@ -47444,6 +48012,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1434980117}
   - {fileID: 1675717126}
@@ -47453,6 +48022,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1581329931
 GameObject:
   m_ObjectHideFlags: 0
@@ -47569,6 +48139,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1931759691}
   - {fileID: 212851319}
@@ -47578,6 +48149,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1583783710
 GameObject:
   m_ObjectHideFlags: 0
@@ -47773,6 +48345,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 1565404600}
@@ -47782,6 +48355,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1584743552
 GameObject:
   m_ObjectHideFlags: 0
@@ -47898,6 +48472,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 1691402369}
@@ -47907,6 +48482,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1589159573
 GameObject:
   m_ObjectHideFlags: 0
@@ -48023,6 +48599,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 305919173}
@@ -48032,6 +48609,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1597660255
 GameObject:
   m_ObjectHideFlags: 0
@@ -48148,6 +48726,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 119588798}
   - {fileID: 1241291164}
@@ -48157,6 +48736,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1598273085
 GameObject:
   m_ObjectHideFlags: 0
@@ -48583,6 +49163,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1691402369}
   - {fileID: 517522759}
@@ -48592,6 +49173,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1612747182
 GameObject:
   m_ObjectHideFlags: 0
@@ -48708,6 +49290,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 871229243}
@@ -48717,6 +49300,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1618495978
 GameObject:
   m_ObjectHideFlags: 0
@@ -48833,6 +49417,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1194826732}
@@ -48842,6 +49427,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1618581648
 GameObject:
   m_ObjectHideFlags: 0
@@ -48958,6 +49544,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 336637860}
@@ -48967,6 +49554,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1631100074
 GameObject:
   m_ObjectHideFlags: 0
@@ -49211,6 +49799,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 857221682}
   - {fileID: 1129775041}
@@ -49220,6 +49809,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1642138704
 GameObject:
   m_ObjectHideFlags: 0
@@ -49432,6 +50022,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 339052602}
@@ -49441,6 +50032,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1653531691
 GameObject:
   m_ObjectHideFlags: 0
@@ -49557,6 +50149,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 866923194}
   - {fileID: 1953921687}
@@ -49566,6 +50159,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1653916352
 GameObject:
   m_ObjectHideFlags: 0
@@ -49833,6 +50427,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 2088653622}
@@ -49842,6 +50437,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1661368939
 GameObject:
   m_ObjectHideFlags: 0
@@ -50085,6 +50681,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1281981034}
@@ -50094,6 +50691,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1667195098
 GameObject:
   m_ObjectHideFlags: 0
@@ -50289,6 +50887,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1069206627}
   - {fileID: 1233286846}
@@ -50298,6 +50897,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1671755731
 GameObject:
   m_ObjectHideFlags: 0
@@ -50414,6 +51014,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 990093047}
   - {fileID: 1858226403}
@@ -50423,6 +51024,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1672162113
 GameObject:
   m_ObjectHideFlags: 0
@@ -50618,6 +51220,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 909569341}
   - {fileID: 339052602}
@@ -50627,6 +51230,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1682309906
 GameObject:
   m_ObjectHideFlags: 0
@@ -50743,6 +51347,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 485024293}
@@ -50752,6 +51357,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1684928952
 GameObject:
   m_ObjectHideFlags: 0
@@ -50868,6 +51474,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 35264477}
   - {fileID: 1261314925}
@@ -50877,6 +51484,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1684964638
 GameObject:
   m_ObjectHideFlags: 0
@@ -51072,6 +51680,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 883398229}
@@ -51081,6 +51690,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1691402369
 GameObject:
   m_ObjectHideFlags: 0
@@ -51197,6 +51807,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 1584743552}
@@ -51206,6 +51817,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1694394054
 GameObject:
   m_ObjectHideFlags: 0
@@ -51622,6 +52234,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996261728}
   - {fileID: 1137437418}
@@ -51631,6 +52244,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1705047646
 GameObject:
   m_ObjectHideFlags: 0
@@ -51826,6 +52440,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 1927571657}
@@ -51835,6 +52450,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1723470223
 GameObject:
   m_ObjectHideFlags: 0
@@ -52030,6 +52646,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 1314629576}
@@ -52039,6 +52656,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1728010970
 GameObject:
   m_ObjectHideFlags: 0
@@ -52155,6 +52773,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1023298873}
@@ -52164,6 +52783,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!4 &1731323571
 Transform:
   m_ObjectHideFlags: 0
@@ -52592,6 +53212,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 1263336280}
@@ -52601,6 +53222,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1759653697
 GameObject:
   m_ObjectHideFlags: 0
@@ -52717,6 +53339,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 201099082}
@@ -52726,6 +53349,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1771726575
 GameObject:
   m_ObjectHideFlags: 0
@@ -52842,6 +53466,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 108271741}
   - {fileID: 131071464}
@@ -52851,6 +53476,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1773601583
 GameObject:
   m_ObjectHideFlags: 0
@@ -53046,6 +53672,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1612747182}
   - {fileID: 1278295456}
@@ -53055,6 +53682,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1785858946
 GameObject:
   m_ObjectHideFlags: 0
@@ -53577,6 +54205,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 579928386}
   - {fileID: 871229243}
@@ -53586,6 +54215,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1804820475
 GameObject:
   m_ObjectHideFlags: 0
@@ -53702,6 +54332,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 5238884}
   - {fileID: 1452564279}
@@ -53711,6 +54342,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1805881791
 GameObject:
   m_ObjectHideFlags: 0
@@ -53827,6 +54459,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1656699970}
   - {fileID: 1804820475}
@@ -53836,6 +54469,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1806623670
 GameObject:
   m_ObjectHideFlags: 0
@@ -54079,6 +54713,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1854507475}
@@ -54088,6 +54723,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1809212946
 GameObject:
   m_ObjectHideFlags: 0
@@ -54204,6 +54840,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 334954668}
   - {fileID: 551994290}
@@ -54213,6 +54850,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1813766931
 GameObject:
   m_ObjectHideFlags: 0
@@ -54438,6 +55076,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1999727450}
   - {fileID: 1097889542}
@@ -54447,6 +55086,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1822434692
 GameObject:
   m_ObjectHideFlags: 0
@@ -54715,6 +55355,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 130673201}
@@ -54724,6 +55365,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1833683806
 GameObject:
   m_ObjectHideFlags: 0
@@ -55058,6 +55700,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1099322961}
@@ -55067,6 +55710,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1842956326
 GameObject:
   m_ObjectHideFlags: 0
@@ -55183,6 +55827,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 864161486}
@@ -55192,6 +55837,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1853483681
 GameObject:
   m_ObjectHideFlags: 0
@@ -55308,6 +55954,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 2063560789}
@@ -55317,6 +55964,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1854507475
 GameObject:
   m_ObjectHideFlags: 0
@@ -55433,6 +56081,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1808188071}
@@ -55442,6 +56091,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1858026425
 GameObject:
   m_ObjectHideFlags: 0
@@ -55558,6 +56208,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 705472189}
   - {fileID: 1137437418}
@@ -55567,6 +56218,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1858226403
 GameObject:
   m_ObjectHideFlags: 0
@@ -55683,6 +56335,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 1671755731}
@@ -55692,6 +56345,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1865527400
 GameObject:
   m_ObjectHideFlags: 0
@@ -55808,6 +56462,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 819413570}
@@ -55817,6 +56472,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1866580831
 GameObject:
   m_ObjectHideFlags: 0
@@ -56041,6 +56697,7 @@ RectTransform:
   - {fileID: 2010562272}
   - {fileID: 954497342}
   - {fileID: 1475747914}
+  - {fileID: 1485629878}
   - {fileID: 96063209}
   - {fileID: 1001726855}
   - {fileID: 248390577}
@@ -56174,6 +56831,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 1940715308}
@@ -56183,6 +56841,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1893722415
 GameObject:
   m_ObjectHideFlags: 0
@@ -56372,6 +57031,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 321731969}
   - {fileID: 336637860}
@@ -56381,6 +57041,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1899239934
 GameObject:
   m_ObjectHideFlags: 0
@@ -56625,6 +57286,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1724664729}
   - {fileID: 1808188071}
@@ -56634,6 +57296,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1905182681
 GameObject:
   m_ObjectHideFlags: 0
@@ -56877,6 +57540,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1290884983}
   - {fileID: 1854507475}
@@ -56886,6 +57550,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1915899304
 GameObject:
   m_ObjectHideFlags: 0
@@ -57002,6 +57667,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 1135955283}
@@ -57011,6 +57677,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1916176356
 GameObject:
   m_ObjectHideFlags: 0
@@ -57127,6 +57794,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 1241291164}
@@ -57136,6 +57804,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1917340613
 GameObject:
   m_ObjectHideFlags: 0
@@ -57252,6 +57921,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 2033697905}
@@ -57261,6 +57931,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1918495570
 GameObject:
   m_ObjectHideFlags: 0
@@ -57377,6 +58048,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1053455927}
   - {fileID: 1249768407}
@@ -57386,6 +58058,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1920964238
 GameObject:
   m_ObjectHideFlags: 0
@@ -57502,6 +58175,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1728010970}
@@ -57511,6 +58185,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1922279662
 GameObject:
   m_ObjectHideFlags: 0
@@ -57627,6 +58302,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1233286846}
   - {fileID: 693976558}
@@ -57636,6 +58312,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1927571657
 GameObject:
   m_ObjectHideFlags: 0
@@ -57752,6 +58429,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 636920731}
@@ -57761,6 +58439,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1931759691
 GameObject:
   m_ObjectHideFlags: 0
@@ -57877,6 +58556,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 85295933}
@@ -57886,6 +58566,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1932610389
 GameObject:
   m_ObjectHideFlags: 0
@@ -58002,6 +58683,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 237075393}
   - {fileID: 143664514}
@@ -58011,6 +58693,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1934944938
 GameObject:
   m_ObjectHideFlags: 0
@@ -58127,6 +58810,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 377410625}
   - {fileID: 864600778}
@@ -58136,6 +58820,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1936555328
 GameObject:
   m_ObjectHideFlags: 0
@@ -58288,6 +58973,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 1879379202}
@@ -58297,6 +58983,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1943202257
 GameObject:
   m_ObjectHideFlags: 0
@@ -58413,6 +59100,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 510968972}
@@ -58422,6 +59110,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1944993362
 GameObject:
   m_ObjectHideFlags: 0
@@ -58665,6 +59354,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1808188071}
   - {fileID: 485024293}
@@ -58674,6 +59364,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1953921687
 GameObject:
   m_ObjectHideFlags: 0
@@ -58790,6 +59481,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1653531691}
   - {fileID: 469612648}
@@ -58799,6 +59491,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1966270850
 GameObject:
   m_ObjectHideFlags: 0
@@ -58994,6 +59687,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1759258860}
@@ -59003,6 +59697,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1976316790
 GameObject:
   m_ObjectHideFlags: 0
@@ -59119,6 +59814,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2133652124}
   - {fileID: 1209512908}
@@ -59128,6 +59824,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1977953338
 GameObject:
   m_ObjectHideFlags: 0
@@ -59244,6 +59941,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1456686515}
@@ -59253,6 +59951,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1987983262
 GameObject:
   m_ObjectHideFlags: 0
@@ -59369,6 +60068,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 81462916}
   - {fileID: 369500355}
@@ -59378,6 +60078,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1989463809
 GameObject:
   m_ObjectHideFlags: 0
@@ -59494,6 +60195,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 820614603}
   - {fileID: 1120616346}
@@ -59503,6 +60205,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1991324174
 GameObject:
   m_ObjectHideFlags: 0
@@ -59892,6 +60595,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 876933951}
@@ -59901,6 +60605,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2003371102
 GameObject:
   m_ObjectHideFlags: 0
@@ -60116,6 +60821,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1503486730}
   - {fileID: 85295933}
@@ -60125,6 +60831,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2010562271
 GameObject:
   m_ObjectHideFlags: 0
@@ -60391,6 +61098,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 141128050}
   - {fileID: 1298144830}
@@ -60400,6 +61108,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2028252334
 GameObject:
   m_ObjectHideFlags: 0
@@ -60516,6 +61225,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 510968972}
@@ -60525,6 +61235,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2031406676
 GameObject:
   m_ObjectHideFlags: 0
@@ -60731,6 +61442,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1922279662}
   - {fileID: 1292857123}
@@ -60740,6 +61452,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2039780188
 GameObject:
   m_ObjectHideFlags: 0
@@ -61043,6 +61756,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 82822055}
@@ -61052,6 +61766,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2059590419
 GameObject:
   m_ObjectHideFlags: 0
@@ -61168,6 +61883,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 170091625}
@@ -61177,6 +61893,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2063560789
 GameObject:
   m_ObjectHideFlags: 0
@@ -61293,6 +62010,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 693976558}
@@ -61302,6 +62020,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2065533698
 GameObject:
   m_ObjectHideFlags: 0
@@ -61576,6 +62295,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 170091625}
   - {fileID: 1194826732}
@@ -61585,6 +62305,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2078951998
 GameObject:
   m_ObjectHideFlags: 0
@@ -61884,6 +62605,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 599982271}
@@ -61893,6 +62615,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2091753508
 GameObject:
   m_ObjectHideFlags: 0
@@ -62170,6 +62893,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1480288513}
@@ -62179,6 +62903,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2109457300
 GameObject:
   m_ObjectHideFlags: 0
@@ -62374,6 +63099,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 201099082}
   - {fileID: 528286862}
@@ -62383,6 +63109,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2121401002
 GameObject:
   m_ObjectHideFlags: 0
@@ -62499,6 +63226,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 912114743}
   - {fileID: 2133652124}
@@ -62508,6 +63236,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2122743421
 GameObject:
   m_ObjectHideFlags: 0
@@ -62624,6 +63353,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 418698308}
@@ -62633,6 +63363,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2132958254
 GameObject:
   m_ObjectHideFlags: 0
@@ -62749,6 +63480,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1142711213}
   - {fileID: 631769067}
@@ -62758,6 +63490,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2133652124
 GameObject:
   m_ObjectHideFlags: 0
@@ -62874,6 +63607,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 676650459}
   - {fileID: 2121401002}
@@ -62883,6 +63617,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2135420763
 GameObject:
   m_ObjectHideFlags: 0
@@ -62999,6 +63734,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 407687209}
   - {fileID: 551994290}
@@ -63008,6 +63744,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2141241064
 GameObject:
   m_ObjectHideFlags: 0

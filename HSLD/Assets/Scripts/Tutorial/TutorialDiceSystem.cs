@@ -37,7 +37,6 @@ public class TutorialDiceSystem : MonoBehaviour
 
     public void OnTrigger()
     {
-        
         if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
@@ -49,12 +48,10 @@ public class TutorialDiceSystem : MonoBehaviour
     }
     public void OffTrigger()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
         if (!flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
-
+        
         isTriggerEnter = false;
-
         RollingDice();
     }
 
@@ -67,8 +64,28 @@ public class TutorialDiceSystem : MonoBehaviour
     //슬라이드 값을 바탕으로 다이스 눈 설정.
     public void RollingDice()
     {
-        getDiceNum = 66;
-        isDouble = false;
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE))
+        {
+            getDiceNum = 66;
+            isDouble = false;
+        }
+        else if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_DICEFOCUS))
+        {
+            getDiceNum = 34;
+            isDouble = false;
+            GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_ROLLINGDICE_2);
+        }
+        else if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_BEFOREATTACK))
+        {
+            GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].SetActive(true);
+            GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].transform.localPosition = new Vector3(2, -312, 0);
+            GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].transform.localScale = new Vector3(1.18f, 1.18f, 1.18f);
+            getDiceNum = 23;
+            isDouble = false;
+        }
+
+        else
+            return;
 
         CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
         GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(getDiceNum / 10, getDiceNum % 10);
@@ -99,7 +116,7 @@ public class TutorialDiceSystem : MonoBehaviour
 
     private void Update()
     {
-        if (isTriggerEnter && flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE) && TutorialManager.index == 5)
+        if (isTriggerEnter && flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE) && (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE) || GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_DICEFOCUS) || GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_BEFOREATTACK)))
         {
             time_ += Time.deltaTime;
             if (time_ > 6f)
