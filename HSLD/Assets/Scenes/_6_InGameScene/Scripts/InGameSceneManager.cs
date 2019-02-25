@@ -296,10 +296,16 @@ public partial class InGameSceneManager : MonoBehaviour
             Debug.Log("이름이뭐니??" + gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].name);
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFlag)
             {
-                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().setFlag();
-                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isFixed = true;
-                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().isLandingSign = true;
-                //AllMeshController.myPlanet.GetComponent<AllMeshController>().FlagContainer.Insert(1, gameObject.GetComponent<FlagSystem>().myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]]);
+                GameObject buildingObj = AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[21];
+                GameObject buildingMesh = AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]];
+
+                buildingMesh.GetComponent<MeshController>().setFlag();
+                buildingMesh.GetComponent<MeshController>().isFixed = true;
+                buildingMesh.GetComponent<MeshController>().isLandingSign = true;
+
+                Destroy(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().TargetObject);
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]].GetComponent<MeshController>().EulerRotCal(buildingMesh, buildingObj, 1.0f);
+
                 Debug.Log("상대방이 FLAG 획득" + recvTerrainIndex[i]);
                 continue;
             }

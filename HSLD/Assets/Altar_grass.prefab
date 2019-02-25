@@ -9,44 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1198684204867282}
+  m_RootGameObject: {fileID: 1898779921390112}
   m_IsPrefabAsset: 1
---- !u!1 &1198684204867282
+--- !u!1 &1898779921390112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4315503213688536}
-  - component: {fileID: 33903029189704356}
-  - component: {fileID: 23683266836763508}
+  - component: {fileID: 4417303204937618}
+  - component: {fileID: 33136938531071868}
+  - component: {fileID: 23355785304490562}
   m_Layer: 0
-  m_Name: testObj
+  m_Name: Altar_grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4315503213688536
+--- !u!4 &4417303204937618
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198684204867282}
-  m_LocalRotation: {x: 0.17227195, y: 0.17227195, z: -0.030614898, w: 0.9693851}
-  m_LocalPosition: {x: -16.172379, y: 17.227196, z: -44.064476}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_GameObject: {fileID: 1898779921390112}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23683266836763508
+--- !u!23 &23355785304490562
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198684204867282}
+  m_GameObject: {fileID: 1898779921390112}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +56,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 1e936c9920a34cb408cdf427d2af8118, type: 3}
+  - {fileID: 2100000, guid: 70548836e87c181408d6e917471febe4, type: 2}
+  - {fileID: 2100000, guid: 279b6f037978c7647b98e420d8c971c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,10 +77,10 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33903029189704356
+--- !u!33 &33136938531071868
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198684204867282}
-  m_Mesh: {fileID: 4300000, guid: 1e936c9920a34cb408cdf427d2af8118, type: 3}
+  m_GameObject: {fileID: 1898779921390112}
+  m_Mesh: {fileID: 4300000, guid: 0449f79f26409244d974e0f409640f84, type: 3}
