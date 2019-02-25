@@ -299,7 +299,7 @@ public partial class InGameSceneManager : MonoBehaviour
                 GameObject buildingObj = AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[21];
                 GameObject buildingMesh = AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]];
 
-                buildingMesh.GetComponent<MeshController>().setFlag();
+                buildingMesh.GetComponent<MeshController>().setFlag(Identify.ENEMY);
                 buildingMesh.GetComponent<MeshController>().isFixed = true;
                 buildingMesh.GetComponent<MeshController>().isLandingSign = true;
 
