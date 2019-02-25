@@ -11,7 +11,7 @@ public class CameraHorizontal : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        MyPlanet = GameObject.FindWithTag("Planet");
+        MyPlanet = GameObject.FindWithTag("InGamePlanet");
         //MyPlanet = GameObject.Find("Sphere_320Objects_40X");
         //mainCamera = Camera.main;
     }
