@@ -33,7 +33,7 @@ public class PCverPIcking : MonoBehaviour
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
             myPlanet.GetComponent<AllMeshController>().PickContainer.Clear();
-            CameraController.ChangeableCount = ((int)(DiceSystem.getDiceNum / 10) + (int)(DiceSystem.getDiceNum % 10));
+            CameraController.ChangeableCount = CameraController.DiceCount;
 
             //Debug.Log("ChangeableCount : " + CameraController.ChangeableCount);
 

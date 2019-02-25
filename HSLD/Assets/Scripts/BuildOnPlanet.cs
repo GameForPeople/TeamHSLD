@@ -30,7 +30,19 @@ public class BuildOnPlanet : MonoBehaviour
         if (CameraController.ChangeableCount != 0)
             return;
         
-        gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+        if(gameObject.GetComponent<TutorialManager>() == null)
+        {
+            gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+            gameObject.GetComponent<FlowSystem>().diceCntingUI.SetActive(false);
+        }
+            
+        if (gameObject.GetComponent<TutorialManager>() != null)
+        {
+            gameObject.GetComponent<TutorialFlowSystem>().diceCntingUI.SetActive(false);
+            gameObject.GetComponent<TutorialFlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_TURNEND);
+            gameObject.GetComponent<TutorialManager>().pointOff();
+        }
     }
 }
 ////// Mesh쪽으로 코드 옮겼어요! [181106]YSK
