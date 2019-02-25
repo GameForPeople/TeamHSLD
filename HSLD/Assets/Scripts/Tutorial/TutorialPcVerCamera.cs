@@ -20,6 +20,7 @@ public class TutorialPcVerCamera : MonoBehaviour
     private void Awake()
     {
         myPlanet = GameObject.FindWithTag("Planet");
+
         isDominatedCheck = false;
         isDominatedConfirm = false;
 
@@ -28,8 +29,8 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(myPlanet);
-        Debug.Log(myPlanet.GetComponent<TutorialAllMeshController>());
+        Debug.Log(GameObject.FindWithTag("Planet").GetComponent<TutorialAllMeshController>());
+
         int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
 
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))

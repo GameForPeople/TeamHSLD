@@ -23,10 +23,11 @@ public class TutorialAllMeshController : MonoBehaviour
     {
         once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
-        myPlanet = GameObject.FindWithTag("Planet");
         PickContainer = new List<int>();
-        Debug.Log(GameObject.FindWithTag("Planet").transform.childCount + 1);
+
+        myPlanet = GameObject.FindWithTag("Planet");
         AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
+
         if (instance_ == null)
             instance_ = this;
     }

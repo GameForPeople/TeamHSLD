@@ -10,7 +10,7 @@ public class FlagSystem : MonoBehaviour
 
     private void Start()
     {
-        myPlanet = GameObject.FindWithTag("Planet");
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
         SpinRandom();
     }
 
