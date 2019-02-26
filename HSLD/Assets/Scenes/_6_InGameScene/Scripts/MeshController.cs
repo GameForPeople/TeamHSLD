@@ -631,29 +631,74 @@ public class MeshController : MonoBehaviour {
                 GameObject picked = TutorialAllMeshController.IngameManager.GetComponent<TutorialCardSystem>().pickedCard;
 
                 if (TutorialManager.index == 9)
+                {
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, -6, 0));
+                    TutorialPcVerCamera.inputAble = 185;
+                }
+
                 else if (TutorialManager.index == 10)
+                {
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(88, 27, 0));
+                    TutorialPcVerCamera.inputAble = 124;
+                }
+
                 else if (TutorialManager.index == 11)
+                {
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, 71, 0));
+                    TutorialPcVerCamera.inputAble = 154;
+                }
+
                 else if (TutorialManager.index == 12)
+                {
+                    TutorialPcVerCamera.inputAble = 159;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-10, 88, 0));
+                }
+                    
                 else if (TutorialManager.index == 13)
+                {
+                    TutorialPcVerCamera.inputAble = 36;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(17, 88, 0));
+                }
+                    
                 else if (TutorialManager.index == 14)
+                {
+                    TutorialPcVerCamera.inputAble = 183;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, 74, 0));
+                }
+                    
                 else if (TutorialManager.index == 15)
+                {
+                    TutorialPcVerCamera.inputAble = 147;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-78, 37, 0));
+                }
+                    
                 else if (TutorialManager.index == 16)
+                {
+                    TutorialPcVerCamera.inputAble = 92;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, -10, 0));
+                }
+                    
                 else if (TutorialManager.index == 17)
+                {
+                    TutorialPcVerCamera.inputAble = 31;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-78, 27, 0));
+                }
+                    
                 else if (TutorialManager.index == 18)
+                {
+                    TutorialPcVerCamera.inputAble = 310;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, -24, 0));
+                }
+                    
                 else if (TutorialManager.index == 19)
+                {
+                    TutorialPcVerCamera.inputAble = 49;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(12, -25, 0));
+                }
+                    
                 else if(TutorialManager.index == 20)
                 {
+                    TutorialPcVerCamera.inputAble = -1;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTLOCDONE);
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].transform.localPosition = new Vector3(525, -195, 0);
@@ -662,30 +707,78 @@ public class MeshController : MonoBehaviour {
                 }
 
                 else if (TutorialManager.index == 23)
+                {
+                    TutorialPcVerCamera.inputAble = 251;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-13, -19, 0));
+                }
+                    
                 else if (TutorialManager.index == 24)
+                {
+                    TutorialPcVerCamera.inputAble = 195;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(9, -23, 0));
+                }
+                    
                 else if (TutorialManager.index == 25)
+                {
+                    TutorialPcVerCamera.inputAble = 198;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-23, -20, 0));
+                }
+                    
                 else if (TutorialManager.index == 26)
-                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-67,31, 0));
+                {
+                    TutorialPcVerCamera.inputAble = 93;
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-67, 31, 0));
+                }
+                    
                 else if (TutorialManager.index == 27)
+                {
+                    TutorialPcVerCamera.inputAble = 273;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-5, 82, 0));
+                }
+                    
                 else if (TutorialManager.index == 28)
+                {
+                    TutorialPcVerCamera.inputAble = 21;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(24, 83, 0));
+                }
+                    
                 else if (TutorialManager.index == 29)
+                {
+                    TutorialPcVerCamera.inputAble = -1;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
+                }
+                    
 
                 else if (TutorialManager.index == 32)
+                {
+                    TutorialPcVerCamera.inputAble = 257;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(6, 92, 0));
+                }
+                    
                 else if (TutorialManager.index == 33)
+                {
+                    TutorialPcVerCamera.inputAble = 233;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-34, 70, 0));
+                }
+                    
                 else if (TutorialManager.index == 34)
+                {
+                    TutorialPcVerCamera.inputAble = 111;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, 89, 0));
+                }
+                    
                 else if (TutorialManager.index == 35)
+                {
+                    TutorialPcVerCamera.inputAble = 39;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(57, 44, 0));
+                }
+                    
                 else if (TutorialManager.index == 36)
+                {
+                    TutorialPcVerCamera.inputAble = -1;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
+                }
+                    
 
                 CameraController.ChangeableCount--;
 

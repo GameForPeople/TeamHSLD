@@ -22,6 +22,7 @@ public class TutorialPcVerCamera : MonoBehaviour
     public GameObject myFlag;
 
     private TutorialFlowSystem flowSystem;
+    static public int inputAble = -1;
 
     private void Awake()
     {
@@ -65,50 +66,16 @@ public class TutorialPcVerCamera : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitObj;
-
-        //19.01.15 YSH 추가합니다..
-        if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGEVENTCARDLOC))
-        {
-            if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
-            {
-                PickedMeshObj = hitObj.transform.gameObject;
-
-                switch (EventCardManager.selectedIndex)
-                {
-                    case 101:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))   //To enemy
-                            return;
-                        break;
-                    case 111:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))   //To enemy
-                            return;
-                        break;
-                    case 201:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY))
-                            return;
-                        break;
-                    case 202:
-                        if (!PickedMeshObj.GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY))   //To enemy
-                            return;
-                        break;
-                }
-
-                TutorialAllMeshController.IngameManager.GetComponent<EventCardManager>().PickLocDone(PickedMeshObj, PickedMeshObj.GetComponent<MeshController>().terrainstate);
-
-            }
-        }
-
+        
         if (flowSystem.currentFlow != FLOW.TO_PICKINGLOC)
             return;
 
         if (Physics.Raycast(ray, out hitObj, Mathf.Infinity))
         {
+            if (!hitObj.transform.name.Equals(inputAble.ToString()))
+                return;
+                
             PickedMeshObj = hitObj.transform.gameObject;
-
-            //if (PickedMeshObj.GetComponent<MeshController>() == null)
-            //{
-            //    PickedMeshObj.AddComponent<MeshController>();
-            //}
 
             if (!PickedMeshObj.GetComponent<MeshController>().isFixed && !PickedMeshObj.GetComponent<MeshController>().isAwake)
             {

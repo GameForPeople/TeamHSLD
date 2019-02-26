@@ -41,6 +41,7 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject displayTextObj;
     public GameObject[] pointObj = new GameObject[6];
+    public GameObject panel;
 
     private Material domMaterial;
 
@@ -137,6 +138,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
         pointObj[1].SetActive(false);
         yield return new WaitForSeconds(1f);
+        panel.SetActive(false);
         PointMove(new Vector3(62, 187, 0));
     }
 
@@ -195,11 +197,13 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(2.5f);
+        panel.SetActive(false);
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(484, -194, 0);
         pointObj[2].transform.localScale = new Vector3(3.84f, 3.84f, 3.84f);
         SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 0.7f);
         index = 5;
+
     }
 
     IEnumerator INGAME_SELECTTERRAINCARD_Cor()
@@ -213,6 +217,7 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(2.5f);
+        panel.SetActive(false);
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(-193, -304, 0);
         pointObj[2].transform.localScale = new Vector3(1.23f, 1.23f, 1.23f);
@@ -247,8 +252,9 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(2.5f);
-        
+        panel.SetActive(false);
         index = 7;
+        TutorialPcVerCamera.inputAble = 101;
     }
 
     IEnumerator INGAME_SELECTTERRAINLOC_Cor()
@@ -270,9 +276,10 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(2.5f);
-
+        panel.SetActive(false);
         index = 8;
         PointArrowMove(new Vector3(0, 0, 0));
+        TutorialPcVerCamera.inputAble = 207;
     }
 
     IEnumerator INGAME_SELECTLOCDONE_Cor()
@@ -302,6 +309,7 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(2.5f);
+        panel.SetActive(false);
     }
 
     IEnumerator INGAME_TURNEND_Cor()
@@ -481,6 +489,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         index = 31;
         PointArrowMove(new Vector3(-15, 87, 0));
+        TutorialPcVerCamera.inputAble = 72;
 
     }
 
@@ -504,6 +513,7 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.GetComponent<TutorialDisplayTxt>().delayTime = 2f;
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(4.5f);
+        panel.SetActive(false);
         SceneManager.LoadScene("MainUIScene");
     }
 
@@ -525,49 +535,47 @@ public class TutorialManager : MonoBehaviour
                 displayTextObj.SetActive(true);
                 break;
             case TUTORIAL.READY_SELECTCARD:
-                
+                panel.SetActive(true);
                 currentTutorial = TUTORIAL.READY_SELECTCARD;
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 StartCoroutine(READY_SELECTCARD_Cor());
                 break;
             case TUTORIAL.INGAME_ROLLINGDICE:
-                
                 currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 StartCoroutine(INGAME_ROLLINGDICE_Cor());
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINCARD:
-                
+                panel.SetActive(true);
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 StartCoroutine(INGAME_SELECTTERRAINCARD_Cor());
                 currentTutorial = TUTORIAL.INGAME_SELECTTERRAINCARD;
                 break;
             case TUTORIAL.INGAME_SELECTFLAG:
-                
+                panel.SetActive(true);
                 StartCoroutine(INGAME_SELECTFLAG_Cor());
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_SELECTFLAG;
                 break;
             case TUTORIAL.INGAME_SELECTTERRAINLOC:
-                
+                panel.SetActive(true);
                 StartCoroutine(INGAME_SELECTTERRAINLOC_Cor());
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_SELECTTERRAINLOC;
                 break;
             case TUTORIAL.INGAME_SELECTLOCDONE:
-                
+                panel.SetActive(true);
                 StartCoroutine(INGAME_SELECTLOCDONE_Cor());
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_SELECTLOCDONE;
                 break;
             case TUTORIAL.INGAME_TURNEND:
-                
+                panel.SetActive(true);
                 StartCoroutine(INGAME_TURNEND_Cor());
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_TURNEND;
                 break;
             case TUTORIAL.INGAME_ENEMYTURN_ROLLINGDICE:
-                
                 GameObject.Find("DiceManager").GetComponent<DiceObject>().DiceSystem_Roll(6, 6);
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 currentTutorial = TUTORIAL.INGAME_ENEMYTURN_ROLLINGDICE;
@@ -581,14 +589,13 @@ public class TutorialManager : MonoBehaviour
                 currentTutorial = TUTORIAL.INGAME_ENEMYTURN_TURNEND;
                 break;
             case TUTORIAL.INGAME_DICEFOCUS:
-                
+                panel.SetActive(false);
                 pointObj[2].SetActive(true);
                 pointObj[2].transform.localPosition = new Vector3(474, -190, 0);
                 pointObj[2].transform.localScale = new Vector3(4.04f, 4.04f, 4.04f);
                 currentTutorial = TUTORIAL.INGAME_DICEFOCUS;
                 break;
             case TUTORIAL.INGAME_ROLLINGDICE_2:
-                
                 pointOff();
                 pointObj[2].SetActive(true);
                 pointObj[2].transform.localPosition = new Vector3(2, -312, 0);
@@ -599,6 +606,7 @@ public class TutorialManager : MonoBehaviour
                 
                 index = 22;
                 PointArrowMove(new Vector3(-72, 89, 0));
+                TutorialPcVerCamera.inputAble = 34;
                 currentTutorial = TUTORIAL.INGAME_SELECTTERRAINLOC_2;
                 break;
             case TUTORIAL.INGAME_TURNEND_2:
@@ -609,7 +617,7 @@ public class TutorialManager : MonoBehaviour
                 currentTutorial = TUTORIAL.INGAME_TURNEND_2;
                 break;
             case TUTORIAL.INGAME_ENEMYTURN_ROLLINGDICE_2:
-                
+                panel.SetActive(true);
                 currentTutorial = TUTORIAL.INGAME_ENEMYTURN_ROLLINGDICE_2;
                 StartCoroutine(INGAME_ENEMYTURN_ROLLINGDICE_2_Cor());
                 break;
@@ -619,6 +627,7 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(INGAME_ENEMYTURN_TURNEND_2_Cor());
                 break;
             case TUTORIAL.INGAME_BEFOREATTACK:
+                panel.SetActive(false);
                 currentTutorial = TUTORIAL.INGAME_BEFOREATTACK;
                 
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
@@ -631,7 +640,7 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(INGAME_ATTACK_Cor());
                 break;
             case TUTORIAL.ENDGAME_CONDITIONTOWIN:
-                
+                panel.SetActive(true);
                 currentTutorial = TUTORIAL.ENDGAME_CONDITIONTOWIN;
                 displayTextObj.GetComponent<TutorialDisplayTxt>().inputColor = new Color32(0, 0, 0, 170);
                 StartCoroutine(ENDGAME_CONDITIONTOWIN_Cor());

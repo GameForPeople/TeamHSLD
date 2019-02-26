@@ -157,6 +157,7 @@ public class TutorialTurnSystem : MonoBehaviour
             if (cnt == 5)
             {
                 gameObject.GetComponent<TutorialManager>().pointOff();
+                gameObject.GetComponent<TutorialManager>().panel.SetActive(true);
                 break;
             }
                 
