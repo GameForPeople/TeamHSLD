@@ -11,9 +11,16 @@ public partial class MainUISceneManager : MonoBehaviour
 
     public int itemIndex;
 
+    int[] itemBit = new int[4];
+
     private void StartForShop()
     {
         isDrawShopUI = false;
+
+        itemBit[0] = 0;
+        itemBit[1] = (1 << 0);
+        itemBit[2] = (1 << 1);
+        itemBit[3] = (1 << 2);
     }
 
     public void UI_DrawShopUI(bool InIsDraw)

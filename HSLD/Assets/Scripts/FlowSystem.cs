@@ -94,15 +94,8 @@ public class FlowSystem : MonoBehaviour
         turnSystem = gameObject.GetComponent<TurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
-
-        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-        {
-            planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
-        }
-        else
-        {
-            planetTrans = GameObject.FindWithTag("Planet").transform;
-        }
+        
+        planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
 
         
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();

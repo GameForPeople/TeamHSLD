@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3553,9 +3553,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
+  myPlanet: {fileID: 0}
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  enemyFlag: {fileID: 0}
+  myFlag: {fileID: 0}
 --- !u!114 &374445978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12859,6 +12862,10 @@ Prefab:
     - target: {fileID: 4907245813461488, guid: dc573a1921a77204285fe68ec0473d15, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779132358891060, guid: dc573a1921a77204285fe68ec0473d15, type: 2}
+      propertyPath: m_TagString
+      value: InGamePlanet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc573a1921a77204285fe68ec0473d15, type: 2}
