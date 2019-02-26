@@ -15,6 +15,12 @@ public class TutorialPcVerCamera : MonoBehaviour
     public float magnitude;
     private bool once;
 
+    private bool bSelectionFlag;
+    private bool bDominateMyFlag;
+    private bool bDominateEnemyFlag;
+    public GameObject enemyFlag;
+    public GameObject myFlag;
+
     private TutorialFlowSystem flowSystem;
 
     private void Awake()
@@ -279,28 +285,97 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     public void FlagSetting()
     {
-        // 이미 다 획득한 상황에 대한 값이 있고 return시켜. [낭비]
-
         int tempint = 0;
 
-        //깃발 획득한 뒤에는 Flag표시는 다 지우고 내 것만 남아
-        for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; i++)
+        if (bDominateEnemyFlag == true && bDominateMyFlag == true) return; // 더이상 무의미한 로직이 됨
+
+        if (!bSelectionFlag)
         {
-            if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+            for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
             {
-                tempint++;
+                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+                {
+                    GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[21];
+                    GameObject meshObj = myPlanet.GetComponent<AllMeshController>().FlagContainer[i];
+
+                    Destroy(meshObj.GetComponent<MeshController>().TargetObject);
+                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
+                    tempint++;
+                }
+
+                if (tempint == 2)
+                {
+                    for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                    {
+                        if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
+                        {
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
+                            Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+
+
+                        }
+                        else
+                        {
+                            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ENEMY)
+                            {
+                                enemyFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                            }
+                            else
+                            {
+                                myFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                            }
+                        }
+                    }
+                    bSelectionFlag = true;
+                }
+            }
+        }
+        else // Flag가 결정된 후
+        {
+            GameObject buildingObj = new GameObject();
+            int detectedCount = 0;
+            //EnemyFlag
+            if (!bDominateEnemyFlag)
+            {
+                for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+                {
+                    if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
+                    {
+                        detectedCount++;
+                    }
+                    if (detectedCount == 12)
+                    {
+                        buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
+
+
+                        Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
+                        enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
+                        bDominateEnemyFlag = true;
+                    }
+                }
             }
 
-            if (tempint == 2)
+            detectedCount = 0;
+            // MyFlag
+            if (!bDominateMyFlag)
             {
-                for (int j = 0; j < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; j++)
+                for (int i = 0; i < myFlag.GetComponent<MeshController>().NearMesh.Count; i++)
                 {
-                    if (!myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
+                    if (myFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
                     {
-                        myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
-                        Destroy(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
-                        myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+                        detectedCount++;
+                    }
+                    if (detectedCount == 12)
+                    {
+                        buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
 
+
+                        Destroy(myFlag.GetComponent<MeshController>().TargetObject);
+                        myFlag.GetComponent<MeshController>().EulerRotCal(myFlag, buildingObj, 1.0f);
+                        bDominateMyFlag = true;
                     }
                 }
             }

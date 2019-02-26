@@ -160,6 +160,7 @@ public class TutorialAllMeshController : MonoBehaviour
             NearMeshSetting();
             myFlag = null;
             CameraController.ChangeableCount--;
+            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop--;
             temp = false;
         }
         PickContainer.Clear();
