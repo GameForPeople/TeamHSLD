@@ -36,7 +36,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
     public GameObject matchingCompleteCanvas;
-    public GameObject spinCanvas;
+    //public GameObject spinCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
     public GameObject turnTimerImg;
@@ -44,7 +44,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject missionCanvas;
     public GameObject displayText;
     public GameObject displayTextImg;
-    public GameObject enemyTurnPassObj;
+    //public GameObject enemyTurnPassObj;
     public GameObject resultUICanvas;
     public GameObject diceCntingUI;
 
@@ -292,7 +292,7 @@ public class FlowSystem : MonoBehaviour
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
                 //tmpAnimationImage.SetActive(true);
-                spinCanvas.SetActive(true);
+                //spinCanvas.SetActive(true);
                 readyCanvas.SetActive(false);
 
                 //init - card Cnt Update

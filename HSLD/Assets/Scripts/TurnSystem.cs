@@ -175,7 +175,7 @@ public class TurnSystem : MonoBehaviour
             }
 
 
-            flowSystem.enemyTurnPassObj.SetActive(false);
+           // flowSystem.enemyTurnPassObj.SetActive(false);
             flowSystem.currentFlow = FLOW.TO_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(true);
 
@@ -192,7 +192,7 @@ public class TurnSystem : MonoBehaviour
                 turnCountingUI.GetComponentInChildren<Text>().text = initTurnCnt.ToString() + "턴";
             }
 
-            flowSystem.enemyTurnPassObj.SetActive(true);
+            //flowSystem.enemyTurnPassObj.SetActive(true);
             flowSystem.currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(false);
             StartCoroutine(EndTurnAndWaiting());

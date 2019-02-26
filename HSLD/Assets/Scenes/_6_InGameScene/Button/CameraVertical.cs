@@ -26,6 +26,5 @@ public class CameraVertical : MonoBehaviour {
     public void OnTrigger()
     {
             mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, RotationSensitivity);
-
     }
 }
