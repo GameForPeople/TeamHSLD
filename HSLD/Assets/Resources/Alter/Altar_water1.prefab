@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198499429554200254}
   - component: {fileID: 199710207570253574}
   m_Layer: 0
-  m_Name: Altar_water
+  m_Name: Altar_water1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
