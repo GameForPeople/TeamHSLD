@@ -32,7 +32,7 @@ public class TutorialFlowSystem : MonoBehaviour
     //최적화 스크립트
     private CardSystem cardSystem;
     private EventCardManager eventCardManager;
-    private TurnSystem turnSystem;
+    private TutorialTurnSystem turnSystem;
     private MissionManager missionManager;
     private BuildOnPlanet buildOnPlanet;
     private Transform planetTrans;
@@ -49,7 +49,7 @@ public class TutorialFlowSystem : MonoBehaviour
         
         cardSystem = gameObject.GetComponent<CardSystem>();
         eventCardManager = gameObject.GetComponent<EventCardManager>();
-        turnSystem = gameObject.GetComponent<TurnSystem>();
+        turnSystem = gameObject.GetComponent<TutorialTurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
         planetTrans = GameObject.FindWithTag("Planet").transform;

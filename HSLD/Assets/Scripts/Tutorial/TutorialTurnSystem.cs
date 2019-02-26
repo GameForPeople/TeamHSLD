@@ -32,7 +32,7 @@ public class TutorialTurnSystem : MonoBehaviour
 
     //최적화 스크립트
     private TutorialFlowSystem flowSystem;
-    private SetTurn setTurn;
+    private TutorialSetTurn setTurn;
     private CardSystem cardsystem;
 
     private bool[] chk = new bool[5];
@@ -40,9 +40,35 @@ public class TutorialTurnSystem : MonoBehaviour
     private void Start()
     {
         flowSystem = gameObject.GetComponent<TutorialFlowSystem>();
-        setTurn = gameObject.GetComponent<SetTurn>();
+        setTurn = gameObject.GetComponent<TutorialSetTurn>();
         cardsystem = gameObject.GetComponent<CardSystem>();
         StartCoroutine(ReadyMatchingComplete());
+    }
+
+    //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
+    public void TurnSet()
+    {
+        gameObject.GetComponent<TerrainGainCounting>().CheckFlag();
+
+        //내턴일때의 코루틴 진입
+        if (currentTurn.Equals(TURN.MYTURN))
+        {
+            flowSystem.enemyTurnPassObj.SetActive(false);
+            flowSystem.currentFlow = FLOW.TO_ROLLINGDICE;
+            flowSystem.diceCanvas.SetActive(true);
+
+            if (myCoroutine != null)
+                StopCoroutine(myCoroutine);
+            //myCoroutine = StartCoroutine(MyTurnCounting());
+        }
+        //내턴이아닐때의 코루틴 진입
+        else
+        {
+            flowSystem.enemyTurnPassObj.SetActive(true);
+            flowSystem.currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+            flowSystem.diceCanvas.SetActive(false);
+            //StartCoroutine(EndTurnAndWaiting());
+        }
     }
 
     public void TurnChange(bool change)
