@@ -53,7 +53,7 @@ public class TutorialFlowSystem : MonoBehaviour
         turnSystem = gameObject.GetComponent<TutorialTurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
-        planetTrans = GameObject.FindWithTag("Planet").transform;
+        planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
 
         //gameObject.GetComponent<TutorialManager>().currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;

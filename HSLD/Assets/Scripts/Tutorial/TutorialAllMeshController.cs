@@ -25,8 +25,8 @@ public class TutorialAllMeshController : MonoBehaviour
         IngameManager = GameObject.Find("InGameSceneManager");
         PickContainer = new List<int>();
 
-        myPlanet = GameObject.FindWithTag("Planet");
-        AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
+        AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
 
         if (instance_ == null)
             instance_ = this;
@@ -45,7 +45,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
     public void MakeAllContainer()
     {
-        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
+        for (int i = 1; i < GameObject.FindWithTag("InGamePlanet").transform.childCount + 1; i++)
         {
             AllContainer[i] = GameObject.Find(i.ToString());
             if (AllContainer[i].GetComponent<MeshController>().isFlag) // 해당 메시가 Flagable이라면?
@@ -60,7 +60,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
     public void SearchALL()
     {
-        for (int i = 1; i <= GameObject.FindWithTag("Planet").transform.childCount; i++)
+        for (int i = 1; i <= GameObject.FindWithTag("InGamePlanet").transform.childCount; i++)
         {
             if (AllContainer[i].GetComponent<MeshController>().isFixed == true)
             {
@@ -177,7 +177,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
     public void AllPriorSetting()
     {
-        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
+        for (int i = 1; i < GameObject.FindWithTag("InGamePlanet").transform.childCount + 1; i++)
         {
             AllContainer[i].GetComponent<MeshController>().priorMaterial = AllContainer[i].GetComponent<MeshRenderer>().material;
             AllContainer[i].GetComponent<MeshController>().priorState = AllContainer[i].GetComponent<MeshController>().priorState;
