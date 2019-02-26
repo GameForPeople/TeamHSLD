@@ -23,11 +23,11 @@ using System.Net.NetworkInformation;
 public partial class NetworkManager : MonoBehaviour
 {
     string receiveData;
-    IPEndPoint e;
-    UdpClient u;
+    //IPEndPoint e;
+    //UdpClient u;
     //public IPAddress IPAddressBuffer;
     UDP_StateObject s;
-
+    
     public class UDP_StateObject
     {
         public UdpClient u;
@@ -121,14 +121,14 @@ public partial class NetworkManager : MonoBehaviour
 
         Debug.Log("나의 내부 IP는 :" + localIP.ToString());
 
-        e = new IPEndPoint( /*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/  /*System.Net.IPAddress.Parse("127.0.0.1")*/ /*System.Net.IPAddress.Parse(localIP)*/ System.Net.IPAddress.Parse("0.0.0.0"), 9002);
-        u = new UdpClient(e);
+        //e = new IPEndPoint( /*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/  /*System.Net.IPAddress.Parse("127.0.0.1")*/ /*System.Net.IPAddress.Parse(localIP)*/ System.Net.IPAddress.Parse("0.0.0.0"), 9002);
+        //u = new UdpClient(e);
 
-        s = new UDP_StateObject()
-        {
-            e = e,
-            u = u
-        };
+        s = new UDP_StateObject();
+        //{
+        s.e = new IPEndPoint( /*IPAddress.Any*/ /*ipAddr*/ /*IPAddress.Loopback*/ /*"127.0.0.1"*/  /*System.Net.IPAddress.Parse("127.0.0.1")*/ /*System.Net.IPAddress.Parse(localIP)*/ System.Net.IPAddress.Parse("0.0.0.0"), 9002);
+            s.u = new UdpClient(s.e);
+        //};
     }
     public void StartUDPCoroutine()
     {
@@ -159,7 +159,7 @@ public partial class NetworkManager : MonoBehaviour
 
             while (!isServerRecvMyPort)
             {
-                u.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
+                s.u.Send(sendByte, idByteSize + 2, iP_ADDRESS, 9001);
 
                 //Debug.Log("홀펀칭 매신저 사이즈는 :" + (idByteSize + 2).ToString());
 
@@ -172,7 +172,7 @@ public partial class NetworkManager : MonoBehaviour
     {
         while (true)
         {
-            u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
+            s.u.BeginReceive(new AsyncCallback(UDP_ReceiveCallback), s);
 
             while (!messageReceived)
             {
@@ -194,7 +194,7 @@ public partial class NetworkManager : MonoBehaviour
         UdpClient u = (UdpClient)((UDP_StateObject)(ar.AsyncState)).u;
         IPEndPoint e = (IPEndPoint)((UDP_StateObject)(ar.AsyncState)).e;
 
-        Byte[] receiveBytes = u.EndReceive(ar, ref e);
+        Byte[] receiveBytes = s.u.EndReceive(ar, ref e);
         receiveData = Encoding.ASCII.GetString(receiveBytes);
 
         Debug.Log(" UDP Message를 받았습니다. : " + (int)receiveData[0]);

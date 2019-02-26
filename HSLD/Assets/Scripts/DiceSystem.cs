@@ -938,7 +938,7 @@ public class DiceSystem : MonoBehaviour
         }
 
         //getDiceNum = 11;
-        isDouble = false;
+        //isDouble = false;
         CameraController.DiceCount = ((int)(getDiceNum / 10) + (int)(getDiceNum % 10));
 
         if (isDiceDouble)

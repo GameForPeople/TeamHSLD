@@ -371,17 +371,17 @@ public class TutorialManager : MonoBehaviour
 
     public void TerrainChange(int name)
     {
-        for(int i =0; i< GameObject.FindWithTag("Planet").transform.childCount;i++)
+        for(int i =0; i< GameObject.FindWithTag("InGamePlanet").transform.childCount;i++)
         {
-            if(GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().MeshNumber.Equals(name))
+            if(GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshController>().MeshNumber.Equals(name))
             {
-                GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().terrainstate = Terrain.BARREN;
-                GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().isFixed = true;
+                GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshController>().terrainstate = Terrain.BARREN;
+                GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshController>().isFixed = true;
 
                 domMaterial = Resources.Load<Material>("M_BarrenEnemy");
-                GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshRenderer>().material = domMaterial;
-                GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify = Identify.ENEMY;
-                GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().isMine = false;
+                GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshRenderer>().material = domMaterial;
+                GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify = Identify.ENEMY;
+                GameObject.FindWithTag("InGamePlanet").transform.GetChild(i).GetComponent<MeshController>().isMine = false;
                 return;
             }
         }

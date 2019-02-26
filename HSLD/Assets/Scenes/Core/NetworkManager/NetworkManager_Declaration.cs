@@ -220,5 +220,9 @@ public partial class NetworkManager : MonoBehaviour {
             socket.Close();
             socket = null;
         }
+
+        //if(u != null)
+        s.u.Close();
+        s.u = null;
     }
 }

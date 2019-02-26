@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16574,8 +16574,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -6.3092456, y: 6.587681, z: -46.899693}
   m_LocalScale: {x: 39.999924, y: 39.999924, z: 39.999924}
-  m_Children:
-  - {fileID: 1089833448}
+  m_Children: []
   m_Father: {fileID: 1275639254}
   m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29089,72 +29088,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1089833447
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1089833448}
-  - component: {fileID: 1089833449}
-  m_Layer: 0
-  m_Name: Point Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1089833448
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1089833447}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.015, y: 0.086, z: 0.009}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 601488990}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &1089833449
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1089833447}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 20
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &1097889542
 GameObject:
   m_ObjectHideFlags: 0
@@ -29897,6 +29830,13 @@ MonoBehaviour:
   - {fileID: 1641192163470570, guid: e41ce1dd4c524ee4a8e31de84bc1034e, type: 2}
   - {fileID: 1294241127086302, guid: 7ecac2e136a55ae41a68ac77bad0ab4d, type: 2}
   - {fileID: 1995373763876344, guid: 30e50d5e693873b49b1006ed161c12db, type: 2}
+  - {fileID: 100000, guid: 75cd3ca8cb85ff44689e0e18c0fd3078, type: 3}
+  - {fileID: 1627347974826748, guid: caf9cda1e476b75429d66aeb2a7f5f20, type: 2}
+  - {fileID: 100000, guid: e9530c80ffb981144a75f3bb6e839ef1, type: 3}
+  - {fileID: 1489980634199532, guid: 00b5fdaa9ab927147bc6914c4f76e4dd, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1853574574019274, guid: 0687e0c3e4b723e4fae5f50404eb9e81, type: 2}
+  - {fileID: 1627347974826748, guid: caf9cda1e476b75429d66aeb2a7f5f20, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
   - {fileID: 1749881923002708, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}

@@ -95,6 +95,8 @@ public class MeshController : MonoBehaviour {
         transform.position *= initSize; // 초기 테두리 사이즈
         startPos = transform.position;
         destinationPos = transform.position * landingSize; // Landing 사이즈
+
+
     }
 
     public void SavedBeforeMat()
@@ -117,7 +119,7 @@ public class MeshController : MonoBehaviour {
     IEnumerator BlinkFlag()
     {
         render = gameObject.GetComponent<MeshRenderer>();
-        render.material.shader = Shader.Find("Custom/MyRimShader");
+        render.material.shader = Shader.Find("Standard");
 
         isTriggerOn = true;
         time_ = 0;
@@ -126,7 +128,6 @@ public class MeshController : MonoBehaviour {
             time_ += Time.deltaTime;
             
             render.materials[0].SetColor("_Color", Color.Lerp(new Color32(255,255,255,255), new Color32(216,166,93,255), time_));
-            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(20, 40, time_);
             yield return new WaitForEndOfFrame();
             if (time_ > 1.0f)
                 break;
@@ -138,14 +139,12 @@ public class MeshController : MonoBehaviour {
             time_ += Time.deltaTime;
             
             render.materials[0].SetColor("_Color", Color.Lerp(new Color32(216, 166, 93, 255), new Color32(255, 255, 255, 255), time_));
-            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(40, 20, time_);
             yield return new WaitForEndOfFrame();
             if (time_ > 1.0f)
                 break;
         }
 
         isTriggerOn = false;
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     void Update ()
@@ -154,7 +153,6 @@ public class MeshController : MonoBehaviour {
         {
             if (TutorialManager.index == 7 && isFlag && !isTriggerOn && gameObject.transform.childCount == 1)
             {
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 StartCoroutine(BlinkFlag());
             }
         }
@@ -180,9 +178,12 @@ public class MeshController : MonoBehaviour {
 
                         if (pTop < 19.45f && pTop != 0)
                         {
-                            AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
-                            NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
-                            AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+                            if(AllMeshController.myPlanet.transform.childCount == 320)
+                            {
+                                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
+                                NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
+                                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+                            }
 
                             //Debug.Log(name);
                             //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
@@ -259,7 +260,7 @@ public class MeshController : MonoBehaviour {
                     {
                         if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
                         {
-                            for (int j = 0; j < 12; j++)
+                            for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
                             {
                                 if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
@@ -276,7 +277,7 @@ public class MeshController : MonoBehaviour {
                         }
                         else
                         {
-                            for (int j = 0; j < 12; j++)
+                            for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
                             {
                                 if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
@@ -361,7 +362,7 @@ public class MeshController : MonoBehaviour {
             if (Random.Range(0, 100) < 30 || isFlag)
                 {
                     if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-                        EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+                        EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
                     else
                         EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
                 }
