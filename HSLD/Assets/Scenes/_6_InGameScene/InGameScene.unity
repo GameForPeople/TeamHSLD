@@ -25174,7 +25174,7 @@ MonoBehaviour:
   resultUICanvas: {fileID: 937144423}
   diceCntingUI: {fileID: 445075900}
   charSprSet:
-  - {fileID: 21300000, guid: fd81e9f40743d1844b334eda24ebdde7, type: 3}
+  - {fileID: 21300000, guid: 5d7a72dc2be7b4f4f823fe1a92f0e003, type: 3}
   - {fileID: 21300006, guid: 9294fa1c61ae6ff47b000bd4428a5570, type: 3}
   - {fileID: 21300024, guid: ff6211e49923e9d419a89882649e888d, type: 3}
   - {fileID: 21300048, guid: ff6211e49923e9d419a89882649e888d, type: 3}
