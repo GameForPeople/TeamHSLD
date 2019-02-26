@@ -401,6 +401,9 @@ public class PCverPIcking : MonoBehaviour
                         Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
                         enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
                         bDominateEnemyFlag = true;
+
+                        gameObject.GetComponent<CameraShake>().ShakeOnce();
+                        StartCoroutine(gameObject.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
                     }
                 }
             }
