@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130295, g: 0.5001627, b: 0.56896406, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29897,7 +29897,7 @@ MonoBehaviour:
   myFlag: {fileID: 0}
   AllContainer: []
   buildingObj:
-  - {fileID: 1573716042918264, guid: bc133df8dba2a5843be61bb6a8cd3365, type: 2}
+  - {fileID: 100000, guid: 6177be42a30c0aa48a2a792e2b2f7795, type: 3}
   - {fileID: 1217086889136866, guid: 270aa3bbb5506044688e75e9d23fcf47, type: 2}
   - {fileID: 1028260716320506, guid: d17b54d6098494f43a2fe2b3f750d3bc, type: 2}
   - {fileID: 1903644178012488, guid: 1ab61055c983b6e46a4e9f9a0238c864, type: 2}
