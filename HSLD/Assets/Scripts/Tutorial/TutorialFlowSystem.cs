@@ -56,6 +56,9 @@ public class TutorialFlowSystem : MonoBehaviour
         planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
 
+        if (GameObject.Find("GameCores") != null)
+            matchingCompleteCanvas.transform.GetChild(1).GetComponentInChildren<Text>().text = GameObject.Find("NetworkManager").GetComponent<NetworkManager>().nickName;
+
         //gameObject.GetComponent<TutorialManager>().currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
         //currentFlow = FLOW.READY_SETCARD;
         //turnSystem.currentTurn = TURN.MYTURN;
