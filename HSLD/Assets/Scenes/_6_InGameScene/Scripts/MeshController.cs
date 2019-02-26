@@ -360,7 +360,7 @@ public class MeshController : MonoBehaviour {
             if (Random.Range(0, 100) < 30 || isFlag)
                 {
                     if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-                        EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+                        EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
                     else
                         EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
                 }
