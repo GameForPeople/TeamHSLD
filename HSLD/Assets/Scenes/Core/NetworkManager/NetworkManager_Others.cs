@@ -104,13 +104,19 @@ public partial class NetworkManager : MonoBehaviour {
             else if (notifyNumString.Equals("1"))
             {
                 titleSceneManager.parsingServerCommand = 1;
-                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 1 ( 현재 서버는 Live 버전으로 정상 동작중입니다. )");
+                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 1 ( 현재 서버는 AWS Live 버전으로 정상 동작중입니다. )");
                 //Debug.Log("NotifyNum은 1로 현재 서버는 작동하지 않습니다.");
             }
             else if (notifyNumString.Equals("2"))
             {
                 titleSceneManager.parsingServerCommand = 2;
                 titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 2 ( 현재 서버는 점검 중입니다. ) ");
+                //Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
+            }
+            else if (notifyNumString.Equals("3"))
+            {
+                titleSceneManager.parsingServerCommand = 3;
+                titleSceneManager.NetworkManager_DrawIPAndState(iP_ADDRESS, " 3 ( 현재 서버는 External Live버전으로 정상 동작 중입니다. ) ");
                 //Debug.Log("NotifyNum은 2로 현재 게임은 점검 - 업데이트 중입니다.");
             }
 
