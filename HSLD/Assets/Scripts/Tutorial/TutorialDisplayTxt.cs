@@ -29,6 +29,33 @@ public class TutorialDisplayTxt : MonoBehaviour
             case TUTORIAL.READY_SELECTCARD:
                 StartCoroutine(performance2(delayTime));
                 break;
+            case TUTORIAL.INGAME_ROLLINGDICE:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_SELECTTERRAINCARD:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_SELECTFLAG:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_SELECTTERRAINLOC:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_SELECTLOCDONE:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_TURNEND:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_ENEMYTURN_TURNEND:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_BEFOREATTACK:
+                StartCoroutine(performance2(delayTime));
+                break;
+            case TUTORIAL.INGAME_ATTACK:
+                StartCoroutine(performance2(delayTime));
+                break;
         }
 
     }

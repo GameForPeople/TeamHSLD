@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45130253, g: 0.50016207, b: 0.5689629, a: 1}
+  m_IndirectSpecularColor: {r: 0.45130265, g: 0.500162, b: 0.56896317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -308,6 +308,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1618581648}
@@ -317,6 +318,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &5238884
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +435,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1341906189}
@@ -442,6 +445,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &5495562
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +714,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1584743552}
   - {fileID: 54068526}
@@ -719,6 +724,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &29789798
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +841,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 98057181}
@@ -844,6 +851,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &31305738
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +968,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1584589151}
   - {fileID: 976986711}
@@ -969,6 +978,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &35264477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1095,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1684928952}
   - {fileID: 1417611858}
@@ -1094,6 +1105,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &38060710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1222,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618581648}
   - {fileID: 78281895}
@@ -1219,6 +1232,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &50010879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1428,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1218839681}
   - {fileID: 237075393}
@@ -1423,6 +1438,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &54276500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1555,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1417611858}
   - {fileID: 676650459}
@@ -1548,6 +1565,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &68865990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1682,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2045645539}
   - {fileID: 1717299218}
@@ -1673,6 +1692,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &69651916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1809,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1263336280}
@@ -1798,6 +1819,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &78281895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1936,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 321731969}
@@ -1923,6 +1946,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &80989887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,6 +2063,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 552896767}
@@ -2048,6 +2073,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &81369757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2311,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 401093704}
@@ -2294,6 +2321,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &82822055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2438,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 401093704}
@@ -2419,6 +2448,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &83329541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2671,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 1931759691}
@@ -2650,6 +2681,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &92151563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2943,7 @@ RectTransform:
   m_Children:
   - {fileID: 1438495521}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3034,6 +3066,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 1341906189}
@@ -3043,6 +3076,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &105075119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,6 +3417,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1454669962}
@@ -3392,6 +3427,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &113498411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3671,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 759865688}
   - {fileID: 82822055}
@@ -3644,6 +3681,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &119588798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,6 +3798,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 1288132296}
@@ -3769,6 +3808,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &123702559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,7 +3866,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300016, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f22751fdd8201d04586fd807d3c8c483, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3958,6 +3998,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1666188838}
@@ -3967,6 +4008,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &131071464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4083,6 +4125,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1771726575}
   - {fileID: 1483358713}
@@ -4092,6 +4135,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &135914806
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,6 +4380,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 820614603}
@@ -4345,6 +4390,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &141128050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,6 +4507,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 517522759}
@@ -4470,6 +4517,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &143664514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,6 +4634,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 262676126}
   - {fileID: 1479212787}
@@ -4595,6 +4644,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &151276141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4761,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 490978572}
   - {fileID: 1290884983}
@@ -4720,6 +4771,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &152030919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,6 +4961,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 1288132296}
@@ -4918,6 +4971,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &154895502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,6 +5088,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1176474312}
   - {fileID: 225109579}
@@ -5043,6 +5098,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &163169701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5215,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 819413570}
   - {fileID: 241331999}
@@ -5168,6 +5225,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &168106307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5284,6 +5342,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1186906118}
   - {fileID: 765737525}
@@ -5293,6 +5352,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &170091625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,6 +5469,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 2059590419}
@@ -5418,6 +5479,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &171084210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5534,6 +5596,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 108271741}
@@ -5543,6 +5606,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &173414264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,6 +5868,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 1048219039}
@@ -5813,6 +5878,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &180195419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,6 +5995,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 883398229}
   - {fileID: 2059590419}
@@ -5938,6 +6005,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &183157152
 GameObject:
   m_ObjectHideFlags: 0
@@ -6054,6 +6122,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1548505194}
   - {fileID: 1239070744}
@@ -6063,6 +6132,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &184317044
 GameObject:
   m_ObjectHideFlags: 0
@@ -6179,6 +6249,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1213065812}
   - {fileID: 705472189}
@@ -6188,6 +6259,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &186817321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,6 +6504,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 469612648}
   - {fileID: 1445801239}
@@ -6441,6 +6514,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &196536636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,6 +6704,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 1759653697}
@@ -6639,93 +6714,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
---- !u!1 &202679552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1401046281938202, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 202679553}
-  - component: {fileID: 202679554}
-  m_Layer: 5
-  m_Name: Slider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &202679553
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224696978297964798, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202679552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 744459050}
-  - {fileID: 949536576}
-  m_Father: {fileID: 1478671597}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 616.5, y: -242.2}
-  m_SizeDelta: {x: 76.41, y: 157.79}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &202679554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114478993493176886, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202679552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 244988252}
-  m_HandleRect: {fileID: 0}
-  m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  beforeRender: {fileID: 0}
 --- !u!1 &203382341
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,6 +6831,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1393643889}
@@ -6851,6 +6841,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &209742190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6967,6 +6958,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 909569341}
@@ -6976,6 +6968,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &212851319
 GameObject:
   m_ObjectHideFlags: 0
@@ -7092,6 +7085,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 80989887}
   - {fileID: 1215777087}
@@ -7101,6 +7095,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &224623750
 GameObject:
   m_ObjectHideFlags: 0
@@ -7217,6 +7212,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1143189273}
   - {fileID: 1022145317}
@@ -7226,6 +7222,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &225109579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7342,6 +7339,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 801686902}
   - {fileID: 996155335}
@@ -7351,6 +7349,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &229308353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7467,6 +7466,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1392800020}
@@ -7476,6 +7476,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &231310371
 GameObject:
   m_ObjectHideFlags: 0
@@ -7799,6 +7800,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1932610389}
@@ -7808,6 +7810,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &237976455
 GameObject:
   m_ObjectHideFlags: 0
@@ -7997,6 +8000,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1917340613}
   - {fileID: 448909662}
@@ -8006,6 +8010,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &241489238
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,79 +8172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates: []
   delegates: []
---- !u!1 &244988251
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1293038230775112, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 244988252}
-  - component: {fileID: 244988254}
-  - component: {fileID: 244988253}
-  m_Layer: 5
-  m_Name: Fill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &244988252
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224456145010290488, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244988251}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 949536576}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.96}
-  m_SizeDelta: {x: 0, y: 2.07}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &244988253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114834333627729236, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244988251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 1c93468efa87d61479b410b04da5b989, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 0
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &244988254
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222999714094754184, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244988251}
-  m_CullTransparentMesh: 0
 --- !u!1 &247549460
 GameObject:
   m_ObjectHideFlags: 0
@@ -8356,6 +8288,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1097889542}
   - {fileID: 1809212946}
@@ -8365,6 +8298,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &247661245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8468,7 +8402,7 @@ RectTransform:
   - {fileID: 1661368940}
   - {fileID: 561857702}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8664,6 +8598,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 305919173}
   - {fileID: 1218839681}
@@ -8673,6 +8608,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &269784875
 GameObject:
   m_ObjectHideFlags: 0
@@ -8789,6 +8725,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 577297393}
   - {fileID: 2059590419}
@@ -8798,6 +8735,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &274445792
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,7 +8767,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9041,6 +8979,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 564520935}
   - {fileID: 1069206627}
@@ -9050,6 +8989,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &305919173
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,6 +9106,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 639710108}
   - {fileID: 1589159573}
@@ -9175,6 +9116,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &306090405
 GameObject:
   m_ObjectHideFlags: 0
@@ -9370,6 +9312,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 960246270}
   - {fileID: 3175447}
@@ -9379,6 +9322,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &310438292
 GameObject:
   m_ObjectHideFlags: 0
@@ -9495,6 +9439,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 1656699970}
@@ -9504,6 +9449,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &311221070
 GameObject:
   m_ObjectHideFlags: 0
@@ -9969,6 +9915,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 78281895}
@@ -9978,6 +9925,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &326723863
 GameObject:
   m_ObjectHideFlags: 0
@@ -10094,6 +10042,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1445464223}
@@ -10103,6 +10052,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &330766428
 GameObject:
   m_ObjectHideFlags: 0
@@ -10255,6 +10205,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1809212946}
   - {fileID: 1682309906}
@@ -10264,6 +10215,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &336637860
 GameObject:
   m_ObjectHideFlags: 0
@@ -10380,6 +10332,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 1618581648}
@@ -10389,6 +10342,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &339052602
 GameObject:
   m_ObjectHideFlags: 0
@@ -10505,6 +10459,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 1675717126}
@@ -10514,6 +10469,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &351781108
 GameObject:
   m_ObjectHideFlags: 0
@@ -10838,6 +10794,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1833062141}
   - {fileID: 1865527400}
@@ -10847,6 +10804,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &370807055
 GameObject:
   m_ObjectHideFlags: 0
@@ -10963,6 +10921,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1099322961}
   - {fileID: 517522759}
@@ -10972,6 +10931,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &374445970
 GameObject:
   m_ObjectHideFlags: 0
@@ -11108,9 +11068,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
+  myPlanet: {fileID: 0}
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  enemyFlag: {fileID: 0}
+  myFlag: {fileID: 0}
 --- !u!114 &374445978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11315,6 +11278,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1934944938}
   - {fileID: 1335827416}
@@ -11324,6 +11288,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &377995504
 GameObject:
   m_ObjectHideFlags: 0
@@ -11665,6 +11630,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 523081367}
   - {fileID: 1204631829}
@@ -11674,6 +11640,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &389602587
 GameObject:
   m_ObjectHideFlags: 0
@@ -11870,6 +11837,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 1724664729}
@@ -11879,6 +11847,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &400803864
 GameObject:
   m_ObjectHideFlags: 0
@@ -11995,6 +11964,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 119588798}
@@ -12004,6 +11974,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &401093704
 GameObject:
   m_ObjectHideFlags: 0
@@ -12120,6 +12091,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 82822055}
@@ -12129,6 +12101,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &402824842
 GameObject:
   m_ObjectHideFlags: 0
@@ -12245,6 +12218,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 171084210}
   - {fileID: 1456686515}
@@ -12254,6 +12228,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &404901220
 GameObject:
   m_ObjectHideFlags: 0
@@ -12528,6 +12503,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 2135420763}
@@ -12537,6 +12513,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &408417171
 GameObject:
   m_ObjectHideFlags: 0
@@ -12653,6 +12630,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1415961201}
   - {fileID: 1434057303}
@@ -12662,6 +12640,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &415034630
 GameObject:
   m_ObjectHideFlags: 0
@@ -12857,6 +12836,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 441066154}
   - {fileID: 1865527400}
@@ -12866,6 +12846,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &418698308
 GameObject:
   m_ObjectHideFlags: 0
@@ -12982,6 +12963,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 2122743421}
@@ -12991,6 +12973,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &441066154
 GameObject:
   m_ObjectHideFlags: 0
@@ -13107,6 +13090,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 417514189}
   - {fileID: 1976316790}
@@ -13116,6 +13100,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &442304538
 GameObject:
   m_ObjectHideFlags: 0
@@ -13232,6 +13217,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1987983262}
   - {fileID: 130673201}
@@ -13241,6 +13227,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &445073188
 GameObject:
   m_ObjectHideFlags: 0
@@ -13331,6 +13318,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ddd72940a08c14441a989745c919b3ef, type: 2}
+--- !u!1 &445075900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1281430053995142, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445075901}
+  - component: {fileID: 445075904}
+  - component: {fileID: 445075903}
+  - component: {fileID: 445075902}
+  m_Layer: 5
+  m_Name: DiceCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &445075901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224232617845016430, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445075900}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.57243997, y: 0.57243997, z: 0.57243997}
+  m_Children:
+  - {fileID: 507948140}
+  m_Father: {fileID: 874707691}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 530, y: -193}
+  m_SizeDelta: {x: 279, y: 277}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &445075902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114833075179671496, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445075900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4416672c3639993448e040f13e3fd6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &445075903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114402280085878006, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445075900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 97ecd0ad83c10bd48a0643b5b0c20bab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &445075904
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222469004105632366, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445075900}
+  m_CullTransparentMesh: 0
 --- !u!1 &447028552
 GameObject:
   m_ObjectHideFlags: 0
@@ -13520,6 +13594,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 539841174}
   - {fileID: 1288132296}
@@ -13529,6 +13604,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &451282576
 GameObject:
   m_ObjectHideFlags: 0
@@ -13645,6 +13721,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 940027214}
   - {fileID: 866923194}
@@ -13654,6 +13731,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &453035472
 GameObject:
   m_ObjectHideFlags: 0
@@ -13770,6 +13848,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 744774717}
@@ -13779,6 +13858,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &453744704
 GameObject:
   m_ObjectHideFlags: 0
@@ -14053,6 +14133,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1589159573}
   - {fileID: 177965627}
@@ -14062,6 +14143,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &463179515
 GameObject:
   m_ObjectHideFlags: 0
@@ -14336,6 +14418,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1503486730}
@@ -14345,6 +14428,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &475385084
 GameObject:
   m_ObjectHideFlags: 0
@@ -14534,6 +14618,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 2045645539}
@@ -14543,6 +14628,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &485024293
 GameObject:
   m_ObjectHideFlags: 0
@@ -14659,6 +14745,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1682309906}
@@ -14668,6 +14755,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &490978572
 GameObject:
   m_ObjectHideFlags: 0
@@ -14784,6 +14872,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 151276141}
   - {fileID: 1584743552}
@@ -14793,6 +14882,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &491445048
 GameObject:
   m_ObjectHideFlags: 0
@@ -14866,6 +14956,46 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 491445048}
   m_CullTransparentMesh: 0
+--- !u!1 &492514062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1420063850262384, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 492514063}
+  m_Layer: 5
+  m_Name: DiceSet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &492514063
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224839893955385644, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492514062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 706940025}
+  - {fileID: 1605097465}
+  - {fileID: 1837250303}
+  - {fileID: 989524889}
+  - {fileID: 509976544}
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -6, y: 32}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &495241387
 GameObject:
   m_ObjectHideFlags: 0
@@ -14938,79 +15068,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 495241387}
-  m_CullTransparentMesh: 0
---- !u!1 &498101227
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1951064580411750, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 498101228}
-  - component: {fileID: 498101230}
-  - component: {fileID: 498101229}
-  m_Layer: 5
-  m_Name: DoubleImg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &498101228
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224795837009812092, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 498101227}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1478671597}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &498101229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114300622835360028, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 498101227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300016, guid: 2b71c7ab02b6e344aabad9afce6d304c, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &498101230
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222658530075666396, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 498101227}
   m_CullTransparentMesh: 0
 --- !u!1 &506604121
 GameObject:
@@ -15132,6 +15189,158 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &507948139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1475730423440500, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507948140}
+  - component: {fileID: 507948142}
+  - component: {fileID: 507948141}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &507948140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224446647753370564, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507948139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445075901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &507948141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114205386836554004, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507948139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b2e15819872cd4544a251c2e58e3ff38, type: 3}
+    m_FontSize: 75
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 75
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &507948142
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222471725665272354, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507948139}
+  m_CullTransparentMesh: 0
+--- !u!1 &509976543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1266645041372944, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509976544}
+  - component: {fileID: 509976546}
+  - component: {fileID: 509976545}
+  m_Layer: 5
+  m_Name: Dice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &509976544
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224208167856656388, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509976543}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4591807, y: 1.4591807, z: 1.4591807}
+  m_Children: []
+  m_Father: {fileID: 492514063}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 534.5594, y: -226.1}
+  m_SizeDelta: {x: 76.262, y: 56.49}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &509976545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114561202736922336, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509976543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 697a867f2a367ed40bb3e6b3f7e25732, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &509976546
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222786036250404704, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509976543}
+  m_CullTransparentMesh: 0
 --- !u!1 &510968972
 GameObject:
   m_ObjectHideFlags: 0
@@ -15248,6 +15457,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 2028252334}
@@ -15257,6 +15467,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &512752836
 GameObject:
   m_ObjectHideFlags: 0
@@ -15446,6 +15657,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 1242337981}
@@ -15455,6 +15667,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &517522759
 GameObject:
   m_ObjectHideFlags: 0
@@ -15571,6 +15784,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 141128050}
@@ -15580,6 +15794,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &521397301
 GameObject:
   m_ObjectHideFlags: 0
@@ -15696,6 +15911,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 69651916}
   - {fileID: 1451947889}
@@ -15705,6 +15921,81 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!1 &522991760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1274978904238482, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522991761}
+  - component: {fileID: 522991763}
+  - component: {fileID: 522991762}
+  m_Layer: 5
+  m_Name: TurnCountUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &522991761
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224241975494294520, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522991760}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children:
+  - {fileID: 1667195099}
+  m_Father: {fileID: 874707691}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 557, y: 30}
+  m_SizeDelta: {x: 279, y: 277}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &522991762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114991546339680554, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522991760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 97ecd0ad83c10bd48a0643b5b0c20bab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &522991763
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222798077022465920, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522991760}
+  m_CullTransparentMesh: 0
 --- !u!1 &523081367
 GameObject:
   m_ObjectHideFlags: 0
@@ -15821,6 +16112,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 389245239}
   - {fileID: 524108108}
@@ -15830,6 +16122,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &524108108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15946,6 +16239,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 523081367}
@@ -15955,6 +16249,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &528286862
 GameObject:
   m_ObjectHideFlags: 0
@@ -16071,6 +16366,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2114854827}
   - {fileID: 819413570}
@@ -16080,6 +16376,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &528405819
 GameObject:
   m_ObjectHideFlags: 0
@@ -16522,6 +16819,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 98057181}
   - {fileID: 1691402369}
@@ -16531,6 +16829,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &539841174
 GameObject:
   m_ObjectHideFlags: 0
@@ -16647,6 +16946,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 714531778}
   - {fileID: 448909662}
@@ -16656,6 +16956,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &540423455
 GameObject:
   m_ObjectHideFlags: 0
@@ -16892,6 +17193,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2135420763}
   - {fileID: 1298144830}
@@ -16901,6 +17203,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &552896767
 GameObject:
   m_ObjectHideFlags: 0
@@ -17017,6 +17320,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 1158831593}
@@ -17026,6 +17330,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &554599682
 GameObject:
   m_ObjectHideFlags: 0
@@ -17142,6 +17447,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 990876920}
   - {fileID: 170091625}
@@ -17151,6 +17457,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &561857701
 GameObject:
   m_ObjectHideFlags: 0
@@ -17395,6 +17702,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 1292857123}
@@ -17404,6 +17712,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &564511805
 GameObject:
   m_ObjectHideFlags: 0
@@ -17593,6 +17902,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 2122743421}
@@ -17602,6 +17912,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &566916473
 GameObject:
   m_ObjectHideFlags: 0
@@ -17718,6 +18029,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2088653622}
   - {fileID: 1940715308}
@@ -17727,6 +18039,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &577297393
 GameObject:
   m_ObjectHideFlags: 0
@@ -17843,6 +18156,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 1233286846}
@@ -17852,6 +18166,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &579820883
 GameObject:
   m_ObjectHideFlags: 0
@@ -18096,6 +18411,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 1278295456}
@@ -18105,6 +18421,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &580292742
 GameObject:
   m_ObjectHideFlags: 0
@@ -18348,6 +18665,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 876933951}
@@ -18357,6 +18675,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!224 &582698282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18502,6 +18821,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996155335}
   - {fileID: 482001743}
@@ -18511,6 +18831,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &591679228
 GameObject:
   m_ObjectHideFlags: 0
@@ -18700,6 +19021,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 326723863}
   - {fileID: 1452564279}
@@ -18709,6 +19031,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &601488987
 GameObject:
   m_ObjectHideFlags: 0
@@ -18825,6 +19148,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1378642440}
@@ -18834,6 +19158,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &605721457
 GameObject:
   m_ObjectHideFlags: 0
@@ -19102,6 +19427,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 1410575699}
@@ -19111,6 +19437,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &631769067
 GameObject:
   m_ObjectHideFlags: 0
@@ -19227,6 +19554,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 770755763}
@@ -19236,6 +19564,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &636210707
 GameObject:
   m_ObjectHideFlags: 0
@@ -19458,6 +19787,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1927571657}
@@ -19467,6 +19797,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &637065895
 GameObject:
   m_ObjectHideFlags: 0
@@ -19583,6 +19914,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 909569341}
@@ -19592,6 +19924,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!224 &638105740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19791,6 +20124,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 209742190}
   - {fileID: 305919173}
@@ -19800,6 +20134,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &650414772
 GameObject:
   m_ObjectHideFlags: 0
@@ -20459,6 +20794,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1176474312}
@@ -20468,6 +20804,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &680473342
 GameObject:
   m_ObjectHideFlags: 0
@@ -20700,6 +21037,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1003098075}
@@ -20709,6 +21047,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &697412103
 GameObject:
   m_ObjectHideFlags: 0
@@ -20898,6 +21237,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 1175704379}
@@ -20907,6 +21247,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &705472189
 GameObject:
   m_ObjectHideFlags: 0
@@ -21023,6 +21364,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1858026425}
   - {fileID: 1129775041}
@@ -21032,6 +21374,94 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!1 &706940023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1312147182417840, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706940025}
+  - component: {fileID: 706940024}
+  m_Layer: 5
+  m_Name: Slider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &706940024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114614484079459808, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 706940023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 1458234771}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 2
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!224 &706940025
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224713672722419782, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 706940023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 724990627}
+  - {fileID: 1004644166}
+  m_Father: {fileID: 492514063}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 616.5, y: -242.2}
+  m_SizeDelta: {x: 76.41, y: 157.79}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &710214495
 GameObject:
   m_ObjectHideFlags: 0
@@ -21148,6 +21578,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 203382341}
   - {fileID: 68865990}
@@ -21157,6 +21588,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &714531778
 GameObject:
   m_ObjectHideFlags: 0
@@ -21273,6 +21705,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 539841174}
@@ -21282,6 +21715,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &715480585
 GameObject:
   m_ObjectHideFlags: 0
@@ -21572,64 +22006,64 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723846564}
   m_CullTransparentMesh: 0
---- !u!1 &725141359
+--- !u!1 &724990626
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1607884900708096, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 1926769956779662, guid: a01574137665487408ed79de1ffc23d3,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 725141360}
-  - component: {fileID: 725141362}
-  - component: {fileID: 725141361}
+  - component: {fileID: 724990627}
+  - component: {fileID: 724990629}
+  - component: {fileID: 724990628}
   m_Layer: 5
-  m_Name: Pointer (1)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &725141360
+--- !u!224 &724990627
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224347421491777728, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 224201700057820510, guid: a01574137665487408ed79de1ffc23d3,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725141359}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 724990626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1441384405}
+  m_Father: {fileID: 706940025}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120.2, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &725141361
+--- !u!114 &724990628
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114286666965510816, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 114446336308911612, guid: a01574137665487408ed79de1ffc23d3,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725141359}
+  m_GameObject: {fileID: 724990626}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 093b3d1ca62cf0f41b93f09d2f0b1163, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 1c93468efa87d61479b410b04da5b989, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21637,13 +22071,13 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &725141362
+--- !u!222 &724990629
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222494773368960618, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 222481324466209678, guid: a01574137665487408ed79de1ffc23d3,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725141359}
+  m_GameObject: {fileID: 724990626}
   m_CullTransparentMesh: 0
 --- !u!1 &736565919
 GameObject:
@@ -21761,6 +22195,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2095191245}
   - {fileID: 1218839681}
@@ -21770,6 +22205,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &739364404
 GameObject:
   m_ObjectHideFlags: 0
@@ -21976,79 +22412,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741830028}
   m_CullTransparentMesh: 0
---- !u!1 &744459049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1797016747867328, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 744459050}
-  - component: {fileID: 744459052}
-  - component: {fileID: 744459051}
-  m_Layer: 5
-  m_Name: Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &744459050
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224050139100526706, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 744459049}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 202679553}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &744459051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114204207460543336, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 744459049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: 1c93468efa87d61479b410b04da5b989, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &744459052
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222001451874922628, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 744459049}
-  m_CullTransparentMesh: 0
 --- !u!1 &744488204
 GameObject:
   m_ObjectHideFlags: 0
@@ -22085,7 +22448,7 @@ RectTransform:
   - {fileID: 50010880}
   - {fileID: 668090651}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22244,6 +22607,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 453035472}
@@ -22253,6 +22617,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &746545286
 GameObject:
   m_ObjectHideFlags: 0
@@ -22475,6 +22840,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1879379202}
   - {fileID: 1989463809}
@@ -22484,6 +22850,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &756631295
 GameObject:
   m_ObjectHideFlags: 0
@@ -22673,6 +23040,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 116977033}
   - {fileID: 1176474312}
@@ -22682,6 +23050,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &760842544
 GameObject:
   m_ObjectHideFlags: 0
@@ -22835,6 +23204,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 965007035}
@@ -22844,6 +23214,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &765903032
 GameObject:
   m_ObjectHideFlags: 0
@@ -22960,6 +23331,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 1454669962}
@@ -22969,6 +23341,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &768407526
 GameObject:
   m_ObjectHideFlags: 0
@@ -23285,6 +23658,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 631769067}
   - {fileID: 310438292}
@@ -23294,6 +23668,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &772966611
 GameObject:
   m_ObjectHideFlags: 0
@@ -23571,6 +23946,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 1415961201}
@@ -23580,6 +23956,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!4 &784074206
 Transform:
   m_ObjectHideFlags: 0
@@ -23710,6 +24087,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1854507475}
   - {fileID: 965007035}
@@ -23719,6 +24097,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &797107355
 GameObject:
   m_ObjectHideFlags: 0
@@ -23981,6 +24360,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 168106307}
   - {fileID: 1314629576}
@@ -23990,6 +24370,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &806044292
 GameObject:
   m_ObjectHideFlags: 0
@@ -24177,6 +24558,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1194826732}
   - {fileID: 996261728}
@@ -24186,6 +24568,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &815214205
 GameObject:
   m_ObjectHideFlags: 0
@@ -24302,6 +24685,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1017469028}
   - {fileID: 1216192729}
@@ -24311,6 +24695,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &819413570
 GameObject:
   m_ObjectHideFlags: 0
@@ -24427,6 +24812,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 163169701}
   - {fileID: 528286862}
@@ -24436,6 +24822,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &819472094
 GameObject:
   m_ObjectHideFlags: 0
@@ -24625,6 +25012,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 183157152}
   - {fileID: 136879311}
@@ -24634,6 +25022,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &823012255
 GameObject:
   m_ObjectHideFlags: 0
@@ -24654,6 +25043,7 @@ GameObject:
   - component: {fileID: 823012265}
   - component: {fileID: 823012266}
   - component: {fileID: 823012267}
+  - component: {fileID: 823012268}
   m_Layer: 0
   m_Name: InGameSceneManager
   m_TagString: GameManager
@@ -24726,9 +25116,10 @@ MonoBehaviour:
   turnSet: {fileID: 806044292}
   dice: {fileID: 0}
   currentTurn: 0
-  matchingCompleteTime: 5
+  turnCountingUI: {fileID: 0}
+  matchingCompleteTime: 1
   selectOrderTime: 10
-  selectCardTime: 5
+  selectCardTime: 3
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -24772,7 +25163,7 @@ MonoBehaviour:
   readyCanvas: {fileID: 744488204}
   matchingCompleteCanvas: {fileID: 951168820}
   spinCanvas: {fileID: 248390576}
-  diceCanvas: {fileID: 1478671596}
+  diceCanvas: {fileID: 492514062}
   setTerrainCanvas: {fileID: 1001726854}
   turnTimerImg: {fileID: 1005423420}
   missionSetParentTransform: {fileID: 96063209}
@@ -24781,15 +25172,17 @@ MonoBehaviour:
   displayTextImg: {fileID: 954497341}
   enemyTurnPassObj: {fileID: 561857701}
   resultUICanvas: {fileID: 937144423}
+  diceCntingUI: {fileID: 445075900}
   charSprSet:
   - {fileID: 21300000, guid: fd81e9f40743d1844b334eda24ebdde7, type: 3}
   - {fileID: 21300006, guid: 9294fa1c61ae6ff47b000bd4428a5570, type: 3}
   - {fileID: 21300024, guid: ff6211e49923e9d419a89882649e888d, type: 3}
-  - {fileID: 21300014, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
-  - {fileID: 21300016, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
-  - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
-  - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
-  - {fileID: 21300000, guid: c7c3948f25e6a034ca0de5dfced48424, type: 3}
+  - {fileID: 21300048, guid: ff6211e49923e9d419a89882649e888d, type: 3}
+  - {fileID: 21300000, guid: f22751fdd8201d04586fd807d3c8c483, type: 3}
+  - {fileID: 21300000, guid: 681dbaa6610b5944b9307ea651bbfaef, type: 3}
+  - {fileID: 21300000, guid: c0490478cfec0fb4fb734f60df16ae4b, type: 3}
+  - {fileID: 21300000, guid: 808a3c3ef95cfc241ba7fd038b08d242, type: 3}
+  - {fileID: 21300000, guid: 97fe0a0fa08b7944eabd91978eabc3c7, type: 3}
   linePrefab: {fileID: 1983080428529388, guid: 865592a58fbc48b4883065d6b3bcfe16, type: 2}
 --- !u!114 &823012261
 MonoBehaviour:
@@ -24926,6 +25319,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478f4199924da73418c60546bf847a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &823012268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823012255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35410c7d1fe9feb459faa680b79555d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &849838910
@@ -25207,6 +25611,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1639980498}
   - {fileID: 136879311}
@@ -25216,6 +25621,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &864161486
 GameObject:
   m_ObjectHideFlags: 0
@@ -25332,6 +25738,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2022488928}
   - {fileID: 1099322961}
@@ -25341,6 +25748,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &864600778
 GameObject:
   m_ObjectHideFlags: 0
@@ -25457,6 +25865,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 1451947889}
@@ -25466,6 +25875,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &866923194
 GameObject:
   m_ObjectHideFlags: 0
@@ -25582,6 +25992,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 451282576}
   - {fileID: 1653531691}
@@ -25591,6 +26002,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &871229243
 GameObject:
   m_ObjectHideFlags: 0
@@ -25707,6 +26119,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1804755840}
   - {fileID: 1612747182}
@@ -25716,145 +26129,44 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
---- !u!1 &873423145
+  beforeRender: {fileID: 0}
+--- !u!1 &874707690
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1589912889649916, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 1077499021375230, guid: 560a98abf715b2e4cab40e10c093e107,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 873423146}
-  - component: {fileID: 873423148}
-  - component: {fileID: 873423147}
-  - component: {fileID: 873423149}
-  - component: {fileID: 873423150}
+  - component: {fileID: 874707691}
   m_Layer: 5
-  m_Name: Body
+  m_Name: DisplayDataUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &873423146
+--- !u!224 &874707691
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224480803537450276, guid: f60a926d138d33848b25cd18a3655b7e,
+  m_CorrespondingSourceObject: {fileID: 224354191847087200, guid: 560a98abf715b2e4cab40e10c093e107,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873423145}
+  m_GameObject: {fileID: 874707690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2142143, y: 3.2142143, z: 3.2142143}
-  m_Children: []
-  m_Father: {fileID: 1478671597}
-  m_RootOrder: 2
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 522991761}
+  - {fileID: 445075901}
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 501.3, y: -253}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &873423147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114455831829991834, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873423145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ed051cb651be1584e9634768653c5eae, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &873423148
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222866855743043320, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873423145}
-  m_CullTransparentMesh: 0
---- !u!114 &873423149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114830882888643332, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873423145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 873423150}
-          m_MethodName: OnTrigger
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 873423150}
-          m_MethodName: OffTrigger
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!114 &873423150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114998931203224540, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873423145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891e007a7f46dec43b698ca3fa5f97d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diceSlider: {fileID: 202679554}
-  pointer: {fileID: 1441384404}
-  constValue: 3
-  doubleImg: {fileID: 498101227}
 --- !u!1 &876933951
 GameObject:
   m_ObjectHideFlags: 0
@@ -25971,6 +26283,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 580781577}
   - {fileID: 1999727450}
@@ -25980,6 +26293,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &881085737
 GameObject:
   m_ObjectHideFlags: 0
@@ -26169,6 +26483,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1393643889}
@@ -26178,6 +26493,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &883914049
 GameObject:
   m_ObjectHideFlags: 0
@@ -26294,6 +26610,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 535453979}
   - {fileID: 370807055}
@@ -26303,6 +26620,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &892598407
 GameObject:
   m_ObjectHideFlags: 0
@@ -26498,6 +26816,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1434057303}
   - {fileID: 1434980117}
@@ -26507,6 +26826,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &904318239
 GameObject:
   m_ObjectHideFlags: 0
@@ -26623,6 +26943,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1943202257}
   - {fileID: 1392800020}
@@ -26632,6 +26953,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &905165333
 GameObject:
   m_ObjectHideFlags: 0
@@ -26875,6 +27197,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1675717126}
@@ -26884,6 +27207,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &911726643
 GameObject:
   m_ObjectHideFlags: 0
@@ -27000,6 +27324,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 714531778}
@@ -27009,6 +27334,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &912114743
 GameObject:
   m_ObjectHideFlags: 0
@@ -27125,6 +27451,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2121401002}
   - {fileID: 81462916}
@@ -27134,6 +27461,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &914525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -27250,6 +27578,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 276030393}
   - {fileID: 1430233578}
@@ -27259,6 +27588,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &914654594
 GameObject:
   m_ObjectHideFlags: 0
@@ -27375,6 +27705,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 637065895}
   - {fileID: 1649489986}
@@ -27384,6 +27715,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &922749775
 GameObject:
   m_ObjectHideFlags: 0
@@ -27725,6 +28057,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1374729968}
   - {fileID: 451282576}
@@ -27734,42 +28067,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
---- !u!1 &949536575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1833638509915132, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 949536576}
-  m_Layer: 5
-  m_Name: Fill Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &949536576
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224706085524283042, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 949536575}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 244988252}
-  m_Father: {fileID: 202679553}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.7300034}
-  m_SizeDelta: {x: 0, y: 1.45}
-  m_Pivot: {x: 0.5, y: 0.5}
+  beforeRender: {fileID: 0}
 --- !u!1 &951168820
 GameObject:
   m_ObjectHideFlags: 0
@@ -28050,6 +28348,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 400803864}
   - {fileID: 1241291164}
@@ -28059,6 +28358,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &964173628
 GameObject:
   m_ObjectHideFlags: 0
@@ -28248,6 +28548,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 1417626605}
@@ -28257,6 +28558,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &973403877
 GameObject:
   m_ObjectHideFlags: 0
@@ -28446,6 +28748,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 770755763}
   - {fileID: 31305738}
@@ -28455,6 +28758,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &981164121
 GameObject:
   m_ObjectHideFlags: 0
@@ -28764,6 +29068,51 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 985865825}
   m_CullTransparentMesh: 0
+--- !u!1 &989524888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1339635348085476, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 989524889}
+  - component: {fileID: 989524890}
+  m_Layer: 5
+  m_Name: Pointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &989524889
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224758999417533054, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 989524888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1992445332}
+  m_Father: {fileID: 492514063}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 530, y: -223.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &989524890
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222846279816749712, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 989524888}
+  m_CullTransparentMesh: 0
 --- !u!1 &990093047
 GameObject:
   m_ObjectHideFlags: 0
@@ -28880,6 +29229,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1671755731}
   - {fileID: 485024293}
@@ -28889,6 +29239,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &990876920
 GameObject:
   m_ObjectHideFlags: 0
@@ -29005,6 +29356,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 554599682}
   - {fileID: 1213065812}
@@ -29014,6 +29366,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &992578107
 GameObject:
   m_ObjectHideFlags: 0
@@ -29203,6 +29556,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 589364665}
   - {fileID: 513719430}
@@ -29212,6 +29566,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &996261728
 GameObject:
   m_ObjectHideFlags: 0
@@ -29328,6 +29683,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 814200909}
@@ -29337,6 +29693,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &997379571
 GameObject:
   m_ObjectHideFlags: 0
@@ -29614,6 +29971,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1204631829}
   - {fileID: 1142711213}
@@ -29623,6 +29981,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1001726854
 GameObject:
   m_ObjectHideFlags: 0
@@ -29652,7 +30011,7 @@ RectTransform:
   m_Children:
   - {fileID: 1547662486}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29775,6 +30134,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1430233578}
   - {fileID: 693976558}
@@ -29784,6 +30144,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1004194514
 GameObject:
   m_ObjectHideFlags: 0
@@ -29912,6 +30273,42 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004194514}
   m_CullTransparentMesh: 0
+--- !u!1 &1004644165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1752950369916146, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004644166}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1004644166
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224077095515506908, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1004644165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1458234771}
+  m_Father: {fileID: 706940025}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchoredPosition: {x: 0, y: 5.7300034}
+  m_SizeDelta: {x: 0, y: 1.45}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1005423420
 GameObject:
   m_ObjectHideFlags: 0
@@ -29939,7 +30336,7 @@ RectTransform:
   m_GameObject: {fileID: 1005423420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1723470224}
   m_Father: {fileID: 1868055927}
@@ -30043,7 +30440,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0490478cfec0fb4fb734f60df16ae4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30175,6 +30572,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1759653697}
   - {fileID: 1918495570}
@@ -30184,6 +30582,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1011064339
 GameObject:
   m_ObjectHideFlags: 0
@@ -30427,6 +30826,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2122743421}
   - {fileID: 1389247442}
@@ -30436,6 +30836,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1014945745
 GameObject:
   m_ObjectHideFlags: 0
@@ -30625,6 +31026,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 815214205}
   - {fileID: 1042028599}
@@ -30634,6 +31036,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1018967460
 GameObject:
   m_ObjectHideFlags: 0
@@ -30829,6 +31232,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1242337981}
   - {fileID: 1048219039}
@@ -30838,6 +31242,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1023298873
 GameObject:
   m_ObjectHideFlags: 0
@@ -30954,6 +31359,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1728010970}
   - {fileID: 551994290}
@@ -30963,6 +31369,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1027381518
 GameObject:
   m_ObjectHideFlags: 0
@@ -31280,6 +31687,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1759258860}
   - {fileID: 1454669962}
@@ -31289,6 +31697,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1033011305
 GameObject:
   m_ObjectHideFlags: 0
@@ -31405,6 +31814,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1580498753}
   - {fileID: 1612747182}
@@ -31414,6 +31824,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1042028599
 GameObject:
   m_ObjectHideFlags: 0
@@ -31530,6 +31941,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 601488987}
   - {fileID: 184317044}
@@ -31539,6 +31951,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1046382994
 GameObject:
   m_ObjectHideFlags: 0
@@ -31655,6 +32068,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765903032}
   - {fileID: 1970553916}
@@ -31664,6 +32078,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1048219039
 GameObject:
   m_ObjectHideFlags: 0
@@ -31780,6 +32195,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 177965627}
@@ -31789,6 +32205,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1048693602
 GameObject:
   m_ObjectHideFlags: 0
@@ -31905,6 +32322,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1143189273}
@@ -31914,6 +32332,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1053455927
 GameObject:
   m_ObjectHideFlags: 0
@@ -32030,6 +32449,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1858226403}
@@ -32039,6 +32459,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1055192444
 GameObject:
   m_ObjectHideFlags: 0
@@ -32876,6 +33297,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 1003098075}
@@ -32885,6 +33307,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1080994616
 GameObject:
   m_ObjectHideFlags: 0
@@ -33001,6 +33424,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 857221682}
@@ -33010,6 +33434,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1081861456
 GameObject:
   m_ObjectHideFlags: 0
@@ -33232,6 +33657,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 247549460}
   - {fileID: 141128050}
@@ -33241,6 +33667,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1099322961
 GameObject:
   m_ObjectHideFlags: 0
@@ -33357,6 +33784,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 370807055}
   - {fileID: 864161486}
@@ -33366,6 +33794,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1104375996
 GameObject:
   m_ObjectHideFlags: 0
@@ -33469,6 +33898,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115817450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1247127985548760, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485629878}
+  - component: {fileID: 1115817452}
+  - component: {fileID: 1115817451}
+  m_Layer: 5
+  m_Name: AttackImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1115817451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114033972131778692, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8853583a10d76b141aac3fb5c1497da3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1115817452
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222716898402780896, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_CullTransparentMesh: 0
 --- !u!1 &1120616346
 GameObject:
   m_ObjectHideFlags: 0
@@ -33585,6 +34068,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1989463809}
@@ -33594,6 +34078,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1123455735
 GameObject:
   m_ObjectHideFlags: 0
@@ -33757,6 +34242,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1371651135}
   - {fileID: 705472189}
@@ -33766,6 +34252,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1132190347
 GameObject:
   m_ObjectHideFlags: 0
@@ -33777,11 +34264,10 @@ GameObject:
   - component: {fileID: 1275639254}
   - component: {fileID: 1132190348}
   - component: {fileID: 1132190349}
-  - component: {fileID: 1132190350}
   - component: {fileID: 1132190351}
   m_Layer: 0
   m_Name: Sphere_320Objects_40X
-  m_TagString: Planet
+  m_TagString: InGamePlanet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33803,7 +34289,7 @@ MonoBehaviour:
   myFlag: {fileID: 0}
   AllContainer: []
   buildingObj:
-  - {fileID: 1573716042918264, guid: bc133df8dba2a5843be61bb6a8cd3365, type: 2}
+  - {fileID: 100000, guid: 6177be42a30c0aa48a2a792e2b2f7795, type: 3}
   - {fileID: 1217086889136866, guid: 270aa3bbb5506044688e75e9d23fcf47, type: 2}
   - {fileID: 1028260716320506, guid: d17b54d6098494f43a2fe2b3f750d3bc, type: 2}
   - {fileID: 1288764197653044, guid: a5262ed52ae3ca24c954f4109bc176fb, type: 2}
@@ -33824,6 +34310,13 @@ MonoBehaviour:
   - {fileID: 1641192163470570, guid: e41ce1dd4c524ee4a8e31de84bc1034e, type: 2}
   - {fileID: 1294241127086302, guid: 7ecac2e136a55ae41a68ac77bad0ab4d, type: 2}
   - {fileID: 1995373763876344, guid: 30e50d5e693873b49b1006ed161c12db, type: 2}
+  - {fileID: 100000, guid: 75cd3ca8cb85ff44689e0e18c0fd3078, type: 3}
+  - {fileID: 1627347974826748, guid: caf9cda1e476b75429d66aeb2a7f5f20, type: 2}
+  - {fileID: 1793220276121068, guid: f33887ce2e44a0342bb76fdf3ea6311d, type: 2}
+  - {fileID: 1489980634199532, guid: 00b5fdaa9ab927147bc6914c4f76e4dd, type: 2}
+  - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
+  - {fileID: 1853574574019274, guid: 0687e0c3e4b723e4fae5f50404eb9e81, type: 2}
+  - {fileID: 1696184669864596, guid: 031db0cbc0a883e41bbe1e284012dc88, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
   - {fileID: 1749881923002708, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
@@ -33851,18 +34344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
---- !u!114 &1132190350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114925155112985192, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1132190347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c13692727265a0449a9e991e0c0b848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1132190351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33875,7 +34356,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardObject:
-  - {fileID: 1198684204867282, guid: 560a837a84d537a4f8eb6618c93b33dc, type: 2}
+  - {fileID: 1304036366484954, guid: 956c1d4de3ae01b4ebb0e5e2661561e5, type: 2}
+  - {fileID: 1555655045565836, guid: 9240d29abd5c0504e9a3922df8bfc100, type: 2}
+  - {fileID: 1065576002411974, guid: ec86a31933fef3c48a9f498f030e79a5, type: 2}
+  - {fileID: 1954600158339170, guid: 027eeaa47b624c1458ed85071a484949, type: 2}
+  - {fileID: 1120509511102134, guid: cf60164473cae7143bf3e625883d18e8, type: 2}
+  - {fileID: 1912237196377314, guid: db9a1f8ee61288548adeebb92072c3ac, type: 2}
   effectCard: {fileID: 0}
   testMesh: {fileID: 1029591818}
 --- !u!1 &1132665301
@@ -34029,7 +34515,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1132671606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 823012268}
+        m_MethodName: TutorialGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1132671606
@@ -34184,6 +34681,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1915899304}
   - {fileID: 1618495978}
@@ -34193,6 +34691,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1137437418
 GameObject:
   m_ObjectHideFlags: 0
@@ -34309,6 +34808,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1702758665}
   - {fileID: 1858026425}
@@ -34318,6 +34818,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1142711213
 GameObject:
   m_ObjectHideFlags: 0
@@ -34434,6 +34935,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 1879379202}
@@ -34443,6 +34945,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1143189273
 GameObject:
   m_ObjectHideFlags: 0
@@ -34559,6 +35062,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 1048693602}
@@ -34568,6 +35072,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1149021771
 GameObject:
   m_ObjectHideFlags: 0
@@ -34714,6 +35219,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 990093047}
@@ -34723,6 +35229,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1158397419
 GameObject:
   m_ObjectHideFlags: 0
@@ -34839,6 +35346,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2028252334}
   - {fileID: 1456686515}
@@ -34848,6 +35356,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1158831593
 GameObject:
   m_ObjectHideFlags: 0
@@ -34964,6 +35473,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1175704379}
   - {fileID: 552896767}
@@ -34973,6 +35483,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1159692175
 GameObject:
   m_ObjectHideFlags: 0
@@ -35286,6 +35797,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1158831593}
   - {fileID: 418698308}
@@ -35295,6 +35807,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1176474312
 GameObject:
   m_ObjectHideFlags: 0
@@ -35411,6 +35924,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 154895502}
   - {fileID: 759865688}
@@ -35420,6 +35934,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1185564571
 GameObject:
   m_ObjectHideFlags: 0
@@ -35676,6 +36191,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 177965627}
   - {fileID: 168106307}
@@ -35685,6 +36201,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1189995291
 GameObject:
   m_ObjectHideFlags: 0
@@ -35837,6 +36354,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1618495978}
   - {fileID: 814200909}
@@ -35846,6 +36364,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1204631829
 GameObject:
   m_ObjectHideFlags: 0
@@ -35962,6 +36481,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 999083812}
   - {fileID: 389245239}
@@ -35971,6 +36491,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1209512908
 GameObject:
   m_ObjectHideFlags: 0
@@ -36087,6 +36608,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1261314925}
   - {fileID: 1759653697}
@@ -36096,6 +36618,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1213065812
 GameObject:
   m_ObjectHideFlags: 0
@@ -36212,6 +36735,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 184317044}
   - {fileID: 990876920}
@@ -36221,6 +36745,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1215777087
 GameObject:
   m_ObjectHideFlags: 0
@@ -36337,6 +36862,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 229308353}
   - {fileID: 1977953338}
@@ -36346,6 +36872,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1216192729
 GameObject:
   m_ObjectHideFlags: 0
@@ -36462,6 +36989,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1378642440}
   - {fileID: 1669602914}
@@ -36471,6 +36999,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1218839681
 GameObject:
   m_ObjectHideFlags: 0
@@ -36587,6 +37116,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 54068526}
@@ -36596,6 +37126,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1226316258
 GameObject:
   m_ObjectHideFlags: 0
@@ -37024,6 +37555,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1669602914}
   - {fileID: 577297393}
@@ -37033,6 +37565,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1234549590
 GameObject:
   m_ObjectHideFlags: 0
@@ -37380,6 +37913,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 871229243}
   - {fileID: 183157152}
@@ -37389,6 +37923,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1241291164
 GameObject:
   m_ObjectHideFlags: 0
@@ -37505,6 +38040,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1597660255}
   - {fileID: 960246270}
@@ -37514,6 +38050,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1242337981
 GameObject:
   m_ObjectHideFlags: 0
@@ -37630,6 +38167,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1022145317}
   - {fileID: 636920731}
@@ -37639,6 +38177,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1247643233
 GameObject:
   m_ObjectHideFlags: 0
@@ -37669,7 +38208,7 @@ RectTransform:
   m_LocalScale: {x: 3.2595868, y: 3.2595868, z: 3.2595868}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -37907,6 +38446,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 911726643}
   - {fileID: 1916176356}
@@ -37916,6 +38456,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1261314925
 GameObject:
   m_ObjectHideFlags: 0
@@ -38032,6 +38573,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 1684928952}
@@ -38041,6 +38583,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1263336280
 GameObject:
   m_ObjectHideFlags: 0
@@ -38157,6 +38700,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 1759258860}
@@ -38166,6 +38710,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1265216244
 GameObject:
   m_ObjectHideFlags: 0
@@ -38785,6 +39330,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 579928386}
@@ -38794,6 +39340,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1281981034
 GameObject:
   m_ObjectHideFlags: 0
@@ -38910,6 +39457,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1292857123}
   - {fileID: 1666188838}
@@ -38919,6 +39467,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1282844373
 GameObject:
   m_ObjectHideFlags: 0
@@ -39114,6 +39663,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 448909662}
   - {fileID: 119588798}
@@ -39123,6 +39673,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1290884983
 GameObject:
   m_ObjectHideFlags: 0
@@ -39239,6 +39790,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1906793472}
   - {fileID: 151276141}
@@ -39248,6 +39800,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1292857123
 GameObject:
   m_ObjectHideFlags: 0
@@ -39364,6 +39917,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1281981034}
   - {fileID: 2033697905}
@@ -39373,6 +39927,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1294829817
 GameObject:
   m_ObjectHideFlags: 0
@@ -39562,6 +40117,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1410575699}
   - {fileID: 407687209}
@@ -39571,6 +40127,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1299518536
 GameObject:
   m_ObjectHideFlags: 0
@@ -39797,6 +40354,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1724664729}
@@ -39806,6 +40364,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1329321123
 GameObject:
   m_ObjectHideFlags: 0
@@ -40177,6 +40736,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 521397301}
   - {fileID: 377410625}
@@ -40186,6 +40746,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1341906189
 GameObject:
   m_ObjectHideFlags: 0
@@ -40302,6 +40863,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 5238884}
@@ -40311,6 +40873,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1342977608
 GameObject:
   m_ObjectHideFlags: 0
@@ -40427,6 +40990,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 402824842}
   - {fileID: 1372942047}
@@ -40436,6 +41000,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1347287445
 GameObject:
   m_ObjectHideFlags: 0
@@ -40738,7 +41303,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -41058,6 +41623,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1129775041}
   - {fileID: 418698308}
@@ -41067,6 +41633,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1372360055
 GameObject:
   m_ObjectHideFlags: 0
@@ -41256,6 +41823,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 1524489844}
@@ -41265,6 +41833,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1373928499
 GameObject:
   m_ObjectHideFlags: 0
@@ -41454,6 +42023,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 310438292}
   - {fileID: 940027214}
@@ -41463,6 +42033,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1378642440
 GameObject:
   m_ObjectHideFlags: 0
@@ -41579,6 +42150,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1216192729}
   - {fileID: 601488987}
@@ -41588,6 +42160,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1381000079
 GameObject:
   m_ObjectHideFlags: 0
@@ -41735,6 +42308,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1483358713}
   - {fileID: 914525503}
@@ -41744,6 +42318,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1390485217
 GameObject:
   m_ObjectHideFlags: 0
@@ -41777,7 +42352,7 @@ RectTransform:
   - {fileID: 723846565}
   - {fileID: 528405820}
   m_Father: {fileID: 1868055927}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -41900,6 +42475,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 229308353}
@@ -41909,6 +42485,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1393643889
 GameObject:
   m_ObjectHideFlags: 0
@@ -42025,6 +42602,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2073474912}
   - {fileID: 883398229}
@@ -42034,6 +42612,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1396172116
 GameObject:
   m_ObjectHideFlags: 0
@@ -42150,6 +42729,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 1671755731}
@@ -42159,6 +42739,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1407792010
 GameObject:
   m_ObjectHideFlags: 0
@@ -42275,6 +42856,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 1158831593}
@@ -42284,6 +42866,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1410575699
 GameObject:
   m_ObjectHideFlags: 0
@@ -42400,6 +42983,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 1298144830}
@@ -42409,6 +42993,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1413049239
 GameObject:
   m_ObjectHideFlags: 0
@@ -42573,6 +43158,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784074200}
   - {fileID: 1434980117}
@@ -42582,6 +43168,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1417611858
 GameObject:
   m_ObjectHideFlags: 0
@@ -42698,6 +43285,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 54276500}
   - {fileID: 35264477}
@@ -42707,6 +43295,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1417626605
 GameObject:
   m_ObjectHideFlags: 0
@@ -42823,6 +43412,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1932610389}
   - {fileID: 965007035}
@@ -42832,6 +43422,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1428031916
 GameObject:
   m_ObjectHideFlags: 0
@@ -42948,6 +43539,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 3175447}
   - {fileID: 1920964238}
@@ -42957,6 +43549,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1430233578
 GameObject:
   m_ObjectHideFlags: 0
@@ -43073,6 +43666,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914525503}
   - {fileID: 1003098075}
@@ -43082,6 +43676,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1434057303
 GameObject:
   m_ObjectHideFlags: 0
@@ -43198,6 +43793,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1480288513}
   - {fileID: 893787805}
@@ -43207,6 +43803,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1434980117
 GameObject:
   m_ObjectHideFlags: 0
@@ -43323,6 +43920,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 893787805}
   - {fileID: 1580498753}
@@ -43332,6 +43930,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1435120585
 GameObject:
   m_ObjectHideFlags: 0
@@ -43561,51 +44160,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!1 &1441384404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1434008690057718, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1441384405}
-  - component: {fileID: 1441384407}
-  m_Layer: 5
-  m_Name: Pointer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1441384405
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224806862701560414, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441384404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 725141360}
-  m_Father: {fileID: 1478671597}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 530, y: -243.8}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1441384407
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222758527677878062, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441384404}
-  m_CullTransparentMesh: 0
 --- !u!1 &1445464223
 GameObject:
   m_ObjectHideFlags: 0
@@ -43722,6 +44276,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1120616346}
   - {fileID: 326723863}
@@ -43731,6 +44286,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1445801239
 GameObject:
   m_ObjectHideFlags: 0
@@ -43847,6 +44403,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1842956326}
   - {fileID: 1943202257}
@@ -43856,6 +44413,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1451947889
 GameObject:
   m_ObjectHideFlags: 0
@@ -43972,6 +44530,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 308354441}
   - {fileID: 521397301}
@@ -43981,6 +44540,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1452564279
 GameObject:
   m_ObjectHideFlags: 0
@@ -44097,6 +44657,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 599982271}
   - {fileID: 1480288513}
@@ -44106,6 +44667,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1454669962
 GameObject:
   m_ObjectHideFlags: 0
@@ -44222,6 +44784,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 108271741}
@@ -44231,6 +44794,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1456686515
 GameObject:
   m_ObjectHideFlags: 0
@@ -44347,6 +44911,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1977953338}
   - {fileID: 402824842}
@@ -44356,6 +44921,80 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!1 &1458234770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1341424433876442, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458234771}
+  - component: {fileID: 1458234773}
+  - component: {fileID: 1458234772}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1458234771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224302487370458324, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458234770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1004644166}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -3.96}
+  m_SizeDelta: {x: 0, y: 2.07}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1458234772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114658097020184974, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458234770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300006, guid: 1c93468efa87d61479b410b04da5b989, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 0
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1458234773
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222623916894853964, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458234770}
+  m_CullTransparentMesh: 0
 --- !u!1 &1458865420
 GameObject:
   m_ObjectHideFlags: 0
@@ -44540,46 +45179,6 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1478671596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1132467041069244, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1478671597}
-  m_Layer: 5
-  m_Name: DiceSet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1478671597
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224603885678039298, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1478671596}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 202679553}
-  - {fileID: 498101228}
-  - {fileID: 873423146}
-  - {fileID: 1441384405}
-  - {fileID: 1997997649}
-  m_Father: {fileID: 1868055927}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: 32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1479126235
@@ -44770,6 +45369,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 765737525}
   - {fileID: 455685414}
@@ -44779,6 +45379,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1479797730
 GameObject:
   m_ObjectHideFlags: 0
@@ -45004,6 +45605,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1452564279}
   - {fileID: 1434057303}
@@ -45013,6 +45615,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1481850350
 GameObject:
   m_ObjectHideFlags: 0
@@ -45253,6 +45856,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 131071464}
   - {fileID: 1389247442}
@@ -45262,6 +45866,26 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!224 &1485629878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115817450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1868055927}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -560.9, y: 19}
+  m_SizeDelta: {x: 101, y: 98}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1494492458
 GameObject:
   m_ObjectHideFlags: 0
@@ -45378,6 +46002,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1524489844}
   - {fileID: 622994259}
@@ -45387,6 +46012,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1499730604
 GameObject:
   m_ObjectHideFlags: 0
@@ -45503,6 +46129,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1682309906}
   - {fileID: 1023298873}
@@ -45512,6 +46139,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1500401967
 GameObject:
   m_ObjectHideFlags: 0
@@ -45748,6 +46376,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2008778987}
   - {fileID: 469612648}
@@ -45757,6 +46386,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1513205005
 GameObject:
   m_ObjectHideFlags: 0
@@ -46037,6 +46667,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 401093704}
   - {fileID: 710214495}
@@ -46046,6 +46677,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1521044494
 GameObject:
   m_ObjectHideFlags: 0
@@ -46235,6 +46867,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1494492458}
   - {fileID: 78281895}
@@ -46244,6 +46877,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1535208288
 GameObject:
   m_ObjectHideFlags: 0
@@ -46462,14 +47096,14 @@ RectTransform:
   m_GameObject: {fileID: 1547662485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.41936627, y: 0.41936627, z: 0.41936627}
   m_Children: []
   m_Father: {fileID: 1001726855}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 496, y: -232}
+  m_AnchoredPosition: {x: 534, y: -192.7}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1547662487
@@ -46545,7 +47179,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300020, guid: 2b71c7ab02b6e344aabad9afce6d304c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e622132b1d52e545a7b6b7daf48b3ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46677,6 +47311,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1033011305}
   - {fileID: 183157152}
@@ -46686,6 +47321,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1548865319
 GameObject:
   m_ObjectHideFlags: 0
@@ -46875,6 +47511,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 524108108}
   - {fileID: 1931759691}
@@ -46884,6 +47521,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1572146875
 GameObject:
   m_ObjectHideFlags: 0
@@ -47158,7 +47796,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300016, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f22751fdd8201d04586fd807d3c8c483, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -47369,6 +48007,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1434980117}
   - {fileID: 1675717126}
@@ -47378,6 +48017,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1581329931
 GameObject:
   m_ObjectHideFlags: 0
@@ -47494,6 +48134,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1931759691}
   - {fileID: 212851319}
@@ -47503,6 +48144,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1583783710
 GameObject:
   m_ObjectHideFlags: 0
@@ -47698,6 +48340,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2132958254}
   - {fileID: 1565404600}
@@ -47707,6 +48350,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1584743552
 GameObject:
   m_ObjectHideFlags: 0
@@ -47823,6 +48467,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 17053615}
   - {fileID: 1691402369}
@@ -47832,6 +48477,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1589159573
 GameObject:
   m_ObjectHideFlags: 0
@@ -47948,6 +48594,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 455685414}
   - {fileID: 305919173}
@@ -47957,6 +48604,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1597660255
 GameObject:
   m_ObjectHideFlags: 0
@@ -48073,6 +48721,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 119588798}
   - {fileID: 1241291164}
@@ -48082,6 +48731,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1598273085
 GameObject:
   m_ObjectHideFlags: 0
@@ -48303,7 +48953,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: f7a0f786cb4e9c3489d075459944fe52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0490478cfec0fb4fb734f60df16ae4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48319,6 +48969,79 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602802863}
   m_CullTransparentMesh: 0
+--- !u!1 &1605097462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1624616992912996, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605097465}
+  - component: {fileID: 1605097464}
+  - component: {fileID: 1605097463}
+  m_Layer: 5
+  m_Name: DoubleImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1605097463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114378365976117882, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605097462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300016, guid: 2b71c7ab02b6e344aabad9afce6d304c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1605097464
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222738557192006562, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605097462}
+  m_CullTransparentMesh: 0
+--- !u!224 &1605097465
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224790681261903386, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605097462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 492514063}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1606157092
 GameObject:
   m_ObjectHideFlags: 0
@@ -48435,6 +49158,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1691402369}
   - {fileID: 517522759}
@@ -48444,6 +49168,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1612747182
 GameObject:
   m_ObjectHideFlags: 0
@@ -48560,6 +49285,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1780604838}
   - {fileID: 871229243}
@@ -48569,6 +49295,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1618495978
 GameObject:
   m_ObjectHideFlags: 0
@@ -48685,6 +49412,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1135955283}
   - {fileID: 1194826732}
@@ -48694,6 +49422,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1618581648
 GameObject:
   m_ObjectHideFlags: 0
@@ -48810,6 +49539,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 38060710}
   - {fileID: 336637860}
@@ -48819,6 +49549,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1631100074
 GameObject:
   m_ObjectHideFlags: 0
@@ -49063,6 +49794,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 857221682}
   - {fileID: 1129775041}
@@ -49072,6 +49804,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1642138704
 GameObject:
   m_ObjectHideFlags: 0
@@ -49284,6 +50017,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 914654594}
   - {fileID: 339052602}
@@ -49293,6 +50027,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1653531691
 GameObject:
   m_ObjectHideFlags: 0
@@ -49409,6 +50144,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 866923194}
   - {fileID: 1953921687}
@@ -49418,6 +50154,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1653916352
 GameObject:
   m_ObjectHideFlags: 0
@@ -49685,6 +50422,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1805881791}
   - {fileID: 2088653622}
@@ -49694,6 +50432,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1661368939
 GameObject:
   m_ObjectHideFlags: 0
@@ -49937,6 +50676,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 180195419}
   - {fileID: 1281981034}
@@ -49946,6 +50686,86 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
+--- !u!1 &1667195098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1335295359358626, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667195099}
+  - component: {fileID: 1667195101}
+  - component: {fileID: 1667195100}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1667195099
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224165602825184464, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667195098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 522991761}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1667195100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114627366313183578, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667195098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b2e15819872cd4544a251c2e58e3ff38, type: 3}
+    m_FontSize: 75
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "20\uD134"
+--- !u!222 &1667195101
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222141451064294374, guid: 560a98abf715b2e4cab40e10c093e107,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667195098}
+  m_CullTransparentMesh: 0
 --- !u!1 &1669602914
 GameObject:
   m_ObjectHideFlags: 0
@@ -50062,6 +50882,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1069206627}
   - {fileID: 1233286846}
@@ -50071,6 +50892,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1671755731
 GameObject:
   m_ObjectHideFlags: 0
@@ -50187,6 +51009,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 990093047}
   - {fileID: 1858226403}
@@ -50196,6 +51019,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1672162113
 GameObject:
   m_ObjectHideFlags: 0
@@ -50391,6 +51215,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 909569341}
   - {fileID: 339052602}
@@ -50400,6 +51225,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1682309906
 GameObject:
   m_ObjectHideFlags: 0
@@ -50516,6 +51342,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 485024293}
@@ -50525,6 +51352,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1684928952
 GameObject:
   m_ObjectHideFlags: 0
@@ -50641,6 +51469,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 35264477}
   - {fileID: 1261314925}
@@ -50650,6 +51479,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1684964638
 GameObject:
   m_ObjectHideFlags: 0
@@ -50845,6 +51675,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1518446044}
   - {fileID: 883398229}
@@ -50854,6 +51685,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1691402369
 GameObject:
   m_ObjectHideFlags: 0
@@ -50970,6 +51802,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1606157092}
   - {fileID: 1584743552}
@@ -50979,6 +51812,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1694394054
 GameObject:
   m_ObjectHideFlags: 0
@@ -51395,6 +52229,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 996261728}
   - {fileID: 1137437418}
@@ -51404,6 +52239,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1705047646
 GameObject:
   m_ObjectHideFlags: 0
@@ -51599,6 +52435,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 1927571657}
@@ -51608,6 +52445,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1723470223
 GameObject:
   m_ObjectHideFlags: 0
@@ -51803,6 +52641,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1903221677}
   - {fileID: 1314629576}
@@ -51812,6 +52651,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1728010970
 GameObject:
   m_ObjectHideFlags: 0
@@ -51928,6 +52768,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1920964238}
   - {fileID: 1023298873}
@@ -51937,6 +52778,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!4 &1731323571
 Transform:
   m_ObjectHideFlags: 0
@@ -52365,6 +53207,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1029591818}
   - {fileID: 1263336280}
@@ -52374,6 +53217,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1759653697
 GameObject:
   m_ObjectHideFlags: 0
@@ -52490,6 +53334,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1010536049}
   - {fileID: 201099082}
@@ -52499,6 +53344,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1771726575
 GameObject:
   m_ObjectHideFlags: 0
@@ -52615,6 +53461,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 108271741}
   - {fileID: 131071464}
@@ -52624,6 +53471,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1773601583
 GameObject:
   m_ObjectHideFlags: 0
@@ -52819,6 +53667,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1612747182}
   - {fileID: 1278295456}
@@ -52828,6 +53677,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1785858946
 GameObject:
   m_ObjectHideFlags: 0
@@ -53350,6 +54200,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 579928386}
   - {fileID: 871229243}
@@ -53359,6 +54210,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1804820475
 GameObject:
   m_ObjectHideFlags: 0
@@ -53475,6 +54327,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 5238884}
   - {fileID: 1452564279}
@@ -53484,6 +54337,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1805881791
 GameObject:
   m_ObjectHideFlags: 0
@@ -53600,6 +54454,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1656699970}
   - {fileID: 1804820475}
@@ -53609,6 +54464,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1806623670
 GameObject:
   m_ObjectHideFlags: 0
@@ -53852,6 +54708,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1953178002}
   - {fileID: 1854507475}
@@ -53861,6 +54718,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1809212946
 GameObject:
   m_ObjectHideFlags: 0
@@ -53977,6 +54835,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 334954668}
   - {fileID: 551994290}
@@ -53986,6 +54845,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1813766931
 GameObject:
   m_ObjectHideFlags: 0
@@ -54211,6 +55071,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1999727450}
   - {fileID: 1097889542}
@@ -54220,6 +55081,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1822434692
 GameObject:
   m_ObjectHideFlags: 0
@@ -54488,6 +55350,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 130673201}
@@ -54497,6 +55360,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1833683806
 GameObject:
   m_ObjectHideFlags: 0
@@ -54575,6 +55439,145 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833683806}
+  m_CullTransparentMesh: 0
+--- !u!1 &1837250302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1362457542930400, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1837250303}
+  - component: {fileID: 1837250307}
+  - component: {fileID: 1837250306}
+  - component: {fileID: 1837250305}
+  - component: {fileID: 1837250304}
+  m_Layer: 5
+  m_Name: Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1837250303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224325913983221744, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837250302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4566, y: 1.4566, z: 1.4566}
+  m_Children: []
+  m_Father: {fileID: 492514063}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 501.3, y: -230}
+  m_SizeDelta: {x: 200, y: 230}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1837250304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114729799498217332, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837250302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891e007a7f46dec43b698ca3fa5f97d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceSlider: {fileID: 706940024}
+  pointer: {fileID: 989524888}
+  constValue: 3
+  doubleImg: {fileID: 1605097462}
+--- !u!114 &1837250305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114586310930474610, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837250302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1837250304}
+          m_MethodName: OnTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1837250304}
+          m_MethodName: OffTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!114 &1837250306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114026306408120868, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837250302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 439f9fcb6e05cb14a91c0822831e1a99, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1837250307
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222118210982304840, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837250302}
   m_CullTransparentMesh: 0
 --- !u!1 &1840761793
 GameObject:
@@ -54692,6 +55695,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 193711801}
   - {fileID: 1099322961}
@@ -54701,6 +55705,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1842956326
 GameObject:
   m_ObjectHideFlags: 0
@@ -54817,6 +55822,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 622994259}
   - {fileID: 864161486}
@@ -54826,6 +55832,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1853483681
 GameObject:
   m_ObjectHideFlags: 0
@@ -54942,6 +55949,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 153429358}
   - {fileID: 2063560789}
@@ -54951,6 +55959,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1854507475
 GameObject:
   m_ObjectHideFlags: 0
@@ -55067,6 +56076,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 784154797}
   - {fileID: 1808188071}
@@ -55076,6 +56086,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1858026425
 GameObject:
   m_ObjectHideFlags: 0
@@ -55192,6 +56203,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 705472189}
   - {fileID: 1137437418}
@@ -55201,6 +56213,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1858226403
 GameObject:
   m_ObjectHideFlags: 0
@@ -55317,6 +56330,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1499730604}
   - {fileID: 1671755731}
@@ -55326,6 +56340,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1865527400
 GameObject:
   m_ObjectHideFlags: 0
@@ -55442,6 +56457,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 369500355}
   - {fileID: 819413570}
@@ -55451,6 +56467,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1866580831
 GameObject:
   m_ObjectHideFlags: 0
@@ -55671,13 +56688,15 @@ RectTransform:
   - {fileID: 1598273086}
   - {fileID: 1642138705}
   - {fileID: 1005423421}
-  - {fileID: 1478671597}
+  - {fileID: 492514063}
   - {fileID: 2010562272}
   - {fileID: 954497342}
   - {fileID: 1475747914}
+  - {fileID: 1485629878}
   - {fileID: 96063209}
   - {fileID: 1001726855}
   - {fileID: 248390577}
+  - {fileID: 874707691}
   - {fileID: 744488205}
   - {fileID: 1362228163}
   - {fileID: 274445793}
@@ -55807,6 +56826,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 753988995}
   - {fileID: 1940715308}
@@ -55816,6 +56836,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1893722415
 GameObject:
   m_ObjectHideFlags: 0
@@ -56005,6 +57026,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 321731969}
   - {fileID: 336637860}
@@ -56014,6 +57036,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1899239934
 GameObject:
   m_ObjectHideFlags: 0
@@ -56258,6 +57281,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1724664729}
   - {fileID: 1808188071}
@@ -56267,6 +57291,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1905182681
 GameObject:
   m_ObjectHideFlags: 0
@@ -56510,6 +57535,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1290884983}
   - {fileID: 1854507475}
@@ -56519,6 +57545,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1915899304
 GameObject:
   m_ObjectHideFlags: 0
@@ -56635,6 +57662,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1048693602}
   - {fileID: 1135955283}
@@ -56644,6 +57672,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1916176356
 GameObject:
   m_ObjectHideFlags: 0
@@ -56760,6 +57789,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1249768407}
   - {fileID: 1241291164}
@@ -56769,6 +57799,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1917340613
 GameObject:
   m_ObjectHideFlags: 0
@@ -56885,6 +57916,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 2033697905}
@@ -56894,6 +57926,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1918495570
 GameObject:
   m_ObjectHideFlags: 0
@@ -57010,6 +58043,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1053455927}
   - {fileID: 1249768407}
@@ -57019,6 +58053,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1920964238
 GameObject:
   m_ObjectHideFlags: 0
@@ -57135,6 +58170,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1428031916}
   - {fileID: 1728010970}
@@ -57144,6 +58180,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1922279662
 GameObject:
   m_ObjectHideFlags: 0
@@ -57260,6 +58297,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1233286846}
   - {fileID: 693976558}
@@ -57269,6 +58307,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1927571657
 GameObject:
   m_ObjectHideFlags: 0
@@ -57385,6 +58424,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 224623750}
   - {fileID: 636920731}
@@ -57394,6 +58434,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1931759691
 GameObject:
   m_ObjectHideFlags: 0
@@ -57510,6 +58551,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1581329931}
   - {fileID: 85295933}
@@ -57519,6 +58561,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1932610389
 GameObject:
   m_ObjectHideFlags: 0
@@ -57635,6 +58678,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 237075393}
   - {fileID: 143664514}
@@ -57644,6 +58688,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1934944938
 GameObject:
   m_ObjectHideFlags: 0
@@ -57760,6 +58805,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 377410625}
   - {fileID: 864600778}
@@ -57769,6 +58815,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1936555328
 GameObject:
   m_ObjectHideFlags: 0
@@ -57921,6 +58968,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 1879379202}
@@ -57930,6 +58978,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1943202257
 GameObject:
   m_ObjectHideFlags: 0
@@ -58046,6 +59095,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 904318239}
   - {fileID: 510968972}
@@ -58055,6 +59105,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1944993362
 GameObject:
   m_ObjectHideFlags: 0
@@ -58298,6 +59349,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1808188071}
   - {fileID: 485024293}
@@ -58307,6 +59359,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1953921687
 GameObject:
   m_ObjectHideFlags: 0
@@ -58423,6 +59476,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1653531691}
   - {fileID: 469612648}
@@ -58432,6 +59486,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1966270850
 GameObject:
   m_ObjectHideFlags: 0
@@ -58627,6 +59682,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2063560789}
   - {fileID: 1759258860}
@@ -58636,6 +59692,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1976316790
 GameObject:
   m_ObjectHideFlags: 0
@@ -58752,6 +59809,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 2133652124}
   - {fileID: 1209512908}
@@ -58761,6 +59819,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1977953338
 GameObject:
   m_ObjectHideFlags: 0
@@ -58877,6 +59936,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1215777087}
   - {fileID: 1456686515}
@@ -58886,6 +59946,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1987983262
 GameObject:
   m_ObjectHideFlags: 0
@@ -59002,6 +60063,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 81462916}
   - {fileID: 369500355}
@@ -59011,6 +60073,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1989463809
 GameObject:
   m_ObjectHideFlags: 0
@@ -59127,6 +60190,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 820614603}
   - {fileID: 1120616346}
@@ -59136,6 +60200,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &1991324174
 GameObject:
   m_ObjectHideFlags: 0
@@ -59256,6 +60321,79 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &1992445331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1467162287935606, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992445332}
+  - component: {fileID: 1992445334}
+  - component: {fileID: 1992445333}
+  m_Layer: 5
+  m_Name: Pointer (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1992445332
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224965797203754712, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992445331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 989524889}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -160, y: 0}
+  m_SizeDelta: {x: 87, y: 82}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1992445333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114967539110493252, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992445331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5bc0d32f1bc76bc498911f6964af6165, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1992445334
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222477223984589282, guid: a01574137665487408ed79de1ffc23d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992445331}
+  m_CullTransparentMesh: 0
 --- !u!1 &1997592324
 GameObject:
   m_ObjectHideFlags: 0
@@ -59335,79 +60473,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997592324}
-  m_CullTransparentMesh: 0
---- !u!1 &1997997648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1332310644271026, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1997997649}
-  - component: {fileID: 1997997651}
-  - component: {fileID: 1997997650}
-  m_Layer: 5
-  m_Name: Dice
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1997997649
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224820350993607610, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997997648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1469743, y: 1.1469743, z: 1.1469743}
-  m_Children: []
-  m_Father: {fileID: 1478671597}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 534.5594, y: -245.1}
-  m_SizeDelta: {x: 76.262, y: 56.49}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1997997650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114697410476740422, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997997648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 697a867f2a367ed40bb3e6b3f7e25732, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1997997651
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222598612701997690, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997997648}
   m_CullTransparentMesh: 0
 --- !u!1 &1999727450
 GameObject:
@@ -59525,6 +60590,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1818289660}
   - {fileID: 876933951}
@@ -59534,6 +60600,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2003371102
 GameObject:
   m_ObjectHideFlags: 0
@@ -59749,6 +60816,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1503486730}
   - {fileID: 85295933}
@@ -59758,6 +60826,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2010562271
 GameObject:
   m_ObjectHideFlags: 0
@@ -60024,6 +61093,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 1
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 141128050}
   - {fileID: 1298144830}
@@ -60033,6 +61103,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2028252334
 GameObject:
   m_ObjectHideFlags: 0
@@ -60149,6 +61220,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1342977608}
   - {fileID: 510968972}
@@ -60158,6 +61230,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2031406676
 GameObject:
   m_ObjectHideFlags: 0
@@ -60364,6 +61437,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1922279662}
   - {fileID: 1292857123}
@@ -60373,6 +61447,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2039780188
 GameObject:
   m_ObjectHideFlags: 0
@@ -60676,6 +61751,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 68865990}
   - {fileID: 82822055}
@@ -60685,6 +61761,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2059590419
 GameObject:
   m_ObjectHideFlags: 0
@@ -60801,6 +61878,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 269784875}
   - {fileID: 170091625}
@@ -60810,6 +61888,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2063560789
 GameObject:
   m_ObjectHideFlags: 0
@@ -60926,6 +62005,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1853483681}
   - {fileID: 693976558}
@@ -60935,6 +62015,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2065533698
 GameObject:
   m_ObjectHideFlags: 0
@@ -61209,6 +62290,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 170091625}
   - {fileID: 1194826732}
@@ -61218,6 +62300,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2078951998
 GameObject:
   m_ObjectHideFlags: 0
@@ -61517,6 +62600,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 566916473}
   - {fileID: 599982271}
@@ -61526,6 +62610,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2091753508
 GameObject:
   m_ObjectHideFlags: 0
@@ -61803,6 +62888,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 736565919}
   - {fileID: 1480288513}
@@ -61812,6 +62898,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2109457300
 GameObject:
   m_ObjectHideFlags: 0
@@ -62007,6 +63094,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 201099082}
   - {fileID: 528286862}
@@ -62016,6 +63104,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2121401002
 GameObject:
   m_ObjectHideFlags: 0
@@ -62132,6 +63221,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 912114743}
   - {fileID: 2133652124}
@@ -62141,6 +63231,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2122743421
 GameObject:
   m_ObjectHideFlags: 0
@@ -62257,6 +63348,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1013984363}
   - {fileID: 418698308}
@@ -62266,6 +63358,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2132958254
 GameObject:
   m_ObjectHideFlags: 0
@@ -62382,6 +63475,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 1142711213}
   - {fileID: 631769067}
@@ -62391,6 +63485,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2133652124
 GameObject:
   m_ObjectHideFlags: 0
@@ -62507,6 +63602,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 676650459}
   - {fileID: 2121401002}
@@ -62516,6 +63612,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2135420763
 GameObject:
   m_ObjectHideFlags: 0
@@ -62632,6 +63729,7 @@ MonoBehaviour:
   isFixed: 0
   isMine: 0
   isFlag: 0
+  isFlagMesh: 0
   JointMesh:
   - {fileID: 407687209}
   - {fileID: 551994290}
@@ -62641,6 +63739,7 @@ MonoBehaviour:
   isLandingSign: 0
   TargetObject: {fileID: 0}
   EffectObject: {fileID: 0}
+  beforeRender: {fileID: 0}
 --- !u!1 &2141241064
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,14 +22,11 @@ public class TutorialSetTurn : MonoBehaviour
         obj.name = "preOrder";
         StartCoroutine(SpinCard(obj, orderSpr, "선공"));
     }
-
-    public int RndNum()
-    {
-        return Random.Range(0, 2);
-    }
-
+    
     IEnumerator SpinCard(GameObject obj, Sprite order, string val)
     {
+        TutorialTurnSystem.startTurn = TURN.MYTURN;
+        gameObject.GetComponent<TutorialTurnSystem>().currentTurn = TURN.MYTURN;
         isDone = true;
         isPicking = true;
         time_ = 0;

@@ -38,6 +38,7 @@ public class MeshController : MonoBehaviour {
     public bool isFixed;            // 턴이 종료되어 해당 Mesh의 변화가 확정됨
     public bool isMine;             // 턴이 종료되어 내 Mesh인 것이 확정됨
     public bool isFlag;             // 거점
+    public bool isFlagMesh = false;
 
     public GameObject[] JointMesh = new GameObject[3];  // 근처 3가지 Mesh
     public List<GameObject> NearMesh;                   // 근처 9가지 Mesh
@@ -61,6 +62,11 @@ public class MeshController : MonoBehaviour {
     static public bool isMakeIsland = false;
 
     private MissionManager missionmanager;
+
+    private float time_;
+    private bool isTriggerOn = false;
+    private MeshRenderer render;
+    public Material beforeRender;
 
     void Start () {
         if (isFlag == true)
@@ -108,36 +114,115 @@ public class MeshController : MonoBehaviour {
         beforeMat = null;
     }
 
-    // Update is called once per frame
-    void Update () {
+    IEnumerator BlinkFlag()
+    {
+        render = gameObject.GetComponent<MeshRenderer>();
+        render.material.shader = Shader.Find("Custom/MyRimShader");
+
+        isTriggerOn = true;
+        time_ = 0;
+        while(true)
+        {
+            time_ += Time.deltaTime;
+            
+            render.materials[0].SetColor("_Color", Color.Lerp(new Color32(255,255,255,255), new Color32(216,166,93,255), time_));
+            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(20, 40, time_);
+            yield return new WaitForEndOfFrame();
+            if (time_ > 1.0f)
+                break;
+        }
+
+        time_ = 0;
+        while (true)
+        {
+            time_ += Time.deltaTime;
+            
+            render.materials[0].SetColor("_Color", Color.Lerp(new Color32(216, 166, 93, 255), new Color32(255, 255, 255, 255), time_));
+            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(40, 20, time_);
+            yield return new WaitForEndOfFrame();
+            if (time_ > 1.0f)
+                break;
+        }
+
+        isTriggerOn = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    void Update ()
+    {
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+        {
+            if (TutorialManager.index == 7 && isFlag && !isTriggerOn && gameObject.transform.childCount == 1)
+            {
+                gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                StartCoroutine(BlinkFlag());
+            }
+        }
+            
+
         if (isLandingSign == true)
         {
             InstateTerrainObject(terrainstate);
             //StartCoroutine(MoveUp());
             isLandingSign = false;
         }
-        if (isFlag && temp == false && AllMeshController.once)
+
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
         {
-            for(int i = 1; i< AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
+            if (isFlag && temp == false && AllMeshController.once)
             {
-                if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
+
+                for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
                 {
-                    float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
-
-                    if (pTop < 19.45f && pTop != 0)
+                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
                     {
-                        NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
-                        AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+                        float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
 
-                        //Debug.Log(name);
-                        //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                        if (pTop < 19.45f && pTop != 0)
+                        {
+                            AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
+                            NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
+                            AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+
+                            //Debug.Log(name);
+                            //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                        }
                     }
-                }
-            } // Flagable이면 주변 매쉬 받아와
+                } // Flagable이면 주변 매쉬 받아와
 
 
-            temp = true;
+                temp = true;
+            }
         }
+        else
+        {
+            if (isFlag && temp == false && TutorialAllMeshController.once)
+            {
+
+                for (int i = 1; i < TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer.Length - 1; i++)
+                {
+                    if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
+                    {
+                        float pTop = (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
+
+                        if (pTop < 19.45f && pTop != 0)
+                        {
+                            TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
+                            NearMesh.Add(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]);
+                            TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+
+                            //Debug.Log(name);
+                            //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+                        }
+                    }
+                } // Flagable이면 주변 매쉬 받아와
+
+
+                temp = true;
+            }
+        }
+
+        
 
         if (isAwake)
         {
@@ -156,10 +241,11 @@ public class MeshController : MonoBehaviour {
             }
             else if (terrainstate == Terrain.FLAG)
             {
-                //GetComponent<MeshController>().terrainstate = Terrain.FLAG;
-                //GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.03f);
-                // 내 색 오브젝트 필요할듯?
+                if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+                {
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINLOC);
+                }
             }
             else
             {
@@ -171,35 +257,61 @@ public class MeshController : MonoBehaviour {
                 {
                     if (JointMesh[i].GetComponent<MeshController>().terrainstate == Terrain.ABLE) // able일 때 default로 바꿔줘
                     {
-                        for (int j = 0; j < 12; j++)
+                        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
                         {
-                            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
-                                Equals(JointMesh[i].GetComponent<MeshController>().name))
+                            for (int j = 0; j < 12; j++)
                             {
-                                JointMesh[i].GetComponent<MeshController>().setDefault();
-                                JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
-                                break;
-                            }
-                            else
-                            {
-                                JointMesh[i].GetComponent<MeshController>().setDefault();
+                                if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
+                                    Equals(JointMesh[i].GetComponent<MeshController>().name))
+                                {
+                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
+                                    break;
+                                }
+                                else
+                                {
+                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                }
                             }
                         }
+                        else
+                        {
+                            for (int j = 0; j < 12; j++)
+                            {
+                                if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
+                                    Equals(JointMesh[i].GetComponent<MeshController>().name))
+                                {
+                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
+                                    break;
+                                }
+                                else
+                                {
+                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                }
+                            }
+                        }
+                            
                     }
                 }
                 CameraController.ChangeableCount++;
             }
 
             // Able 다시 세팅
-            AllMeshController.myPlanet.GetComponent<AllMeshController>().ResettingAble();
+            if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                AllMeshController.myPlanet.GetComponent<AllMeshController>().ResettingAble();
+            else
+            {
+                TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().ResettingAble();
+            }
+                
 
             isAwake = false;
         }
 
         // 턴이 종료됐어 이번에 점령이 확정 됐다면 isFixed 를 true로 바꿔줘
-
     }
-
+    
     public void InstateTerrainObject(Terrain terrainstate)
     {
         if (terrainObj != null && isFlag == false)
@@ -208,39 +320,78 @@ public class MeshController : MonoBehaviour {
         // 객체 추가해서 달아주자.
         if (terrainstate == Terrain.MODERATION)
         {
-            //움직이는 오브젝트가 나올때에는 생성 x
-            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                return;
+            if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            {
+                //움직이는 오브젝트가 나올때에는 생성 x
+                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
+           else
+            {
+                //움직이는 오브젝트가 나올때에는 생성 x
+                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
 
             //20퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 80 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(13, 16)], 1.01f);
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                    EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(13, 16)], 1.01f);
+                else
+                    EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(13, 16)], 1.01f);
             }
         }
         else if (terrainstate == Terrain.BARREN)
         {
-            //움직이는 오브젝트가 나올때에는 생성 x
-            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                return;
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            {
+                //움직이는 오브젝트가 나올때에는 생성 x
+                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
+            else
+            {
+                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
+               
 
             //70퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 30 || isFlag)
-            {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
-            }
+                {
+                    if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                        EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+                    else
+                        EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+                }
+
+
         }
-        
+
         else if (terrainstate == Terrain.COLD)
         {
-            //움직이는 오브젝트가 나올때에는 생성 x
-            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                return;
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            {
+                //움직이는 오브젝트가 나올때에는 생성 x
+                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
+
+            else
+            {
+                //움직이는 오브젝트가 나올때에는 생성 x
+                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+                    return;
+            }
 
             //40퍼센트 확률로 생기지 않음
             if (Random.Range(0, 100) < 60 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                    EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
+                else
+                    EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
             }
                 
         }
@@ -256,7 +407,10 @@ public class MeshController : MonoBehaviour {
             if (totalSum == 3 && !isMakeIsland)
             {
                 isMakeIsland = true;
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[18], 1.01f);
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                    EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[18], 1.01f);
+                else
+                    EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[18], 1.01f);
                 return;
             }
 
@@ -267,7 +421,10 @@ public class MeshController : MonoBehaviour {
             //90퍼센트 확률로 생기지 않음.
             else if (Random.Range(0, 100) < 10 || isFlag)
             {
-                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[17], 1.01f);
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                    EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[17], 1.01f);
+                else
+                    EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[17], 1.01f);
             }
         }
         else if (terrainstate == Terrain.MOUNTAIN)
@@ -277,7 +434,10 @@ public class MeshController : MonoBehaviour {
             {
                 if (JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(Terrain.MOUNTAIN))
                 {
-                    TargetObject = Instantiate(AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[19]);
+                    if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                        TargetObject = Instantiate(AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[19]);
+                    else
+                        TargetObject = Instantiate(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[19]);
 
                     TargetObject.transform.position = ((gameObject.transform.position + JointMesh[i].transform.position) * 0.5f) * 1.01f;
                     TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
@@ -286,7 +446,10 @@ public class MeshController : MonoBehaviour {
                     TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, Random.Range(0, 360));
                 }
             }
-            EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[20], 1.01f);
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[20], 1.01f);
+            else
+                EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[20], 1.01f);
         }
         else if(terrainstate.Equals(Terrain.DEFAULT))
         {
@@ -334,6 +497,42 @@ public class MeshController : MonoBehaviour {
         {
             TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
             TargetObject.transform.GetChild(0).transform.localEulerAngles = new Vector3(TargetObject.transform.GetChild(0).transform.localEulerAngles.x, TargetObject.transform.GetChild(0).transform.localEulerAngles.y, Random.Range(0, 360));
+        }
+        terrainObj = TargetObject;
+    }
+
+    public void EulerRotCalAltar(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        TargetObject = Instantiate(buildingObj);
+
+        TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+        TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+
+        if (TargetObject.transform.childCount == 0)
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        else
+        {
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x - 90, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        }
+        terrainObj = TargetObject;
+    }
+
+    public void EulerRotCalAltar_A(GameObject targetObj, GameObject buildingObj, float offset)
+    {
+        TargetObject = Instantiate(buildingObj);
+
+        TargetObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
+        TargetObject.transform.parent = GameObject.Find("ObjectSet").transform;
+
+        TargetObject.transform.LookAt(GameObject.Find("InGameSceneManager").transform);
+
+        if (TargetObject.transform.childCount == 0)
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
+        else
+        {
+            TargetObject.transform.eulerAngles = new Vector3(TargetObject.transform.eulerAngles.x + 180, TargetObject.transform.eulerAngles.y, TargetObject.transform.eulerAngles.z);
         }
         terrainObj = TargetObject;
     }
@@ -423,35 +622,131 @@ public class MeshController : MonoBehaviour {
 
     public void Picked()
     {
-        if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
+        //튜토리얼일경우
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialCardSystem>() != null)
         {
-            GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
+            if (TutorialAllMeshController.IngameManager.GetComponent<TutorialCardSystem>().pickedCard)
+            {
+                GameObject picked = TutorialAllMeshController.IngameManager.GetComponent<TutorialCardSystem>().pickedCard;
 
-            CameraController.ChangeableCount--;
+                if (TutorialManager.index == 9)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, -6, 0));
+                else if (TutorialManager.index == 10)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(88, 27, 0));
+                else if (TutorialManager.index == 11)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, 71, 0));
+                else if (TutorialManager.index == 12)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-10, 88, 0));
+                else if (TutorialManager.index == 13)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(17, 88, 0));
+                else if (TutorialManager.index == 14)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, 74, 0));
+                else if (TutorialManager.index == 15)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-78, 37, 0));
+                else if (TutorialManager.index == 16)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, -10, 0));
+                else if (TutorialManager.index == 17)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-78, 27, 0));
+                else if (TutorialManager.index == 18)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-17, -24, 0));
+                else if (TutorialManager.index == 19)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(12, -25, 0));
+                else if(TutorialManager.index == 20)
+                {
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTLOCDONE);
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].transform.localPosition = new Vector3(525, -195, 0);
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].transform.localScale = new Vector3(2.58f, 2.58f, 2.58f);
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointObj[2].SetActive(true);
+                }
 
-            MissionCounting(true);
+                else if (TutorialManager.index == 23)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-13, -19, 0));
+                else if (TutorialManager.index == 24)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(9, -23, 0));
+                else if (TutorialManager.index == 25)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-23, -20, 0));
+                else if (TutorialManager.index == 26)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-67,31, 0));
+                else if (TutorialManager.index == 27)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-5, 82, 0));
+                else if (TutorialManager.index == 28)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(24, 83, 0));
+                else if (TutorialManager.index == 29)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
 
-            if (picked.name.Equals("TerrainCardImg1"))
-            {
-                setModeration(Identify.ALLY);
-            }
-            else if (picked.name.Equals("TerrainCardImg2"))
-            {
-                setBarren(Identify.ALLY);
-            }
-            else if (picked.name.Equals("TerrainCardImg3"))
-            {
-                setCold(Identify.ALLY);
-            }
-            else if (picked.name.Equals("TerrainCardImg4"))
-            {
-                setSea(Identify.ALLY);
-            }
-            else if (picked.name.Equals("TerrainCardImg5"))
-            {
-                setMountain(Identify.ALLY);
+                else if (TutorialManager.index == 32)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(6, 92, 0));
+                else if (TutorialManager.index == 33)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(-34, 70, 0));
+                else if (TutorialManager.index == 34)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(13, 89, 0));
+                else if (TutorialManager.index == 35)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().PointArrowMove(new Vector3(57, 44, 0));
+                else if (TutorialManager.index == 36)
+                    GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
+
+                CameraController.ChangeableCount--;
+
+                MissionCounting(true);
+
+                if (picked.name.Equals("TerrainCardImg1"))
+                {
+                    setModeration(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg2"))
+                {
+                    setBarren(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg3"))
+                {
+                    setCold(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg4"))
+                {
+                    setSea(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg5"))
+                {
+                    setMountain(Identify.ALLY);
+                }
             }
         }
+
+        //튜토리얼이 아닐경우
+        else
+        {
+            if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
+            {
+                GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
+
+                CameraController.ChangeableCount--;
+
+                MissionCounting(true);
+
+                if (picked.name.Equals("TerrainCardImg1"))
+                {
+                    setModeration(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg2"))
+                {
+                    setBarren(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg3"))
+                {
+                    setCold(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg4"))
+                {
+                    setSea(Identify.ALLY);
+                }
+                else if (picked.name.Equals("TerrainCardImg5"))
+                {
+                    setMountain(Identify.ALLY);
+                }
+            }
+        }
+        
     }
 
     private int RandomValue(int min, int max)
@@ -550,9 +845,19 @@ public class MeshController : MonoBehaviour {
         GetComponent<MeshRenderer>().material = domMaterial;
     }
 
-    public void setFlag()
+    public void setFlag(Identify identify)
     {
         terrainstate = Terrain.FLAG;
+
+        if (identify.Equals(Identify.ALLY))
+        {
+            currentIdentify = Identify.ALLY;
+        }
+        else
+        {
+            currentIdentify = Identify.ENEMY;
+        }
+
         domMaterial = Resources.Load<Material>("M_FlagAble");
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
     }

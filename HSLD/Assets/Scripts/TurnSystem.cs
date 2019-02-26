@@ -23,6 +23,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject dice;
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
+    public GameObject turnCountingUI;
 
     public float matchingCompleteTime = 5;
     public float selectOrderTime = 10;
@@ -39,6 +40,8 @@ public class TurnSystem : MonoBehaviour
     private float warningRadio = 0;
     static public bool isSetTerrainDone = false;
     static public bool enemyEventCardDefense = false;           //이벤트 카드로 인해 상대방의 이벤트카드를 막는다.
+    static public TURN startTurn;
+    private int initTurnCnt = 20;
 
     Coroutine myCoroutine;
     Coroutine enemyCoroutine;
@@ -47,6 +50,7 @@ public class TurnSystem : MonoBehaviour
     //최적화 스크립트
     private FlowSystem flowSystem;
     private SetTurn setTurn;
+
 
     private void Start()
     {
@@ -164,17 +168,30 @@ public class TurnSystem : MonoBehaviour
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
+            if (startTurn.Equals(TURN.MYTURN))
+            {
+                initTurnCnt -= 1;
+                turnCountingUI.GetComponentInChildren<Text>().text = initTurnCnt.ToString() + "턴";
+            }
+
+
             flowSystem.enemyTurnPassObj.SetActive(false);
             flowSystem.currentFlow = FLOW.TO_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(true);
 
-            if(myCoroutine != null)
+            if (myCoroutine != null)
                 StopCoroutine(myCoroutine);
             myCoroutine = StartCoroutine(MyTurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
         else
         {
+            if (startTurn.Equals(TURN.ENEMYTURN))
+            {
+                initTurnCnt -= 1;
+                turnCountingUI.GetComponentInChildren<Text>().text = initTurnCnt.ToString() + "턴";
+            }
+
             flowSystem.enemyTurnPassObj.SetActive(true);
             flowSystem.currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(false);

@@ -17,12 +17,10 @@ public class TutorialTurnSystem : MonoBehaviour
     private FLOW beforeFlow;
     public TURN currentTurn;            //최초 선공 정할시, enum 설정.
 
+    public GameObject turnCountingUI;
+
     public float matchingCompleteTime = 5;
 
-    private float warningTime;
-    public GameObject warningPanel;
-
-    private float warningRadio = 0;
     static public bool isSetTerrainDone = false;
     static public bool enemyEventCardDefense = false;           //이벤트 카드로 인해 상대방의 이벤트카드를 막는다.
 
@@ -33,7 +31,10 @@ public class TutorialTurnSystem : MonoBehaviour
     //최적화 스크립트
     private TutorialFlowSystem flowSystem;
     private TutorialSetTurn setTurn;
-    private CardSystem cardsystem;
+    private TutorialCardSystem cardsystem;
+
+    static public TURN startTurn;
+    private int initTurnCnt = 20;
 
     private bool[] chk = new bool[5];
 
@@ -41,40 +42,50 @@ public class TutorialTurnSystem : MonoBehaviour
     {
         flowSystem = gameObject.GetComponent<TutorialFlowSystem>();
         setTurn = gameObject.GetComponent<TutorialSetTurn>();
-        cardsystem = gameObject.GetComponent<CardSystem>();
+        cardsystem = gameObject.GetComponent<TutorialCardSystem>();
         StartCoroutine(ReadyMatchingComplete());
     }
+    
+    public void TurnChange(bool change)
+    {
+        setTurn = gameObject.GetComponent<TutorialSetTurn>();
+        cardsystem = gameObject.GetComponent<TutorialCardSystem>();
 
-    //게임이 시작하고 선후공을 정한 후, 컴포넌트 액티브 활성화 - 최초시
+        StartCoroutine(ReadyMatchingComplete());
+    }
+    
+
     public void TurnSet()
     {
         gameObject.GetComponent<TerrainGainCounting>().CheckFlag();
-
+        
         //내턴일때의 코루틴 진입
         if (currentTurn.Equals(TURN.MYTURN))
         {
-            flowSystem.enemyTurnPassObj.SetActive(false);
+            if (startTurn.Equals(TURN.MYTURN))
+            {
+                initTurnCnt -= 1;
+                turnCountingUI.GetComponentInChildren<Text>().text = initTurnCnt.ToString() + "턴";
+            }
+            
             flowSystem.currentFlow = FLOW.TO_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(true);
 
             if (myCoroutine != null)
                 StopCoroutine(myCoroutine);
-            //myCoroutine = StartCoroutine(MyTurnCounting());
         }
         //내턴이아닐때의 코루틴 진입
         else
         {
-            flowSystem.enemyTurnPassObj.SetActive(true);
+            if (startTurn.Equals(TURN.ENEMYTURN))
+            {
+                initTurnCnt -= 1;
+                turnCountingUI.GetComponentInChildren<Text>().text = initTurnCnt.ToString() + "턴";
+            }
+
             flowSystem.currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
             flowSystem.diceCanvas.SetActive(false);
-            //StartCoroutine(EndTurnAndWaiting());
         }
-    }
-
-    public void TurnChange(bool change)
-    {
-        if (change)
-            currentTurn = TURN.MYTURN;
     }
 
     public void DisplayTextMessage(string value, float time)

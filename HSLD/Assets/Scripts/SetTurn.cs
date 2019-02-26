@@ -36,12 +36,14 @@ public class SetTurn : MonoBehaviour
         {
             if (GameObject.Find("NetworkManager").GetComponent<NetworkManager>().isAttackFirst)
             {
+                TurnSystem.startTurn = TURN.MYTURN;
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
                 obj.name = "preOrder";
             }
 
             else
             {
+                TurnSystem.startTurn = TURN.ENEMYTURN;
                 gameObject.GetComponent<TurnSystem>().currentTurn = TURN.ENEMYTURN;
                 obj.name = "backOrder";
             }

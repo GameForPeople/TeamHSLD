@@ -27,8 +27,43 @@ public class UIText : MonoBehaviour {
 
     void Update()
     {
-        DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + CameraController.ChangeableCount + "\n";
+        //DebuggingText.text = "TouchCount : " + Input.touchCount + " Count : " + CameraController.ChangeableCount + "\n";
+        
+        if(GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>() != null)
+        {
+            if (!GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
+                return;
 
+            if (CameraController.ChangeableCount < 1)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>().diceCntingUI.transform.GetComponentInChildren<Text>().text = "";
+                GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>().setTerrainCanvas.SetActive(true);
+            }
+
+            else
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>().diceCntingUI.transform.GetComponentInChildren<Text>().text = CameraController.DiceCount.ToString();
+                GameObject.FindWithTag("GameManager").GetComponent<TutorialFlowSystem>().setTerrainCanvas.SetActive(false);
+            }
+        }
+        else
+        {
+            if (!GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().currentFlow.Equals(FLOW.TO_PICKINGLOC))
+                return;
+
+            if (CameraController.ChangeableCount < 1)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().diceCntingUI.transform.GetComponentInChildren<Text>().text = "";
+                GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().setTerrainCanvas.SetActive(true);
+            }
+
+            else
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().diceCntingUI.transform.GetComponentInChildren<Text>().text = CameraController.DiceCount.ToString();
+                GameObject.FindWithTag("GameManager").GetComponent<FlowSystem>().setTerrainCanvas.SetActive(false);
+            }
+        }
+        
         if (Input.touchCount >= 1)
         {
             for(int i = 0; i<Input.touchCount; i++)

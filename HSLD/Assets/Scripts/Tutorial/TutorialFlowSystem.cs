@@ -12,7 +12,7 @@ public class TutorialFlowSystem : MonoBehaviour
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
     public GameObject matchingCompleteCanvas;
-    public GameObject spinCanvas;
+    //public GameObject spinCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
     public GameObject turnTimerImg;
@@ -20,8 +20,9 @@ public class TutorialFlowSystem : MonoBehaviour
     public GameObject missionCanvas;
     public GameObject displayText;
     public GameObject displayTextImg;
-    public GameObject enemyTurnPassObj;
+    //public GameObject enemyTurnPassObj;
     public GameObject resultUICanvas;
+    public GameObject diceCntingUI;
 
     private float time_;
     private int randomVal;
@@ -30,7 +31,7 @@ public class TutorialFlowSystem : MonoBehaviour
     private int[] currentCnt = new int[3];
 
     //최적화 스크립트
-    private CardSystem cardSystem;
+    private TutorialCardSystem cardSystem;
     private EventCardManager eventCardManager;
     private TutorialTurnSystem turnSystem;
     private MissionManager missionManager;
@@ -47,13 +48,19 @@ public class TutorialFlowSystem : MonoBehaviour
         for (int i = 0; i < currentCnt.Length; i++)
             currentCnt[i] = 0;
         
-        cardSystem = gameObject.GetComponent<CardSystem>();
+        cardSystem = gameObject.GetComponent<TutorialCardSystem>();
         eventCardManager = gameObject.GetComponent<EventCardManager>();
         turnSystem = gameObject.GetComponent<TutorialTurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
         planetTrans = GameObject.FindWithTag("Planet").transform;
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
+
+        //gameObject.GetComponent<TutorialManager>().currentTutorial = TUTORIAL.INGAME_ROLLINGDICE;
+        //currentFlow = FLOW.READY_SETCARD;
+        //turnSystem.currentTurn = TURN.MYTURN;
+        //TutorialTurnSystem.startTurn = TURN.MYTURN;
+        //FlowChange(FLOW.READY_SETCARD);
     }
 
     //이벤트 연출시간이 끝난다음에 다음 상태 진행.
@@ -73,35 +80,18 @@ public class TutorialFlowSystem : MonoBehaviour
         {
             case FLOW.TO_ROLLINGDICE:
                 currentFlow = FLOW.TO_PICKINGCARD;
+                diceCntingUI.SetActive(true);
+                if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE))
+                    gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINCARD);
                 break;
             case FLOW.TO_PICKINGLOC:
                 TurnSystem.isSetTerrainDone = false;
-
+                diceCntingUI.SetActive(false);
                 //init
                 cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt -= 1;
                 cardSystem.CardCntUpdate();
                 cardSystem.pickedCard = null;
                 cardSystem.CardPosInit();
-
-                //line 
-                //for (int i = 0; i < GameObject.FindWithTag("Planet").transform.childCount; i++)
-                //{
-                //    for (int j = 0; j < 3; j++)
-                //    {
-                //        if (!GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ALLY) && !GameObject.FindWithTag("Planet").transform.GetChild(i).GetComponent<MeshController>().currentIdentify.Equals(Identify.NEUTRALITY))
-                //        {
-                //            linePosList.Add(GameObject.FindWithTag("Planet").transform.GetChild(i).transform.position/* + JointMesh[i].transform.position) * 0.5f*/);
-                //            break;
-                //        }
-                //    }
-                //}
-
-                //lineObj = Instantiate(linePrefab);
-                //lineObj.transform.parent = GameObject.FindWithTag("GameManager").transform.GetChild(0).transform;
-                //lineObj.GetComponent<LineRenderer>().positionCount = linePosList.Count;
-
-                //for (int i =0; i < linePosList.Count; i++)
-                //    lineObj.GetComponent<LineRenderer>().SetPosition(i, linePosList[i]);
 
                 //이벤트카드로 갈지 말지 분기
                 if (DiceSystem.isDouble /*|| 서브미션 달성시*/ && PCverPIcking.isDominatedConfirm)
@@ -116,22 +106,12 @@ public class TutorialFlowSystem : MonoBehaviour
                     displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
 
                     yield return new WaitForSeconds(2.5f);
-                    if (GameObject.Find("GameCores") != null)
-                    {
-                        Debug.Log("SEND : 턴종료");
-                        gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
-                    }
                     currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                     turnSystem.currentTurn = TURN.ENEMYTURN;
                     turnSystem.TurnSet();
                 }
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:
-                if (GameObject.Find("GameCores") != null)
-                {
-                    Debug.Log("SEND : 턴종료");
-                    gameObject.GetComponent<InGameSceneManager>().SendChangeTurn(MissionManager.missionCompleteBoolean);
-                }
                 currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
                 turnSystem.currentTurn = TURN.ENEMYTURN;
                 turnSystem.TurnSet();
@@ -174,52 +154,18 @@ public class TutorialFlowSystem : MonoBehaviour
 
     IEnumerator DisplayLoadingCor()
     {
-        //서버가 대기신호보내고 아무것도안함, 서버가 없으면 바로 시작
-        if (GameObject.Find("GameCores") == null)
-        {
-            displayTextImg.SetActive(true);
-            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[0]);
-            yield return new WaitForSeconds(2.5f);
+        displayTextImg.SetActive(true);
+        displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[0]);
+        yield return new WaitForSeconds(2.5f);
 
-            displayTextImg.SetActive(true);
-            if (turnSystem.currentTurn.Equals(TURN.MYTURN))
-                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
-            else
-                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
-            yield return new WaitForSeconds(2.5f);
-            currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-            FlowChange(FLOW.READY_DONE);
-        }
-
+        displayTextImg.SetActive(true);
+        if (turnSystem.currentTurn.Equals(TURN.MYTURN))
+            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
         else
-        {
-            StartCoroutine(GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().DrawOnlyLoadUI());
-            //GameObject temporaryLocalCameraObject = GameObject.Find("Main Camera");
-            //temporaryLocalCameraObject.SetActive(false);
+            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
 
-            yield return new WaitForSeconds(1.9f);  // LoadUI보다 0.1초 짧게 설정해야함. -> 최악 2.1초 비동기화
-            //temporaryLocalCameraObject.SetActive(true);
-
-            gameObject.GetComponent<InGameSceneManager>().StartWaitCoroutine();
-
-            while (!gameObject.GetComponent<InGameSceneManager>().isOnWaitGameReady)
-            {
-                yield return new WaitForSeconds(0.5f);
-            }
-
-            displayTextImg.SetActive(true);
-            displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[0]);
-            yield return new WaitForSeconds(2.5f);
-
-            displayTextImg.SetActive(true);
-            if (turnSystem.currentTurn.Equals(TURN.MYTURN))
-                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[1]);
-            else
-                displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
-
-            yield return new WaitForSeconds(2.5f);
-            FlowChange(FLOW.READY_DONE);
-        }
+        yield return new WaitForSeconds(2.5f);
+        FlowChange(FLOW.READY_DONE);
     }
 
     IEnumerator DiceActiveOff()
@@ -232,6 +178,7 @@ public class TutorialFlowSystem : MonoBehaviour
         switch (doneFlow)
         {
             case FLOW.READY_MATCHINGCOMPLETE:
+                diceCntingUI.SetActive(false);
                 matchingCompleteCanvas.SetActive(false);
                 turnSetCanvas.SetActive(true);
                 gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.READY_SELECTORDERCARD);
@@ -244,9 +191,10 @@ public class TutorialFlowSystem : MonoBehaviour
                 currentFlow = FLOW.READY_SETCARD;
                 break;
             case FLOW.READY_SETCARD:
+                readyCanvas.SetActive(false);
                 cardSetCanvas.SetActive(false);
                 //tmpAnimationImage.SetActive(true);
-                spinCanvas.SetActive(true);
+                //spinCanvas.SetActive(true);
                 //readyCanvas.SetActive(false);
 
                 //init - card Cnt Update
@@ -254,6 +202,7 @@ public class TutorialFlowSystem : MonoBehaviour
                 StartCoroutine(DisplayLoadingCor());
                 break;
             case FLOW.READY_DONE:
+                gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_ROLLINGDICE);
                 turnSystem.TurnSet();
                 //StartCoroutine(DisplayEventWaitingTime(FLOW.READY_DONE, 2.5f, false));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
@@ -261,17 +210,10 @@ public class TutorialFlowSystem : MonoBehaviour
                 currentFlow = FLOW.TO_ROLLINGDICE;
                 break;
             case FLOW.TO_PICKINGCARD:
-                //GameObject.FindWithTag("MainCamera").GetComponent<PCverPIcking>().enabled = true;
-                setTerrainCanvas.SetActive(true);
-                //if (GameObject.Find("GameCores") != null)
-                //{
-                //    GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard; 
-                //    gameObject.GetComponent<InGameSceneManager>().SendTerrainType(picked.GetComponent<CardData>().data.cardIndex);
-                //}
+                
                 currentFlow = FLOW.TO_PICKINGLOC;
                 break;
             case FLOW.TO_ROLLINGDICE:
-                turnSystem.warningPanel.GetComponent<Image>().color = new Color(1, 0, 0, 0);
                 SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8], 1.0f);
 
                 //애니메이션 여기
@@ -282,7 +224,6 @@ public class TutorialFlowSystem : MonoBehaviour
             //이벤트카드가 없다면 바로 대기상태로 변경
             case FLOW.TO_PICKINGLOC:
                 //애니메이션 여기
-                setTerrainCanvas.SetActive(false);
                 TurnSystem.isSetTerrainDone = true;
                 MeshController.isMakeIsland = false;
 
@@ -323,9 +264,9 @@ public class TutorialFlowSystem : MonoBehaviour
                             if (currentCnt[0] == maximumCnt)
                                 missionManager.SubMissionCounting(maximumCnt, 1);
                         }
-
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[0], 1.03f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //건조 - 뱀
                     case 2:
@@ -363,8 +304,8 @@ public class TutorialFlowSystem : MonoBehaviour
                                 missionManager.SubMissionCounting(maximumCnt, 1);
                         }
 
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[6], 1.03f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //한랭 - 펭귄
                     case 3:
@@ -400,8 +341,8 @@ public class TutorialFlowSystem : MonoBehaviour
                         }
 
                         randomVal = Random.Range(1, 4);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 1.03f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //바다 - 고래
                     case 4:
@@ -410,8 +351,8 @@ public class TutorialFlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(4, 6);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 5f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //산 - 구름
                     case 5:
@@ -424,11 +365,11 @@ public class TutorialFlowSystem : MonoBehaviour
                             missionManager.SubMissionCounting(1, 4);
 
                         randomVal = Random.Range(7, 9);
-                        buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        buildOnPlanet.EulerRotCal(GameObject.Find(TutorialAllMeshController.instance_.PickContainer[0].ToString()), TutorialAllMeshController.instance_.MovingObj[randomVal], 15f, TutorialAllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
+                        finalTerrainName = TutorialAllMeshController.instance_.PickContainer[0].ToString();
                         break;
                 }
-                Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
+                Camera.main.GetComponent<TutorialPcVerCamera>().TurnChangeLogic();
                 StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
                 break;
             case FLOW.TO_PICKEVENTCARD:

@@ -126,6 +126,7 @@ public partial class MainUISceneManager : MonoBehaviour
         buyCharacterUI.transform.Find("Text_CharacterName").GetComponent<Text>().text = characterName[InNewCharacterIndex];
         buyCharacterUI.transform.Find("Text_YourMoney").GetComponent<Text>().text = networkObject.money.ToString();
         buyCharacterUI.transform.Find("Image_Character_Set").transform.Find("Image_" + InNewCharacterIndex.ToString()).gameObject.SetActive(true);
+        buyCharacterUI.transform.Find("Image_Icon_Set").transform.Find("Image_" + InNewCharacterIndex.ToString()).gameObject.SetActive(true);
     }
 
     public void UI_OffBuyCharacterUI()
@@ -135,6 +136,7 @@ public partial class MainUISceneManager : MonoBehaviour
         GameObject buyCharacterUI = UserDataUI.transform.Find("Canvas_Dynamic").transform.Find("BuyCharacterUI").gameObject;
 
         buyCharacterUI.transform.Find("Image_Character_Set").transform.Find("Image_" + selectedCharacterIndex.ToString()).gameObject.SetActive(false);
+        buyCharacterUI.transform.Find("Image_Icon_Set").transform.Find("Image_" + selectedCharacterIndex.ToString()).gameObject.SetActive(false);
         buyCharacterUI.SetActive(false);
     }
 

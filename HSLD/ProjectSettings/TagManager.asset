@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - Planet
+  - InGamePlanet
   layers:
   - Default
   - TransparentFX
