@@ -222,7 +222,7 @@ public partial class NetworkManager : MonoBehaviour {
         }
 
         //if(u != null)
-        u.Close();
-        u = null;
+        s.u.Close();
+        s.u = null;
     }
 }
