@@ -26,16 +26,9 @@ public class AllMeshController : MonoBehaviour
         IngameManager = GameObject.Find("InGameSceneManager");
         PickContainer = new List<int>();
 
-        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-        {
-            myPlanet = GameObject.FindWithTag("InGamePlanet");
-            AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
-        }
-        else
-        {
-            myPlanet = GameObject.FindWithTag("InGamePlanet");
-            AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
-        }
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
+        AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
+
 
         if(instance_ == null)
             instance_ = this;
