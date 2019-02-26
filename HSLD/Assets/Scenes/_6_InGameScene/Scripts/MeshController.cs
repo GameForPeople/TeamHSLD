@@ -316,22 +316,22 @@ public class MeshController : MonoBehaviour {
     {
         if (terrainObj != null && isFlag == false)
             Destroy(terrainObj);
-
+        
         // 객체 추가해서 달아주자.
         if (terrainstate == Terrain.MODERATION)
         {
-            if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-            {
-                //움직이는 오브젝트가 나올때에는 생성 x
-                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
-           else
-            {
-                //움직이는 오브젝트가 나올때에는 생성 x
-                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
+            //if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            //{
+            //    //움직이는 오브젝트가 나올때에는 생성 x
+            //    if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
+            //else
+            //{
+            //    //움직이는 오브젝트가 나올때에는 생성 x
+            //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
 
             //20퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 80 || isFlag)
@@ -344,17 +344,17 @@ public class MeshController : MonoBehaviour {
         }
         else if (terrainstate == Terrain.BARREN)
         {
-            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-            {
-                //움직이는 오브젝트가 나올때에는 생성 x
-                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
-            else
-            {
-                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
+            //if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            //{
+            //    //움직이는 오브젝트가 나올때에는 생성 x
+            //    if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
+            //else
+            //{
+            //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
                
 
             //70퍼센트 확률로 생기지 않음.
@@ -371,19 +371,19 @@ public class MeshController : MonoBehaviour {
 
         else if (terrainstate == Terrain.COLD)
         {
-            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-            {
-                //움직이는 오브젝트가 나올때에는 생성 x
-                if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
-
-            else
-            {
-                //움직이는 오브젝트가 나올때에는 생성 x
-                if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                    return;
-            }
+           //if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+           //{
+           //    //움직이는 오브젝트가 나올때에는 생성 x
+           //    if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+           //        return;
+           //}
+           //
+           //else
+           //{
+           //    //움직이는 오브젝트가 나올때에는 생성 x
+           //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+           //        return;
+           //}
 
             //40퍼센트 확률로 생기지 않음
             if (Random.Range(0, 100) < 60 || isFlag)
@@ -414,9 +414,9 @@ public class MeshController : MonoBehaviour {
                 return;
             }
 
-            //움직이는 오브젝트가 나올때에는 생성 x
-            if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-                return;
+            ////움직이는 오브젝트가 나올때에는 생성 x
+            //if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+            //    return;
 
             //90퍼센트 확률로 생기지 않음.
             else if (Random.Range(0, 100) < 10 || isFlag)

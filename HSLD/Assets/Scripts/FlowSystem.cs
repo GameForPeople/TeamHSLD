@@ -370,7 +370,7 @@ public class FlowSystem : MonoBehaviour
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //건조 - 뱀
                     case 2:
@@ -409,7 +409,7 @@ public class FlowSystem : MonoBehaviour
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //한랭 - 펭귄
                     case 3:
@@ -446,7 +446,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(1, 4);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //바다 - 고래
                     case 4:
@@ -456,7 +456,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(4, 6);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //산 - 구름
                     case 5:
@@ -470,7 +470,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(7, 9);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();
