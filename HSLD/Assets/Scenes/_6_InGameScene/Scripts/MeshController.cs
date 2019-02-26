@@ -258,7 +258,7 @@ public class MeshController : MonoBehaviour {
                     {
                         if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
                         {
-                            for (int j = 0; j < 12; j++)
+                            for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
                             {
                                 if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
