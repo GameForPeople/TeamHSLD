@@ -34316,7 +34316,7 @@ MonoBehaviour:
   - {fileID: 1489980634199532, guid: 00b5fdaa9ab927147bc6914c4f76e4dd, type: 2}
   - {fileID: 1148611819574224, guid: 50e71d7587dea7140b99ea6f0cc70672, type: 2}
   - {fileID: 1853574574019274, guid: 0687e0c3e4b723e4fae5f50404eb9e81, type: 2}
-  - {fileID: 1696184669864596, guid: 031db0cbc0a883e41bbe1e284012dc88, type: 2}
+  - {fileID: 1627347974826748, guid: caf9cda1e476b75429d66aeb2a7f5f20, type: 2}
   MovingObj:
   - {fileID: 1406409414380780, guid: 9c09fcead564f2c40944a5fa4db59efd, type: 2}
   - {fileID: 1749881923002708, guid: d05ae5bc50d0ad548a93141a3e01d24c, type: 2}
