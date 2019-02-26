@@ -208,7 +208,7 @@ public:
 		//if(dataProtocol[!InIsHost] != Protocol::NOTIFY_GAME_BUFFER)
 		std::cout << InIsHost << " " << InNewDataProtocol << std::endl;
 
-			dataProtocol[!InIsHost] = InNewDataProtocol;
+		dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 
 public:

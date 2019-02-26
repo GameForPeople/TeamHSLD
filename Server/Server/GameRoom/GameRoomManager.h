@@ -30,9 +30,10 @@ public:
 private:
 	void _CreateRoom(const shared_ptr<UserData>& pClient, const bool isClientDemandClassicMode);
 	void _JoinRoom(const shared_ptr<UserData>& pClient, const bool isClientDemandClassicMode);
-	void _DestroyRoom(SocketInfo* pClient);
-	
+	//void _DestroyRoom(SocketInfo* pClient);
+
 public:
+	void DestroyRoom(SocketInfo* pClient);
 	bool HostCancelWaiting(SocketInfo* pClient);
 	
 	_NODISCARD _inline int GetRoomNum() const noexcept { return roomNum; }

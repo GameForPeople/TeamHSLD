@@ -241,12 +241,12 @@ void SCENE_NETWORK_MANAGER::InGameScene::SendNetworkExecption(SocketInfo* pClien
 {
 	// 아마 네트워크 익셉션을 상대 클라이언트에게 직접 보낼 일은 딤져도 없음. -> 닥쳐 있을거야
 //#ifdef _DEBUG
-	std::cout << "!! 그럴일이 없는데, 인 게임씬의 SendNetworkExecption가 호출되었습니다. 확인해주세요. " << "\n" ;
+	//std::cout << "!! 그럴일이 없는데, 인 게임씬의 SendNetworkExecption가 호출되었습니다. 확인해주세요. " << "\n" ;
 //#endif
 	pUserData->SetGameResult(pClient->pUserNode, false);
 
-	//pRoomData->DestroyRoom(pClient);
-	pClient->pRoomIter.reset();
+	pRoomData->DestroyRoom(pClient);
+	//pClient->pRoomIter.reset();
 
 	pClient->dataSize = 4;
 
