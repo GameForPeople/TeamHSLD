@@ -127,8 +127,7 @@ public class PCverPIcking : MonoBehaviour
                             PickedMeshObj.GetComponent<MeshController>().isAwake = true;
                             myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                             myPlanet.GetComponent<AllMeshController>().myFlag = PickedMeshObj;
-
-
+                            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop++;
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {
@@ -321,7 +320,7 @@ public class PCverPIcking : MonoBehaviour
                     GameObject meshObj = myPlanet.GetComponent<AllMeshController>().FlagContainer[i];
 
                     Destroy(meshObj.GetComponent<MeshController>().TargetObject);
-                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.0f);
+                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
                     tempint++;
                 }
 
@@ -333,6 +332,7 @@ public class PCverPIcking : MonoBehaviour
                         {
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
                             Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
 
@@ -368,7 +368,7 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex >= 1 &&
+                        if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex >= 0 &&
                             networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex <= 3)
                         {
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
@@ -393,6 +393,10 @@ public class PCverPIcking : MonoBehaviour
                         {
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
                         }
+                        else
+                        {
+                            Debug.Log(networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex);
+                        }
 
                         Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
                         enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
@@ -413,7 +417,7 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex >= 1 &&
+                        if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex >= 0 &&
                             networkSystem.GetComponent<NetworkManager>().playerCharacterIndex <= 3)
                         {
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
@@ -437,6 +441,10 @@ public class PCverPIcking : MonoBehaviour
                         else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 8)
                         {
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
+                        }
+                        else
+                        {
+                            Debug.Log(networkSystem.GetComponent<NetworkManager>().playerCharacterIndex);
                         }
 
                         Destroy(myFlag.GetComponent<MeshController>().TargetObject);

@@ -20,6 +20,8 @@ using System.Net.NetworkInformation;
 
 public partial class NetworkManager : MonoBehaviour
 {
+    private bool first;
+
     void RecvProcess()
     {
         RecvProtocolType();
@@ -575,6 +577,11 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
         {
+            if (first == false)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop++;
+                first = true;
+            }
             //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             int arrSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
             Debug.Log(" 총 받아야하는 배열의 크기는 " + arrSizeBuffer + "입니다");

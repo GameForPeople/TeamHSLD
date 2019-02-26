@@ -161,6 +161,7 @@ public class AllMeshController : MonoBehaviour
         {
             NearMeshSetting();
             myFlag = null;
+            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop--;
             CameraController.ChangeableCount--;
             temp = false;
         }
