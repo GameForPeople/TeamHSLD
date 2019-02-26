@@ -60,7 +60,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
     public void SearchALL()
     {
-        for (int i = 1; i <= GameObject.FindWithTag("Planet").transform.childCount; i++)
+        for (int i = 1; i <= GameObject.FindWithTag("InGamePlanet").transform.childCount; i++)
         {
             if (AllContainer[i].GetComponent<MeshController>().isFixed == true)
             {
