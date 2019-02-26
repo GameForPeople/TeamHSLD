@@ -36,6 +36,6 @@ public class SaveJsonData : MonoBehaviour {
 
         JsonData infoJson = JsonMapper.ToJson(meshInfoList);
 
-        File.WriteAllText(Application.dataPath + "/Resources/Data/MeshInfoData.json", infoJson.ToString());
+        File.WriteAllText(Path.Combine(Application.dataPath, "/Resources/Data/MeshInfoData.json"), infoJson.ToString());
     }
 }
