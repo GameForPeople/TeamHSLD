@@ -206,6 +206,8 @@ public:
 	__inline void SetDataProtocol(const bool InIsHost, const int InNewDataProtocol) noexcept
 	{
 		//if(dataProtocol[!InIsHost] != Protocol::NOTIFY_GAME_BUFFER)
+		std::cout << InIsHost << " " << InNewDataProtocol << std::endl;
+
 			dataProtocol[!InIsHost] = InNewDataProtocol;
 	}
 
