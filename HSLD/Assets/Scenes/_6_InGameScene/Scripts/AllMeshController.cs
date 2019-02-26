@@ -33,8 +33,8 @@ public class AllMeshController : MonoBehaviour
         }
         else
         {
-            myPlanet = GameObject.FindWithTag("Planet");
-            AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
+            myPlanet = GameObject.FindWithTag("InGamePlanet");
+            AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
         }
 
         if(instance_ == null)
