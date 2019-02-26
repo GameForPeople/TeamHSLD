@@ -86,10 +86,12 @@ public class TutorialCardSystem : MonoBehaviour
             pickedCard = card;
             //여기에다가
             CardPosInit();
-            if (GameObject.Find("GameCores") != null)
-            {
-                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainType(card.GetComponent<CardData>().data.cardIndex);
-            }
+
+            // 튜토리얼에서는 네트워크 기능 필요없음.
+            //if (GameObject.Find("GameCores") != null)
+            //{
+            //    GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainType(card.GetComponent<CardData>().data.cardIndex);
+            //}
             pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
             pickedCard.GetComponent<Image>().color = new Color(1, 1, 1, 1.0f);
 

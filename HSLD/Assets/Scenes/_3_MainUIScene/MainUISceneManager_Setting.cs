@@ -175,6 +175,11 @@ public partial class MainUISceneManager : MonoBehaviour
         }
     }
 
+    public void UI_StartTutorial()
+    {
+        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.TUTORIAL_SCENE, true, LOAD_UI_TYPE.FALSE, 1.0f);
+    }
+
     /*
      UI_ExitGame()
 

@@ -258,12 +258,12 @@ public class TutorialPcVerCamera : MonoBehaviour
 
         if (!bSelectionFlag)
         {
-            for (int i = 0; i < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; i++)
+            for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; i++)
             {
-                if (myPlanet.GetComponent<AllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
+                if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
                 {
-                    GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[21];
-                    GameObject meshObj = myPlanet.GetComponent<AllMeshController>().FlagContainer[i];
+                    GameObject buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[21];
+                    GameObject meshObj = myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i];
 
                     Destroy(meshObj.GetComponent<MeshController>().TargetObject);
                     meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
@@ -272,27 +272,27 @@ public class TutorialPcVerCamera : MonoBehaviour
 
                 if (tempint == 2)
                 {
-                    for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
+                    for (int j = 0; j < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; j++)
                     {
-                        if (!myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
+                        if (!myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFixed)
                         {
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
-                            Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
-                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
+                            myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
+                            myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
+                            myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
+                            Destroy(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
+                            myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
 
 
                         }
                         else
                         {
-                            if (myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ENEMY)
+                            if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().currentIdentify == Identify.ENEMY)
                             {
-                                enemyFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                                enemyFlag = myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j];
                             }
                             else
                             {
-                                myFlag = myPlanet.GetComponent<AllMeshController>().FlagContainer[j];
+                                myFlag = myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j];
                             }
                         }
                     }
@@ -340,7 +340,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
+                        buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[23];
 
 
                         Destroy(myFlag.GetComponent<MeshController>().TargetObject);

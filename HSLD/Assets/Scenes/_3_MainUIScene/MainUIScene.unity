@@ -25546,8 +25546,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1253216111}
-        m_MethodName: TutorialGo
+      - m_Target: {fileID: 1253216110}
+        m_MethodName: UI_StartTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

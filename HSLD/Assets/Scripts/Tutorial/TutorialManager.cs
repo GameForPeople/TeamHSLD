@@ -49,9 +49,16 @@ public class TutorialManager : MonoBehaviour
 
     static public bool isCheck = false;
 
+    void Start()
+    {
+        // -----
+        GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
+        // -----
+    }
+
     IEnumerator READY_SELECTCARD_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         pointObj[0].SetActive(false);
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(464,-163,0);
@@ -172,7 +179,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator INGAME_ROLLINGDICE_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -201,14 +208,14 @@ public class TutorialManager : MonoBehaviour
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(484, -194, 0);
         pointObj[2].transform.localScale = new Vector3(3.84f, 3.84f, 3.84f);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 0.7f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[18], 0.7f);
         index = 5;
 
     }
 
     IEnumerator INGAME_SELECTTERRAINCARD_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -221,13 +228,13 @@ public class TutorialManager : MonoBehaviour
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(-193, -304, 0);
         pointObj[2].transform.localScale = new Vector3(1.23f, 1.23f, 1.23f);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 0.7f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[18], 0.7f);
         index = 6;
     }
 
     IEnumerator INGAME_SELECTFLAG_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -259,7 +266,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator INGAME_SELECTTERRAINLOC_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -284,7 +291,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator INGAME_SELECTLOCDONE_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -315,7 +322,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator INGAME_TURNEND_Cor()
     {
         yield return new WaitForSeconds(8);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -351,7 +358,7 @@ public class TutorialManager : MonoBehaviour
         TerrainChange(59);
         TerrainChange(302);
         yield return new WaitForSeconds(2);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         pointObj[4].SetActive(true);
         pointObj[4].transform.localPosition = new Vector3(-374, -2, 0);
         pointObj[4].transform.localScale = new Vector3(1.23f, 1.23f, 1.23f);
@@ -424,7 +431,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator INGAME_BEFOREATTACK_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -462,7 +469,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator INGAME_ATTACK_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().displayPos = new Vector3(0, 230, 0);
@@ -495,7 +502,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator ENDGAME_CONDITIONTOWIN_Cor()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         yield return new WaitForSeconds(3f);
         displayTextObj.GetComponent<TutorialDisplayTxt>().startPos = new Vector3(-635, 230, 0);
         displayTextObj.GetComponent<TutorialDisplayTxt>().endPos = new Vector3(0, 230, 0);
@@ -514,7 +521,14 @@ public class TutorialManager : MonoBehaviour
         displayTextObj.SetActive(true);
         yield return new WaitForSeconds(4.5f);
         panel.SetActive(false);
-        SceneManager.LoadScene("MainUIScene");
+
+        //SceneManager.LoadScene("MainUIScene");
+        GameObject.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(
+            SCENE_NAME.MainUI_SCENE,
+            true,
+            LOAD_UI_TYPE.FALSE,
+            2.0f
+            );
     }
 
     public void DoingTutorial(TUTORIAL tutorial)
@@ -522,7 +536,7 @@ public class TutorialManager : MonoBehaviour
         switch (tutorial)
         {
             case TUTORIAL.READY_SELECTORDERCARD:
-                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[16], 1.0f);
+                SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
                 currentTutorial = TUTORIAL.READY_SELECTORDERCARD;
                 pointObj[0].SetActive(true);
                 pointObj[0].transform.localPosition = new Vector3(0, 0, 0);
