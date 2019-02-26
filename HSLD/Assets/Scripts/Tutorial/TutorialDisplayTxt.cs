@@ -56,6 +56,9 @@ public class TutorialDisplayTxt : MonoBehaviour
             case TUTORIAL.INGAME_ATTACK:
                 StartCoroutine(performance2(delayTime));
                 break;
+            case TUTORIAL.ENDGAME_CONDITIONTOWIN:
+                StartCoroutine(performance2(delayTime));
+                break;
         }
 
     }

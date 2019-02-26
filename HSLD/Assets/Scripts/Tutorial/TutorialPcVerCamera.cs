@@ -29,7 +29,6 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(GameObject.FindWithTag("Planet").GetComponent<TutorialAllMeshController>());
 
         int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
 

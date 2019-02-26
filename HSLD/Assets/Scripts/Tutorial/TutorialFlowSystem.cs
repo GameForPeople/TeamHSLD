@@ -102,13 +102,16 @@ public class TutorialFlowSystem : MonoBehaviour
                 }
                 else
                 {
-                    displayTextImg.SetActive(true);
-                    displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
+                    if (!gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.ENDGAME_CONDITIONTOWIN))
+                    {
+                        displayTextImg.SetActive(true);
+                        displayTextImg.GetComponent<DisplayTextImg>().Performance(displayTextImg.GetComponent<DisplayTextImg>().sprs[2]);
 
-                    yield return new WaitForSeconds(2.5f);
-                    currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
-                    turnSystem.currentTurn = TURN.ENEMYTURN;
-                    turnSystem.TurnSet();
+                        yield return new WaitForSeconds(2.5f);
+                        currentFlow = FLOW.ENEMYTURN_ROLLINGDICE;
+                        turnSystem.currentTurn = TURN.ENEMYTURN;
+                        turnSystem.TurnSet();
+                    }
                 }
                 break;
             case FLOW.TO_PICKINGEVENTCARDLOC:

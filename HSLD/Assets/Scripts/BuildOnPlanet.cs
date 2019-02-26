@@ -53,7 +53,7 @@ public class BuildOnPlanet : MonoBehaviour
             }
             else if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ATTACK))
             {
-                //gameObject.GetComponent<TutorialFlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
+                gameObject.GetComponent<TutorialFlowSystem>().FlowChange(FLOW.TO_PICKINGLOC);
                 gameObject.GetComponent<TutorialFlowSystem>().diceCntingUI.SetActive(false);
                 gameObject.GetComponent<TutorialFlowSystem>().setTerrainCanvas.SetActive(false);
                 gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.ENDGAME_CONDITIONTOWIN);
