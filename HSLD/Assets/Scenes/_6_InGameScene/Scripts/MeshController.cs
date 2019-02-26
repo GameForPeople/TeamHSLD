@@ -95,6 +95,8 @@ public class MeshController : MonoBehaviour {
         transform.position *= initSize; // 초기 테두리 사이즈
         startPos = transform.position;
         destinationPos = transform.position * landingSize; // Landing 사이즈
+
+
     }
 
     public void SavedBeforeMat()
@@ -275,7 +277,7 @@ public class MeshController : MonoBehaviour {
                         }
                         else
                         {
-                            for (int j = 0; j < 12; j++)
+                            for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
                             {
                                 if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
