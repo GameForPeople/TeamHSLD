@@ -368,35 +368,29 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        // 상대방 캐릭터는 뭐냐....?
-                        if (networkSystem.GetComponent<NetworkManager>().characterBit == 0)
+                        if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex >= 1 &&
+                            networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex <= 3)
                         {
-                            Debug.Log("0");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 1)
+                        else if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex == 4)
                         {
-                            Debug.Log("1");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 2)
+                        else if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex == 5)
                         {
-                            Debug.Log("2");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[24];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 3)
+                        else if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex == 6)
                         {
-                            Debug.Log("3");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 4)
+                        else if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex == 7)
                         {
-                            Debug.Log("4");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[26];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 5)
+                        else if (networkSystem.GetComponent<NetworkManager>().enemyCharacterIndex == 8)
                         {
-                            Debug.Log("5");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
                         }
 
@@ -419,33 +413,29 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        if (networkSystem.GetComponent<NetworkManager>().characterBit == 0)
+                        if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex >= 1 &&
+                            networkSystem.GetComponent<NetworkManager>().playerCharacterIndex <= 3)
                         {
-                            Debug.Log("0");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
-                        } else if (networkSystem.GetComponent<NetworkManager>().characterBit == 1)
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 4)
                         {
-                            Debug.Log("1");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 2)
+                        else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 5)
                         {
-                            Debug.Log("2");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[24];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 3)
+                        else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 6)
                         {
-                            Debug.Log("3");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 4)
+                        else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 7)
                         {
-                            Debug.Log("4");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[26];
                         }
-                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 5)
+                        else if (networkSystem.GetComponent<NetworkManager>().playerCharacterIndex == 8)
                         {
-                            Debug.Log("5");
                             buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
                         }
 
