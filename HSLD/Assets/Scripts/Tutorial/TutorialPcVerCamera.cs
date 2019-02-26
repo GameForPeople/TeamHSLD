@@ -19,7 +19,7 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Awake()
     {
-        myPlanet = GameObject.FindWithTag("Planet");
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
 
         isDominatedCheck = false;
         isDominatedConfirm = false;

@@ -117,7 +117,7 @@ public class MeshController : MonoBehaviour {
     IEnumerator BlinkFlag()
     {
         render = gameObject.GetComponent<MeshRenderer>();
-        render.material.shader = Shader.Find("Custom/MyRimShader");
+        render.material.shader = Shader.Find("Standard");
 
         isTriggerOn = true;
         time_ = 0;
@@ -126,7 +126,6 @@ public class MeshController : MonoBehaviour {
             time_ += Time.deltaTime;
             
             render.materials[0].SetColor("_Color", Color.Lerp(new Color32(255,255,255,255), new Color32(216,166,93,255), time_));
-            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(20, 40, time_);
             yield return new WaitForEndOfFrame();
             if (time_ > 1.0f)
                 break;
@@ -138,14 +137,12 @@ public class MeshController : MonoBehaviour {
             time_ += Time.deltaTime;
             
             render.materials[0].SetColor("_Color", Color.Lerp(new Color32(216, 166, 93, 255), new Color32(255, 255, 255, 255), time_));
-            gameObject.transform.GetChild(0).GetComponent<Light>().intensity = Mathf.Lerp(40, 20, time_);
             yield return new WaitForEndOfFrame();
             if (time_ > 1.0f)
                 break;
         }
 
         isTriggerOn = false;
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     void Update ()
@@ -154,7 +151,6 @@ public class MeshController : MonoBehaviour {
         {
             if (TutorialManager.index == 7 && isFlag && !isTriggerOn && gameObject.transform.childCount == 1)
             {
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 StartCoroutine(BlinkFlag());
             }
         }
