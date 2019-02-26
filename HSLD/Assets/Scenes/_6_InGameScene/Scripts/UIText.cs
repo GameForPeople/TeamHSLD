@@ -64,44 +64,44 @@ public class UIText : MonoBehaviour {
             }
         }
         
-        if (Input.touchCount >= 1)
-        {
-            for(int i = 0; i<Input.touchCount; i++)
-            {
-                if (Input.touchCount == 1)
-                {
-                    DebuggingText.text += "[ Touch(0) Another Phase ] \n";
-                    RaycastHit hit;
+        //if (Input.touchCount >= 1)
+        //{
+        //    for(int i = 0; i<Input.touchCount; i++)
+        //    {
+        //        if (Input.touchCount == 1)
+        //        {
+        //            DebuggingText.text += "[ Touch(0) Another Phase ] \n";
+        //            RaycastHit hit;
 
-                    Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+        //            Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit))
-                    {
+        //            if (Physics.Raycast(ray, out hit))
+        //            {
 
-                        PickedMesh = GameObject.Find(hit.transform.name);
-                        MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
+        //                PickedMesh = GameObject.Find(hit.transform.name);
+        //                MeshRenderer PickedRenderer = PickedMesh.GetComponent<MeshRenderer>();
 
-                        Vec3 = PickedRenderer.transform.position;
-                        if (PickedMesh)
-                        {
-                            MeshNum = PickedMesh.GetComponent<MeshController>().MeshNumber;
-                            DebuggingText.text +=
-                                "[Pick Object] : " + hit.transform.name +
-                                "\nMeshNum : " + MeshNum +
-                                "\nisAwake : " + PickedMesh.GetComponent<MeshController>().isAwake +
-                                "\nTerrainState : " + PickedMesh.GetComponent<MeshController>().terrainstate.ToString() + "\n";
-                        }
-                    }
-                }
+        //                Vec3 = PickedRenderer.transform.position;
+        //                if (PickedMesh)
+        //                {
+        //                    MeshNum = PickedMesh.GetComponent<MeshController>().MeshNumber;
+        //                    DebuggingText.text +=
+        //                        "[Pick Object] : " + hit.transform.name +
+        //                        "\nMeshNum : " + MeshNum +
+        //                        "\nisAwake : " + PickedMesh.GetComponent<MeshController>().isAwake +
+        //                        "\nTerrainState : " + PickedMesh.GetComponent<MeshController>().terrainstate.ToString() + "\n";
+        //                }
+        //            }
+        //        }
 
-                DebuggingText.text +=
-                    "Input.GetTouch(" + i + ") : " + Input.GetTouch(i).position.ToString() + "\n";
+        //        DebuggingText.text +=
+        //            "Input.GetTouch(" + i + ") : " + Input.GetTouch(i).position.ToString() + "\n";
 
-                if (Input.touchCount == 2)
-                {
-                    DebuggingText.text += "[Scale]" + "\n";
-                }
-            }
-        }
+        //        if (Input.touchCount == 2)
+        //        {
+        //            DebuggingText.text += "[Scale]" + "\n";
+        //        }
+        //    }
+        //}
     }
 }

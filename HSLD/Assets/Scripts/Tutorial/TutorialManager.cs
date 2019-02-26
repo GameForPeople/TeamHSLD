@@ -145,7 +145,6 @@ public class TutorialManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
             gameObject.GetComponent<TutorialFlowSystem>().cardSetCanvas.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>().raycastTarget = false;
 
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         gameObject.GetComponent<TutorialFlowSystem>().cardSetCanvas.transform.GetChild(index).transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
         pointObj[2].transform.localScale = new Vector3(1, 1, 1);
         pointObj[2].SetActive(true);
@@ -156,7 +155,6 @@ public class TutorialManager : MonoBehaviour
 
     public void PointArrowMove(Vector3 pos)
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
         pointObj[3].SetActive(true);
         pointObj[3].transform.localPosition = pos;
         index += 1;
@@ -164,7 +162,6 @@ public class TutorialManager : MonoBehaviour
 
     public void pointOff()
     {
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
 
         for (int i = 0; i<pointObj.Length;i++)
             pointObj[i].SetActive(false);
@@ -201,7 +198,7 @@ public class TutorialManager : MonoBehaviour
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(484, -194, 0);
         pointObj[2].transform.localScale = new Vector3(3.84f, 3.84f, 3.84f);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 0.7f);
         index = 5;
     }
 
@@ -219,7 +216,7 @@ public class TutorialManager : MonoBehaviour
         pointObj[2].SetActive(true);
         pointObj[2].transform.localPosition = new Vector3(-193, -304, 0);
         pointObj[2].transform.localScale = new Vector3(1.23f, 1.23f, 1.23f);
-        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 1.0f);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[17], 0.7f);
         index = 6;
     }
 
