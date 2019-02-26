@@ -403,7 +403,7 @@ public class PCverPIcking : MonoBehaviour
                         bDominateEnemyFlag = true;
 
                         gameObject.GetComponent<CameraShake>().ShakeOnce();
-                        StartCoroutine(gameObject.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
+                        //StartCoroutine(gameObject.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
                     }
                 }
             }

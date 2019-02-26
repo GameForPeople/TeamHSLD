@@ -322,7 +322,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                         enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
                         bDominateEnemyFlag = true;
 
-                        StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
+                        //StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
                         gameObject.GetComponent<CameraShake>().ShakeOnce();
                     }
                 }
