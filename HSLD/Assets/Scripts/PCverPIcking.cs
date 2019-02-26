@@ -325,7 +325,7 @@ public class PCverPIcking : MonoBehaviour
                     tempint++;
                 }
 
-                if (tempint == 1)
+                if (tempint == 2)
                 {
                     for (int j = 0; j < myPlanet.GetComponent<AllMeshController>().FlagContainer.Count; j++)
                     {
@@ -355,25 +355,57 @@ public class PCverPIcking : MonoBehaviour
         }
         else // Flag가 결정된 후
         {
+            GameObject buildingObj = new GameObject();
             int detectedCount = 0;
             //EnemyFlag
-            //if (!bDominateEnemyFlag)
-            //{
-            //    for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
-            //    {
-            //        if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
-            //        {
-            //            detectedCount++;
-            //        }
-            //        if (detectedCount == 12)
-            //        {
-            //            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
+            if (!bDominateEnemyFlag)
+            {
+                for (int i = 0; i < enemyFlag.GetComponent<MeshController>().NearMesh.Count; i++)
+                {
+                    if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
+                    {
+                        detectedCount++;
+                    }
+                    if (detectedCount == 12)
+                    {
+                        // 상대방 캐릭터는 뭐냐....?
+                        if (networkSystem.GetComponent<NetworkManager>().characterBit == 0)
+                        {
+                            Debug.Log("0");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 1)
+                        {
+                            Debug.Log("1");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 2)
+                        {
+                            Debug.Log("2");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[24];
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 3)
+                        {
+                            Debug.Log("3");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 4)
+                        {
+                            Debug.Log("4");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[26];
+                        }
+                        else if (networkSystem.GetComponent<NetworkManager>().characterBit == 5)
+                        {
+                            Debug.Log("5");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
+                        }
 
-            //            enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
-            //            bDominateEnemyFlag = true;
-            //        }
-            //    }
-            //}
+                        Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
+                        enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
+                        bDominateEnemyFlag = true;
+                    }
+                }
+            }
 
             detectedCount = 0;
             // MyFlag
@@ -387,30 +419,35 @@ public class PCverPIcking : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        if(networkSystem.GetComponent<NetworkManager>().characterBit == 0)
+                        if (networkSystem.GetComponent<NetworkManager>().characterBit == 0)
                         {
                             Debug.Log("0");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
                         } else if (networkSystem.GetComponent<NetworkManager>().characterBit == 1)
                         {
                             Debug.Log("1");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[23];
                         }
                         else if (networkSystem.GetComponent<NetworkManager>().characterBit == 2)
                         {
                             Debug.Log("2");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[24];
                         }
                         else if (networkSystem.GetComponent<NetworkManager>().characterBit == 3)
                         {
                             Debug.Log("3");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
                         }
                         else if (networkSystem.GetComponent<NetworkManager>().characterBit == 4)
                         {
                             Debug.Log("4");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[26];
                         }
                         else if (networkSystem.GetComponent<NetworkManager>().characterBit == 5)
                         {
                             Debug.Log("5");
+                            buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[27];
                         }
-                        GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
 
                         Destroy(myFlag.GetComponent<MeshController>().TargetObject);
                         myFlag.GetComponent<MeshController>().EulerRotCal(myFlag, buildingObj, 1.0f);
