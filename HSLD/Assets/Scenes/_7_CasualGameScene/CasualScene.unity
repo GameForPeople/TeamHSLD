@@ -8804,9 +8804,9 @@ MonoBehaviour:
   dice: {fileID: 0}
   currentTurn: 0
   turnCountingUI: {fileID: 522991760}
-  matchingCompleteTime: 1
+  matchingCompleteTime: 3
   selectOrderTime: 10
-  selectCardTime: 3
+  selectCardTime: 45
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -8849,7 +8849,6 @@ MonoBehaviour:
   turnSetCanvas: {fileID: 806044292}
   readyCanvas: {fileID: 744488204}
   matchingCompleteCanvas: {fileID: 951168820}
-  spinCanvas: {fileID: 0}
   diceCanvas: {fileID: 492514062}
   setTerrainCanvas: {fileID: 1001726854}
   turnTimerImg: {fileID: 1005423420}
@@ -8857,7 +8856,6 @@ MonoBehaviour:
   missionCanvas: {fileID: 1308696082}
   displayText: {fileID: 2010562271}
   displayTextImg: {fileID: 954497341}
-  enemyTurnPassObj: {fileID: 0}
   resultUICanvas: {fileID: 937144423}
   diceCntingUI: {fileID: 445075900}
   charSprSet:

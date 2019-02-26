@@ -24663,9 +24663,9 @@ MonoBehaviour:
   dice: {fileID: 0}
   currentTurn: 0
   turnCountingUI: {fileID: 522991760}
-  matchingCompleteTime: 1
+  matchingCompleteTime: 3
   selectOrderTime: 10
-  selectCardTime: 3
+  selectCardTime: 45
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15

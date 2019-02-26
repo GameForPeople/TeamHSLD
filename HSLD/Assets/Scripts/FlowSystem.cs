@@ -333,6 +333,12 @@ public class FlowSystem : MonoBehaviour
 
                 //Debug.Log("카드 인덱스 : " + cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
                 //Debug.Log(cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt);
+                if (cardSystem.pickedCard.GetComponent<CardData>().data == null)
+                {
+                    StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
+                    return;
+                }
+                    
 
                 switch (cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
