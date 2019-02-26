@@ -9844,6 +9844,8 @@ MonoBehaviour:
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  enemyFlag: {fileID: 0}
+  myFlag: {fileID: 0}
 --- !u!1 &377393904
 GameObject:
   m_ObjectHideFlags: 0
@@ -10181,7 +10183,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: 9d5a30feb87b39c41bbc76b530f5e5e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d5a30feb87b39c41bbc76b530f5e5e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21775,7 +21777,7 @@ Prefab:
     - target: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -560.9
+      value: -544.8
       objectReference: {fileID: 0}
     - target: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
         type: 2}
@@ -21821,6 +21823,21 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.4128299
+      objectReference: {fileID: 0}
+    - target: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.4128299
+      objectReference: {fileID: 0}
+    - target: {fileID: 224602261753919950, guid: 358dbdf0dd5cc4942ad9dffc0944b06d,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.4128299
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 358dbdf0dd5cc4942ad9dffc0944b06d, type: 2}
@@ -55164,7 +55181,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: 9d5a30feb87b39c41bbc76b530f5e5e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d5a30feb87b39c41bbc76b530f5e5e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
