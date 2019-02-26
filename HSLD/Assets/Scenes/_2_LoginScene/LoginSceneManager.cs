@@ -44,7 +44,7 @@ public class LoginSceneManager : MonoBehaviour {
         if(IDBuffer.Length > 20 || IDBuffer.Length < 3)
         {
             Debug.Log("아이디 길이가 20 이상입니다. : " + IDBuffer.Length /*+ "PW : " + PWBuffer*/);
-            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 20자 미만, 3자 이상이여야 합니다.";
+            GameObject.Find("Text_ID_State").gameObject.GetComponent<Text>().text = "아이디는 20자 미만, 3자 이상이여야 합니다.";
             return;
         }
 
@@ -53,9 +53,14 @@ public class LoginSceneManager : MonoBehaviour {
         // 아이디 무결성 검사.
         for (int i = 0; i < IDBuffer.Length; ++i)
         {
-            if ('0' < IDBuffer[i] && '9' < IDBuffer[i]) continue;
+            if ('0' <= IDBuffer[i] && '9' >= IDBuffer[i]) continue;
             else if (IDBuffer[i] >= 'A' && IDBuffer[i] <= 'Z') continue;
             else if (IDBuffer[i] >= 'a' && IDBuffer[i] <= 'z') continue;
+
+            //if (i == IDBuffer.Length -1 )
+
+            Debug.Log("뭔데 " + IDBuffer[i] /*+ "PW : " + PWBuffer*/);
+
 
             isInputtedIdIsRightFormat = true;
             break;
@@ -63,7 +68,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         if(isInputtedIdIsRightFormat)
         {
-            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 영어와 숫자로만 이루어져야합니다.";
+            GameObject.Find("Canvas_2D").transform.Find("Text_ID_State").gameObject.GetComponent<Text>().text = "아이디는 영어와 숫자로만 이루어져야합니다.";
             return;
         }
         
@@ -99,13 +104,13 @@ public class LoginSceneManager : MonoBehaviour {
     {
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
-            string nickNameBuffer = GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("InputField_NickName").transform.Find("Text").gameObject.GetComponent<Text>().text;
+            string nickNameBuffer = GameObject.Find("InputField_NickName").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             // 글자수 제한, 3 이상, 10 이하일 떄만 트루
             if (nickNameBuffer.Length < 3 || nickNameBuffer.Length > 10) {
-                GameObject.Find("SignUp_UI").transform.Find("Text_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "닉네임은 3글자에서 10글자로 정해주세요.";
+                GameObject.Find("SignUp_UI").transform.Find("Text_State").gameObject.GetComponent<Text>().text = "닉네임은 3글자에서 10글자로 정해주세요.";
                 return;
             }
 
