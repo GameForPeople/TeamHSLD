@@ -88,6 +88,11 @@ public class TitleSceneManager : MonoBehaviour
             DrawExitUI();
             GameObject.Find("GameCores").transform.Find("AppQuitManager").GetComponent<AppQuitManager>().Quit(false, 0, 5);
         }
+        // 서버 External 모드이면 External모드로 시작.
+        else if (parsingServerCommand == 3)
+        {
+            UI_StartWithServer();
+        }
     }
 
     private IEnumerator DrawParsingUI()
