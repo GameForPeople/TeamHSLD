@@ -11,7 +11,16 @@ public class CameraVertical : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        MyPlanet = GameObject.FindWithTag("InGamePlanet");
+        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+        {
+            MyPlanet = GameObject.FindWithTag("InGamePlanet");
+        }
+        else
+        {
+            MyPlanet = GameObject.FindWithTag("Planet");
+        }
+
+
         //MyPlanet = GameObject.Find("Sphere_320Objects_40X");
         //mainCamera = Camera.main;
     }
