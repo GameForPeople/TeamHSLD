@@ -151,6 +151,24 @@ public class LoginSceneManager : MonoBehaviour {
         gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
         //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
 
+        // 아이템 비트 하드 코딩.
+        int tempItemBit = gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().itemBit;
+        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
+
+        if ((tempItemBit & (1 << 0)) == (1 << 0))
+        {
+            tempEditMesh.ClientBase_SetActivationOfMaterial(true);
+        }
+
+        if ((tempItemBit & (1 << 1)) == (1 << 1))
+        {
+            tempEditMesh.ClientBase_SetActivationOfObject(true);
+        }
+
+        if ((tempItemBit & (1 << 2)) == (1 << 2))
+        {
+            tempEditMesh.ClientBase_SetActivationOfMovingObject(true);
+        }
 
         // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
         // 메인 UI로 넘어갑니다~~

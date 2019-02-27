@@ -178,6 +178,7 @@ public partial class NetworkManager : MonoBehaviour {
     public int money = 20190102;
     public int characterBit = 0;
     public int activeCharacterIndex = -1;
+    public int itemBit = 0;
 
     // Use Main UI Scene
     public int friendNum;

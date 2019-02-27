@@ -6,8 +6,14 @@ public class EditMesh : MonoBehaviour {
     public GameObject[] buildingObj;
     public GameObject[] MovingObj;
 
+    public int[] terrainTypeArr = new int[322];
+
     public void Start()
     {
+        for ( int i = 1; i < 322; ++i)
+        {
+            terrainTypeArr[i] = 0;
+        }
         //setMaterial(1, "COLD");
         //setMaterial(2, "COLD");
         //setMaterial(3, "COLD");
@@ -174,5 +180,93 @@ public class EditMesh : MonoBehaviour {
     private int RandomValue(int min, int max)
     {
         return Random.Range(min, max + 1);
+    }
+
+    public void ClientBase_SetActivationOfMaterial(bool InIsActive)
+    {
+        string[] tempMaterialString = new string[5];
+        tempMaterialString[0] = "MODERATION";
+        tempMaterialString[1] = "BARREN";
+        tempMaterialString[2] = "COLD";
+        tempMaterialString[3] = "SEA";
+        tempMaterialString[4] = "MOUNTAIN";
+
+        if (InIsActive)
+        {
+            int tempRandomValue = 0;
+            for (int i = 1; i < 321; i += 5)
+            {
+                tempRandomValue = Random.Range(0, 5);
+
+                setMaterial(i, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 1, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 2, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 3, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 4, tempMaterialString[tempRandomValue]);
+
+                for(int j = i; j < i +5; ++j)
+                {
+                    terrainTypeArr[j] = tempRandomValue;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 1; i < 321; ++i)
+            {
+                setMaterial(i, tempMaterialString[0]);
+                terrainTypeArr[i] = 0;
+            }
+        }
+    }
+
+    public void ClientBase_SetActivationOfObject(bool InIsActive)
+    {
+        string[] tempMaterialString = new string[5];
+        tempMaterialString[0] = "MODERATION";
+        tempMaterialString[1] = "BARREN";
+        tempMaterialString[2] = "COLD";
+        tempMaterialString[3] = "SEA";
+        tempMaterialString[4] = "MOUNTAIN";
+
+        if (InIsActive)
+        {
+            for (int i = 1; i < 321; ++i)
+            {
+                setObject(i, tempMaterialString[terrainTypeArr[i]]);
+            }
+        }
+        else
+        {
+            for (int i = 1; i < 321; ++i)
+            {
+                setObject(i, tempMaterialString[0]);
+            }
+        }
+    }
+
+    public void ClientBase_SetActivationOfMovingObject(bool InIsActive)
+    {
+        string[] tempMaterialString = new string[5];
+        tempMaterialString[0] = "MODERATION";
+        tempMaterialString[1] = "BARREN";
+        tempMaterialString[2] = "COLD";
+        tempMaterialString[3] = "SEA";
+        tempMaterialString[4] = "MOUNTAIN";
+
+        if (InIsActive)
+        {
+            for (int i = 1; i < 321; i += 5)
+            {
+                setMovingObj(i, tempMaterialString[terrainTypeArr[i]]);
+            }
+        }
+        else
+        {
+            for (int i = 1; i < 321; i += 5)
+            {
+                setMovingObj(i, tempMaterialString[0]);
+            }
+        }
     }
 }

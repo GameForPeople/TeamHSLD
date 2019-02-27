@@ -76,6 +76,23 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "구매 성공!";
+
+            EditMesh tempEditMesh = GameObject.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
+
+            if (itemIndex == 1)
+            {
+                tempEditMesh.ClientBase_SetActivationOfMaterial(true);
+            }
+            else if (itemIndex == 2)
+            {
+                tempEditMesh.ClientBase_SetActivationOfObject(true);
+            }
+            else if (itemIndex == 3)
+            {
+                tempEditMesh.ClientBase_SetActivationOfMovingObject(true);
+            }
+
+            networkObject.itemBit ^= itemBit[itemIndex];
         }
         else if (InType == 0)
         {
