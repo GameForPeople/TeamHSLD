@@ -77,6 +77,9 @@ public partial class MainUISceneManager : MonoBehaviour
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "구매 성공!";
 
+            PlayParticle(1);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             EditMesh tempEditMesh = GameObject.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
 
             if (itemIndex == 1)
@@ -93,19 +96,30 @@ public partial class MainUISceneManager : MonoBehaviour
             }
 
             networkObject.itemBit ^= itemBit[itemIndex];
+
+            RefreshUserDataUI();
         }
         else if (InType == 0)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "살 돈 없는데?";
         }
         else if (InType == 1)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "이미 산건데?";
         }
         else if (InType == 2)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "몰라 에러남";
         }

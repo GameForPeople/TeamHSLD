@@ -18,7 +18,10 @@ public class GravityBody : MonoBehaviour
 
     void Start()
     {
-        planet = GameObject.FindWithTag("InGamePlanet").GetComponent<GravityAttractor>();
+        if(GameObject.FindWithTag("InGamePlanet") != null)
+            planet = GameObject.FindWithTag("InGamePlanet").GetComponent<GravityAttractor>();
+        else
+            planet = GameObject.FindWithTag("Planet").GetComponent<GravityAttractor>();
 
         // Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
         GetComponent<Rigidbody>().useGravity = false;

@@ -194,20 +194,25 @@ public class EditMesh : MonoBehaviour {
         if (InIsActive)
         {
             int tempRandomValue = 0;
-            for (int i = 1; i < 321; i += 5)
+            for (int i = 1; i < 321; i += 10)
             {
                 tempRandomValue = Random.Range(0, 5);
+
+                for (int j = i; j < i + 10; ++j)
+                {
+                    terrainTypeArr[j] = tempRandomValue;
+                }
 
                 setMaterial(i, tempMaterialString[tempRandomValue]);
                 setMaterial(i + 1, tempMaterialString[tempRandomValue]);
                 setMaterial(i + 2, tempMaterialString[tempRandomValue]);
                 setMaterial(i + 3, tempMaterialString[tempRandomValue]);
                 setMaterial(i + 4, tempMaterialString[tempRandomValue]);
-
-                for(int j = i; j < i +5; ++j)
-                {
-                    terrainTypeArr[j] = tempRandomValue;
-                }
+                setMaterial(i + 5, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 6, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 7, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 8, tempMaterialString[tempRandomValue]);
+                setMaterial(i + 9, tempMaterialString[tempRandomValue]);
             }
         }
         else
@@ -233,7 +238,8 @@ public class EditMesh : MonoBehaviour {
         {
             for (int i = 1; i < 321; ++i)
             {
-                setObject(i, tempMaterialString[terrainTypeArr[i]]);
+                if(terrainTypeArr[i] != 4)
+                    setObject(i, tempMaterialString[terrainTypeArr[i]]);
             }
         }
         else
