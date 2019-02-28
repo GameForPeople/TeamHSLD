@@ -213,8 +213,12 @@ public class LoginSceneManager : MonoBehaviour {
 
         Canvas2D.transform.Find("InputField_ID").gameObject.SetActive(true);
         Canvas2D.transform.Find("SignIn_Button").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().parsingNotifyNum == 0)
+        {
+             Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
+             Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+        }
     }
     #endregion
 
