@@ -260,6 +260,8 @@ public class TutorialPcVerCamera : MonoBehaviour
         {
             for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; i++)
             {
+                Debug.Log(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().name + " / " + myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed);
+
                 if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
                 {
                     GameObject buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[21];
@@ -281,8 +283,6 @@ public class TutorialPcVerCamera : MonoBehaviour
                             myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
                             Destroy(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
                             myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
-
-
                         }
                         else
                         {
@@ -315,7 +315,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
+                        buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[25];
 
 
                         Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
