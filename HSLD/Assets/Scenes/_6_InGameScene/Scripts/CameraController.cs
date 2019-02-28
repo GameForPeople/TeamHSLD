@@ -158,7 +158,7 @@ public class CameraController : MonoBehaviour
                 float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
                 float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
-                float deltaMagnitudediff = touchDeltaMag - prevTouchDeltaMag;
+                float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
 
                 if (fdistance < minDistance && fdistance > maxDistance)
                 {
