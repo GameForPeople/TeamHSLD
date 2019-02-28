@@ -3274,6 +3274,7 @@ MonoBehaviour:
   cameraShake: {fileID: 374445978}
   duration: 1
   magnitude: 2
+  isClassicMode: 0
   enemyFlag: {fileID: 0}
   myFlag: {fileID: 0}
 --- !u!114 &374445978

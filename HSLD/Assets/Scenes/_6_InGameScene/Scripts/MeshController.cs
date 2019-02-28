@@ -153,63 +153,63 @@ public class MeshController : MonoBehaviour {
             isLandingSign = false;
         }
 
-        if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-        {
-            if (isFlag && temp == false)
-            {
+        //if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+        //{
+        //    if (isFlag && temp == false)
+        //    {
 
-                for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
-                {
-                    if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
-                    {
-                        float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
+        //        for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
+        //        {
+        //            if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
+        //            {
+        //                float pTop = (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
 
-                        if (pTop < 19.45f && pTop != 0)
-                        {
-                            if(AllMeshController.myPlanet.transform.childCount == 320)
-                            {
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
-                                NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
-                                AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
-                            }
+        //                if (pTop < 19.45f && pTop != 0)
+        //                {
+        //                    if(AllMeshController.myPlanet.transform.childCount == 320)
+        //                    {
+        //                        AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
+        //                        NearMesh.Add(AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i]);
+        //                        AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+        //                    }
 
-                            //Debug.Log(name);
-                            //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                        }
-                    }
-                } // Flagable이면 주변 매쉬 받아와
-
-
-                temp = true;
-            }
-        }
-        else
-        {
-            if (isFlag && temp == false)
-            {
-
-                for (int i = 1; i < TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer.Length - 1; i++)
-                {
-                    if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
-                    {
-                        float pTop = (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
-
-                        if (pTop < 19.45f && pTop != 0)
-                        {
-                            TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
-                            NearMesh.Add(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]);
-                            TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
-
-                            //Debug.Log(name);
-                            //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
-                        }
-                    }
-                } // Flagable이면 주변 매쉬 받아와
+        //                    //Debug.Log(name);
+        //                    //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+        //                }
+        //            }
+        //        } // Flagable이면 주변 매쉬 받아와
 
 
-                temp = true;
-            }
-        }
+        //        temp = true;
+        //    }
+        //}
+        //else
+        //{
+        //    if (isFlag && temp == false)
+        //    {
+
+        //        for (int i = 1; i < TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer.Length - 1; i++)
+        //        {
+        //            if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]) // 에러 나와서 일단 넣음 
+        //            {
+        //                float pTop = (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].transform.position - transform.position).magnitude;
+
+        //                if (pTop < 19.45f && pTop != 0)
+        //                {
+        //                    TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().isFlagMesh = true;
+        //                    NearMesh.Add(TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i]);
+        //                    TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer[i].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_JointFlag");
+
+        //                    //Debug.Log(name);
+        //                    //AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_JointFlag");
+        //                }
+        //            }
+        //        } // Flagable이면 주변 매쉬 받아와
+
+
+        //        temp = true;
+        //    }
+        //}
 
         
 

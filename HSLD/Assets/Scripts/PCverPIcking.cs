@@ -18,11 +18,14 @@ public class PCverPIcking : MonoBehaviour
     private bool bSelectionFlag;
     private bool bDominateMyFlag;
     private bool bDominateEnemyFlag;
+    public bool isClassicMode;
     public GameObject enemyFlag;
     public GameObject myFlag;
 
     private GameObject networkSystem;
     private FlowSystem flowSystem;
+
+    private int detectedCount = 0;
 
     private void Start()
     {
@@ -246,7 +249,7 @@ public class PCverPIcking : MonoBehaviour
         {
             GameObject flagMesh = myPlanet.GetComponent<AllMeshController>().myFlag;
             GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
-            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[21];
+            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
             Destroy(flagMesh.GetComponent<MeshController>().TargetObject);
             flagMesh.GetComponent<MeshController>().EulerRotCal(flagMesh, buildingObj, 1.01f);
@@ -359,7 +362,8 @@ public class PCverPIcking : MonoBehaviour
         if(bSelectionFlag == true) // Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
-            int detectedCount = 0;
+            if (isClassicMode) detectedCount = 0;
+            else detectedCount = 1;
             //EnemyFlag
             if (!bDominateEnemyFlag)
             {
@@ -368,6 +372,7 @@ public class PCverPIcking : MonoBehaviour
                     if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
                     {
                         detectedCount++;
+                        Debug.Log("enemyFlag : " + detectedCount);
                     }
                     if (detectedCount == 12)
                     {
@@ -411,7 +416,8 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
 
-            detectedCount = 0;
+            if (isClassicMode) detectedCount = 0;
+            else detectedCount = 1;
             // MyFlag
             if (!bDominateMyFlag)
             {
@@ -420,6 +426,7 @@ public class PCverPIcking : MonoBehaviour
                     if (myFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
                     {
                         detectedCount++;
+                        Debug.Log("myFlag : " + detectedCount);
                     }
                     if (detectedCount == 12)
                     {

@@ -48,14 +48,14 @@ public class CameraController : MonoBehaviour
         
         if (isUp)
         {
-            rotateAmount.x += 15;
+            rotateAmount.x -= 15;
 
             myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
             myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
         }
         else
         {
-            rotateAmount.x -= 15;
+            rotateAmount.x += 15;
 
             myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
             myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
