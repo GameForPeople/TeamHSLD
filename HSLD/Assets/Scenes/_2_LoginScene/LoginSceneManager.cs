@@ -153,7 +153,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         // 아이템 비트 하드 코딩.
         int tempItemBit = gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().itemBit;
-        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
+        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_Core").GetComponent<EditMesh>();
 
         if ((tempItemBit & (1 << 0)) == (1 << 0))
         {

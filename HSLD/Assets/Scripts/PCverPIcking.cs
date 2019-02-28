@@ -372,7 +372,6 @@ public class PCverPIcking : MonoBehaviour
                     if (enemyFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
                     {
                         detectedCount++;
-                        Debug.Log("enemyFlag : " + detectedCount);
                     }
                     if (detectedCount == 12)
                     {
@@ -426,7 +425,6 @@ public class PCverPIcking : MonoBehaviour
                     if (myFlag.GetComponent<MeshController>().NearMesh[i].GetComponent<MeshController>().isFixed) // Fixed됐다면?
                     {
                         detectedCount++;
-                        Debug.Log("myFlag : " + detectedCount);
                     }
                     if (detectedCount == 12)
                     {

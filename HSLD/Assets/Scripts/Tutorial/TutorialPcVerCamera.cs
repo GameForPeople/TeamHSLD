@@ -267,8 +267,7 @@ public class TutorialPcVerCamera : MonoBehaviour
 
                     Destroy(meshObj.GetComponent<MeshController>().TargetObject);
                     tempint++;
-
-                    Debug.Log(CameraController.DiceCount);
+                    
                     if(CameraController.DiceCount == 12)
                     {
                         buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[23];
