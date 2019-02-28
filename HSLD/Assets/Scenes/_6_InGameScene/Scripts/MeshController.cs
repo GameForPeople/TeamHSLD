@@ -29,7 +29,6 @@ public class MeshController : MonoBehaviour {
     public Identify currentIdentify = Identify.NEUTRALITY;
 
     public int MeshNumber;          // Mesh번호 매기기 (1~320)
-    static int giveNumber;          // Mesh번호 매기기를 위한 static값
     public int LinkedNumber;        // Linkednum이 같다면 같은 state로 붙어있는 Mesh들
 
     public GameObject terrainObj;  // Terrain이 갖는 오브젝트
@@ -87,9 +86,6 @@ public class MeshController : MonoBehaviour {
         isMine = false;
         isLandingSign = false;
         temp = false;
-        giveNumber++;
-        MeshNumber = giveNumber;
-        name = giveNumber.ToString();
         LinkedNumber = 0;
 
         transform.position *= initSize; // 초기 테두리 사이즈
@@ -167,7 +163,7 @@ public class MeshController : MonoBehaviour {
 
         if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
         {
-            if (isFlag && temp == false && AllMeshController.once)
+            if (isFlag && temp == false)
             {
 
                 for (int i = 1; i < AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer.Length - 1; i++)
@@ -197,7 +193,7 @@ public class MeshController : MonoBehaviour {
         }
         else
         {
-            if (isFlag && temp == false && TutorialAllMeshController.once)
+            if (isFlag && temp == false)
             {
 
                 for (int i = 1; i < TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().AllContainer.Length - 1; i++)

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TutorialAllMeshController : MonoBehaviour
 {
-    public static bool once;
-
     public static GameObject myPlanet;
     //public int[] PickContainer;
     public List<int> PickContainer;
@@ -21,28 +19,18 @@ public class TutorialAllMeshController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
         PickContainer = new List<int>();
 
         myPlanet = GameObject.FindWithTag("InGamePlanet");
         AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
 
+        MakeAllContainer();
+
         if (instance_ == null)
             instance_ = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (once == false)
-        {
-            MakeAllContainer();
-            //GetComponent<SaveJsonData>().SaveMeshData();
-            once = true;
-        }
-    }
-
+    
     public void MakeAllContainer()
     {
         for (int i = 1; i < GameObject.FindWithTag("InGamePlanet").transform.childCount + 1; i++)
