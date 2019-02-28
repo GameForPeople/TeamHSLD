@@ -27,6 +27,11 @@ public class TutorialAllMeshController : MonoBehaviour
         
         if (instance_ == null)
             instance_ = this;
+
+        for (int i = 0; i < FlagContainer.Count; i++)
+        {
+            FlagContainer[i].GetComponent<MeshController>().EulerRotCal(FlagContainer[i], buildingObj[0], 1.01f);
+        }
     }
     
     public void SearchALL()

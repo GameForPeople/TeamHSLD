@@ -72,6 +72,8 @@ public class MeshController : MonoBehaviour {
         {
             terrainstate = Terrain.FLAG;
             gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_FlagAble");
+            Debug.Log(name);
+            EulerRotCalAltar_A(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.01f);
         }
         else
         {

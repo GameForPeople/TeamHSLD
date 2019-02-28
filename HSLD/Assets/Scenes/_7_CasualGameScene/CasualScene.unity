@@ -2592,6 +2592,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 256948610}
   m_CullTransparentMesh: 0
+--- !u!1 &260041457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1650240241708534, guid: f80346cdfaec6954aaaae7ac88ee9180,
+    type: 2}
+  m_PrefabInternal: {fileID: 1480809335}
 --- !u!1 &274445792
 GameObject:
   m_ObjectHideFlags: 0
@@ -5711,6 +5716,11 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &563875355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1227684493608982, guid: f80346cdfaec6954aaaae7ac88ee9180,
+    type: 2}
+  m_PrefabInternal: {fileID: 1480809335}
 --- !u!1 &564511805
 GameObject:
   m_ObjectHideFlags: 0
@@ -15582,6 +15592,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114385393111674582, guid: f80346cdfaec6954aaaae7ac88ee9180,
+        type: 2}
+      propertyPath: FlagContainer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4314696736427754, guid: f80346cdfaec6954aaaae7ac88ee9180, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15618,6 +15633,16 @@ Prefab:
       propertyPath: m_Name
       value: planetModel80_Local
       objectReference: {fileID: 0}
+    - target: {fileID: 114385393111674582, guid: f80346cdfaec6954aaaae7ac88ee9180,
+        type: 2}
+      propertyPath: FlagContainer.Array.data[0]
+      value: 
+      objectReference: {fileID: 563875355}
+    - target: {fileID: 114385393111674582, guid: f80346cdfaec6954aaaae7ac88ee9180,
+        type: 2}
+      propertyPath: FlagContainer.Array.data[1]
+      value: 
+      objectReference: {fileID: 260041457}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80346cdfaec6954aaaae7ac88ee9180, type: 2}
   m_IsPrefabAsset: 0

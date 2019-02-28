@@ -128,6 +128,8 @@ public class PCverPIcking : MonoBehaviour
                             myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                             myPlanet.GetComponent<AllMeshController>().myFlag = PickedMeshObj;
                             GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop++;
+
+
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {

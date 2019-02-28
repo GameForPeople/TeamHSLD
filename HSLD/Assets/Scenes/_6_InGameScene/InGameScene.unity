@@ -12316,7 +12316,7 @@ Prefab:
     - target: {fileID: 114947561283310816, guid: d461ca8b8e5088a47bcd64be7f36f772,
         type: 2}
       propertyPath: FlagContainer.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4446466572439102, guid: d461ca8b8e5088a47bcd64be7f36f772, type: 2}
       propertyPath: m_LocalPosition.x
