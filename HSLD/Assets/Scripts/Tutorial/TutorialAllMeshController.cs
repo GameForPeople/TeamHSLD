@@ -23,29 +23,12 @@ public class TutorialAllMeshController : MonoBehaviour
         PickContainer = new List<int>();
 
         myPlanet = GameObject.FindWithTag("InGamePlanet");
-        AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
-
-        MakeAllContainer();
-
+        //AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
+        
         if (instance_ == null)
             instance_ = this;
     }
     
-    public void MakeAllContainer()
-    {
-        for (int i = 1; i < GameObject.FindWithTag("InGamePlanet").transform.childCount + 1; i++)
-        {
-            AllContainer[i] = GameObject.Find(i.ToString());
-            if (AllContainer[i].GetComponent<MeshController>().isFlag) // 해당 메시가 Flagable이라면?
-            {
-                FlagContainer.Add(AllContainer[i]);
-                AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                AllContainer[i].GetComponent<MeshController>().EulerRotCalAltar_A(AllContainer[i], buildingObj[0], 1.01f);
-            }
-        }
-
-    }
-
     public void SearchALL()
     {
         for (int i = 1; i <= GameObject.FindWithTag("InGamePlanet").transform.childCount; i++)
