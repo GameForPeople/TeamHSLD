@@ -67,18 +67,8 @@ public class MeshController : MonoBehaviour {
     private MeshRenderer render;
     public Material beforeRender;
 
-    void Start () {
-        if (isFlag == true)
-        {
-            terrainstate = Terrain.FLAG;
-            gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_FlagAble");
-            Debug.Log(name);
-            EulerRotCalAltar_A(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[0], 1.01f);
-        }
-        else
-        {
-            terrainstate = Terrain.DEFAULT;
-        }
+    void Start ()
+    {
         missionmanager = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>();
         domMaterial = Resources.Load<Material>("M_Cold");
         priorMaterial = gameObject.GetComponent<Renderer>().material;

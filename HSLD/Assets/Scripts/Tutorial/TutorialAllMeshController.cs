@@ -27,10 +27,12 @@ public class TutorialAllMeshController : MonoBehaviour
         
         if (instance_ == null)
             instance_ = this;
-
+        
         for (int i = 0; i < FlagContainer.Count; i++)
         {
-            FlagContainer[i].GetComponent<MeshController>().EulerRotCal(FlagContainer[i], buildingObj[0], 1.01f);
+            FlagContainer[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_FlagAble");
+            FlagContainer[i].GetComponent<MeshController>().terrainstate = Terrain.FLAG;
+            FlagContainer[i].GetComponent<MeshController>().EulerRotCalAltar_A(FlagContainer[i], buildingObj[0], 1.01f);
         }
     }
     

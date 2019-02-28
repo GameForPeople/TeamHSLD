@@ -11,7 +11,7 @@ public class FlagSystem : MonoBehaviour
     private void Start()
     {
         myPlanet = GameObject.FindWithTag("InGamePlanet");
-        SpinRandom();
+        //SpinRandom();
     }
 
     int randomValue()
