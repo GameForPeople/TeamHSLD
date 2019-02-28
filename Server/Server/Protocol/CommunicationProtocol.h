@@ -33,6 +33,9 @@ enum Protocol {
 	DEMAND_ANNOUNCEMENT =	10	,	// UDP로 ANNOUNCEMENT를 받았을 때, 클라이언트가 전송함.
 	ANSWER_ANNOUNCEMENT =	11	,   // ANNOUNCEMENT에 대한 데이터를 클라이언트에게 전달할 때,
 
+	DEMAND_ADD_CHAT		=	12	,	// CHAT 내용을 추가 시, 불리우는 함수.
+	ANSWER_ADD_CHAT		=	13	,	// 해당 내용에 답변. 빈 프로토콜 전송.
+
 	// for LoginScene
 	DEMAND_LOGIN		=	100	,
 	FAIL_LOGIN			=	101	,

@@ -16,6 +16,10 @@ namespace SCENE_NETWORK_MANAGER
 	class TitleScene : public BaseScene
 	{
 		const int CONST_ANSWER_ANNOUNCEMENT;
+		
+		const int CHAT_BLOCK_SIZE;
+		int nowChatIndex;
+		std::vector<std::pair< /*Type_Nickname*/ std::wstring , std::wstring>> chatBlockArr;
 
 	public:
 		TitleScene() = delete;
@@ -27,5 +31,6 @@ namespace SCENE_NETWORK_MANAGER
 
 	private:
 		void _RecvDemandAnnouncement(SocketInfo* pClient);
+		void _RecvDemandAddChat(SocketInfo* pClient);
 	};
 }
