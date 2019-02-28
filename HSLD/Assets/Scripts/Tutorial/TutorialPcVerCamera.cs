@@ -260,16 +260,20 @@ public class TutorialPcVerCamera : MonoBehaviour
         {
             for (int i = 0; i < myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer.Count; i++)
             {
-                Debug.Log(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().name + " / " + myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed);
-
                 if (myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i].GetComponent<MeshController>().isFixed)
                 {
                     GameObject buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[21];
                     GameObject meshObj = myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i];
 
                     Destroy(meshObj.GetComponent<MeshController>().TargetObject);
-                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
                     tempint++;
+
+                    Debug.Log(CameraController.DiceCount);
+                    if(CameraController.DiceCount == 12)
+                    {
+                        buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[23];
+                    }
+                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
                 }
 
                 if (tempint == 2)
@@ -300,7 +304,8 @@ public class TutorialPcVerCamera : MonoBehaviour
                 }
             }
         }
-        else // Flag가 결정된 후
+        
+        if(bSelectionFlag == true)// Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
             int detectedCount = 0;

@@ -353,7 +353,8 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
         }
-        else // Flag가 결정된 후
+
+        if(bSelectionFlag == true) // Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
             int detectedCount = 0;
