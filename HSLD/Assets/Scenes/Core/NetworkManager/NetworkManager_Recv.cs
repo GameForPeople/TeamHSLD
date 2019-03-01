@@ -20,6 +20,8 @@ using System.Net.NetworkInformation;
 
 public partial class NetworkManager : MonoBehaviour
 {
+    private bool first;
+
     void RecvProcess()
     {
         RecvProtocolType();
@@ -75,8 +77,8 @@ public partial class NetworkManager : MonoBehaviour
             int achievementBit = BitConverter.ToInt32(NewDataRecvBuffer, 16);
             Debug.Log("achievementBit is --> " + achievementBit);
 
-            int titleBit = BitConverter.ToInt32(NewDataRecvBuffer, 20);
-            Debug.Log("titleBit is --> " + titleBit);
+            itemBit = BitConverter.ToInt32(NewDataRecvBuffer, 20);
+            Debug.Log("itemBit is --> " + itemBit);
 
             characterBit = BitConverter.ToInt32(NewDataRecvBuffer, 24);
             Debug.Log("characterBit is --> " + characterBit);
@@ -312,8 +314,10 @@ public partial class NetworkManager : MonoBehaviour
         else if (recvType == (int)PROTOCOL.ANSWER_BUY_ITEM)
         {
             int iBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
-
             money = BitConverter.ToInt32(NewDataRecvBuffer, 8);
+
+            GameObject.Find("MainUISceneManager").GetComponent<MainUISceneManager>().
+            NetworkManager_AnswerBuy(iBuffer);
         }
 
         else if (recvType == (int)PROTOCOL.ANSWER_VIP_CODE)
@@ -575,6 +579,11 @@ public partial class NetworkManager : MonoBehaviour
         }
         else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_INDEXS)
         {
+            if (first == false)
+            {
+                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop++;
+                first = true;
+            }
             //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             int arrSizeBuffer = BitConverter.ToInt32(NewDataRecvBuffer, 4);
             Debug.Log(" 총 받아야하는 배열의 크기는 " + arrSizeBuffer + "입니다");

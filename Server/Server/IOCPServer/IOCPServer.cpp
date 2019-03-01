@@ -6,7 +6,7 @@
 #pragma warning (disable: 4278)
 
 #ifdef _DEBUG_MODE_
-	#define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인용.
+	//#define _NETWORK_DEBUG_LOG_	// 주고받은 프로토콜 확인용.
 #endif
 
 // Server's global Function
@@ -524,7 +524,7 @@ void IOCPServer::_WorkerThreadFunction()
 			//SceneDataProcess[static_cast<int>(recvType * 0.01)](recvType, ptr, roomData, userData);
 			//sceneArr[1]->ProcessData(recvType, *ptr, roomData, userData);
 
-			if (recvType > Protocol::START_RECV && recvType < Protocol::NOTIFY_EVENT_CARD)
+			if (recvType > Protocol::START_RECV && recvType < /* Protocol::NOTIFY_EVENT_CARD */ 512 )
 			{
 				sceneNetworkManagerCont[static_cast<int>(recvType * 0.01)]->ProcessData(recvType, pClient);
 

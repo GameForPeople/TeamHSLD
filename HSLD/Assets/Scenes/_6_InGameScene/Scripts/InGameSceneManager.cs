@@ -278,13 +278,6 @@ public partial class InGameSceneManager : MonoBehaviour
     //ref으로 index만 받자 !
     public void RecvTerrainIndex(/*int InDiceValue, */ /*int[] InTerrainIndex*/)
     {
-        //Debug.Log("상대지형선택끝남");
-        //if (isfirstRecv)
-        //{
-        //    recvDiceValue++;
-        //    Debug.Log("recvDiceValue : " + recvDiceValue);
-        //    isfirstRecv = false;
-        //}
         for (int i =0; i< diceValueForLoop; i++)
         {
             if (AllMeshController.myPlanet.GetComponent<AllMeshController>().AllContainer[recvTerrainIndex[i]] == null)

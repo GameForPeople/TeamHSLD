@@ -108,7 +108,11 @@ bool GameRoomManager::HostCancelWaiting(SocketInfo* pClient)
 		}
 
 		pClient->pRoomIter.reset();
+
 		LeaveCriticalSection(&csRoom);
+		
+		--roomNum;
+		
 		return true;
 	}
 	else // ROOM_STATE::ROOM_STATE_PLAY
@@ -118,8 +122,12 @@ bool GameRoomManager::HostCancelWaiting(SocketInfo* pClient)
 	}
 }
 
-void GameRoomManager::_DestroyRoom(SocketInfo* pClient)
+/*
+	상대방이 게임 도중 나간 것이 확인되어, 나갈 때.
+*/
+void GameRoomManager::DestroyRoom(SocketInfo* pClient)
 {
+	--roomNum;
 	pClient->pRoomIter.reset();
 }
 

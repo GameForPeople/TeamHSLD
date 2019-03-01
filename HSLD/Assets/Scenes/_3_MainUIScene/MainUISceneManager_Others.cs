@@ -61,7 +61,7 @@ public partial class MainUISceneManager : MonoBehaviour
     {
         if(inIsWantToPlaytutorial)
         {
-            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.TUTORIAL_SCENE, true, LOAD_UI_TYPE.FALSE , 2.0f);
+            GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.TUTORIAL_SCENE, true, LOAD_UI_TYPE.FALSE , 1.0f);
         }
         else
         {

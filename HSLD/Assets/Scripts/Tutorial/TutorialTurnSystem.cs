@@ -30,7 +30,7 @@ public class TutorialTurnSystem : MonoBehaviour
 
     //최적화 스크립트
     private TutorialFlowSystem flowSystem;
-    private SetTurn setTurn;
+    private TutorialSetTurn setTurn;
     private TutorialCardSystem cardsystem;
 
     static public TURN startTurn;
@@ -41,11 +41,19 @@ public class TutorialTurnSystem : MonoBehaviour
     private void Start()
     {
         flowSystem = gameObject.GetComponent<TutorialFlowSystem>();
-        setTurn = gameObject.GetComponent<SetTurn>();
+        setTurn = gameObject.GetComponent<TutorialSetTurn>();
+        cardsystem = gameObject.GetComponent<TutorialCardSystem>();
+        StartCoroutine(ReadyMatchingComplete());
+    }
+    
+    public void TurnChange(bool change)
+    {
+        setTurn = gameObject.GetComponent<TutorialSetTurn>();
         cardsystem = gameObject.GetComponent<TutorialCardSystem>();
 
         StartCoroutine(ReadyMatchingComplete());
     }
+    
 
     public void TurnSet()
     {
@@ -149,6 +157,7 @@ public class TutorialTurnSystem : MonoBehaviour
             if (cnt == 5)
             {
                 gameObject.GetComponent<TutorialManager>().pointOff();
+                gameObject.GetComponent<TutorialManager>().panel.SetActive(true);
                 break;
             }
                 

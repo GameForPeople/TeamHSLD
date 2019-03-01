@@ -11,9 +11,16 @@ public partial class MainUISceneManager : MonoBehaviour
 
     public int itemIndex;
 
+    int[] itemBit = new int[4];
+
     private void StartForShop()
     {
         isDrawShopUI = false;
+
+        itemBit[0] = 0;
+        itemBit[1] = (1 << 0);
+        itemBit[2] = (1 << 1);
+        itemBit[3] = (1 << 2);
     }
 
     public void UI_DrawShopUI(bool InIsDraw)
@@ -69,19 +76,50 @@ public partial class MainUISceneManager : MonoBehaviour
         {
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "구매 성공!";
+
+            PlayParticle(1);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
+            EditMesh tempEditMesh = GameObject.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
+
+            if (itemIndex == 1)
+            {
+                tempEditMesh.ClientBase_SetActivationOfMaterial(true);
+            }
+            else if (itemIndex == 2)
+            {
+                tempEditMesh.ClientBase_SetActivationOfObject(true);
+            }
+            else if (itemIndex == 3)
+            {
+                tempEditMesh.ClientBase_SetActivationOfMovingObject(true);
+            }
+
+            networkObject.itemBit ^= itemBit[itemIndex];
+
+            RefreshUserDataUI();
         }
         else if (InType == 0)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "살 돈 없는데?";
         }
         else if (InType == 1)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "이미 산건데?";
         }
         else if (InType == 2)
         {
+            PlayParticle(2);
+            soundManager.SFXPlay(soundManager.clips[16], 1.0f);
+
             GameObject.Find("Shop_UI").transform.Find("OnOff").transform.Find("OnOff").transform.Find("Text").
                 gameObject.GetComponent<Text>().text = "몰라 에러남";
         }

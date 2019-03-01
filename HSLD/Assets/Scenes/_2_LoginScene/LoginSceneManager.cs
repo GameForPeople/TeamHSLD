@@ -44,7 +44,7 @@ public class LoginSceneManager : MonoBehaviour {
         if(IDBuffer.Length > 20 || IDBuffer.Length < 3)
         {
             Debug.Log("아이디 길이가 20 이상입니다. : " + IDBuffer.Length /*+ "PW : " + PWBuffer*/);
-            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 20자 미만, 3자 이상이여야 합니다.";
+            GameObject.Find("Text_ID_State").gameObject.GetComponent<Text>().text = "아이디는 20자 미만, 3자 이상이여야 합니다.";
             return;
         }
 
@@ -53,9 +53,14 @@ public class LoginSceneManager : MonoBehaviour {
         // 아이디 무결성 검사.
         for (int i = 0; i < IDBuffer.Length; ++i)
         {
-            if ('0' < IDBuffer[i] && '9' < IDBuffer[i]) continue;
+            if ('0' <= IDBuffer[i] && '9' >= IDBuffer[i]) continue;
             else if (IDBuffer[i] >= 'A' && IDBuffer[i] <= 'Z') continue;
             else if (IDBuffer[i] >= 'a' && IDBuffer[i] <= 'z') continue;
+
+            //if (i == IDBuffer.Length -1 )
+
+            Debug.Log("뭔데 " + IDBuffer[i] /*+ "PW : " + PWBuffer*/);
+
 
             isInputtedIdIsRightFormat = true;
             break;
@@ -63,7 +68,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         if(isInputtedIdIsRightFormat)
         {
-            GameObject.Find("Text_ID_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "아이디는 영어와 숫자로만 이루어져야합니다.";
+            GameObject.Find("Canvas_2D").transform.Find("Text_ID_State").gameObject.GetComponent<Text>().text = "아이디는 영어와 숫자로만 이루어져야합니다.";
             return;
         }
         
@@ -99,13 +104,13 @@ public class LoginSceneManager : MonoBehaviour {
     {
         if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().isOnNetwork)
         {
-            string nickNameBuffer = GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("InputField_NickName").transform.Find("Text").gameObject.GetComponent<Text>().text;
+            string nickNameBuffer = GameObject.Find("InputField_NickName").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             //GameObject.Find("OnOff_UI").transform.Find("SignUp_UI").transform.Find("Canvas").transform.Find("NickName_InputField").transform.Find("Text").gameObject.GetComponent<Text>().text;
 
             // 글자수 제한, 3 이상, 10 이하일 떄만 트루
             if (nickNameBuffer.Length < 3 || nickNameBuffer.Length > 10) {
-                GameObject.Find("SignUp_UI").transform.Find("Text_State").transform.Find("Text").gameObject.GetComponent<Text>().text = "닉네임은 3글자에서 10글자로 정해주세요.";
+                GameObject.Find("SignUp_UI").transform.Find("Text_State").gameObject.GetComponent<Text>().text = "닉네임은 3글자에서 10글자로 정해주세요.";
                 return;
             }
 
@@ -139,15 +144,35 @@ public class LoginSceneManager : MonoBehaviour {
     // From Network Recv -> if (recvType == (int)PROTOCOL.PERMIT_LOGIN)
     public void PermitLoginProcess()
     {
-        GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().SFXPlay(GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().clips[0], 1.0f);
+        GameObject gameCore = GameObject.Find("GameCores").gameObject;
 
-        GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
+        gameCore.transform.Find("SoundManager").GetComponent<SoundManager>().SFXPlay(GameObject.Find("GameCores").transform.Find("SoundManager").GetComponent<SoundManager>().clips[0], 1.0f);
+
+        gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().ID = IDBuffer;
         //GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().PW = PWBuffer;
 
-        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
+        // 아이템 비트 하드 코딩.
+        int tempItemBit = gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().itemBit;
+        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_Core").GetComponent<EditMesh>();
 
+        if ((tempItemBit & (1 << 0)) == (1 << 0))
+        {
+            tempEditMesh.ClientBase_SetActivationOfMaterial(true);
+        }
+
+        if ((tempItemBit & (1 << 1)) == (1 << 1))
+        {
+            tempEditMesh.ClientBase_SetActivationOfObject(true);
+        }
+
+        if ((tempItemBit & (1 << 2)) == (1 << 2))
+        {
+            tempEditMesh.ClientBase_SetActivationOfMovingObject(true);
+        }
+
+        // Type값에 따라 로그인에 성공했습니다 또는 회원가입에 성공했습니다 UI를 띄우고 나중에 코루틴으로 해당 UI날리기 --> NUll 참조 에러 날 가능성 있으니 해당사항 체크 필요
         // 메인 UI로 넘어갑니다~~
-        GameObject.Find("GameCores").transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
+        gameCore.transform.Find("SceneControlManager").GetComponent<SceneControlManager>().ChangeScene(SCENE_NAME.MainUI_SCENE, true);
     }
 
     IEnumerator LoginSceneAnimation()
@@ -188,8 +213,12 @@ public class LoginSceneManager : MonoBehaviour {
 
         Canvas2D.transform.Find("InputField_ID").gameObject.SetActive(true);
         Canvas2D.transform.Find("SignIn_Button").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().parsingNotifyNum == 0)
+        {
+             Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
+             Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+        }
     }
     #endregion
 

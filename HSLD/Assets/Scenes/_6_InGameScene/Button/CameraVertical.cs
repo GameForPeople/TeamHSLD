@@ -12,6 +12,8 @@ public class CameraVertical : MonoBehaviour {
     void Awake()
     {
         MyPlanet = GameObject.FindWithTag("InGamePlanet");
+
+
         //MyPlanet = GameObject.Find("Sphere_320Objects_40X");
         //mainCamera = Camera.main;
     }
@@ -24,6 +26,5 @@ public class CameraVertical : MonoBehaviour {
     public void OnTrigger()
     {
             mainCamera.transform.RotateAround(MyPlanet.transform.position, Vector3.up, RotationSensitivity);
-
     }
 }

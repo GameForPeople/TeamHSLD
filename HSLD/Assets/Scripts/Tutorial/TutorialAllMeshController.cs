@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TutorialAllMeshController : MonoBehaviour
 {
-    public static bool once;
-
     public static GameObject myPlanet;
     //public int[] PickContainer;
     public List<int> PickContainer;
@@ -21,46 +19,27 @@ public class TutorialAllMeshController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        once = false;
         IngameManager = GameObject.Find("InGameSceneManager");
         PickContainer = new List<int>();
 
-        myPlanet = GameObject.FindWithTag("Planet");
-        AllContainer = new GameObject[GameObject.FindWithTag("Planet").transform.childCount + 1];
-
+        myPlanet = GameObject.FindWithTag("InGamePlanet");
+        //AllContainer = new GameObject[GameObject.FindWithTag("InGamePlanet").transform.childCount + 1];
+        
         if (instance_ == null)
             instance_ = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (once == false)
+        
+        for (int i = 0; i < FlagContainer.Count; i++)
         {
-            MakeAllContainer();
-            //GetComponent<SaveJsonData>().SaveMeshData();
-            once = true;
+            Debug.Log(FlagContainer[i].name);
+            FlagContainer[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_FlagAble");
+            FlagContainer[i].GetComponent<MeshController>().terrainstate = Terrain.FLAG;
+            FlagContainer[i].GetComponent<MeshController>().EulerRotCalAltar_A(FlagContainer[i], buildingObj[0], 1.01f);
         }
     }
-
-    public void MakeAllContainer()
-    {
-        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
-        {
-            AllContainer[i] = GameObject.Find(i.ToString());
-            if (AllContainer[i].GetComponent<MeshController>().isFlag) // 해당 메시가 Flagable이라면?
-            {
-                FlagContainer.Add(AllContainer[i]);
-                AllContainer[i].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
-                AllContainer[i].GetComponent<MeshController>().EulerRotCal(AllContainer[i], buildingObj[0], 1.03f);
-            }
-        }
-
-    }
-
+    
     public void SearchALL()
     {
-        for (int i = 1; i <= GameObject.FindWithTag("Planet").transform.childCount; i++)
+        for (int i = 1; i <= GameObject.FindWithTag("InGamePlanet").transform.childCount; i++)
         {
             if (AllContainer[i].GetComponent<MeshController>().isFixed == true)
             {
@@ -160,6 +139,7 @@ public class TutorialAllMeshController : MonoBehaviour
             NearMeshSetting();
             myFlag = null;
             CameraController.ChangeableCount--;
+            GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop--;
             temp = false;
         }
         PickContainer.Clear();
@@ -177,7 +157,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
     public void AllPriorSetting()
     {
-        for (int i = 1; i < GameObject.FindWithTag("Planet").transform.childCount + 1; i++)
+        for (int i = 1; i < GameObject.FindWithTag("InGamePlanet").transform.childCount + 1; i++)
         {
             AllContainer[i].GetComponent<MeshController>().priorMaterial = AllContainer[i].GetComponent<MeshRenderer>().material;
             AllContainer[i].GetComponent<MeshController>().priorState = AllContainer[i].GetComponent<MeshController>().priorState;

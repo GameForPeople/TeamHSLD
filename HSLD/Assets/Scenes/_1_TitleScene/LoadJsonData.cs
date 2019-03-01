@@ -24,9 +24,9 @@ public class LoadJsonData : MonoBehaviour {
     {
         //Debug.Log("LoadJsonData");
 
-        if (File.Exists(Application.dataPath + "/Resources/Data/MeshInfoData.json"))
+        if (File.Exists(Path.Combine(Application.dataPath, "/Resources/Data/MeshInfoData.json")))
         {
-            string jsonStr = File.ReadAllText(Application.dataPath + "/Resources/Data/MeshInfoData.json");
+            string jsonStr = File.ReadAllText(Path.Combine(Application.dataPath, "/Resources/Data/MeshInfoData.json"));
 
             //Debug.Log(jsonStr);
             JsonData MeshData = JsonMapper.ToObject(jsonStr);

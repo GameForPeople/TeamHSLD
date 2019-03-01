@@ -45,38 +45,53 @@ public class TutorialCardSystem : MonoBehaviour
     {
         if (!isTriggerDone)
             return;
-
-        if (card.GetComponent<CardData>().data.cardIndex == 1 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_SELECTTERRAINCARD))
+        if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_SELECTTERRAINCARD))
         {
-            gameObject.GetComponent<TutorialManager>().pointOff();
-            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTFLAG);
+            if (card.GetComponent<CardData>().data.cardIndex == 1)
+            {
+                gameObject.GetComponent<TutorialManager>().pointOff();
+                gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTFLAG);
+            }
+            else
+                return;
         }
-        else if (card.GetComponent<CardData>().data.cardIndex == 3 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE_2))
+        else if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_ROLLINGDICE_2))
         {
-            gameObject.GetComponent<TutorialManager>().pointOff();
-            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINLOC_2);
+            if (card.GetComponent<CardData>().data.cardIndex == 3)
+            {
+                gameObject.GetComponent<TutorialManager>().pointOff();
+                gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_SELECTTERRAINLOC_2);
+            }
+            else
+                return;
         }
-        else if(card.GetComponent<CardData>().data.cardIndex == 3 && gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_BEFOREATTACK))
+        else if(gameObject.GetComponent<TutorialManager>().currentTutorial.Equals(TUTORIAL.INGAME_BEFOREATTACK))
         {
-            gameObject.GetComponent<TutorialManager>().pointOff();
-            gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_ATTACK);
+            if (card.GetComponent<CardData>().data.cardIndex == 3)
+            {
+                gameObject.GetComponent<TutorialManager>().pointOff();
+                gameObject.GetComponent<TutorialManager>().DoingTutorial(TUTORIAL.INGAME_ATTACK);
+            }
+            else
+                return;
         }
         
         if (flowSystem.currentFlow.Equals(FLOW.TO_ROLLINGDICE))
             return;
 
-        if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD) || flowSystem.currentFlow.Equals(FLOW.TO_PICKINGLOC))
+        if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
         {
-
             //init - 지형설치 카드도 초기화할것.
             TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().CleanPickContainer();
             pickedCard = card;
             //여기에다가
             CardPosInit();
-            if (GameObject.Find("GameCores") != null)
-            {
-                GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainType(card.GetComponent<CardData>().data.cardIndex);
-            }
+
+            // 튜토리얼에서는 네트워크 기능 필요없음.
+            //if (GameObject.Find("GameCores") != null)
+            //{
+            //    GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().SendTerrainType(card.GetComponent<CardData>().data.cardIndex);
+            //}
             pickedCard.transform.localPosition = new Vector3(pickedCard.transform.localPosition.x, -290, 0);
             pickedCard.GetComponent<Image>().color = new Color(1, 1, 1, 1.0f);
 

@@ -36,7 +36,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject turnSetCanvas;
     public GameObject readyCanvas;
     public GameObject matchingCompleteCanvas;
-    public GameObject spinCanvas;
+    //public GameObject spinCanvas;
     public GameObject diceCanvas;
     public GameObject setTerrainCanvas;
     public GameObject turnTimerImg;
@@ -44,7 +44,7 @@ public class FlowSystem : MonoBehaviour
     public GameObject missionCanvas;
     public GameObject displayText;
     public GameObject displayTextImg;
-    public GameObject enemyTurnPassObj;
+    //public GameObject enemyTurnPassObj;
     public GameObject resultUICanvas;
     public GameObject diceCntingUI;
 
@@ -94,7 +94,10 @@ public class FlowSystem : MonoBehaviour
         turnSystem = gameObject.GetComponent<TurnSystem>();
         missionManager = gameObject.GetComponent<MissionManager>();
         buildOnPlanet = gameObject.GetComponent<BuildOnPlanet>();
+        
         planetTrans = GameObject.FindWithTag("InGamePlanet").transform;
+
+        
         terrainGainCounting = gameObject.GetComponent<TerrainGainCounting>();
     }
 
@@ -289,7 +292,7 @@ public class FlowSystem : MonoBehaviour
             case FLOW.READY_SETCARD:
                 cardSetCanvas.SetActive(false);
                 //tmpAnimationImage.SetActive(true);
-                spinCanvas.SetActive(true);
+                //spinCanvas.SetActive(true);
                 readyCanvas.SetActive(false);
 
                 //init - card Cnt Update
@@ -330,6 +333,12 @@ public class FlowSystem : MonoBehaviour
 
                 //Debug.Log("카드 인덱스 : " + cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex + " / 다이스 주사위 눈금 : " + CameraController.DiceCount);
                 //Debug.Log(cardSystem.pickedCard.GetComponent<CardData>().data.currentCnt);
+                if (cardSystem.pickedCard.GetComponent<CardData>().data == null)
+                {
+                    StartCoroutine(DisplayEventWaitingTime(FLOW.TO_PICKINGLOC, 5));    // <<< 여기  5라는 숫자를 바꾸면댐
+                    return;
+                }
+                    
 
                 switch (cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex)
                 {
@@ -367,7 +376,7 @@ public class FlowSystem : MonoBehaviour
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[0], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //건조 - 뱀
                     case 2:
@@ -406,7 +415,7 @@ public class FlowSystem : MonoBehaviour
                         }
 
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[6], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //한랭 - 펭귄
                     case 3:
@@ -443,7 +452,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(1, 4);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 1.03f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //바다 - 고래
                     case 4:
@@ -453,7 +462,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(4, 6);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 5f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                     //산 - 구름
                     case 5:
@@ -467,7 +476,7 @@ public class FlowSystem : MonoBehaviour
 
                         randomVal = Random.Range(7, 9);
                         buildOnPlanet.EulerRotCal(GameObject.Find(AllMeshController.instance_.PickContainer[0].ToString()), AllMeshController.instance_.MovingObj[randomVal], 15f, AllMeshController.instance_.PickContainer[1], cardSystem.pickedCard.GetComponent<CardData>().data.cardIndex);
-                        finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
+                        //finalTerrainName = AllMeshController.instance_.PickContainer[0].ToString();
                         break;
                 }
                 Camera.main.GetComponent<PCverPIcking>().TurnChangeLogic();

@@ -148,6 +148,10 @@ public partial class NetworkManager : MonoBehaviour {
     public bool isServerRecvMyPort = false;
     //--
 
+    //-- Parsing한 NotifyNum은?
+    public int parsingNotifyNum = 0;
+    //--
+
     public string iP_ADDRESS;
 
     public string AWS_PUBLIC_IP = "13.125.73.63";
@@ -178,6 +182,7 @@ public partial class NetworkManager : MonoBehaviour {
     public int money = 20190102;
     public int characterBit = 0;
     public int activeCharacterIndex = -1;
+    public int itemBit = 0;
 
     // Use Main UI Scene
     public int friendNum;
@@ -220,5 +225,9 @@ public partial class NetworkManager : MonoBehaviour {
             socket.Close();
             socket = null;
         }
+
+        //if(u != null)
+        s.u.Close();
+        s.u = null;
     }
 }
