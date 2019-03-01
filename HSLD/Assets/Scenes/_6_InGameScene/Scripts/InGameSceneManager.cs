@@ -158,7 +158,7 @@ public partial class InGameSceneManager : MonoBehaviour
         if (cnt == 5)
         {
 
-        }
+        }  
 
         network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
     }

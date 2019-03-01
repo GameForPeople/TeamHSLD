@@ -66,6 +66,7 @@ public class MeshController : MonoBehaviour {
     private bool isTriggerOn = false;
     private MeshRenderer render;
     public Material beforeRender;
+    static public int cnt = 0;
 
     void Start ()
     {
@@ -322,6 +323,8 @@ public class MeshController : MonoBehaviour {
             //        return;
             //}
 
+            //EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[13 + cnt], 1.01f);
+            //cnt += 1;
             //20퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 80 || isFlag)
             {
@@ -344,35 +347,34 @@ public class MeshController : MonoBehaviour {
             //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
             //        return;
             //}
-               
 
             //70퍼센트 확률로 생기지 않음.
             if (Random.Range(0, 100) < 30 || isFlag)
-                {
-                    if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
-                        EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
-                    else
-                        EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
-                }
+            {
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+                    EulerRotCal(gameObject, AllMeshController.myPlanet.GetComponent<AllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+                else
+                    EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(5, 12)], 1.01f);
+            }
 
 
         }
 
         else if (terrainstate == Terrain.COLD)
         {
-           //if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-           //{
-           //    //움직이는 오브젝트가 나올때에는 생성 x
-           //    if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
-           //        return;
-           //}
-           //
-           //else
-           //{
-           //    //움직이는 오브젝트가 나올때에는 생성 x
-           //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
-           //        return;
-           //}
+            //if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            //{
+            //    //움직이는 오브젝트가 나올때에는 생성 x
+            //    if (TutorialFlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
+            //
+            //else
+            //{
+            //    //움직이는 오브젝트가 나올때에는 생성 x
+            //    if (FlowSystem.finalTerrainName.Equals(gameObject.name))
+            //        return;
+            //}
 
             //40퍼센트 확률로 생기지 않음
             if (Random.Range(0, 100) < 60 || isFlag)
@@ -382,7 +384,7 @@ public class MeshController : MonoBehaviour {
                 else
                     EulerRotCal(gameObject, TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[RandomValue(1, 4)], 1.01f);
             }
-                
+
         }
         else if (terrainstate == Terrain.SEA)
         {
@@ -418,7 +420,6 @@ public class MeshController : MonoBehaviour {
         }
         else if (terrainstate == Terrain.MOUNTAIN)
         {
-            //5퍼센트 확률로 생기지 않음.
             for (int i = 0; i < JointMesh.Length; i++)
             {
                 if (JointMesh[i].GetComponent<MeshController>().terrainstate.Equals(Terrain.MOUNTAIN))

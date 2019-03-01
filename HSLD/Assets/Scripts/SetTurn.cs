@@ -48,7 +48,11 @@ public class SetTurn : MonoBehaviour
                 obj.name = "backOrder";
             }
         }
-        
+
+        obj.name = "preOrder";
+        TurnSystem.startTurn = TURN.MYTURN;
+        gameObject.GetComponent<TurnSystem>().currentTurn = TURN.MYTURN;
+
         if (obj.name.Equals("preOrder"))
             StartCoroutine(SpinCard(obj, orderSpr[0], "선공"));
 
