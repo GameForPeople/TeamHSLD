@@ -222,6 +222,7 @@ public class MeshController : MonoBehaviour {
                 //Debug.Log("Pick : " + CameraController.lastmesh);
                 int cameraYAmount = 138;
                 Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
+                Camera.main.GetComponent<CameraController>().isCameraLock = true;
                 StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
             }
             

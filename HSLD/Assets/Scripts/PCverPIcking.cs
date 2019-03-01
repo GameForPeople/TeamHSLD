@@ -362,8 +362,14 @@ public class PCverPIcking : MonoBehaviour
         if(bSelectionFlag == true) // Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
-            if (isClassicMode) detectedCount = 0;
-            else detectedCount = 1;
+            if (isClassicMode)
+            {
+                detectedCount = 0;
+            }
+            else
+            {
+                detectedCount = 1;
+            }
             //EnemyFlag
             if (!bDominateEnemyFlag)
             {
@@ -415,8 +421,14 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
 
-            if (isClassicMode) detectedCount = 0;
-            else detectedCount = 1;
+            if (isClassicMode)
+            {
+                detectedCount = 0;
+            }
+            else
+            {
+                detectedCount = 1;
+            }
             // MyFlag
             if (!bDominateMyFlag)
             {

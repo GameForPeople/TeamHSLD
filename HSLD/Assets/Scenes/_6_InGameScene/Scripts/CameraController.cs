@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
 
     // 임시
     public float speed;
+    public bool isCameraLock;
 
     void Start()
     {
@@ -92,8 +93,13 @@ public class CameraController : MonoBehaviour
             {
                 yield break; // 선택 매쉬가 달라졌으면 off
             }
-            
-            if (Mathf.Abs((transform.position - end).magnitude) < 1.5f) yield break; // 보간 제한
+
+            if (Mathf.Abs((transform.position - end).magnitude) < 1.5f)
+            {
+                //카메라 락
+                isCameraLock = false;
+                yield break; // 보간 제한
+            }
             
 
             transform.position = Vector3.Lerp(transform.position, end, Time.deltaTime * 2.5f);
@@ -126,9 +132,13 @@ public class CameraController : MonoBehaviour
         normalDirection = Vector3.Normalize(normalDirection);
 
         Touch[] touches = Input.touches;
+        if (offset > 0)
+        {
+            offset -= 3.0f * Time.deltaTime;
+        } // 피킹 관련 
 
         // 카메라의 기본 회전
-        if (mainCamera)
+        if (!isCameraLock)
         {
             //input += new Vector2(Input.GetAxis("Mouse X") * speed, Input.GetAxis("Mouse Y") * speed);
             //Debug.Log(input);
@@ -136,18 +146,13 @@ public class CameraController : MonoBehaviour
             //transform.localRotation = Quaternion.Euler(input.y, input.x, 0);
             //transform.localPosition = MyPlanet.position - (gameObject.transform.localRotation * Vector3.forward * fdistance);
 
-            if (offset > 0)
-            {
-                offset -= 3.0f * Time.deltaTime;
-            } // 피킹 관련 
-
             if (fdistance >= minDistance || fdistance <= maxDistance)
             {
                 myTransform.position = priorPosition;
                 //myTransform.LookAt(MyPlanet);
             } // 확대축소 관련
 
-            if (Input.touchCount == 2) // 확대축소 스와이프
+            if (Input.touchCount == 3) // 확대축소 스와이프
             {
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
@@ -168,32 +173,33 @@ public class CameraController : MonoBehaviour
 
                 mainCamera.farClipPlane = fdistance;
             }
+
+            if (Input.touchCount == 2)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    rotateAmount.x += Input.GetTouch(0).deltaPosition.x * speed;
+                    rotateAmount.y += Input.GetTouch(0).deltaPosition.y * speed;
+
+                    myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+                    myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
+
+                    /*
+                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
+                        (Input.GetTouch(0).position.y - PrevPoint.y) );
+
+                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
+                        (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
+                    */
+                    //PrevPoint = Input.GetTouch(0).position;
+                }
+            }
         }
+
 
         if (Input.touchCount == 1 && CameraController.offset < 0.5)
         {
             Camera.main.GetComponent<PCverPIcking>().Picked(true);
-        }
-
-        if (Input.touchCount == 3)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                rotateAmount.x += Input.GetTouch(0).deltaPosition.x * speed;
-                rotateAmount.y += Input.GetTouch(0).deltaPosition.y * speed;
-
-                myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
-                myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
-                
-                /*
-                mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                    (Input.GetTouch(0).position.y - PrevPoint.y) );
-
-                mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                    (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
-                */
-                //PrevPoint = Input.GetTouch(0).position;
-            }
         }
     }
 }
