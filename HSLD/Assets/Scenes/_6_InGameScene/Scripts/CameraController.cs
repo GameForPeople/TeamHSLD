@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
 
     // 임시
     public float speed;
+    public bool isCameraLock;
 
     void Start()
     {
@@ -96,7 +97,7 @@ public class CameraController : MonoBehaviour
             if (Mathf.Abs((transform.position - end).magnitude) < 1.5f)
             {
                 //카메라 락
-                MeshController.isCameraLock = false;
+                isCameraLock = false;
                 yield break; // 보간 제한
             }
             
@@ -137,68 +138,78 @@ public class CameraController : MonoBehaviour
         } // 피킹 관련 
 
         // 카메라의 기본 회전
-        if (!MeshController.isCameraLock)
+        if (!isCameraLock)
         {
             //input += new Vector2(Input.GetAxis("Mouse X") * speed, Input.GetAxis("Mouse Y") * speed);
             //Debug.Log(input);
 
             //transform.localRotation = Quaternion.Euler(input.y, input.x, 0);
             //transform.localPosition = MyPlanet.position - (gameObject.transform.localRotation * Vector3.forward * fdistance);
-
-            if (fdistance >= minDistance || fdistance <= maxDistance)
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
             {
-                myTransform.position = priorPosition;
-                //myTransform.LookAt(MyPlanet);
-            } // 확대축소 관련
-
-            if (Input.touchCount == 3) // 확대축소 스와이프
-            {
-                Touch touchZero = Input.GetTouch(0);
-                Touch touchOne = Input.GetTouch(1);
-
-                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-                float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
-
-                if (fdistance < minDistance && fdistance > maxDistance)
+                if (fdistance >= minDistance || fdistance <= maxDistance)
                 {
-                    priorPosition = myTransform.position;
-                    myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
+                    myTransform.position = priorPosition;
+                    //myTransform.LookAt(MyPlanet);
+                } // 확대축소 관련
+
+                if (Input.touchCount == 3) // 확대축소 스와이프
+                {
+                    Touch touchZero = Input.GetTouch(0);
+                    Touch touchOne = Input.GetTouch(1);
+
+                    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                    float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                    float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                    float deltaMagnitudediff = prevTouchDeltaMag - touchDeltaMag;
+
+                    if (fdistance < minDistance && fdistance > maxDistance)
+                    {
+                        priorPosition = myTransform.position;
+                        myTransform.position = myTransform.position - -(normalDirection * deltaMagnitudediff * orthoZoomSpeed);
+                    }
+
+                    mainCamera.farClipPlane = fdistance;
                 }
 
-                mainCamera.farClipPlane = fdistance;
-            }
-
-            if (Input.touchCount == 2)
-            {
-                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                if (Input.touchCount == 2)
                 {
-                    rotateAmount.x += Input.GetTouch(0).deltaPosition.x * speed;
-                    rotateAmount.y += Input.GetTouch(0).deltaPosition.y * speed;
+                    if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                    {
+                        rotateAmount.x += Input.GetTouch(0).deltaPosition.x * speed;
+                        rotateAmount.y += Input.GetTouch(0).deltaPosition.y * speed;
 
-                    myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
-                    myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
+                        myTransform.localRotation = Quaternion.Euler(rotateAmount.y, rotateAmount.x, 0);
+                        myTransform.localPosition = MyPlanet.position - (myTransform.rotation * Vector3.forward * fdistance);
 
-                    /*
-                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
-                        (Input.GetTouch(0).position.y - PrevPoint.y) );
+                        /*
+                        mainCamera.transform.RotateAround(MyPlanet.position, Vector3.left,
+                            (Input.GetTouch(0).position.y - PrevPoint.y) );
 
-                    mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
-                        (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
-                    */
-                    //PrevPoint = Input.GetTouch(0).position;
+                        mainCamera.transform.RotateAround(MyPlanet.position, Vector3.up,
+                            (Input.GetTouch(0).position.x - PrevPoint.x) * RotationSensitivity);
+                        */
+                        //PrevPoint = Input.GetTouch(0).position;
+                    }
                 }
             }
+           
         }
 
 
         if (Input.touchCount == 1 && offset < 0.5)
         {
-            mainCamera.GetComponent<PCverPIcking>().Picked(true);
-        }   
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+            {
+                Camera.main.GetComponent<TutorialPcVerCamera>().Picked(true);
+            }
+            else
+            {
+                Camera.main.GetComponent<PCverPIcking>().Picked(true);
+            }
+        }
     }
 }
