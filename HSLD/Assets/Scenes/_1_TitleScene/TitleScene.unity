@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44824702, g: 0.49827307, b: 0.575583, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824654, g: 0.49827242, b: 0.5755816, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19037,7 +19037,7 @@ Canvas:
   m_GameObject: {fileID: 774895657}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1005891263}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -23881,7 +23881,7 @@ GameObject:
   - component: {fileID: 938259495}
   - component: {fileID: 938259494}
   m_Layer: 0
-  m_Name: Sphere_320Objects_40X
+  m_Name: Sphere_Core
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44163,7 +44163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804969618}
   m_Layer: 0
-  m_Name: ObjectSet
+  m_Name: ObjectSetCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

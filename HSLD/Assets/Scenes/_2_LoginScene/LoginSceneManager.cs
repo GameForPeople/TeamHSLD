@@ -153,7 +153,7 @@ public class LoginSceneManager : MonoBehaviour {
 
         // 아이템 비트 하드 코딩.
         int tempItemBit = gameCore.transform.Find("NetworkManager").GetComponent<NetworkManager>().itemBit;
-        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_320Objects_40X").GetComponent<EditMesh>();
+        EditMesh tempEditMesh = gameCore.transform.Find("ClientBase_Space").transform.Find("Sphere_Core").GetComponent<EditMesh>();
 
         if ((tempItemBit & (1 << 0)) == (1 << 0))
         {
@@ -213,8 +213,12 @@ public class LoginSceneManager : MonoBehaviour {
 
         Canvas2D.transform.Find("InputField_ID").gameObject.SetActive(true);
         Canvas2D.transform.Find("SignIn_Button").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
-        Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+
+        if (GameObject.Find("GameCores").transform.Find("NetworkManager").GetComponent<NetworkManager>().parsingNotifyNum == 0)
+        {
+             Canvas2D.transform.Find("Text_Account").gameObject.SetActive(true);
+             Canvas2D.transform.Find("Text_AccountFixed").gameObject.SetActive(true);
+        }
     }
     #endregion
 

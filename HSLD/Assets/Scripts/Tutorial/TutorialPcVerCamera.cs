@@ -36,7 +36,6 @@ public class TutorialPcVerCamera : MonoBehaviour
 
     private void Update()
     {
-
         int Length = myPlanet.GetComponent<TutorialAllMeshController>().PickContainer.Count;
 
         if (flowSystem.currentFlow.Equals(FLOW.TO_PICKINGCARD))
@@ -266,8 +265,13 @@ public class TutorialPcVerCamera : MonoBehaviour
                     GameObject meshObj = myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[i];
 
                     Destroy(meshObj.GetComponent<MeshController>().TargetObject);
-                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
                     tempint++;
+                    
+                    if(CameraController.DiceCount == 12)
+                    {
+                        buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[23];
+                    }
+                    meshObj.GetComponent<MeshController>().EulerRotCalAltar(meshObj, buildingObj, 1.02f);
                 }
 
                 if (tempint == 2)
@@ -281,8 +285,6 @@ public class TutorialPcVerCamera : MonoBehaviour
                             myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
                             Destroy(myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
                             myPlanet.GetComponent<TutorialAllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
-
-
                         }
                         else
                         {
@@ -300,7 +302,8 @@ public class TutorialPcVerCamera : MonoBehaviour
                 }
             }
         }
-        else // Flag가 결정된 후
+        
+        if(bSelectionFlag == true)// Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
             int detectedCount = 0;
@@ -315,7 +318,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                     }
                     if (detectedCount == 12)
                     {
-                        buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[25];
+                        buildingObj = myPlanet.GetComponent<TutorialAllMeshController>().buildingObj[25];
 
 
                         Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);

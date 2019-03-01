@@ -18,11 +18,14 @@ public class PCverPIcking : MonoBehaviour
     private bool bSelectionFlag;
     private bool bDominateMyFlag;
     private bool bDominateEnemyFlag;
+    public bool isClassicMode;
     public GameObject enemyFlag;
     public GameObject myFlag;
 
     private GameObject networkSystem;
     private FlowSystem flowSystem;
+
+    private int detectedCount = 0;
 
     private void Start()
     {
@@ -128,6 +131,8 @@ public class PCverPIcking : MonoBehaviour
                             myPlanet.GetComponent<AllMeshController>().PickContainer.Add(PickedMeshObj.GetComponent<MeshController>().MeshNumber);
                             myPlanet.GetComponent<AllMeshController>().myFlag = PickedMeshObj;
                             GameObject.FindWithTag("GameManager").GetComponent<InGameSceneManager>().diceValueForLoop++;
+
+
                         }
                         else // 깃발 획득했지만, 아직 점령 전일 때 (내 NearMesh를 선택할 수 있어야 해.)
                         {
@@ -244,7 +249,7 @@ public class PCverPIcking : MonoBehaviour
         {
             GameObject flagMesh = myPlanet.GetComponent<AllMeshController>().myFlag;
             GameObject effectObj = myPlanet.GetComponent<AllMeshController>().EffectObj[0];
-            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[21];
+            GameObject buildingObj = myPlanet.GetComponent<AllMeshController>().buildingObj[22];
             Camera.main.GetComponent<CameraShake>().ShakeOnce();
             Destroy(flagMesh.GetComponent<MeshController>().TargetObject);
             flagMesh.GetComponent<MeshController>().EulerRotCal(flagMesh, buildingObj, 1.01f);
@@ -353,10 +358,12 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
         }
-        else // Flag가 결정된 후
+
+        if(bSelectionFlag == true) // Flag가 결정된 후
         {
             GameObject buildingObj = new GameObject();
-            int detectedCount = 0;
+            if (isClassicMode) detectedCount = 0;
+            else detectedCount = 1;
             //EnemyFlag
             if (!bDominateEnemyFlag)
             {
@@ -408,7 +415,8 @@ public class PCverPIcking : MonoBehaviour
                 }
             }
 
-            detectedCount = 0;
+            if (isClassicMode) detectedCount = 0;
+            else detectedCount = 1;
             // MyFlag
             if (!bDominateMyFlag)
             {

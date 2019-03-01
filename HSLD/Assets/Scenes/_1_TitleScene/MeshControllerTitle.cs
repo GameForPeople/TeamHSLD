@@ -20,9 +20,9 @@ public class MeshControllerTitle : MonoBehaviour {
         }
 
         MyObject.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, targetObj.transform.position.z) * offset;
-        MyObject.transform.parent = GameObject.Find("ObjectSet").transform;
+        MyObject.transform.parent = GameObject.Find("ObjectSetCore").transform;
 
-        MyObject.transform.LookAt(GameObject.Find("Sphere_320Objects_40X").transform);
+        MyObject.transform.LookAt(GameObject.Find("Sphere_Core").transform);
 
         if (MyObject.transform.childCount == 0)
             MyObject.transform.eulerAngles = new Vector3(MyObject.transform.eulerAngles.x - 90, MyObject.transform.eulerAngles.y, Random.Range(0, 360));

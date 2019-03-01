@@ -148,6 +148,10 @@ public partial class NetworkManager : MonoBehaviour {
     public bool isServerRecvMyPort = false;
     //--
 
+    //-- Parsing한 NotifyNum은?
+    public int parsingNotifyNum = 0;
+    //--
+
     public string iP_ADDRESS;
 
     public string AWS_PUBLIC_IP = "13.125.73.63";
