@@ -11,7 +11,8 @@ public enum Terrain{
     SEA,
     MOUNTAIN,
     ABLE,
-    FLAG
+    FLAG,
+    JOINT
 }
 
 public enum Identify
@@ -65,7 +66,6 @@ public class MeshController : MonoBehaviour {
     private float time_;
     private bool isTriggerOn = false;
     private MeshRenderer render;
-    public Material beforeRender;
     static public int cnt = 0;
 
     void Start ()
@@ -254,13 +254,15 @@ public class MeshController : MonoBehaviour {
                                 if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
                                 {
-                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    Debug.Log("여기에 들어오나요??? [1]");
+                                    JointMesh[i].GetComponent<MeshController>().setPriorState();
                                     JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
                                     break;
                                 }
                                 else
                                 {
-                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    Debug.Log("여기에 들어오나요??? [2]");
+                                    JointMesh[i].GetComponent<MeshController>().setPriorState();
                                 }
                             }
                         }
@@ -271,13 +273,15 @@ public class MeshController : MonoBehaviour {
                                 if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
                                 {
-                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    Debug.Log("여기에 들어오나요??? [3]");
+                                    JointMesh[i].GetComponent<MeshController>().setPriorState();
                                     JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
                                     break;
                                 }
                                 else
                                 {
-                                    JointMesh[i].GetComponent<MeshController>().setDefault();
+                                    Debug.Log("여기에 들어오나요??? [4]");
+                                    JointMesh[i].GetComponent<MeshController>().setPriorState();
                                 }
                             }
                         }
@@ -949,6 +953,14 @@ public class MeshController : MonoBehaviour {
     {
         terrainstate = Terrain.DEFAULT;
         domMaterial = Resources.Load<Material>("M_Default");
+        GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
+        currentIdentify = Identify.NEUTRALITY;
+    }
+
+    public void setPriorState()
+    {
+        terrainstate = priorState;
+        domMaterial = priorMaterial;
         GetComponent<MeshRenderer>().material = domMaterial; // 지금 머테리얼을 바꿔줌 // 머테리얼은 선택된 지형카드에 따라
         currentIdentify = Identify.NEUTRALITY;
     }

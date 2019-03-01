@@ -239,10 +239,10 @@ public class TutorialPcVerCamera : MonoBehaviour
                     CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.DEFAULT;
                     CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Default");
 
-                    if (CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender != null)
+                    if (CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial != null)
                     {
-                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender;
-                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = null;
+                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial;
+                        CheckObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = null;
                     }
                 }
             }

@@ -254,7 +254,7 @@ public class TutorialAllMeshController : MonoBehaviour
                             case 1:
                                 if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.COLD) && FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh) // able일 때 default로 바꿔줘
                                 {
-                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
@@ -262,7 +262,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
                                 if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.COLD) && FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh)
                                 {
-                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
@@ -272,7 +272,7 @@ public class TutorialAllMeshController : MonoBehaviour
                             case 2:
                                 if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.MODERATION) && FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh) // able일 때 default로 바꿔줘
                                 {
-                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
@@ -280,7 +280,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
                                 if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.MODERATION) && FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh)
                                 {
-                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
@@ -291,7 +291,7 @@ public class TutorialAllMeshController : MonoBehaviour
                                 //Debug.Log(FindObject.GetComponent<MeshController>().MeshNumber + " : "+FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().MeshNumber +" : " + FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate + " : " + FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify + " : " + FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh);
                                 if (FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.BARREN) && FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh) // able일 때 default로 바꿔줘
                                 {
-                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FindObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
@@ -299,7 +299,7 @@ public class TutorialAllMeshController : MonoBehaviour
 
                                 if (FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate.Equals(Terrain.BARREN) && FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().currentIdentify.Equals(Identify.ENEMY) && !FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFlagMesh)
                                 {
-                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().beforeRender = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
+                                    FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().priorMaterial = FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshRenderer>().material;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().terrainstate = Terrain.ABLE;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<MeshController>().isFixed = false;
                                     FirstObject.GetComponent<MeshController>().JointMesh[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_Able");
