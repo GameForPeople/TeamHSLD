@@ -52,7 +52,8 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         // -----
-        GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
+        if(GameObject.Find("GameCores") != null)
+            GameObject.Find("GameCores").transform.Find("ClientBaseManager").GetComponent<ClientBaseManager>().OnOff_ClientBaseSpace(false);
         // -----
     }
 
