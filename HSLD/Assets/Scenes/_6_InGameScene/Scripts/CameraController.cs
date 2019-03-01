@@ -29,7 +29,6 @@ public class CameraController : MonoBehaviour
 
     // 임시
     public float speed;
-    public bool isCameraLock;
 
     void Start()
     {
@@ -97,7 +96,7 @@ public class CameraController : MonoBehaviour
             if (Mathf.Abs((transform.position - end).magnitude) < 1.5f)
             {
                 //카메라 락
-                isCameraLock = false;
+                MeshController.isCameraLock = false;
                 yield break; // 보간 제한
             }
             
@@ -138,7 +137,7 @@ public class CameraController : MonoBehaviour
         } // 피킹 관련 
 
         // 카메라의 기본 회전
-        if (!isCameraLock)
+        if (!MeshController.isCameraLock)
         {
             //input += new Vector2(Input.GetAxis("Mouse X") * speed, Input.GetAxis("Mouse Y") * speed);
             //Debug.Log(input);
@@ -197,9 +196,9 @@ public class CameraController : MonoBehaviour
         }
 
 
-        if (Input.touchCount == 1 && CameraController.offset < 0.5)
+        if (Input.touchCount == 1 && offset < 0.5)
         {
-            Camera.main.GetComponent<PCverPIcking>().Picked(true);
-        }
+            mainCamera.GetComponent<PCverPIcking>().Picked(true);
+        }   
     }
 }

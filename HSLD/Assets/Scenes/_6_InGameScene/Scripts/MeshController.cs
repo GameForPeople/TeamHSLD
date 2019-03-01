@@ -68,6 +68,8 @@ public class MeshController : MonoBehaviour {
     private MeshRenderer render;
     static public int cnt = 0;
 
+    static public bool isCameraLock = false;
+
     void Start ()
     {
         missionmanager = GameObject.FindWithTag("GameManager").GetComponent<MissionManager>();
@@ -222,8 +224,15 @@ public class MeshController : MonoBehaviour {
                 //Debug.Log("Pick : " + CameraController.lastmesh);
                 int cameraYAmount = 138;
                 Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
-                Camera.main.GetComponent<CameraController>().isCameraLock = true;
-                StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+                { // DoTutorial
+                    StartCoroutine(Camera.main.GetComponent<TutorialCameraController>().movePosition(destinationPos));
+                }
+                else
+                {
+                    StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
+                    isCameraLock = true;
+                }
             }
             
             if (terrainstate == Terrain.ABLE || terrainstate == Terrain.DEFAULT)

@@ -2204,13 +2204,12 @@ Transform:
 --- !u!114 &374445974
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114272790763435622, guid: f60a926d138d33848b25cd18a3655b7e,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374445970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed86296dd86ded4fbe6cb0715d7c17b, type: 3}
+  m_Script: {fileID: 11500000, guid: 75823b796bca0544794623f3f6bc5738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 374445972}
@@ -2220,6 +2219,7 @@ MonoBehaviour:
   RotationSensitivity: 0.1
   myTurn: 0
   speed: 0.2
+  isCameraLock: 0
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
