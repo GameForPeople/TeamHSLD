@@ -71,6 +71,8 @@ public class FlowSystem : MonoBehaviour
 
     static public string finalTerrainName;
 
+    public Sprite[] resultImgSet = new Sprite[3];
+
     private void Start()
     {
         SoundManager.instance_.BGMChange(SoundManager.instance_.clips[14]);
@@ -529,23 +531,32 @@ public class FlowSystem : MonoBehaviour
     public void GameOver(bool isWin, int index)
     {
         resultUICanvas.SetActive(true);
-        if(isWin)
-            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "WIN";
-        else
-            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = "LOSE";
 
-        switch(index)
+        switch (index)
         {
             case 0:
-                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "행성 점유 클리어";
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).transform.localPosition = new Vector3(-158, -57.4f, 0);
                 break;
             case 1:
-                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "메인 미션 클리어";
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).transform.localPosition = new Vector3(110.5f, -57.4f, 0);
                 break;
             case 2:
-                resultUICanvas.transform.GetChild(0).transform.GetChild(3).GetComponent<Text>().text = "공통 미션 클리어";
+                resultUICanvas.transform.GetChild(0).transform.GetChild(3).transform.localPosition = new Vector3(380, -57.4f, 0);
                 break;
         }
+
+        if (isWin)
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Image>().sprite = resultImgSet[0];
+            
+        else
+        {
+            resultUICanvas.transform.GetChild(0).transform.GetChild(2).GetComponent<Image>().sprite = resultImgSet[1];
+            resultUICanvas.transform.GetChild(0).transform.GetChild(3).transform.localPosition -= new Vector3(0, 148.6f, 0);
+        }
+            
+
+        
+
         //서버에서 데이터 가져오기
         if (GameObject.Find("GameCores") != null)
         {

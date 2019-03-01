@@ -565,7 +565,7 @@ public partial class NetworkManager : MonoBehaviour
             inGameSceneManager.RecvDiceValue(BitConverter.ToInt32(NewDataRecvBuffer, 4));
             Debug.Log("받은 diceValueForLoop 값은 : " + inGameSceneManager.diceValueForLoop);
         }
-        else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE)
+        else if (recvType == (int)PROTOCOL.NOTIFY_TERRAIN_TYPE) 
         {
             //inGameSceneManager.network_eventCardType = BitConverter.ToInt32(DataRecvBuffer, 4);
             // inGameSceneManager.network_terrainType = BitConverter.ToInt32(DataRecvBuffer, 8);

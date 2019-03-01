@@ -141,8 +141,8 @@ public class TerrainGainCounting : MonoBehaviour
             missionmanager.SubMissionContinuedCounting(MountainCounting(Identify.ALLY), 4);
 
         //네트워크상태일때
-        if (GameObject.Find("GameCores") != null)
-            return;
+        //if (GameObject.Find("GameCores") != null)
+        //    return;
 
         ////서브미션 201번, 방어지형 10칸이상 설치
         //if (MissionManager.selectedSubMissionIndex == 0)

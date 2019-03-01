@@ -146,6 +146,20 @@ public partial class InGameSceneManager : MonoBehaviour
     public void SendChangeTurn(bool[] InCompletedSubMissionArr)
     {
         network_completedSubMissionIndex = ConvertFromBoolArrToInt(InCompletedSubMissionArr);
+        int cnt = 0;
+
+        for(int i =0; i< InCompletedSubMissionArr.Length; i++)
+        {
+            if (InCompletedSubMissionArr[i])
+                cnt += 1;
+        }
+
+        //게임종료 - 나의 공통미션 5개달성
+        if (cnt == 5)
+        {
+
+        }
+
         network_sendProtocol = (int)PROTOCOL.NOTIFY_CHANGE_TURN;
     }
 
@@ -224,18 +238,25 @@ public partial class InGameSceneManager : MonoBehaviour
     public void RecvChangeTurn(int InCompletedSubMissionIndex)
     {
         network_completedSubMissionIndex = InCompletedSubMissionIndex;
-        
-        /* 여기서 리턴 값 받아가세요! = */ 
+
+        /* 여기서 리턴 값 받아가세요! = */
         //ConvertFromIntToBoolArr(InCompletedSubMissionIndex);        
+        int cnt = 0;
         for(int i =0; i< ConvertFromIntToBoolArr(InCompletedSubMissionIndex).Length; i++)
         {
             if (ConvertFromIntToBoolArr(InCompletedSubMissionIndex)[i])
             {
+                cnt += 1;
                 MissionManager.enemyMissionCompleteBoolean[i] = ConvertFromIntToBoolArr(InCompletedSubMissionIndex)[i];
                 GameObject.FindWithTag("GameManager").GetComponent<MissionManager>().readyDisplaySubMissionObj.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(true);
             }
         }
 
+        //게임종료 - 상대방의 공통미션 5개달성
+        if(cnt == 5)
+        {
+
+        }
         //상대방의 이벤트카드 갯수의 여부에따라 분기
         gameObject.GetComponent<FlowSystem>().FlowChange(FLOW.ENEMYTURN_PICKINGEVENTCARDLOC);
     }

@@ -154,7 +154,12 @@ public class MissionManager : MonoBehaviour
     public void MainMissionCounting(int val)
     {
         if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
+        {
+            //게임종료 - 나의 메인미션 달성
+
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
+        }
+            
         else
             missionSet[selectedMainMissionIndex].mainMission.currentCnt += val;
 
@@ -208,7 +213,12 @@ public class MissionManager : MonoBehaviour
     public void MainMissionContinuedCounting(int val)
     {
         if (missionSet[selectedMainMissionIndex].mainMission.currentCnt + val >= missionSet[selectedMainMissionIndex].mainMission.goalCnt)
+        {
+            //게임종료 - 나의 메인미션 달성
+
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = missionSet[selectedMainMissionIndex].mainMission.goalCnt;
+        }
+        
         else
             missionSet[selectedMainMissionIndex].mainMission.currentCnt = val;
 
