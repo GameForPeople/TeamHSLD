@@ -945,7 +945,7 @@ public class DiceSystem : MonoBehaviour
             Destroy(doubleImg.GetComponent<IsDoubleImg>());
         }
 
-        //isDouble = true;
+        isDouble = false;
         //Debug.Log("다이스눈금 : " + ((int)(getDiceNum/10) + (int)(getDiceNum % 10)) + "주사위 분리했을때 : "+ getDiceNum + " 더블여부 : " + isDouble);
 
         // 미션 - 300

@@ -110,7 +110,7 @@ public class EventCardManager : MonoBehaviour
 
     public void EventCardInstate()
     {
-        RandomEventCardSelect(Random.Range(0, 6));
+        RandomEventCardSelect(Random.Range(0, 6));          //0,6
 
         eventCard.SetActive(true);
         cardName.text = pickedCard.cardName;

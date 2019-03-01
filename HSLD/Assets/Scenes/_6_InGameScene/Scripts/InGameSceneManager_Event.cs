@@ -100,7 +100,6 @@ public partial class InGameSceneManager : MonoBehaviour {
     public void NetworkManager_RecvEventcardIndex(int InEventcardIndex)
     {
         network_recvEventCardType = InEventcardIndex;
-
         //-- 받은 이벤트 카드의 인덱스가 무엇인지 확인하는 함수입니다.
 
         //액티브가 On됫다가 2초후에 Off됨.
