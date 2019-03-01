@@ -32,6 +32,7 @@ public class MissionManager : MonoBehaviour
     static public int selectedSubMissionIndex;
     static public bool[] missionCompleteBoolean = new bool[5];
     static public bool[] enemyMissionCompleteBoolean = new bool[5];
+    static public bool missionCompleteFirst = false;
     static public int missionComplete = 0;
     static public int enemyMissionComplete = 0;
 
@@ -79,7 +80,8 @@ public class MissionManager : MonoBehaviour
         for(int i =0; i < 5 ;i++)
             readyDisplaySubMissionObj.transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
 
-        if(gameObject.GetComponent<FlowSystem>() != null)
+
+        if (gameObject.GetComponent<FlowSystem>() != null)
             missionCanvas = gameObject.GetComponent<FlowSystem>().missionSetParentTransform.gameObject;
         else
             missionCanvas = gameObject.GetComponent<TutorialFlowSystem>().missionSetParentTransform.gameObject;
@@ -175,6 +177,7 @@ public class MissionManager : MonoBehaviour
             {
                 if (!missionCompleteBoolean[index])
                 {
+                    missionCompleteFirst = true;
                     missionComplete += 1;
                     missionCompleteBoolean[index] = true;
                 }
@@ -236,6 +239,7 @@ public class MissionManager : MonoBehaviour
                 {
                     missionComplete += 1;
                     missionCompleteBoolean[index] = true;
+                    missionCompleteFirst = true;
                 }
 
                 missionSet[selectedSubMissionIndex].subMission[index].currentCnt = missionSet[selectedSubMissionIndex].subMission[index].goalCnt;

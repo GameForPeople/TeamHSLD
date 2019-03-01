@@ -153,11 +153,11 @@ public class FlowSystem : MonoBehaviour
                 //    lineObj.GetComponent<LineRenderer>().SetPosition(i, linePosList[i]);
 
                 //이벤트카드로 갈지 말지 분기
-                if(DiceSystem.isDouble /*|| 서브미션 달성시*/ && PCverPIcking.isDominatedConfirm)
+                if((DiceSystem.isDouble || MissionManager.missionCompleteFirst) && PCverPIcking.isDominatedConfirm)
                 {
                     currentFlow = FLOW.TO_PICKEVENTCARD;
+                    MissionManager.missionCompleteFirst = false;
                     eventCardManager.EventCardInstate();
-
                 }
                 else
                 {
