@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c73fab212cef44041959afe2782ccff0, type: 3}
-  m_Name: Sub_15
+  m_Name: Main_4
   m_EditorClassIdentifier: 
-  missionSet: 1
-  index: 420
-  text: "\uB204\uC801 - \uD55C\uB7AD \uC9C0\uD615 \uCD1D 30\uCE78 \uC124\uCE58"
+  missionSet: 0
+  index: 110
+  text: "\uC0C1\uC131\uC9C0\uD615\uC73C\uB85C \uC0C1\uB300 \uB545 50\uCE78 \uC774\uC0C1
+    \uC810\uB839 \uC131\uACF5"
   currentCnt: 0
-  goalCnt: 30
+  goalCnt: 50
