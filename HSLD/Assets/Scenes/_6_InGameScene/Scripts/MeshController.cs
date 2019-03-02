@@ -220,16 +220,19 @@ public class MeshController : MonoBehaviour {
         {
             if (true) // isMoblie == true
             {
-                CameraController.lastmesh = MeshNumber;
-                //Debug.Log("Pick : " + CameraController.lastmesh);
-                int cameraYAmount = 138;
-                Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
+
                 if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
                 { // DoTutorial
+                    TutorialCameraController.lastmesh = MeshNumber;
+                    int cameraYAmount = 138;
+                    Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                     StartCoroutine(Camera.main.GetComponent<TutorialCameraController>().movePosition(destinationPos));
                 }
                 else
                 {
+                    CameraController.lastmesh = MeshNumber;
+                    int cameraYAmount = 138;
+                    Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                     StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
                     isCameraLock = true;
                 }
@@ -298,7 +301,14 @@ public class MeshController : MonoBehaviour {
                             
                     }
                 }
-                CameraController.ChangeableCount++;
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+                { // DoTutorial
+                    TutorialCameraController.ChangeableCount++;
+                }
+                else
+                {
+                    CameraController.ChangeableCount++;
+                }
             }
 
             // Able 다시 세팅
@@ -781,9 +791,16 @@ public class MeshController : MonoBehaviour {
                     TutorialPcVerCamera.inputAble = -1;
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
                 }
-                    
 
-                CameraController.ChangeableCount--;
+
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+                { // DoTutorial
+                    TutorialCameraController.ChangeableCount--;
+                }
+                else
+                {
+                    CameraController.ChangeableCount--;
+                }
 
                 MissionCounting(true);
 
@@ -817,7 +834,14 @@ public class MeshController : MonoBehaviour {
             {
                 GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
 
-                CameraController.ChangeableCount--;
+                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
+                { // DoTutorial
+                    TutorialCameraController.ChangeableCount--;
+                }
+                else
+                {
+                    CameraController.ChangeableCount--;
+                }
 
                 MissionCounting(true);
 

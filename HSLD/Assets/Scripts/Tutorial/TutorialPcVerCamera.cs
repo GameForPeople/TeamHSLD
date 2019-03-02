@@ -55,7 +55,7 @@ public class TutorialPcVerCamera : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && CameraController.offset < 0.5)
+        if (Input.GetMouseButton(0) && TutorialCameraController.offsetTutorial < 0.5)
         {
             Picked(false);
         }
@@ -160,7 +160,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                 }
             }
 
-            CameraController.offset = 2.0f;
+            TutorialCameraController.offsetTutorial = 2.0f;
         }
         CameraController.Once = true;
     }
@@ -324,8 +324,7 @@ public class TutorialPcVerCamera : MonoBehaviour
                         Destroy(enemyFlag.GetComponent<MeshController>().TargetObject);
                         enemyFlag.GetComponent<MeshController>().EulerRotCal(enemyFlag, buildingObj, 1.0f);
                         bDominateEnemyFlag = true;
-
-                        //StartCoroutine(Camera.main.GetComponent<CameraController>().movePositionEffect(buildingObj.transform.position));
+                        
                         gameObject.GetComponent<CameraShake>().ShakeOnce();
                     }
                 }

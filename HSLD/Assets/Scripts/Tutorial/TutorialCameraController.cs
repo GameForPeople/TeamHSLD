@@ -13,7 +13,7 @@ public class TutorialCameraController : MonoBehaviour {
     public float RotationSensitivity;
     private Transform myTransform;
     private Vector3 priorPosition;
-    public static float offset;
+    public static float offsetTutorial;
 
     public static int DiceCount;
     public static int ChangeableCount;
@@ -108,12 +108,12 @@ public class TutorialCameraController : MonoBehaviour {
         normalDirection = Vector3.Normalize(normalDirection);
 
         Touch[] touches = Input.touches;
-        if (offset > 0)
+        if (offsetTutorial > 0)
         {
-            offset -= 3.0f * Time.deltaTime;
+            offsetTutorial -= 3.0f * Time.deltaTime;
         } // 피킹 관련 
 
-        if (Input.touchCount == 1 && offset < 0.5)
+        if (Input.touchCount == 1 && offsetTutorial < 0.5)
         {
             mainCamera.GetComponent<TutorialPcVerCamera>().Picked(true);
         }
