@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionSet: 1
   index: 420
-  text: "\uB204\uC801 - \uD55C\uB7AD \uC9C0\uD615 \uCD1D 30\uCE78 \uC124\uCE58"
+  text: "\uB204\uC801 - \uD55C\uB7AD \uC9C0\uD615 \uCD1D 20\uCE78 \uC124\uCE58"
   currentCnt: 0
-  goalCnt: 30
+  goalCnt: 20

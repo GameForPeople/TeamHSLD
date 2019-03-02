@@ -3360,6 +3360,7 @@ MonoBehaviour:
   RotationSensitivity: 0.1
   myTurn: 0
   speed: 0.2
+  isCameraLock: 0
 --- !u!45 &374445975
 Skybox:
   m_ObjectHideFlags: 0
@@ -8777,7 +8778,7 @@ MonoBehaviour:
   turnCountingUI: {fileID: 522991760}
   matchingCompleteTime: 3
   selectOrderTime: 10
-  selectCardTime: 3
+  selectCardTime: 30
   rollingDiceTime: 10
   setTerrainOnPlanet: 50
   pickingEventCardTime: 15
@@ -8841,9 +8842,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97fe0a0fa08b7944eabd91978eabc3c7, type: 3}
   linePrefab: {fileID: 1983080428529388, guid: 865592a58fbc48b4883065d6b3bcfe16, type: 2}
   resultImgSet:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 112afdc147a901b429356fe1080749e4, type: 3}
+  - {fileID: 21300000, guid: 47ec44acbaf4bd846af6c5da0a5e561e, type: 3}
+  - {fileID: 21300000, guid: f537a39e5199af24494ed23bf257dbca, type: 3}
 --- !u!114 &823012261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8913,34 +8914,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionSet:
-  - mainMission: {fileID: 11400000, guid: a067ce9834063db4281034e25609eaba, type: 2}
+  - mainMission: {fileID: 11400000, guid: 92b5e1e70bed1ed4582839b67c999c52, type: 2}
     subMission:
-    - {fileID: 11400000, guid: 4a21ee409a8e5a449b4d4b2555d69475, type: 2}
-    - {fileID: 11400000, guid: 37c60db3647b9304db3372292e656d3c, type: 2}
-    - {fileID: 11400000, guid: 80444471dcbc3d94eab7f4417a4a8d4d, type: 2}
-    - {fileID: 11400000, guid: c9f339a0de040664b8d634361b113283, type: 2}
-    - {fileID: 11400000, guid: 1024d7c9ba2eadb488a6b8bf62b17f83, type: 2}
-  - mainMission: {fileID: 11400000, guid: 52c872a91dd707946a0b7a30d85bc58b, type: 2}
+    - {fileID: 11400000, guid: 0b5ea4ef0238ad140a351cddec1cffe0, type: 2}
+    - {fileID: 11400000, guid: eb4505067174c6748bb46ec927e69902, type: 2}
+    - {fileID: 11400000, guid: 1dd9102f477ba344e81769c92c91b601, type: 2}
+    - {fileID: 11400000, guid: 5b9c13f6af05f5e449964e650debcd88, type: 2}
+    - {fileID: 11400000, guid: 128d057bf1a4e4e499147bf93e32615c, type: 2}
+  - mainMission: {fileID: 11400000, guid: b9d90dd88dae88d40aff4673df768146, type: 2}
     subMission:
-    - {fileID: 11400000, guid: 888dcae8f1bf74244bc4c4cd1e38f489, type: 2}
-    - {fileID: 11400000, guid: ebe5af1725b88f44e956d170e4d7af85, type: 2}
-    - {fileID: 11400000, guid: 99eb607596dfa2c4ab087352a14e5532, type: 2}
-    - {fileID: 11400000, guid: 8c51f09a513e566478f711ab48e9b037, type: 2}
-    - {fileID: 11400000, guid: 55a49920d7716574989e62c3a744e0c6, type: 2}
-  - mainMission: {fileID: 11400000, guid: 754ff57f87b261d43a66109fe2028881, type: 2}
+    - {fileID: 11400000, guid: 4b36c21fde437f944ae4dcb4eb8457ba, type: 2}
+    - {fileID: 11400000, guid: 5dca50ecb211a004fa7689e43141fdad, type: 2}
+    - {fileID: 11400000, guid: b7f48c326f52a2140b8227006dd10065, type: 2}
+    - {fileID: 11400000, guid: 99d34dbb0045f224bb00b9962a18c990, type: 2}
+    - {fileID: 11400000, guid: db52f72571eb79a44b5b4dc7899cec5d, type: 2}
+  - mainMission: {fileID: 11400000, guid: b63aac110d93a6c4995fdb6c133da00a, type: 2}
     subMission:
-    - {fileID: 11400000, guid: 7e887631fe559a34d8121843c9027a27, type: 2}
-    - {fileID: 11400000, guid: 55c62d8b779214f46a1dcdb189062eda, type: 2}
-    - {fileID: 11400000, guid: 07435b1f79ed5dd418335841b7b96b3f, type: 2}
-    - {fileID: 11400000, guid: 022bd3857e9743e42b3cc2658bd90eb1, type: 2}
-    - {fileID: 11400000, guid: 3235ff4596dba624eacd2de317e6809a, type: 2}
-  - mainMission: {fileID: 11400000, guid: 070eb5b07d58eb64d8515916687b7c4f, type: 2}
+    - {fileID: 11400000, guid: 951eadcff99528a4d9ad8eae5eafcc6f, type: 2}
+    - {fileID: 11400000, guid: 465432324d4a853439de135928631528, type: 2}
+    - {fileID: 11400000, guid: d55b3439a771e2e4cb7aa0fd37efa13d, type: 2}
+    - {fileID: 11400000, guid: 8e854d7fdb86a9141acc1f4839ba9583, type: 2}
+    - {fileID: 11400000, guid: 354736ca7a284e14ba84edfb033c54cf, type: 2}
+  - mainMission: {fileID: 11400000, guid: 88fe5c49d38b0204fb0f51f71715c5b7, type: 2}
     subMission:
-    - {fileID: 11400000, guid: 08ba64939accc6e44b09f184f9b57f49, type: 2}
-    - {fileID: 11400000, guid: a31c7738c13ce1c4aa3f660f33df4d38, type: 2}
-    - {fileID: 11400000, guid: 143eaa5762cedb943ac9050b0ecb0de0, type: 2}
-    - {fileID: 11400000, guid: 6c6aa179a985fd1488807136682a7443, type: 2}
-    - {fileID: 11400000, guid: e56547c2c32f18341b1d90a54b94cc0e, type: 2}
+    - {fileID: 11400000, guid: 3d9086ce53dc5eb408947594bd732286, type: 2}
+    - {fileID: 11400000, guid: f4d7aeb10ea431140aebd94b6217b098, type: 2}
+    - {fileID: 11400000, guid: b2a4320ce88bb2042b8a5a8e3df68c3b, type: 2}
+    - {fileID: 11400000, guid: 769dd64e65b614f488e7b337445bc0ce, type: 2}
+    - {fileID: 11400000, guid: a579f2565efe7ee4a9669a24b19b0d5b, type: 2}
   readyDisplayMainMissionObj: {fileID: 92151563}
   readyDisplaySubMissionObj: {fileID: 985856290}
   missionCanvasActiveTime: 1
