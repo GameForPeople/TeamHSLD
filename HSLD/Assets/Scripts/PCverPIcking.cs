@@ -15,7 +15,7 @@ public class PCverPIcking : MonoBehaviour
     public float magnitude;
     private bool bDomination;
 
-    private bool bSelectionFlag;
+    public bool bSelectionFlag;
     private bool bDominateMyFlag;
     private bool bDominateEnemyFlag;
     public bool isClassicMode;
@@ -338,6 +338,7 @@ public class PCverPIcking : MonoBehaviour
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().isFlag = false;
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorState = Terrain.DEFAULT;
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_DEFAULT");
+                            myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().priorMaterial = Resources.Load<Material>("M_DEFAULT");
                             Destroy(myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().TargetObject);
                             myPlanet.GetComponent<AllMeshController>().FlagContainer[j].GetComponent<MeshController>().setDefault();
 

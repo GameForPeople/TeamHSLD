@@ -69,6 +69,7 @@ public class MeshController : MonoBehaviour {
     static public int cnt = 0;
 
     static public bool isCameraLock = false;
+    static public float isOffset = 0;
 
     void Start ()
     {
@@ -220,19 +221,16 @@ public class MeshController : MonoBehaviour {
         {
             if (true) // isMoblie == true
             {
-
+                int cameraYAmount = 138;
+                Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                 if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
                 { // DoTutorial
                     TutorialCameraController.lastmesh = MeshNumber;
-                    int cameraYAmount = 138;
-                    Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                     StartCoroutine(Camera.main.GetComponent<TutorialCameraController>().movePosition(destinationPos));
                 }
                 else
                 {
                     CameraController.lastmesh = MeshNumber;
-                    int cameraYAmount = 138;
-                    Vector3 destinationPos = gameObject.transform.position.normalized * cameraYAmount;
                     StartCoroutine(Camera.main.GetComponent<CameraController>().movePosition(destinationPos));
                     isCameraLock = true;
                 }
@@ -267,33 +265,29 @@ public class MeshController : MonoBehaviour {
                                 if (AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
                                 {
-                                    Debug.Log("여기에 들어오나요??? [1]");
                                     JointMesh[i].GetComponent<MeshController>().setPriorState();
                                     JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
                                     break;
                                 }
                                 else
                                 {
-                                    Debug.Log("여기에 들어오나요??? [2]");
                                     JointMesh[i].GetComponent<MeshController>().setPriorState();
                                 }
                             }
                         }
                         else
                         {
-                            for (int j = 0; j < AllMeshController.myPlanet.GetComponent<AllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
+                            for (int j = 0; j < TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh.Count; j++)
                             {
                                 if (TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().myFlag.GetComponent<MeshController>().NearMesh[j].name.
                                     Equals(JointMesh[i].GetComponent<MeshController>().name))
                                 {
-                                    Debug.Log("여기에 들어오나요??? [3]");
                                     JointMesh[i].GetComponent<MeshController>().setPriorState();
                                     JointMesh[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("M_JointFlag");
                                     break;
                                 }
                                 else
                                 {
-                                    Debug.Log("여기에 들어오나요??? [4]");
                                     JointMesh[i].GetComponent<MeshController>().setPriorState();
                                 }
                             }
@@ -301,19 +295,14 @@ public class MeshController : MonoBehaviour {
                             
                     }
                 }
-                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-                { // DoTutorial
-                    TutorialCameraController.ChangeableCount++;
-                }
-                else
-                {
-                    CameraController.ChangeableCount++;
-                }
+                CameraController.ChangeableCount++;
             }
 
             // Able 다시 세팅
-            if(GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+            if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() == null)
+            {
                 AllMeshController.myPlanet.GetComponent<AllMeshController>().ResettingAble();
+            }
             else
             {
                 TutorialAllMeshController.myPlanet.GetComponent<TutorialAllMeshController>().ResettingAble();
@@ -792,15 +781,8 @@ public class MeshController : MonoBehaviour {
                     GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>().pointOff();
                 }
 
-
-                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-                { // DoTutorial
-                    TutorialCameraController.ChangeableCount--;
-                }
-                else
-                {
-                    CameraController.ChangeableCount--;
-                }
+                
+                CameraController.ChangeableCount--;
 
                 MissionCounting(true);
 
@@ -833,15 +815,8 @@ public class MeshController : MonoBehaviour {
             if (AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard)
             {
                 GameObject picked = AllMeshController.IngameManager.GetComponent<CardSystem>().pickedCard;
-
-                if (GameObject.FindWithTag("GameManager").GetComponent<TutorialManager>() != null)
-                { // DoTutorial
-                    TutorialCameraController.ChangeableCount--;
-                }
-                else
-                {
-                    CameraController.ChangeableCount--;
-                }
+                
+                CameraController.ChangeableCount--;
 
                 MissionCounting(true);
 

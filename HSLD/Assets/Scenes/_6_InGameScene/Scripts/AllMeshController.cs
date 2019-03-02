@@ -325,8 +325,15 @@ public class AllMeshController : MonoBehaviour
                 // 3.마지막으로 거점 세팅
                 for (int j = 0; j < FlagContainer.Count; j++)
                 {
-                    FlagContainer[j].GetComponent<MeshController>().terrainstate = Terrain.FLAG;
-                    FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                    if(Camera.main.GetComponent<PCverPIcking>().enemyFlag != null && Camera.main.GetComponent<PCverPIcking>().myFlag != null)
+                    {
+                        if (Camera.main.GetComponent<PCverPIcking>().enemyFlag.name == FlagContainer[j].name || 
+                            Camera.main.GetComponent<PCverPIcking>().myFlag.name == FlagContainer[j].name)
+                        {
+                            FlagContainer[j].GetComponent<MeshController>().terrainstate = Terrain.FLAG;
+                            FlagContainer[j].GetComponent<Renderer>().material = Resources.Load<Material>("M_FlagAble");
+                        }
+                    }
                 }
             }
         }
