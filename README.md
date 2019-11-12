@@ -6,6 +6,8 @@ __Bridge_UnityProject 저장소에 방문해주셔서 감사합니다! :)__  (Ve
 > 이 프로젝트는, 대학생연합 게임 제작 동아리 Bridge의 2018년도 후반기 프로젝트 중 하나입니다.
 >
 > 연합동아리 Bridge에 관한 정보는 [여기][3]에서 확인할 수 있습니다. 
+>
+>[Line 공모전 영상 링크](https://drive.google.com/open?id=1rAzn8OSSOXjcGaFGMRajK28J-X8GggUw) <- 클릭 시, 영상을 확인 할 수 있습니다.
 
 About Team
 -----------
